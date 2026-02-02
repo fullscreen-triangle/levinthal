@@ -1,0 +1,161 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+.env
+.venv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ============================================================================
+# LARGE DATA FILES (>20MB) - CRITICAL FOR GITHUB
+# ============================================================================
+
+# Mass spectrometry data files
+*.mzML
+*.mzml
+*.mzXML
+*.raw
+*.RAW
+*.mgf
+*.MGF
+*.msp
+*.MSP
+*.tab
+
+# Large binary data
+*.h5
+*.hdf5
+*.faiss
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# Large analysis output files
+*.tsv
+*.csv
+
+# Zip files
+*.zip
+
+# Large library files (from virtual environments)
+*.dll
+*.lib
+*.pyd
+
+# ============================================================================
+# DIRECTORIES TO IGNORE
+# ============================================================================
+
+# Public data directories (contain large mzML files)
+public/
+precursor/public/
+
+# All results directories
+results/
+precursor/results/
+validation/results/
+
+# Analysis output directories
+*_analysis/
+*_results/
+*_output/
+cv_output/
+fragmentation_test/
+fragmentation_comparison/
+metabolomics_analysis/
+ucdavis_complete_analysis/
+ucdavis_fast_analysis/
+virtual_ensemble_tests/
+virtual_instrument_analysis/
+visualizations/
+theatre_results/
+stage_results/
+test_stage_results/
+test_theatre_results/
+example_results/
+validation_results/
+experiment_results/
+
+# Stage directories
+stage_*/
+
+# Test data directories
+spectra/
+logs/
+test_data/
+data/
+output/
+
+# ============================================================================
+# OTHER
+# ============================================================================
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache directories
+.cache/
+*/.cache/
+**/.cache/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Large image outputs (regenerate with scripts)
+droplet_*.png
+spectrum_*.png
+
+# ============================================================================
+# PUBLICATION OUTPUTS (>20MB)
+# ============================================================================
+
+# PDF files (can be regenerated from LaTeX)
+*.pdf
+precursor/publication/**/*.pdf
