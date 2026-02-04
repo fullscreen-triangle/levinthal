@@ -1141,6 +1141,546 @@ def create_panel7():
 
 
 # ==============================================================================
+# PANEL 8: PROTON TRAJECTORIES AND HYDROGEN BOND OSCILLATIONS
+# ==============================================================================
+def create_panel8():
+    """Proton Trajectories and H-Bond Oscillations - 4 subfigures"""
+    fig = plt.figure(figsize=(12, 10))
+
+    # --- (a) 3D Proton Transfer Trajectory ---
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    # Simulate proton oscillation between donor and acceptor
+    np.random.seed(42)
+    t = np.linspace(0, 10, 500)
+
+    # Double-well potential oscillation
+    omega = 2 * np.pi * 0.5  # Oscillation frequency ~THz scaled
+    amplitude = 0.8  # Angstroms
+    damping = 0.05
+
+    # Multiple proton trajectories (different H-bonds)
+    n_protons = 5
+    colors_proton = plt.cm.viridis(np.linspace(0.2, 0.9, n_protons))
+
+    for i in range(n_protons):
+        phase_offset = i * np.pi / 3
+        freq_variation = 1 + 0.1 * (i - 2)  # Slight frequency variation
+
+        # Position oscillates between donor (0) and acceptor (1.8 A)
+        x = 0.9 + amplitude * np.cos(omega * freq_variation * t + phase_offset) * np.exp(-damping * t)
+        y = 0.2 * np.sin(2 * omega * freq_variation * t + phase_offset) * np.exp(-damping * t)
+        z = t
+
+        ax1.plot(x, y, z, color=colors_proton[i], linewidth=1.5, alpha=0.8)
+
+    # Mark donor and acceptor positions
+    ax1.scatter([0], [0], [0], c='red', s=200, marker='o', label='Donor (O)', edgecolors='black', linewidth=2)
+    ax1.scatter([1.8], [0], [0], c='blue', s=200, marker='o', label='Acceptor (N/O)', edgecolors='black', linewidth=2)
+
+    # Draw H-bond axis
+    ax1.plot([0, 1.8], [0, 0], [0, 0], 'k--', linewidth=2, alpha=0.5)
+
+    ax1.set_xlabel('Position (Å)', fontweight='bold')
+    ax1.set_ylabel('Lateral Deviation (Å)', fontweight='bold')
+    ax1.set_zlabel('Time (ps)', fontweight='bold')
+    ax1.set_title('(a) Proton Transfer Trajectories', fontweight='bold')
+    ax1.legend(loc='upper left', fontsize=8)
+    ax1.view_init(elev=15, azim=45)
+
+    # --- (b) Double-Well Potential ---
+    ax2 = fig.add_subplot(2, 2, 2)
+
+    # Double-well potential for proton transfer
+    x_pot = np.linspace(-0.5, 2.3, 200)
+    # Symmetric double-well centered at donor (0) and acceptor (1.8)
+    V = 5 * ((x_pot - 0.9)**2 - 0.81)**2  # Double-well
+    V = V - V.min()  # Normalize
+
+    ax2.plot(x_pot, V, color=COLORS['primary'], linewidth=3)
+    ax2.fill_between(x_pot, 0, V, alpha=0.2, color=COLORS['primary'])
+
+    # Mark energy levels
+    E_levels = [0.5, 1.5, 3.0]
+    for E in E_levels:
+        ax2.axhline(y=E, color=COLORS['neutral'], linestyle='--', alpha=0.5, linewidth=1)
+
+    # Mark classical turning points
+    ax2.axvline(x=0, color='red', linestyle=':', linewidth=2, alpha=0.7)
+    ax2.axvline(x=1.8, color='blue', linestyle=':', linewidth=2, alpha=0.7)
+
+    # Tunneling arrow
+    ax2.annotate('', xy=(1.4, 1.2), xytext=(0.4, 1.2),
+                arrowprops=dict(arrowstyle='<->', color=COLORS['quaternary'], lw=2))
+    ax2.text(0.9, 1.5, 'Tunneling', ha='center', fontsize=10, fontweight='bold', color=COLORS['quaternary'])
+
+    ax2.set_xlabel('Proton Position (Å)', fontweight='bold')
+    ax2.set_ylabel('Potential Energy (kJ/mol)', fontweight='bold')
+    ax2.set_title('(b) Double-Well H-Bond Potential', fontweight='bold')
+    ax2.set_xlim(-0.5, 2.3)
+    ax2.set_ylim(0, 6)
+    ax2.grid(True, alpha=0.3)
+
+    # --- (c) H-Bond Oscillation Frequency Spectrum ---
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Frequency spectrum of H-bond oscillations
+    frequencies = np.linspace(0, 200, 1000)  # THz
+
+    # Characteristic peaks for different H-bond modes
+    # N-H...O stretch: ~100 THz (3300 cm^-1)
+    # O-H...O stretch: ~100-110 THz
+    # H-bond bending: ~50-60 THz
+
+    def lorentzian(f, f0, gamma, A):
+        return A * gamma**2 / ((f - f0)**2 + gamma**2)
+
+    # Stretching modes
+    spectrum = lorentzian(frequencies, 100, 5, 1.0)  # N-H stretch
+    spectrum += lorentzian(frequencies, 105, 4, 0.8)  # O-H stretch
+    spectrum += lorentzian(frequencies, 55, 8, 0.6)   # H-bond bend
+    spectrum += lorentzian(frequencies, 30, 10, 0.4)  # Libration
+
+    ax3.plot(frequencies, spectrum, color=COLORS['primary'], linewidth=2)
+    ax3.fill_between(frequencies, 0, spectrum, alpha=0.3, color=COLORS['primary'])
+
+    # Label peaks
+    peaks = [(100, 'N-H···O stretch'), (55, 'H-bond bend'), (30, 'Libration')]
+    for f, label in peaks:
+        idx = np.argmin(np.abs(frequencies - f))
+        ax3.annotate(label, xy=(f, spectrum[idx]), xytext=(f+10, spectrum[idx]+0.15),
+                    fontsize=8, arrowprops=dict(arrowstyle='->', color='black', lw=0.5))
+
+    ax3.set_xlabel('Frequency (THz)', fontweight='bold')
+    ax3.set_ylabel('Spectral Intensity', fontweight='bold')
+    ax3.set_title('(c) H-Bond Vibrational Spectrum', fontweight='bold')
+    ax3.set_xlim(0, 150)
+    ax3.grid(True, alpha=0.3)
+
+    # --- (d) Phase Coupling in H-Bond Network ---
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Simulate coupled H-bond phases
+    t_phase = np.linspace(0, 20, 500)
+    n_bonds = 8
+
+    # Kuramoto-like coupling leads to synchronization
+    np.random.seed(789)
+    phases = np.zeros((len(t_phase), n_bonds))
+    phases[0, :] = np.random.uniform(0, 2*np.pi, n_bonds)
+
+    omega_natural = np.random.normal(1.0, 0.2, n_bonds)
+    K = 0.5  # Coupling strength
+    dt = t_phase[1] - t_phase[0]
+
+    for ti in range(1, len(t_phase)):
+        for i in range(n_bonds):
+            coupling = K/n_bonds * np.sum(np.sin(phases[ti-1, :] - phases[ti-1, i]))
+            phases[ti, i] = phases[ti-1, i] + dt * (omega_natural[i] + coupling)
+
+    # Plot phase evolution
+    colors_bond = plt.cm.tab10(np.linspace(0, 1, n_bonds))
+    for i in range(n_bonds):
+        ax4.plot(t_phase, np.mod(phases[:, i], 2*np.pi), color=colors_bond[i],
+                linewidth=1.5, alpha=0.7, label=f'H-bond {i+1}' if i < 4 else None)
+
+    # Calculate and plot order parameter
+    r = np.abs(np.mean(np.exp(1j * phases), axis=1))
+    ax4_twin = ax4.twinx()
+    ax4_twin.plot(t_phase, r, 'k-', linewidth=2.5, label='Order param $r$')
+    ax4_twin.set_ylabel('Order Parameter $r$', fontweight='bold')
+    ax4_twin.set_ylim(0, 1.05)
+
+    ax4.set_xlabel('Time (ps)', fontweight='bold')
+    ax4.set_ylabel('Phase $\\phi$ (rad)', fontweight='bold')
+    ax4.set_title('(d) H-Bond Network Synchronization', fontweight='bold')
+    ax4.legend(loc='upper left', fontsize=7, ncol=2)
+    ax4.set_ylim(0, 2*np.pi)
+    ax4.set_yticks([0, np.pi, 2*np.pi])
+    ax4.set_yticklabels(['0', '$\\pi$', '$2\\pi$'])
+
+    plt.tight_layout()
+    save_figure(fig, 'panel8_proton_hbond_oscillations')
+    plt.close()
+
+
+# ==============================================================================
+# PANEL 9: PROTEIN FOLDING SYNTAX
+# ==============================================================================
+def create_panel9():
+    """Protein Folding Syntax - 4 subfigures"""
+    fig = plt.figure(figsize=(12, 10))
+
+    # --- (a) 3D Ternary Instruction Space ---
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    # Create ternary coordinate system
+    # Each position in ternary string defines a trajectory through partition space
+    np.random.seed(42)
+
+    # Generate ternary addresses and their trajectories
+    n_instructions = 27  # 3^3 for depth 3
+
+    # Convert to 3D coordinates based on ternary expansion
+    coords = []
+    labels = []
+    for i in range(n_instructions):
+        # Base-3 representation
+        t0 = i % 3
+        t1 = (i // 3) % 3
+        t2 = (i // 9) % 3
+
+        # Map to S-entropy-like coordinates
+        x = t0 / 2.0 + 0.1 * np.random.randn()
+        y = t1 / 2.0 + 0.1 * np.random.randn()
+        z = t2 / 2.0 + 0.1 * np.random.randn()
+        coords.append((x, y, z))
+        labels.append(f'{t2}{t1}{t0}')
+
+    coords = np.array(coords)
+
+    # Color by trajectory type (based on z coordinate)
+    ax1.scatter(coords[:,0], coords[:,1], coords[:,2],
+               c=coords[:,2], cmap='viridis', s=80, alpha=0.8,
+               edgecolors='black', linewidth=0.5)
+
+    # Draw composition paths (adjacent ternary addresses)
+    for i in range(n_instructions):
+        for j in range(i+1, n_instructions):
+            # Connected if Hamming distance = 1
+            t_i = [i % 3, (i // 3) % 3, (i // 9) % 3]
+            t_j = [j % 3, (j // 3) % 3, (j // 9) % 3]
+            hamming = sum(a != b for a, b in zip(t_i, t_j))
+            if hamming == 1:
+                ax1.plot([coords[i,0], coords[j,0]],
+                        [coords[i,1], coords[j,1]],
+                        [coords[i,2], coords[j,2]],
+                        'gray', alpha=0.2, linewidth=0.5)
+
+    ax1.set_xlabel('$S_k$ (trit 0)', fontweight='bold')
+    ax1.set_ylabel('$S_t$ (trit 1)', fontweight='bold')
+    ax1.set_zlabel('$S_e$ (trit 2)', fontweight='bold')
+    ax1.set_title('(a) Ternary Instruction Space', fontweight='bold')
+    ax1.view_init(elev=20, azim=45)
+
+    # --- (b) Syntax Tree: Read = Execute ---
+    ax2 = fig.add_subplot(2, 2, 2)
+
+    # Illustrate that reading a ternary string executes the trajectory
+    # Show a ternary string being parsed
+
+    # Draw syntax tree
+    levels = ['Root', 'Tryte', 'Trit', 'Transition']
+    y_positions = [3, 2, 1, 0]
+
+    # Root node
+    ax2.scatter([0.5], [3], s=200, c=COLORS['success'], edgecolors='black', linewidth=2, zorder=5)
+    ax2.text(0.5, 3.15, 'String', ha='center', fontsize=10, fontweight='bold')
+
+    # Tryte level (3 trytes)
+    tryte_x = [0.2, 0.5, 0.8]
+    for x in tryte_x:
+        ax2.scatter([x], [2], s=150, c=COLORS['primary'], edgecolors='black', linewidth=1.5, zorder=5)
+        ax2.plot([0.5, x], [3, 2], 'k-', linewidth=1.5, alpha=0.7)
+    ax2.text(0.2, 2.15, 'tryte₀', ha='center', fontsize=8)
+    ax2.text(0.5, 2.15, 'tryte₁', ha='center', fontsize=8)
+    ax2.text(0.8, 2.15, 'tryte₂', ha='center', fontsize=8)
+
+    # Trit level (3 trits per tryte, show for first tryte)
+    trit_x = [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6], [0.7, 0.8, 0.9]]
+    trit_colors = [COLORS['primary'], COLORS['tertiary'], COLORS['secondary']]
+    for ti, (tx_group, parent_x) in enumerate(zip(trit_x, tryte_x)):
+        for xi, x in enumerate(tx_group):
+            ax2.scatter([x], [1], s=80, c=trit_colors[xi], edgecolors='black', linewidth=1, zorder=5)
+            ax2.plot([parent_x, x], [2, 1], color=trit_colors[xi], linewidth=1, alpha=0.7)
+
+    # Show transition execution at bottom
+    ax2.text(0.5, 0.5, '→ Execute: $(n,l,m,s) \\rightarrow (n\',l\',m\',s\')$',
+            ha='center', fontsize=10, fontweight='bold',
+            bbox=dict(boxstyle='round', facecolor='lightyellow', edgecolor='black'))
+
+    # Add equation
+    ax2.text(0.5, -0.2, r'$\mathrm{read}(\sigma) \equiv \mathrm{execute}(\gamma_\sigma)$',
+            ha='center', fontsize=11, style='italic')
+
+    ax2.set_xlim(-0.1, 1.1)
+    ax2.set_ylim(-0.5, 3.5)
+    ax2.set_title('(b) Read = Execute: Syntax Semantics', fontweight='bold')
+    ax2.axis('off')
+
+    # --- (c) Composition Operator ---
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Illustrate trajectory composition
+    # σ₁ ∘ σ₂ = σ₃ where trajectories compose
+
+    # Draw two trajectories being composed
+    t = np.linspace(0, 1, 50)
+
+    # Trajectory 1 (red)
+    x1 = 0.1 + 0.3 * t
+    y1 = 0.2 + 0.2 * np.sin(2 * np.pi * t)
+    ax3.plot(x1, y1, '-', color=COLORS['quaternary'], linewidth=3, label='$\\gamma_{\\sigma_1}$')
+    ax3.scatter([x1[0]], [y1[0]], c=COLORS['quaternary'], s=100, marker='o', zorder=5)
+    ax3.scatter([x1[-1]], [y1[-1]], c=COLORS['quaternary'], s=100, marker='>', zorder=5)
+
+    # Trajectory 2 (blue) - starts where 1 ends
+    x2 = 0.4 + 0.3 * t
+    y2 = 0.4 + 0.15 * np.cos(3 * np.pi * t)
+    ax3.plot(x2, y2, '-', color=COLORS['primary'], linewidth=3, label='$\\gamma_{\\sigma_2}$')
+    ax3.scatter([x2[-1]], [y2[-1]], c=COLORS['primary'], s=100, marker='>', zorder=5)
+
+    # Composed trajectory (dashed, green)
+    x_comp = np.concatenate([x1, x2])
+    y_comp = np.concatenate([y1, y2])
+    ax3.plot(x_comp, y_comp, '--', color=COLORS['success'], linewidth=2, alpha=0.7,
+            label='$\\gamma_{\\sigma_1 \\circ \\sigma_2}$')
+
+    # Add composition symbol
+    ax3.text(0.4, 0.6, '$\\circ$', fontsize=24, ha='center', fontweight='bold')
+
+    # Add equation box
+    ax3.text(0.5, 0.05, '$\\sigma_1 \\circ \\sigma_2$: concatenate trytes, compose trajectories',
+            ha='center', fontsize=9, bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
+
+    ax3.set_xlabel('Partition Depth $n$', fontweight='bold')
+    ax3.set_ylabel('Complexity $l$', fontweight='bold')
+    ax3.set_title('(c) Trajectory Composition', fontweight='bold')
+    ax3.legend(loc='upper left', fontsize=9)
+    ax3.set_xlim(0, 0.9)
+    ax3.set_ylim(0, 0.8)
+    ax3.grid(True, alpha=0.3)
+
+    # --- (d) Computational Completeness ---
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Show the algebra of folding operations
+    operations = [
+        ('Identity', '$\\epsilon$', 'Empty string'),
+        ('Composition', '$\\sigma_1 \\circ \\sigma_2$', 'Sequential folding'),
+        ('Inverse', '$\\sigma^{-1}$', 'Trajectory reversal'),
+        ('Selection', '$\\sigma|_C$', 'Conditional branching'),
+    ]
+
+    y_pos = np.arange(len(operations))[::-1]
+
+    for i, (name, symbol, description) in enumerate(operations):
+        # Draw operation box
+        rect = plt.Rectangle((0.1, y_pos[i] - 0.3), 0.8, 0.6,
+                             facecolor='lightblue', edgecolor='black', linewidth=2, alpha=0.7)
+        ax4.add_patch(rect)
+
+        # Operation name
+        ax4.text(0.2, y_pos[i], name, fontsize=11, fontweight='bold', va='center')
+        # Symbol
+        ax4.text(0.5, y_pos[i], symbol, fontsize=12, va='center', ha='center',
+                fontfamily='monospace')
+        # Description
+        ax4.text(0.75, y_pos[i], description, fontsize=9, va='center', style='italic')
+
+    # Title box
+    ax4.text(0.5, len(operations), 'Ternary Syntax Forms a Group',
+            ha='center', fontsize=11, fontweight='bold',
+            bbox=dict(boxstyle='round', facecolor=COLORS['success'], alpha=0.3, edgecolor='black'))
+
+    ax4.set_xlim(0, 1)
+    ax4.set_ylim(-0.5, len(operations) + 0.5)
+    ax4.set_title('(d) Computational Completeness', fontweight='bold')
+    ax4.axis('off')
+
+    plt.tight_layout()
+    save_figure(fig, 'panel9_folding_syntax')
+    plt.close()
+
+
+# ==============================================================================
+# PANEL 10: COHERENCE FACTOR - HEALTH VS DISEASE TRAJECTORIES
+# ==============================================================================
+def create_panel10():
+    """Coherence Factor: Health vs Disease Trajectories - 4 subfigures"""
+    fig = plt.figure(figsize=(12, 10))
+
+    # --- (a) 3D Trajectory Comparison ---
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    np.random.seed(42)
+    t = np.linspace(0, 10, 200)
+
+    # Healthy trajectory (η ≈ 1): smooth, coherent, efficient
+    eta_healthy = 0.95
+    n_healthy = 1 + 0.5 * t / 10 + 0.02 * np.random.randn(len(t))
+    l_healthy = 0.1 * t / 10 + 0.01 * np.random.randn(len(t))
+    coherence_healthy = 0.3 + 0.6 * (1 - np.exp(-0.5 * t)) + 0.02 * np.random.randn(len(t))
+
+    # Diseased trajectory (η ≈ 0.3): noisy, decoherent, inefficient
+    eta_diseased = 0.35
+    n_diseased = 1 + 0.5 * t / 10 + 0.15 * np.random.randn(len(t))  # More noise
+    l_diseased = 0.1 * t / 10 + 0.08 * np.random.randn(len(t))
+    coherence_diseased = 0.3 + 0.4 * (1 - np.exp(-0.2 * t)) + 0.1 * np.random.randn(len(t))  # Slower, noisier
+
+    # Plot trajectories
+    ax1.plot(n_healthy, l_healthy, coherence_healthy, color=COLORS['success'],
+            linewidth=2.5, label=f'Healthy ($\\eta = {eta_healthy}$)')
+    ax1.plot(n_diseased, l_diseased, coherence_diseased, color=COLORS['quaternary'],
+            linewidth=2, alpha=0.8, label=f'Diseased ($\\eta = {eta_diseased}$)')
+
+    # Mark endpoints
+    ax1.scatter([n_healthy[-1]], [l_healthy[-1]], [coherence_healthy[-1]],
+               c=COLORS['success'], s=150, marker='*', edgecolors='black', linewidth=2)
+    ax1.scatter([n_diseased[-1]], [l_diseased[-1]], [coherence_diseased[-1]],
+               c=COLORS['quaternary'], s=150, marker='*', edgecolors='black', linewidth=2)
+
+    ax1.set_xlabel('Depth $n$', fontweight='bold')
+    ax1.set_ylabel('Complexity $l$', fontweight='bold')
+    ax1.set_zlabel('Coherence $\\langle r \\rangle$', fontweight='bold')
+    ax1.set_title('(a) Trajectory Statistics Differ', fontweight='bold')
+    ax1.legend(loc='upper left', fontsize=9)
+    ax1.view_init(elev=20, azim=45)
+
+    # --- (b) Folding Cycle Distribution ---
+    ax2 = fig.add_subplot(2, 2, 2)
+
+    # Healthy cells fold efficiently (fewer cycles)
+    # Diseased cells need maximum cycles
+    k_min, k_max = 12, 16
+
+    np.random.seed(123)
+
+    # Healthy: peaked at k_min
+    cycles_healthy = np.random.beta(2, 5, 500) * (k_max - k_min) + k_min
+
+    # Diseased: peaked at k_max
+    cycles_diseased = np.random.beta(5, 2, 500) * (k_max - k_min) + k_min
+
+    bins = np.linspace(k_min - 0.5, k_max + 0.5, 20)
+
+    ax2.hist(cycles_healthy, bins=bins, alpha=0.7, color=COLORS['success'],
+            label='Healthy', edgecolor='black', density=True)
+    ax2.hist(cycles_diseased, bins=bins, alpha=0.7, color=COLORS['quaternary'],
+            label='Diseased', edgecolor='black', density=True)
+
+    # Mark expected values
+    ax2.axvline(x=np.mean(cycles_healthy), color=COLORS['success'], linestyle='--',
+               linewidth=2, label=f'$\\langle k \\rangle_{{healthy}} = {np.mean(cycles_healthy):.1f}$')
+    ax2.axvline(x=np.mean(cycles_diseased), color=COLORS['quaternary'], linestyle='--',
+               linewidth=2, label=f'$\\langle k \\rangle_{{diseased}} = {np.mean(cycles_diseased):.1f}$')
+
+    ax2.set_xlabel('Folding Cycles $k$', fontweight='bold')
+    ax2.set_ylabel('Probability Density', fontweight='bold')
+    ax2.set_title('(b) Folding Cycle Distribution', fontweight='bold')
+    ax2.legend(loc='upper center', fontsize=8)
+    ax2.set_xlim(k_min - 1, k_max + 1)
+    ax2.grid(True, alpha=0.3)
+
+    # --- (c) Coherence Inference from Folding ---
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Show the coherence factor calculation
+    # η = (k_max - k_obs) / (k_max - k_min)
+
+    k_obs_range = np.linspace(k_min, k_max, 100)
+    eta_inferred = (k_max - k_obs_range) / (k_max - k_min)
+
+    ax3.plot(k_obs_range, eta_inferred, color=COLORS['primary'], linewidth=3)
+    ax3.fill_between(k_obs_range, 0, eta_inferred, alpha=0.2, color=COLORS['primary'])
+
+    # Mark healthy and diseased regions
+    ax3.axvspan(k_min, k_min + 1.5, alpha=0.3, color=COLORS['success'], label='Healthy range')
+    ax3.axvspan(k_max - 1.5, k_max, alpha=0.3, color=COLORS['quaternary'], label='Diseased range')
+
+    # Add example points
+    k_example_healthy = 12.8
+    k_example_diseased = 15.2
+    eta_example_healthy = (k_max - k_example_healthy) / (k_max - k_min)
+    eta_example_diseased = (k_max - k_example_diseased) / (k_max - k_min)
+
+    ax3.scatter([k_example_healthy], [eta_example_healthy], c=COLORS['success'], s=150,
+               marker='o', zorder=5, edgecolors='black', linewidth=2)
+    ax3.scatter([k_example_diseased], [eta_example_diseased], c=COLORS['quaternary'], s=150,
+               marker='o', zorder=5, edgecolors='black', linewidth=2)
+
+    # Annotations
+    ax3.annotate(f'$\\eta = {eta_example_healthy:.2f}$', xy=(k_example_healthy, eta_example_healthy),
+                xytext=(k_example_healthy - 1, eta_example_healthy + 0.15), fontsize=10,
+                arrowprops=dict(arrowstyle='->', color='black'))
+    ax3.annotate(f'$\\eta = {eta_example_diseased:.2f}$', xy=(k_example_diseased, eta_example_diseased),
+                xytext=(k_example_diseased - 1, eta_example_diseased + 0.15), fontsize=10,
+                arrowprops=dict(arrowstyle='->', color='black'))
+
+    # Formula box
+    ax3.text(14, 0.85, '$\\eta = \\frac{k_{max} - k_{obs}}{k_{max} - k_{min}}$',
+            fontsize=12, bbox=dict(boxstyle='round', facecolor='lightyellow', edgecolor='black'))
+
+    ax3.set_xlabel('Observed Cycles $k_{obs}$', fontweight='bold')
+    ax3.set_ylabel('Coherence Factor $\\eta$', fontweight='bold')
+    ax3.set_title('(c) Coherence Inference from Folding', fontweight='bold')
+    ax3.legend(loc='lower left', fontsize=9)
+    ax3.set_xlim(k_min - 0.5, k_max + 0.5)
+    ax3.set_ylim(0, 1.1)
+    ax3.grid(True, alpha=0.3)
+
+    # --- (d) State-Trajectory Decoupling ---
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Illustrate that instantaneous states are indistinguishable
+    # but trajectory statistics differ
+
+    # Draw two overlapping state spaces
+    t_circle = np.linspace(0, 2*np.pi, 100)
+
+    # Healthy state space (all states accessible)
+    ax4.fill(0.5 + 0.4*np.cos(t_circle), 0.5 + 0.4*np.sin(t_circle),
+            alpha=0.3, color=COLORS['success'], label='Healthy states')
+
+    # Diseased state space (same states!)
+    ax4.fill(0.5 + 0.38*np.cos(t_circle), 0.5 + 0.38*np.sin(t_circle),
+            alpha=0.3, color=COLORS['quaternary'], label='Diseased states')
+
+    # Show sample instantaneous states (overlapping)
+    np.random.seed(456)
+    n_samples = 15
+    angles = np.random.uniform(0, 2*np.pi, n_samples)
+    radii = np.random.uniform(0, 0.35, n_samples)
+    x_samples = 0.5 + radii * np.cos(angles)
+    y_samples = 0.5 + radii * np.sin(angles)
+
+    ax4.scatter(x_samples[:8], y_samples[:8], c=COLORS['success'], s=60,
+               marker='o', edgecolors='black', linewidth=1, alpha=0.8)
+    ax4.scatter(x_samples[8:], y_samples[8:], c=COLORS['quaternary'], s=60,
+               marker='s', edgecolors='black', linewidth=1, alpha=0.8)
+
+    # Add text annotations
+    ax4.text(0.5, 0.98, 'Instantaneous states:\nIndistinguishable', ha='center',
+            fontsize=10, fontweight='bold', va='top',
+            bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.9))
+
+    ax4.text(0.5, 0.02, 'Trajectory statistics:\nDistinguishable only over time', ha='center',
+            fontsize=10, fontweight='bold', va='bottom',
+            bbox=dict(boxstyle='round', facecolor='lightcyan', alpha=0.9))
+
+    # Draw arrows showing trajectory concept
+    arrow_props = dict(arrowstyle='->', color=COLORS['success'], lw=1.5, mutation_scale=15)
+    ax4.annotate('', xy=(0.7, 0.6), xytext=(0.5, 0.5), arrowprops=arrow_props)
+    ax4.annotate('', xy=(0.65, 0.75), xytext=(0.7, 0.6), arrowprops=arrow_props)
+
+    arrow_props_d = dict(arrowstyle='->', color=COLORS['quaternary'], lw=1.5, mutation_scale=15)
+    ax4.annotate('', xy=(0.35, 0.55), xytext=(0.5, 0.5), arrowprops=arrow_props_d)
+    ax4.annotate('', xy=(0.4, 0.7), xytext=(0.35, 0.55), arrowprops=arrow_props_d)
+    ax4.annotate('', xy=(0.3, 0.6), xytext=(0.4, 0.7), arrowprops=arrow_props_d)
+
+    ax4.set_xlim(0, 1)
+    ax4.set_ylim(0, 1)
+    ax4.set_aspect('equal')
+    ax4.set_title('(d) State-Trajectory Decoupling', fontweight='bold')
+    ax4.legend(loc='lower right', fontsize=9)
+    ax4.axis('off')
+
+    plt.tight_layout()
+    save_figure(fig, 'panel10_coherence_health_disease')
+    plt.close()
+
+
+# ==============================================================================
 # MAIN EXECUTION
 # ==============================================================================
 if __name__ == '__main__':
@@ -1167,6 +1707,15 @@ if __name__ == '__main__':
 
     print("\nPanel 7: Hydrophobic and Charge Interactions")
     create_panel7()
+
+    print("\nPanel 8: Proton Trajectories and H-Bond Oscillations")
+    create_panel8()
+
+    print("\nPanel 9: Protein Folding Syntax")
+    create_panel9()
+
+    print("\nPanel 10: Coherence Factor - Health vs Disease")
+    create_panel10()
 
     print("\n" + "=" * 50)
     print("All figures generated successfully!")
