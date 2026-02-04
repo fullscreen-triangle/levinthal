@@ -153,12 +153,7 @@ where we used $\sum_{l=0}^{n-1}(2l+1) = n^2$.
 
 This result is validated computationally: enumeration of states for $n = 1, \ldots, 10$ yields exactly $\{2, 8, 18, 32, 50, 72, 98, 128, 162, 200\}$, matching $2n^2$ with zero error~\cite{sachikonye2024partition}.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/panel1_partition_framework.pdf}
-\caption{\textbf{Partition Coordinate Framework.} (a) Three-dimensional visualization of partition state space $(n, l, m)$ for $n = 1$ to 4, with states colored by depth level. Each point represents a valid partition state satisfying the constraint relations. (b) Validation of the capacity formula $C(n) = 2n^2$ showing exact agreement between theoretical prediction and enumerated states for $n = 1$ to 10. (c) Selection rule matrix showing allowed (A) and forbidden (F) transitions as a function of $\Delta l$ and $\Delta m$. Allowed transitions satisfy $\Delta l = \pm 1$ and $|\Delta m| \leq 1$. (d) Subshell capacities $2(2l+1)$ for $l = 0$ (s) through $l = 4$ (g), demonstrating exact match between formula and enumeration.}
-\label{fig:partition_framework}
-\end{figure*}
+
 
 \subsection{Selection Rules}
 
@@ -276,12 +271,7 @@ Network topology is determined by spatial configuration and electronic structure
 
 This theorem has profound implications: the hydrogen bond network structure---and hence the folding pathway---is velocity-blind. Temperature affects the rate of phase-lock formation but not the topology of the network. The same folding pathway exists at any temperature; only the timescale changes.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/panel2_phaselock_dynamics.pdf}
-\caption{\textbf{Phase-Lock Dynamics of Hydrogen Bond Networks.} (a) Three-dimensional trajectories of Kuramoto oscillators showing phase evolution over time. Each colored line represents one oscillator ($N = 10$ shown), with trajectories converging as synchronization develops. (b) Evolution of the order parameter $\orderpar = |N^{-1}\sum_j e^{i\phi_j}|$ from initial disorder ($\orderpar \approx 0.3$) to high coherence ($\orderpar > 0.8$). The threshold $\orderpar = 0.8$ marks the native-like coherence level. (c) Hydrogen bond coupling network with edge opacity proportional to coupling strength $K_{ij} = K_0 \exp(-r_{ij}/r_0)$. Spatially proximate bonds exhibit stronger coupling. (d) Polar plot showing phase synchronization: initial phases (inner ring, red) are distributed uniformly, while final phases (outer ring, green) cluster around the mean phase direction.}
-\label{fig:phaselock_dynamics}
-\end{figure*}
+
 
 %==============================================================================
 \section{S-Entropy Coordinate Transformation}
