@@ -354,6 +354,80 @@ The infinite ternary expansion specifies a unique point in the continuum.
 
 This resolves the discrete-continuous duality: real coordinates emerge exactly as limits of finite ternary strings, without floating-point approximation.
 
+\subsection{Ternary Syntax: Folding as Computation}
+
+The position-trajectory identity elevates ternary representation from mere encoding to a computational syntax. In conventional computing, data (addresses) and instructions (operations) are fundamentally separate---the von Neumann architecture shuttles data between memory and processor. In ternary syntax, this separation dissolves: the representation \textit{is} the computation.
+
+\begin{definition}[Ternary Syntax]
+\label{def:ternary_syntax}
+A ternary program $\mathcal{P}$ consists of:
+\begin{enumerate}
+    \item \textbf{States}: Ternary strings $\sigma \in \{0, 1, 2\}^*$ representing positions in S-entropy space
+    \item \textbf{Operations}: Composition $(\circ)$, projection $(\pi_i)$, and partition $(\partial)$
+    \item \textbf{Execution}: Reading the string left-to-right executes the trajectory
+\end{enumerate}
+\end{definition}
+
+The primitive operations have precise semantics:
+\begin{align}
+\sigma_1 \circ \sigma_2 &= \sigma_1\sigma_2 \quad \text{(trajectory composition)} \label{eq:compose} \\
+\pi_i(\sigma) &= \sigma|_{\trit = i} \quad \text{(axis projection)} \label{eq:project} \\
+\partial(\sigma) &= \sigma_{1:k-1} \quad \text{(partition: penultimate state)} \label{eq:partition_op}
+\end{align}
+
+Composition concatenates trajectories; projection extracts refinements along a single axis; partition removes the final refinement, yielding the predecessor state.
+
+\begin{theorem}[Computational Completeness]
+\label{thm:completeness}
+Any folding trajectory $\mathcal{T}$ from unfolded state $U$ to native state $N$ can be expressed as a finite ternary program:
+\begin{equation}
+\mathcal{T} = \partial^{-k}(N) = \sigma_1 \circ \sigma_2 \circ \cdots \circ \sigma_k
+\label{eq:trajectory_program}
+\end{equation}
+where $\partial^{-1}$ denotes the inverse partition (successor state) and $k = O(\log_3 |N|)$.
+\end{theorem}
+
+This establishes protein folding as a computational operation rather than a physical search. The native structure $N$ is not ``found'' through conformational sampling---it is \textit{computed} through trajectory completion. The ternary string encoding the native state is simultaneously:
+\begin{itemize}
+    \item The address of the native conformation in S-entropy space
+    \item The program that generates the folding pathway
+    \item The proof that the pathway is correct
+\end{itemize}
+
+\begin{definition}[Folding Instruction Set]
+\label{def:instruction_set}
+The ternary instruction set comprises:
+\begin{center}
+\begin{tabular}{cl}
+\texttt{0} & Refine along $\Sk$ (hydrophobic axis) \\
+\texttt{1} & Refine along $\St$ (volume axis) \\
+\texttt{2} & Refine along $\Se$ (electrostatic axis) \\
+\texttt{.} & Composition operator (implicit) \\
+\texttt{[]} & Grouping (tryte boundary) \\
+\end{tabular}
+\end{center}
+\end{definition}
+
+A tryte (6 trits) encodes $3^6 = 729$ distinct states, exceeding a byte's 256 values. Protein sequences map naturally to tryte streams:
+\begin{equation}
+\text{Sequence} \xrightarrow{\phi_{\text{AA}}} \text{S-entropy coordinates} \xrightarrow{\text{encode}} \text{Ternary program}
+\label{eq:sequence_to_program}
+\end{equation}
+
+The resulting program, when executed (read), traces the folding trajectory through partition space. Execution requires no external processor---the string evaluates itself through the geometry of S-entropy space.
+
+This syntax-level unification has practical consequences:
+\begin{enumerate}
+    \item \textbf{Verification is free}: A ternary string is valid if and only if it represents a continuous trajectory; malformed strings fail syntactically
+    \item \textbf{Composition is concatenation}: Complex folding pathways compose by string concatenation
+    \item \textbf{Debugging is projection}: Errors localize to specific trits (specific refinement steps)
+    \item \textbf{Optimization is compression}: Shorter strings encoding the same endpoint represent more efficient pathways
+\end{enumerate}
+
+\begin{remark}[Cellular Context]
+Every ternary program executes within a cellular environment characterized by a coherence coefficient $\eta$ (see Section~\ref{sec:algorithm}). The evaluation $\sigma \xrightarrow{\eta} \Scoord$ implicitly depends on the phase-lock state of the cellular network. In healthy cells ($\eta \approx 1$), evaluation is deterministic. In pathological states ($\eta < 1$), stochastic deviations scale as $(1 - \eta)$. The ternary syntax thus encodes not merely the trajectory but the \textit{context-dependent execution} of that trajectory within a living system.
+\end{remark}
+
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/panel3_sentropy_transformation.pdf}
@@ -465,6 +539,149 @@ where $L$ is sequence length and $N$ is the number of hydrogen bonds.
 \end{theorem}
 
 This is exponentially faster than forward simulation ($O(3^L)$) or conformational sampling ($O(10^{300})$). The improvement arises because trajectory completion navigates partition space logarithmically rather than searching conformational space exhaustively.
+
+\subsection{The Coherence Coefficient}
+
+Every trajectory computation operates within a cellular environment characterized by the collective phase-lock state of all oscillatory networks. This global context is captured by the coherence coefficient $\eta$:
+
+\begin{definition}[Coherence Coefficient]
+\label{def:coherence_coefficient}
+The coherence coefficient $\eta \in [0, 1]$ quantifies the collective synchronization state of the cellular phase-lock network:
+\begin{equation}
+\eta = \frac{\orderpar_{\text{actual}}}{\orderpar_{\text{optimal}}} \cdot \exp\left(-\frac{\sigma_\Phi^2}{\sigma_{\Phi,0}^2}\right) \cdot \frac{\tau_{\text{decorr}}}{\tau_{\text{decorr},0}}
+\label{eq:coherence_coefficient}
+\end{equation}
+where $\orderpar$ is the order parameter, $\sigma_\Phi^2$ is the phase variance, $\tau_{\text{decorr}}$ is the decorrelation time, and subscript 0 denotes physiological reference values.
+\end{definition}
+
+The coherence coefficient is not an optional parameter but a fundamental modulator of all trajectory operations:
+
+\begin{theorem}[Coherence Modulation]
+\label{thm:coherence_modulation}
+All partition operations are modulated by the coherence coefficient:
+\begin{equation}
+\text{Partition}_\eta(s) = \eta \cdot \text{Partition}(s) + (1 - \eta) \cdot \mathcal{N}_{\text{stochastic}}
+\label{eq:partition_modulated}
+\end{equation}
+For $\eta = 1$ (full coherence), operations are deterministic. For $\eta < 1$, stochastic contributions introduce trajectory variance proportional to $(1 - \eta)$.
+\end{theorem}
+
+This formulation has profound implications:
+
+\begin{theorem}[State-Trajectory Decoupling]
+\label{thm:state_trajectory_decoupling}
+The geometry of individual folding events is identical in healthy and diseased cells:
+\begin{equation}
+\text{Partition}(s)_{\text{healthy}} = \text{Partition}(s)_{\text{diseased}} = \text{Partition}(s)
+\label{eq:geometry_invariance}
+\end{equation}
+A protein folds via the same sequence of partition states regardless of cellular health status. The coherence coefficient $\eta$ does not alter which states are visited, only the statistics of how trajectories distribute across repeated folding events.
+\end{theorem}
+
+This theorem has a critical consequence:
+
+\begin{corollary}[Instantaneous Indistinguishability]
+\label{cor:instantaneous_indistinguishability}
+Instantaneous measurement of cellular state cannot distinguish healthy from diseased cells. For any pathological state $\Scoord_{\text{path}}$, healthy cells transiently occupy the same state during normal oscillatory dynamics.
+\end{corollary}
+
+\begin{proof}
+By Poincaré recurrence, measure-preserving dynamics on bounded phase space return arbitrarily close to any initial state. Healthy cellular trajectories therefore visit every accessible region of S-entropy space, including states that, if sustained, would indicate pathology. Only the \textit{statistics of trajectory occupation}---not instantaneous state measurement---can distinguish health from disease.
+\end{proof}
+
+\textbf{This is why cells cannot self-diagnose.} A cell has no internal mechanism to determine whether it is healthy or diseased because both conditions pass through identical instantaneous states. The information is not stored in the state---it is stored in the trajectory. Specifically:
+\begin{itemize}
+    \item \textbf{State}: Where the system is at time $t$ (identical for healthy/diseased)
+    \item \textbf{Trajectory}: The time-averaged pattern of state visitation (different for healthy/diseased)
+\end{itemize}
+
+\textbf{Disease is not a separate categorical state.} Pathology manifests as reduction in $\eta$---disruption of the oscillatory statistics that govern phase-lock networks. A cell with $\eta = 0.7$ does not occupy a ``disease category'' distinct from health; rather, its trajectory computations exhibit 30\% stochastic deviation from deterministic completion. The geometry of each individual fold is preserved; only the ensemble statistics change.
+
+\begin{definition}[Pathological Coherence]
+\label{def:pathological_coherence}
+The disease state is characterized by time-averaged deviations in coherence statistics:
+\begin{equation}
+D = f\left(\langle\Delta R\rangle_t, \sigma_\Phi^2, \tau_{\text{decorr}}\right)
+\label{eq:disease_state}
+\end{equation}
+where $\langle\Delta R\rangle_t$ is the mean categorical richness deviation, $\sigma_\Phi^2$ is the phase variance, and $\tau_{\text{decorr}}$ is the decorrelation time. Disease severity increases monotonically with all three parameters.
+\end{definition}
+
+The coherence coefficient affects every level of the folding hierarchy:
+\begin{itemize}
+    \item \textbf{Single H-bond}: Phase-locking probability scales as $P_{\text{lock}} \propto \eta$
+    \item \textbf{H-bond cluster}: Cluster formation rate scales as $k_{\text{cluster}} \propto \eta^n$ for $n$-bond clusters
+    \item \textbf{Complete trajectory}: Trajectory determinism $\sigma_{\text{traj}}^{-1} \propto \eta$
+\end{itemize}
+
+\begin{theorem}[Therapeutic Restoration]
+\label{thm:therapeutic_restoration}
+Therapeutic agents restore coherence through phase-locking synchronization:
+\begin{equation}
+\eta_{\text{treated}} = 1 - (1 - E)(1 - \eta_{\text{untreated}})
+\label{eq:therapeutic_efficacy}
+\end{equation}
+where $E \in [0, 1]$ is the therapeutic efficacy. Perfect therapy ($E = 1$) restores full coherence regardless of initial state.
+\end{theorem}
+
+This establishes the coherence coefficient as the universal modulator connecting molecular-scale folding to cellular-scale physiology. The ternary syntax operates within this context: every string evaluation, every trajectory completion, every partition operation implicitly carries the factor $\eta$ encoding the health state of the phase-lock network.
+
+\subsection{Folding as Diagnostic Readout}
+
+The coherence coefficient is not merely an input parameter---it is \textit{readable} from folding behavior. This transforms protein folding from a process to be explained into a diagnostic sensor for cellular state.
+
+\begin{theorem}[Coherence Inference from Folding]
+\label{thm:coherence_inference}
+For a protein with characteristic folding range $[k_{\min}, k_{\max}]$ ATP cycles, the observed cycle count $k_{\text{obs}}$ encodes the coherence coefficient:
+\begin{equation}
+\eta = \frac{k_{\max} - k_{\text{obs}}}{k_{\max} - k_{\min}}
+\label{eq:coherence_from_cycles}
+\end{equation}
+A protein consistently folding at $k_{\max}$ indicates $\eta \to 0$; folding at $k_{\min}$ indicates $\eta \to 1$.
+\end{theorem}
+
+\begin{proof}
+In optimal conditions ($\eta = 1$), phase-locking proceeds efficiently: each ATP cycle establishes the maximum possible H-bond connections, and folding completes in $k_{\min}$ cycles. As $\eta$ decreases, stochastic disruptions reduce per-cycle efficiency, requiring additional cycles to achieve native coherence. At $\eta \to 0$, every cycle operates at minimum efficiency, requiring $k_{\max}$ cycles. The linear interpolation follows from the proportionality between cycle count and cumulative stochastic deviation.
+\end{proof}
+
+\begin{corollary}[Folding as Cellular Sensor]
+\label{cor:folding_sensor}
+The folding behavior of a single protein species encodes information about the entire cellular phase-lock network---the GroEL chamber, cytoplasmic oscillators, and all coupled systems.
+\end{corollary}
+
+This has immediate diagnostic implications:
+
+\begin{definition}[Folding Efficiency Index]
+\label{def:folding_efficiency}
+For an ensemble of $N$ folding events with observed cycle counts $\{k_i\}$:
+\begin{equation}
+\text{FEI} = 1 - \frac{\langle k \rangle - k_{\min}}{k_{\max} - k_{\min}} = \langle \eta \rangle
+\label{eq:folding_efficiency_index}
+\end{equation}
+The Folding Efficiency Index directly estimates mean cellular coherence.
+\end{definition}
+
+Consider a protein that normally folds in 12--16 ATP cycles:
+\begin{itemize}
+    \item \textbf{Healthy cell} ($\eta \approx 1$): Folds in 12--13 cycles, near theoretical minimum
+    \item \textbf{Stressed cell} ($\eta \approx 0.5$): Folds in 14 cycles, intermediate efficiency
+    \item \textbf{Diseased cell} ($\eta \to 0$): Consistently requires 16 cycles, maximum allowed
+    \item \textbf{Terminal pathology}: Folding fails entirely, exceeding $k_{\max}$
+\end{itemize}
+
+The profound implication: \textbf{a protein's folding trajectory is a read-out tape recording the state of its environment}. By observing how a protein folds---not just whether it folds---we can infer the coherence state of the entire cellular network. The folded protein carries, encoded in its folding history, information about the GroEL chamber, the cytoplasmic phase-lock network, and the overall health of the cell.
+
+\begin{theorem}[Environmental Encoding]
+\label{thm:environmental_encoding}
+The distribution of folding times $P(k)$ over an ensemble encodes the coherence coefficient distribution $P(\eta)$:
+\begin{equation}
+P(\eta) = P(k) \cdot \left|\frac{dk}{d\eta}\right| = P(k) \cdot (k_{\max} - k_{\min})
+\label{eq:distribution_transform}
+\end{equation}
+Measuring folding time statistics directly yields cellular coherence statistics.
+\end{theorem}
+
+This closes the loop: the coherence coefficient modulates folding, and folding behavior reveals the coherence coefficient. Folding is not just a process that happens within a cellular context---it is a \textit{measurement} of that context, encoded in the trajectory statistics.
 
 \subsection{GroEL as Resonance Chamber}
 
@@ -749,14 +966,18 @@ We have established a complete theoretical framework resolving Levinthal's parad
 
     \item \textbf{Trajectory completion}: Folding is backward derivation through partition space, not forward search through conformational space, reducing complexity from $O(3^N)$ to $O(\log_3 N)$.
 
-    \item \textbf{S-entropy representation}: Ternary encoding unifies position and trajectory, with continuous coordinates emerging exactly as limits of discrete strings.
+    \item \textbf{Ternary syntax}: Position and trajectory are encoded identically, enabling a computational syntax where reading a ternary string executes the folding trajectory. The representation is simultaneously address, program, and proof.
+
+    \item \textbf{Coherence coefficient}: Every operation is modulated by the cellular coherence state $\eta$, which encodes the health of the phase-lock network. Disease manifests not as a separate categorical state but as degraded coherence ($\eta < 1$) affecting all trajectory computations. Therapeutic restoration follows $\eta_{\text{treated}} = 1 - (1-E)(1-\eta_{\text{untreated}})$.
 
     \item \textbf{Computational validation}: Deterministic trajectories ($\sigma < 10^{-6}$), zero-backaction measurement ($4.27 \times 10^5$ improvement), and 8/8 cross-modal validation tests confirm the framework.
 \end{enumerate}
 
 The framework reveals protein folding as trajectory completion rather than conformational search. The native structure determines its own folding pathway through the geometry of partition coordinates and the topology of phase-lock networks. No Maxwell demon is required---only topology completing itself.
 
-This establishes protein folding as a computable function, providing first-principles foundations for structure prediction, pathway determination, and \textit{de novo} protein design through categorical state navigation rather than combinatorial enumeration.
+The coherence coefficient $\eta$ provides the essential bridge between molecular-scale folding and cellular-scale physiology: every ternary program executes within a context determined by the collective synchronization state of the cellular oscillator network. This unifies protein folding, disease, and therapeutics within a single geometric framework.
+
+This establishes protein folding as a computable function, providing first-principles foundations for structure prediction, pathway determination, therapeutic design, and \textit{de novo} protein engineering through categorical state navigation rather than combinatorial enumeration.
 
 \begin{acknowledgments}
 The author acknowledges the Technical University of Munich for computational resources and support.
