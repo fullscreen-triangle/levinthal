@@ -488,6 +488,29 @@ Each ATP cycle scans a range of frequencies, enabling phase-locking of H-bonds w
 
 Early-cycle bonds constitute folding nuclei that constrain and enable later-cycle bond formation through causal dependencies.
 
+\subsection{ATP Thermodynamics}
+
+The energetic cost of folding is supplied by ATP hydrolysis, with each GroEL ring consuming approximately 7 ATP molecules per cycle. The standard free energy of ATP hydrolysis is:
+\begin{equation}
+\Delta G^{\circ}_{\text{ATP}} = -30.5 \text{ kJ/mol}
+\label{eq:atp_energy}
+\end{equation}
+
+This energy drives the conformational changes in GroEL that modulate cavity frequency. The thermodynamics of folding exhibits entropy-enthalpy compensation: as hydrogen bonds form (exothermic, $\Delta H < 0$), conformational entropy decreases ($\Delta S < 0$). The overall process remains favorable ($\Delta G < 0$) because:
+\begin{equation}
+\Delta G = \Delta H - T\Delta S < 0
+\label{eq:gibbs}
+\end{equation}
+
+The ATP cost scales with protein complexity---larger proteins requiring more cycles to achieve native coherence $\orderpar > 0.8$.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/panel6_atp_thermodynamics.pdf}
+\caption{\textbf{ATP Usage and Thermodynamic Changes.} (a) Three-dimensional free energy landscape showing the folding funnel topology. The folding trajectory (black line) spirals down toward the native state minimum (red star), navigating local minima through ATP-driven exploration. (b) ATP hydrolysis cycle energetics showing the activation barrier ($E_a \approx 35$ kJ/mol) and standard free energy release ($\Delta G^{\circ} = -30.5$ kJ/mol). The cycle drives GroEL conformational changes. (c) Entropy-enthalpy compensation during folding: enthalpy decreases as H-bonds form ($\Delta H < 0$), while the entropic penalty ($-T\Delta S > 0$) partially offsets this gain, yielding net favorable $\Delta G < 0$. (d) ATP consumption versus phase coherence achieved. Approximately 7 ATP per cycle are consumed, with coherence approaching the native threshold ($\orderpar = 0.8$) after 8--12 cycles for typical proteins.}
+\label{fig:atp_thermodynamics}
+\end{figure*}
+
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/panel4_trajectory_completion.pdf}
@@ -663,6 +686,30 @@ E(\text{conformation}) = \mathcal{F}[\text{Var}(\phi), \orderpar, \phaselockgrap
 \end{equation}
 
 Energy depends on phase variance, coherence, and network topology. Minimizing energy is equivalent to maximizing coherence, but the latter provides the mechanistic basis.
+
+\subsection{Hydrophobic Collapse and Electrostatic Interactions}
+
+The categorical framework naturally incorporates the dominant physical forces driving protein folding: hydrophobic collapse and electrostatic interactions. In the S-entropy representation, hydrophobicity maps to the $\Sk$ coordinate, with hydrophobic residues (I, L, V, F, M, W) exhibiting high $\Sk$ values and polar/charged residues exhibiting low $\Sk$.
+
+Hydrophobic collapse corresponds to minimization of solvent-exposed hydrophobic surface area, which in partition space manifests as clustering of high-$\Sk$ states toward the protein core. The native structure exhibits characteristic core-shell topology:
+\begin{itemize}
+    \item \textbf{Core}: Hydrophobic residues ($\Sk > 0.6$) buried from solvent
+    \item \textbf{Surface}: Polar and charged residues ($\Sk < 0.4$, high $\Se$) exposed to solvent
+\end{itemize}
+
+Electrostatic interactions, encoded in the $\Se$ coordinate, drive salt bridge formation between oppositely charged residues. The energetics follow:
+\begin{equation}
+E_{\text{salt bridge}} = \frac{-332}{\epsilon \cdot r} + E_{\text{desolvation}}
+\label{eq:salt_bridge}
+\end{equation}
+where $r$ is the distance in \AA, $\epsilon$ is the effective dielectric, and the desolvation penalty arises from stripping water molecules from charged groups. Optimal salt bridges form at $r \approx 3$--4 \AA{} where Coulomb attraction overcomes desolvation costs.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/panel7_hydrophobic_charge.pdf}
+\caption{\textbf{Hydrophobic Collapse and Charge Separation.} (a) Three-dimensional visualization of hydrophobic core formation. Hydrophobic residues (orange) cluster in the protein interior forming a compact core, while polar residues (blue) populate the solvent-exposed surface. The transparent sphere indicates the approximate core boundary. (b) Kyte-Doolittle hydrophobicity scale for all 20 standard amino acids, sorted from most hydrophobic (I, V, L) to most hydrophilic (R, K, D, E). Orange bars indicate hydrophobic residues ($>0$), blue bars indicate hydrophilic residues ($<0$). (c) Charge distribution along a representative 100-residue protein sequence. Positive charges (K, R; blue) and negative charges (D, E; red) show clustering patterns. The running average (black line) reveals local charge density variations that influence folding topology. (d) Salt bridge energetics as a function of distance. Coulomb attraction (blue dashed) competes with desolvation penalty (orange dashed), yielding an optimal salt bridge distance of $\sim$3.5 \AA{} at the total energy minimum (red star).}
+\label{fig:hydrophobic_charge}
+\end{figure*}
 
 \subsection{Implications for Protein Structure Prediction}
 

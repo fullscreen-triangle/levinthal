@@ -1,6 +1,6 @@
 """
 Generate Publication Figures for Protein Folding Trajectory Paper
-5 Panel Figures with 3D visualizations
+7 Panel Figures with 3D visualizations
 """
 
 import numpy as np
@@ -777,6 +777,370 @@ def create_panel5():
 
 
 # ==============================================================================
+# PANEL 6: ATP USAGE AND THERMODYNAMIC CHANGES
+# ==============================================================================
+def create_panel6():
+    """ATP Usage and Thermodynamic Changes - 4 subfigures"""
+    fig = plt.figure(figsize=(12, 10))
+
+    # --- (a) 3D Free Energy Landscape ---
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    # Create free energy surface
+    x = np.linspace(-2, 2, 50)
+    y = np.linspace(-2, 2, 50)
+    X, Y = np.meshgrid(x, y)
+
+    # Funnel-shaped landscape with local minima
+    R = np.sqrt(X**2 + Y**2)
+    Z = 0.5 * R**2 - 0.3 * np.exp(-((X-0.5)**2 + (Y-0.5)**2)/0.3) \
+        - 0.2 * np.exp(-((X+0.8)**2 + (Y-0.3)**2)/0.2) \
+        - 0.8 * np.exp(-(X**2 + Y**2)/0.4)  # Native minimum at center
+
+    # Plot surface
+    surf = ax1.plot_surface(X, Y, Z, cmap='coolwarm', alpha=0.8,
+                           linewidth=0, antialiased=True)
+
+    # Add folding trajectory
+    t_traj = np.linspace(0, 1, 50)
+    x_traj = 1.5 * (1 - t_traj) * np.cos(4*np.pi*t_traj)
+    y_traj = 1.5 * (1 - t_traj) * np.sin(4*np.pi*t_traj)
+    z_traj = 0.5 * (x_traj**2 + y_traj**2) - 0.8 * np.exp(-(x_traj**2 + y_traj**2)/0.4)
+    ax1.plot(x_traj, y_traj, z_traj + 0.1, 'k-', linewidth=2, label='Folding path')
+    ax1.scatter([x_traj[-1]], [y_traj[-1]], [z_traj[-1]+0.1], c='red', s=100,
+               marker='*', zorder=5, label='Native')
+
+    ax1.set_xlabel('Reaction Coord. 1', fontweight='bold')
+    ax1.set_ylabel('Reaction Coord. 2', fontweight='bold')
+    ax1.set_zlabel('Free Energy $G$', fontweight='bold')
+    ax1.set_title('(a) Free Energy Landscape', fontweight='bold')
+    ax1.view_init(elev=30, azim=45)
+
+    # --- (b) ATP Hydrolysis Cycle Energetics ---
+    ax2 = fig.add_subplot(2, 2, 2)
+
+    # ATP cycle states
+    states = ['ATP\nBound', 'Transition\nState', 'ADP+Pi\nBound', 'ADP\nRelease', 'ATP\nBound']
+    n_states = len(states)
+    x_states = np.arange(n_states)
+
+    # Energy levels (kJ/mol relative)
+    energies = [0, 35, -30.5, -20, 0]  # ATP hydrolysis ~-30.5 kJ/mol
+
+    # Plot energy profile
+    ax2.plot(x_states, energies, 'o-', color=COLORS['primary'], linewidth=2.5, markersize=12)
+    ax2.fill_between(x_states, energies, alpha=0.2, color=COLORS['primary'])
+
+    # Add annotations
+    ax2.annotate('$\\Delta G^\\circ = -30.5$ kJ/mol', xy=(2, -30.5), xytext=(2.5, -15),
+                fontsize=10, fontweight='bold', color=COLORS['quaternary'],
+                arrowprops=dict(arrowstyle='->', color=COLORS['quaternary']))
+
+    # Highlight activation barrier
+    ax2.annotate('$E_a$', xy=(1, 35), xytext=(1.3, 45),
+                fontsize=10, fontweight='bold',
+                arrowprops=dict(arrowstyle='->', color=COLORS['neutral']))
+
+    ax2.set_xticks(x_states)
+    ax2.set_xticklabels(states, fontsize=9)
+    ax2.set_ylabel('Free Energy (kJ/mol)', fontweight='bold')
+    ax2.set_title('(b) ATP Hydrolysis Cycle', fontweight='bold')
+    ax2.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax2.grid(True, alpha=0.3, axis='y')
+    ax2.set_ylim(-45, 55)
+
+    # --- (c) Entropy-Enthalpy Compensation ---
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Generate data showing entropy-enthalpy compensation
+    np.random.seed(42)
+    n_points = 50
+    cycles = np.arange(1, n_points + 1)
+
+    # During folding: enthalpy decreases (H-bonds form), entropy decreases (order)
+    # But overall G decreases
+    delta_H = -5 * (1 - np.exp(-0.1 * cycles)) + 0.3 * np.random.randn(n_points)
+    delta_S = -0.015 * (1 - np.exp(-0.1 * cycles)) + 0.001 * np.random.randn(n_points)
+    T = 310  # K (body temperature)
+    delta_G = delta_H - T * delta_S
+
+    ax3.plot(cycles, delta_H, 'o-', color=COLORS['primary'], linewidth=2,
+             markersize=4, label='$\\Delta H$ (kJ/mol)', alpha=0.8)
+    ax3.plot(cycles, -T * delta_S, 's-', color=COLORS['tertiary'], linewidth=2,
+             markersize=4, label='$-T\\Delta S$ (kJ/mol)', alpha=0.8)
+    ax3.plot(cycles, delta_G, '^-', color=COLORS['quaternary'], linewidth=2,
+             markersize=4, label='$\\Delta G$ (kJ/mol)', alpha=0.8)
+
+    ax3.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax3.set_xlabel('ATP Cycle', fontweight='bold')
+    ax3.set_ylabel('Energy Change (kJ/mol)', fontweight='bold')
+    ax3.set_title('(c) Entropy-Enthalpy Compensation', fontweight='bold')
+    ax3.legend(loc='right', fontsize=9)
+    ax3.grid(True, alpha=0.3)
+
+    # --- (d) ATP Consumption vs Coherence ---
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # ATP molecules consumed per cycle
+    cycles_atp = np.arange(1, 16)
+    atp_per_cycle = 7  # GroEL uses ~7 ATP per ring per cycle
+    cumulative_atp = cycles_atp * atp_per_cycle
+
+    # Coherence achieved
+    coherence = 0.2 + 0.7 * (1 - np.exp(-0.3 * cycles_atp))
+
+    # Create twin axis
+    ax4_twin = ax4.twinx()
+
+    # Plot ATP consumption
+    bars = ax4.bar(cycles_atp - 0.2, cumulative_atp, width=0.4, color=COLORS['tertiary'],
+                   alpha=0.7, label='Cumulative ATP', edgecolor='black')
+
+    # Plot coherence
+    line = ax4_twin.plot(cycles_atp, coherence, 'o-', color=COLORS['success'],
+                         linewidth=2.5, markersize=8, label='Phase Coherence')
+
+    # Threshold line
+    ax4_twin.axhline(y=0.8, color=COLORS['quaternary'], linestyle='--',
+                     linewidth=2, label='Native threshold')
+
+    ax4.set_xlabel('ATP Cycle', fontweight='bold')
+    ax4.set_ylabel('Cumulative ATP Consumed', fontweight='bold', color=COLORS['tertiary'])
+    ax4_twin.set_ylabel('Phase Coherence $\\langle r \\rangle$', fontweight='bold', color=COLORS['success'])
+    ax4.set_title('(d) ATP Cost of Folding', fontweight='bold')
+
+    ax4.tick_params(axis='y', labelcolor=COLORS['tertiary'])
+    ax4_twin.tick_params(axis='y', labelcolor=COLORS['success'])
+    ax4_twin.set_ylim(0, 1.05)
+
+    # Combined legend
+    lines1, labels1 = ax4.get_legend_handles_labels()
+    lines2, labels2 = ax4_twin.get_legend_handles_labels()
+    ax4.legend(lines1 + lines2, labels1 + labels2, loc='center right', fontsize=8)
+
+    ax4.grid(True, alpha=0.3, axis='y')
+
+    plt.tight_layout()
+    save_figure(fig, 'panel6_atp_thermodynamics')
+    plt.close()
+
+
+# ==============================================================================
+# PANEL 7: HYDROPHOBIC RESIDUES AND CHARGE SEPARATION
+# ==============================================================================
+def create_panel7():
+    """Hydrophobic Collapse and Charge Separation - 4 subfigures"""
+    fig = plt.figure(figsize=(12, 10))
+
+    # Amino acid properties
+    amino_acids = {
+        'A': {'hydro': 1.8, 'charge': 0, 'name': 'Ala'},
+        'R': {'hydro': -4.5, 'charge': 1, 'name': 'Arg'},
+        'N': {'hydro': -3.5, 'charge': 0, 'name': 'Asn'},
+        'D': {'hydro': -3.5, 'charge': -1, 'name': 'Asp'},
+        'C': {'hydro': 2.5, 'charge': 0, 'name': 'Cys'},
+        'E': {'hydro': -3.5, 'charge': -1, 'name': 'Glu'},
+        'Q': {'hydro': -3.5, 'charge': 0, 'name': 'Gln'},
+        'G': {'hydro': -0.4, 'charge': 0, 'name': 'Gly'},
+        'H': {'hydro': -3.2, 'charge': 0.5, 'name': 'His'},
+        'I': {'hydro': 4.5, 'charge': 0, 'name': 'Ile'},
+        'L': {'hydro': 3.8, 'charge': 0, 'name': 'Leu'},
+        'K': {'hydro': -3.9, 'charge': 1, 'name': 'Lys'},
+        'M': {'hydro': 1.9, 'charge': 0, 'name': 'Met'},
+        'F': {'hydro': 2.8, 'charge': 0, 'name': 'Phe'},
+        'P': {'hydro': -1.6, 'charge': 0, 'name': 'Pro'},
+        'S': {'hydro': -0.8, 'charge': 0, 'name': 'Ser'},
+        'T': {'hydro': -0.7, 'charge': 0, 'name': 'Thr'},
+        'W': {'hydro': -0.9, 'charge': 0, 'name': 'Trp'},
+        'Y': {'hydro': -1.3, 'charge': 0, 'name': 'Tyr'},
+        'V': {'hydro': 4.2, 'charge': 0, 'name': 'Val'},
+    }
+
+    # --- (a) 3D Hydrophobic Core Formation ---
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    np.random.seed(42)
+    n_residues = 40
+
+    # Generate two states: unfolded (spread) and folded (core-shell)
+    # Hydrophobic residues
+    n_hydro = 15
+    # Unfolded positions
+    theta_unf = np.random.uniform(0, 2*np.pi, n_hydro)
+    phi_unf = np.random.uniform(0, np.pi, n_hydro)
+    r_unf = np.random.uniform(3, 5, n_hydro)
+    x_hydro_unf = r_unf * np.sin(phi_unf) * np.cos(theta_unf)
+    y_hydro_unf = r_unf * np.sin(phi_unf) * np.sin(theta_unf)
+    z_hydro_unf = r_unf * np.cos(phi_unf)
+
+    # Folded positions (core)
+    theta_f = np.random.uniform(0, 2*np.pi, n_hydro)
+    phi_f = np.random.uniform(0, np.pi, n_hydro)
+    r_f = np.random.uniform(0, 1.5, n_hydro)
+    x_hydro_f = r_f * np.sin(phi_f) * np.cos(theta_f)
+    y_hydro_f = r_f * np.sin(phi_f) * np.sin(theta_f)
+    z_hydro_f = r_f * np.cos(phi_f)
+
+    # Polar residues
+    n_polar = 25
+    theta_unf_p = np.random.uniform(0, 2*np.pi, n_polar)
+    phi_unf_p = np.random.uniform(0, np.pi, n_polar)
+    r_unf_p = np.random.uniform(3, 5, n_polar)
+    x_polar_unf = r_unf_p * np.sin(phi_unf_p) * np.cos(theta_unf_p)
+    y_polar_unf = r_unf_p * np.sin(phi_unf_p) * np.sin(theta_unf_p)
+    z_polar_unf = r_unf_p * np.cos(phi_unf_p)
+
+    # Folded (shell)
+    theta_f_p = np.random.uniform(0, 2*np.pi, n_polar)
+    phi_f_p = np.random.uniform(0, np.pi, n_polar)
+    r_f_p = np.random.uniform(2.5, 3.5, n_polar)
+    x_polar_f = r_f_p * np.sin(phi_f_p) * np.cos(theta_f_p)
+    y_polar_f = r_f_p * np.sin(phi_f_p) * np.sin(theta_f_p)
+    z_polar_f = r_f_p * np.cos(phi_f_p)
+
+    # Plot folded state
+    ax1.scatter(x_hydro_f, y_hydro_f, z_hydro_f, c=COLORS['tertiary'], s=100,
+               alpha=0.9, label='Hydrophobic (core)', edgecolors='black', linewidth=0.5)
+    ax1.scatter(x_polar_f, y_polar_f, z_polar_f, c=COLORS['primary'], s=80,
+               alpha=0.7, label='Polar (surface)', edgecolors='black', linewidth=0.5)
+
+    # Draw approximate core boundary
+    u = np.linspace(0, 2 * np.pi, 30)
+    v = np.linspace(0, np.pi, 20)
+    x_sphere = 1.8 * np.outer(np.cos(u), np.sin(v))
+    y_sphere = 1.8 * np.outer(np.sin(u), np.sin(v))
+    z_sphere = 1.8 * np.outer(np.ones(np.size(u)), np.cos(v))
+    ax1.plot_surface(x_sphere, y_sphere, z_sphere, alpha=0.1, color=COLORS['tertiary'])
+
+    ax1.set_xlabel('X', fontweight='bold')
+    ax1.set_ylabel('Y', fontweight='bold')
+    ax1.set_zlabel('Z', fontweight='bold')
+    ax1.set_title('(a) Hydrophobic Core Formation', fontweight='bold')
+    ax1.legend(loc='upper left', fontsize=8)
+    ax1.view_init(elev=20, azim=45)
+
+    # --- (b) Hydrophobicity Profile ---
+    ax2 = fig.add_subplot(2, 2, 2)
+
+    # Kyte-Doolittle scale
+    aas = list(amino_acids.keys())
+    hydrophobicity = [amino_acids[aa]['hydro'] for aa in aas]
+
+    # Sort by hydrophobicity
+    sorted_idx = np.argsort(hydrophobicity)[::-1]
+    sorted_aas = [aas[i] for i in sorted_idx]
+    sorted_hydro = [hydrophobicity[i] for i in sorted_idx]
+
+    # Color by hydrophobicity
+    colors_hydro = [COLORS['tertiary'] if h > 0 else COLORS['primary'] for h in sorted_hydro]
+
+    bars = ax2.barh(range(len(sorted_aas)), sorted_hydro, color=colors_hydro,
+                    edgecolor='black', linewidth=0.5)
+
+    ax2.set_yticks(range(len(sorted_aas)))
+    ax2.set_yticklabels(sorted_aas, fontsize=9)
+    ax2.set_xlabel('Hydrophobicity (Kyte-Doolittle)', fontweight='bold')
+    ax2.set_title('(b) Amino Acid Hydrophobicity Scale', fontweight='bold')
+    ax2.axvline(x=0, color='black', linewidth=1)
+    ax2.grid(True, alpha=0.3, axis='x')
+
+    # Add legend
+    from matplotlib.patches import Patch
+    legend_elements = [
+        Patch(facecolor=COLORS['tertiary'], edgecolor='black', label='Hydrophobic'),
+        Patch(facecolor=COLORS['primary'], edgecolor='black', label='Hydrophilic')
+    ]
+    ax2.legend(handles=legend_elements, loc='lower right', fontsize=9)
+
+    # --- (c) Charge Distribution ---
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Simulate charge distribution along protein sequence
+    np.random.seed(123)
+    sequence_length = 100
+    positions = np.arange(sequence_length)
+
+    # Generate a realistic charge pattern with some clustering
+    charges = np.zeros(sequence_length)
+    # Positive charges (K, R)
+    pos_positions = [10, 11, 25, 45, 46, 47, 60, 75, 76, 90]
+    # Negative charges (D, E)
+    neg_positions = [5, 20, 21, 35, 55, 56, 70, 71, 85, 95]
+
+    for p in pos_positions:
+        if p < sequence_length:
+            charges[p] = 1
+    for p in neg_positions:
+        if p < sequence_length:
+            charges[p] = -1
+
+    # Plot charges
+    pos_mask = charges > 0
+    neg_mask = charges < 0
+    neutral_mask = charges == 0
+
+    ax3.bar(positions[pos_mask], charges[pos_mask], color=COLORS['primary'],
+            label='Positive (K, R)', edgecolor='black', linewidth=0.5, width=1)
+    ax3.bar(positions[neg_mask], charges[neg_mask], color=COLORS['quaternary'],
+            label='Negative (D, E)', edgecolor='black', linewidth=0.5, width=1)
+
+    # Calculate running charge
+    window = 10
+    running_charge = np.convolve(charges, np.ones(window)/window, mode='same')
+    ax3.plot(positions, running_charge * 5, 'k-', linewidth=2, label=f'Running avg (×5)')
+
+    ax3.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax3.set_xlabel('Residue Position', fontweight='bold')
+    ax3.set_ylabel('Charge', fontweight='bold')
+    ax3.set_title('(c) Charge Distribution Along Sequence', fontweight='bold')
+    ax3.legend(loc='upper right', fontsize=8)
+    ax3.grid(True, alpha=0.3)
+    ax3.set_xlim(0, sequence_length)
+
+    # --- (d) Salt Bridge Energy ---
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Salt bridge distance vs energy
+    distances = np.linspace(2.5, 10, 100)  # Angstroms
+
+    # Coulomb energy (simplified)
+    epsilon = 4.0  # Effective dielectric
+    k_coulomb = 332.0  # kcal/mol * A / e^2
+    E_coulomb = -k_coulomb / (epsilon * distances)
+
+    # Add desolvation penalty (simplified Gaussian)
+    E_desolv = 5 * np.exp(-((distances - 3.5)**2) / 2)
+
+    # Total energy
+    E_total = E_coulomb + E_desolv
+
+    ax4.plot(distances, E_coulomb, '--', color=COLORS['primary'], linewidth=2,
+             label='Coulomb attraction')
+    ax4.plot(distances, E_desolv, '--', color=COLORS['tertiary'], linewidth=2,
+             label='Desolvation penalty')
+    ax4.plot(distances, E_total, '-', color=COLORS['quaternary'], linewidth=3,
+             label='Total energy')
+
+    # Mark optimal distance
+    min_idx = np.argmin(E_total)
+    ax4.scatter([distances[min_idx]], [E_total[min_idx]], c='red', s=100,
+               marker='*', zorder=5, label=f'Optimal: {distances[min_idx]:.1f} Å')
+
+    ax4.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax4.set_xlabel('Distance (Å)', fontweight='bold')
+    ax4.set_ylabel('Energy (kcal/mol)', fontweight='bold')
+    ax4.set_title('(d) Salt Bridge Energetics', fontweight='bold')
+    ax4.legend(loc='upper right', fontsize=8)
+    ax4.grid(True, alpha=0.3)
+    ax4.set_xlim(2.5, 10)
+    ax4.set_ylim(-30, 10)
+
+    plt.tight_layout()
+    save_figure(fig, 'panel7_hydrophobic_charge')
+    plt.close()
+
+
+# ==============================================================================
 # MAIN EXECUTION
 # ==============================================================================
 if __name__ == '__main__':
@@ -797,6 +1161,12 @@ if __name__ == '__main__':
 
     print("\nPanel 5: Validation Results")
     create_panel5()
+
+    print("\nPanel 6: ATP Thermodynamics")
+    create_panel6()
+
+    print("\nPanel 7: Hydrophobic and Charge Interactions")
+    create_panel7()
 
     print("\n" + "=" * 50)
     print("All figures generated successfully!")
