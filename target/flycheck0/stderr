@@ -1,0 +1,1328 @@
+   1.965002300s  INFO prepare_target{force=false package_id=levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli) target="levinthal"}: cargo::core::compiler::fingerprint: stale: missing "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\target\\debug\\.fingerprint\\matrixmultiply-a8f9c561ae9a0739\\dep-lib-matrixmultiply"
+   2.135550400s  INFO prepare_target{force=false package_id=levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli) target="levinthal"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli)/Check { test: false }/TargetInner { name: "levinthal", doc: true, ..: with_path("C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-cli\\src\\main.rs", Edition2021) }
+   2.135634400s  INFO prepare_target{force=false package_id=levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli) target="levinthal"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-cli-0ba4f8586e792c8b\bin-levinthal`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   2.338775300s  INFO prepare_target{force=false package_id=clap v4.5.57 target="clap"}: cargo::core::compiler::fingerprint: fingerprint error for clap v4.5.57/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap-4.5.57\\src\\lib.rs", Edition2021) }
+   2.338860000s  INFO prepare_target{force=false package_id=clap v4.5.57 target="clap"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\clap-ab4464cf0c291c4a\lib-clap`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   2.342367100s  INFO prepare_target{force=false package_id=clap_builder v4.5.57 target="clap_builder"}: cargo::core::compiler::fingerprint: fingerprint error for clap_builder v4.5.57/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap_builder", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap_builder-4.5.57\\src\\lib.rs", Edition2021) }
+   2.342428900s  INFO prepare_target{force=false package_id=clap_builder v4.5.57 target="clap_builder"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\clap_builder-0b9597156281b7f2\lib-clap_builder`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.350599600s  INFO prepare_target{force=false package_id=anstream v0.6.21 target="anstream"}: cargo::core::compiler::fingerprint: fingerprint error for anstream v0.6.21/Check { test: false }/TargetInner { ..: lib_target("anstream", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstream-0.6.21\\src\\lib.rs", Edition2021) }
+   2.350695300s  INFO prepare_target{force=false package_id=anstream v0.6.21 target="anstream"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\anstream-89e3d0f3fe41733f\lib-anstream`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.352980500s  INFO prepare_target{force=false package_id=anstyle v1.0.13 target="anstyle"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle v1.0.13/Check { test: false }/TargetInner { ..: lib_target("anstyle", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-1.0.13\\src\\lib.rs", Edition2021) }
+   2.371516000s  INFO prepare_target{force=false package_id=anstyle v1.0.13 target="anstyle"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\anstyle-87a5b6be4ad1a9e9\lib-anstyle`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.379729500s  INFO prepare_target{force=false package_id=anstyle-parse v0.2.7 target="anstyle_parse"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-parse v0.2.7/Check { test: false }/TargetInner { ..: lib_target("anstyle_parse", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-parse-0.2.7\\src\\lib.rs", Edition2021) }
+   2.379844100s  INFO prepare_target{force=false package_id=anstyle-parse v0.2.7 target="anstyle_parse"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\anstyle-parse-3a1f47ddb5cc6dd5\lib-anstyle_parse`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.381351600s  INFO prepare_target{force=false package_id=utf8parse v0.2.2 target="utf8parse"}: cargo::core::compiler::fingerprint: fingerprint error for utf8parse v0.2.2/Check { test: false }/TargetInner { ..: lib_target("utf8parse", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\utf8parse-0.2.2\\src\\lib.rs", Edition2018) }
+   2.381402500s  INFO prepare_target{force=false package_id=utf8parse v0.2.2 target="utf8parse"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\utf8parse-fb4534bacf550cfa\lib-utf8parse`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_path
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: git_filter_source_repo
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   2.387466300s  INFO prepare_target{force=false package_id=anstyle-query v1.1.5 target="anstyle_query"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-query v1.1.5/Check { test: false }/TargetInner { ..: lib_target("anstyle_query", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-query-1.1.5\\src\\lib.rs", Edition2021) }
+   2.387551400s  INFO prepare_target{force=false package_id=anstyle-query v1.1.5 target="anstyle_query"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\anstyle-query-ed2842c15bdeaa42\lib-anstyle_query`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.392395500s  INFO prepare_target{force=false package_id=windows-sys v0.61.2 target="windows_sys"}: cargo::core::compiler::fingerprint: fingerprint error for windows-sys v0.61.2/Check { test: false }/TargetInner { tested: false, doctest: false, ..: lib_target("windows_sys", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows-sys-0.61.2\\src\\lib.rs", Edition2021) }
+   2.393656500s  INFO prepare_target{force=false package_id=windows-sys v0.61.2 target="windows_sys"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\windows-sys-f99bb91b8d47d19e\lib-windows_sys`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_path
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: git_filter_source_repo
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   2.395707700s  INFO prepare_target{force=false package_id=anstyle-wincon v3.0.11 target="anstyle_wincon"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-wincon v3.0.11/Check { test: false }/TargetInner { ..: lib_target("anstyle_wincon", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-wincon-3.0.11\\src\\lib.rs", Edition2021) }
+   2.395762000s  INFO prepare_target{force=false package_id=anstyle-wincon v3.0.11 target="anstyle_wincon"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\anstyle-wincon-f1a7f8f364c8c2ed\lib-anstyle_wincon`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.396870000s  INFO prepare_target{force=false package_id=once_cell_polyfill v1.70.2 target="once_cell_polyfill"}: cargo::core::compiler::fingerprint: fingerprint error for once_cell_polyfill v1.70.2/Check { test: false }/TargetInner { ..: lib_target("once_cell_polyfill", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\once_cell_polyfill-1.70.2\\src\\lib.rs", Edition2021) }
+   2.396919300s  INFO prepare_target{force=false package_id=once_cell_polyfill v1.70.2 target="once_cell_polyfill"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\once_cell_polyfill-fbea8f460371f205\lib-once_cell_polyfill`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_path
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: git_filter_source_repo
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   2.397946600s  INFO prepare_target{force=false package_id=colorchoice v1.0.4 target="colorchoice"}: cargo::core::compiler::fingerprint: fingerprint error for colorchoice v1.0.4/Check { test: false }/TargetInner { ..: lib_target("colorchoice", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\colorchoice-1.0.4\\src\\lib.rs", Edition2021) }
+   2.397989800s  INFO prepare_target{force=false package_id=colorchoice v1.0.4 target="colorchoice"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\colorchoice-45e23b1b928bbaa6\lib-colorchoice`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.398846300s  INFO prepare_target{force=false package_id=is_terminal_polyfill v1.70.2 target="is_terminal_polyfill"}: cargo::core::compiler::fingerprint: fingerprint error for is_terminal_polyfill v1.70.2/Check { test: false }/TargetInner { ..: lib_target("is_terminal_polyfill", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\is_terminal_polyfill-1.70.2\\src\\lib.rs", Edition2021) }
+   2.398889500s  INFO prepare_target{force=false package_id=is_terminal_polyfill v1.70.2 target="is_terminal_polyfill"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\is_terminal_polyfill-370bf519367582a1\lib-is_terminal_polyfill`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.399775200s  INFO prepare_target{force=false package_id=clap_lex v0.7.7 target="clap_lex"}: cargo::core::compiler::fingerprint: fingerprint error for clap_lex v0.7.7/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap_lex", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap_lex-0.7.7\\src\\lib.rs", Edition2021) }
+   2.399821300s  INFO prepare_target{force=false package_id=clap_lex v0.7.7 target="clap_lex"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\clap_lex-944a5895e4f4925d\lib-clap_lex`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.400677200s  INFO prepare_target{force=false package_id=strsim v0.11.1 target="strsim"}: cargo::core::compiler::fingerprint: fingerprint error for strsim v0.11.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("strsim", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\strsim-0.11.1\\src\\lib.rs", Edition2015) }
+   2.400720200s  INFO prepare_target{force=false package_id=strsim v0.11.1 target="strsim"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\strsim-ff4f34318e6fe863\lib-strsim`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.411032700s  INFO prepare_target{force=false package_id=levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core) target="levinthal_core"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("levinthal_core", ["lib"], "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-core\\src\\lib.rs", Edition2021) }
+   2.411098500s  INFO prepare_target{force=false package_id=levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core) target="levinthal_core"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-core-64ff0e533dfebe31\lib-levinthal_core`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   2.412374600s  INFO prepare_target{force=false package_id=nalgebra v0.32.6 target="nalgebra"}: cargo::core::compiler::fingerprint: fingerprint error for nalgebra v0.32.6/Check { test: false }/TargetInner { ..: lib_target("nalgebra", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\nalgebra-0.32.6\\src\\lib.rs", Edition2018) }
+   2.412430200s  INFO prepare_target{force=false package_id=nalgebra v0.32.6 target="nalgebra"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\nalgebra-e53221cb634a234a\lib-nalgebra`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.413868300s  INFO prepare_target{force=false package_id=approx v0.5.1 target="approx"}: cargo::core::compiler::fingerprint: fingerprint error for approx v0.5.1/Check { test: false }/TargetInner { ..: lib_target("approx", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\approx-0.5.1\\src\\lib.rs", Edition2015) }
+   2.413920900s  INFO prepare_target{force=false package_id=approx v0.5.1 target="approx"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\approx-2dca762d2dcdc2c9\lib-approx`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.414873600s  INFO prepare_target{force=false package_id=num-traits v0.2.19 target="num_traits"}: cargo::core::compiler::fingerprint: fingerprint error for num-traits v0.2.19/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_traits", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\num-traits-0.2.19\\src\\lib.rs", Edition2021) }
+   2.414919600s  INFO prepare_target{force=false package_id=num-traits v0.2.19 target="num_traits"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\num-traits-4489708e9d7d97fc\lib-num_traits`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.418813800s  INFO prepare_target{force=false package_id=matrixmultiply v0.3.10 target="matrixmultiply"}: cargo::core::compiler::fingerprint: fingerprint error for matrixmultiply v0.3.10/Check { test: false }/TargetInner { benched: false, ..: lib_target("matrixmultiply", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\matrixmultiply-0.3.10\\src\\lib.rs", Edition2018) }
+   2.418872200s  INFO prepare_target{force=false package_id=matrixmultiply v0.3.10 target="matrixmultiply"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\matrixmultiply-a8f9c561ae9a0739\lib-matrixmultiply`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.426511600s  INFO prepare_target{force=false package_id=num-complex v0.4.6 target="num_complex"}: cargo::core::compiler::fingerprint: fingerprint error for num-complex v0.4.6/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_complex", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\num-complex-0.4.6\\src\\lib.rs", Edition2021) }
+   2.426576400s  INFO prepare_target{force=false package_id=num-complex v0.4.6 target="num_complex"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\num-complex-6420e91103b2e434\lib-num_complex`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.427930200s  INFO prepare_target{force=false package_id=num-rational v0.4.2 target="num_rational"}: cargo::core::compiler::fingerprint: fingerprint error for num-rational v0.4.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_rational", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\num-rational-0.4.2\\src\\lib.rs", Edition2021) }
+   2.427987100s  INFO prepare_target{force=false package_id=num-rational v0.4.2 target="num_rational"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\num-rational-7f7b5440c9fa0799\lib-num_rational`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.429009200s  INFO prepare_target{force=false package_id=num-integer v0.1.46 target="num_integer"}: cargo::core::compiler::fingerprint: fingerprint error for num-integer v0.1.46/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_integer", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\num-integer-0.1.46\\src\\lib.rs", Edition2018) }
+   2.429069700s  INFO prepare_target{force=false package_id=num-integer v0.1.46 target="num_integer"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\num-integer-f913d23ff897b2eb\lib-num_integer`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.430088300s  INFO prepare_target{force=false package_id=simba v0.8.1 target="simba"}: cargo::core::compiler::fingerprint: fingerprint error for simba v0.8.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("simba", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\simba-0.8.1\\src\\lib.rs", Edition2018) }
+   2.430146400s  INFO prepare_target{force=false package_id=simba v0.8.1 target="simba"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\simba-5e0f0e18b301d0e3\lib-simba`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.436732600s  INFO prepare_target{force=false package_id=wide v0.7.33 target="wide"}: cargo::core::compiler::fingerprint: fingerprint error for wide v0.7.33/Check { test: false }/TargetInner { ..: lib_target("wide", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\wide-0.7.33\\src\\lib.rs", Edition2018) }
+   2.436799400s  INFO prepare_target{force=false package_id=wide v0.7.33 target="wide"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\wide-0b52c1ba17b4d02f\lib-wide`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.441016000s  INFO prepare_target{force=false package_id=typenum v1.19.0 target="typenum"}: cargo::core::compiler::fingerprint: fingerprint error for typenum v1.19.0/Check { test: false }/TargetInner { ..: lib_target("typenum", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\typenum-1.19.0\\src\\lib.rs", Edition2018) }
+   2.441164400s  INFO prepare_target{force=false package_id=typenum v1.19.0 target="typenum"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\typenum-0a6db9da419df4bc\lib-typenum`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.448264800s  INFO prepare_target{force=false package_id=rand v0.8.5 target="rand"}: cargo::core::compiler::fingerprint: fingerprint error for rand v0.8.5/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("rand", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rand-0.8.5\\src\\lib.rs", Edition2018) }
+   2.448321300s  INFO prepare_target{force=false package_id=rand v0.8.5 target="rand"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\rand-7bc5f06b65752ad0\lib-rand`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.449286500s  INFO prepare_target{force=false package_id=rand_chacha v0.3.1 target="rand_chacha"}: cargo::core::compiler::fingerprint: fingerprint error for rand_chacha v0.3.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("rand_chacha", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rand_chacha-0.3.1\\src\\lib.rs", Edition2018) }
+   2.449419400s  INFO prepare_target{force=false package_id=rand_chacha v0.3.1 target="rand_chacha"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\rand_chacha-adc41498a18aab3b\lib-rand_chacha`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.451032500s  INFO prepare_target{force=false package_id=ppv-lite86 v0.2.21 target="ppv_lite86"}: cargo::core::compiler::fingerprint: fingerprint error for ppv-lite86 v0.2.21/Check { test: false }/TargetInner { ..: lib_target("ppv_lite86", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\ppv-lite86-0.2.21\\src\\lib.rs", Edition2021) }
+   2.451312400s  INFO prepare_target{force=false package_id=ppv-lite86 v0.2.21 target="ppv_lite86"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\ppv-lite86-a07a37b0d7a4537d\lib-ppv_lite86`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   2.453464600s  INFO prepare_target{force=false package_id=zerocopy v0.8.38 target="zerocopy"}: cargo::core::compiler::fingerprint: fingerprint error for zerocopy v0.8.38/Check { test: false }/TargetInner { ..: lib_target("zerocopy", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\zerocopy-0.8.38\\src\\lib.rs", Edition2021) }
+   2.453527200s  INFO prepare_target{force=false package_id=zerocopy v0.8.38 target="zerocopy"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\zerocopy-98d8823bbeb8597c\lib-zerocopy`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_path
+  13: git_filter_source_path
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_filter_source_repo
+  18: git_filter_source_repo
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   2.460416800s  INFO prepare_target{force=false package_id=serde v1.0.228 target="serde"}: cargo::core::compiler::fingerprint: fingerprint error for serde v1.0.228/Check { test: false }/TargetInner { ..: lib_target("serde", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde-1.0.228\\src\\lib.rs", Edition2021) }
+   2.460474500s  INFO prepare_target{force=false package_id=serde v1.0.228 target="serde"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\serde-18c618b49363005f\lib-serde`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.466663000s  INFO prepare_target{force=false package_id=serde_core v1.0.228 target="serde_core"}: cargo::core::compiler::fingerprint: fingerprint error for serde_core v1.0.228/Check { test: false }/TargetInner { ..: lib_target("serde_core", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde_core-1.0.228\\src\\lib.rs", Edition2021) }
+   2.466718800s  INFO prepare_target{force=false package_id=serde_core v1.0.228 target="serde_core"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\serde_core-a82e9052872013e6\lib-serde_core`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_path
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   2.478651800s  INFO prepare_target{force=false package_id=levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding) target="levinthal_folding"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("levinthal_folding", ["lib"], "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-folding\\src\\lib.rs", Edition2021) }
+   2.478724800s  INFO prepare_target{force=false package_id=levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding) target="levinthal_folding"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-folding-6b16f110895cfcc4\lib-levinthal_folding`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   2.480230700s  INFO prepare_target{force=false package_id=levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms) target="levinthal_msms"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("levinthal_msms", ["lib"], "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-msms\\src\\lib.rs", Edition2021) }
+   2.480290900s  INFO prepare_target{force=false package_id=levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms) target="levinthal_msms"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-msms-5364da1ab5c17dc4\lib-levinthal_msms`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   2.483211100s  INFO prepare_target{force=false package_id=serde_json v1.0.149 target="serde_json"}: cargo::core::compiler::fingerprint: fingerprint error for serde_json v1.0.149/Check { test: false }/TargetInner { ..: lib_target("serde_json", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde_json-1.0.149\\src\\lib.rs", Edition2021) }
+   2.483285300s  INFO prepare_target{force=false package_id=serde_json v1.0.149 target="serde_json"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\serde_json-bf3a2426b278952a\lib-serde_json`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   2.484487900s  INFO prepare_target{force=false package_id=itoa v1.0.17 target="itoa"}: cargo::core::compiler::fingerprint: fingerprint error for itoa v1.0.17/Check { test: false }/TargetInner { ..: lib_target("itoa", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\itoa-1.0.17\\src\\lib.rs", Edition2021) }
+   2.484552700s  INFO prepare_target{force=false package_id=itoa v1.0.17 target="itoa"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\itoa-5e55ae702dd44a83\lib-itoa`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.485600000s  INFO prepare_target{force=false package_id=memchr v2.7.6 target="memchr"}: cargo::core::compiler::fingerprint: fingerprint error for memchr v2.7.6/Check { test: false }/TargetInner { benched: false, ..: lib_target("memchr", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\memchr-2.7.6\\src\\lib.rs", Edition2021) }
+   2.485658200s  INFO prepare_target{force=false package_id=memchr v2.7.6 target="memchr"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\memchr-eba0e9b8eaa9da5d\lib-memchr`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.497110400s  INFO prepare_target{force=false package_id=zmij v1.0.19 target="zmij"}: cargo::core::compiler::fingerprint: fingerprint error for zmij v1.0.19/Check { test: false }/TargetInner { ..: lib_target("zmij", ["lib"], "C:\\Users\\kundai\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\zmij-1.0.19\\src\\lib.rs", Edition2021) }
+   2.501837500s  INFO prepare_target{force=false package_id=zmij v1.0.19 target="zmij"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\zmij-5e0f68c76b9ad9a8\lib-zmij`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_path
+  10: git_filter_source_path
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   2.512660500s  INFO prepare_target{force=false package_id=levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli) target="levinthal"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli)/Check { test: true }/TargetInner { name: "levinthal", doc: true, ..: with_path("C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-cli\\src\\main.rs", Edition2021) }
+   2.512731200s  INFO prepare_target{force=false package_id=levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli) target="levinthal"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-cli-c3fc2ff69826ffbc\test-bin-levinthal`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   2.519306800s  INFO prepare_target{force=false package_id=levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core) target="levinthal_core"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("levinthal_core", ["lib"], "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-core\\src\\lib.rs", Edition2021) }
+   2.521818700s  INFO prepare_target{force=false package_id=levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core) target="levinthal_core"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-core-1f01656876692bdd\test-lib-levinthal_core`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   2.529308600s  INFO prepare_target{force=false package_id=levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding) target="levinthal_folding"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("levinthal_folding", ["lib"], "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-folding\\src\\lib.rs", Edition2021) }
+   2.529408400s  INFO prepare_target{force=false package_id=levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding) target="levinthal_folding"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-folding-dafce2de00c757de\test-lib-levinthal_folding`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   2.533486500s  INFO prepare_target{force=false package_id=levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms) target="levinthal_msms"}: cargo::core::compiler::fingerprint: fingerprint error for levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("levinthal_msms", ["lib"], "C:\\Users\\kundai\\Documents\\foundry\\levinthal\\crates\\levinthal-msms\\src\\lib.rs", Edition2021) }
+   2.533587500s  INFO prepare_target{force=false package_id=levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms) target="levinthal_msms"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\kundai\Documents\foundry\levinthal\target\debug\.fingerprint\levinthal-msms-8553cc2a2b2b8da2\test-lib-levinthal_msms`
+
+Caused by:
+    Das System kann die angegebene Datei nicht finden. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+    Checking num-traits v0.2.19
+    Checking zerocopy v0.8.38
+    Checking serde_core v1.0.228
+    Checking wide v0.7.33
+    Checking matrixmultiply v0.3.10
+    Checking typenum v1.19.0
+    Checking once_cell_polyfill v1.70.2
+    Checking windows-sys v0.61.2
+    Checking anstyle v1.0.13
+    Checking utf8parse v0.2.2
+    Checking is_terminal_polyfill v1.70.2
+    Checking num-integer v0.1.46
+    Checking num-complex v0.4.6
+    Checking approx v0.5.1
+    Checking anstyle-parse v0.2.7
+    Checking colorchoice v1.0.4
+    Checking strsim v0.11.1
+    Checking clap_lex v0.7.7
+    Checking zmij v1.0.19
+    Checking memchr v2.7.6
+    Checking itoa v1.0.17
+    Checking num-rational v0.4.2
+    Checking serde v1.0.228
+    Checking serde_json v1.0.149
+    Checking simba v0.8.1
+    Checking anstyle-query v1.1.5
+    Checking anstyle-wincon v3.0.11
+    Checking anstream v0.6.21
+    Checking clap_builder v4.5.57
+    Checking clap v4.5.57
+    Checking nalgebra v0.32.6
+    Checking ppv-lite86 v0.2.21
+    Checking rand_chacha v0.3.1
+    Checking rand v0.8.5
+    Checking levinthal-core v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-core)
+    Checking levinthal-folding v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-folding)
+    Checking levinthal-msms v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-msms)
+    Checking levinthal-cli v0.1.0 (C:\Users\kundai\Documents\foundry\levinthal\crates\levinthal-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2m 31s
