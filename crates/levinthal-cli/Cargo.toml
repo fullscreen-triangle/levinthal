@@ -1,0 +1,19 @@
+[package]
+name = "levinthal-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Command-line interface for Levinthal protein folding framework"
+
+[[bin]]
+name = "levinthal"
+path = "src/main.rs"
+
+[dependencies]
+levinthal-core = { path = "../levinthal-core" }
+levinthal-msms = { path = "../levinthal-msms" }
+levinthal-folding = { path = "../levinthal-folding" }
+clap = { version = "4.4", features = ["derive"] }
+serde.workspace = true
+serde_json = "1.0"

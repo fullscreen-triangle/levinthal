@@ -1,0 +1,15 @@
+[package]
+name = "levinthal-msms"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "MS/MS fragmentation and peptide identification for Levinthal framework"
+
+[dependencies]
+levinthal-core = { path = "../levinthal-core" }
+thiserror.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+approx.workspace = true
