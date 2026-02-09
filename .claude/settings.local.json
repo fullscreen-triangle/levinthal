@@ -3,7 +3,11 @@
     "allow": [
       "Bash(cargo build:*)",
       "Bash(cargo test:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(tree:*)",
+      "Bash(pdflatex:*)",
+      "Bash(bibtex:*)",
+      "Bash(grep:*)"
     ]
   }
 }

@@ -1,0 +1,145 @@
+\contentsline {section}{\numberline {1}Introduction}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Epistemological Inversion: From Forward Simulation to Backward Derivation}{7}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Internal vs.\ External Perturbation}{7}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}The Self-Consistency Problem}{8}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Paper Organization}{8}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Discussion}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Connection to Protein Folding}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Implications for Electron Transfer Theory}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Experimental Accessibility}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Broader Implications}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Conclusion}{9}{section.3}%
+\contentsline {section}{\numberline {4}Internal Perturbation Formalism}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}From External to Internal Perturbation}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Charge Redistribution Potential}{11}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Coulomb Self-Interaction}{11}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Polarization Response}{12}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Perturbation Strength and Trisection Criterion}{12}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Partition Response Signatures}{13}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Information Content}{13}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Orthogonal Perturbation Axes from Charge Redistribution}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Decomposition into Radial and Angular Components}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Physical Interpretation}{14}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Radial Gradient: Linear Momentum Coupling}{14}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Angular Gradient: Angular Momentum Coupling}{14}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Orthogonality Proof}{15}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Three-Outcome Measurement}{15}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Spatial Partition Structure}{16}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Connection to Partition Coordinates}{16}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Self-Consistent Localization Algorithm}{17}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The Bootstrap Problem}{17}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Resolution via Temporal Retardation}{17}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Iterative Self-Consistent Field Algorithm}{17}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Convergence Analysis}{17}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Stability Analysis}{18}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Error Analysis}{19}{subsection.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.1}Measurement Noise}{19}{subsubsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.2}Retardation Approximation}{19}{subsubsection.6.6.2}%
+\contentsline {section}{\numberline {7}Target Protein Systems}{20}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Blue Copper Proteins: Plastocyanin and Azurin}{20}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}System Description}{20}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.2}Advantages for Internal Perturbation}{20}{subsubsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.3}Charge Redistribution Characteristics}{20}{subsubsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.2}Cytochrome c: Heme Iron Electron Transfer}{21}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}System Description}{21}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Advantages for Internal Perturbation}{21}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Charge Redistribution Characteristics}{21}{subsubsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.3}Photosynthetic Reaction Center: Ultrafast Cascade}{21}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}System Description}{21}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Advantages for Internal Perturbation}{22}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Charge Redistribution Characteristics}{22}{subsubsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.4}Comparative Analysis}{22}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Recommended Experimental Sequence}{23}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Multi-Modal Spectroscopic Detection}{24}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Modality 1: Ultrafast Optical Absorption}{24}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}Observable}{24}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.2}Implementation}{24}{subsubsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.3}Partition Information}{24}{subsubsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.2}Modality 2: Time-Resolved EPR}{24}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Observable}{24}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Implementation}{25}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Partition Information}{25}{subsubsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.3}Modality 3: Transient IR Spectroscopy}{25}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}Observable}{25}{subsubsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.2}Implementation}{25}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}Partition Information}{25}{subsubsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.4}Modality 4: Time-Resolved X-ray Scattering}{26}{subsection.8.4}%
+\contentsline {subsubsection}{\numberline {8.4.1}Observable}{26}{subsubsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {8.4.2}Implementation}{26}{subsubsection.8.4.2}%
+\contentsline {subsubsection}{\numberline {8.4.3}Partition Information}{26}{subsubsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.5}Modality 5: Time-Resolved Circular Dichroism}{26}{subsection.8.5}%
+\contentsline {subsubsection}{\numberline {8.5.1}Observable}{26}{subsubsection.8.5.1}%
+\contentsline {subsubsection}{\numberline {8.5.2}Implementation}{26}{subsubsection.8.5.2}%
+\contentsline {subsubsection}{\numberline {8.5.3}Partition Information}{27}{subsubsection.8.5.3}%
+\contentsline {subsection}{\numberline {8.6}Data Fusion Strategy}{27}{subsection.8.6}%
+\contentsline {subsubsection}{\numberline {8.6.1}Temporal Synchronization}{27}{subsubsection.8.6.1}%
+\contentsline {subsubsection}{\numberline {8.6.2}Consistency Constraints}{27}{subsubsection.8.6.2}%
+\contentsline {section}{\numberline {9}S-Entropy Space Visualization}{28}{section.9}%
+\contentsline {subsection}{\numberline {9.1}S-Entropy Coordinate Definitions}{28}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Ternary Address to S-Coordinate Mapping}{28}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Geometric Interpretation}{29}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Trajectory Representation}{29}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Visualization Rendering}{29}{subsection.9.5}%
+\contentsline {subsubsection}{\numberline {9.5.1}3D Trajectory Plot}{29}{subsubsection.9.5.1}%
+\contentsline {subsubsection}{\numberline {9.5.2}Partition Grid Overlay}{30}{subsubsection.9.5.2}%
+\contentsline {subsubsection}{\numberline {9.5.3}Phase-Lock Overlay}{30}{subsubsection.9.5.3}%
+\contentsline {subsection}{\numberline {9.6}Example: Cytochrome c Electron Transfer}{30}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}Resolution and Precision}{31}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Animation and Dynamics}{31}{subsection.9.8}%
+\contentsline {section}{\numberline {10}Experimental Implementation}{32}{section.10}%
+\contentsline {subsection}{\numberline {10.1}System Preparation}{32}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {10.1.1}Protein Structure Loading}{32}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {10.1.2}Electron Transfer Pathway Definition}{32}{subsubsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.2}Categorical Observable Definition}{32}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Five Spectroscopic Modalities}{33}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}Modality 1: Optical Absorption}{33}{subsubsection.10.3.1}%
+\contentsline {subsubsection}{\numberline {10.3.2}Modality 2: Raman Scattering}{33}{subsubsection.10.3.2}%
+\contentsline {subsubsection}{\numberline {10.3.3}Modality 3: Magnetic Resonance (EPR)}{33}{subsubsection.10.3.3}%
+\contentsline {subsubsection}{\numberline {10.3.4}Modality 4: Circular Dichroism}{33}{subsubsection.10.3.4}%
+\contentsline {subsubsection}{\numberline {10.3.5}Modality 5: Mass Spectrometry (Time-of-Flight)}{33}{subsubsection.10.3.5}%
+\contentsline {subsection}{\numberline {10.4}Perturbation Field Generation}{34}{subsection.10.4}%
+\contentsline {subsubsection}{\numberline {10.4.1}Electric Field Gradient (P$_1$)}{34}{subsubsection.10.4.1}%
+\contentsline {subsubsection}{\numberline {10.4.2}Magnetic Field Gradient (P$_2$)}{34}{subsubsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.5}Ternary Trisection Protocol}{34}{subsection.10.5}%
+\contentsline {subsubsection}{\numberline {10.5.1}Initialization}{34}{subsubsection.10.5.1}%
+\contentsline {subsubsection}{\numberline {10.5.2}Iteration Loop}{34}{subsubsection.10.5.2}%
+\contentsline {subsubsection}{\numberline {10.5.3}Expected Iterations}{35}{subsubsection.10.5.3}%
+\contentsline {subsection}{\numberline {10.6}Zero-Backaction Verification}{35}{subsection.10.6}%
+\contentsline {subsubsection}{\numberline {10.6.1}Backaction Measurement Protocol}{35}{subsubsection.10.6.1}%
+\contentsline {subsubsection}{\numberline {10.6.2}Threshold Criterion}{35}{subsubsection.10.6.2}%
+\contentsline {subsubsection}{\numberline {10.6.3}Expected Values}{36}{subsubsection.10.6.3}%
+\contentsline {subsection}{\numberline {10.7}Categorical Trajectory Extraction}{36}{subsection.10.7}%
+\contentsline {subsubsection}{\numberline {10.7.1}Trit Sequence to Partition Coordinates}{36}{subsubsection.10.7.1}%
+\contentsline {subsubsection}{\numberline {10.7.2}Trajectory Validation}{36}{subsubsection.10.7.2}%
+\contentsline {subsection}{\numberline {10.8}Wavefunction Reconstruction}{36}{subsection.10.8}%
+\contentsline {subsubsection}{\numberline {10.8.1}From Categorical to Physical}{36}{subsubsection.10.8.1}%
+\contentsline {subsubsection}{\numberline {10.8.2}Probability Density}{36}{subsubsection.10.8.2}%
+\contentsline {subsection}{\numberline {10.9}3D Visualization Rendering}{37}{subsection.10.9}%
+\contentsline {subsubsection}{\numberline {10.9.1}Isosurface Representation}{37}{subsubsection.10.9.1}%
+\contentsline {subsubsection}{\numberline {10.9.2}Trajectory Overlay}{37}{subsubsection.10.9.2}%
+\contentsline {subsubsection}{\numberline {10.9.3}Backaction Visualization}{37}{subsubsection.10.9.3}%
+\contentsline {subsection}{\numberline {10.10}Result Output}{37}{subsection.10.10}%
+\contentsline {subsubsection}{\numberline {10.10.1}Saved Data}{37}{subsubsection.10.10.1}%
+\contentsline {subsubsection}{\numberline {10.10.2}Validation Metrics}{37}{subsubsection.10.10.2}%
+\contentsline {section}{\numberline {11}Testable Predictions}{38}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Prediction 1: Trajectory Determinism}{38}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}Statement}{38}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}Contrast with Marcus Theory}{38}{subsubsection.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.3}Experimental Test}{38}{subsubsection.11.1.3}%
+\contentsline {subsection}{\numberline {11.2}Prediction 2: H-Bond Frequency Modulation}{38}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {11.2.1}Statement}{38}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.2}Contrast with Standard Theory}{39}{subsubsection.11.2.2}%
+\contentsline {subsubsection}{\numberline {11.2.3}Experimental Test}{39}{subsubsection.11.2.3}%
+\contentsline {subsection}{\numberline {11.3}Prediction 3: Coherence Dip During Transfer}{39}{subsection.11.3}%
+\contentsline {subsubsection}{\numberline {11.3.1}Statement}{39}{subsubsection.11.3.1}%
+\contentsline {subsubsection}{\numberline {11.3.2}Contrast with Standard Theory}{39}{subsubsection.11.3.2}%
+\contentsline {subsubsection}{\numberline {11.3.3}Experimental Test}{39}{subsubsection.11.3.3}%
+\contentsline {subsection}{\numberline {11.4}Prediction 4: Selection Rule Enforcement}{40}{subsection.11.4}%
+\contentsline {subsubsection}{\numberline {11.4.1}Statement}{40}{subsubsection.11.4.1}%
+\contentsline {subsubsection}{\numberline {11.4.2}Contrast with Standard Theory}{40}{subsubsection.11.4.2}%
+\contentsline {subsubsection}{\numberline {11.4.3}Experimental Test}{40}{subsubsection.11.4.3}%
+\contentsline {subsection}{\numberline {11.5}Prediction 5: $O(\log _3 N)$ Localization Complexity}{40}{subsection.11.5}%
+\contentsline {subsubsection}{\numberline {11.5.1}Statement}{40}{subsubsection.11.5.1}%
+\contentsline {subsubsection}{\numberline {11.5.2}Contrast with Standard Theory}{40}{subsubsection.11.5.2}%
+\contentsline {subsubsection}{\numberline {11.5.3}Experimental Test}{41}{subsubsection.11.5.3}%
+\contentsline {subsection}{\numberline {11.6}Summary of Predictions}{41}{subsection.11.6}%

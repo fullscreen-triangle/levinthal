@@ -1,0 +1,203 @@
+\section{Multi-Modal Spectroscopic Detection}
+\label{sec:detection}
+
+Following the zero-backaction measurement framework~\cite{sachikonye2024backaction}, we employ five spectroscopic modalities that simultaneously probe different partition coordinates $(n, \ell, m, s)$. The categorical nature of these measurements ensures zero backaction: measuring partition coordinates does not disturb the physical electron wavefunction within each partition.
+
+\subsection{Modality 1: Ultrafast Optical Absorption}
+
+\subsubsection{Observable}
+
+Optical absorption probes electronic transitions between states differing in principal quantum number $n$:
+\begin{equation}
+\Delta n = n_{\text{final}} - n_{\text{initial}} \neq 0
+\label{eq:optical-transition}
+\end{equation}
+
+For metal centers, characteristic absorption bands include:
+\begin{itemize}
+\item Cu$^{2+}$: 600 nm (d--d, S$_{\text{Cys}} \to$ Cu charge transfer)
+\item Fe$^{3+}$: 410 nm (Soret), 520/550 nm (Q-bands)
+\item Chlorophyll: 430 nm (Soret), 680/870 nm (Q$_y$)
+\end{itemize}
+
+\subsubsection{Implementation}
+
+Pump-probe spectroscopy with:
+\begin{itemize}
+\item Pump pulse: Initiates electron transfer (photoexcitation or rapid mixing)
+\item Probe pulse: Broadband white light or tunable laser
+\item Detection: Transient absorption $\Delta A(\lambda, t) = A(t) - A_0$
+\item Temporal resolution: 10--50 fs with compressed pulses
+\end{itemize}
+
+\subsubsection{Partition Information}
+
+Optical absorption reports on radial electron distribution through $n$-dependent oscillator strengths. Changes in absorption intensity indicate electron transfer between shells with different principal quantum numbers.
+
+\subsection{Modality 2: Time-Resolved EPR}
+
+\subsubsection{Observable}
+
+Electron paramagnetic resonance probes spin state $s = \pm 1/2$ through Zeeman splitting:
+\begin{equation}
+\Delta E = g \mu_B B_0
+\label{eq:zeeman}
+\end{equation}
+where $g$ is the Land\'e $g$-factor and $B_0$ is the applied magnetic field.
+
+\subsubsection{Implementation}
+
+Pulsed EPR with:
+\begin{itemize}
+\item Microwave frequency: 9.5 GHz (X-band) or 94 GHz (W-band)
+\item Pulse sequence: $\pi/2$--$\tau$--$\pi$--$\tau$--echo (Hahn echo)
+\item Detection: Spin echo amplitude vs.\ delay time
+\item Temporal resolution: 100 ps (limited by $T_2$)
+\end{itemize}
+
+\subsubsection{Partition Information}
+
+EPR directly measures spin quantum number $s$. For redox transitions:
+\begin{itemize}
+\item Cu$^{2+} \to$ Cu$^+$: paramagnetic $\to$ diamagnetic (EPR signal disappears)
+\item Fe$^{3+} \to$ Fe$^{2+}$: low-spin $\to$ diamagnetic (EPR signal disappears)
+\end{itemize}
+
+The spin selection rule $\Delta s = 0$ is enforced during electron transfer within a spin manifold.
+
+\subsection{Modality 3: Transient IR Spectroscopy}
+
+\subsubsection{Observable}
+
+Infrared spectroscopy probes vibrational modes of hydrogen bonds and metal-ligand bonds:
+\begin{equation}
+\omega_{\text{vib}} = \sqrt{k/\mu}
+\label{eq:vibrational-frequency}
+\end{equation}
+where $k$ is the force constant and $\mu$ is the reduced mass.
+
+\subsubsection{Implementation}
+
+Mid-IR pump-probe with:
+\begin{itemize}
+\item Probe range: 1000--4000 cm$^{-1}$ (fingerprint and H-bond stretch regions)
+\item Key modes: N--H stretch (3300 cm$^{-1}$), C=O stretch (1650 cm$^{-1}$), metal--ligand (300--600 cm$^{-1}$)
+\item Detection: Transient absorption $\Delta A(\tilde{\nu}, t)$
+\item Temporal resolution: 50--100 fs
+\end{itemize}
+
+\subsubsection{Partition Information}
+
+IR probes the \emph{temporal coordinate} $\St$ through hydrogen bond oscillation phase:
+\begin{equation}
+\St = \frac{\phi_{\text{H-bond}}}{2\pi} \quad \text{where } \phi = \omega t \mod 2\pi
+\label{eq:st-from-ir}
+\end{equation}
+
+During electron transfer, local H-bond frequencies shift by 1--5\% as the electron's charge redistributes the local electric field. This frequency shift reports on electron position through the electron--proton coupling mechanism.
+
+\subsection{Modality 4: Time-Resolved X-ray Scattering}
+
+\subsubsection{Observable}
+
+X-ray scattering probes electron density distribution through:
+\begin{equation}
+I(q) = \left| \int \rhoE(\mathbf{r}) e^{i\mathbf{q}\cdot\mathbf{r}} d^3r \right|^2
+\label{eq:xray-scattering}
+\end{equation}
+where $\mathbf{q}$ is the scattering vector.
+
+\subsubsection{Implementation}
+
+X-ray free electron laser (XFEL) with:
+\begin{itemize}
+\item Photon energy: 8--12 keV (hard X-rays)
+\item Pulse duration: 10--50 fs
+\item Repetition rate: 10--120 Hz
+\item Detection: Wide-angle X-ray scattering (WAXS) or solution scattering
+\end{itemize}
+
+\subsubsection{Partition Information}
+
+X-ray scattering directly measures the radial electron density distribution. Changes in scattering pattern during electron transfer report on:
+\begin{itemize}
+\item Radial redistribution: Changes in $I(q)$ at high $q$ (short distances)
+\item Angular redistribution: Anisotropic scattering from oriented samples
+\end{itemize}
+
+This provides the most direct probe of radial partition coordinate.
+
+\subsection{Modality 5: Time-Resolved Circular Dichroism}
+
+\subsubsection{Observable}
+
+Circular dichroism (CD) probes differential absorption of left- and right-circularly polarized light:
+\begin{equation}
+\Delta\epsilon = \epsilon_L - \epsilon_R \propto \mathbf{m} \cdot \boldsymbol{\mu}
+\label{eq:cd}
+\end{equation}
+where $\mathbf{m}$ is the magnetic transition dipole and $\boldsymbol{\mu}$ is the electric transition dipole.
+
+\subsubsection{Implementation}
+
+Transient CD with:
+\begin{itemize}
+\item Probe: Circularly polarized probe pulse
+\item Detection: Differential absorption $\Delta A_L - \Delta A_R$
+\item Spectral range: UV (200--250 nm) for backbone, visible (300--700 nm) for metal centers
+\item Temporal resolution: 100 fs
+\end{itemize}
+
+\subsubsection{Partition Information}
+
+CD probes angular momentum quantum numbers $\ell$ and $m$ through:
+\begin{itemize}
+\item Orbital chirality: $d$-orbital shape at metal centers
+\item Magnetic moment: Related to $m$ through $\mu_z = -m\mu_B$
+\end{itemize}
+
+Changes in CD signal during electron transfer report on angular redistribution, particularly the change in $d$-orbital occupation at metal sites.
+
+\subsection{Data Fusion Strategy}
+
+The five modalities provide complementary information:
+
+\begin{table}[h]
+\centering
+\caption{Partition coordinate mapping from spectroscopic modalities.}
+\label{tab:modality-mapping}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Modality & $n$ & $\ell$ & $m$ & $s$ \\
+\midrule
+Optical absorption & $\checkmark$ & -- & -- & -- \\
+EPR & -- & -- & -- & $\checkmark$ \\
+IR (H-bond) & -- & -- & -- & -- \\
+X-ray scattering & $\checkmark$ & partial & -- & -- \\
+Circular dichroism & -- & $\checkmark$ & $\checkmark$ & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The temporal coordinate $\St$ is extracted from IR through H-bond phase, while the evolution coordinate $\Se$ is tracked through the sequence of partition assignments.
+
+\subsubsection{Temporal Synchronization}
+
+All modalities must be synchronized to a common time base:
+\begin{enumerate}
+\item Master clock: Laser oscillator at 80 MHz repetition rate
+\item Pump pulse: Derived from master clock, initiates electron transfer
+\item Probe pulses: Synchronized to master clock with variable delay
+\item Jitter: $<10$ fs between modalities
+\end{enumerate}
+
+\subsubsection{Consistency Constraints}
+
+Selection rules provide cross-validation between modalities:
+\begin{itemize}
+\item $\Delta\ell = \pm 1$: CD and X-ray must show consistent angular changes
+\item $\Delta s = 0$: EPR must maintain spin state during orbital transitions
+\item Energy conservation: Optical and IR energy changes must balance
+\end{itemize}
+
+Violations of consistency constraints indicate measurement errors or unexpected physics.

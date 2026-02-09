@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: electron-trajectory-charge-redistribution.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            524 strings with 4859 characters,
+and the built_in function-call counts, 1381 in all, are:
+= -- 136
+> -- 42
+< -- 0
++ -- 18
+- -- 12
+* -- 73
+:= -- 258
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 24
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 62
+empty$ -- 119
+format.name$ -- 12
+if$ -- 277
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 6
+newline$ -- 33
+num.names$ -- 12
+pop$ -- 20
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 42
+stack$ -- 0
+substring$ -- 64
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 24
+warning$ -- 0
+while$ -- 15
+width$ -- 7
+write$ -- 64

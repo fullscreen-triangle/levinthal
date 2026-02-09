@@ -1,0 +1,195 @@
+\section{Testable Predictions}
+\label{sec:predictions}
+
+The internal perturbation framework makes five quantitative predictions that distinguish it from Marcus theory and conventional electron transfer descriptions. Each prediction specifies an experimental test with expected outcomes.
+
+\subsection{Prediction 1: Trajectory Determinism}
+
+\subsubsection{Statement}
+
+Electron transfer trajectories are deterministic, not stochastic. The trajectory variance across identically prepared systems is:
+\begin{equation}
+\sigma^2_{\text{traj}} = \frac{1}{N}\sum_{i=1}^{N} \|\gamma_i - \bar{\gamma}\|^2 < 10^{-6}
+\label{eq:trajectory-variance}
+\end{equation}
+where $\gamma_i$ is the $i$-th measured trajectory, $\bar{\gamma}$ is the mean trajectory, and $\|\cdot\|$ is the $L^2$ norm.
+
+\subsubsection{Contrast with Marcus Theory}
+
+Marcus theory predicts stochastic electron transfer with exponential waiting time distribution:
+\begin{equation}
+P(t) = k_{\text{ET}} e^{-k_{\text{ET}} t}
+\label{eq:marcus-waiting-time}
+\end{equation}
+
+This implies large trajectory variance: different transfer events follow different paths through the activation barrier region.
+
+\subsubsection{Experimental Test}
+
+\begin{enumerate}
+\item Prepare $N > 100$ identical protein samples with electron at donor
+\item Trigger electron transfer simultaneously (flash photolysis or rapid mixing)
+\item Measure trajectory using multi-modal spectroscopy
+\item Compute trajectory variance across samples
+\end{enumerate}
+
+\textbf{Expected result}: Variance $\sigma^2 < 10^{-6}$ (our framework) vs.\ $\sigma^2 \sim 0.1$--1 (Marcus theory).
+
+\subsection{Prediction 2: H-Bond Frequency Modulation}
+
+\subsubsection{Statement}
+
+Hydrogen bond vibrational frequencies shift by 1--5\% during electron transfer, with spatial correlation to electron position:
+\begin{equation}
+\omega_{\text{H-bond}}(\mathbf{r}, t) = \omega_0 \left(1 + \alpha \frac{\rhoE(\mathbf{r}, t)}{\rho_0}\right)
+\label{eq:hbond-modulation}
+\end{equation}
+where $\alpha \approx 0.05$ is the coupling coefficient.
+
+The correlation between H-bond frequency shift and electron position satisfies:
+\begin{equation}
+R^2(\Delta\omega, \Sk) > 0.8
+\label{eq:hbond-correlation}
+\end{equation}
+
+\subsubsection{Contrast with Standard Theory}
+
+The Born-Oppenheimer approximation assumes electrons move much faster than nuclei, implying nuclear (H-bond) frequencies are independent of instantaneous electron position. Standard theory predicts $R^2 \approx 0$.
+
+\subsubsection{Experimental Test}
+
+\begin{enumerate}
+\item Monitor H-bond stretch frequency (3300 cm$^{-1}$) using transient IR
+\item Simultaneously measure electron position using optical absorption
+\item Compute correlation between $\Delta\omega_{\text{H-bond}}$ and $\Sk$
+\end{enumerate}
+
+\textbf{Expected result}: $R^2 > 0.8$ (our framework) vs.\ $R^2 \approx 0$ (Born-Oppenheimer).
+
+\subsection{Prediction 3: Coherence Dip During Transfer}
+
+\subsubsection{Statement}
+
+The Kuramoto order parameter $r(t)$ for the hydrogen bond network shows a characteristic dip during electron transfer:
+\begin{equation}
+r(t) = \left| \frac{1}{N_{\text{H-bond}}} \sum_{j=1}^{N_{\text{H-bond}}} e^{i\phi_j(t)} \right|
+\label{eq:kuramoto-order-parameter}
+\end{equation}
+
+The dip magnitude is:
+\begin{equation}
+\Delta r = r_{\text{baseline}} - r_{\text{min}} \in [0.1, 0.3]
+\label{eq:coherence-dip}
+\end{equation}
+
+The recovery time is:
+\begin{equation}
+\tau_{\text{recovery}} \in [1, 10] \text{ ps}
+\label{eq:recovery-time}
+\end{equation}
+
+\subsubsection{Contrast with Standard Theory}
+
+Standard electron transfer theory makes no prediction about H-bond network coherence. The Kuramoto order parameter is not a recognized observable in Marcus theory.
+
+\subsubsection{Experimental Test}
+
+\begin{enumerate}
+\item Compute effective order parameter from multi-site H-bond frequency coherence (measured via 2D-IR)
+\item Track $r(t)$ before, during, and after electron transfer
+\item Measure dip magnitude $\Delta r$ and recovery time $\tau_{\text{recovery}}$
+\end{enumerate}
+
+\textbf{Expected result}: $\Delta r = 0.1$--0.3 with $\tau_{\text{recovery}} = 1$--10 ps (our framework) vs.\ no prediction (Marcus theory).
+
+\subsection{Prediction 4: Selection Rule Enforcement}
+
+\subsubsection{Statement}
+
+Electron transfer obeys selection rules derived from partition coordinate constraints:
+\begin{align}
+\Delta\ell &= \pm 1 \\
+|\Delta m| &\leq 1 \\
+\Delta s &= 0
+\label{eq:selection-rules}
+\end{align}
+
+The enforcement ratio is:
+\begin{equation}
+\frac{\Gamma_{\text{allowed}}}{\Gamma_{\text{forbidden}}} > 10^8
+\label{eq:enforcement-ratio}
+\end{equation}
+where $\Gamma$ is the transition rate.
+
+\subsubsection{Contrast with Standard Theory}
+
+Marcus theory imposes no selection rules on angular momentum. The Franck-Condon principle governs vibrational overlap but not orbital angular momentum changes.
+
+\subsubsection{Experimental Test}
+
+\begin{enumerate}
+\item Design ligand modifications that would enable $\Delta\ell = 0$ or $\Delta\ell = \pm 2$ transitions
+\item Measure electron transfer rates for allowed ($\Delta\ell = \pm 1$) and forbidden ($\Delta\ell \neq \pm 1$) pathways
+\item Compute rate ratio
+\end{enumerate}
+
+\textbf{Expected result}: $\Gamma_{\text{allowed}}/\Gamma_{\text{forbidden}} > 10^8$ (our framework) vs.\ comparable rates (Marcus theory, which allows any $\Delta\ell$).
+
+\subsection{Prediction 5: $O(\log_3 N)$ Localization Complexity}
+
+\subsubsection{Statement}
+
+The number of measurements required to localize the electron to precision $\Delta r$ scales as:
+\begin{equation}
+N_{\text{meas}} = c \cdot \log_3\left(\frac{R}{\Delta r}\right)
+\label{eq:localization-complexity}
+\end{equation}
+where $R$ is the transfer distance, $\Delta r$ is the target resolution, and $c \approx 6$ (accounting for two measurements per trisection step across three coordinates).
+
+\subsubsection{Contrast with Standard Theory}
+
+Conventional position measurement would require:
+\begin{equation}
+N_{\text{conv}} \propto \left(\frac{R}{\Delta r}\right)^3
+\label{eq:conventional-complexity}
+\end{equation}
+measurements to scan the full 3D transfer region.
+
+\subsubsection{Experimental Test}
+
+\begin{enumerate}
+\item Localize electron position at varying precisions $\Delta r$
+\item Count total number of spectroscopic measurements required
+\item Fit to $N_{\text{meas}} = a \log_3(R/\Delta r) + b$
+\end{enumerate}
+
+\textbf{Expected result}: Logarithmic scaling (our framework) vs.\ cubic scaling (conventional).
+
+For $R = 15$~\AA\ and $\Delta r = 0.1$~\AA:
+\begin{itemize}
+\item Our prediction: $N_{\text{meas}} \approx 6 \times \log_3(150) \approx 6 \times 4.6 \approx 28$ measurements
+\item Conventional: $N_{\text{conv}} \propto 150^3 \sim 3 \times 10^6$ measurements
+\end{itemize}
+
+The factor of $\sim 10^5$ difference is experimentally distinguishable.
+
+\subsection{Summary of Predictions}
+
+\begin{table}[h]
+\centering
+\caption{Summary of testable predictions comparing internal perturbation framework to Marcus theory.}
+\label{tab:predictions-summary}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Prediction & Our Framework & Marcus Theory \\
+\midrule
+Trajectory variance & $\sigma^2 < 10^{-6}$ & $\sigma^2 \sim 0.1$--1 \\
+H-bond/position correlation & $R^2 > 0.8$ & $R^2 \approx 0$ \\
+Coherence dip & $\Delta r = 0.1$--0.3 & No prediction \\
+Selection rule ratio & $> 10^8$ & $\sim 1$ \\
+Localization scaling & $O(\log N)$ & $O(N^3)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All five predictions are experimentally accessible with current ultrafast spectroscopy techniques on the target protein systems described in Section~\ref{sec:target-systems}.
