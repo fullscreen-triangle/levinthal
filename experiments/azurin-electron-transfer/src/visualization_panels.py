@@ -1111,11 +1111,495 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
 
 
 # =============================================================================
+# Panel 7: Wavefunction Analysis Panel (4 charts)
+# =============================================================================
+
+def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict[str, Any],
+                               output_path: Path) -> plt.Figure:
+    """
+    Panel 7: Wavefunction Analysis and Evolution.
+
+    Layout (2x2):
+    - Top-left: 3D probability density isosurface at peak time
+    - Top-right: Time evolution of probability density (waterfall plot)
+    - Bottom-left: Phase coherence map (real vs imaginary)
+    - Bottom-right: Spatial localization metrics over time
+    """
+    fig = plt.figure(figsize=(18, 16))
+
+    psi_real = wavefunction['psi_real']
+    psi_imag = wavefunction['psi_imag']
+    grid_min = wavefunction['grid_min']
+    grid_max = wavefunction['grid_max']
+    resolution = float(wavefunction['resolution'])
+
+    n_times, nx, ny, nz = psi_real.shape
+
+    # Compute probability density |ψ|²
+    prob_density = psi_real**2 + psi_imag**2
+
+    # Compute phase angle
+    phase = np.arctan2(psi_imag, psi_real)
+
+    # Create coordinate arrays (in Angstroms)
+    x = np.linspace(grid_min[0], grid_max[0], nx) * 1e10
+    y = np.linspace(grid_min[1], grid_max[1], ny) * 1e10
+    z = np.linspace(grid_min[2], grid_max[2], nz) * 1e10
+
+    # Get time array
+    trajectory = results.get('trajectory', [])
+    if trajectory:
+        times_fs = np.array([step['time'] for step in trajectory[:n_times]]) * 1e15
+    else:
+        times_fs = np.arange(n_times) * 10.0  # Default 10 fs spacing
+
+    # ===================== Chart 1: 3D Probability Isosurface (Top-Left) =====================
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    # Find timestep with maximum integrated probability (peak localization)
+    total_prob = np.sum(prob_density, axis=(1, 2, 3))
+    peak_time_idx = np.argmax(total_prob)
+
+    # Get probability at peak time
+    prob_at_peak = prob_density[peak_time_idx]
+
+    # Find isosurface threshold (50% of max)
+    threshold = 0.3 * np.max(prob_at_peak)
+
+    # Extract isosurface points (simplified: show high-probability voxels)
+    X, Y, Z = np.meshgrid(x, y, z, indexing='ij')
+
+    # Sample high-probability points for visualization
+    high_prob_mask = prob_at_peak > threshold
+    if np.any(high_prob_mask):
+        # Downsample for performance
+        indices = np.where(high_prob_mask)
+        n_points = min(2000, len(indices[0]))
+        sample_idx = np.random.choice(len(indices[0]), n_points, replace=False)
+
+        scatter_x = X[high_prob_mask][sample_idx]
+        scatter_y = Y[high_prob_mask][sample_idx]
+        scatter_z = Z[high_prob_mask][sample_idx]
+        scatter_prob = prob_at_peak[high_prob_mask][sample_idx]
+
+        # Normalize for coloring
+        scatter_prob_norm = scatter_prob / scatter_prob.max()
+
+        sc = ax1.scatter(scatter_x, scatter_y, scatter_z,
+                        c=scatter_prob_norm, cmap='hot', s=20,
+                        alpha=0.6, edgecolors='none')
+        plt.colorbar(sc, ax=ax1, label='|ψ|² (normalized)', shrink=0.6)
+    else:
+        # Fallback: show center slice
+        mid_z = nz // 2
+        ax1.text(0, 0, 0, 'Low probability\n(see slices)', ha='center', fontsize=10)
+
+    ax1.set_xlabel('X (Å)')
+    ax1.set_ylabel('Y (Å)')
+    ax1.set_zlabel('Z (Å)')
+    ax1.set_title(f'Probability Density Isosurface\nt = {times_fs[peak_time_idx]:.1f} fs (peak)',
+                  fontweight='bold', fontsize=12)
+
+    # ===================== Chart 2: Time Evolution Waterfall (Top-Right) =====================
+    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+
+    # Compute integrated probability along z for each time (2D slices)
+    # This gives a "movie" of probability evolution
+    prob_xy = np.sum(prob_density, axis=3)  # Integrate over z
+
+    # Take central slice in y for waterfall plot
+    mid_y = ny // 2
+    prob_xt = prob_xy[:, :, mid_y]  # Shape: (n_times, nx)
+
+    # Create waterfall plot
+    X_wf, T_wf = np.meshgrid(x, times_fs[:n_times])
+
+    # Normalize each time slice for visibility
+    prob_xt_norm = prob_xt / (prob_xt.max(axis=1, keepdims=True) + 1e-10)
+
+    # Plot as surface
+    surf = ax2.plot_surface(X_wf, T_wf, prob_xt_norm,
+                            cmap='viridis', alpha=0.8,
+                            linewidth=0, antialiased=True)
+
+    ax2.set_xlabel('X (Å)')
+    ax2.set_ylabel('Time (fs)')
+    ax2.set_zlabel('|ψ|² (normalized)')
+    ax2.set_title('Probability Evolution (X-T slice)\nIntegrated over Y,Z',
+                  fontweight='bold', fontsize=12)
+    ax2.view_init(elev=25, azim=-60)
+
+    # ===================== Chart 3: Phase Coherence Map (Bottom-Left) =====================
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Compute phase coherence: correlation between real and imaginary parts
+    # High coherence = well-defined phase, Low coherence = decoherence
+
+    # Take central XY slice at each time
+    mid_z = nz // 2
+
+    # Create phase coherence metric: |<exp(i*phase)>| averaged over space
+    coherence = np.zeros(n_times)
+    mean_phase = np.zeros(n_times)
+    phase_std = np.zeros(n_times)
+
+    for t in range(n_times):
+        phase_slice = phase[t, :, :, mid_z]
+        prob_slice = prob_density[t, :, :, mid_z]
+
+        # Weighted average phase (by probability)
+        if np.sum(prob_slice) > 0:
+            weights = prob_slice / np.sum(prob_slice)
+            exp_phase = np.exp(1j * phase_slice)
+            coherence[t] = np.abs(np.sum(weights * exp_phase))
+            mean_phase[t] = np.angle(np.sum(weights * exp_phase))
+            phase_std[t] = np.sqrt(np.sum(weights * (phase_slice - mean_phase[t])**2))
+        else:
+            coherence[t] = 0
+            mean_phase[t] = 0
+            phase_std[t] = np.pi
+
+    # Plot coherence and phase
+    ax3_twin = ax3.twinx()
+
+    line1, = ax3.plot(times_fs[:n_times], coherence, 'b-', linewidth=2.5,
+                      marker='o', markersize=6, label='Coherence |⟨e^{iφ}⟩|')
+    ax3.fill_between(times_fs[:n_times], 0, coherence, alpha=0.3, color='blue')
+    ax3.axhline(y=0.8, color='green', linestyle='--', alpha=0.7, label='Coherence threshold')
+
+    line2, = ax3_twin.plot(times_fs[:n_times], mean_phase, 'r-', linewidth=2,
+                           marker='s', markersize=5, label='Mean phase ⟨φ⟩')
+    ax3_twin.fill_between(times_fs[:n_times],
+                          mean_phase - phase_std, mean_phase + phase_std,
+                          alpha=0.2, color='red')
+
+    ax3.set_xlabel('Time (fs)')
+    ax3.set_ylabel('Phase Coherence', color='blue')
+    ax3_twin.set_ylabel('Mean Phase (rad)', color='red')
+    ax3.tick_params(axis='y', labelcolor='blue')
+    ax3_twin.tick_params(axis='y', labelcolor='red')
+
+    ax3.set_ylim(0, 1.1)
+    ax3_twin.set_ylim(-np.pi, np.pi)
+
+    ax3.legend(loc='upper left', fontsize=9)
+    ax3_twin.legend(loc='upper right', fontsize=9)
+
+    ax3.set_title('Phase Coherence and Mean Phase\n(Quantum Decoherence Analysis)',
+                  fontweight='bold', fontsize=12)
+    ax3.grid(True, alpha=0.3)
+
+    # ===================== Chart 4: Spatial Localization Metrics (Bottom-Right) =====================
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Compute localization metrics over time
+    # 1. Position expectation values <x>, <y>, <z>
+    # 2. Position uncertainties Δx, Δy, Δz
+    # 3. Participation ratio (inverse of IPR)
+
+    pos_x = np.zeros(n_times)
+    pos_y = np.zeros(n_times)
+    pos_z = np.zeros(n_times)
+    delta_x = np.zeros(n_times)
+    delta_y = np.zeros(n_times)
+    delta_z = np.zeros(n_times)
+    ipr = np.zeros(n_times)  # Inverse participation ratio
+
+    X3, Y3, Z3 = np.meshgrid(x, y, z, indexing='ij')
+
+    for t in range(n_times):
+        prob_t = prob_density[t]
+        norm = np.sum(prob_t)
+
+        if norm > 0:
+            prob_norm = prob_t / norm
+
+            # Expectation values
+            pos_x[t] = np.sum(prob_norm * X3)
+            pos_y[t] = np.sum(prob_norm * Y3)
+            pos_z[t] = np.sum(prob_norm * Z3)
+
+            # Variances
+            delta_x[t] = np.sqrt(np.sum(prob_norm * (X3 - pos_x[t])**2))
+            delta_y[t] = np.sqrt(np.sum(prob_norm * (Y3 - pos_y[t])**2))
+            delta_z[t] = np.sqrt(np.sum(prob_norm * (Z3 - pos_z[t])**2))
+
+            # IPR: sum of prob^2 (higher = more localized)
+            ipr[t] = np.sum(prob_norm**2)
+
+    # Plot position uncertainties
+    ax4.plot(times_fs[:n_times], delta_x, 'r-', linewidth=2, marker='o',
+             markersize=5, label='Δx (Å)')
+    ax4.plot(times_fs[:n_times], delta_y, 'g-', linewidth=2, marker='s',
+             markersize=5, label='Δy (Å)')
+    ax4.plot(times_fs[:n_times], delta_z, 'b-', linewidth=2, marker='^',
+             markersize=5, label='Δz (Å)')
+
+    # Total uncertainty
+    delta_total = np.sqrt(delta_x**2 + delta_y**2 + delta_z**2)
+    ax4.plot(times_fs[:n_times], delta_total, 'k-', linewidth=3,
+             label='Δr total (Å)')
+
+    # Add IPR on secondary axis
+    ax4_twin = ax4.twinx()
+    ax4_twin.plot(times_fs[:n_times], ipr * 1e6, 'm--', linewidth=2,
+                  label='IPR × 10⁶')
+    ax4_twin.set_ylabel('IPR × 10⁶', color='magenta')
+    ax4_twin.tick_params(axis='y', labelcolor='magenta')
+
+    ax4.set_xlabel('Time (fs)')
+    ax4.set_ylabel('Position Uncertainty (Å)')
+    ax4.legend(loc='upper left', fontsize=9)
+    ax4_twin.legend(loc='upper right', fontsize=9)
+
+    ax4.set_title('Spatial Localization Metrics\n(Wavepacket Width & IPR)',
+                  fontweight='bold', fontsize=12)
+    ax4.grid(True, alpha=0.3)
+
+    # Main title
+    transfer_time = results.get('experiment', {}).get('transfer_time_fs', 850)
+    fig.suptitle(f'Panel 7: Wavefunction Analysis\n'
+                 f'Electron Transfer Dynamics | Grid: {nx}×{ny}×{nz} | {n_times} timesteps',
+                 fontsize=14, fontweight='bold', y=0.98)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    return fig
+
+
+# =============================================================================
+# Panel 8: 3D Electron Cloud Panel (4 3D charts)
+# =============================================================================
+
+def plot_panel_8_electron_cloud(wavefunction: Dict[str, np.ndarray], results: Dict[str, Any],
+                                 output_path: Path) -> plt.Figure:
+    """
+    Panel 8: 3D Electron Probability Cloud Visualization.
+
+    Layout (2x2) - ALL 3D CHARTS:
+    - Top-left: Electron cloud at t=0 (initial state at Cu donor)
+    - Top-right: Electron cloud at t=mid (during transfer)
+    - Bottom-left: Electron cloud at t=end (final state)
+    - Bottom-right: Time-lapse overlay (multiple timesteps combined)
+    """
+    fig = plt.figure(figsize=(18, 16))
+
+    psi_real = wavefunction['psi_real']
+    psi_imag = wavefunction['psi_imag']
+    grid_min = wavefunction['grid_min']
+    grid_max = wavefunction['grid_max']
+
+    n_times, nx, ny, nz = psi_real.shape
+
+    # Compute probability density |ψ|²
+    prob_density = psi_real**2 + psi_imag**2
+
+    # Create coordinate arrays (in Angstroms)
+    x = np.linspace(grid_min[0], grid_max[0], nx) * 1e10
+    y = np.linspace(grid_min[1], grid_max[1], ny) * 1e10
+    z = np.linspace(grid_min[2], grid_max[2], nz) * 1e10
+
+    X, Y, Z = np.meshgrid(x, y, z, indexing='ij')
+
+    # Get time array
+    trajectory = results.get('trajectory', [])
+    if trajectory:
+        times_fs = np.array([step['time'] for step in trajectory[:n_times]]) * 1e15
+    else:
+        times_fs = np.arange(n_times) * 10.0
+
+    # Select 4 key timesteps
+    t_indices = [0, n_times // 3, 2 * n_times // 3, n_times - 1]
+    titles = ['Initial State (t = 0 fs)',
+              f'Early Transfer (t = {times_fs[t_indices[1]]:.0f} fs)',
+              f'Late Transfer (t = {times_fs[t_indices[2]]:.0f} fs)',
+              f'Final State (t = {times_fs[t_indices[3]]:.0f} fs)']
+
+    # Copper ligand positions for reference
+    ligands = {
+        'Cu': np.array([0.0, 0.0, 0.0]),
+        'His46': np.array([2.0, 0.0, 0.0]),
+        'Cys112': np.array([0.0, 2.1, 0.0]),
+        'His117': np.array([-2.0, 0.0, 0.0]),
+        'Met121': np.array([0.0, 0.0, 3.1])
+    }
+
+    def plot_electron_cloud(ax, prob_t, time_label, cmap_name='Blues'):
+        """Helper function to plot 3D electron probability cloud."""
+        # Find threshold for isosurface (adaptive based on data)
+        max_prob = np.max(prob_t)
+        if max_prob < 1e-10:
+            ax.text(0, 0, 0, 'Very low\nprobability', ha='center', fontsize=12)
+            return
+
+        # Multiple isosurface levels for cloud effect
+        thresholds = [0.1 * max_prob, 0.3 * max_prob, 0.6 * max_prob]
+        alphas = [0.2, 0.4, 0.7]
+        sizes = [15, 25, 40]
+
+        cmap = plt.cm.get_cmap(cmap_name)
+
+        for thresh, alpha, size in zip(thresholds, alphas, sizes):
+            mask = prob_t > thresh
+            if not np.any(mask):
+                continue
+
+            # Get points above threshold
+            indices = np.where(mask)
+            n_points = len(indices[0])
+
+            # Downsample if too many points
+            max_points = 1500
+            if n_points > max_points:
+                sample_idx = np.random.choice(n_points, max_points, replace=False)
+                px = X[mask][sample_idx]
+                py = Y[mask][sample_idx]
+                pz = Z[mask][sample_idx]
+                pprob = prob_t[mask][sample_idx]
+            else:
+                px = X[mask]
+                py = Y[mask]
+                pz = Z[mask]
+                pprob = prob_t[mask]
+
+            # Normalize probability for coloring
+            pprob_norm = pprob / max_prob
+
+            # Plot as scatter with color based on probability
+            ax.scatter(px, py, pz, c=pprob_norm, cmap=cmap_name,
+                      s=size, alpha=alpha, edgecolors='none',
+                      vmin=0, vmax=1)
+
+        # Add copper center marker
+        ax.scatter(0, 0, 0, s=300, c='orange', marker='o',
+                  edgecolors='black', linewidths=2, label='Cu', zorder=10)
+
+        # Add ligand positions
+        for name, pos in ligands.items():
+            if name != 'Cu':
+                ax.scatter(*pos, s=80, c='purple', marker='s',
+                          edgecolors='black', linewidths=0.5, alpha=0.7)
+                # Bond to copper
+                ax.plot([0, pos[0]], [0, pos[1]], [0, pos[2]],
+                       'purple', linewidth=1, alpha=0.4)
+
+        ax.set_xlabel('X (Å)')
+        ax.set_ylabel('Y (Å)')
+        ax.set_zlabel('Z (Å)')
+        ax.set_title(time_label, fontweight='bold', fontsize=12)
+
+        # Set consistent axis limits
+        ax.set_xlim(x.min(), x.max())
+        ax.set_ylim(y.min(), y.max())
+        ax.set_zlim(z.min(), z.max())
+
+    # ===================== Chart 1: Initial State (Top-Left) =====================
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    plot_electron_cloud(ax1, prob_density[t_indices[0]], titles[0], 'Blues')
+    ax1.view_init(elev=20, azim=-60)
+
+    # ===================== Chart 2: Early Transfer (Top-Right) =====================
+    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+    plot_electron_cloud(ax2, prob_density[t_indices[1]], titles[1], 'Greens')
+    ax2.view_init(elev=20, azim=-120)
+
+    # ===================== Chart 3: Late Transfer (Bottom-Left) =====================
+    ax3 = fig.add_subplot(2, 2, 3, projection='3d')
+    plot_electron_cloud(ax3, prob_density[t_indices[2]], titles[2], 'Oranges')
+    ax3.view_init(elev=20, azim=60)
+
+    # ===================== Chart 4: Time-Lapse Overlay (Bottom-Right) =====================
+    ax4 = fig.add_subplot(2, 2, 4, projection='3d')
+
+    # Overlay multiple timesteps with different colors
+    time_colors = ['blue', 'green', 'orange', 'red']
+    time_labels_short = ['t=0', f't={times_fs[t_indices[1]]:.0f}fs',
+                         f't={times_fs[t_indices[2]]:.0f}fs', f't={times_fs[-1]:.0f}fs']
+
+    for idx, (t_idx, color, label) in enumerate(zip(t_indices, time_colors, time_labels_short)):
+        prob_t = prob_density[t_idx]
+        max_prob = np.max(prob_t)
+
+        if max_prob < 1e-10:
+            continue
+
+        # Use 30% threshold for overlay
+        threshold = 0.3 * max_prob
+        mask = prob_t > threshold
+
+        if not np.any(mask):
+            continue
+
+        indices = np.where(mask)
+        n_points = len(indices[0])
+
+        # Downsample
+        max_points = 800
+        if n_points > max_points:
+            sample_idx = np.random.choice(n_points, max_points, replace=False)
+            px = X[mask][sample_idx]
+            py = Y[mask][sample_idx]
+            pz = Z[mask][sample_idx]
+        else:
+            px = X[mask]
+            py = Y[mask]
+            pz = Z[mask]
+
+        ax4.scatter(px, py, pz, c=color, s=20, alpha=0.4,
+                   edgecolors='none', label=label)
+
+    # Copper center
+    ax4.scatter(0, 0, 0, s=400, c='orange', marker='o',
+               edgecolors='black', linewidths=2, label='Cu center', zorder=10)
+
+    # Ligands
+    for name, pos in ligands.items():
+        if name != 'Cu':
+            ax4.scatter(*pos, s=100, c='purple', marker='s',
+                       edgecolors='black', linewidths=1, alpha=0.8)
+            ax4.plot([0, pos[0]], [0, pos[1]], [0, pos[2]],
+                    'purple', linewidth=1.5, alpha=0.5)
+
+    ax4.set_xlabel('X (Å)')
+    ax4.set_ylabel('Y (Å)')
+    ax4.set_zlabel('Z (Å)')
+    ax4.set_title('Time-Lapse Overlay\n(All States Combined)', fontweight='bold', fontsize=12)
+    ax4.legend(loc='upper left', fontsize=9)
+    ax4.view_init(elev=30, azim=-45)
+
+    ax4.set_xlim(x.min(), x.max())
+    ax4.set_ylim(y.min(), y.max())
+    ax4.set_zlim(z.min(), z.max())
+
+    # Add colorbar legend
+    sm = ScalarMappable(cmap='viridis', norm=Normalize(0, 1))
+    sm.set_array([])
+    cbar_ax = fig.add_axes([0.92, 0.15, 0.02, 0.7])
+    cbar = plt.colorbar(sm, cax=cbar_ax)
+    cbar.set_label('|ψ|² (normalized)', fontsize=11)
+
+    # Main title
+    transfer_time = results.get('experiment', {}).get('transfer_time_fs', 850)
+    fig.suptitle(f'Panel 8: 3D Electron Probability Cloud\n'
+                 f'Cu(I) → Cu(II) Electron Transfer | τ = {transfer_time:.0f} fs | '
+                 f'Grid: {nx}×{ny}×{nz}',
+                 fontsize=14, fontweight='bold', y=0.98)
+
+    plt.tight_layout(rect=[0, 0, 0.9, 0.95])
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    return fig
+
+
+# =============================================================================
 # Main Function
 # =============================================================================
 
 def generate_all_panels(data_dir: Path = None, output_dir: Path = None) -> None:
-    """Generate all 6 visualization panels (4 charts each, 24 charts total)."""
+    """Generate all 8 visualization panels (4 charts each, 32 charts total)."""
     if data_dir is None:
         data_dir = Path(__file__).parent.parent / 'data' / 'processed'
 
@@ -1183,12 +1667,20 @@ def generate_all_panels(data_dir: Path = None, output_dir: Path = None) -> None:
     plot_panel_6_protein_structure(results, output_dir / 'panel_6_protein_structure.png')
     print("      -> panel_6_protein_structure.png")
 
+    print("\n[9/10] Panel 7: Wavefunction Analysis (4 charts)...")
+    plot_panel_7_wavefunction(wavefunction, results, output_dir / 'panel_7_wavefunction.png')
+    print("      -> panel_7_wavefunction.png")
+
+    print("\n[10/10] Panel 8: 3D Electron Cloud (4 3D charts)...")
+    plot_panel_8_electron_cloud(wavefunction, results, output_dir / 'panel_8_electron_cloud.png')
+    print("      -> panel_8_electron_cloud.png")
+
     print("\n" + "=" * 80)
-    print("ALL 6 PANELS GENERATED (24 CHARTS TOTAL)")
+    print("ALL 8 PANELS GENERATED (32 CHARTS TOTAL)")
     print("=" * 80)
     print(f"\nOutput: {output_dir}")
     print("\nFiles:")
-    for i in range(1, 7):
+    for i in range(1, 9):
         print(f"  - panel_{i}_*.png (4 charts)")
     print("=" * 80)
 

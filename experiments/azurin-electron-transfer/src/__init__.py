@@ -27,6 +27,8 @@ from .visualization_panels import (
     plot_panel_4_probability,
     plot_panel_5_sentropy,
     plot_panel_6_protein_structure,
+    plot_panel_7_wavefunction,
+    plot_panel_8_electron_cloud,
 )
 
 __version__ = "1.0.0"
