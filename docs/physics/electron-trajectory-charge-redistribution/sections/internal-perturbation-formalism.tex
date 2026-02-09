@@ -1,0 +1,144 @@
+\section{Internal Perturbation Formalism}
+\label{sec:internal-perturbation}
+
+\subsection{From External to Internal Perturbation}
+
+The external perturbation framework~\cite{sachikonye2024trisection} describes the system Hamiltonian as:
+\begin{equation}
+\hat{H}(t) = \hat{H}_0 + \hat{V}_{\mathcal{P}}(\mathbf{r}, t)
+\label{eq:external-hamiltonian}
+\end{equation}
+where $\hat{H}_0$ is the unperturbed Hamiltonian and $\hat{V}_{\mathcal{P}}$ is an externally applied perturbation (electric or magnetic field gradient). The perturbation is \emph{external} in the sense that it is controlled by the experimenter and independent of the system's state.
+
+For internal perturbation, we replace the external potential with a \emph{self-generated} potential arising from the electron's own charge distribution:
+\begin{equation}
+\hat{H}_{\text{int}}(t) = \hat{H}_0 + \hat{V}_{\text{self}}[\rhoE(\mathbf{r}, t)]
+\label{eq:internal-hamiltonian}
+\end{equation}
+
+The key distinction is that $\hat{V}_{\text{self}}$ is a functional of the electron density $\rhoE$, which itself depends on the electron's wavefunction. This creates a self-consistent feedback loop: the electron's position determines the perturbation, which in turn affects the electron's evolution.
+
+\subsection{Charge Redistribution Potential}
+
+During electron transfer from donor site $D$ to acceptor site $A$, the electron density evolves as:
+\begin{equation}
+\rhoE(\mathbf{r}, t) = |\psi_D(\mathbf{r})|^2 f_D(t) + |\psi_A(\mathbf{r})|^2 f_A(t) + \psi_D^*(\mathbf{r})\psi_A(\mathbf{r}) c(t) + \text{c.c.}
+\label{eq:electron-density}
+\end{equation}
+where $\psi_D$ and $\psi_A$ are the donor and acceptor wavefunctions, $f_D(t)$ and $f_A(t)$ are time-dependent occupation probabilities with $f_D(t) + f_A(t) = 1$, and $c(t)$ is the coherence term.
+
+The self-potential has two contributions:
+
+\subsubsection{Coulomb Self-Interaction}
+
+The Coulomb contribution from the redistributing charge is:
+\begin{equation}
+V_{\text{Coul}}(\mathbf{r}, t) = \int \frac{\rhoE(\mathbf{r}', t - \tauret)}{4\pi\epsilon_0 |\mathbf{r} - \mathbf{r}'|} \, d^3r'
+\label{eq:coulomb-self}
+\end{equation}
+where the retardation time $\tauret = |\mathbf{r} - \mathbf{r}'|/c$ accounts for the finite speed of electromagnetic propagation.
+
+For transfer distances $R \sim 15$~\AA\ and $c \sim 3 \times 10^8$ m/s:
+\begin{equation}
+\tauret \sim \frac{15 \times 10^{-10} \text{ m}}{3 \times 10^8 \text{ m/s}} \sim 5 \times 10^{-18} \text{ s} = 5 \text{ attoseconds}
+\label{eq:retardation-estimate}
+\end{equation}
+
+This is much shorter than electron transfer timescales (femtoseconds to picoseconds), so the perturbation effectively tracks the electron instantaneously.
+
+\subsubsection{Polarization Response}
+
+The surrounding protein matrix responds to charge redistribution through electronic polarization:
+\begin{equation}
+V_{\text{pol}}(\mathbf{r}, t) = -\frac{1}{2} \int \mathbf{P}(\mathbf{r}', t) \cdot \mathbf{E}_{\rhoE}(\mathbf{r}', t) \, d^3r'
+\label{eq:polarization-potential}
+\end{equation}
+where $\mathbf{P}(\mathbf{r}', t) = \chi(\mathbf{r}') \mathbf{E}_{\rhoE}(\mathbf{r}', t)$ is the induced polarization and $\chi$ is the local susceptibility.
+
+For protein environments with typical dielectric constants $\epsilon \sim 4$--10:
+\begin{equation}
+V_{\text{pol}} \sim \frac{(\epsilon - 1)}{\epsilon} V_{\text{Coul}} \sim 0.75 V_{\text{Coul}}
+\label{eq:polarization-estimate}
+\end{equation}
+
+The total self-potential is:
+\begin{equation}
+\Vself(\mathbf{r}, t) = V_{\text{Coul}}(\mathbf{r}, t) + V_{\text{pol}}(\mathbf{r}, t)
+\label{eq:total-self-potential}
+\end{equation}
+
+\subsection{Perturbation Strength and Trisection Criterion}
+
+For effective trisection, the perturbation must be strong enough to create position-dependent responses. The criterion is:
+\begin{equation}
+E_{\text{pert}} = |\nabla \Vself| \cdot \delta r > \frac{E_{\text{orbital}}}{n^2}
+\label{eq:perturbation-criterion}
+\end{equation}
+where $\delta r$ is the partition size, $E_{\text{orbital}}$ is the electron's orbital energy, and $n$ is the partition depth.
+
+\begin{theorem}[Internal Perturbation Strength]
+\label{thm:perturbation-strength}
+For an electron transferring between sites separated by distance $R$, the self-generated electric field gradient satisfies:
+\begin{equation}
+|\nabla E_{\text{self}}| \sim \frac{e}{4\pi\epsilon_0 \epsilon R^3} \sim 10^{15} \text{ V/m}^2
+\end{equation}
+for typical protein transfer distances $R \sim 15$~\AA\ and dielectric $\epsilon \sim 4$.
+\end{theorem}
+
+\begin{proof}
+The electric field from a point charge at distance $R$ is $E \sim e/(4\pi\epsilon_0 \epsilon R^2)$. The gradient is $|\nabla E| \sim E/R \sim e/(4\pi\epsilon_0 \epsilon R^3)$. Substituting values:
+\begin{align}
+|\nabla E| &\sim \frac{1.6 \times 10^{-19} \text{ C}}{4\pi (8.85 \times 10^{-12} \text{ F/m})(4)(15 \times 10^{-10} \text{ m})^3} \\
+&\sim 10^{15} \text{ V/m}^2
+\end{align}
+\end{proof}
+
+This internal gradient ($10^{15}$ V/m$^2$) is $\sim 10^9$ times larger than the external gradients used in the original trisection framework ($10^6$ V/m$^2$), ensuring that internal perturbation is sufficiently strong for localization.
+
+\subsection{Partition Response Signatures}
+
+The three-outcome response encoding follows from detecting whether the electron density responds to radial or angular field gradients:
+
+\begin{definition}[Response Signature]
+The response of the electron at position $\mathbf{r}$ to internal perturbation $\Vself$ is characterized by:
+\begin{align}
+r_1 &= \mathbf{1}\left[ \left| \frac{\partial \rhoE}{\partial r} \right| > \theta_r \right] \quad \text{(radial response)} \\
+r_2 &= \mathbf{1}\left[ \left| \frac{1}{r}\frac{\partial \rhoE}{\partial \theta} \right| > \theta_\theta \right] \quad \text{(angular response)}
+\end{align}
+where $\theta_r$ and $\theta_\theta$ are detection thresholds.
+\end{definition}
+
+The trit assignment is:
+\begin{equation}
+t = \begin{cases}
+0 & \text{if } (r_1, r_2) = (1, 0) \quad \text{(inner radial shell)} \\
+1 & \text{if } (r_1, r_2) = (0, 1) \quad \text{(angular intermediate)} \\
+2 & \text{if } (r_1, r_2) = (0, 0) \quad \text{(outer radial shell)}
+\end{cases}
+\label{eq:trit-assignment}
+\end{equation}
+
+The case $(r_1, r_2) = (1, 1)$ is forbidden by the orthogonality of radial and angular gradients (Section~\ref{sec:orthogonal-axes}).
+
+\subsection{Information Content}
+
+Each trisection measurement extracts:
+\begin{equation}
+I = \log_2 3 \approx 1.585 \text{ bits}
+\label{eq:information-per-trit}
+\end{equation}
+
+For $N$ distinguishable positions along the transfer pathway, localization requires:
+\begin{equation}
+k = \log_3 N = \frac{\log_2 N}{\log_2 3} \approx 0.631 \log_2 N
+\label{eq:trisection-depth}
+\end{equation}
+iterations, representing a 37\% reduction compared to binary search.
+
+For a 15~\AA\ pathway with 0.1~\AA\ resolution, $N = 150$ positions, requiring:
+\begin{equation}
+k = \log_3 150 \approx 4.6 \text{ iterations} \approx 5 \text{ trisection steps}
+\label{eq:typical-depth}
+\end{equation}
+
+Each step involves two gradient measurements (radial and angular), for a total of $\sim 10$ measurements.

@@ -1,0 +1,98 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: protein-folding-trajectory.aux
+Reallocating 'name_of_file' (item size: 1) to 32 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+The style file: apsrev4-2.bst
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: protein-folding-trajectoryNotes.bib
+Database file #2: references.bib
+Warning--I didn't find a database entry for "jumper2021alphafold"
+Warning--I didn't find a database entry for "kuramoto1975self"
+Warning--I didn't find a database entry for "nibbering2005ultrafast"
+Warning--I didn't find a database entry for "meilleur2009neutron"
+Warning--I didn't find a database entry for "winfree1967biological"
+Warning--I didn't find a database entry for "glass2001synchronization"
+Warning--I didn't find a database entry for "pikovsky2001synchronization"
+Warning--I didn't find a database entry for "dill1990dominant"
+Warning--I didn't find a database entry for "chandler2005interfaces"
+Warning--I didn't find a database entry for "liang1996anatomy"
+Warning--I didn't find a database entry for "kumar2000salt"
+Warning--I didn't find a database entry for "kyte1982simple"
+Warning--I didn't find a database entry for "zamyatnin1972protein"
+Warning--I didn't find a database entry for "henikoff1992amino"
+Warning--I didn't find a database entry for "dill2008protein"
+Warning--I didn't find a database entry for "leff2003maxwell"
+Warning--I didn't find a database entry for "szilard1929entropy"
+Warning--I didn't find a database entry for "baker1984hydrogen"
+Warning--I didn't find a database entry for "mcdonald1994satisfying"
+Warning--I didn't find a database entry for "blondel2008fast"
+Warning--I didn't find a database entry for "kabsch1983dictionary"
+Warning--I didn't find a database entry for "kubelka2003experimental"
+Warning--I didn't find a database entry for "brandes2001faster"
+Warning--I didn't find a database entry for "onuchic1997theory"
+Warning--I didn't find a database entry for "fersht2000transition"
+control{REVTEX42Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{apsrev42Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{0}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (0) allowed
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+You've used 14 entries,
+            6079 wiz_defined-function locations,
+            1750 strings with 17746 characters,
+and the built_in function-call counts, 12162 in all, are:
+= -- 855
+> -- 257
+< -- 90
++ -- 90
+- -- 74
+* -- 1753
+:= -- 1194
+add.period$ -- 12
+call.type$ -- 14
+change.case$ -- 59
+chr.to.int$ -- 24
+cite$ -- 14
+duplicate$ -- 1193
+empty$ -- 863
+format.name$ -- 132
+if$ -- 2395
+int.to.chr$ -- 1
+int.to.str$ -- 21
+missing$ -- 187
+newline$ -- 88
+num.names$ -- 36
+pop$ -- 482
+preamble$ -- 1
+purify$ -- 60
+quote$ -- 0
+skip$ -- 536
+stack$ -- 0
+substring$ -- 255
+swap$ -- 1073
+text.length$ -- 26
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 169
+warning$ -- 1
+while$ -- 44
+width$ -- 0
+write$ -- 153
+(There were 26 warnings)

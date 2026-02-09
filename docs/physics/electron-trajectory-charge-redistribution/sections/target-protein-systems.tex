@@ -1,0 +1,150 @@
+\section{Target Protein Systems}
+\label{sec:target-systems}
+
+Three protein systems are selected for experimental validation, chosen for their well-characterized electron transfer pathways, strong spectroscopic signatures, and increasing complexity.
+
+\subsection{Blue Copper Proteins: Plastocyanin and Azurin}
+
+\subsubsection{System Description}
+
+Blue copper proteins contain a single type 1 copper site that cycles between Cu$^{2+}$ (oxidized, paramagnetic) and Cu$^+$ (reduced, diamagnetic) states. The copper is coordinated by two histidine nitrogens, one cysteine sulfur, and one weakly bound methionine sulfur in a distorted tetrahedral geometry.
+
+Key parameters:
+\begin{itemize}
+\item \textbf{Redox potential}: $E^0 \approx +350$ mV vs.\ SHE
+\item \textbf{Reorganization energy}: $\lambda \approx 0.7$ eV
+\item \textbf{Electronic coupling}: $H_{DA} \approx 10^{-3}$ eV
+\item \textbf{Transfer rate}: $k_{\text{ET}} \sim 10^3$--$10^5$ s$^{-1}$
+\end{itemize}
+
+\subsubsection{Advantages for Internal Perturbation}
+
+Plastocyanin offers the simplest case for internal perturbation visualization:
+
+\begin{enumerate}
+\item \textbf{Single metal site}: The electron transfers to/from a single copper center, avoiding complications from multi-site systems.
+
+\item \textbf{Strong EPR signal}: Cu$^{2+}$ has an unpaired electron with characteristic $g$-tensor anisotropy ($g_\parallel \approx 2.2$, $g_\perp \approx 2.05$), enabling spin-state detection.
+
+\item \textbf{Intense optical absorption}: The Cu--S$_{\text{Cys}}$ charge transfer band at 600~nm ($\epsilon \sim 5000$ M$^{-1}$cm$^{-1}$) provides strong optical signal.
+
+\item \textbf{Small protein size}: Plastocyanin (99 residues, 10.5 kDa) and azurin (128 residues, 14 kDa) are small enough for high-resolution structural studies.
+\end{enumerate}
+
+\subsubsection{Charge Redistribution Characteristics}
+
+During Cu$^{2+} \to$ Cu$^+$ reduction:
+\begin{itemize}
+\item Electron density shifts from protein surface to copper $d_{x^2-y^2}$ orbital
+\item Electric field change at copper: $\Delta E \sim 10^8$ V/m
+\item Radial gradient dominated by Cu--ligand bond redistribution
+\item Angular gradient from $d$-orbital shape change
+\end{itemize}
+
+\subsection{Cytochrome c: Heme Iron Electron Transfer}
+
+\subsubsection{System Description}
+
+Cytochrome c is a 104-residue heme protein that shuttles electrons between Complex III and Complex IV in the mitochondrial respiratory chain. The heme iron cycles between Fe$^{3+}$ (ferric, low-spin $S = 1/2$) and Fe$^{2+}$ (ferrous, diamagnetic $S = 0$) states.
+
+Key parameters:
+\begin{itemize}
+\item \textbf{Redox potential}: $E^0 \approx +260$ mV vs.\ SHE
+\item \textbf{Transfer distance}: $R \approx 14$~\AA\ (edge-to-edge between heme groups)
+\item \textbf{Transfer pathway}: Aromatic residues (Trp, Phe, Tyr) form superexchange bridges
+\item \textbf{Transfer rate}: $k_{\text{ET}} \sim 10^5$--$10^6$ s$^{-1}$
+\end{itemize}
+
+\subsubsection{Advantages for Internal Perturbation}
+
+Cytochrome c offers intermediate complexity with rich spectroscopic signatures:
+
+\begin{enumerate}
+\item \textbf{Multiple spectroscopic probes}: Soret band (410 nm), Q-bands (520, 550 nm), and charge transfer bands provide optical handles.
+
+\item \textbf{EPR-active oxidized state}: Fe$^{3+}$ low-spin has characteristic EPR ($g_z \approx 3.0$, $g_y \approx 2.2$, $g_x \approx 1.2$).
+
+\item \textbf{Defined transfer pathway}: Crystal structures of cytochrome c--cytochrome c peroxidase complexes reveal the electron pathway through aromatic residues.
+
+\item \textbf{Hydrogen bond involvement}: The heme propionates form H-bonds with nearby residues, enabling coupling to H-bond oscillations.
+\end{enumerate}
+
+\subsubsection{Charge Redistribution Characteristics}
+
+During Fe$^{3+} \to$ Fe$^{2+}$ reduction:
+\begin{itemize}
+\item Electron density redistributes across the porphyrin $\pi$-system
+\item Electric field change at heme periphery: $\Delta E \sim 10^7$ V/m
+\item Strong angular gradients from porphyrin nodal structure
+\item Pathway intermediates (Trp, Tyr) show transient charge accumulation
+\end{itemize}
+
+\subsection{Photosynthetic Reaction Center: Ultrafast Cascade}
+
+\subsubsection{System Description}
+
+The bacterial photosynthetic reaction center (RC) performs light-driven electron transfer through a multi-step cascade:
+
+\begin{equation}
+\text{P}^* \xrightarrow{3 \text{ ps}} \text{P}^+\text{BPhe}^- \xrightarrow{200 \text{ ps}} \text{P}^+\text{Q}_A^- \xrightarrow{200 \text{ \textmu s}} \text{P}^+\text{Q}_B^-
+\label{eq:rc-cascade}
+\end{equation}
+
+where P is the special pair (bacteriochlorophyll dimer), BPhe is bacteriopheophytin, and Q$_A$/Q$_B$ are quinones.
+
+Key parameters:
+\begin{itemize}
+\item \textbf{Total transfer distance}: $\sim 23$~\AA\ from P to Q$_A$
+\item \textbf{Initial step (P$^* \to$ BPhe)}: 3 ps, fastest known biological ET
+\item \textbf{Quantum efficiency}: $>99\%$
+\item \textbf{Reorganization energy}: $\lambda \approx 0.25$ eV (unusually small)
+\end{itemize}
+
+\subsubsection{Advantages for Internal Perturbation}
+
+The photosynthetic RC provides the most demanding test case:
+
+\begin{enumerate}
+\item \textbf{Ultrafast timescales}: The 3 ps primary step requires femtosecond time resolution.
+
+\item \textbf{Multiple intermediates}: The cascade through BPhe, Q$_A$, Q$_B$ provides multiple localization checkpoints.
+
+\item \textbf{Near-unity efficiency}: The high quantum yield implies deterministic trajectory (consistent with our framework).
+
+\item \textbf{Defined structure}: High-resolution crystal structures (1.8~\AA) reveal atomic details of the transfer pathway.
+\end{enumerate}
+
+\subsubsection{Charge Redistribution Characteristics}
+
+During the P$^* \to$ BPhe$^-$ step:
+\begin{itemize}
+\item Electron density shifts across 10~\AA\ in 3 ps
+\item Transient electric field: $\Delta E \sim 10^9$ V/m
+\item Strong radial gradient along the L-branch pathway
+\item Angular gradients from chlorophyll ring geometry
+\end{itemize}
+
+\subsection{Comparative Analysis}
+
+\begin{table}[h]
+\centering
+\caption{Comparison of target protein systems for internal perturbation electron trajectory visualization.}
+\label{tab:system-comparison}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Property & Blue Copper & Cytochrome c & Reaction Center \\
+\midrule
+Transfer distance (\AA) & $<5$ & 14 & 23 \\
+Transfer time & \textmu s--ms & \textmu s & 3 ps \\
+Number of sites & 1 & 1 (via pathway) & 4 \\
+$\Delta E$ (V/m) & $10^8$ & $10^7$ & $10^9$ \\
+EPR signal & Strong & Medium & Weak \\
+Optical signal & Strong & Strong & Very strong \\
+Complexity & Low & Medium & High \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Recommended Experimental Sequence}
+
+We recommend starting with blue copper proteins (simplest case), proceeding to cytochrome c (intermediate pathway complexity), and culminating with the photosynthetic reaction center (ultrafast, multi-step cascade). This progression allows method development on tractable systems before tackling the most challenging target.

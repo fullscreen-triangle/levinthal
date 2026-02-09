@@ -1,0 +1,163 @@
+\section{Orthogonal Perturbation Axes from Charge Redistribution}
+\label{sec:orthogonal-axes}
+
+\subsection{Decomposition into Radial and Angular Components}
+
+In the external perturbation framework, orthogonality is achieved through physically distinct perturbation sources: electric field gradients couple to electric dipole moment while magnetic field gradients couple to magnetic moment. For internal perturbation, we must identify orthogonal components within the single charge redistribution process.
+
+The key observation is that charge redistribution during electron transfer has natural decomposition in spherical coordinates centered on the transfer pathway:
+
+\begin{definition}[Radial Charge Gradient]
+The radial component of charge redistribution is:
+\begin{equation}
+\nabla_r \rhoE = \frac{\partial \rhoE}{\partial r} \hat{\mathbf{r}}
+\label{eq:radial-gradient}
+\end{equation}
+where $r$ is the distance from the transfer axis and $\hat{\mathbf{r}}$ is the radial unit vector.
+\end{definition}
+
+\begin{definition}[Angular Charge Gradient]
+The angular component of charge redistribution is:
+\begin{equation}
+\nabla_\theta \rhoE = \frac{1}{r}\frac{\partial \rhoE}{\partial \theta} \hat{\boldsymbol{\theta}}
+\label{eq:angular-gradient}
+\end{equation}
+where $\theta$ is the polar angle and $\hat{\boldsymbol{\theta}}$ is the angular unit vector.
+\end{definition}
+
+\subsection{Physical Interpretation}
+
+The two gradient components couple to distinct aspects of electron motion:
+
+\subsubsection{Radial Gradient: Linear Momentum Coupling}
+
+The radial gradient $\nabla_r \rhoE$ measures how electron density changes with distance from the transfer axis. This gradient creates a force:
+\begin{equation}
+\mathbf{F}_r = -e \nabla_r \Vself = -e \frac{\partial \Vself}{\partial r} \hat{\mathbf{r}}
+\label{eq:radial-force}
+\end{equation}
+that couples to the electron's \emph{linear momentum} along the radial direction.
+
+Physically, the radial gradient is large when:
+\begin{itemize}
+\item The electron is transitioning between donor and acceptor (charge moving radially)
+\item The electron occupies an orbital with radial nodes (s, d orbitals)
+\item The protein matrix has radial dielectric inhomogeneity
+\end{itemize}
+
+\subsubsection{Angular Gradient: Angular Momentum Coupling}
+
+The angular gradient $\nabla_\theta \rhoE$ measures how electron density changes with angle around the transfer axis. This gradient creates a torque:
+\begin{equation}
+\boldsymbol{\tau}_\theta = -e \mathbf{r} \times \nabla_\theta \Vself
+\label{eq:angular-torque}
+\end{equation}
+that couples to the electron's \emph{angular momentum} about the transfer axis.
+
+Physically, the angular gradient is large when:
+\begin{itemize}
+\item The electron is in an orbital with angular nodes (p, d, f orbitals)
+\item The transfer pathway has helical character (common in proteins)
+\item Nearby aromatic residues create angular anisotropy
+\end{itemize}
+
+\subsection{Orthogonality Proof}
+
+\begin{theorem}[Gradient Orthogonality]
+\label{thm:orthogonality}
+The radial and angular charge redistribution gradients are orthogonal observables:
+\begin{equation}
+[\nabla_r \rhoE, \nabla_\theta \rhoE] = 0
+\label{eq:commutation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The proof proceeds through the tensor product structure of spherical coordinates.
+
+The Hilbert space of electron states decomposes as:
+\begin{equation}
+\mathcal{H} = \mathcal{H}_r \otimes \mathcal{H}_\theta \otimes \mathcal{H}_\phi
+\label{eq:hilbert-decomposition}
+\end{equation}
+where $\mathcal{H}_r$ is spanned by radial wavefunctions $R_{n\ell}(r)$, $\mathcal{H}_\theta$ by associated Legendre polynomials $P_\ell^m(\cos\theta)$, and $\mathcal{H}_\phi$ by azimuthal phase factors $e^{im\phi}$.
+
+The radial gradient operator acts only on $\mathcal{H}_r$:
+\begin{equation}
+\nabla_r \rhoE = \frac{\partial}{\partial r} \otimes \mathbf{1}_\theta \otimes \mathbf{1}_\phi
+\label{eq:radial-operator}
+\end{equation}
+
+The angular gradient operator acts only on $\mathcal{H}_\theta$:
+\begin{equation}
+\nabla_\theta \rhoE = \mathbf{1}_r \otimes \frac{1}{r}\frac{\partial}{\partial \theta} \otimes \mathbf{1}_\phi
+\label{eq:angular-operator}
+\end{equation}
+
+Operators acting on different tensor factors commute:
+\begin{equation}
+[\nabla_r \rhoE, \nabla_\theta \rhoE] = \left[\frac{\partial}{\partial r}, \mathbf{1}_r\right] \otimes \left[\mathbf{1}_\theta, \frac{1}{r}\frac{\partial}{\partial \theta}\right] \otimes [\mathbf{1}_\phi, \mathbf{1}_\phi] = 0
+\label{eq:commutator-calculation}
+\end{equation}
+\end{proof}
+
+\subsection{Three-Outcome Measurement}
+
+The orthogonality ensures that measuring the radial gradient does not disturb the angular gradient, and vice versa. This enables three-outcome measurements:
+
+\begin{enumerate}
+\item \textbf{Response to radial gradient only} $(r_1, r_2) = (1, 0)$: Electron is in a region where radial charge redistribution dominates. Assigned trit $t = 0$.
+
+\item \textbf{Response to angular gradient only} $(r_1, r_2) = (0, 1)$: Electron is in a region where angular charge redistribution dominates. Assigned trit $t = 1$.
+
+\item \textbf{No response to either gradient} $(r_1, r_2) = (0, 0)$: Electron is in a region where charge redistribution is minimal (e.g., far from the active transfer region). Assigned trit $t = 2$.
+\end{enumerate}
+
+The fourth possibility $(r_1, r_2) = (1, 1)$ is forbidden by orthogonality: if the electron responds strongly to the radial gradient, it must be in a radially-dominated state that has minimal angular gradient response.
+
+\subsection{Spatial Partition Structure}
+
+The three-outcome measurement partitions the transfer region into three zones:
+
+\begin{definition}[Radial Zone]
+The radial zone $\Omega_r$ consists of positions where $|\nabla_r \rhoE| > |\nabla_\theta \rhoE|$:
+\begin{equation}
+\Omega_r = \left\{ \mathbf{r} : \left|\frac{\partial \rhoE}{\partial r}\right| > \frac{1}{r}\left|\frac{\partial \rhoE}{\partial \theta}\right| \right\}
+\label{eq:radial-zone}
+\end{equation}
+This typically includes the donor and acceptor sites and the direct transfer pathway between them.
+\end{definition}
+
+\begin{definition}[Angular Zone]
+The angular zone $\Omega_\theta$ consists of positions where $|\nabla_\theta \rhoE| > |\nabla_r \rhoE|$:
+\begin{equation}
+\Omega_\theta = \left\{ \mathbf{r} : \frac{1}{r}\left|\frac{\partial \rhoE}{\partial \theta}\right| > \left|\frac{\partial \rhoE}{\partial r}\right| \right\}
+\label{eq:angular-zone}
+\end{equation}
+This includes regions with curved electron pathways and aromatic intermediates.
+\end{definition}
+
+\begin{definition}[Null Zone]
+The null zone $\Omega_0$ consists of positions where both gradients are below threshold:
+\begin{equation}
+\Omega_0 = \left\{ \mathbf{r} : \left|\frac{\partial \rhoE}{\partial r}\right| < \theta_r \text{ and } \frac{1}{r}\left|\frac{\partial \rhoE}{\partial \theta}\right| < \theta_\theta \right\}
+\label{eq:null-zone}
+\end{equation}
+This includes the protein matrix far from the transfer pathway.
+\end{definition}
+
+The three zones satisfy $\Omega_r \cup \Omega_\theta \cup \Omega_0 = \mathbb{R}^3$ and are approximately disjoint (overlaps occur only at zone boundaries where gradients are equal).
+
+\subsection{Connection to Partition Coordinates}
+
+The radial and angular gradients connect to partition coordinates $(n, \ell, m, s)$:
+
+\begin{itemize}
+\item \textbf{Radial gradient} $\nabla_r \rhoE$ probes the principal quantum number $n$, which determines radial shell structure.
+
+\item \textbf{Angular gradient} $\nabla_\theta \rhoE$ probes the angular momentum quantum numbers $\ell$ and $m$, which determine angular nodal structure.
+
+\item \textbf{Spin} $s$ is probed separately through magnetic detection (EPR), not through charge gradients.
+\end{itemize}
+
+This partitioning is consistent with the selection rules derived from the protein folding framework: transitions with $\Delta\ell = \pm 1$ involve changes in angular structure (angular gradient response), while transitions within the same $\ell$ manifold involve radial reorganization (radial gradient response).
