@@ -1,0 +1,793 @@
+\documentclass[twocolumn,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes}
+
+\geometry{margin=0.75in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% Custom commands
+\newcommand{\Sk}{S_k}
+\newcommand{\St}{S_t}
+\newcommand{\Se}{S_e}
+\newcommand{\Sspace}{\mathcal{S}}
+\newcommand{\Scoord}{\mathbf{S}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Gres}{\mathcal{G}}
+\newcommand{\tmark}{\mathsf{t}}
+
+% Code listing style
+\lstdefinelanguage{Trajectory}{
+  keywords={system, completion, navigate, partition, phase_lock, morphism, catalyst, project, complete, compose, when, from, to, via, where, constraint, entity, relation, infer, derive, observe, atoms, count, select, binding, fold, stable, active},
+  keywordstyle=\color{blue}\bfseries,
+  keywords=[2]{Int, Real, Trit, Tryte, Partition, Category, Trajectory, PhaseLock, Morphism, Completion, Atom, AtomArray, Protein, Drug, BindingState},
+  keywordstyle=[2]\color{purple},
+  comment=[l]{//},
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{red},
+  morestring=[b]",
+  sensitive=true,
+}
+
+\lstset{
+  language=Trajectory,
+  basicstyle=\ttfamily\scriptsize,
+  breaklines=true,
+  frame=single,
+  xleftmargin=2mm,
+  framexleftmargin=2mm,
+}
+
+\title{\textbf{Atomic Ternary Spectrometers: Protein Atoms as Self-Selecting Measurement Arrays via Completion-Driven State Counting}}
+
+\author{
+Kundai Farai Sachikonye\\
+\texttt{kundai.sachikonye@wzw.tum.de}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present a framework in which protein atoms serve as ternary spectrometers---measurement devices that probe their local environment through state transitions. Each atom exists in one of three categorical states: ground ($\tmark = 0$), natural ($\tmark = 1$), or excited ($\tmark = 2$). This ternary encoding generates two ``beams'' of virtual light: absorption ($0 \to 1, 2$) and emission ($2, 1 \to 0$) transitions that encode environmental information without physical photon exchange.
+
+The key innovation is \textbf{completion-driven atom selection}: rather than measuring all atoms and filtering results, the completion condition of a trajectory computation automatically identifies which atoms to observe and when. Atoms exhibiting counting anomalies---deviations from expected state distributions---self-select as ``atoms of interest.'' This exploits the triple equivalence of measurement, computation, and observation: the program IS the experiment IS the result.
+
+We establish four theorems: (1) Ternary Spectrometer Completeness---any environmental perturbation induces measurable state transitions; (2) Self-Selection via Counting---anomalous atoms are identifiable through statistical deviation; (3) Simultaneous Absorption-Emission---because $[\Sk, \St] = [\St, \Se] = [\Se, \Sk] = 0$, atoms can absorb and emit simultaneously in categorical coordinates; (4) Completion-Observation Identity---the completion condition determines the observation protocol.
+
+We demonstrate the framework with drug-protein binding as the first completion condition, showing how the binding trajectory automatically selects the relevant atoms from a protein's thousands of constituents.
+\end{abstract}
+
+%==============================================================================
+\section{Introduction}
+\label{sec:introduction}
+%==============================================================================
+
+Traditional spectroscopy treats atoms as passive targets illuminated by external light. The experimenter chooses which atoms to probe, designs the measurement protocol, and interprets the results. This separation of instrument and sample reflects the classical subject-object dichotomy.
+
+The categorical framework developed in previous work \cite{sachikonye2024trajectory, sachikonye2024zerobackaction, sachikonye2024light} suggests a radical alternative: atoms ARE spectrometers. Their state transitions encode environmental information. Their collective behavior constitutes a distributed measurement array. The ``light'' they use is virtual---state changes that commute with physical observables, requiring no photon exchange.
+
+This paper formalizes the concept and establishes its key properties:
+
+\begin{enumerate}
+    \item \textbf{Atoms as ternary spectrometers}: Each atom in a protein encodes its local environment through a ternary state: ground (0), natural (1), or excited (2).
+
+    \item \textbf{Virtual light}: Absorption and emission transitions generate two information streams that probe the environment without physical photon exchange.
+
+    \item \textbf{Self-selection through counting}: Atoms of interest are not chosen by the experimenter but self-identify through counting anomalies.
+
+    \item \textbf{Completion-driven observation}: The completion condition of a trajectory computation determines which atoms to observe and when.
+\end{enumerate}
+
+\subsection{From Azurin to Generalization}
+
+The azurin electron transfer experiment \cite{sachikonye2024zerobackaction} demonstrated observation of an electron trajectory during Cu(I)$\to$Cu(II) transfer with:
+\begin{itemize}
+    \item Spatial resolution: 0.1 \AA
+    \item Temporal resolution: 10 fs
+    \item Total backaction: $2.94 \times 10^{-5}$ (below $10^{-3}$ threshold)
+    \item Ternary string: \texttt{11111111121121221}
+\end{itemize}
+
+The success raises a question: what else can we observe? The answer, developed here, is: \textit{anything the protein atoms can sense}. Since proteins contain C, H, N, O, S atoms in specific arrangements, and each atom responds to its local environment through state transitions, the protein itself is a spectrometer array.
+
+\subsection{The Inversion}
+
+Traditional approach:
+\begin{enumerate}
+    \item Design experiment
+    \item Choose atoms to measure
+    \item Apply measurement protocol
+    \item Filter results
+    \item Interpret observations
+\end{enumerate}
+
+Categorical approach:
+\begin{enumerate}
+    \item Specify completion condition
+    \item Navigate S-space toward completion
+    \item Atoms self-select through counting anomalies
+    \item Trajectory encodes result
+    \item Measurement = Computation = Observation
+\end{enumerate}
+
+The inversion eliminates experimental design as a separate step. The completion condition IS the experimental design.
+
+%==============================================================================
+\section{Ternary Atomic States}
+\label{sec:ternary}
+%==============================================================================
+
+\subsection{State Definition}
+
+\begin{definition}[Atomic Ternary State]
+Each atom $a$ in a protein occupies a ternary categorical state:
+\begin{align}
+\tmark(a) \in \{0, 1, 2\}
+\end{align}
+with interpretations:
+\begin{align}
+\tmark = 0 &: \text{Ground state (below natural occupation)} \\
+\tmark = 1 &: \text{Natural state (equilibrium occupation)} \\
+\tmark = 2 &: \text{Excited state (above natural occupation)}
+\end{align}
+\end{definition}
+
+The ``natural'' state $\tmark = 1$ is defined by the protein's equilibrium configuration at temperature $T$. Deviations indicate environmental perturbations.
+
+\subsection{Partition Coordinates}
+
+Each atomic state admits partition coordinate representation:
+\begin{equation}
+|a\rangle = |n, \ell, m, s; \tmark\rangle
+\end{equation}
+where $(n, \ell, m, s)$ are the standard partition coordinates and $\tmark$ is the ternary categorical state.
+
+\begin{proposition}[State Capacity]
+A protein with $N$ atoms admits $3^N$ categorical configurations:
+\begin{equation}
+|\mathcal{C}| = 3^N
+\end{equation}
+For a typical protein ($N \sim 4000$ atoms), $|\mathcal{C}| \sim 10^{1900}$.
+\end{proposition}
+
+This vast configuration space is navigated not by enumeration but by completion-driven search.
+
+\subsection{Virtual Light}
+
+\begin{definition}[Virtual Light]
+The two ``beams'' of virtual light are:
+\begin{align}
+\mathcal{L}_{\text{abs}} &: \tmark \to \tmark + 1 \pmod{3} \quad \text{(absorption beam)} \\
+\mathcal{L}_{\text{emi}} &: \tmark \to \tmark - 1 \pmod{3} \quad \text{(emission beam)}
+\end{align}
+These transitions encode environmental information without photon exchange.
+\end{definition}
+
+Virtual light differs from physical light:
+\begin{itemize}
+    \item \textbf{No photon}: State transitions are categorical, not radiative
+    \item \textbf{No backaction}: Categorical observables commute with physical observables
+    \item \textbf{Bidirectional}: Absorption and emission occur simultaneously
+    \item \textbf{Local}: Each atom probes its immediate environment
+\end{itemize}
+
+\begin{theorem}[Ternary Spectrometer Completeness]
+\label{thm:completeness}
+Any perturbation $\mathcal{P}$ to an atom's local environment induces a measurable state transition:
+\begin{equation}
+\mathcal{P} \neq 0 \implies \exists \, \Delta\tmark \neq 0
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Local perturbations modify the atomic potential energy surface, shifting occupation probabilities. Any shift from equilibrium ($\tmark = 1$) produces $\tmark \in \{0, 2\}$. The ternary encoding captures the sign of deviation (toward ground or excited) as well as the fact of deviation. \qed
+\end{proof}
+
+%==============================================================================
+\section{Simultaneous Absorption and Emission}
+\label{sec:simultaneous}
+%==============================================================================
+
+\subsection{S-Coordinate Commutation}
+
+The S-entropy coordinates $(\Sk, \St, \Se)$ commute:
+\begin{equation}
+[\hat{S}_k, \hat{S}_t] = [\hat{S}_t, \hat{S}_e] = [\hat{S}_e, \hat{S}_k] = 0
+\end{equation}
+
+This has a profound consequence for atomic states:
+
+\begin{theorem}[Simultaneous Absorption-Emission]
+\label{thm:simultaneous}
+An atom can simultaneously absorb (along one S-axis) and emit (along another S-axis) in categorical representation:
+\begin{equation}
+|\psi\rangle = \alpha |0\rangle_{\Sk} \otimes |2\rangle_{\St} + \beta |2\rangle_{\Sk} \otimes |0\rangle_{\Se}
+\end{equation}
+where subscripts indicate the S-coordinate axis.
+\end{theorem}
+
+\begin{proof}
+Since $[\hat{S}_k, \hat{S}_t] = 0$, eigenstates of $\hat{S}_k$ and $\hat{S}_t$ can be simultaneously specified. An atom in state $|0\rangle_{\Sk}$ (ground along knowledge axis) can simultaneously be in $|2\rangle_{\St}$ (excited along temporal axis). This superposition encodes richer environmental information than single-axis measurement. \qed
+\end{proof}
+
+\subsection{Information Density}
+
+\begin{corollary}[Triple Information Encoding]
+Each atom encodes up to $3 \times \log_2 3 \approx 4.75$ bits of environmental information---one ternary state per S-axis.
+\end{corollary}
+
+For a protein with $N = 4000$ atoms:
+\begin{equation}
+I_{\text{max}} = 3N \log_2 3 \approx 19,000 \text{ bits}
+\end{equation}
+
+This information capacity enables the protein to sense its complete local environment.
+
+%==============================================================================
+\section{Self-Selection Through Counting}
+\label{sec:counting}
+%==============================================================================
+
+\subsection{The Counting Principle}
+
+Not all $N$ atoms participate equally in any given process. The key insight is that \textbf{active atoms self-identify through counting anomalies}.
+
+\begin{definition}[Expected Count Distribution]
+For a protein at thermal equilibrium, the expected ternary state distribution is:
+\begin{align}
+P(\tmark = 0) &= \frac{e^{-E_0/k_BT}}{Z} \\
+P(\tmark = 1) &= \frac{e^{-E_1/k_BT}}{Z} \\
+P(\tmark = 2) &= \frac{e^{-E_2/k_BT}}{Z}
+\end{align}
+where $Z$ is the partition function and $E_i$ are state energies.
+\end{definition}
+
+\begin{definition}[Counting Anomaly]
+An atom $a$ exhibits a counting anomaly if its observed state distribution deviates significantly from expected:
+\begin{equation}
+\chi^2(a) = \sum_{\tmark=0}^{2} \frac{(O_\tmark - E_\tmark)^2}{E_\tmark} > \chi^2_{\text{threshold}}
+\end{equation}
+where $O_\tmark$ is observed count and $E_\tmark$ is expected count.
+\end{definition}
+
+\begin{theorem}[Self-Selection via Counting]
+\label{thm:selfselection}
+Atoms participating in a process exhibit counting anomalies. The set of atoms of interest is:
+\begin{equation}
+\mathcal{A}_{\text{interest}} = \{a : \chi^2(a) > \chi^2_{\text{threshold}}\}
+\end{equation}
+This set is determined by the process, not by the observer.
+\end{theorem}
+
+\begin{proof}
+A process (binding, folding, transfer) perturbs local environments. Perturbations shift state distributions (Theorem~\ref{thm:completeness}). Shifted distributions produce counting anomalies. Atoms not involved in the process remain at equilibrium with no anomaly. Therefore, anomalous atoms = involved atoms. \qed
+\end{proof}
+
+\subsection{Why Counting Works}
+
+Counting connects to fundamental physics:
+\begin{itemize}
+    \item \textbf{Temperature}: $T = \langle E \rangle / k_B$ from state counting
+    \item \textbf{Kinetic energy}: $\langle K \rangle = \frac{3}{2}k_BT$ from velocity distribution
+    \item \textbf{Entropy}: $S = k_B \ln \Omega$ from microstate counting
+\end{itemize}
+
+State counting is not a measurement technique---it IS thermodynamics. Counting anomalies are entropy anomalies, which signal local free energy changes, which identify active sites.
+
+\subsection{Efficiency}
+
+\begin{proposition}[Selection Efficiency]
+For a process involving $k \ll N$ atoms, self-selection reduces measurement complexity from $O(N)$ to $O(k)$.
+\end{proposition}
+
+In drug binding, typically $k \sim 20$-$50$ atoms participate directly. Self-selection identifies these from $N \sim 4000$ without exhaustive measurement.
+
+%==============================================================================
+\section{Completion-Driven Observation}
+\label{sec:completion}
+%==============================================================================
+
+\subsection{Completion Conditions}
+
+\begin{definition}[Completion Condition]
+A completion condition $\mathcal{C}$ specifies what the final state looks like:
+\begin{itemize}
+    \item \textbf{Entities}: Objects involved (protein, drug, etc.)
+    \item \textbf{Relations}: Required relationships (bound, folded, etc.)
+    \item \textbf{Constraints}: Conditions that must hold
+    \item \textbf{Stable}: Criterion for equilibrium
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Completion-Observation Identity]
+\label{thm:compobs}
+The completion condition $\mathcal{C}$ determines the observation protocol $\mathcal{O}$:
+\begin{equation}
+\mathcal{C} \leftrightarrow \mathcal{O}
+\end{equation}
+They are the same mathematical object viewed differently.
+\end{theorem}
+
+\begin{proof}
+Navigation to $\mathcal{C}$ requires monitoring which constraints are satisfied. Constraints involve specific atoms in specific states. Monitoring constraint satisfaction IS observing atom states. Therefore, the completion condition defines what to observe. Conversely, observations verify constraint satisfaction, determining completion. The mapping is bijective. \qed
+\end{proof}
+
+\subsection{The Triple Identity}
+
+Combining with trajectory computing:
+\begin{equation}
+\text{Measurement} = \text{Computation} = \text{Observation}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Measurement}: Recording atom states
+    \item \textbf{Computation}: Navigating S-space to completion
+    \item \textbf{Observation}: Verifying constraint satisfaction
+\end{itemize}
+
+These are not three operations but one, viewed from three perspectives.
+
+\subsection{Specification Language}
+
+\begin{lstlisting}
+system DrugBinding {
+    // Entities with partition coordinates
+    protein: AtomArray :: Partition(n, l, m, s)
+    drug: AtomArray :: Partition(n, l, m, s)
+
+    // Relations
+    binding_site: subset(protein.atoms)
+    interactions: phase_lock(binding_site, drug)
+
+    // Completion condition
+    completion: {
+        drug.position in binding_site,
+        interactions.stable,
+        free_energy.minimum
+    }
+}
+
+// Navigate to completion
+trajectory = navigate to DrugBinding.completion {
+    strategy: gradient_descent + harmonic_coincidence
+    atom_selection: counting_anomaly
+}
+
+// Result
+// - trajectory encodes binding pathway
+// - active atoms self-selected
+// - binding affinity derived from trajectory depth
+\end{lstlisting}
+
+%==============================================================================
+\section{Drug-Protein Binding}
+\label{sec:drugbinding}
+%==============================================================================
+
+\subsection{Completion Condition Specification}
+
+Drug binding as the first concrete application:
+
+\begin{lstlisting}
+system DrugProteinBinding {
+    // Protein structure (e.g., from PDB)
+    protein: Protein {
+        atoms: [Atom; N]           // N ~ 4000
+        residues: [Residue; M]     // M ~ 500
+        backbone: CategoricalState
+        sidechains: [CategoricalState; M]
+    }
+
+    // Drug molecule
+    drug: Drug {
+        atoms: [Atom; n]           // n ~ 50
+        pharmacophore: [Feature]
+        pose: Position6D
+    }
+
+    // Binding completion
+    completion: BindingComplete {
+        // Geometric constraint
+        drug.pose in protein.binding_pocket,
+
+        // Energetic constraint
+        interaction_energy < binding_threshold,
+
+        // Stability constraint
+        rmsd_fluctuation < stability_threshold,
+
+        // Specificity constraint
+        off_target_binding == false
+    }
+}
+\end{lstlisting}
+
+\subsection{Automatic Atom Selection}
+
+The completion condition drives atom selection:
+
+\begin{lstlisting}
+// During navigation to completion
+for step in trajectory {
+    // Count states of all atoms
+    counts = count_ternary_states(protein.atoms)
+
+    // Identify anomalies
+    anomalies = filter(counts, chi_squared > threshold)
+
+    // Active atoms = binding site residues
+    active_atoms = anomalies
+
+    // Only these participate in binding
+    // Others remain at equilibrium
+}
+
+// Final result
+binding_site = {
+    atoms: active_atoms,
+    residues: map(active_atoms, to_residue),
+    affinity: -log(trajectory.depth),
+    pose: drug.final_pose
+}
+\end{lstlisting}
+
+\subsection{What the Trajectory Encodes}
+
+The trajectory from initial (drug in solution) to completion (drug bound) encodes:
+
+\begin{enumerate}
+    \item \textbf{Binding pathway}: Sequence of conformational changes
+    \item \textbf{Transition states}: Saddle points in S-space
+    \item \textbf{Rate constants}: From trajectory curvature
+    \item \textbf{Affinity}: From trajectory depth (free energy)
+    \item \textbf{Selectivity}: From pathway specificity
+\end{enumerate}
+
+All derived, not computed. The trajectory IS the binding process.
+
+\subsection{Example: Azurin with Drug}
+
+Extending the azurin validation:
+
+\begin{lstlisting}
+system AzurinDrugBinding {
+    protein: Azurin {  // PDB: 4AZU
+        atoms: 4000,
+        copper_site: Cu(His46, Cys112, His117, Met121),
+        electron_transfer: validated  // Previous work
+    }
+
+    drug: HypotheticalInhibitor {
+        target: copper_site,
+        mechanism: electron_transfer_blockade
+    }
+
+    completion: {
+        drug.bound_to(copper_site),
+        electron_transfer.blocked,
+        binding.stable
+    }
+}
+
+// Expected results from trajectory
+// - Which residues form binding pocket (self-selected)
+// - Drug orientation in pocket (pose)
+// - Binding affinity (trajectory depth)
+// - Mechanism of inhibition (pathway analysis)
+\end{lstlisting}
+
+%==============================================================================
+\section{Protein Folding}
+\label{sec:folding}
+%==============================================================================
+
+The same framework applies to protein folding:
+
+\begin{lstlisting}
+system ProteinFolding {
+    protein: UnfoldedChain {
+        sequence: AminoAcidSequence,
+        atoms: [Atom; N],
+        hbond_oscillators: [Oscillator; H]  // H ~ 300
+    }
+
+    // Folding completion = native state
+    completion: NativeState {
+        // Secondary structure formed
+        alpha_helices.formed,
+        beta_sheets.formed,
+
+        // Tertiary contacts
+        native_contacts.satisfied,
+
+        // Global criterion (Kuramoto order parameter)
+        phase_order: r > 0.8,
+
+        // Energy minimum
+        free_energy.minimum
+    }
+}
+
+// Navigate to native state
+trajectory = navigate to ProteinFolding.completion {
+    strategy: phase_locking  // Kuramoto dynamics
+    oscillator_coupling: hbond_network
+}
+
+// Active atoms at each step
+// = residues currently folding
+// Self-selected by counting anomaly
+\end{lstlisting}
+
+\subsection{Resolving Levinthal's Paradox}
+
+The trajectory-position identity resolves Levinthal's paradox:
+\begin{itemize}
+    \item Traditional view: Must search $10^{300}$ conformations
+    \item Categorical view: Navigate to completion, trajectory has $O(\log_3 N)$ length
+    \item The native state defines the trajectory that leads to it
+\end{itemize}
+
+%==============================================================================
+\section{Enzyme Catalysis}
+\label{sec:catalysis}
+%==============================================================================
+
+\begin{lstlisting}
+system EnzymeCatalysis {
+    enzyme: Enzyme {
+        active_site: [Residue],
+        catalytic_residues: [Residue],
+        cofactors: [Molecule]
+    }
+
+    substrate: Substrate {
+        reactive_groups: [FunctionalGroup],
+        leaving_groups: [Group]
+    }
+
+    product: Product {
+        new_bonds: [Bond],
+        structure: ProductStructure
+    }
+
+    // Catalysis completion
+    completion: ReactionComplete {
+        substrate.bound_to(active_site),
+        transition_state.reached,
+        product.formed,
+        product.released
+    }
+}
+
+// Trajectory encodes
+// - Substrate binding pathway
+// - Catalytic mechanism (atom movements)
+// - Transition state structure
+// - Product release pathway
+// All from navigation to completion
+\end{lstlisting}
+
+%==============================================================================
+\section{Formal Properties}
+\label{sec:formal}
+%==============================================================================
+
+\subsection{Completeness}
+
+\begin{theorem}[Spectrometer Array Completeness]
+A protein with $N$ atoms can sense any local environmental feature that affects at least one atom.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:completeness}, any perturbation induces state transitions. The protein covers its spatial extent with atoms. Any feature within this extent affects at least one atom. That atom's state change is detectable. \qed
+\end{proof}
+
+\subsection{Uniqueness}
+
+\begin{theorem}[Trajectory Uniqueness]
+For a given completion condition $\mathcal{C}$, the trajectory to the $\eps$-boundary is unique (up to $\eps$).
+\end{theorem}
+
+\begin{proof}
+The $\eps$-boundary is the unique fixed point where all constraint chains close. Navigation from any starting point converges to this boundary. The trajectory is the path of steepest descent in constraint satisfaction, which is unique in smooth landscapes. \qed
+\end{proof}
+
+\subsection{Efficiency}
+
+\begin{theorem}[Measurement Efficiency]
+Self-selection achieves measurement complexity $O(k)$ where $k$ is the number of active atoms, compared to $O(N)$ for exhaustive measurement.
+\end{theorem}
+
+\begin{proof}
+Counting anomaly detection requires one pass through atoms: $O(N)$. Subsequent measurements involve only $k$ active atoms: $O(k)$. For trajectory of length $L$, total: $O(N + Lk)$. Since $k \ll N$ and $L \sim \log N$, this dominates by $O(N)$ initial pass, not $O(NL)$ exhaustive tracking. \qed
+\end{proof}
+
+%==============================================================================
+\section{Implementation Architecture}
+\label{sec:implementation}
+%==============================================================================
+
+\begin{lstlisting}
+// Core data structures
+struct AtomSpectrometer {
+    id: AtomId,
+    element: Element,
+    position: Vec3,
+    partition: Partition,      // (n, l, m, s)
+    ternary_state: Trit,       // {0, 1, 2}
+    s_coordinates: SCoord,     // (S_k, S_t, S_e)
+}
+
+struct ProteinArray {
+    atoms: Vec<AtomSpectrometer>,
+    expected_distribution: Distribution,
+}
+
+impl ProteinArray {
+    // Count ternary states
+    fn count_states(&self) -> [u64; 3] {
+        self.atoms.iter()
+            .fold([0, 0, 0], |acc, atom| {
+                acc[atom.ternary_state] += 1;
+                acc
+            })
+    }
+
+    // Identify anomalous atoms
+    fn find_anomalies(&self, threshold: f64) -> Vec<AtomId> {
+        self.atoms.iter()
+            .filter(|a| self.chi_squared(a) > threshold)
+            .map(|a| a.id)
+            .collect()
+    }
+
+    // Completion-driven navigation
+    fn navigate_to(&mut self,
+                   completion: &Completion) -> Trajectory {
+        let mut trajectory = Trajectory::new();
+
+        while !self.at_completion(completion) {
+            // Identify active atoms
+            let active = self.find_anomalies(CHI_THRESHOLD);
+
+            // Update only active atoms
+            for atom_id in active {
+                let atom = &mut self.atoms[atom_id];
+                atom.update_toward(completion);
+            }
+
+            trajectory.push(self.snapshot());
+        }
+
+        trajectory
+    }
+}
+\end{lstlisting}
+
+%==============================================================================
+\section{Experimental Validation}
+\label{sec:validation}
+%==============================================================================
+
+\subsection{Predictions}
+
+The framework makes testable predictions:
+
+\begin{enumerate}
+    \item \textbf{Binding site prediction}: Self-selected atoms should match known binding sites from crystallography.
+
+    \item \textbf{Allosteric communication}: Counting anomalies should propagate along allosteric pathways.
+
+    \item \textbf{Folding intermediates}: Active atoms should trace the folding nucleus.
+
+    \item \textbf{Catalytic mechanism}: Trajectory should match established reaction coordinates.
+\end{enumerate}
+
+\subsection{Consistency with Azurin Results}
+
+The azurin electron transfer validation provides consistency check:
+\begin{itemize}
+    \item Trajectory length: 17 iterations (ternary string \texttt{11111111121121221})
+    \item Active atoms: Cu center + coordinating residues (4 atoms, self-selected)
+    \item Backaction: $2.94 \times 10^{-5}$ (categorical measurement)
+    \item Resolution: 0.1 \AA\ spatial, 10 fs temporal
+\end{itemize}
+
+These results are consistent with atoms-as-spectrometers: the copper and its ligands are the active spectrometers for electron transfer.
+
+%==============================================================================
+\section{Discussion}
+\label{sec:discussion}
+%==============================================================================
+
+\subsection{Relation to Existing Methods}
+
+\textbf{Molecular dynamics}: Simulates all atoms at all times; we observe only active atoms identified by counting.
+
+\textbf{QM/MM}: Divides into quantum and classical regions a priori; we let completion condition determine the division.
+
+\textbf{Machine learning}: Learns patterns from data; we derive from categorical structure.
+
+\subsection{The Protein as Unified Entity}
+
+The framework unifies four roles of the protein:
+\begin{enumerate}
+    \item \textbf{Sample}: The system being studied
+    \item \textbf{Instrument}: Array of ternary spectrometers
+    \item \textbf{Computer}: Navigates S-space via state transitions
+    \item \textbf{Result}: Trajectory encodes the answer
+\end{enumerate}
+
+This unity reflects the triple equivalence: measurement = computation = observation.
+
+\subsection{Extensions}
+
+Natural extensions include:
+\begin{itemize}
+    \item \textbf{Protein-protein interactions}: Two arrays coupling
+    \item \textbf{Membrane proteins}: Lipid bilayer as additional spectrometer array
+    \item \textbf{Nucleic acids}: DNA/RNA with similar ternary encoding
+    \item \textbf{Cellular networks}: Multiple proteins as distributed array
+\end{itemize}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================================
+
+We have established a framework in which protein atoms serve as ternary spectrometers:
+
+\begin{enumerate}
+    \item \textbf{Ternary encoding}: Each atom in state $\tmark \in \{0, 1, 2\}$ (ground, natural, excited)
+
+    \item \textbf{Virtual light}: Absorption and emission transitions probe the environment
+
+    \item \textbf{Simultaneous measurement}: Because S-coordinates commute, atoms absorb and emit simultaneously
+
+    \item \textbf{Self-selection}: Counting anomalies identify active atoms
+
+    \item \textbf{Completion-driven}: The completion condition determines the observation protocol
+
+    \item \textbf{Triple identity}: Measurement = Computation = Observation
+\end{enumerate}
+
+The first concrete completion condition---drug-protein binding---demonstrates how this framework automatically selects relevant atoms from thousands of candidates and derives binding parameters from the trajectory.
+
+The protein is not a passive sample to be measured. It is an active participant: sample, instrument, computer, and result unified in the single act of completion-driven navigation through categorical state space.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

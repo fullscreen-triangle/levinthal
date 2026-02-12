@@ -1,0 +1,114 @@
+\section{Thermodynamics of Categorical Gas Systems}
+
+\subsection{Categorical Velocity Distribution}
+
+\begin{definition}[Categorical Velocity]
+For particle transitioning between partition cells of size $\Delta x$ with transition time $\Delta t$, the categorical velocity is $v_{\mathcal{C}} = \Delta x/\Delta t$. For bounded system with maximum cell size $\Delta x_{\max} = L$ and minimum transition time $\Delta t_{\min} = 2\pi/\omega_{\max}$, the maximum categorical velocity is $v_{\max} = L\omega_{\max}/(2\pi) = c$ (speed of light).
+\end{definition}
+
+\begin{theorem}[Bounded Velocity Distribution]
+\label{thm:bounded_velocity}
+For categorical gas at temperature $T$, the velocity distribution is:
+\begin{equation}
+f(v) = A v^2 e^{-mv^2/2k_BT} \Theta(v_{\max} - v)
+\end{equation}
+where $\Theta$ is Heaviside function enforcing $v \leq v_{\max} = c$. This resolves the Maxwell-Boltzmann infinite tail paradox.
+\end{theorem}
+
+\begin{proof}
+Standard Maxwell-Boltzmann distribution $f_{\text{MB}}(v) \propto v^2 e^{-mv^2/2k_BT}$ extends to $v \to \infty$, violating relativity. For categorical system, velocity is bounded by maximum partition transition rate.
+
+The bounded distribution is:
+\begin{equation}
+f(v) = \begin{cases}
+A v^2 e^{-mv^2/2k_BT} & \text{if } v \leq v_{\max} \\
+0 & \text{if } v > v_{\max}
+\end{cases}
+\end{equation}
+
+Normalization constant: $A = \left[\int_0^{v_{\max}} v^2 e^{-mv^2/2k_BT} dv\right]^{-1}$.
+
+For $k_BT \ll mc^2$, the exponential suppresses velocities near $c$, so $f(v) \approx f_{\text{MB}}(v)$ for $v \ll c$. For $k_BT \sim mc^2$, the cutoff becomes significant, preventing infinite tail.
+
+Mean velocity: $\langle v \rangle = \int_0^{v_{\max}} v f(v) dv = \sqrt{8k_BT/\pi m}$ for $k_BT \ll mc^2$.
+\end{proof}
+
+\subsection{Pressure from Categorical Momentum Transfer}
+
+\begin{theorem}[Categorical Pressure]
+\label{thm:categorical_pressure}
+For categorical gas in volume $V$ with $N$ particles, the pressure is:
+\begin{equation}
+P = \frac{1}{3}\rho \langle v^2 \rangle = \frac{Nm\langle v^2 \rangle}{3V} = \frac{Nk_BT}{V}
+\end{equation}
+recovering ideal gas law $PV = Nk_BT$.
+\end{theorem}
+
+\begin{proof}
+Pressure arises from momentum transfer during partition cell collisions. Consider particle with velocity $v_x$ hitting wall of area $A$. Momentum change per collision: $\Delta p = 2mv_x$.
+
+Number of collisions per unit time: $n = \frac{1}{2}n_{\text{particles}} \langle v_x \rangle A$ where factor $1/2$ accounts for particles moving toward wall.
+
+Force on wall: $F = n \Delta p = \frac{1}{2}n_{\text{particles}} \langle v_x \rangle A \cdot 2mv_x = n_{\text{particles}} m \langle v_x^2 \rangle A$.
+
+Pressure: $P = F/A = n_{\text{particles}} m \langle v_x^2 \rangle = \frac{N}{V} m \langle v_x^2 \rangle$.
+
+For isotropic distribution, $\langle v^2 \rangle = \langle v_x^2 \rangle + \langle v_y^2 \rangle + \langle v_z^2 \rangle = 3\langle v_x^2 \rangle$, so $\langle v_x^2 \rangle = \langle v^2 \rangle/3$.
+
+Therefore: $P = \frac{N}{V} m \frac{\langle v^2 \rangle}{3} = \frac{1}{3}\rho \langle v^2 \rangle$.
+
+From equipartition theorem, $\frac{1}{2}m\langle v^2 \rangle = \frac{3}{2}k_BT$, giving $\langle v^2 \rangle = 3k_BT/m$.
+
+Substituting: $P = \frac{N}{V} m \frac{3k_BT/m}{3} = \frac{Nk_BT}{V}$.
+\end{proof}
+
+\subsection{Entropy from Categorical State Counting}
+
+\begin{theorem}[Categorical Entropy Formula]
+\label{thm:categorical_entropy}
+For system with $M$ partition cells and $N$ particles, the entropy is:
+\begin{equation}
+S = k_B N \ln M + S_0
+\end{equation}
+where $S_0$ is reference entropy. For oscillator with frequency $\omega$ over time $t$, $M = \omega t/(2\pi)$, giving $S = k_B N \ln(\omega t/2\pi) + S_0$.
+\end{theorem}
+
+\begin{proof}
+Number of microstates for $N$ distinguishable particles in $M$ cells: $\Omega = M^N$ (each particle can occupy any cell).
+
+Boltzmann entropy: $S = k_B \ln \Omega = k_B \ln(M^N) = k_B N \ln M$.
+
+For oscillator, $M = \omega t/(2\pi)$ is number of cycles. Thus:
+\begin{equation}
+S = k_B N \ln\left(\frac{\omega t}{2\pi}\right) = k_B N [\ln(\omega t) - \ln(2\pi)]
+\end{equation}
+
+The term $-k_B N \ln(2\pi)$ is absorbed into reference entropy $S_0$. Entropy grows logarithmically with time, reflecting accumulation of categorical states.
+\end{proof}
+
+\subsection{Temperature from Energy-Entropy Relation}
+
+\begin{theorem}[Categorical Temperature]
+\label{thm:categorical_temperature}
+Temperature is defined through $T = \partial E/\partial S$. For categorical gas, this gives:
+\begin{equation}
+T = \frac{2E}{3Nk_B}
+\end{equation}
+where $E$ is total kinetic energy.
+\end{theorem}
+
+\begin{proof}
+From Theorem \ref{thm:categorical_entropy}, $S = k_B N \ln M$. For gas, $M \propto V T^{3/2}$ (phase space volume).
+
+Taking derivative: $\frac{\partial S}{\partial E} = \frac{k_B N}{M}\frac{\partial M}{\partial E}$.
+
+For ideal gas, $E = \frac{3}{2}Nk_BT$, so $\frac{\partial E}{\partial T} = \frac{3}{2}Nk_B$.
+
+From $M \propto T^{3/2}$: $\frac{\partial M}{\partial T} = \frac{3}{2}\frac{M}{T}$.
+
+Chain rule: $\frac{\partial S}{\partial E} = \frac{\partial S}{\partial T}\frac{\partial T}{\partial E} = \frac{k_B N}{M} \frac{3M}{2T} \frac{2}{3Nk_B} = \frac{1}{T}$.
+
+Therefore: $T = \frac{\partial E}{\partial S}$, confirming thermodynamic definition.
+
+From $E = \frac{3}{2}Nk_BT$: $T = \frac{2E}{3Nk_B}$.
+\end{proof}

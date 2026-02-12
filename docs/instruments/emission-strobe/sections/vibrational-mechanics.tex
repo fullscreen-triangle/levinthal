@@ -1,0 +1,177 @@
+\section{Vibrational Mechanics as Bounded Oscillatory Motion}
+
+\subsection{Molecular Potential Energy Surfaces}
+
+\begin{definition}[Born-Oppenheimer Potential]
+For molecule with nuclear coordinates $\mathbf{R} = \{R_1, \ldots, R_N\}$ and electronic wavefunction $\psi_{\text{elec}}(\mathbf{r}; \mathbf{R})$, the potential energy surface is
+\begin{equation}
+V(\mathbf{R}) = \langle \psi_{\text{elec}} | \hat{H}_{\text{elec}} | \psi_{\text{elec}} \rangle + V_{\text{nuc}}(\mathbf{R})
+\end{equation}
+where $\hat{H}_{\text{elec}}$ is electronic Hamiltonian and $V_{\text{nuc}}$ is nuclear-nuclear repulsion.
+\end{definition}
+
+\begin{theorem}[Harmonic Approximation]
+\label{thm:harmonic_approximation}
+Near equilibrium geometry $\mathbf{R}_0$, the potential energy surface admits Taylor expansion
+\begin{equation}
+V(\mathbf{R}) = V(\mathbf{R}_0) + \frac{1}{2}\sum_{ij} \frac{\partial^2 V}{\partial R_i \partial R_j}\bigg|_{\mathbf{R}_0} (R_i - R_{0i})(R_j - R_{0j}) + O(|\mathbf{R} - \mathbf{R}_0|^3)
+\end{equation}
+The quadratic term defines harmonic force constants $F_{ij} = \partial^2 V/\partial R_i \partial R_j$.
+\end{theorem}
+
+\begin{proof}
+At equilibrium, forces vanish: $\partial V/\partial R_i|_{\mathbf{R}_0} = 0$ for all $i$. The first non-vanishing term in Taylor expansion is quadratic. Define displacement coordinates $q_i = R_i - R_{0i}$ and force constant matrix $\mathbf{F}$ with elements $F_{ij}$.
+
+The potential becomes $V = V_0 + \frac{1}{2}\mathbf{q}^T \mathbf{F} \mathbf{q}$. The kinetic energy is $T = \frac{1}{2}\sum_i m_i \dot{q}_i^2 = \frac{1}{2}\dot{\mathbf{q}}^T \mathbf{M} \dot{\mathbf{q}}$ where $\mathbf{M}$ is mass matrix.
+
+The Lagrangian $\mathcal{L} = T - V$ yields equations of motion:
+\begin{equation}
+\mathbf{M}\ddot{\mathbf{q}} + \mathbf{F}\mathbf{q} = 0
+\end{equation}
+This is system of coupled harmonic oscillators.
+\end{proof}
+
+\subsection{Normal Mode Analysis}
+
+\begin{theorem}[Normal Mode Decomposition]
+\label{thm:normal_modes}
+The coupled oscillator equation $\mathbf{M}\ddot{\mathbf{q}} + \mathbf{F}\mathbf{q} = 0$ admits normal mode solutions $\mathbf{q}(t) = \mathbf{L}_k e^{i\omega_k t}$ where $\omega_k$ and $\mathbf{L}_k$ satisfy the generalized eigenvalue problem:
+\begin{equation}
+\mathbf{F}\mathbf{L}_k = \omega_k^2 \mathbf{M}\mathbf{L}_k
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Substitute $\mathbf{q}(t) = \mathbf{L} e^{i\omega t}$ into equation of motion:
+\begin{equation}
+-\omega^2 \mathbf{M}\mathbf{L} e^{i\omega t} + \mathbf{F}\mathbf{L} e^{i\omega t} = 0
+\end{equation}
+Canceling $e^{i\omega t}$ gives $\mathbf{F}\mathbf{L} = \omega^2 \mathbf{M}\mathbf{L}$.
+
+Define $\mathbf{G} = \mathbf{M}^{-1}$ (kinematic matrix). Then $\mathbf{GF}\mathbf{L} = \omega^2 \mathbf{L}$. This is standard eigenvalue problem with eigenvalues $\lambda_k = \omega_k^2$ and eigenvectors $\mathbf{L}_k$.
+
+For $N$ atoms in 3D, there are $3N$ coordinates. Six modes correspond to translation and rotation (zero frequency). The remaining $3N-6$ modes are vibrational normal modes with $\omega_k > 0$.
+
+The normal mode coordinates $Q_k = \mathbf{L}_k^T \mathbf{M} \mathbf{q}$ are orthogonal: $\mathbf{L}_k^T \mathbf{M} \mathbf{L}_j = \delta_{kj}$. In these coordinates, the Hamiltonian decouples:
+\begin{equation}
+H = \sum_{k=1}^{3N-6} \left(\frac{1}{2}\dot{Q}_k^2 + \frac{1}{2}\omega_k^2 Q_k^2\right)
+\end{equation}
+Each mode is independent harmonic oscillator.
+\end{proof}
+
+\subsection{Vibrational Quantum Numbers}
+
+\begin{theorem}[Vibrational Energy Levels]
+\label{thm:vibrational_levels}
+For harmonic oscillator with frequency $\omega_k$, the energy eigenvalues are
+\begin{equation}
+E_{v_k} = \hbar\omega_k\left(v_k + \frac{1}{2}\right), \quad v_k \in \{0, 1, 2, \ldots\}
+\end{equation}
+where $v_k$ is vibrational quantum number for mode $k$.
+\end{theorem}
+
+\begin{proof}
+The quantum Hamiltonian for mode $k$ is
+\begin{equation}
+\hat{H}_k = \frac{\hat{p}_k^2}{2} + \frac{1}{2}\omega_k^2 \hat{Q}_k^2
+\end{equation}
+where $\hat{p}_k = -i\hbar \partial/\partial Q_k$.
+
+Define ladder operators:
+\begin{align}
+\hat{a}_k &= \frac{1}{\sqrt{2\hbar\omega_k}}(\omega_k \hat{Q}_k + i\hat{p}_k) \\
+\hat{a}_k^\dagger &= \frac{1}{\sqrt{2\hbar\omega_k}}(\omega_k \hat{Q}_k - i\hat{p}_k)
+\end{align}
+
+These satisfy $[\hat{a}_k, \hat{a}_k^\dagger] = 1$. The Hamiltonian becomes:
+\begin{equation}
+\hat{H}_k = \hbar\omega_k\left(\hat{a}_k^\dagger \hat{a}_k + \frac{1}{2}\right)
+\end{equation}
+
+The number operator $\hat{n}_k = \hat{a}_k^\dagger \hat{a}_k$ has eigenvalues $v_k \in \{0,1,2,\ldots\}$, giving energy $E_{v_k} = \hbar\omega_k(v_k + 1/2)$.
+
+The vibrational quantum number $v_k$ corresponds to partition coordinate in $\Se$ direction (energy/evolution). The mode index $k$ corresponds to $\Sk$ (categorical identity). The phase of oscillation corresponds to $\St$ (temporal progression).
+\end{proof}
+
+\subsection{Partition Coordinate Mapping for Vibrations}
+
+\begin{theorem}[Vibrational Partition Coordinates]
+\label{thm:vibrational_partition}
+Molecular vibrational states map to partition coordinates $(n, l, m, s)$ through:
+\begin{itemize}
+\item $n$: Electronic state (ground, natural, excited)
+\item $l$: Vibrational mode identity $k \in \{1, \ldots, 3N-6\}$
+\item $m$: Oscillation phase $\phi \in [0, 2\pi)$
+\item $s$: Vibrational quantum number $v_k \in \{0, 1, 2, \ldots\}$
+\end{itemize}
+This establishes correspondence between vibrational mechanics and partition structure.
+\end{theorem}
+
+\begin{proof}
+\textbf{Electronic state $n$:} Vibrational modes exist within electronic potential surface. Different electronic states (ground $|0\rangle$, excited $|2\rangle$) have different force constants $\mathbf{F}$, hence different vibrational frequencies. The electronic state index $n$ labels which potential surface.
+
+\textbf{Mode identity $l$:} For molecule with $3N-6$ vibrational modes, each mode $k$ has distinct frequency $\omega_k$ and eigenvector $\mathbf{L}_k$. The mode index $k$ provides categorical identity, mapping to $l$ coordinate. Different modes are orthogonal: $\mathbf{L}_k^T \mathbf{M} \mathbf{L}_j = \delta_{kj}$.
+
+\textbf{Phase $m$:} Each vibrational mode oscillates as $Q_k(t) = A_k \cos(\omega_k t + \phi_k)$. The phase $\phi_k \in [0, 2\pi)$ specifies position within oscillation cycle, mapping to $m$ coordinate (temporal progression $\St$).
+
+\textbf{Quantum number $s$:} The vibrational quantum number $v_k$ determines energy level $E_{v_k} = \hbar\omega_k(v_k + 1/2)$. This maps to $s$ coordinate (evolutionary progression $\Se$). Higher $v_k$ means higher energy, corresponding to larger amplitude oscillation.
+
+The mapping is canonical: $(n, l, m, s) \leftrightarrow (\text{electronic}, \text{mode}, \text{phase}, \text{quantum})$. Spectroscopic measurement projects onto these coordinates: Raman/IR measures $(n, l)$, time-gating measures $m$, energy-resolved detection measures $s$.
+\end{proof}
+
+\subsection{Symmetry and Selection Rules}
+
+\begin{theorem}[Vibrational Selection Rules]
+\label{thm:vibrational_selection}
+For molecule with point group $G$, vibrational modes transform according to irreducible representations $\Gamma_k$ of $G$. A mode is:
+\begin{itemize}
+\item Raman-active if $\Gamma_k$ appears in decomposition of polarizability tensor $\alpha$
+\item IR-active if $\Gamma_k$ appears in decomposition of dipole moment $\boldsymbol{\mu}$
+\end{itemize}
+For centrosymmetric molecules, mutual exclusion holds: modes are either Raman or IR active, not both.
+\end{theorem}
+
+\begin{proof}
+Raman scattering intensity is proportional to $|\langle v'| \hat{\alpha} |v \rangle|^2$ where $\hat{\alpha}$ is polarizability operator. For transition $v=0 \to v'=1$, the matrix element is non-zero only if mode $k$ transforms as one of the components of $\alpha$ (symmetric 2-tensor).
+
+IR absorption intensity is proportional to $|\langle v'| \hat{\boldsymbol{\mu}} |v \rangle|^2$ where $\hat{\boldsymbol{\mu}}$ is dipole operator. The matrix element is non-zero only if mode $k$ transforms as one of the components of $\boldsymbol{\mu}$ (vector).
+
+For centrosymmetric point groups (containing inversion $i$), the polarizability tensor $\alpha$ is even under inversion ($i\alpha i^{-1} = \alpha$) while dipole moment $\boldsymbol{\mu}$ is odd ($i\boldsymbol{\mu} i^{-1} = -\boldsymbol{\mu}$). Therefore:
+\begin{itemize}
+\item Raman-active modes have even parity (gerade, $g$)
+\item IR-active modes have odd parity (ungerade, $u$)
+\end{itemize}
+Since a mode cannot be both even and odd, mutual exclusion holds for centrosymmetric molecules.
+
+For non-centrosymmetric groups (like T$_d$), inversion is not a symmetry, so modes can be both Raman and IR active. The activity pattern is determined by character table of point group $G$.
+\end{proof}
+
+\subsection{Ternary State Structure in Vibrational Manifold}
+
+\begin{theorem}[Vibrational Ternary States]
+\label{thm:vibrational_ternary}
+Within each electronic state $|n\rangle$, the vibrational manifold admits ternary decomposition based on quantum number:
+\begin{equation}
+|n\rangle_{\text{vib}} = c_0|v=0\rangle + c_1|v=1\rangle + c_2|v=2\rangle + \cdots
+\end{equation}
+For thermal equilibrium at temperature $T$, the amplitudes satisfy Boltzmann distribution:
+\begin{equation}
+|c_v|^2 = \frac{e^{-v\hbar\omega/k_BT}}{Z}, \quad Z = \sum_{v=0}^\infty e^{-v\hbar\omega/k_BT} = \frac{1}{1 - e^{-\hbar\omega/k_BT}}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The canonical ensemble at temperature $T$ assigns probability $p_v \propto e^{-E_v/k_BT}$ to state with energy $E_v = \hbar\omega(v + 1/2)$. The partition function is
+\begin{equation}
+Z = \sum_{v=0}^\infty e^{-\hbar\omega(v+1/2)/k_BT} = e^{-\hbar\omega/2k_BT} \sum_{v=0}^\infty e^{-v\hbar\omega/k_BT} = \frac{e^{-\hbar\omega/2k_BT}}{1 - e^{-\hbar\omega/k_BT}}
+\end{equation}
+
+The probability of state $v$ is
+\begin{equation}
+p_v = \frac{e^{-\hbar\omega(v+1/2)/k_BT}}{Z} = (1 - e^{-\hbar\omega/k_BT}) e^{-v\hbar\omega/k_BT}
+\end{equation}
+
+For low temperature $k_BT \ll \hbar\omega$, the ground state dominates: $p_0 \approx 1$. For high temperature $k_BT \gg \hbar\omega$, many states are populated: $p_v \approx k_BT/\hbar\omega \cdot e^{-v\hbar\omega/k_BT}$.
+
+The ternary structure emerges by grouping states: $|0\rangle$ (ground, $v=0$), $|1\rangle$ (first excited, $v=1$), $|2\rangle$ (higher excited, $v \geq 2$). At typical temperatures (300 K) and vibrational frequencies (1000-3000 cm$^{-1}$), the thermal energy $k_BT \approx 200$ cm$^{-1}$ is much less than $\hbar\omega$, so ground state dominates with small admixture of $v=1$.
+\end{proof}

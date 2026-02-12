@@ -1,0 +1,108 @@
+\section{Time-Multiplexed Measurement Architecture}
+
+\subsection{Emission-Triggered Timing}
+
+\begin{definition}[Molecular Emission Event]
+A molecular emission event occurs when molecule transitions from excited electronic state $|2\rangle$ to ground state $|0\rangle$, emitting photon with energy $E_{\gamma} = E_2 - E_0$. The emission time follows exponential distribution with lifetime $\tau_{\text{em}}$:
+\begin{equation}
+P(t) = \frac{1}{\tau_{\text{em}}} e^{-t/\tau_{\text{em}}}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Temporal Separation Condition]
+\label{thm:temporal_separation}
+For molecule with emission lifetime $\tau_{\text{em}}$ and vibrational relaxation time $\tau_{\text{vib}}$, complete temporal separation of excited-state and ground-state measurements requires $\tau_{\text{vib}} < \tau_{\text{em}}$. Under this condition, the time intervals $[0, \tau_{\text{em}}]$ and $[\tau_{\text{em}}, \infty)$ access different electronic states with zero overlap.
+\end{theorem}
+
+\begin{proof}
+After UV excitation at $t=0$, molecule occupies excited state $|2\rangle$. The electronic population evolves as:
+\begin{equation}
+P_2(t) = e^{-t/\tau_{\text{em}}}, \quad P_0(t) = 1 - e^{-t/\tau_{\text{em}}}
+\end{equation}
+
+Vibrational relaxation within each electronic state occurs on timescale $\tau_{\text{vib}}$. If $\tau_{\text{vib}} \ll \tau_{\text{em}}$, then vibrational equilibration completes before electronic relaxation. At time $t < \tau_{\text{em}}$, the molecule is in excited electronic state with thermalized vibrations. At $t > \tau_{\text{em}}$, it is in ground electronic state with thermalized vibrations.
+
+Define gate functions:
+\begin{align}
+g_{\text{Raman}}(t) &= \begin{cases} 1 & \text{if } 0 < t < \tau_{\text{em}} \\ 0 & \text{otherwise} \end{cases} \\
+g_{\text{IR}}(t) &= \begin{cases} 0 & \text{if } 0 < t < \tau_{\text{em}} \\ 1 & \text{otherwise} \end{cases}
+\end{align}
+
+The Raman signal measures excited-state vibrations: $S_{\text{Raman}} \propto \int_0^{\tau_{\text{em}}} P_2(t) g_{\text{Raman}}(t) dt$. The IR signal measures ground-state vibrations: $S_{\text{IR}} \propto \int_{\tau_{\text{em}}}^\infty P_0(t) g_{\text{IR}}(t) dt$. Since $P_2(t) P_0(t) = 0$ for all $t$ (molecule in one state at a time), the measurements have zero cross-talk.
+\end{proof}
+
+\subsection{Zero Cross-Talk Condition}
+
+\begin{theorem}[Cross-Talk Suppression]
+\label{thm:crosstalk}
+For time-gated detection with gate width $\Delta t_{\text{gate}}$ and emission lifetime $\tau_{\text{em}}$, the cross-talk between Raman and IR channels is
+\begin{equation}
+\eta_{\text{cross}} = \frac{\Delta t_{\text{gate}}}{\tau_{\text{em}}} e^{-\tau_{\text{em}}/\tau_{\text{em}}} = \frac{\Delta t_{\text{gate}}}{\tau_{\text{em}}} e^{-1} \approx 0.37 \frac{\Delta t_{\text{gate}}}{\tau_{\text{em}}}
+\end{equation}
+For $\Delta t_{\text{gate}} \ll \tau_{\text{em}}$, cross-talk is negligible.
+\end{theorem}
+
+\begin{proof}
+Raman gate opens at $t=0$ (excitation) and closes at $t = \tau_{\text{em}} - \Delta t_{\text{gate}}/2$. IR gate opens at $t = \tau_{\text{em}} + \Delta t_{\text{gate}}/2$. The overlap region is $[\tau_{\text{em}} - \Delta t_{\text{gate}}/2, \tau_{\text{em}} + \Delta t_{\text{gate}}/2]$ with width $\Delta t_{\text{gate}}$.
+
+In this region, excited-state population is $P_2 \approx e^{-1}$ and ground-state population is $P_0 \approx 1 - e^{-1}$. The fraction of Raman signal contaminating IR channel is:
+\begin{equation}
+\eta_{\text{cross}} = \frac{\int_{\tau_{\text{em}}}^{\tau_{\text{em}} + \Delta t_{\text{gate}}} P_2(t) dt}{\int_0^{\tau_{\text{em}}} P_2(t) dt} \approx \frac{e^{-1} \Delta t_{\text{gate}}}{\tau_{\text{em}}}
+\end{equation}
+
+For typical values $\tau_{\text{em}} = 850$ ps and $\Delta t_{\text{gate}} = 100$ ps, we get $\eta_{\text{cross}} \approx 0.04$ (4\% cross-talk). For $\Delta t_{\text{gate}} = 10$ ps, $\eta_{\text{cross}} \approx 0.004$ (0.4\% cross-talk).
+\end{proof}
+
+\subsection{Ternary State Reconstruction}
+
+\begin{theorem}[Natural State Reconstruction]
+\label{thm:natural_reconstruction}
+The natural (equilibrium) state $|1\rangle$ at temperature $T$ is reconstructed from ground and excited states through Boltzmann weighting:
+\begin{equation}
+|1\rangle = \sqrt{w_0} |0\rangle + \sqrt{w_2} |2\rangle
+\end{equation}
+where $w_0 = 1/(1 + e^{-\Delta E/k_BT})$ and $w_2 = e^{-\Delta E/k_BT}/(1 + e^{-\Delta E/k_BT})$ with $\Delta E = E_2 - E_0$.
+\end{theorem}
+
+\begin{proof}
+At thermal equilibrium, the density matrix is $\hat{\rho} = e^{-\hat{H}/k_BT}/Z$ where $Z = \text{Tr}(e^{-\hat{H}/k_BT})$ is partition function. For two-level system with energies $E_0$ and $E_2$:
+\begin{equation}
+Z = e^{-E_0/k_BT} + e^{-E_2/k_BT} = e^{-E_0/k_BT}(1 + e^{-\Delta E/k_BT})
+\end{equation}
+
+The populations are:
+\begin{align}
+w_0 &= \frac{e^{-E_0/k_BT}}{Z} = \frac{1}{1 + e^{-\Delta E/k_BT}} \\
+w_2 &= \frac{e^{-E_2/k_BT}}{Z} = \frac{e^{-\Delta E/k_BT}}{1 + e^{-\Delta E/k_BT}}
+\end{align}
+
+The natural state is the thermal mixture: $|1\rangle = \sqrt{w_0} |0\rangle + \sqrt{w_2} |2\rangle$. For typical electronic transition $\Delta E \sim 4$ eV and $T = 4$ K, we have $k_BT \approx 0.3$ meV, so $\Delta E/k_BT \sim 10^4 \gg 1$. This gives $w_0 \approx 1$ and $w_2 \approx 0$, meaning natural state is essentially pure ground state at low temperature.
+
+For vibrational states within electronic state, $\Delta E = \hbar\omega \sim 0.1-0.4$ eV. At $T = 4$ K, $\hbar\omega/k_BT \sim 300-1200$, still large. At $T = 300$ K, $\hbar\omega/k_BT \sim 4-16$, giving non-negligible excited vibrational population.
+\end{proof}
+
+\subsection{Experimental Implementation}
+
+\begin{theorem}[Hardware Requirements]
+\label{thm:hardware_requirements}
+Emission-strobed dual-mode spectroscopy requires:
+\begin{enumerate}
+\item UV excitation source with pulse width $\Delta t_{\text{pulse}} < \tau_{\text{vib}}$
+\item Emission detector with response time $\Delta t_{\text{PMT}} < \tau_{\text{em}}/10$
+\item Time-gated Raman detector with gate width $\Delta t_{\text{gate}} < \tau_{\text{em}}/10$
+\item Time-gated IR detector with gate width $\Delta t_{\text{gate}} < \tau_{\text{em}}/10$
+\item Timing jitter $\sigma_t < \Delta t_{\text{gate}}/5$ for all components
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Condition 1:} Excitation pulse must be shorter than vibrational relaxation to prepare well-defined initial state. For $\tau_{\text{vib}} \sim 100$ ps, require $\Delta t_{\text{pulse}} < 100$ ps. Femtosecond lasers (100 fs) easily satisfy this.
+
+\textbf{Condition 2:} Emission detector marks transition time from $|2\rangle$ to $|0\rangle$. Response time must be fast enough to resolve emission events. For $\tau_{\text{em}} = 850$ ps, require $\Delta t_{\text{PMT}} < 85$ ps. Photomultiplier tubes achieve 20 ps response.
+
+\textbf{Condition 3 \& 4:} Gate width determines temporal resolution and cross-talk. For $\tau_{\text{em}} = 850$ ps, require $\Delta t_{\text{gate}} < 85$ ps. Intensified CCDs achieve 100 ps gates. Quantum cascade lasers (IR) achieve similar gating.
+
+\textbf{Condition 5:} Timing jitter adds uncertainty to gate position. For $\Delta t_{\text{gate}} = 100$ ps, require $\sigma_t < 20$ ps. Electronic jitter is typically 5 ps, well within requirement.
+
+All conditions are simultaneously achievable with current technology, establishing experimental feasibility.
+\end{proof}

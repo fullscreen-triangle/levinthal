@@ -29,6 +29,8 @@ from .visualization_panels import (
     plot_panel_6_protein_structure,
     plot_panel_7_wavefunction,
     plot_panel_8_electron_cloud,
+    plot_panel_9_perturbation_fields,
+    plot_panel_10_ternary_trisection,
 )
 
 __version__ = "1.0.0"
