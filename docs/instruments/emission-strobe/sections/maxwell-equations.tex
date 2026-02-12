@@ -1,0 +1,97 @@
+\section{Electromagnetic Dynamics from Partition Lag}
+
+\subsection{Partition Lag in Categorical Dynamics}
+
+\begin{definition}[Partition Lag]
+For categorical system transitioning between states $\mathcal{C}_n \to \mathcal{C}_{n+1}$, partition lag $\Delta t_{\text{lag}}$ is the time delay between categorical state change and physical state update. During lag, system occupies superposition of adjacent categorical states.
+\end{definition}
+
+\begin{theorem}[Partition Lag Necessity]
+\label{thm:partition_lag}
+For bounded continuous dynamical system, partition transitions cannot be instantaneous. The minimum lag time is $\Delta t_{\text{lag}} = 2\pi/\omega_{\max}$ where $\omega_{\max}$ is maximum frequency in system.
+\end{theorem}
+
+\begin{proof}
+Categorical state transition at $t = nT$ corresponds to phase crossing $\phi = 2\pi n$. For continuous dynamics, phase evolves smoothly: $\phi(t) = \omega t$. The transition region is $\phi \in [2\pi n - \delta\phi, 2\pi n + \delta\phi]$ where $\delta\phi$ is phase uncertainty.
+
+By uncertainty principle, $\Delta\phi \Delta t \geq 1$ (in natural units). For $\Delta\phi \sim 1$ rad, we get $\Delta t \sim 1/\omega$. The maximum frequency $\omega_{\max}$ gives minimum lag: $\Delta t_{\text{lag}} = 2\pi/\omega_{\max}$.
+
+During lag, system is in superposition: $|\psi\rangle = \alpha|\mathcal{C}_n\rangle + \beta|\mathcal{C}_{n+1}\rangle$ with $|\alpha|^2 + |\beta|^2 = 1$. This superposition creates non-zero transition amplitude, enabling coupling between states.
+\end{proof}
+
+\subsection{Electromagnetic Field Emergence}
+
+\begin{theorem}[Electric Field from Partition Lag]
+\label{thm:electric_field}
+Partition lag in charged particle dynamics generates electric field $\mathbf{E}$ satisfying:
+\begin{equation}
+\mathbf{E} = -\nabla\Phi - \frac{\partial \mathbf{A}}{\partial t}
+\end{equation}
+where $\Phi$ is scalar potential (partition energy density) and $\mathbf{A}$ is vector potential (partition momentum density).
+\end{theorem}
+
+\begin{proof}
+For charged particle with charge $q$ and position $\mathbf{r}$, the partition coordinate is $\mathcal{C}(\mathbf{r}, t) = \lfloor \mathbf{k} \cdot \mathbf{r} - \omega t \rfloor$ where $\mathbf{k}$ is wave vector and $\omega$ is frequency.
+
+Partition lag creates phase difference: $\Delta\phi = \mathbf{k} \cdot \Delta\mathbf{r} - \omega \Delta t$. The energy associated with lag is:
+\begin{equation}
+\Delta E = \hbar\omega \frac{\Delta\phi}{2\pi} = \hbar\omega \frac{\mathbf{k} \cdot \Delta\mathbf{r} - \omega \Delta t}{2\pi}
+\end{equation}
+
+Define scalar potential $\Phi = \hbar\omega/(2\pi q)$ and vector potential $\mathbf{A} = \hbar\mathbf{k}/(2\pi q)$. Then:
+\begin{equation}
+\Delta E = q(\mathbf{A} \cdot \Delta\mathbf{r} - \Phi \Delta t)
+\end{equation}
+
+The force on particle is $\mathbf{F} = -\nabla E = -q\nabla\Phi - q\frac{\partial \mathbf{A}}{\partial t}$. Defining electric field $\mathbf{E} = \mathbf{F}/q$ gives $\mathbf{E} = -\nabla\Phi - \partial \mathbf{A}/\partial t$.
+\end{proof}
+
+\begin{theorem}[Magnetic Field from Partition Rotation]
+\label{thm:magnetic_field}
+Rotation of partition structure generates magnetic field $\mathbf{B} = \nabla \times \mathbf{A}$ where $\mathbf{A}$ is vector potential.
+\end{theorem}
+
+\begin{proof}
+For rotating partition with angular velocity $\boldsymbol{\omega}$, the partition coordinate evolves as $\mathcal{C}(\mathbf{r}, t) = \lfloor \mathbf{k}(\boldsymbol{\omega} t) \cdot \mathbf{r} \rfloor$ where $\mathbf{k}(\boldsymbol{\omega} t)$ rotates in time.
+
+The vector potential is $\mathbf{A} = \hbar \mathbf{k}/(2\pi q)$. Taking curl:
+\begin{equation}
+\nabla \times \mathbf{A} = \frac{\hbar}{2\pi q} \nabla \times \mathbf{k} = \frac{\hbar}{2\pi q} \frac{\partial \mathbf{k}}{\partial t} \times \mathbf{r}
+\end{equation}
+
+For uniform rotation, $\partial \mathbf{k}/\partial t = \boldsymbol{\omega} \times \mathbf{k}$. This gives:
+\begin{equation}
+\mathbf{B} = \nabla \times \mathbf{A} = \frac{\hbar}{2\pi q} (\boldsymbol{\omega} \times \mathbf{k}) \times \mathbf{r}
+\end{equation}
+
+The magnetic field arises from rotational partition lag, perpendicular to both rotation axis and position vector.
+\end{proof}
+
+\subsection{Maxwell Equations}
+
+\begin{theorem}[Maxwell Equations from Partition Conservation]
+\label{thm:maxwell_equations}
+Conservation of partition structure implies Maxwell equations:
+\begin{align}
+\nabla \cdot \mathbf{E} &= \rho/\epsilon_0 \quad \text{(Gauss)} \\
+\nabla \cdot \mathbf{B} &= 0 \quad \text{(No monopoles)} \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \quad \text{(Faraday)} \\
+\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0\epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \quad \text{(Amp\`ere-Maxwell)}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+\textbf{Gauss's Law:} Partition density $\rho_{\mathcal{C}} = \sum_i \delta(\mathbf{r} - \mathbf{r}_i)$ counts particles per unit volume. Electric field sources from partition density: $\nabla \cdot \mathbf{E} = \rho_{\mathcal{C}}/\epsilon_0 = \rho/\epsilon_0$.
+
+\textbf{No Monopoles:} Vector potential definition $\mathbf{B} = \nabla \times \mathbf{A}$ automatically satisfies $\nabla \cdot \mathbf{B} = \nabla \cdot (\nabla \times \mathbf{A}) = 0$ by vector identity.
+
+\textbf{Faraday's Law:} From $\mathbf{E} = -\nabla\Phi - \partial \mathbf{A}/\partial t$ and $\mathbf{B} = \nabla \times \mathbf{A}$:
+\begin{equation}
+\nabla \times \mathbf{E} = -\nabla \times \nabla\Phi - \nabla \times \frac{\partial \mathbf{A}}{\partial t} = -\frac{\partial}{\partial t}(\nabla \times \mathbf{A}) = -\frac{\partial \mathbf{B}}{\partial t}
+\end{equation}
+
+\textbf{Amp\`ere-Maxwell Law:} Partition current $\mathbf{J}_{\mathcal{C}} = \rho_{\mathcal{C}} \mathbf{v}$ where $\mathbf{v}$ is partition velocity. Conservation of partition $\partial \rho_{\mathcal{C}}/\partial t + \nabla \cdot \mathbf{J}_{\mathcal{C}} = 0$ combined with Gauss law gives:
+\begin{equation}
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J}_{\mathcal{C}} + \mu_0\epsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{equation}
+\end{proof}

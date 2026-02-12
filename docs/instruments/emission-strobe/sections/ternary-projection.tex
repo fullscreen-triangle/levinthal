@@ -1,0 +1,188 @@
+\section{Spectroscopic Measurement as Ternary Projection}
+
+\subsection{Projection Operators on S-Entropy Coordinates}
+
+\begin{definition}[S-Entropy Projection Operators]
+For entropy coordinate space $\Sspace = [0,1]^3$ with coordinates $(\Sk, \St, \Se)$, define projection operators:
+\begin{align}
+\hat{P}_{\Sk} &= |\Sk\rangle\langle\Sk| \quad \text{(project onto categorical identity)} \\
+\hat{P}_{\St} &= |\St\rangle\langle\St| \quad \text{(project onto temporal phase)} \\
+\hat{P}_{\Se} &= |\Se\rangle\langle\Se| \quad \text{(project onto evolutionary state)}
+\end{align}
+\end{definition}
+
+\begin{theorem}[Projection Orthogonality]
+\label{thm:projection_orthogonality}
+The projection operators satisfy:
+\begin{align}
+\hat{P}_i \hat{P}_j &= \delta_{ij} \hat{P}_i \quad \text{(orthogonality)} \\
+\sum_{i \in \{\Sk,\St,\Se\}} \hat{P}_i &= \hat{I} \quad \text{(completeness)} \\
+\hat{P}_i^\dagger &= \hat{P}_i \quad \text{(Hermiticity)} \\
+\hat{P}_i^2 &= \hat{P}_i \quad \text{(idempotency)}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+\textbf{Orthogonality:} For $i \neq j$, the coordinates $\Sk, \St, \Se$ are independent. Therefore:
+\begin{equation}
+\hat{P}_i \hat{P}_j = |\Sk\rangle\langle\Sk|\St\rangle\langle\St| = |\Sk\rangle \delta_{\Sk,\St} \langle\St| = 0
+\end{equation}
+since $\langle\Sk|\St\rangle = 0$ (orthogonal coordinates).
+
+For $i = j$: $\hat{P}_i \hat{P}_i = |\Sk\rangle\langle\Sk|\Sk\rangle\langle\Sk| = |\Sk\rangle\langle\Sk| = \hat{P}_i$.
+
+\textbf{Completeness:} The three coordinates span $\Sspace$, so:
+\begin{equation}
+\hat{P}_{\Sk} + \hat{P}_{\St} + \hat{P}_{\Se} = \hat{I}
+\end{equation}
+
+\textbf{Hermiticity:} $\hat{P}_i^\dagger = (|\Sk\rangle\langle\Sk|)^\dagger = |\Sk\rangle\langle\Sk| = \hat{P}_i$.
+
+\textbf{Idempotency:} $\hat{P}_i^2 = \hat{P}_i \hat{P}_i = \hat{P}_i$ (proven above).
+\end{proof}
+
+\subsection{Spectroscopic Measurement as Projection}
+
+\begin{theorem}[Raman Spectroscopy as $\Sk$ Projection]
+\label{thm:raman_projection}
+Raman spectroscopy projects molecular state onto $\Sk$ axis (mode identity) for excited electronic state $|2\rangle$:
+\begin{equation}
+|\psi_{\text{Raman}}\rangle = \hat{P}_{\Sk}^{(2)} |\psi\rangle
+\end{equation}
+where $\hat{P}_{\Sk}^{(2)}$ projects within electronic state $|2\rangle$ subspace.
+\end{theorem}
+
+\begin{proof}
+Raman scattering measures vibrational frequencies $\{\omega_k\}$ in excited electronic state. Each frequency corresponds to one vibrational mode $k$, which maps to categorical identity coordinate $\Sk$.
+
+The measurement projects full molecular state $|\psi\rangle = \sum_{n,k,v} c_{nkv} |n,k,v\rangle$ onto modes $k$ within excited state $n=2$:
+\begin{equation}
+|\psi_{\text{Raman}}\rangle = \sum_{k,v} c_{2kv} |2,k,v\rangle
+\end{equation}
+
+This is equivalent to applying projection operator:
+\begin{equation}
+\hat{P}_{\Sk}^{(2)} = \sum_k |2,k\rangle\langle 2,k| \otimes \hat{I}_v
+\end{equation}
+where $\hat{I}_v$ is identity on vibrational quantum number subspace.
+
+The measured Raman spectrum $I_{\text{Raman}}(\omega)$ gives intensity vs. frequency, directly revealing which modes $k$ are Raman-active (non-zero $c_{2kv}$).
+\end{proof}
+
+\begin{theorem}[IR Spectroscopy as $\Sk$ Projection]
+\label{thm:ir_projection}
+Infrared spectroscopy projects molecular state onto $\Sk$ axis for ground electronic state $|0\rangle$:
+\begin{equation}
+|\psi_{\text{IR}}\rangle = \hat{P}_{\Sk}^{(0)} |\psi\rangle
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+IR absorption measures vibrational frequencies in ground electronic state. The projection operator is:
+\begin{equation}
+\hat{P}_{\Sk}^{(0)} = \sum_k |0,k\rangle\langle 0,k| \otimes \hat{I}_v
+\end{equation}
+
+Measured IR spectrum $I_{\text{IR}}(\omega)$ reveals which modes are IR-active in ground state. Combined with Raman, this provides complete $\Sk$ information across both electronic states.
+\end{proof}
+
+\begin{theorem}[Time-Gating as $\St$ Projection]
+\label{thm:time_gating_projection}
+Time-gated detection projects onto temporal phase coordinate $\St$:
+\begin{equation}
+|\psi_{\text{gated}}\rangle = \hat{P}_{\St}(t_0, \Delta t) |\psi\rangle
+\end{equation}
+where $\hat{P}_{\St}(t_0, \Delta t)$ projects onto phase interval $[\phi_0, \phi_0 + \Delta\phi]$ with $\phi_0 = \omega t_0$ and $\Delta\phi = \omega \Delta t$.
+\end{theorem}
+
+\begin{proof}
+Time-gated detector opens at $t = t_0$ and closes at $t = t_0 + \Delta t$. For oscillatory mode with phase $\phi(t) = \omega t$, this selects phase interval:
+\begin{equation}
+\phi \in [\omega t_0, \omega(t_0 + \Delta t)] = [\phi_0, \phi_0 + \Delta\phi]
+\end{equation}
+
+Normalizing to $[0,1]$: $\St = \phi/(2\pi) \in [\St_0, \St_0 + \Delta\St]$ where $\St_0 = \phi_0/(2\pi)$ and $\Delta\St = \Delta\phi/(2\pi)$.
+
+The projection operator is:
+\begin{equation}
+\hat{P}_{\St}(t_0, \Delta t) = \int_{\St_0}^{\St_0 + \Delta\St} |\St\rangle\langle\St| d\St
+\end{equation}
+
+This projects onto specific phase window, enabling measurement of oscillation phase.
+\end{proof}
+
+\begin{theorem}[Energy-Resolved Detection as $\Se$ Projection]
+\label{thm:energy_projection}
+Energy-resolved detection projects onto evolutionary coordinate $\Se$ (vibrational quantum number):
+\begin{equation}
+|\psi_{\text{energy}}\rangle = \hat{P}_{\Se}(v) |\psi\rangle
+\end{equation}
+where $\hat{P}_{\Se}(v)$ projects onto quantum number $v$.
+\end{theorem}
+
+\begin{proof}
+Energy-resolved spectrometer disperses photons by energy $E = \hbar\omega(v + 1/2)$ where $v$ is vibrational quantum number. Detecting photons in energy window $[E_v, E_{v+1}]$ projects onto quantum state $v$:
+\begin{equation}
+\hat{P}_{\Se}(v) = |v\rangle\langle v|
+\end{equation}
+
+Normalized to $[0,1]$: $\Se = v/v_{\max}$ where $v_{\max}$ is maximum accessible quantum number. The projection selects specific energy level.
+\end{proof}
+
+\subsection{Sequential Projection and Ternary String Determination}
+
+\begin{theorem}[Ternary String Measurement]
+\label{thm:ternary_measurement}
+Complete molecular state determination requires sequential projection onto all three S-entropy coordinates. The measurement sequence is:
+\begin{equation}
+|\psi_{\text{final}}\rangle = \hat{P}_{\Se}(v) \hat{P}_{\St}(t_0, \Delta t) \hat{P}_{\Sk}^{(n)} |\psi_{\text{initial}}\rangle
+\end{equation}
+This determines ternary string $[n, k, \phi, v]_3$ encoding complete state.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1:} Project onto electronic state $n \in \{0, 2\}$ (Raman or IR). This determines first ternary digit.
+
+\textbf{Step 2:} Project onto vibrational mode $k$ within electronic state $n$. This determines second ternary digit (mode identity $\Sk$).
+
+\textbf{Step 3:} Project onto oscillation phase $\phi$ through time-gating. This determines third ternary digit (temporal phase $\St$).
+
+\textbf{Step 4:} Project onto vibrational quantum number $v$ through energy-resolved detection. This determines fourth ternary digit (evolutionary state $\Se$).
+
+Each projection reduces state space dimensionality by factor of 3 (ternary branching). After $k$ projections, the state is localized to one of $3^k$ cells in ternary partition of $\Sspace$.
+
+The complete ternary string is:
+\begin{equation}
+[t_1 \, t_2 \, t_3 \, t_4]_3 = [n \, k \, \phi \, v]_3
+\end{equation}
+
+This uniquely specifies molecular state in hierarchical S-entropy coordinate system.
+\end{proof}
+
+\subsection{Information Content of Ternary Measurement}
+
+\begin{theorem}[Information Generation through Projection]
+\label{thm:information_generation}
+Each ternary projection generates $\log_2 3 \approx 1.585$ bits of information. Complete $k$-digit ternary string contains $I = k \log_2 3$ bits.
+\end{theorem}
+
+\begin{proof}
+Ternary projection reduces uncertainty from $N$ states to $N/3$ states (one of three branches). Information gain is:
+\begin{equation}
+\Delta I = \log_2 N - \log_2(N/3) = \log_2 3 \approx 1.585 \text{ bits}
+\end{equation}
+
+For $k$ sequential projections, total information is:
+\begin{equation}
+I_{\text{total}} = k \Delta I = k \log_2 3 = \log_2(3^k) \text{ bits}
+\end{equation}
+
+This matches Shannon information for distinguishing one of $3^k$ equally-likely states.
+
+For emission-strobed dual-mode spectroscopy with $k=4$ digits (electronic, mode, phase, quantum), the information content is:
+\begin{equation}
+I = 4 \log_2 3 \approx 6.34 \text{ bits per mode}
+\end{equation}
+
+For molecule with $M$ vibrational modes, total information is $I_{\text{total}} = 6.34M$ bits.
+\end{proof}

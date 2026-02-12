@@ -1595,6 +1595,555 @@ def plot_panel_8_electron_cloud(wavefunction: Dict[str, np.ndarray], results: Di
 
 
 # =============================================================================
+# Panel 9: Perturbation Fields (2 3D + 2 metrics)
+# =============================================================================
+
+def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Figure:
+    """
+    Panel 9: Perturbation Field Visualization (2 3D + 2 metrics)
+
+    Charts:
+    1. 3D Electric Field (P1 - radial perturbation)
+    2. 3D Magnetic Field (P2 - angular perturbation)
+    3. Field Magnitude Evolution
+    4. Perturbation Response Summary
+    """
+    fig = plt.figure(figsize=(20, 16))
+
+    # Extract trajectory data
+    trajectory = results['trajectory']
+    n_points = len(trajectory)
+
+    # Azurin ligand positions (in Angstroms)
+    cu_center = np.array([0, 0, 0])
+    ligands = {
+        'His46': np.array([2.1, 0.5, 1.8]),
+        'Cys112': np.array([-1.5, 2.0, 0.8]),
+        'His117': np.array([0.8, -1.8, 1.5]),
+        'Met121': np.array([-0.5, 0.3, -2.5])
+    }
+
+    # Generate grid for field visualization
+    grid_size = 15
+    x = np.linspace(-8, 8, grid_size)
+    y = np.linspace(-8, 8, grid_size)
+    z = np.linspace(-8, 8, grid_size)
+    X, Y, Z = np.meshgrid(x, y, z)
+
+    # Compute electric field (P1 - radial perturbation)
+    # E-field from Cu center and electron position
+    electron_positions = np.array([t['position'] for t in trajectory]) * 1e10  # Convert to Angstroms
+
+    # Use midpoint of trajectory for field visualization
+    mid_idx = n_points // 2
+    e_pos = electron_positions[mid_idx]
+
+    # Electric field from point charges (Cu²⁺ and electron)
+    def compute_E_field(X, Y, Z, charge_pos, charge):
+        """Compute electric field from point charge."""
+        k_e = 8.99e9  # Coulomb constant
+        eps = 1e-10
+
+        dx = X - charge_pos[0]
+        dy = Y - charge_pos[1]
+        dz = Z - charge_pos[2]
+        r = np.sqrt(dx**2 + dy**2 + dz**2 + eps)
+
+        E_mag = k_e * charge / (r**2 + eps)
+        Ex = E_mag * dx / r
+        Ey = E_mag * dy / r
+        Ez = E_mag * dz / r
+
+        return Ex, Ey, Ez
+
+    # Cu²⁺ field + electron field
+    Ex_cu, Ey_cu, Ez_cu = compute_E_field(X, Y, Z, cu_center, 2)  # Cu²⁺
+    Ex_e, Ey_e, Ez_e = compute_E_field(X, Y, Z, e_pos, -1)  # electron
+
+    Ex_total = Ex_cu + Ex_e
+    Ey_total = Ey_cu + Ey_e
+    Ez_total = Ez_cu + Ez_e
+    E_mag = np.sqrt(Ex_total**2 + Ey_total**2 + Ez_total**2)
+
+    # Compute magnetic field (P2 - angular perturbation)
+    # Simplified B-field from electron motion
+    def compute_B_field(X, Y, Z, e_pos, velocity):
+        """Compute magnetic field from moving electron."""
+        mu_0 = 4 * np.pi * 1e-7
+        q = 1.6e-19
+        eps = 1e-10
+
+        dx = X - e_pos[0]
+        dy = Y - e_pos[1]
+        dz = Z - e_pos[2]
+        r = np.sqrt(dx**2 + dy**2 + dz**2 + eps)
+
+        # B = (μ₀/4π) * q(v × r̂)/r²
+        # Cross product: v × r
+        vx, vy, vz = velocity
+        Bx = mu_0 * q / (4 * np.pi) * (vy * dz - vz * dy) / (r**3 + eps)
+        By = mu_0 * q / (4 * np.pi) * (vz * dx - vx * dz) / (r**3 + eps)
+        Bz = mu_0 * q / (4 * np.pi) * (vx * dy - vy * dx) / (r**3 + eps)
+
+        return Bx, By, Bz
+
+    # Estimate velocity from trajectory
+    if mid_idx > 0:
+        velocity = (electron_positions[mid_idx] - electron_positions[mid_idx-1]) / 1e-15  # Å/fs
+    else:
+        velocity = np.array([0.5, 0.3, 0.2])  # Default
+
+    Bx, By, Bz = compute_B_field(X, Y, Z, e_pos, velocity * 1e5)  # Scale for visualization
+    B_mag = np.sqrt(Bx**2 + By**2 + Bz**2)
+
+    # -------------------------------------------------------------------------
+    # Chart 1: 3D Electric Field (P1)
+    # -------------------------------------------------------------------------
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    # Sample points for quiver
+    step = 3
+    xs = X[::step, ::step, ::step].flatten()
+    ys = Y[::step, ::step, ::step].flatten()
+    zs = Z[::step, ::step, ::step].flatten()
+    Ex_s = Ex_total[::step, ::step, ::step].flatten()
+    Ey_s = Ey_total[::step, ::step, ::step].flatten()
+    Ez_s = Ez_total[::step, ::step, ::step].flatten()
+
+    # Normalize arrows
+    E_norm = np.sqrt(Ex_s**2 + Ey_s**2 + Ez_s**2)
+    E_norm[E_norm == 0] = 1
+    scale = 2.0
+
+    ax1.quiver(xs, ys, zs,
+               Ex_s/E_norm*scale, Ey_s/E_norm*scale, Ez_s/E_norm*scale,
+               color='red', alpha=0.6, arrow_length_ratio=0.3, linewidth=0.8)
+
+    # Cu center
+    ax1.scatter(0, 0, 0, s=300, c='orange', marker='o', edgecolors='black',
+                linewidths=2, label='Cu²⁺', zorder=10)
+
+    # Electron position
+    ax1.scatter(*e_pos, s=150, c='blue', marker='o', edgecolors='black',
+                linewidths=1, label=f'e⁻ (t={mid_idx})', zorder=10)
+
+    # Ligands
+    for name, pos in ligands.items():
+        ax1.scatter(*pos, s=80, c='green', marker='s', alpha=0.7)
+        ax1.text(pos[0], pos[1], pos[2]+0.5, name, fontsize=8, ha='center')
+
+    ax1.set_xlabel('X (Å)')
+    ax1.set_ylabel('Y (Å)')
+    ax1.set_zlabel('Z (Å)')
+    ax1.set_title('P1: Electric Field (Radial Perturbation)\n∇ᵣρ → Linear Momentum Coupling',
+                  fontweight='bold', fontsize=11)
+    ax1.legend(loc='upper left', fontsize=9)
+    ax1.view_init(elev=25, azim=-60)
+
+    # -------------------------------------------------------------------------
+    # Chart 2: 3D Magnetic Field (P2)
+    # -------------------------------------------------------------------------
+    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+
+    Bx_s = Bx[::step, ::step, ::step].flatten()
+    By_s = By[::step, ::step, ::step].flatten()
+    Bz_s = Bz[::step, ::step, ::step].flatten()
+
+    # Normalize arrows
+    B_norm = np.sqrt(Bx_s**2 + By_s**2 + Bz_s**2)
+    B_norm[B_norm == 0] = 1
+
+    ax2.quiver(xs, ys, zs,
+               Bx_s/B_norm*scale, By_s/B_norm*scale, Bz_s/B_norm*scale,
+               color='purple', alpha=0.6, arrow_length_ratio=0.3, linewidth=0.8)
+
+    # Cu center
+    ax2.scatter(0, 0, 0, s=300, c='orange', marker='o', edgecolors='black',
+                linewidths=2, label='Cu²⁺', zorder=10)
+
+    # Electron trajectory arc
+    ax2.plot(electron_positions[:, 0], electron_positions[:, 1], electron_positions[:, 2],
+             'b-', linewidth=2, alpha=0.7, label='e⁻ path')
+    ax2.scatter(*e_pos, s=150, c='blue', marker='o', edgecolors='black',
+                linewidths=1, zorder=10)
+
+    # Velocity vector
+    v_scale = 0.5
+    ax2.quiver(e_pos[0], e_pos[1], e_pos[2],
+               velocity[0]*v_scale, velocity[1]*v_scale, velocity[2]*v_scale,
+               color='cyan', linewidth=3, arrow_length_ratio=0.2, label='velocity')
+
+    ax2.set_xlabel('X (Å)')
+    ax2.set_ylabel('Y (Å)')
+    ax2.set_zlabel('Z (Å)')
+    ax2.set_title('P2: Magnetic Field (Angular Perturbation)\n∇_θρ → Angular Momentum Coupling',
+                  fontweight='bold', fontsize=11)
+    ax2.legend(loc='upper left', fontsize=9)
+    ax2.view_init(elev=25, azim=-60)
+
+    # -------------------------------------------------------------------------
+    # Chart 3: Field Magnitude Evolution
+    # -------------------------------------------------------------------------
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Compute field magnitudes at each trajectory point
+    E_mags = []
+    B_mags = []
+    times = []
+
+    for i, t_data in enumerate(trajectory):
+        pos = np.array(t_data['position']) * 1e10
+
+        # Distance from Cu
+        r_cu = np.linalg.norm(pos - cu_center)
+
+        # E-field magnitude at electron position (simplified)
+        E_at_e = 8.99e9 * 2 / (r_cu**2 + 0.1)  # From Cu²⁺
+        E_mags.append(E_at_e / 1e10)  # Normalize
+
+        # B-field estimate
+        if i > 0:
+            v = (electron_positions[i] - electron_positions[i-1]) / 50  # fs timestep
+            v_mag = np.linalg.norm(v)
+        else:
+            v_mag = 1.0
+        B_at_e = 4e-7 * 1.6e-19 * v_mag / (r_cu**2 + 0.1)
+        B_mags.append(B_at_e * 1e15)  # Normalize
+
+        times.append(t_data.get('time', i * 50) * 1e15)  # fs
+
+    ax3.plot(times, E_mags, 'r-', linewidth=2, label='|E| (P1 radial)', marker='o', markersize=4)
+    ax3.plot(times, B_mags, 'purple', linewidth=2, label='|B| (P2 angular)', marker='s', markersize=4)
+
+    ax3.set_xlabel('Time (fs)', fontsize=11)
+    ax3.set_ylabel('Field Magnitude (arb. units)', fontsize=11)
+    ax3.set_title('Perturbation Field Evolution During Transfer', fontweight='bold', fontsize=11)
+    ax3.legend(loc='upper right', fontsize=10)
+    ax3.grid(True, alpha=0.3)
+    ax3.set_xlim(0, max(times))
+
+    # Mark key transitions
+    for i, t in enumerate(times):
+        if i < len(trajectory) and 'trit' in trajectory[i]:
+            trit = trajectory[i]['trit']
+            if trit == 2:  # Null response
+                ax3.axvline(t, color='gray', alpha=0.3, linestyle='--')
+
+    # -------------------------------------------------------------------------
+    # Chart 4: Perturbation Response Summary
+    # -------------------------------------------------------------------------
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Count responses
+    trits = [t.get('trit', 1) for t in trajectory]
+    response_counts = {
+        'Radial (trit=0)': trits.count(0),
+        'Angular (trit=1)': trits.count(1),
+        'Null (trit=2)': trits.count(2)
+    }
+
+    colors = ['red', 'purple', 'gray']
+    bars = ax4.bar(response_counts.keys(), response_counts.values(), color=colors,
+                   edgecolor='black', linewidth=1.5, alpha=0.8)
+
+    # Add value labels
+    for bar, val in zip(bars, response_counts.values()):
+        ax4.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,
+                f'{val}', ha='center', va='bottom', fontsize=12, fontweight='bold')
+
+    ax4.set_ylabel('Count', fontsize=11)
+    ax4.set_title('Perturbation Response Classification\n[P1, P2] Response Encoding',
+                  fontweight='bold', fontsize=11)
+    ax4.set_ylim(0, max(response_counts.values()) * 1.2)
+
+    # Add encoding legend
+    encoding_text = (
+        "Encoding:\n"
+        "• (1,0) → trit=0: Radial response\n"
+        "• (0,1) → trit=1: Angular response\n"
+        "• (0,0) → trit=2: Null response"
+    )
+    ax4.text(0.95, 0.95, encoding_text, transform=ax4.transAxes, fontsize=9,
+             verticalalignment='top', horizontalalignment='right',
+             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+
+    # Add summary stats
+    total = len(trits)
+    ternary_string = ''.join(str(t) for t in trits)
+    stats_text = (
+        f"Total iterations: {total}\n"
+        f"Ternary string: {ternary_string}\n"
+        f"Information bits: {total * np.log2(3):.1f}"
+    )
+    ax4.text(0.05, 0.95, stats_text, transform=ax4.transAxes, fontsize=9,
+             verticalalignment='top', horizontalalignment='left',
+             bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.5))
+
+    # Main title
+    fig.suptitle('Panel 9: Perturbation Field Analysis\n'
+                 'P1 (Electric/Radial) & P2 (Magnetic/Angular) Internal Perturbations',
+                 fontsize=14, fontweight='bold', y=0.98)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    return fig
+
+
+# =============================================================================
+# Panel 10: Ternary Trisection Method (1 3D + 3 charts)
+# =============================================================================
+
+def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Figure:
+    """
+    Panel 10: Ternary Trisection Method Visualization (1 3D + 3 charts)
+
+    Charts:
+    1. 3D Trisection Search Space (showing subdivision)
+    2. Convergence Analysis
+    3. Complexity Comparison (O(log₃ N) vs O(N))
+    4. Localization Precision vs Iteration
+    """
+    fig = plt.figure(figsize=(20, 16))
+
+    # Extract data
+    trajectory = results['trajectory']
+    n_iterations = len(trajectory)
+
+    # Initial search region (Azurin active site ~20 Å)
+    initial_min = np.array([-10, -10, -10])  # Angstroms
+    initial_max = np.array([10, 10, 10])
+
+    # -------------------------------------------------------------------------
+    # Chart 1: 3D Trisection Search Space
+    # -------------------------------------------------------------------------
+    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+
+    # Draw initial bounding box
+    def draw_box(ax, min_pt, max_pt, color, alpha=0.3, linewidth=1):
+        """Draw a 3D box wireframe."""
+        x = [min_pt[0], max_pt[0]]
+        y = [min_pt[1], max_pt[1]]
+        z = [min_pt[2], max_pt[2]]
+
+        # Draw edges
+        for i in range(2):
+            for j in range(2):
+                ax.plot([x[0], x[1]], [y[i], y[i]], [z[j], z[j]], color=color, alpha=alpha, linewidth=linewidth)
+                ax.plot([x[i], x[i]], [y[0], y[1]], [z[j], z[j]], color=color, alpha=alpha, linewidth=linewidth)
+                ax.plot([x[i], x[i]], [y[j], y[j]], [z[0], z[1]], color=color, alpha=alpha, linewidth=linewidth)
+
+    # Draw initial region
+    draw_box(ax1, initial_min, initial_max, 'blue', alpha=0.2, linewidth=2)
+
+    # Simulate trisection convergence
+    region_min = initial_min.copy()
+    region_max = initial_max.copy()
+
+    trits = [t.get('trit', 1) for t in trajectory]
+    electron_positions = np.array([t['position'] for t in trajectory]) * 1e10
+    final_pos = electron_positions[-1]
+
+    colors = plt.cm.viridis(np.linspace(0, 1, min(6, n_iterations)))
+
+    for i in range(min(6, n_iterations)):  # Show first 6 subdivisions
+        axis = i % 3
+        trit = trits[i]
+
+        region_size = region_max - region_min
+
+        if trit == 0:
+            region_max[axis] = region_min[axis] + region_size[axis] / 3
+        elif trit == 1:
+            new_min = region_min[axis] + region_size[axis] / 3
+            new_max = region_min[axis] + 2 * region_size[axis] / 3
+            region_min[axis] = new_min
+            region_max[axis] = new_max
+        else:  # trit == 2
+            region_min[axis] = region_min[axis] + 2 * region_size[axis] / 3
+
+        draw_box(ax1, region_min.copy(), region_max.copy(), colors[i], alpha=0.4, linewidth=1.5)
+
+    # Final localized region
+    draw_box(ax1, region_min, region_max, 'red', alpha=0.8, linewidth=3)
+
+    # Electron trajectory
+    ax1.plot(electron_positions[:, 0], electron_positions[:, 1], electron_positions[:, 2],
+             'g-', linewidth=2, alpha=0.8, label='Electron path')
+    ax1.scatter(*final_pos, s=200, c='red', marker='*', edgecolors='black',
+                linewidths=1, label='Final position', zorder=10)
+
+    # Cu center
+    ax1.scatter(0, 0, 0, s=300, c='orange', marker='o', edgecolors='black',
+                linewidths=2, label='Cu center', zorder=10)
+
+    ax1.set_xlabel('X (Å)')
+    ax1.set_ylabel('Y (Å)')
+    ax1.set_zlabel('Z (Å)')
+    ax1.set_title('3D Ternary Trisection Search Space\nProgressive Region Subdivision',
+                  fontweight='bold', fontsize=11)
+    ax1.legend(loc='upper left', fontsize=9)
+    ax1.view_init(elev=20, azim=-45)
+
+    # -------------------------------------------------------------------------
+    # Chart 2: Convergence Analysis
+    # -------------------------------------------------------------------------
+    ax2 = fig.add_subplot(2, 2, 2)
+
+    # Compute region volume at each iteration
+    volumes = []
+    uncertainties = []
+    region_min = initial_min.copy()
+    region_max = initial_max.copy()
+
+    initial_volume = np.prod(initial_max - initial_min)
+    volumes.append(initial_volume)
+    uncertainties.append(np.linalg.norm(initial_max - initial_min) / np.sqrt(3))
+
+    for i in range(n_iterations):
+        axis = i % 3
+        trit = trits[i]
+        region_size = region_max - region_min
+
+        if trit == 0:
+            region_max[axis] = region_min[axis] + region_size[axis] / 3
+        elif trit == 1:
+            new_min = region_min[axis] + region_size[axis] / 3
+            new_max = region_min[axis] + 2 * region_size[axis] / 3
+            region_min[axis] = new_min
+            region_max[axis] = new_max
+        else:
+            region_min[axis] = region_min[axis] + 2 * region_size[axis] / 3
+
+        vol = np.prod(region_max - region_min)
+        volumes.append(vol)
+        uncertainties.append(np.linalg.norm(region_max - region_min) / np.sqrt(3))
+
+    iterations = range(n_iterations + 1)
+
+    ax2.semilogy(iterations, volumes, 'b-o', linewidth=2, markersize=6, label='Search volume (Å³)')
+    ax2.semilogy(iterations, uncertainties, 'r-s', linewidth=2, markersize=6, label='Position uncertainty (Å)')
+
+    # Theoretical curves
+    theory_vol = [initial_volume / (3**i) for i in iterations]
+    ax2.semilogy(iterations, theory_vol, 'b--', alpha=0.5, label='Theory: V/3ᵏ')
+
+    ax2.set_xlabel('Iteration', fontsize=11)
+    ax2.set_ylabel('Volume / Uncertainty', fontsize=11)
+    ax2.set_title('Trisection Convergence\nExponential Volume Reduction', fontweight='bold', fontsize=11)
+    ax2.legend(loc='upper right', fontsize=10)
+    ax2.grid(True, alpha=0.3)
+    ax2.set_xlim(0, n_iterations)
+
+    # -------------------------------------------------------------------------
+    # Chart 3: Complexity Comparison
+    # -------------------------------------------------------------------------
+    ax3 = fig.add_subplot(2, 2, 3)
+
+    # Compare O(log₃ N) vs O(N) vs O(log₂ N)
+    N_values = np.logspace(1, 6, 50)
+
+    ternary_complexity = np.log(N_values) / np.log(3)
+    binary_complexity = np.log(N_values) / np.log(2)
+    linear_complexity = N_values
+
+    ax3.loglog(N_values, linear_complexity, 'r-', linewidth=2, label='O(N) - Linear search')
+    ax3.loglog(N_values, binary_complexity, 'g-', linewidth=2, label='O(log₂ N) - Binary')
+    ax3.loglog(N_values, ternary_complexity, 'b-', linewidth=3, label='O(log₃ N) - Ternary trisection')
+
+    # Mark actual experiment
+    N_actual = 3**n_iterations
+    ax3.axvline(N_actual, color='purple', linestyle='--', alpha=0.7, label=f'This exp: N={N_actual:.0e}')
+    ax3.scatter([N_actual], [n_iterations], s=200, c='purple', marker='*', zorder=10)
+
+    ax3.set_xlabel('Search Space Size (N grid points)', fontsize=11)
+    ax3.set_ylabel('Number of Measurements', fontsize=11)
+    ax3.set_title('Complexity Comparison\nTernary Trisection Advantage', fontweight='bold', fontsize=11)
+    ax3.legend(loc='upper left', fontsize=10)
+    ax3.grid(True, alpha=0.3, which='both')
+
+    # Add speedup annotation
+    speedup_vs_linear = N_actual / n_iterations
+    speedup_vs_binary = (np.log(N_actual) / np.log(2)) / n_iterations
+    ax3.text(0.95, 0.5, f'Speedup vs linear: {speedup_vs_linear:.1e}×\n'
+                        f'Speedup vs binary: {speedup_vs_binary:.2f}×',
+             transform=ax3.transAxes, fontsize=10, verticalalignment='center',
+             horizontalalignment='right', bbox=dict(boxstyle='round', facecolor='yellow', alpha=0.5))
+
+    # -------------------------------------------------------------------------
+    # Chart 4: Localization Precision vs Iteration
+    # -------------------------------------------------------------------------
+    ax4 = fig.add_subplot(2, 2, 4)
+
+    # Precision in each dimension
+    precisions = []
+    region_min = initial_min.copy()
+    region_max = initial_max.copy()
+
+    for i in range(n_iterations):
+        axis = i % 3
+        trit = trits[i]
+        region_size = region_max - region_min
+
+        if trit == 0:
+            region_max[axis] = region_min[axis] + region_size[axis] / 3
+        elif trit == 1:
+            new_min = region_min[axis] + region_size[axis] / 3
+            new_max = region_min[axis] + 2 * region_size[axis] / 3
+            region_min[axis] = new_min
+            region_max[axis] = new_max
+        else:
+            region_min[axis] = region_min[axis] + 2 * region_size[axis] / 3
+
+        precisions.append({
+            'x': region_max[0] - region_min[0],
+            'y': region_max[1] - region_min[1],
+            'z': region_max[2] - region_min[2]
+        })
+
+    iters = range(1, n_iterations + 1)
+    ax4.semilogy(iters, [p['x'] for p in precisions], 'r-o', linewidth=2, markersize=5, label='Δx')
+    ax4.semilogy(iters, [p['y'] for p in precisions], 'g-s', linewidth=2, markersize=5, label='Δy')
+    ax4.semilogy(iters, [p['z'] for p in precisions], 'b-^', linewidth=2, markersize=5, label='Δz')
+
+    # Combined uncertainty
+    total_uncertainty = [np.sqrt(p['x']**2 + p['y']**2 + p['z']**2) for p in precisions]
+    ax4.semilogy(iters, total_uncertainty, 'k-', linewidth=3, label='|Δr| total')
+
+    # Target precision
+    target = 0.1  # 0.1 Å
+    ax4.axhline(target, color='purple', linestyle='--', linewidth=2, label=f'Target: {target} Å')
+
+    ax4.set_xlabel('Iteration', fontsize=11)
+    ax4.set_ylabel('Position Uncertainty (Å)', fontsize=11)
+    ax4.set_title('Localization Precision per Dimension\nCyclic Axis Refinement', fontweight='bold', fontsize=11)
+    ax4.legend(loc='upper right', fontsize=10)
+    ax4.grid(True, alpha=0.3)
+    ax4.set_xlim(1, n_iterations)
+
+    # Final precision annotation
+    final_precision = total_uncertainty[-1] if total_uncertainty else 1.0
+    ax4.text(0.05, 0.05, f'Final precision: {final_precision:.3f} Å\n'
+                         f'Iterations: {n_iterations}\n'
+                         f'Ternary string: {"".join(str(t) for t in trits)}',
+             transform=ax4.transAxes, fontsize=10, verticalalignment='bottom',
+             horizontalalignment='left', bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.5))
+
+    # Main title
+    fig.suptitle('Panel 10: Ternary Trisection Localization Method\n'
+                 f'O(log₃ N) Zero-Backaction Electron Localization | {n_iterations} iterations | '
+                 f'Final Δr = {final_precision:.3f} Å',
+                 fontsize=14, fontweight='bold', y=0.98)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    return fig
+
+
+# =============================================================================
 # Main Function
 # =============================================================================
 
@@ -1671,16 +2220,24 @@ def generate_all_panels(data_dir: Path = None, output_dir: Path = None) -> None:
     plot_panel_7_wavefunction(wavefunction, results, output_dir / 'panel_7_wavefunction.png')
     print("      -> panel_7_wavefunction.png")
 
-    print("\n[10/10] Panel 8: 3D Electron Cloud (4 3D charts)...")
+    print("\n[10/12] Panel 8: 3D Electron Cloud (4 3D charts)...")
     plot_panel_8_electron_cloud(wavefunction, results, output_dir / 'panel_8_electron_cloud.png')
     print("      -> panel_8_electron_cloud.png")
 
+    print("\n[11/12] Panel 9: Perturbation Fields (2 3D + 2 metrics)...")
+    plot_panel_9_perturbation_fields(results, output_dir / 'panel_9_perturbation_fields.png')
+    print("      -> panel_9_perturbation_fields.png")
+
+    print("\n[12/12] Panel 10: Ternary Trisection Method (1 3D + 3 charts)...")
+    plot_panel_10_ternary_trisection(results, output_dir / 'panel_10_ternary_trisection.png')
+    print("      -> panel_10_ternary_trisection.png")
+
     print("\n" + "=" * 80)
-    print("ALL 8 PANELS GENERATED (32 CHARTS TOTAL)")
+    print("ALL 10 PANELS GENERATED (40 CHARTS TOTAL)")
     print("=" * 80)
     print(f"\nOutput: {output_dir}")
     print("\nFiles:")
-    for i in range(1, 9):
+    for i in range(1, 11):
         print(f"  - panel_{i}_*.png (4 charts)")
     print("=" * 80)
 
