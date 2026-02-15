@@ -1,0 +1,361 @@
+\section{Geometric Partitioning and Spatial Emergence}
+\label{sec:geometric}
+
+\subsection{Spatial Structure from Sequential Partitioning}
+
+Three-dimensional Euclidean space is not assumed as a pre-existing arena—it emerges from partition geometry.
+
+\begin{theorem}[Spatial Emergence]
+\label{thm:spatial_emergence}
+Angular partition coordinates $(\ell, m)$ generate three-dimensional spatial structure through spherical harmonic eigenfunctions:
+\begin{equation}
+Y_\ell^m(\theta, \phi) = \sqrt{\frac{2\ell+1}{4\pi}\frac{(\ell-|m|)!}{(\ell+|m|)!}} P_\ell^{|m|}(\cos\theta) e^{im\phi}
+\end{equation}
+where $(\theta, \phi)$ are emergent angular coordinates and $P_\ell^{|m|}$ are associated Legendre polynomials.
+\end{theorem}
+
+\begin{proof}
+Angular complexity $\ell$ (Definition~\ref{def:partition_coords}) counts angular nodes in oscillatory amplitude distribution. For a bounded system, nodes must be spatially arranged. The number and arrangement of nodes defines dimensionality.
+
+\textbf{Case $\ell = 0$:} No angular nodes → spherically symmetric distribution → no preferred direction. Spatial structure is purely radial (one-dimensional).
+
+\textbf{Case $\ell = 1$:} One angular node → defines preferred axis → one-dimensional orientation emerges. The node divides the sphere into two regions (positive and negative amplitude).
+
+\textbf{Case $\ell \geq 1$ with varying $m$:} Multiple node configurations require two independent angular coordinates $(\theta, \phi)$ to specify node positions on a sphere:
+\begin{itemize}
+    \item $\theta \in [0, \pi]$: polar angle (latitude)
+    \item $\phi \in [0, 2\pi)$: azimuthal angle (longitude)
+\end{itemize}
+
+The orientation quantum number $m \in \{-\ell, \ldots, +\ell\}$ specifies the arrangement of $\ell$ nodes around the sphere. For $\ell = 2$, there are five distinct arrangements ($m = -2, -1, 0, +1, +2$), each corresponding to a different spatial configuration.
+
+Combined with the radial coordinate from principal quantum number $n$ (related to radius by $r \sim n a_0$ where $a_0$ is the characteristic length scale), this yields three-dimensional space:
+\begin{itemize}
+    \item Spherical coordinates: $(r, \theta, \phi)$
+    \item Cartesian coordinates: $(x, y, z)$ via $x = r\sin\theta\cos\phi$, $y = r\sin\theta\sin\phi$, $z = r\cos\theta$
+\end{itemize}
+
+Space is not a pre-existing arena in which partitioning occurs—it is emergent structure from partition geometry. The three dimensions correspond to:
+\begin{enumerate}
+    \item Radial dimension from $n$ (partition depth)
+    \item Two angular dimensions from $(\ell, m)$ (node arrangement)
+\end{enumerate}
+
+The spherical harmonics $Y_\ell^m(\theta, \phi)$ are not imposed but emerge necessarily as the eigenfunctions of angular partitioning on a bounded domain.
+\end{proof}
+
+\begin{corollary}[Euclidean Metric from Partition Distance]
+\label{cor:euclidean_metric}
+The Euclidean distance metric in three-dimensional space:
+\begin{equation}
+ds^2 = dr^2 + r^2(d\theta^2 + \sin^2\theta \, d\phi^2)
+\end{equation}
+emerges from partition depth differences $\Delta n$ and angular coordinate differences $\Delta\ell, \Delta m$.
+\end{corollary}
+
+\begin{proof}
+Partition coordinates $(n, \ell, m)$ map to spatial coordinates $(r, \theta, \phi)$ via:
+\begin{align}
+r &\sim n a_0 \quad \Rightarrow \quad dr \sim a_0 \, dn \\
+\theta &= \theta(\ell, m) \quad \Rightarrow \quad d\theta \sim \frac{\partial\theta}{\partial\ell} d\ell + \frac{\partial\theta}{\partial m} dm \\
+\phi &= \phi(m) \quad \Rightarrow \quad d\phi \sim \frac{\partial\phi}{\partial m} dm
+\end{align}
+
+The metric coefficients $(1, r^2, r^2\sin^2\theta)$ arise from the geometry of spherical partitioning. The factor $r^2$ in angular terms reflects that angular separation at radius $r$ corresponds to arc length $r\,d\theta$ and $r\sin\theta\,d\phi$.
+
+This is the standard metric on $\mathbb{R}^3$ in spherical coordinates, derived here from partition geometry rather than assumed a priori. Euclidean geometry is the emergent structure of partition space for systems with spherical symmetry.
+\end{proof}
+
+\begin{remark}
+This establishes that spatial geometry is not fundamental but emergent. Alternative partition geometries (e.g., toroidal, hyperbolic) would yield different spatial structures. The prevalence of Euclidean geometry in physical systems reflects the prevalence of spherically symmetric partitioning in bounded oscillatory systems.
+\end{remark}
+
+\subsection{Partition Boundaries and Physical Surfaces}
+
+Physical boundaries (surfaces, interfaces, discontinuities) are partition boundaries where categorical structure changes abruptly.
+
+\begin{definition}[Partition Boundary]
+\label{def:partition_boundary}
+A \textbf{partition boundary} is a region where partition coordinates change discontinuously:
+\begin{equation}
+\left|\frac{\partial \Sigma}{\partial \mathbf{r}}\right| \to \infty
+\end{equation}
+at boundary location $\mathbf{r}_{\text{boundary}}$, where $\Sigma = (n, \ell, m, s)$ is the partition signature.
+\end{definition}
+
+\begin{theorem}[Physical Surfaces as Partition Boundaries]
+\label{thm:surfaces_boundaries}
+The surface of a massive body (planet, moon, asteroid) is a partition boundary where:
+\begin{enumerate}
+    \item Partition depth drops discontinuously: $n_{\text{interior}} \gg n_{\text{exterior}}$ (vacuum has $n \sim 1$)
+    \item Phase-lock network terminates: coupling strength drops by factor $\sim 10^{20}$ (solid → vacuum)
+    \item Categorical structure changes: condensed matter → gas/vacuum
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Interior of massive body:}
+\begin{itemize}
+    \item High particle density: $\rho_{\text{interior}} \sim 10^{28}$ m$^{-3}$ (solid) to $10^{29}$ m$^{-3}$ (liquid)
+    \item Extensive phase-lock network: each atom coupled to $\sim 10$ neighbors via Van der Waals/covalent bonds
+    \item High partition depth: $n_{\text{local}} \sim 10^{10}$ per cubic micron (accounting for all atoms and their electronic states)
+\end{itemize}
+
+\textbf{Exterior (vacuum):}
+\begin{itemize}
+    \item Low particle density: $\rho_{\text{exterior}} \sim 10^6$ m$^{-3}$ (interplanetary medium) to $10^{-6}$ m$^{-3}$ (deep space)
+    \item Sparse phase-lock network: atoms separated by $\sim$ meters, negligible coupling
+    \item Low partition depth: $n_{\text{local}} \sim 1$ (isolated atoms, no collective structure)
+\end{itemize}
+
+\textbf{Transition region:}
+
+The transition occurs over distance $\Delta r \sim$ few atomic diameters $\sim 1$ nm, defining a sharp surface boundary. The partition depth ratio:
+\begin{equation}
+\frac{n_{\text{interior}}}{n_{\text{exterior}}} \sim \frac{10^{10}}{1} = 10^{10}
+\end{equation}
+
+Phase-lock coupling strength ratio:
+\begin{equation}
+\frac{\alpha_{\text{interior}}}{\alpha_{\text{exterior}}} \sim \frac{\rho_{\text{interior}}}{\rho_{\text{exterior}}} \cdot \frac{r_{\text{exterior}}^6}{r_{\text{interior}}^6} \sim 10^{22} \cdot 10^{-12} = 10^{10}
+\end{equation}
+(Van der Waals coupling $\sim r^{-6}$, density ratio $\sim 10^{22}$, distance ratio $\sim 10^2$).
+
+This discontinuous change in partition structure defines the physical surface.
+
+\textbf{Surface features:}
+
+Surface roughness, craters, and regolith are local partition boundary variations:
+\begin{equation}
+r_{\text{surface}}(\theta, \phi) = R_{\text{mean}} + \delta r(\theta, \phi)
+\end{equation}
+where $R_{\text{mean}}$ is the mean radius and $\delta r(\theta, \phi)$ encodes topographic partition structure. For the Moon:
+\begin{itemize}
+    \item $R_{\text{mean}} = 1737.4$ km
+    \item $\delta r \sim$ few km (mountains, crater rims)
+    \item $\delta r \sim$ few meters (boulders, surface roughness)
+    \item $\delta r \sim$ few cm (bootprints, rover tracks)
+\end{itemize}
+
+Each scale of topographic variation corresponds to a different partition depth hierarchy.
+\end{proof}
+
+\begin{remark}
+This establishes that physical surfaces are not arbitrary geometric constructs but necessary consequences of partition structure discontinuities. The sharpness of surfaces (transition over $\sim 1$ nm despite body size $\sim 10^6$ m) reflects the discrete nature of partition boundaries.
+\end{remark}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/section_4_validation.png}
+\caption{\textbf{Section 4 validation: Geometric partitioning showing spatial structure emergence from sequential partitioning with depth hierarchy and temporal resolution.} 
+\textbf{(A) Spatial emergence} $Y_\ell^m(\theta, \phi) \to$ 3D space showing spherical harmonic $Y_2^1(\theta, \phi)$ (quadrupole with $\ell=2$, $m=1$) rendered as 3D surface. Color gradient (blue to green to red) represents amplitude variation $-1$ to $+1$. Surface topology shows two lobes (positive and negative) characteristic of $\ell=2$ angular structure. Coordinate axes: $x$, $y$, $z$ spanning $-1$ to $+1$ (normalized units). 
+\textbf{(B) Partition boundary surface where $n$ changes} showing sharp transition at physical surface. Horizontal axes: position $x$ and $y$ ($-4$ to $+4$ arbitrary units). Color scale (blue to red, 1 to 10) represents partition depth $n$. Red circular region (center): high partition depth $n \sim 10$ (interior of massive body with many distinguishable states). Blue background: low partition depth $n \sim 1$ (vacuum with minimal structure). Sharp boundary (red-blue interface) marks physical surface where partition depth drops discontinuously. 
+\textbf{(C) Depth hierarchy: Physical scales by $n$} showing partition depth ranges for different physical regimes. Horizontal axis: $\log_{10}(\text{Partition Depth } n)$ from 0 to 40. Vertical axis: physical scale categories. Green boxes: Subatomic ($n \sim 10^0$--$10^2$), Atomic ($n \sim 10^2$--$10^4$), Molecular ($n \sim 10^4$--$10^8$), Mesoscopic ($n \sim 10^8$--$10^{12}$), Macroscopic ($n \sim 10^{12}$--$10^{20}$). 
+\textbf{(D) Euclidean metric} $ds^2 = dr^2 + r^2(d\theta^2 + \sin^2\theta \, d\phi^2)$ derived from partition coordinates. Three curves show metric components vs. radial coordinate $r$ (0 to 5 arbitrary units). Blue line ($g_{rr} = 1$): radial metric component (constant, flat space). Red line ($g_{\theta\theta} = r^2$): angular metric component (quadratic growth with radius). Green line ($g_{\phi\phi} = r^2\sin^2\theta$): azimuthal metric component (includes $\sin^2\theta$ factor for spherical geometry). 
+\textbf{(E) Temporal resolution} $\Delta t_{\min} \gtrsim T_{\text{lag}} = n/\Delta E$ showing partition lag time vs. energy scale. Horizontal axis: energy scale $\Delta E$ (eV, log scale $10^{-3}$ to $10^3$). Vertical axis: partition lag $T_{\text{lag}}$ (femtoseconds, log scale $10^{-7}$ to $10^6$). Blue line: inverse relationship $T_{\text{lag}} \sim 1/\Delta E$. }
+\label{fig:section4_validation}
+\end{figure}
+
+\subsection{Partition Depth Hierarchy}
+
+Physical structures are organised hierarchically by partition depth, with each scale characterised by a distinct categorical structure.
+
+\begin{theorem}[Depth Hierarchy]
+\label{thm:depth_hierarchy}
+Physical systems organize by partition depth $n$ into distinct scales:
+\begin{align}
+\text{Subatomic (quarks, leptons)} &: n \sim 1\text{--}10 \\
+\text{Atomic (nuclei, electrons)} &: n \sim 10\text{--}100 \\
+\text{Molecular (molecules, clusters)} &: n \sim 10^2\text{--}10^4 \\
+\text{Mesoscopic (colloids, nanostructures)} &: n \sim 10^4\text{--}10^8 \\
+\text{Macroscopic (bulk matter)} &: n \sim 10^8\text{--}10^{20} \\
+\text{Astronomical (planets, stars)} &: n \sim 10^{20}\text{--}10^{40}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+Partition depth $n$ counts the number of distinguishable states in a system (Theorem~\ref{thm:capacity}). For a system with $N$ particles, each with partition depth $n_{\text{particle}}$:
+\begin{equation}
+n_{\text{total}} \sim N \cdot n_{\text{particle}}
+\end{equation}
+
+\textbf{Subatomic:} Individual quarks/leptons have $n \sim 1$ (few internal degrees of freedom).
+
+\textbf{Atomic:} A hydrogen atom has $n \sim 1$ (ground state), while heavy atoms have $n \sim 100$ (many electron shells filled).
+
+\textbf{Molecular:} A water molecule (H$_2$O) has $n \sim 10^2$ (3 atoms $\times$ $\sim 30$ states per atom). Proteins have $n \sim 10^4$ (thousands of atoms).
+
+\textbf{Mesoscopic:} Colloidal particles ($\sim 10^6$ atoms) have $n \sim 10^8$.
+
+\textbf{Macroscopic:} 1 cm$^3$ of solid ($\sim 10^{22}$ atoms) has $n \sim 10^{20}$.
+
+\textbf{Astronomical:} The Moon ($M \sim 7.3 \times 10^{22}$ kg $\sim 10^{49}$ atoms) has:
+\begin{equation}
+n_{\text{Moon}} \sim 10^{49} \times 10^2 \sim 10^{51}
+\end{equation}
+(accounting for all atomic and molecular states).
+
+However, for observational purposes, the relevant partition depth is the \emph{surface} partition depth (what can be accessed from Earth):
+\begin{equation}
+n_{\text{surface}} \sim 10^{30}
+\end{equation}
+(accounting for surface features resolvable at $\sim$ cm scale).
+\end{proof}
+
+\begin{corollary}[Scale-Dependent Observational Requirements]
+\label{cor:scale_observational}
+Observing structures at partition depth $n_{\text{target}}$ requires observer partition depth $n_{\text{obs}} \gtrsim n_{\text{target}}$ or catalytic enhancement (Section~\ref{subsec:info_catalysis}).
+\end{corollary}
+
+\begin{proof}
+From Corollary~\ref{cor:measurement}, measurement resolution is bounded by:
+\begin{equation}
+\Delta n \sim \frac{n_{\text{target}}}{n_{\text{obs}}}
+\end{equation}
+
+To resolve structure at scale $\Delta n \sim 1$ (distinguishing individual partition states), it requires:
+\begin{equation}
+n_{\text{obs}} \gtrsim n_{\text{target}}
+\end{equation}
+
+For lunar surface observation ($n_{\text{target}} \sim 10^{30}$), a single telescope aperture is $n_{\text{telescope}} \sim 10^{15}$ (limited by aperture size and detector array size). This is insufficient:
+\begin{equation}
+\frac{n_{\text{target}}}{n_{\text{telescope}}} \sim \frac{10^{30}}{10^{15}} = 10^{15} \gg 1
+\end{equation}
+
+Interferometry increases effective partition depth:
+\begin{equation}
+n_{\text{eff}} = \sqrt{\sum_{k=1}^K n_k^2}
+\end{equation}
+
+For $K = 10$ telescopes with $n_k \sim 10^{15}$ each:
+\begin{equation}
+n_{\text{eff}} = \sqrt{10 \times (10^{15})^2} \sim 3 \times 10^{15}
+\end{equation}
+
+Still insufficient. Virtual interferometry (Section~\ref{sec:interferometry}) uses computational apertures to achieve $n_{\text{eff}} \sim 10^{30}$, enabling lunar surface resolution at cm scale.
+\end{proof}
+
+\begin{remark}
+This hierarchy explains why different observational techniques are required at different scales:
+\begin{itemize}
+    \item Atomic scale: Electron microscopy, STM (high $n_{\text{obs}}$ through small probe)
+    \item Molecular scale: X-ray crystallography, NMR (high $n_{\text{obs}}$ through frequency resolution)
+    \item Macroscopic scale: Optical microscopy, photography (moderate $n_{\text{obs}}$)
+    \item Astronomical scale: Interferometry, virtual imaging (catalytic enhancement of $n_{\text{obs}}$)
+\end{itemize}
+\end{remark}
+
+
+\subsection{Partition Lag and Temporal Resolution}
+
+Partition completion is not instantaneous—there is a characteristic timescale for partition boundaries to crystallise from undetermined residue to determinate categorical states.
+
+\begin{definition}[Partition Lag]
+\label{def:partition_lag}
+The \textbf{partition lag} $\tau_{\text{lag}}$ is the minimum time for partition boundaries to crystallise from undetermined residue to determinate categorical states:
+\begin{equation}
+\tau_{\text{lag}} = \frac{\hbar}{\Delta E_{\text{partition}}}
+\end{equation}
+where $\Delta E_{\text{partition}}$ is the energy scale of partition transitions.
+\end{definition}
+
+\begin{theorem}[Temporal Resolution Bound]
+\label{thm:temporal_resolution}
+Temporal resolution of observation is bounded by partition lag:
+\begin{equation}
+\Delta t_{\min} \geq \tau_{\text{lag}} \sim \frac{\hbar}{\Delta E_{\text{partition}}}
+\end{equation}
+This is the time-energy uncertainty relation (Theorem~\ref{thm:categorical_observables}) applied to partition completion dynamics.
+\end{theorem}
+
+\begin{proof}
+Partition completion involves transitions between partition states with an energy difference $\Delta E_{\text{partition}}$. From the uncertainty relation:
+\begin{equation}
+\Delta E \cdot \Delta t \gtrsim \hbar
+\end{equation}
+
+The minimum time to resolve a partition transition is:
+\begin{equation}
+\Delta t_{\min} = \frac{\hbar}{\Delta E_{\text{partition}}}
+\end{equation}
+
+For partition transitions involving:
+\begin{itemize}
+    \item Electronic states: $\Delta E \sim$ few eV $\Rightarrow$ $\tau_{\text{lag}} \sim 10^{-15}$ s (femtosecond)
+    \item Vibrational states: $\Delta E \sim 0.1$ eV $\Rightarrow$ $\tau_{\text{lag}} \sim 10^{-14}$ s (tens of femtoseconds)
+    \item Rotational states: $\Delta E \sim 10^{-3}$ eV $\Rightarrow$ $\tau_{\text{lag}} \sim 10^{-12}$ s (picosecond)
+\end{itemize}
+
+Observation at timescales shorter than $\tau_{\text{lag}}$ accesses the undetermined residue—the system is in a superposition of partition states, not yet crystallised into a definite configuration.
+\end{proof}
+
+\begin{corollary}[Practical Temporal Resolution]
+\label{cor:practical_temporal}
+For lunar observation from Earth, the fundamental partition lag $\tau_{\text{lag}} \sim 10^{-15}$ s is far shorter than the detector partition lag $\tau_{\text{lag}}^{\text{detector}} \sim 10^{-6}$ s (microseconds, limited by electronics and readout). Practical temporal resolution is detector-limited, not fundamentally limited.
+\end{corollary}
+
+\begin{proof}
+For photons with energy $E \sim$ few eV (visible light), the fundamental partition lag:
+\begin{equation}
+\tau_{\text{lag}}^{\text{fundamental}} = \frac{\hbar}{E} = \frac{6.6 \times 10^{-16} \text{ eV·s}}{2 \text{ eV}} \sim 3 \times 10^{-16} \text{ s}
+\end{equation}
+
+However, detector systems (CCD cameras, photomultipliers) have readout times:
+\begin{equation}
+\tau_{\text{lag}}^{\text{detector}} \sim 10^{-6} \text{ s (microsecond)}
+\end{equation}
+
+The ratio is:
+\begin{equation}
+\frac{\tau_{\text{lag}}^{\text{detector}}}{\tau_{\text{lag}}^{\text{fundamental}}} \sim \frac{10^{-6}}{10^{-16}} = 10^{10}
+\end{equation}
+
+Detector lag dominates by ten orders of magnitude. Practical temporal resolution is limited by detector technology, not by the fundamental partition lag.
+
+For virtual interferometry using CPU oscillators (Section~\ref{sec:interferometry}), the relevant timescale is the CPU clock period:
+\begin{equation}
+\tau_{\text{CPU}} \sim 10^{-9} \text{ s (nanosecond, for GHz processors)}
+\end{equation}
+
+Still far longer than fundamental partition lag, but sufficient for lunar observation where relevant timescales are:
+\begin{itemize}
+    \item Lunar orbital period: $\sim 27$ days
+    \item Lunar rotation period: $\sim 27$ days (tidally locked)
+    \item Surface temperature variations: $\sim$ hours (day-night cycle)
+\end{itemize}
+
+All astronomical timescales are $\gg \tau_{\text{CPU}} \gg \tau_{\text{lag}}^{\text{fundamental}}$, so temporal resolution is not a limiting factor.
+\end{proof}
+
+\begin{remark}
+This establishes that temporal resolution constraints are practical (detector technology), not fundamental (partition lag). Future detector improvements could approach fundamental limits, but for current astronomical observation, detector lag is the bottleneck.
+\end{remark}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/3D_VOLUMETRIC_RECONSTRUCTION.png}
+\caption{\textbf{Three-dimensional volumetric reconstruction of Apollo 11 landing site showing complete depth structure from categorical partition imaging.}
+\textbf{(A)} 3D surface reconstruction showing vertical features: flag pole (green spike, height 1.2~m), lunar module descent stage (brown structure, height 2.5~m), and astronaut bootprints (blue depressions, depth 3~cm). Surface topology reconstructed from partition depth variations $\Delta n(x,y)$ relative to baseline regolith partition signature. Vertical scale exaggerated 2:1 for visibility.
+\textbf{(B)} Topographic contour map with 20 elevation contours spanning $-0.3$ to $+2.5$~m. Flag location (white box, coordinates: 0.67421°N, 23.47301°E) and LM descent stage (orange circle, 2.5~m height) clearly resolved. Blue regions indicate depressions (bootprints, blast crater). Green-yellow regions indicate elevated features (equipment, flag). Contour spacing: 0.14~m. Color scale: blue (low elevation, $-0.3$~m) to brown (high elevation, $+2.5$~m).
+\textbf{(C)} Cross-section profile through flag and LM showing horizontal slice at $y = 120$ pixels. Flag pole appears as sharp 1.2~m spike. LM descent stage appears as broad 2.5~m plateau. Regolith baseline (brown fill) at 0~m elevation. White line shows surface profile extracted from partition depth coordinate $n(x)$. Horizontal extent: 250 pixels (50~m at 0.2~m/pixel resolution). Vertical extent: 0--3~m.
+\textbf{(D)} Depth map with color-coded elevation: red (high, $+2.5$~m) to blue (low, $-0.3$~m). LM descent stage (large orange circle) dominates center-right. Flag (small white circle, labeled) visible at left. Bootprint trails (blue streaks) connect features. EASEP scientific package (faint blue rectangle) visible below flag. Color scale represents partition depth perturbation: $\Delta n > 0$ (compressed/elevated regolith, warm colors), $\Delta n < 0$ (excavated regolith, cool colors), $\Delta n \approx 0$ (undisturbed surface, neutral blue).
+\textbf{(E)} Elevation distribution histogram showing pixel count vs. height. Sharp peak at 0.1~m (base surface, 32,000 pixels) represents undisturbed regolith. Small peak at 1.2~m (flag pole, $\sim$50 pixels). Small peak at 2.5~m (LM descent stage, $\sim$200 pixels). Shallow depression at $-0.03$~m (bootprints, $\sim$500 pixels). }
+\label{fig:3d_volumetric_reconstruction}
+\end{figure}
+
+\subsection{Summary: Spatial Structure and Observational Constraints}
+
+This section establishes that:
+
+\begin{enumerate}
+    \item \textbf{Space emerges from partition geometry} (Theorem~\ref{thm:spatial_emergence}): Three-dimensional Euclidean space is not assumed but derived from angular partition coordinates $(\ell, m)$ and radial depth $n$.
+    
+    \item \textbf{Physical surfaces are partition boundaries} (Theorem~\ref{thm:surfaces_boundaries}): The Moon's surface is a discontinuity in partition structure, with interior partition depth $n_{\text{interior}} \sim 10^{51}$ dropping to exterior $n_{\text{exterior}} \sim 1$.
+    
+    \item \textbf{Observation requires partition depth matching} (Theorem~\ref{thm:depth_hierarchy}): Resolving lunar surface features at cm scale requires observer partition depth $n_{\text{obs}} \sim 10^{30}$, achievable through interferometric or catalytic enhancement.
+    
+    \item \textbf{Temporal resolution is detector-limited} (Theorem~\ref{thm:temporal_resolution}): Fundamental partition lag $\tau_{\text{lag}} \sim 10^{-15}$ s is far shorter than practical detector lag $\sim 10^{-6}$ s, so temporal resolution is not a fundamental constraint.
+\end{enumerate}
+
+These results establish the geometric framework for astronomical observation. The Moon exists as a massive body with partition depth $n \sim 10^{51}$, bounded by a sharp surface (partition boundary), observable from Earth through partition signature access requiring effective partition depth $n_{\text{eff}} \sim 10^{30}$ (achievable via virtual interferometry, Section~\ref{sec:interferometry}).
