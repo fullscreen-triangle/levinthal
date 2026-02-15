@@ -1,0 +1,412 @@
+\section{Representations of the Moon: Images and Videos}
+\label{sec:representations}
+
+\subsection{Images as Categorical Projections}
+
+Images of the Moon are not direct "copies" of physical reality but categorical projections of lunar partition signatures onto detector partition spaces.
+
+\begin{definition}[Image as Categorical Projection]
+\label{def:image_projection}
+An image $\mathcal{I}$ of a target with a partition signature $\Sigma_{\text{target}}$ observed by a detector with a signature $\Sigma_{\text{detector}}$ is the categorical projection:
+\begin{equation}
+\mathcal{I} = \Pi(\Sigma_{\text{target}} | \Sigma_{\text{detector}})
+\end{equation}
+where $\Pi$ is the projection operator extracting observable partition coordinates accessible to the detector.
+\end{definition}
+
+\begin{remark}
+This differs fundamentally from the naive view of images as "light bouncing off objects." Instead:
+\begin{itemize}
+    \item The target (Moon) has partition structure $\Sigma_{\text{target}}$ (topography, composition, thermal state)
+    \item The detector (camera) has partition structure $\Sigma_{\text{detector}}$ (pixel array, spectral response, readout electronics)
+    \item The image is the overlap of these structures—what the detector can access from the target
+\end{itemize}
+Image formation is a categorical operation, not a geometric ray-tracing process.
+\end{remark}
+
+\begin{theorem}[Lunar Image Formation]
+\label{thm:lunar_image}
+A telescopic image of the Moon forms through the following categorical process:
+\begin{enumerate}
+    \item \textbf{Illumination}: Photons from the Sun (partition signature $\Sigma_{\text{Sun}}$, blackbody spectrum at $T \approx 5800$ K) scatter off the lunar surface
+    \item \textbf{Encoding}: Scattering modifies photon partition states, encoding surface partition signatures (albedo, composition, roughness, topography)
+    \item \textbf{Propagation}: Photons propagate to Earth telescope (distance $r \approx 384{,}400$ km), maintaining partition signatures
+    \item \textbf{Detection}: Telescope detector measures photon partition states, projecting onto detector partition space
+    \item \textbf{Image}: Resulting image is categorical representation of lunar surface partition structure
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: Illumination and scattering}
+
+Sunlight incident on the Moon has partition signature $\Sigma_{\text{Sun}}$ characterized by:
+\begin{itemize}
+    \item Spectral distribution: Blackbody at $T \approx 5800$ K, peak wavelength $\lambda_{\text{peak}} \approx 500$ nm (green)
+    \item Intensity: Solar constant at Moon's orbit $\approx 1361$ W/m$^2$
+    \item Polarization: Unpolarized (random partition orientations)
+\end{itemize}
+
+Scattering from the lunar surface modifies this:
+\begin{equation}
+\Sigma_{\text{scattered}} = \mathcal{S}(\Sigma_{\text{Sun}}, \Sigma_{\text{lunar surface}})
+\end{equation}
+
+where $\mathcal{S}$ is the scattering operator encoding:
+\begin{itemize}
+    \item \textbf{Albedo} $A(\lambda)$: Fraction of light reflected vs. absorbed (depends on composition)
+    \item \textbf{Phase function} $\Phi(\alpha)$: Angular distribution of scattered light (depends on roughness)
+    \item \textbf{Spectral signature}: Wavelength-dependent reflectance (depends on mineralogy)
+\end{itemize}
+
+\textbf{Step 2: Propagation}
+
+Photons propagate from Moon to Earth, maintaining partition signatures. The propagation is not a classical trajectory but a partition completion sequence:
+\begin{equation}
+\Sigma_{\text{scattered}}(t=0) \to \Sigma_{\text{scattered}}(t=r/c)
+\end{equation}
+
+where $t = r/c \approx 1.28$ s is the light travel time. Partition signatures are preserved during propagation (no interaction with intervening medium in vacuum).
+
+\textbf{Step 3: Detection}
+
+Detector with partition depth $n_{\text{det}}$ can resolve partition features with depth $n_{\text{feature}}$ if:
+\begin{equation}
+n_{\text{det}} \geq n_{\text{feature}}
+\end{equation}
+
+From Corollary~\ref{cor:measurement}, measurement resolution is bounded by partition depth ratio:
+\begin{equation}
+\Delta n \sim \frac{n_{\text{target}}}{n_{\text{detector}}}
+\end{equation}
+
+For lunar surface features at scale $\delta x$, the required partition depth:
+\begin{equation}
+n_{\text{feature}} \sim \frac{4\pi R_{\text{Moon}}^2}{\delta x^2}
+\end{equation}
+
+A detector with $N_{\text{pixels}}$ pixels has partition depth:
+\begin{equation}
+n_{\text{det}} \sim N_{\text{pixels}}
+\end{equation}
+
+Image resolution is therefore bounded by detector partition depth, not fundamentally by wave diffraction. Diffraction emerges as an effective description of partition depth limits when detector partition depth is insufficient to resolve target partition structure.
+\end{proof}
+
+\begin{remark}
+This establishes that image formation is a categorical measurement process (Section~\ref{sec:categorical}), not a geometric projection. The image does not "show" the Moon directly but represents the categorical overlap between lunar partition structure and detector partition structure.
+\end{remark}
+
+\subsection{Angular Size and Partition Projection}
+
+The Moon's apparent size in images follows from geometric projection of partition boundaries onto the celestial sphere.
+
+\begin{theorem}[Angular Size from Partition Projection]
+\label{thm:angular_size}
+The Moon subtends angular diameter:
+\begin{equation}
+\theta_{\text{Moon}} = 2\arctan\left(\frac{R_{\text{Moon}}}{r_{\text{Earth-Moon}}}\right) \approx \frac{2R_{\text{Moon}}}{r_{\text{Earth-Moon}}}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+From an observer on Earth at distance $r = r_{\text{Earth-Moon}}$ from the Moon's center, the Moon's partition boundary (surface) at radius $R_{\text{Moon}}$ projects onto the celestial sphere at angular radius:
+\begin{equation}
+\theta_{\text{half}} = \arctan\left(\frac{R_{\text{Moon}}}{r}\right)
+\end{equation}
+
+For small angles ($\theta \ll 1$ radian), $\arctan(\theta) \approx \theta$:
+\begin{equation}
+\theta_{\text{half}} \approx \frac{R_{\text{Moon}}}{r} = \frac{1.737 \times 10^6 \text{ m}}{3.844 \times 10^8 \text{ m}} = 4.52 \times 10^{-3} \text{ rad}
+\end{equation}
+
+Converting to degrees:
+\begin{equation}
+\theta_{\text{half}} = 4.52 \times 10^{-3} \times \frac{180°}{\pi} = 0.259°
+\end{equation}
+
+Full angular diameter:
+\begin{equation}
+\theta_{\text{Moon}} = 2\theta_{\text{half}} = 0.518° \approx 0.52°
+\end{equation}
+
+Observed angular diameter: $\theta_{\text{Moon}} \approx 0.52°$ (varies slightly due to orbital eccentricity: $0.49°$ at apogee, $0.55°$ at perigee).
+
+This angular size determines how many detector pixels can spatially resolve lunar features. For a detector with $N_{\text{pixel}}$ pixels and field of view $\text{FOV}$:
+\begin{equation}
+N_{\text{lunar pixels}} = N_{\text{pixel}} \times \left(\frac{\theta_{\text{Moon}}}{\text{FOV}}\right)^2
+\end{equation}
+
+For example, a camera with $4000 \times 4000 = 1.6 \times 10^7$ pixels and $\text{FOV} = 10°$ imaging the Moon:
+\begin{equation}
+N_{\text{lunar pixels}} = 1.6 \times 10^7 \times \left(\frac{0.52°}{10°}\right)^2 \approx 4.3 \times 10^4 \text{ pixels}
+\end{equation}
+
+This gives $\sqrt{4.3 \times 10^4} \approx 207$ pixels across the Moon's diameter.
+\end{proof}
+
+\begin{remark}
+The angular size $\theta_{\text{Moon}} \approx 0.52°$ is remarkably similar to the Sun's angular size $\theta_{\text{Sun}} \approx 0.53°$, enabling total solar eclipses. This is not a fundamental requirement but a coincidence of the current Earth-Moon-Sun configuration (the Moon is slowly receding from Earth, so this coincidence is temporary on geological timescales).
+\end{remark}
+
+\subsection{Resolution Limits from Partition Depth Mismatch}
+
+Telescopic resolution is fundamentally limited by the partition depth ratio between detector and target.
+
+\begin{theorem}[Resolution Limit from Detector Partition Depth]
+\label{thm:resolution_limit_derived}
+For a detector with aperture diameter $D$ and wavelength $\lambda$ observing a target at distance $r$, the minimum resolvable feature size is:
+\begin{equation}
+\delta x_{\min} = \frac{\lambda r}{D}
+\end{equation}
+This is the Rayleigh diffraction limit, derived here from partition depth considerations.
+\end{theorem}
+
+\begin{proof}
+Detector partition depth for an aperture of size $D$ at wavelength $\lambda$ is:
+\begin{equation}
+n_{\text{det}} \sim \frac{D}{\lambda}
+\end{equation}
+
+This counts the number of wavelengths fitting across the aperture—the number of distinguishable oscillatory modes the detector can access.
+
+Angular resolution from partition geometry (Corollary~\ref{cor:measurement}):
+\begin{equation}
+\Delta\theta = \frac{1}{n_{\text{det}}} = \frac{\lambda}{D}
+\end{equation}
+
+At distance $r$, this corresponds to spatial resolution:
+\begin{equation}
+\delta x_{\min} = r \Delta\theta = \frac{\lambda r}{D}
+\end{equation}
+
+The standard Rayleigh criterion includes a numerical factor:
+\begin{equation}
+\delta x_{\text{Rayleigh}} = 1.22 \frac{\lambda r}{D}
+\end{equation}
+
+The factor 1.22 arises from the Airy disk pattern for circular apertures. Our derivation gives the order-of-magnitude limit; the precise numerical factor depends on aperture geometry and detection criterion (Rayleigh, Sparrow, etc.).
+\end{proof}
+
+\begin{corollary}[Lunar Surface Resolution from Earth]
+\label{cor:lunar_resolution}
+For the Hubble Space Telescope (HST) with aperture $D = 2.4$ m observing at $\lambda = 550$ nm (green light) at distance $r = 384{,}400$ km:
+\begin{equation}
+\delta x_{\min} = 1.22 \times \frac{550 \times 10^{-9} \times 3.844 \times 10^8}{2.4} \approx 106 \text{ m}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Direct calculation:
+\begin{equation}
+\delta x_{\min} = 1.22 \times \frac{5.5 \times 10^{-7} \times 3.844 \times 10^8}{2.4} = 1.22 \times \frac{2.114 \times 10^2}{2.4} = 1.22 \times 88.1 = 107.5 \text{ m}
+\end{equation}
+
+Rounding: $\delta x_{\min} \approx 106$ m.
+
+\textbf{Implications:}
+\begin{itemize}
+    \item Apollo lunar modules (width $\sim 9$ m): Unresolvable ($9 \text{ m} < 106 \text{ m}$)
+    \item Apollo flags (width $\sim 0.9$ m): Unresolvable ($0.9 \text{ m} \ll 106 \text{ m}$)
+    \item Lunar rovers (length $\sim 3$ m): Unresolvable ($3 \text{ m} < 106 \text{ m}$)
+    \item Bootprints (width $\sim 0.3$ m): Unresolvable ($0.3 \text{ m} \ll 106 \text{ m}$)
+\end{itemize}
+
+HST cannot resolve Apollo landing site artifacts. The best HST lunar images show features at $\sim 100$ m scale (large craters, boulder fields), not human-scale objects.
+
+This is consistent with observations: No Earth-based telescope has directly imaged Apollo landing sites at sufficient resolution to see landers, flags, or footprints. Only the Lunar Reconnaissance Orbiter (LRO), orbiting at $\sim 50$ km altitude with $\sim 0.5$ m resolution, has imaged these features.
+\end{proof}
+
+\begin{remark}
+This establishes the fundamental limitation of conventional photonic imaging: resolution is bounded by $\lambda/D$. To achieve cm-scale resolution from Earth ($\delta x \sim 0.01$ m) at $\lambda = 550$ nm requires:
+\begin{equation}
+D = \frac{\lambda r}{\delta x} = \frac{5.5 \times 10^{-7} \times 3.844 \times 10^8}{0.01} \approx 21{,}000 \text{ m} = 21 \text{ km}
+\end{equation}
+
+A 21 km aperture telescope is physically infeasible. This is why conventional imaging cannot resolve cm-scale lunar features from Earth. However, categorical measurement (Section~\ref{sec:categorical}) bypasses this limitation by accessing partition signatures directly, not through photonic spatial resolution.
+\end{remark}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/section_7_validation.png}
+\caption{\textbf{Section 7 validation: Representations showing images as categorical projections with angular size, resolution limits, and albedo encoding.} 
+\textbf{(A) Lunar image} $I = \Pi(\Sigma_{\text{Moon}} \mid \Sigma_{\text{detector}})$ showing telescopic observation as partition projection. Horizontal axis: $X$ (1000 km, $-1.5$ to $+1.5$). Vertical axis: $Y$ (1000 km, $-1.5$ to $+1.5$). Grayscale (0.0 to 1.0): intensity (albedo). Circular disk: Moon's visible hemisphere. Bright regions: highlands (anorthosite, high albedo $\sim 0.12$). Dark regions: maria (basalt, low albedo $\sim 0.07$).
+\textbf{(B) Angular size} $\theta = 2\arctan(R/r) = 0.518°$ showing angular diameter vs. distance. Horizontal axis: distance ($10^5$ m, 0 to 4). Vertical axis: transverse size ($10^5$ m, $-0.5$ to $+0.5$). Blue line: constant angular size $\theta \approx 0.52°$ (horizontal line in angular space). 
+\textbf{(C) Resolution limit} $\delta x = \lambda r/D$ from partition depth showing resolution vs. aperture diameter. Horizontal axis: aperture diameter $D$ (m, log scale $10^{-2}$ to $10^2$). Vertical axis: resolution at Moon $\delta x$ (m, log scale $10^{-1}$ to $10^4$). Blue line: inverse relationship $\delta x \sim 1/D$. Colored dots mark specific instruments: Human eye ($D \sim 5$ mm, $\delta x \sim 10{,}000$ m), Amateur telescope ($D = 20$ cm, $\delta x \sim 1000$ m), Hubble ($D = 2.4$ m, $\delta x \sim 88$ m), VLT ($D = 8$ m, $\delta x \sim 26$ m). Red dashed line at $\delta x = 0.9$ m: Apollo flag size (unresolvable by all single-aperture telescopes). 
+\textbf{(D) Lunar phases (video)} $T_{\text{synodic}} = 29.5$ days showing phase cycle. Eight phase diagrams arranged in cycle: New (fully dark), Waxing Crescent (thin bright crescent on right), First Quarter (right half bright), Waxing Gibbous (mostly bright, small dark region on left), Full (fully bright), Waning Gibbous (mostly bright, small dark region on right), Third Quarter (left half bright), Waning Crescent (thin bright crescent on left). Yellow arrow: Sun direction. Blue circle with "E": Earth position. 
+\textbf{(E) Albedo from partition scattering} $A = \sigma_{\text{scattered}}/\sigma_{\text{geometric}}$ showing spectral reflectance. Horizontal axis: wavelength $\lambda$ (nm, 500 to 2500). Vertical axis: albedo $A(\lambda)$ (0.00 to 0.25). Three curves: Red line (Maria, TiO$_2$-rich): low albedo $\sim 0.07$, relatively flat spectrum. Green line (Highlands, anorthosite): higher albedo $\sim 0.12$, slight increase toward red wavelengths. Blue line (Fresh crater): intermediate albedo $\sim 0.08$, shows absorption features. }
+\label{fig:section7_validation}
+\end{figure}
+
+\subsection{Videos as Temporal Partition Sequences}
+
+Videos of lunar orbital motion emerge from temporal sequences of categorical projections.
+
+\begin{definition}[Video as Temporal Sequence]
+\label{def:video_sequence}
+A video is a temporally ordered set of images $\{\mathcal{I}_t\}$ indexed by categorical completion time $t$:
+\begin{equation}
+\mathcal{V} = \{\mathcal{I}_{t_0}, \mathcal{I}_{t_1}, \ldots, \mathcal{I}_{t_N}\}
+\end{equation}
+where each $\mathcal{I}_{t_k}$ is a categorical projection at completion time $t_k$ (Definition~\ref{def:image_projection}).
+\end{definition}
+
+\begin{theorem}[Lunar Phase Video from Orbital Partition Completion]
+\label{thm:lunar_phase_video}
+A video of lunar phases (new moon → waxing crescent → first quarter → waxing gibbous → full moon → waning gibbous → third quarter → waning crescent → new moon) represents one complete partition completion cycle of the Earth-Moon-Sun configuration with period:
+\begin{equation}
+T_{\text{synodic}} = \frac{T_{\text{Moon}} T_{\text{Earth}}}{T_{\text{Earth}} - T_{\text{Moon}}} = \frac{1}{\frac{1}{T_{\text{Moon}}} - \frac{1}{T_{\text{Earth}}}} \approx 29.53 \text{ days}
+\end{equation}
+where $T_{\text{Moon}} = 27.32$ days (sidereal month) and $T_{\text{Earth}} = 365.25$ days (year).
+\end{theorem}
+
+\begin{proof}
+Lunar phases arise from viewing geometry: the illuminated partition boundary (dayside, facing the Sun) has different categorical projection onto Earth-based observers depending on the Earth-Moon-Sun angular configuration.
+
+\textbf{Phase definitions:}
+\begin{itemize}
+    \item \textbf{New Moon}: Moon between Earth and Sun, dayside facing away from Earth (not visible)
+    \item \textbf{First Quarter}: Moon 90° ahead of Sun, half of dayside visible from Earth
+    \item \textbf{Full Moon}: Earth between Moon and Sun, entire dayside visible from Earth
+    \item \textbf{Third Quarter}: Moon 90° behind Sun, half of dayside visible from Earth
+\end{itemize}
+
+The Moon orbits Earth with sidereal period $T_{\text{Moon}} = 27.32$ days (time to return to same position relative to stars). However, during this time, Earth has moved along its orbit around the Sun. To return to the same Sun-relative configuration (same phase), the Moon must orbit slightly more than 360°.
+
+Angular rates:
+\begin{itemize}
+    \item Moon's orbital angular velocity: $\omega_{\text{Moon}} = 2\pi/T_{\text{Moon}}$
+    \item Earth's orbital angular velocity: $\omega_{\text{Earth}} = 2\pi/T_{\text{Earth}}$
+\end{itemize}
+
+Relative angular velocity (Moon relative to Sun as seen from Earth):
+\begin{equation}
+\omega_{\text{synodic}} = \omega_{\text{Moon}} - \omega_{\text{Earth}} = \frac{2\pi}{T_{\text{Moon}}} - \frac{2\pi}{T_{\text{Earth}}}
+\end{equation}
+
+Synodic period (time for one complete phase cycle):
+\begin{equation}
+T_{\text{synodic}} = \frac{2\pi}{\omega_{\text{synodic}}} = \frac{1}{\frac{1}{T_{\text{Moon}}} - \frac{1}{T_{\text{Earth}}}}
+\end{equation}
+
+Numerical calculation:
+\begin{equation}
+T_{\text{synodic}} = \frac{1}{\frac{1}{27.32} - \frac{1}{365.25}} = \frac{1}{0.03660 - 0.00274} = \frac{1}{0.03386} = 29.53 \text{ days}
+\end{equation}
+
+A phase video at frame rate $f$ (frames per second) requires:
+\begin{equation}
+N_{\text{frames}} = T_{\text{synodic}} \times f \times 86400 \text{ s/day}
+\end{equation}
+
+For $f = 30$ fps (standard video):
+\begin{equation}
+N_{\text{frames}} = 29.53 \times 30 \times 86400 \approx 7.66 \times 10^7 \text{ frames}
+\end{equation}
+
+In practice, time-lapse videos use much lower frame rates (e.g., one frame per hour, giving $N \approx 708$ frames for one synodic month).
+\end{proof}
+
+\begin{remark}
+Lunar phase videos are categorical representations of the Earth-Moon-Sun partition completion cycle. Each frame is a projection of the current configuration onto the detector partition space. The video does not "show motion" in the classical sense but represents the temporal sequence of categorical states.
+\end{remark}
+
+\subsection{Albedo and Surface Composition}
+
+Lunar surface brightness (albedo) encodes partition signature information about composition and structure.
+
+\begin{theorem}[Albedo from Partition Scattering]
+\label{thm:albedo_partition}
+Surface albedo $A(\lambda, \theta, \phi)$ at wavelength $\lambda$ and location $(\theta, \phi)$ is determined by the partition scattering cross-section:
+\begin{equation}
+A(\lambda) = \frac{\sigma_{\text{scattered}}(\lambda)}{\sigma_{\text{geometric}}} = f(\Sigma_{\text{surface}}, \lambda)
+\end{equation}
+where $\Sigma_{\text{surface}}$ encodes composition (TiO$_2$ content, Fe content, regolith grain size, surface roughness).
+
+\end{theorem}
+
+\begin{proof}
+Albedo is the ratio of scattered to incident light intensity:
+\begin{equation}
+A = \frac{I_{\text{scattered}}}{I_{\text{incident}}}
+\end{equation}
+
+This depends on:
+\begin{itemize}
+    \item \textbf{Composition}: Different minerals have different absorption spectra
+        \begin{itemize}
+            \item TiO$_2$-rich basalt: Strong UV absorption, low albedo ($A \sim 0.07$)
+            \item Anorthosite (feldspar-rich): Weak absorption, high albedo ($A \sim 0.12$)
+        \end{itemize}
+    \item \textbf{Grain size}: Regolith grain size affects scattering efficiency
+        \begin{itemize}
+            \item Fine grains ($< 100$ μm): Multiple scattering, higher albedo
+            \item Coarse grains ($> 1$ mm): Less scattering, lower albedo
+        \end{itemize}
+    \item \textbf{Surface roughness}: Microscopic roughness affects phase function
+        \begin{itemize}
+            \item Smooth surfaces: Specular reflection, strong backscatter
+            \item Rough surfaces: Diffuse reflection, weak backscatter
+        \end{itemize}
+\end{itemize}
+
+Each of these properties corresponds to a different partition signature component. Albedo measurement accesses these signatures through photon scattering.
+\end{proof}
+
+\begin{theorem}[Observed Albedo Variations]
+\label{thm:observed_albedo}
+Lunar surface exhibits distinct albedo regions corresponding to different partition signatures:
+\begin{itemize}
+    \item \textbf{Maria} (dark plains): $A \approx 0.07$ (TiO$_2$-rich basalt, high Fe content, age $\sim 3$--$4$ Gyr)
+    \item \textbf{Highlands} (bright regions): $A \approx 0.12$ (anorthosite, low Fe content, age $\sim 4.5$ Gyr)
+    \item \textbf{Fresh craters} (very bright): $A \approx 0.15$--$0.20$ (excavated subsurface material, not yet darkened by space weathering)
+    \item \textbf{Ray systems} (bright streaks): $A \approx 0.15$ (ejecta from recent impacts, e.g., Tycho, Copernicus)
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Albedo measurements from:
+\begin{itemize}
+    \item Ground-based photometry (1960s--present)
+    \item Lunar Orbiter missions (1966--1967)
+    \item Clementine mission (1994): Multispectral imaging
+    \item Lunar Reconnaissance Orbiter (2009--present): High-resolution imaging
+\end{itemize}
+
+Typical measurements:
+\begin{itemize}
+    \item Mare Tranquillitatis (Apollo 11 site): $A \approx 0.068$ at $\lambda = 550$ nm
+    \item Highlands near Tycho crater: $A \approx 0.115$ at $\lambda = 550$ nm
+    \item Tycho crater rays: $A \approx 0.18$ at $\lambda = 550$ nm
+\end{itemize}
+
+These albedo differences encode distinct partition signatures:
+\begin{equation}
+\Sigma_{\text{maria}} \neq \Sigma_{\text{highlands}} \neq \Sigma_{\text{fresh craters}}
+\end{equation}
+
+enabling surface feature identification even when spatial resolution is insufficient to resolve individual structures. A low-resolution image showing dark and bright regions can identify maria vs. highlands through albedo alone, without resolving topographic details.
+\end{proof}
+
+\begin{remark}
+This establishes that albedo is not merely "brightness" but a categorical observable encoding partition signatures. Multispectral imaging (measuring albedo at multiple wavelengths) accesses more partition signature components, enabling detailed compositional mapping. This is the basis for lunar mineralogical maps produced by Clementine and LRO.
+\end{remark}
+
+\subsection{Summary: Images as Categorical Representations}
+
+This section establishes that:
+
+\begin{enumerate}
+    \item \textbf{Images are categorical projections} (Theorem~\ref{thm:lunar_image}): Not geometric copies but projections of target partition signatures onto detector partition spaces
+    
+    \item \textbf{Angular size determines pixel count} (Theorem~\ref{thm:angular_size}): Moon subtends $\theta \approx 0.52°$, determining how many pixels resolve lunar features
+    
+    \item \textbf{Resolution is partition-depth limited} (Theorem~\ref{thm:resolution_limit_derived}): Diffraction limit $\delta x = \lambda r/D$ emerges from detector partition depth $n \sim D/\lambda$
+    
+    \item \textbf{HST cannot resolve Apollo artifacts} (Corollary~\ref{cor:lunar_resolution}): Resolution $\sim 106$ m, insufficient for landers ($\sim 9$ m) or flags ($\sim 0.9$ m)
+    
+    \item \textbf{Videos are temporal sequences} (Theorem~\ref{thm:lunar_phase_video}): Phase cycle $T = 29.53$ days represents Earth-Moon-Sun partition completion
+    
+    \item \textbf{Albedo encodes composition} (Theorem~\ref{thm:albedo_partition}): Maria ($A \sim 0.07$) vs. highlands ($A \sim 0.12$) are distinct partition signatures
+\end{enumerate}
+
+These results establish that conventional lunar images and videos are categorical representations of partition structure, limited by detector partition depth. To achieve cm-scale resolution from Earth requires bypassing photonic diffraction limits through categorical measurement (Section~\ref{sec:categorical})—the subject of the next sections.
