@@ -1,0 +1,58 @@
+\begin{thebibliography}{1}
+
+\bibitem{barducci2008well}
+Alessandro Barducci, Giovanni Bussi, and Michele Parrinello.
+\newblock Well-tempered metadynamics: a smoothly converging and tunable
+  free-energy method.
+\newblock {\em Physical Review Letters}, 100(2):020603, 2008.
+
+\bibitem{karplus2002molecular}
+Martin Karplus and J~Andrew McCammon.
+\newblock Molecular dynamics simulations of biomolecules.
+\newblock {\em Nature Structural Biology}, 9(9):646--652, 2002.
+
+\bibitem{laio2002escaping}
+Alessandro Laio and Michele Parrinello.
+\newblock Escaping free-energy minima.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  99(20):12562--12566, 2002.
+
+\bibitem{morris2009autodock}
+Garrett~M Morris, Ruth Huey, William Lindstrom, Michel~F Sanner, Richard~K
+  Belew, David~S Goodsell, and Arthur~J Olson.
+\newblock Autodock4 and autodocktools4: Automated docking with selective
+  receptor flexibility.
+\newblock {\em Journal of Computational Chemistry}, 30(16):2785--2791, 2009.
+
+\bibitem{noe2019machine}
+Frank No{\'e}, Alexandre Tkatchenko, Klaus-Robert M{\"u}ller, and Cecilia
+  Clementi.
+\newblock Machine learning for molecular simulation.
+\newblock {\em Annual Review of Physical Chemistry}, 71:361--390, 2020.
+
+\bibitem{shaw2010atomic}
+David~E Shaw, Paul Maragakis, Kresten Lindorff-Larsen, Stefano Piana, Ron~O
+  Dror, Michael~P Eastwood, Joseph~A Bank, John~M Jumper, John~K Salmon, Yibing
+  Shan, and Willy Wriggers.
+\newblock Atomic-level characterization of the structural dynamics of proteins.
+\newblock {\em Science}, 330(6002):341--346, 2010.
+
+\bibitem{trott2010autodock}
+Oleg Trott and Arthur~J Olson.
+\newblock Autodock vina: improving the speed and accuracy of docking with a new
+  scoring function, efficient optimization, and multithreading.
+\newblock {\em Journal of Computational Chemistry}, 31(2):455--461, 2010.
+
+\bibitem{wang2019machine}
+Jiang Wang, Simon Olsson, Christoph Wehmeyer, Adri{\`a} P{\'e}rez, Nicholas~E
+  Charron, Gianni De~Fabritiis, Frank No{\'e}, and Cecilia Clementi.
+\newblock Machine learning of coarse-grained molecular dynamics force fields.
+\newblock {\em ACS Central Science}, 5(5):755--767, 2019.
+
+\bibitem{warshel1976theoretical}
+Arieh Warshel and Michael Levitt.
+\newblock Theoretical studies of enzymic reactions: Dielectric, electrostatic
+  and steric stabilization of the carbonium ion in the reaction of lysozyme.
+\newblock {\em Journal of Molecular Biology}, 103(2):227--249, 1976.
+
+\end{thebibliography}
