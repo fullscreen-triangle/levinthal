@@ -1,0 +1,111 @@
+% Figure captions for SOD1 Categorical Mechanics panels
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel1_partition.png}
+\caption{\textbf{Partition Coordinates from Bounded Phase Space.}
+\textbf{Panel A (left):} Three-dimensional visualization of quantum partition state space showing discrete states indexed by principal quantum number $n$, angular momentum $\ell$, and magnetic quantum number $m$. Sphere size scales with $n$, demonstrating the hierarchical structure of allowed states arising from bounded phase space constraints.
+\textbf{Panel B (center-left):} Capacity formula validation comparing theoretical shell capacity $C(n) = 2n^2$ (blue circles) against enumerated states (orange bars). Perfect agreement confirms that the counting formula emerges directly from topological constraints rather than arbitrary postulates.
+\textbf{Panel C (center-right):} Subshell capacities $C_\ell = 2(2\ell + 1)$ for orbital types $s, p, d, f, g$. The plasma colormap progression illustrates increasing degeneracy with angular momentum, reaching 18 states for $g$-orbitals.
+\textbf{Panel D (right):} SOD1 Cu$^{2+}$ electronic structure showing the $3d^9$ configuration. Red arrows indicate spin-up electrons, blue arrows spin-down, with the unpaired electron in the $d_{x^2-y^2}$ orbital responsible for catalytic activity.}
+\label{fig:partition_coordinates}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel2_selection.png}
+\caption{\textbf{Selection Rules from Boundary Continuity.}
+\textbf{Panel A (left):} Three-dimensional transition pathway in $(n, \ell, m)$ space. The solid green curve traces an allowed transition satisfying $\Delta\ell = \pm 1$, $|\Delta m| \leq 1$, while the dashed gray line indicates a forbidden $\Delta\ell = 2$ transition. Square and circle markers denote initial and final states.
+\textbf{Panel B (center-left):} Selection rule matrix showing allowed (green) and forbidden (red) transitions as a function of $\Delta\ell$ and $\Delta m$. Only transitions with $|\Delta\ell| = 1$ and $|\Delta m| \leq 1$ satisfy boundary continuity requirements.
+\textbf{Panel C (center-right):} Transition rate comparison showing $>10^8$-fold enhancement of allowed versus forbidden transitions. Allowed transitions proceed at $\Gamma \sim 10^{12}$~s$^{-1}$ while forbidden transitions are suppressed to $\Gamma \sim 10^4$~s$^{-1}$.
+\textbf{Panel D (right):} Magnetic quantum number evolution during SOD1 catalysis. The $m$-value steps through integer transitions $\{2 \to 1 \to 0 \to -1 \to 0 \to 1 \to 2\}$ over 85~fs, with each step satisfying $|\Delta m| = 1$.}
+\label{fig:selection_rules}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel3_phaselock.png}
+\caption{\textbf{Phase-Lock Networks from Coupled Oscillators.}
+\textbf{Panel A (left):} Three-dimensional hydrogen bond network in SOD1 showing 50 oscillator nodes colored by phase (twilight colormap). Black lines indicate coupling between nodes within 6~\AA, forming a sparse connectivity pattern characteristic of protein fold topology.
+\textbf{Panel B (center-left):} Kuramoto order parameter evolution showing synchronization transition from $\langle r \rangle \approx 0.1$ (disordered) to $\langle r \rangle \approx 0.87$ (synchronized) over 100~ps. Green shading indicates the catalytically active synchronized regime ($\langle r \rangle > 0.8$), red shading the inactive regime ($\langle r \rangle < 0.5$).
+\textbf{Panel C (center-right):} Coupling strength decay with distance following $K(r) = K_0 \exp(-r/r_0)$ with characteristic length $r_0 = 5$~\AA. The exponential decay ensures local coupling while maintaining global coherence through network topology.
+\textbf{Panel D (right):} Polar plot of synchronized oscillator phases clustered near $\phi = 0$. The red arrow indicates the order parameter vector $\langle r \rangle e^{i\langle\phi\rangle}$ with magnitude $\approx 0.95$, demonstrating strong phase coherence.}
+\label{fig:phaselock_networks}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel4_sentropy.png}
+\caption{\textbf{S-Entropy Space and Zero-Backaction Measurement.}
+\textbf{Panel A (left):} Three-dimensional trajectory through S-entropy space $(S_k, S_t, S_e)$ during superoxide dismutation. The trajectory evolves from kinetic-dominated (green sphere) to thermal-dominated (red square) state while remaining on the constraint plane $S_k + S_t + S_e = 1$. The transparent gray surface shows the accessible simplex region.
+\textbf{Panel B (center-left):} Ternary partition grid showing nine cells indexed by $(i,j)$ coordinates. Viridis colormap indicates the trit value assignment $t \in \{0, 1, 2\}^2$ used for reflexive localization of electron position.
+\textbf{Panel C (center-right):} S-entropy component evolution over 100~fs showing conservation law satisfaction. Stacked areas for $S_k$ (blue), $S_t$ (magenta), and $S_e$ (orange) sum to unity at all times, verifying the constraint $S_k + S_t + S_e = 1$.
+\textbf{Panel D (right):} Measurement backaction comparison across paradigms. Heisenberg-limited measurement ($\delta = 1$), weak measurement ($10^{-2}$), QND ($10^{-3}$), and categorical measurement ($1.52 \times 10^{-4}$). Categorical mechanics achieves $>6000\times$ backaction reduction versus the Heisenberg limit.}
+\label{fig:sentropy_space}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel5_electron.png}
+\caption{\textbf{Electron Trajectory Tracking in SOD1.}
+\textbf{Panel A (left):} Three-dimensional electron trajectory during superoxide dismutation. The spiral path (colored blue-to-red by time) shows electron approach to Cu center (orange sphere) followed by reconfiguration. Color gradient from coolwarm colormap indicates temporal progression over 85~fs.
+\textbf{Panel B (center-left):} Distance to copper center versus time showing characteristic approach-retreat profile. Minimum distance $r_{\min} = 98$~pm (dashed red line) at $t = 45$~fs corresponds to electron localization in Cu $3d_{x^2-y^2}$ orbital. Initial distance 285~pm, final distance 267~pm.
+\textbf{Panel C (center-right):} Magnetic quantum number evolution with discrete transitions highlighted. Yellow bands mark $\Delta m = \pm 1$ transitions occurring at $\sim$10~fs intervals. The symmetric pattern $\{2, 1, 0, -1, -1, 0, 1, 2\}$ reflects ping-pong catalytic mechanism.
+\textbf{Panel D (right):} Zero-backaction validation over 8 measurement iterations. Green bars show measured backaction $\delta_k \times 10^4$ per iteration, red dashed line indicates mean $\delta = 1.52 \times 10^{-4}$, shaded region shows $\pm$1$\sigma$ confidence interval. All measurements remain below $10^{-3}$ threshold.}
+\label{fig:electron_trajectory}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel6_catalysis.png}
+\caption{\textbf{Catalytic Mechanism: $d_C = 1$ Aperture Traversal.}
+\textbf{Panel A (left):} Three-dimensional active site structure showing Cu (orange) and Zn (gray) metal centers with His ligand coordination (blue triangles). Dashed red trajectory indicates superoxide approach vector, red star marks substrate entry point at 5~\AA\ from active site.
+\textbf{Panel B (center-left):} Categorical distance $d_C$ across enzyme families. Green bars ($d_C = 1$) indicate diffusion-limited enzymes (SOD1, CA~II, Catalase), orange ($d_C = 2$) moderately efficient (TIM), red ($d_C = 4$) slow (Chymotrypsin). $d_C = 1$ corresponds to single aperture traversal.
+\textbf{Panel C (center-right):} Turnover number $k_{\text{cat}}$ versus categorical distance showing inverse relationship. Diffusion-limited enzymes with $d_C = 1$ achieve $k_{\text{cat}} \sim 10^9$~s$^{-1}$, while $d_C = 4$ enzymes are limited to $\sim 10^2$~s$^{-1}$. Dashed line shows $k_{\text{cat}} \propto 1/d_C$ scaling.
+\textbf{Panel D (right):} Ping-pong energy landscape for superoxide dismutation. Red marker: superoxide binding, copper marker: Cu$^{2+}$ reduction, orange marker: proton-coupled electron transfer, green marker: product release. Barrier heights $<0.5$~eV enable diffusion-limited kinetics.}
+\label{fig:catalysis_mechanism}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel7_conformational.png}
+\caption{\textbf{Conformational Dynamics of Electrostatic Loop.}
+\textbf{Panel A (left):} Three-dimensional overlay of closed (blue) and open (red) electrostatic loop conformations. Cu center (orange sphere) remains fixed while the loop samples a 1~\AA\ expansion between states. The closed conformation gates substrate access to the active site.
+\textbf{Panel B (center-left):} Loop order parameter trajectory showing conformational transition. Initial closed state ($\langle r \rangle_{\text{loop}} = 0.92$) transitions through intermediate regime (yellow shading, 30--80~ps) to open state ($\langle r \rangle_{\text{loop}} = 0.71$). Threshold $\langle r \rangle = 0.5$ (red dashed) marks loss of catalytic competence.
+\textbf{Panel C (center-right):} Hydrogen bond phase deviations in closed (blue) versus open (red) conformations. Eight H-bonds stabilize the loop; closed state shows tight phase distribution ($\sigma_\phi \approx 0.15$~rad), open state shows broadened distribution ($\sigma_\phi \approx 0.4$~rad) indicating decoherence.
+\textbf{Panel D (right):} Temperature independence of loop topology. Order parameter $\langle r \rangle$ (blue, left axis) remains constant at 0.87 across 4--40$^\circ$C while kinetic rate (orange, right axis) increases exponentially. Topology is thermodynamically robust; only kinetics are temperature-sensitive.}
+\label{fig:conformational_dynamics}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel8_folding.png}
+\caption{\textbf{Protein Folding as Trajectory Completion.}
+\textbf{Panel A (left):} Three-dimensional folding trajectory in reduced principal component space. Path evolves from unfolded state (red circle, high PC1) to native state (green star, low PC1) with transient excursions in PC2. Viridis colormap indicates folding progress from 0 to 1.
+\textbf{Panel B (center-left):} Order parameter evolution during folding showing sigmoidal transition. Five stages marked: U (unfolded, red), I$_1$--I$_3$ (intermediates), N (native, green). Native state criterion $\langle r \rangle > 0.87$ (dashed green) achieved at $t \approx 80$~ms.
+\textbf{Panel C (center-right):} Computational complexity comparison between exhaustive search $O(3^N)$ (red) and categorical trisection $O(N \log_3 N)$ (green). For SOD1 with $N = 153$ residues (dashed vertical), trisection reduces operations from $10^{73}$ to $\sim 10^3$, resolving Levinthal's paradox.
+\textbf{Panel D (right):} Folding intermediate pathway with five states connected by arrows. Each state labeled with characteristic $\langle r \rangle$ value. Trajectory proceeds monotonically through intermediates without backtracking, consistent with directed folding funnel.}
+\label{fig:protein_folding}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel9_disease.png}
+\caption{\textbf{ALS Misfolding as Coherence Loss.}
+\textbf{Panel A (left):} Three-dimensional comparison of wild-type (green) and A4V mutant (red) SOD1 $\beta$-barrel structures. Wild-type shows smooth helical path; A4V mutant exhibits distorted, kinked trajectory with increased radius. Structural deviation localizes to dimer interface region.
+\textbf{Panel B (center-left):} Order parameter across SOD1 variants. Wild-type maintains $\langle r \rangle = 0.87$ (green), while ALS-linked mutations show progressive coherence loss: D90A (0.62), G93A (0.51), A4V (0.43), H46R (0.38). Red dashed line marks instability threshold ($\langle r \rangle < 0.5$).
+\textbf{Panel C (center-right):} Patient survival time versus order parameter showing exponential correlation. Variants with $\langle r \rangle < 0.5$ (A4V, H46R) show $\sim$1-year survival; D90A with $\langle r \rangle = 0.62$ shows $\sim$10-year survival. Dashed line indicates exponential fit $\tau \propto \exp[10(\langle r \rangle - 0.5)]$.
+\textbf{Panel D (right):} Therapeutic intervention simulation. Untreated A4V (red) shows continued coherence decline toward aggregation. Chaperone treatment (green) stabilizes and partially recovers coherence above instability threshold, suggesting mechanism for pharmacological intervention.}
+\label{fig:als_misfolding}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{catalysis/figures/panel10_trajectory.png}
+\caption{\textbf{Electron Trajectory Visualization: Ternary Trisection Localization.}
+\textbf{Panel A (left):} Three-dimensional electron trajectory through the SOD1 active site over 850~fs. The path (colored blue-to-red by time) follows the superexchange pathway from His46 through Cys112 and His117 to Met121. Cu center (orange sphere) coordinates four ligands (triangular markers): His46 and His117 (blue), Cys112 (orange), Met121 (magenta). Square markers along trajectory indicate ternary trit assignments $t_k \in \{0, 1, 2\}$ at 100~fs intervals. Green circle marks initial state ($t = 0$), red star marks final state ($t = 850$~fs).
+\textbf{Panel B (center-left):} Probability density evolution shown as $3 \times 3$ grid of $xy$-plane slices at $z = z_{\text{Cu}}$. Each panel corresponds to times 0, 100, 200, 300, 400, 500, 600, 700, and 850~fs. Viridis colormap indicates $|\psi|^2$; white crosshairs mark electron centroid, orange dot marks Cu position. Progressive localization from diffuse initial state ($\sigma \approx 1.5$~\AA) to localized final state ($\sigma \approx 0.7$~\AA) demonstrates successful trisection convergence.
+\textbf{Panel C (center-right):} Categorical coordinate evolution during electron transfer. Four stacked plots show principal quantum number $n$ (blue, transitions $3 \to 4 \to 3$), angular momentum $\ell$ (magenta, transitions $2 \to 1 \to 0 \to 1 \to 2$), magnetic quantum number $m$ (orange, spanning $-2$ to $+2$), and spin $s$ (red, flip at $t \approx 300$~fs). All transitions satisfy selection rules $|\Delta\ell| = 1$, $|\Delta m| \leq 1$, $|\Delta s| = 0$ or $1$.
+\textbf{Panel D (right):} S-entropy space trajectory in unit cube $[0,1]^3$. Path evolves from kinetic-dominated initial state (green sphere, $S_k \approx 0.8$) to thermalized final state (red star, balanced $S_k, S_t, S_e$). Plasma colormap indicates temporal progression. Conservation constraint $S_k + S_t + S_e = 1$ confines trajectory to simplex. Smooth trajectory without discontinuities confirms zero-backaction measurement throughout electron transfer.}
+\label{fig:electron_trajectory_visualization}
+\end{figure*}
