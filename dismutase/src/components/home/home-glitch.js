@@ -1,11 +1,17 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
 import { RotateTextAnimation } from "../AnimationText";
 
+// Dynamischer Import des 3D-Modells
+const ModelScene = dynamic(() => import('../model/ModelScene'), {
+  ssr: false,
+});
+
 export default function HomeGlitch({ ActiveIndex, handleOnClick }) {
   return (
     <>
-      {/* <!-- HOME --> */}
+      {/* HOME */}
       <div
         className={
           ActiveIndex === 0
@@ -13,8 +19,23 @@ export default function HomeGlitch({ ActiveIndex, handleOnClick }) {
             : "cavani_tm_section animated hidden rollOut"
         }
         id="home_"
+        style={{ position: 'relative' }}
       >
-        <div className="cavani_tm_home">
+        {/* 3D Model als Hintergrund */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          pointerEvents: 'none' // Damit Klicks durchgehen
+        }}>
+          <ModelScene modelPath="/glb/conformational_transition_of_troponin.glb" />
+        </div>
+
+        {/* Content im Vordergrund */}
+        <div className="cavani_tm_home" style={{ position: 'relative', zIndex: 1 }}>
           <div className="content">
             <h3 className="name">Dismutase</h3>
             <span className="line" />
@@ -29,7 +50,7 @@ export default function HomeGlitch({ ActiveIndex, handleOnClick }) {
           </div>
         </div>
       </div>
-      {/* HOME */}
+      {/* /HOME */}
     </>
   );
 }

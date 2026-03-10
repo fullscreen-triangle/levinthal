@@ -12,13 +12,6 @@ import Mobilemenu from "../src/layout/mobilemenu";
 import Modalbox from "../src/layout/modalbox";
 import TopBar from "../src/layout/top-bar";
 
-// Dynamischer Import um SSR-Probleme zu vermeiden
-const ModelScene = dynamic(() => import('@/components/ModelScene'), {
-  ssr: false,
-  loading: () => <div></div>
-});
-
-
 const AboutGlitch = dynamic(
   () => import("../src/components/about/about-glitch"),
   {
@@ -53,7 +46,7 @@ const Catalysis = dynamic(
 export default function Home() {
   const [ActiveIndex, setActiveIndex] = useState(0);
   const handleOnClick = (index) => {
-    setActiveIndex(index); // remove the curly braces
+    setActiveIndex(index);
   };
 
   useEffect(() => {
@@ -81,10 +74,8 @@ export default function Home() {
 
           {/* MAINPART */}
           <div className="cavani_tm_mainpart">
-                <section style={{ height: '100vh' }}>
-                <ModelScene modelPath="/glb/conformational_transition_of_troponin.glb" />
-              </section>
             <div className="main_content">
+              {/* HomeGlitch enthält jetzt das 3D-Modell */}
               <HomeGlitch ActiveIndex={ActiveIndex} handleOnClick={handleOnClick} />
               <AboutGlitch ActiveIndex={ActiveIndex} />
               <Dynamics ActiveIndex={ActiveIndex} />

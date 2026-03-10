@@ -187,9 +187,11 @@ node_modules/
 # Testing
 /coverage
 
-# Next.js
+# Next.js (anywhere in repo)
+**/.next/
 /.next/
 /out/
+**/out/
 .next
 out
 next-env.d.ts
