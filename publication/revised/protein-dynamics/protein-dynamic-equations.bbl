@@ -1,0 +1,520 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (72) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (-1) disabled
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{49}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Heisenberg}(1927)}]{Heisenberg1927}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Heisenberg}},\ }\href {https://doi.org/10.1007/BF01397280} {\bibfield
+  {journal} {\bibinfo  {journal} {Zeitschrift f{\"u}r Physik}\ }\textbf
+  {\bibinfo {volume} {43}},\ \bibinfo {pages} {172} (\bibinfo {year}
+  {1927})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gray}\ and\ \citenamefont
+  {Winkler}(2005)}]{Gray2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~B.}\ \bibnamefont
+  {Gray}}\ and\ \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Winkler}},\ }\href {https://doi.org/10.1073/pnas.0408029102} {\bibfield
+  {journal} {\bibinfo  {journal} {Proceedings of the National Academy of
+  Sciences}\ }\textbf {\bibinfo {volume} {102}},\ \bibinfo {pages} {3534}
+  (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Marcus}(1993)}]{Marcus1993}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~A.}\ \bibnamefont
+  {Marcus}},\ }\href {https://doi.org/10.1103/RevModPhys.65.599} {\bibfield
+  {journal} {\bibinfo  {journal} {Reviews of Modern Physics}\ }\textbf
+  {\bibinfo {volume} {65}},\ \bibinfo {pages} {599} (\bibinfo {year}
+  {1993})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Levinthal}(1969)}]{Levinthal1969}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Levinthal}},\ }in\ \href@noop {} {\emph {\bibinfo {booktitle} {M{\"o}ssbauer
+  Spectroscopy in Biological Systems}}},\ \bibinfo {editor} {edited by\
+  \bibinfo {editor} {\bibfnamefont {J.~T.~P.}\ \bibnamefont {DeBrunner}}\ and\
+  \bibinfo {editor} {\bibfnamefont {E.}~\bibnamefont {Munck}}}\ (\bibinfo
+  {publisher} {University of Illinois Press},\ \bibinfo {address} {Urbana},\
+  \bibinfo {year} {1969})\ pp.\ \bibinfo {pages} {22--24}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bryngelson}\ \emph {et~al.}(1995)\citenamefont
+  {Bryngelson}, \citenamefont {Onuchic}, \citenamefont {Socci},\ and\
+  \citenamefont {Wolynes}}]{Bryngelson1995}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~D.}\ \bibnamefont
+  {Bryngelson}}, \bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont
+  {Onuchic}}, \bibinfo {author} {\bibfnamefont {N.~D.}\ \bibnamefont {Socci}},\
+  and\ \bibinfo {author} {\bibfnamefont {P.~G.}\ \bibnamefont {Wolynes}},\
+  }\href {https://doi.org/10.1002/prot.340210302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Proteins: Structure, Function, and Genetics}\ }\textbf
+  {\bibinfo {volume} {21}},\ \bibinfo {pages} {167} (\bibinfo {year}
+  {1995})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Onuchic}\ \emph {et~al.}(1997)\citenamefont
+  {Onuchic}, \citenamefont {Luthey-Schulten},\ and\ \citenamefont
+  {Wolynes}}]{Onuchic1997}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont
+  {Onuchic}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {Luthey-Schulten}},\ and\ \bibinfo {author} {\bibfnamefont {P.~G.}\
+  \bibnamefont {Wolynes}},\ }\href
+  {https://doi.org/10.1146/annurev.physchem.48.1.545} {\bibfield  {journal}
+  {\bibinfo  {journal} {Annual Review of Physical Chemistry}\ }\textbf
+  {\bibinfo {volume} {48}},\ \bibinfo {pages} {545} (\bibinfo {year}
+  {1997})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dill}\ and\ \citenamefont
+  {MacCallum}(2012)}]{Dill2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~A.}\ \bibnamefont
+  {Dill}}\ and\ \bibinfo {author} {\bibfnamefont {J.~L.}\ \bibnamefont
+  {MacCallum}},\ }\href {https://doi.org/10.1126/science.1219021} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {338}},\ \bibinfo {pages} {1042} (\bibinfo {year} {2012})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Wolfenden}\ and\ \citenamefont
+  {Snider}(2001)}]{Wolfenden2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Wolfenden}}\ and\ \bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {Snider}},\ }\href {https://doi.org/10.1021/ar000058i} {\bibfield  {journal}
+  {\bibinfo  {journal} {Accounts of Chemical Research}\ }\textbf {\bibinfo
+  {volume} {34}},\ \bibinfo {pages} {938} (\bibinfo {year} {2001})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pauling}(1946)}]{Pauling1946}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Pauling}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Chemical and Engineering News}\ }\textbf {\bibinfo {volume} {24}},\ \bibinfo
+  {pages} {1375} (\bibinfo {year} {1946})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fersht}(1999)}]{Fersht1999}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Fersht}},\ }\href@noop {} {\emph {\bibinfo {title} {Structure and Mechanism
+  in Protein Science: A Guide to Enzyme Catalysis and Protein Folding}}}\
+  (\bibinfo  {publisher} {W. H. Freeman},\ \bibinfo {address} {New York},\
+  \bibinfo {year} {1999})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Warshel}(1998)}]{Warshel1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Warshel}},\ }\href {https://doi.org/10.1074/jbc.273.42.27035} {\bibfield
+  {journal} {\bibinfo  {journal} {Journal of Biological Chemistry}\ }\textbf
+  {\bibinfo {volume} {273}},\ \bibinfo {pages} {27035} (\bibinfo {year}
+  {1998})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kamerlin}\ and\ \citenamefont
+  {Warshel}(2010)}]{Kamerlin2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~C.~L.}\
+  \bibnamefont {Kamerlin}}\ and\ \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Warshel}},\ }\href {https://doi.org/10.1002/prot.22654}
+  {\bibfield  {journal} {\bibinfo  {journal} {Proteins: Structure, Function,
+  and Bioinformatics}\ }\textbf {\bibinfo {volume} {78}},\ \bibinfo {pages}
+  {1339} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chiti}\ and\ \citenamefont
+  {Dobson}(2006)}]{Chiti2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Chiti}}\ and\ \bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont
+  {Dobson}},\ }\href {https://doi.org/10.1146/annurev.biochem.75.101304.123901}
+  {\bibfield  {journal} {\bibinfo  {journal} {Annual Review of Biochemistry}\
+  }\textbf {\bibinfo {volume} {75}},\ \bibinfo {pages} {333} (\bibinfo {year}
+  {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dobson}(2003)}]{Dobson2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont
+  {Dobson}},\ }\href {https://doi.org/10.1038/nature02261} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {426}},\
+  \bibinfo {pages} {884} (\bibinfo {year} {2003})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rosen}\ \emph {et~al.}(1993)\citenamefont {Rosen},
+  \citenamefont {Siddique}, \citenamefont {Patterson}, \citenamefont
+  {Figlewicz}, \citenamefont {Sapp}, \citenamefont {Hentati}, \citenamefont
+  {Donaldson}, \citenamefont {Goto}, \citenamefont {O'Regan}, \citenamefont
+  {Deng} \emph {et~al.}}]{Rosen1993}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~R.}\ \bibnamefont
+  {Rosen}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Siddique}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Patterson}}, \bibinfo
+  {author} {\bibfnamefont {D.~A.}\ \bibnamefont {Figlewicz}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Sapp}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Hentati}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Donaldson}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Goto}}, \bibinfo {author} {\bibfnamefont {J.~P.}\
+  \bibnamefont {O'Regan}}, \bibinfo {author} {\bibfnamefont {H.-X.}\
+  \bibnamefont {Deng}}, \emph {et~al.},\ }\href
+  {https://doi.org/10.1038/362059a0} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nature}\ }\textbf {\bibinfo {volume} {362}},\ \bibinfo {pages} {59}
+  (\bibinfo {year} {1993})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eng}\ \emph {et~al.}(1994)\citenamefont {Eng},
+  \citenamefont {McCormack},\ and\ \citenamefont {Yates}}]{Eng1994}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~K.}\ \bibnamefont
+  {Eng}}, \bibinfo {author} {\bibfnamefont {A.~L.}\ \bibnamefont {McCormack}},\
+  and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Yates},
+  \bibfnamefont {John~R.}},\ }\href
+  {https://doi.org/10.1016/1044-0305(94)80016-2} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of the American Society for Mass Spectrometry}\
+  }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages} {976} (\bibinfo {year}
+  {1994})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Perkins}\ \emph {et~al.}(1999)\citenamefont
+  {Perkins}, \citenamefont {Pappin}, \citenamefont {Creasy},\ and\
+  \citenamefont {Cottrell}}]{Perkins1999}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~N.}\ \bibnamefont
+  {Perkins}}, \bibinfo {author} {\bibfnamefont {D.~J.~C.}\ \bibnamefont
+  {Pappin}}, \bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont {Creasy}},\
+  and\ \bibinfo {author} {\bibfnamefont {J.~S.}\ \bibnamefont {Cottrell}},\
+  }\href
+  {https://doi.org/10.1002/(SICI)1522-2683(19991201)20:18<3551::AID-ELPS3551>3.0.CO;2-2}
+  {\bibfield  {journal} {\bibinfo  {journal} {Electrophoresis}\ }\textbf
+  {\bibinfo {volume} {20}},\ \bibinfo {pages} {3551} (\bibinfo {year}
+  {1999})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sachikonye}(2026{\natexlab{a}})}]{Sachikonye2026a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~F.}\ \bibnamefont
+  {Sachikonye}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{a}})},\
+  \bibinfo {note} {preprint, available at
+  \url{https://github.com/fullscreen-triangle/levinthal}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sachikonye}(2026{\natexlab{b}})}]{Sachikonye2026c}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~F.}\ \bibnamefont
+  {Sachikonye}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{b}})},\
+  \bibinfo {note} {preprint, available at
+  \url{https://github.com/fullscreen-triangle/levinthal}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Luzar}\ and\ \citenamefont
+  {Chandler}(1996)}]{Luzar1996}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Luzar}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Chandler}},\ }\href {https://doi.org/10.1038/379055a0} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {379}},\ \bibinfo
+  {pages} {55} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kuramoto}(1984)}]{Kuramoto1984}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Kuramoto}},\ }\href {https://doi.org/10.1007/978-3-642-69689-3} {\emph
+  {\bibinfo {title} {Chemical Oscillations, Waves, and Turbulence}}},\ \bibinfo
+  {series} {Springer Series in Synergetics}, Vol.~\bibinfo {volume} {19}\
+  (\bibinfo  {publisher} {Springer-Verlag},\ \bibinfo {address} {Berlin},\
+  \bibinfo {year} {1984})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pikovsky}\ \emph {et~al.}(2001)\citenamefont
+  {Pikovsky}, \citenamefont {Rosenblum},\ and\ \citenamefont
+  {Kurths}}]{Pikovsky2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Pikovsky}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Rosenblum}},\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Kurths}},\ }\href {https://doi.org/10.1017/CBO9780511755743} {\emph
+  {\bibinfo {title} {Synchronization: A Universal Concept in Nonlinear
+  Sciences}}}\ (\bibinfo  {publisher} {Cambridge University Press},\ \bibinfo
+  {year} {2001})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Strogatz}(2000)}]{Strogatz2000}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~H.}\ \bibnamefont
+  {Strogatz}},\ }\href {https://doi.org/10.1016/S0167-2789(00)00094-4}
+  {\bibfield  {journal} {\bibinfo  {journal} {Physica D: Nonlinear Phenomena}\
+  }\textbf {\bibinfo {volume} {143}},\ \bibinfo {pages} {1} (\bibinfo {year}
+  {2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sachikonye}(2026{\natexlab{c}})}]{Sachikonye2026b}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~F.}\ \bibnamefont
+  {Sachikonye}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{c}})},\
+  \bibinfo {note} {preprint, available at
+  \url{https://github.com/fullscreen-triangle/levinthal}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Adman}\ \emph {et~al.}(1978)\citenamefont {Adman},
+  \citenamefont {Stenkamp}, \citenamefont {Sieker},\ and\ \citenamefont
+  {Jensen}}]{Adman1978}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.~T.}\ \bibnamefont
+  {Adman}}, \bibinfo {author} {\bibfnamefont {R.~E.}\ \bibnamefont {Stenkamp}},
+  \bibinfo {author} {\bibfnamefont {L.~C.}\ \bibnamefont {Sieker}},\ and\
+  \bibinfo {author} {\bibfnamefont {L.~H.}\ \bibnamefont {Jensen}},\ }\href
+  {https://doi.org/10.1016/0022-2836(78)90375-3} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Molecular Biology}\ }\textbf {\bibinfo
+  {volume} {123}},\ \bibinfo {pages} {35} (\bibinfo {year} {1978})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Nar}\ \emph {et~al.}(1991)\citenamefont {Nar},
+  \citenamefont {Messerschmidt}, \citenamefont {Huber}, \citenamefont {van~de
+  Kamp},\ and\ \citenamefont {Canters}}]{Nar1991}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Nar}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Messerschmidt}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Huber}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {van~de Kamp}},\ and\ \bibinfo
+  {author} {\bibfnamefont {G.~W.}\ \bibnamefont {Canters}},\ }\href
+  {https://doi.org/10.1016/0022-2836(91)80173-R} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Molecular Biology}\ }\textbf {\bibinfo
+  {volume} {221}},\ \bibinfo {pages} {765} (\bibinfo {year}
+  {1991})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Crane}\ \emph {et~al.}(2001)\citenamefont {Crane},
+  \citenamefont {Di~Bilio}, \citenamefont {Winkler},\ and\ \citenamefont
+  {Gray}}]{Crane2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~R.}\ \bibnamefont
+  {Crane}}, \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Di~Bilio}},
+  \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Winkler}},\ and\
+  \bibinfo {author} {\bibfnamefont {H.~B.}\ \bibnamefont {Gray}},\ }\href
+  {https://doi.org/10.1021/ja0115870} {\bibfield  {journal} {\bibinfo
+  {journal} {Journal of the American Chemical Society}\ }\textbf {\bibinfo
+  {volume} {123}},\ \bibinfo {pages} {11623} (\bibinfo {year}
+  {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gray}\ and\ \citenamefont
+  {Winkler}(2003)}]{Gray2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~B.}\ \bibnamefont
+  {Gray}}\ and\ \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Winkler}},\ }\href {https://doi.org/10.1017/S0033583503003913} {\bibfield
+  {journal} {\bibinfo  {journal} {Quarterly Reviews of Biophysics}\ }\textbf
+  {\bibinfo {volume} {36}},\ \bibinfo {pages} {341} (\bibinfo {year}
+  {2003})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Marcus}(1956)}]{Marcus1956}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~A.}\ \bibnamefont
+  {Marcus}},\ }\href {https://doi.org/10.1063/1.1742723} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Journal of Chemical Physics}\ }\textbf {\bibinfo
+  {volume} {24}},\ \bibinfo {pages} {966} (\bibinfo {year} {1956})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Beratan}\ \emph {et~al.}(1992)\citenamefont
+  {Beratan}, \citenamefont {Betts},\ and\ \citenamefont
+  {Onuchic}}]{Beratan1992}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~N.}\ \bibnamefont
+  {Beratan}}, \bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont {Betts}},\
+  and\ \bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont {Onuchic}},\
+  }\href {https://doi.org/10.1126/science.1334572} {\bibfield  {journal}
+  {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume} {258}},\ \bibinfo
+  {pages} {1740} (\bibinfo {year} {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Braginsky}\ \emph {et~al.}(1980)\citenamefont
+  {Braginsky}, \citenamefont {Vorontsov},\ and\ \citenamefont
+  {Thorne}}]{Braginsky1980}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~B.}\ \bibnamefont
+  {Braginsky}}, \bibinfo {author} {\bibfnamefont {Y.~I.}\ \bibnamefont
+  {Vorontsov}},\ and\ \bibinfo {author} {\bibfnamefont {K.~S.}\ \bibnamefont
+  {Thorne}},\ }\href {https://doi.org/10.1126/science.209.4456.547} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {209}},\ \bibinfo {pages} {547} (\bibinfo {year} {1980})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Brune}\ \emph {et~al.}(1990)\citenamefont {Brune},
+  \citenamefont {Haroche}, \citenamefont {Lefevre}, \citenamefont {Raimond},\
+  and\ \citenamefont {Zagury}}]{Brune1990}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Brune}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Haroche}},
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Lefevre}}, \bibinfo
+  {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Raimond}},\ and\ \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Zagury}},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.65.976} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume} {65}},\
+  \bibinfo {pages} {976} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {McCord}\ and\ \citenamefont
+  {Fridovich}(1969)}]{McCord1969}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {McCord}}\ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Fridovich}},\ }\href {https://doi.org/10.1016/S0021-9258(18)63504-5}
+  {\bibfield  {journal} {\bibinfo  {journal} {Journal of Biological Chemistry}\
+  }\textbf {\bibinfo {volume} {244}},\ \bibinfo {pages} {6049} (\bibinfo {year}
+  {1969})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Klug}\ \emph {et~al.}(1972)\citenamefont {Klug},
+  \citenamefont {Rabani},\ and\ \citenamefont {Fridovich}}]{Klug1972}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Klug}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Rabani}},\ and\
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Fridovich}},\ }\href
+  {https://doi.org/10.1016/S0021-9258(19)44987-9} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Biological Chemistry}\ }\textbf {\bibinfo
+  {volume} {247}},\ \bibinfo {pages} {4839} (\bibinfo {year}
+  {1972})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lindskog}(1997)}]{Lindskog1997}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Lindskog}},\ }\href {https://doi.org/10.1016/S0163-7258(96)00198-2}
+  {\bibfield  {journal} {\bibinfo  {journal} {Pharmacology \& Therapeutics}\
+  }\textbf {\bibinfo {volume} {74}},\ \bibinfo {pages} {1} (\bibinfo {year}
+  {1997})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Krishnamurthy}\ \emph {et~al.}(2008)\citenamefont
+  {Krishnamurthy}, \citenamefont {Kaufman}, \citenamefont {Urbach},
+  \citenamefont {Gitlin}, \citenamefont {Gudiksen}, \citenamefont {Weibel},\
+  and\ \citenamefont {Whitesides}}]{Krishnamurthy2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~M.}\ \bibnamefont
+  {Krishnamurthy}}, \bibinfo {author} {\bibfnamefont {G.~K.}\ \bibnamefont
+  {Kaufman}}, \bibinfo {author} {\bibfnamefont {A.~R.}\ \bibnamefont {Urbach}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Gitlin}}, \bibinfo
+  {author} {\bibfnamefont {K.~L.}\ \bibnamefont {Gudiksen}}, \bibinfo {author}
+  {\bibfnamefont {D.~B.}\ \bibnamefont {Weibel}},\ and\ \bibinfo {author}
+  {\bibfnamefont {G.~M.}\ \bibnamefont {Whitesides}},\ }\href
+  {https://doi.org/10.1021/cr050262p} {\bibfield  {journal} {\bibinfo
+  {journal} {Chemical Reviews}\ }\textbf {\bibinfo {volume} {108}},\ \bibinfo
+  {pages} {946} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sachikonye}(2026{\natexlab{d}})}]{Sachikonye2026d}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~F.}\ \bibnamefont
+  {Sachikonye}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{d}})},\
+  \bibinfo {note} {preprint, available at
+  \url{https://github.com/fullscreen-triangle/levinthal}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Silverman}\ and\ \citenamefont
+  {Lindskog}(1988)}]{Silverman1988}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~N.}\ \bibnamefont
+  {Silverman}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Lindskog}},\ }\href {https://doi.org/10.1021/ar00145a005} {\bibfield
+  {journal} {\bibinfo  {journal} {Accounts of Chemical Research}\ }\textbf
+  {\bibinfo {volume} {21}},\ \bibinfo {pages} {30} (\bibinfo {year}
+  {1988})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tu}\ \emph {et~al.}(1989)\citenamefont {Tu},
+  \citenamefont {Silverman}, \citenamefont {Forsman}, \citenamefont {Jonsson},\
+  and\ \citenamefont {Lindskog}}]{Tu1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Tu}}, \bibinfo {author} {\bibfnamefont {D.~N.}\ \bibnamefont {Silverman}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Forsman}}, \bibinfo
+  {author} {\bibfnamefont {B.-H.}\ \bibnamefont {Jonsson}},\ and\ \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Lindskog}},\ }\href
+  {https://doi.org/10.1021/bi00445a054} {\bibfield  {journal} {\bibinfo
+  {journal} {Biochemistry}\ }\textbf {\bibinfo {volume} {28}},\ \bibinfo
+  {pages} {7913} (\bibinfo {year} {1989})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Maupin}\ \emph {et~al.}(2009)\citenamefont {Maupin},
+  \citenamefont {McKenna}, \citenamefont {Silverman},\ and\ \citenamefont
+  {Voth}}]{Maupin2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont
+  {Maupin}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {McKenna}},
+  \bibinfo {author} {\bibfnamefont {D.~N.}\ \bibnamefont {Silverman}},\ and\
+  \bibinfo {author} {\bibfnamefont {G.~A.}\ \bibnamefont {Voth}},\ }\href
+  {https://doi.org/10.1021/ja8091938} {\bibfield  {journal} {\bibinfo
+  {journal} {Journal of the American Chemical Society}\ }\textbf {\bibinfo
+  {volume} {131}},\ \bibinfo {pages} {7598} (\bibinfo {year}
+  {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sachikonye}(2026{\natexlab{e}})}]{Sachikonye2026e}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~F.}\ \bibnamefont
+  {Sachikonye}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{e}})},\
+  \bibinfo {note} {preprint, available at
+  \url{https://github.com/fullscreen-triangle/levinthal}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sachikonye}(2026{\natexlab{f}})}]{Sachikonye2026f}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~F.}\ \bibnamefont
+  {Sachikonye}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{f}})},\
+  \bibinfo {note} {preprint, available at
+  \url{https://github.com/fullscreen-triangle/levinthal}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Karplus}\ and\ \citenamefont
+  {McCammon}(2002)}]{Karplus2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Karplus}}\ and\ \bibinfo {author} {\bibfnamefont {J.~A.}\ \bibnamefont
+  {McCammon}},\ }\href {https://doi.org/10.1038/nsb0902-646} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature Structural Biology}\ }\textbf
+  {\bibinfo {volume} {9}},\ \bibinfo {pages} {646} (\bibinfo {year}
+  {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eyring}(1935)}]{Eyring1935}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Eyring}},\ }\href {https://doi.org/10.1063/1.1749604} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Journal of Chemical Physics}\ }\textbf {\bibinfo
+  {volume} {3}},\ \bibinfo {pages} {107} (\bibinfo {year} {1935})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Jumper}\ \emph {et~al.}(2021)\citenamefont {Jumper},
+  \citenamefont {Evans}, \citenamefont {Pritzel}, \citenamefont {Green},
+  \citenamefont {Figurnov}, \citenamefont {Ronneberger}, \citenamefont
+  {Tunyasuvunakool}, \citenamefont {Bates}, \citenamefont {{\v{Z}}{\'\i}dek},
+  \citenamefont {Potapenko} \emph {et~al.}}]{Jumper2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Jumper}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Evans}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Pritzel}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Green}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Figurnov}}, \bibinfo {author}
+  {\bibfnamefont {O.}~\bibnamefont {Ronneberger}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Tunyasuvunakool}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Bates}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {{\v{Z}}{\'\i}dek}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Potapenko}}, \emph {et~al.},\ }\href
+  {https://doi.org/10.1038/s41586-021-03819-2} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {596}},\ \bibinfo {pages}
+  {583} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wineland}(2013)}]{Wineland2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {Wineland}},\ }\href {https://doi.org/10.1103/RevModPhys.85.1103} {\bibfield
+  {journal} {\bibinfo  {journal} {Reviews of Modern Physics}\ }\textbf
+  {\bibinfo {volume} {85}},\ \bibinfo {pages} {1103} (\bibinfo {year}
+  {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Moerner}(2015)}]{Moerner2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.~E.}\ \bibnamefont
+  {Moerner}},\ }\href {https://doi.org/10.1002/anie.201501949} {\bibfield
+  {journal} {\bibinfo  {journal} {Angewandte Chemie International Edition}\
+  }\textbf {\bibinfo {volume} {54}},\ \bibinfo {pages} {8067} (\bibinfo {year}
+  {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shaw}\ \emph {et~al.}(2010)\citenamefont {Shaw},
+  \citenamefont {Maragakis}, \citenamefont {Lindorff-Larsen}, \citenamefont
+  {Piana}, \citenamefont {Dror}, \citenamefont {Eastwood}, \citenamefont
+  {Bank}, \citenamefont {Jumper}, \citenamefont {Salmon}, \citenamefont
+  {Shan},\ and\ \citenamefont {Wriggers}}]{Shaw2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~E.}\ \bibnamefont
+  {Shaw}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Maragakis}},
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Lindorff-Larsen}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Piana}}, \bibinfo
+  {author} {\bibfnamefont {R.~O.}\ \bibnamefont {Dror}}, \bibinfo {author}
+  {\bibfnamefont {M.~P.}\ \bibnamefont {Eastwood}}, \bibinfo {author}
+  {\bibfnamefont {J.~A.}\ \bibnamefont {Bank}}, \bibinfo {author}
+  {\bibfnamefont {J.~M.}\ \bibnamefont {Jumper}}, \bibinfo {author}
+  {\bibfnamefont {J.~K.}\ \bibnamefont {Salmon}}, \bibinfo {author}
+  {\bibfnamefont {Y.}~\bibnamefont {Shan}},\ and\ \bibinfo {author}
+  {\bibfnamefont {W.}~\bibnamefont {Wriggers}},\ }\href
+  {https://doi.org/10.1126/science.1187409} {\bibfield  {journal} {\bibinfo
+  {journal} {Science}\ }\textbf {\bibinfo {volume} {330}},\ \bibinfo {pages}
+  {341} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ozawa}(2003)}]{Ozawa2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Ozawa}},\ }\href {https://doi.org/10.1103/PhysRevA.67.042105} {\bibfield
+  {journal} {\bibinfo  {journal} {Physical Review A}\ }\textbf {\bibinfo
+  {volume} {67}},\ \bibinfo {pages} {042105} (\bibinfo {year}
+  {2003})}\BibitemShut {NoStop}%
+\end{thebibliography}%

@@ -1,0 +1,137 @@
+% =============================================================================
+% Captions for Principia Proteomica figures
+% Generated from dedicated validation experiments at
+% experiments/principia-proteomica/
+% =============================================================================
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig01_overview.png}
+    \caption{\textbf{Theoretical Overview and Validation Landscape.}
+    (\textbf{A}) Three-dimensional validation landscape showing pass/fail outcomes for 36 independent tests across five domains (Atomic structure, Electron transfer, Enzyme catalysis, Protein folding, Disease/ALS). Each bar represents one test at its domain--index position (green = pass, red = fail); 34 of 36 bars are green, yielding a 94.4\% pass rate with zero free parameters.
+    (\textbf{B}) Per-domain pass rates: Atomic structure 7/7 (100\%), Electron transfer 5/5 (100\%), Enzyme catalysis 11/12 (92\%), Protein folding 5/5 (100\%), Disease/ALS 6/7 (86\%). Bars are colored green at 100\%, yellow-green at $\geq$80\%, with percentage annotations.
+    (\textbf{C}) Equation--domain coverage heatmap showing which of the seven universal equations (I--VII) are validated in each domain. Yellow-green cells indicate coverage; the framework spans all seven equations across five experimental domains.
+    (\textbf{D}) Individual test outcomes plotted as pass (1) or fail (0) versus test index. Green markers ($n = 34$) denote passed tests, red markers ($n = 2$) denote the two failures (enzyme chymotrypsin prediction and one disease mechanism test).}
+    \label{fig:overview}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig02_partition.png}
+    \caption{\textbf{Partition Coordinate System.}
+    (\textbf{A}) Three-dimensional scatter plot of the partition state space for shells $n = 1$--$4$. Each point represents a valid quantum state $(n, \ell, m, s)$, with depth $n$ on the $x$-axis, complexity $\ell$ on the $y$-axis, and orientation $m$ on the $z$-axis. Points are colored by shell number and marked with upward/downward triangles for spin $s = +\tfrac{1}{2}$ and $s = -\tfrac{1}{2}$, respectively.
+    (\textbf{B}) Shell capacity $C(n) = 2n^2$ for $n = 1$--$4$: the four bars show $C(1) = 2$, $C(2) = 8$, $C(3) = 18$, and $C(4) = 32$, each matching the known electron shell occupancies exactly.
+    (\textbf{C}) Subshell capacities $2(2\ell + 1)$ for $\ell = 0$--$3$: $s = 2$, $p = 6$, $d = 10$, $f = 14$, reproducing the standard spectroscopic degeneracies from the bounded phase space axiom alone.
+    (\textbf{D}) Cumulative shell capacity as a function of $n$: the curve passes through 2, 10, 28, and 60, matching the noble gas electron counts (He, Ne, Ni*, Kr*) predicted by the Aufbau principle.}
+    \label{fig:partition}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig03_selection.png}
+    \caption{\textbf{Selection Rules and Transition Enforcement.}
+    (\textbf{A}) Transition matrix heatmap for all partition states with $n \leq 2$. Rows and columns are labeled by $(n, \ell, m)$ quantum numbers; colored cells indicate allowed transitions ($\Delta\ell = \pm 1$, $|\Delta m| \leq 1$, $\Delta s = 0$) while dark cells indicate forbidden transitions. The matrix is sparse, reflecting strong topological constraints.
+    (\textbf{B}) Enforcement ratio comparison on a $\log_{10}$ scale. Three bars show the transition rates for allowed transitions ($\gamma_{\text{allowed}} \sim 10^{12}$~s$^{-1}$), forbidden/tunneling transitions ($\gamma_{\text{forbidden}} \sim 10^{10}$~s$^{-1}$), and the Heisenberg limit, confirming that the selection rules produce a measurable enforcement hierarchy.
+    (\textbf{C}) Three-dimensional visualization of allowed transitions for $n \leq 3$. States are plotted in $(n, \ell, m)$ space, with green lines connecting each allowed state pair. The connectivity reveals the topology of the partition graph, showing that transitions follow nearest-neighbor paths in angular momentum space.
+    (\textbf{D}) Allowed transition fractions by shell pair: percentages of geometrically possible transitions that satisfy the selection rules for $1 \to 2$, $2 \to 3$, and $1 \to 3$ transitions, demonstrating that inter-shell selectivity increases with shell separation.}
+    \label{fig:selection}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig04_depth.png}
+    \caption{\textbf{Partition Depth and Depth--Entropy Equivalence.}
+    (\textbf{A}) Three-dimensional scatter of partition depth $M(n, \ell)$ across the state space. The $x$-axis is shell number $n$ (1--4), the $y$-axis is subshell index $\ell$ (0--3), and the $z$-axis is the computed depth $M = \sum_i \log_b(k_i)$. Points are colored by depth value (viridis colormap), showing that depth increases monotonically with shell number and subshell complexity.
+    (\textbf{B}) Depth--entropy equivalence: $S_P / k_B$ plotted against partition depth $M$. The linear fit yields slope $= 0.6931 = \ln 2$ with $R^2 = 1.000$ and slope error $\sim 10^{-16}$, confirming the exact identity $S_P = k_B M \ln b$ with base $b = 2$.
+    (\textbf{C}) Partition depth across biological scales, from atomic ($n = 1$--$4$) through molecular, protein, complex, and cellular levels, showing that the depth measure extends naturally to hierarchical biological organization.
+    (\textbf{D}) Histogram of partition depth values across all states for $n = 1$--$7$, with the mean depth marked by a vertical dashed line. The distribution is right-skewed, reflecting the increasing number of high-$\ell$ states at larger $n$.}
+    \label{fig:depth}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig05_phaselock.png}
+    \caption{\textbf{Kuramoto Phase-Lock Dynamics.}
+    (\textbf{A}) Three-dimensional phase evolution of 165 coupled hydrogen-bond oscillators during SOD1 folding. The $x$-axis is time step, the $y$-axis is oscillator index (0--164), and the $z$-axis is $\sin(\phi_i)$. Oscillator trajectories converge from initially random phases toward partial synchronization, visualizing the emergence of structural coherence.
+    (\textbf{B}) Order parameter $\langle r \rangle$ versus time, rising from the random initial value $r \approx 0.108$ (consistent with $1/\sqrt{N}$ for $N = 165$). Horizontal dashed reference lines mark $r = 0.8$ (native threshold, green) and $r = 0.5$ (misfolding threshold, red).
+    (\textbf{C}) Coupling strength decay $K_{ij} = K_0 \exp(-r_{ij}/r_0)$ as a function of inter-residue distance, plotted for multiple decay lengths $r_0$. The exponential decay ensures that only spatially proximal hydrogen bonds couple strongly, consistent with the locality of hydrogen bond networks in folded proteins.
+    (\textbf{D}) Polar plot of oscillator phase distributions: the initial configuration (red, inner circle, dispersed) versus the final configuration (green, outer circle, clustered), showing the transition from incoherence to partial phase-locking.}
+    \label{fig:phaselock}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig06_sentropy.png}
+    \caption{\textbf{S-Entropy Conservation and Zero-Backaction Measurement.}
+    (\textbf{A}) Three-dimensional trajectory on the S-entropy simplex $S_k + S_t + S_e = 1$. The $x$-, $y$-, and $z$-axes represent kinetic ($S_k$), thermal ($S_t$), and environmental ($S_e$) entropy coordinates, respectively. The 17-step measurement sequence (colored by step, viridis) traces a path that remains on the simplex plane (shown as a translucent triangle), confirming conservation throughout.
+    (\textbf{B}) Component evolution over the 17 measurement steps: $S_k$ (blue), $S_t$ (orange), and $S_e$ (green) redistribute among themselves while their sum remains constant at unity.
+    (\textbf{C}) Total S-entropy $S_k + S_t + S_e$ at each measurement step. The measured mean is $1.000 \pm 0.000$ (std $\sim 10^{-16}$), with the ideal value $1.0$ shown as a dashed green line and the $\pm 0.003$ tolerance band shaded. Conservation is verified to machine precision.
+    (\textbf{D}) Measurement backaction comparison ($\log_{10} \delta$) across three protocols: Heisenberg limit ($\delta = 1.0$), quantum non-demolition ($\delta = 10^{-3}$), and categorical measurement ($\delta = 1.68 \times 10^{-4}$). The categorical protocol achieves ${\sim}5{,}952\times$ improvement over the Heisenberg limit by navigating partition boundaries rather than collapsing quantum states.}
+    \label{fig:sentropy}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig08_electron.png}
+    \caption{\textbf{Consequence I: Electron Transfer in Azurin.}
+    (\textbf{A}) Three-dimensional trajectory of the transferring electron from Cu(I) donor (green circle) to Cu(II) acceptor (red square) within the azurin protein scaffold. The path is colored by progression (viridis) and spans a total distance traversed at mean velocity $v_e = 9.5$~km/s.
+    (\textbf{B}) Ternary trisection localization over 17 iterations. Upper bars show the trit value (0, 1, or 2) selected at each iteration; the lower curve (log scale) shows spatial resolution decreasing from the initial protein diameter (${\sim}26$~\AA) to a final resolution of $0.047$~\AA, well below the C--C bond length.
+    (\textbf{C}) Stacked S-entropy components ($S_k$, $S_t$, $S_e$) along the electron transfer trajectory. The three components redistribute at each trisection step while their sum is conserved at unity throughout all 17 iterations, confirming zero-backaction navigation of the partition landscape.
+    (\textbf{D}) Per-iteration measurement backaction $\delta$. Green bars show the backaction at each of 17 iterations; the mean backaction $\bar{\delta} = 1.65 \times 10^{-4}$ (red dashed line) lies well below the QND limit of $10^{-3}$ (blue dotted line), representing a ${\sim}6{,}049\times$ improvement over the Heisenberg bound.}
+    \label{fig:electron}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig09_catalysis.png}
+    \caption{\textbf{Consequence II: Enzyme Catalysis via Categorical Distance.}
+    (\textbf{A}) Three-dimensional enzyme landscape: eight enzymes plotted in $(d_C, \text{predicted}, \text{observed})$ space, where predicted $= 10 - d_C$ and observed $= \log_{10}(k_{\text{cat}}/K_M)$. A translucent green plane marks perfect prediction (observed $=$ predicted). Points cluster near the plane, confirming the prediction rule across six orders of magnitude.
+    (\textbf{B}) Categorical distance $d_C$ by enzyme: SOD1, carbonic anhydrase, catalase, and acetylcholinesterase have $d_C = 1$ (diffusion-limited); fumarase and $\beta$-amylase have $d_C = 2$; lysozyme has $d_C = 3$; chymotrypsin has $d_C = 4$. Bars are colored green ($d_C = 1$), orange ($d_C = 2$), yellow ($d_C = 3$), and red ($d_C = 4$).
+    (\textbf{C}) Predicted versus observed $\log_{10}(k_{\text{cat}}/K_M)$ for all eight enzymes. The dashed diagonal is perfect prediction; the green-shaded band is $\pm 1$ log unit. Seven of eight enzymes fall within the tolerance band, yielding MAE $= 0.97$ log units with zero free parameters. Chymotrypsin ($d_C = 4$, error $= 2.0$) is the sole outlier.
+    (\textbf{D}) SOD1 catalytic coherence: order parameter $\langle r \rangle$ over 2{,}000 time steps during catalytic turnover. The trajectory reaches and maintains $\langle r \rangle = 1.000$, with dashed reference lines at $r = 0.99$ and $r = 0.90$, confirming that SOD1 sustains near-perfect phase-lock coherence during diffusion-limited catalysis.}
+    \label{fig:catalysis}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig10_folding.png}
+    \caption{\textbf{Consequence III: Protein Folding in $O(\log_3 N)$ Categorical Steps.}
+    (\textbf{A}) Three-dimensional folding funnel surface. Radial distance encodes the reaction coordinate $Q$, the vertical axis encodes energy, and the azimuthal dimension represents conformational diversity. The surface narrows from a broad basin (unfolded, high entropy) to a single minimum (native state, maximum coherence), with the coolwarm colormap indicating energy level.
+    (\textbf{B}) Five-phase order parameter evolution during SOD1 folding ($N_{\text{HB}} = 165$, $\lceil\log_3 165\rceil = 5$ steps). The trajectory rises from $\langle r \rangle = 0.11$ through five shaded phases with boundary values $r = 0.68$, $1.00$, $1.00$, $1.00$, reaching a final $\langle r \rangle = 1.000$. Rapid coherence gain occurs in phases 1--2; phases 3--5 refine the already-synchronized network.
+    (\textbf{C}) Overlay of 30 independent folding trajectories. The first trajectory is highlighted in red; the remaining 29 are shown in blue ($\alpha = 0.3$). All trajectories converge to the same endpoint with variance $\sigma^2 = 1.08 \times 10^{-9}$, confirming deterministic folding through categorical space.
+    (\textbf{D}) Levinthal's paradox resolved: a two-bar comparison on a $\log_{10}$ scale showing the brute-force conformational search space ($10^{73}$ states, red) versus the categorical pathway (5 steps, green)---a reduction of ${\sim}72$ orders of magnitude.}
+    \label{fig:folding}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig11_conformational.png}
+    \caption{\textbf{Consequence IV: Conformational Dynamics as Phase-Lock Topology Change.}
+    (\textbf{A}) Loop state coherence for the SOD1 electrostatic loop (residues 121--142, 8 hydrogen bonds). Three bars show the order parameter in the closed ($\langle r \rangle = 0.34$, green), open ($\langle r \rangle = 0.25$, red), and re-closed ($\langle r \rangle = 0.32$, orange) conformations. A dashed reference line at $r = 0.8$ marks the native coherence threshold.
+    (\textbf{B}) Gating transition dynamics: order parameter $\langle r \rangle$ versus time step during loop opening and reclosure. The trajectory is divided into three shaded phases---closed (green), open (red), and re-close (orange)---showing a drop of $\Delta\langle r\rangle = -0.09$ upon loop opening followed by partial recovery.
+    (\textbf{C}) Temperature independence of loop topology. Final $\langle r \rangle$ is plotted at five temperatures ($T = 200$, 250, 300, 350, 400~K), with $r$-spread $= 0.311$. While absolute coherence varies with temperature, the qualitative closed/open distinction and the transition pathway are preserved, consistent with kinetic independence (Theorem~5).
+    (\textbf{D}) Three-dimensional temperature--time--$\langle r \rangle$ surface. The $x$-axis is temperature (K), the $y$-axis is simulation time, and the $z$-axis is $\langle r \rangle$. The surface (viridis colormap) shows that all temperatures follow qualitatively similar $r(t)$ trajectories, confirming that topology is temperature-independent even when kinetics are not.}
+    \label{fig:conformational}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig12_disease.png}
+    \caption{\textbf{Consequence V: Disease as Coherence Loss.}
+    (\textbf{A}) Three-dimensional variant landscape for SOD1 ALS mutations. Each point represents one variant plotted in (measured $\langle r \rangle$, target $\langle r \rangle$, survival years) space: D90A ($r = 0.998$, 12~yr), G93A ($r = 0.972$, 3~yr), A4V ($r = 0.850$, 1~yr), and H46R ($r = 0.729$, 1~yr). Variant names are annotated above each point.
+    (\textbf{B}) Order parameter bar chart across ALS variants. Bars are colored green ($r > 0.7$), orange ($0.5 < r \leq 0.7$), or red ($r \leq 0.5$), with black horizontal markers indicating target $r$ values and numerical annotations atop each bar. Wild-type achieves $\langle r \rangle = 1.000$; disease severity increases monotonically with coherence loss from D90A (0.998) through H46R (0.729).
+    (\textbf{C}) Survival correlation: measured $\langle r \rangle$ versus clinical survival (years, log scale) for the four ALS-linked variants. An exponential fit (red dashed curve) yields Spearman $\rho = 0.841$, confirming the survival equation $\tau \propto \exp[10(\langle r \rangle - 0.5)]$. Each point is annotated with its variant name.
+    (\textbf{D}) Pharmacological chaperone rescue simulation for A4V. The red trace shows $\langle r \rangle(t)$ without chaperone ($r = 0.862$); the green trace shows $\langle r \rangle(t)$ with chaperone ($r = 0.911$), yielding an improvement $\Delta\langle r \rangle = 0.049$. A dashed horizontal line at $r = 0.5$ marks the misfolding threshold.}
+    \label{fig:disease}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig13_validation.png}
+    \caption{\textbf{Comprehensive Validation Summary.}
+    (\textbf{A}) Per-domain pass rates for all 36 tests. Horizontal bars show: Atomic structure 7/7 (100\%), Electron transfer 5/5 (100\%), Protein folding 5/5 (100\%), Enzyme catalysis 11/12 (92\%), and Disease/ALS 6/7 (86\%). Bars are colored green at 100\% and yellow-green at $\geq$80\%, with pass counts and percentages annotated. A vertical dashed line marks 100\%.
+    (\textbf{B}) Enzyme efficiency prediction summary: predicted versus observed $\log_{10}(k_{\text{cat}}/K_M)$ for eight enzymes spanning six orders of magnitude. The dashed diagonal is perfect prediction; the green-shaded band is $\pm 1$ log unit. MAE $= 0.97$ log units with zero free parameters.
+    (\textbf{C}) SOD1 variant coherence summary. Bar chart of $\langle r \rangle$ for five SOD1 variants (WT, D90A, G93A, A4V, H46R), colored by coherence level, with a dashed reference line at $r = 0.5$. The monotonic decrease from WT (1.000) to H46R (0.729) quantifies the coherence--severity relationship.
+    (\textbf{D}) Three-dimensional validation bar chart. For each of the five domains, paired bars show the number of passed tests (green) and failed tests (red) in a 3D layout, providing an at-a-glance summary: 34 passed, 2 failed, 94\% overall pass rate with zero free parameters across equations I--VII.}
+    \label{fig:validation}
+\end{figure*}
