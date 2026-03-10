@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
     "isotope-layout": "^3.0.6",
     "next": "12.2",
     "particles.js": "^2.0.0",
@@ -21,7 +23,8 @@
     "react-tabs": "^5.1.0",
     "react-type-animation": "^1.1.3",
     "react-water-wave": "^2.0.1",
-    "swiper": "^8.3.2"
+    "swiper": "^8.3.2",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "eslint": "8.23.0",

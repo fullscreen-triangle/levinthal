@@ -1,5 +1,4 @@
-// components/AnimatedModel.jsx
-'use client'; // Wichtig für Next.js 13 App Router
+'use client';
 
 import { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
@@ -12,10 +11,10 @@ export function ConformationalChange({ modelPath, scale = 1, position = [0, 0, 0
   // Spiele alle Animationen ab
   useEffect(() => {
     if (names.length > 0) {
-      // Spiele die erste Animation ab (oder wähle eine bestimmte)
+      // Spiele die erste Animation ab
       actions[names[0]]?.play();
       
-      // Oder spiele alle Animationen ab:
+      // Optional: Alle Animationen abspielen
       // names.forEach((name) => actions[name]?.play());
     }
   }, [actions, names]);

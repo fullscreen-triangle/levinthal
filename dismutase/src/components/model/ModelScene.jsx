@@ -1,4 +1,3 @@
-// components/ModelScene.jsx
 'use client';
 
 import { Canvas } from '@react-three/fiber';
@@ -17,7 +16,7 @@ export default function ModelScene({ modelPath }) {
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <pointLight position={[-10, -10, -5]} intensity={0.5} />
         
-        {/* Suspense für Lazy Loading */}
+        {/* Suspense für Lazy Loading - nutzt dein App-Loading */}
         <Suspense fallback={null}>
           <ConformationalChange 
             modelPath={modelPath} 
@@ -25,7 +24,7 @@ export default function ModelScene({ modelPath }) {
             position={[0, 0, 0]} 
           />
           
-          {/* Optional: Environment für bessere Reflexionen */}
+          {/* Environment für bessere Reflexionen */}
           <Environment preset="sunset" />
         </Suspense>
         
