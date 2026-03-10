@@ -312,7 +312,7 @@ export default function PortfolioGlitch({ ActiveIndex }) {
                                     <img src="img/thumbs/4-2.jpg" alt="" />
                                     <div className="main" data-img-url="img/portfolio/6.jpg" style={{ backgroundImage: "url(./img/portfolio/6.jpg" }} />
                                 </div>
-                                <div class="portfolio_main_title">
+                                <div className="portfolio_main_title">
                                     <h3>Alice Moon</h3>
                                     <span>Detail</span>
                                     <div></div>
