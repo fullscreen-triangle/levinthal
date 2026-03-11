@@ -120,7 +120,7 @@ const News = ({ ActiveIndex, animation }) => {
     <Fragment>
       <div
         className={
-          ActiveIndex === 3
+          ActiveIndex === 4
             ? `cavani_tm_section active animated ${animation ? animation : "fadeInUp"
             }`
             : "cavani_tm_section hidden animated"

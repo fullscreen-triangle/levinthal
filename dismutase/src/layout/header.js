@@ -1,8 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 
 export default function Header({handleOnClick, ActiveIndex}) {
-    
+
     return (
         <>
             {/* HEADER */}
@@ -13,16 +12,12 @@ export default function Header({handleOnClick, ActiveIndex}) {
                 <div className="menu">
                     <ul className="transition_link">
                         <li onClick={() => handleOnClick(0)}><a className={ActiveIndex === 0 ? "active" : ""}>Home</a></li>
-                        <li onClick={() => handleOnClick(1)}><a className={ActiveIndex === 1 ? "active" : ""}>Framework</a></li>
-                        <li onClick={() => handleOnClick(5)}><a className={ActiveIndex === 5 ? "active" : ""}>Dynamics</a></li>
-                        <li onClick={() => handleOnClick(6)}><a className={ActiveIndex === 6 ? "active" : ""}>Folding</a></li>
-                        <li onClick={() => handleOnClick(8)}><a className={ActiveIndex === 8 ? "active" : ""}>Catalysis</a></li>
-                        <li onClick={() => handleOnClick(2)}><a className={ActiveIndex === 2 ? "active" : ""}>Results</a></li>
-                        <li onClick={() => handleOnClick(7)}><a className={ActiveIndex === 7 ? "active" : ""}>Applications</a></li>
-                        <li onClick={() => handleOnClick(3)}><a className={ActiveIndex === 3 ? "active" : ""}>Publications</a></li>
-                        <li onClick={() => handleOnClick(4)}><a className={ActiveIndex === 4 ? "active" : ""}>Contact</a></li>
+                        <li onClick={() => handleOnClick(1)}><a className={ActiveIndex === 1 ? "active" : ""}>Dynamics</a></li>
+                        <li onClick={() => handleOnClick(2)}><a className={ActiveIndex === 2 ? "active" : ""}>Folding</a></li>
+                        <li onClick={() => handleOnClick(3)}><a className={ActiveIndex === 3 ? "active" : ""}>Catalysis</a></li>
+                        <li onClick={() => handleOnClick(4)}><a className={ActiveIndex === 4 ? "active" : ""}>Publications</a></li>
+                        <li onClick={() => handleOnClick(5)}><a className={ActiveIndex === 5 ? "active" : ""}>Contact</a></li>
                     </ul>
-                    {/* <span className="ccc" /> */}
                 </div>
             </div>
             {/* /HEADER */}

@@ -1,0 +1,241 @@
+/* ======================================================
+   Scrollytelling Layout
+   Left: sticky chart panel | Right: scrolling article text
+   ====================================================== */
+
+.scroll-article {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Left panel: chart stays sticky */
+.scroll-article__chart-panel {
+  flex: 0 0 50%;
+  width: 50%;
+  position: relative;
+}
+
+.scroll-article__chart-sticky {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.scroll-article__chart-sticky svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Right panel: scrolling text */
+.scroll-article__text-panel {
+  flex: 0 0 50%;
+  width: 50%;
+  padding: 40px 60px 40px 40px;
+}
+
+/* Each step/section in the article */
+.scroll-article__step {
+  min-height: 80vh;
+  padding: 40px 0;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-article__step--active {
+  opacity: 1;
+}
+
+/* Article typography */
+.scroll-article__step h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent-primary, #f9d77e);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.scroll-article__step h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary, #fff);
+  margin-bottom: 14px;
+  margin-top: 30px;
+}
+
+.scroll-article__step p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary, #b0b0b0);
+  margin-bottom: 16px;
+}
+
+.scroll-article__step strong {
+  color: var(--text-primary, #fff);
+  font-weight: 600;
+}
+
+.scroll-article__step .equation {
+  font-family: 'Courier New', monospace;
+  color: var(--accent-primary, #f9d77e);
+  font-size: 15px;
+  padding: 16px 20px;
+  background: rgba(249, 215, 126, 0.06);
+  border-left: 3px solid var(--accent-primary, #f9d77e);
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+  overflow-x: auto;
+}
+
+.scroll-article__step .metric {
+  display: inline-block;
+  background: rgba(249, 215, 126, 0.1);
+  color: var(--accent-primary, #f9d77e);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin: 2px 4px;
+}
+
+.scroll-article__step .insight-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color, #333);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.scroll-article__step .insight-box h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-primary, #f9d77e);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.scroll-article__step ul {
+  list-style: none;
+  padding: 0;
+}
+
+.scroll-article__step ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary, #b0b0b0);
+}
+
+.scroll-article__step ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary, #f9d77e);
+}
+
+/* Chart container styles */
+.chart-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-container .chart-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted, #808080);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.chart-container svg {
+  overflow: visible;
+}
+
+/* D3 chart theme overrides for dark background */
+.chart-container .Axis__line {
+  stroke: var(--border-color, #333);
+}
+
+.chart-container .Axis__tick {
+  fill: var(--text-muted, #808080);
+  font-size: 11px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.chart-container .Axis__label {
+  fill: var(--text-secondary, #b0b0b0);
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.chart-container .Line--type-line {
+  fill: none;
+  stroke: var(--accent-primary, #f9d77e);
+  stroke-width: 2;
+}
+
+.chart-container .Line--type-area {
+  fill: rgba(249, 215, 126, 0.1);
+  stroke: none;
+}
+
+.chart-container .Circles__circle {
+  fill: var(--accent-primary, #f9d77e);
+  opacity: 0.8;
+}
+
+.chart-container .Bars__rect {
+  fill: var(--accent-primary, #f9d77e);
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .scroll-article {
+    flex-direction: column;
+  }
+
+  .scroll-article__chart-panel {
+    flex: none;
+    width: 100%;
+    height: 50vh;
+  }
+
+  .scroll-article__chart-sticky {
+    top: 0;
+    height: 50vh;
+  }
+
+  .scroll-article__text-panel {
+    flex: none;
+    width: 100%;
+    padding: 20px 30px;
+  }
+
+  .scroll-article__step {
+    min-height: 60vh;
+  }
+}
