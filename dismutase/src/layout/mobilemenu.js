@@ -18,14 +18,11 @@ export default function Mobilemenu({isToggled, handleOnClick}) {
                         <div className="menu_list">
                             <ul className="transition_link">
                                 <li onClick={() => handleOnClick(0)}><a href="#home">Home</a></li>
-                                <li onClick={() => handleOnClick(1)}><a href="#about">Framework</a></li>
-                                <li onClick={() => handleOnClick(5)}><a href="#dynamics">Dynamics</a></li>
-                                <li onClick={() => handleOnClick(6)}><a href="#folding">Folding</a></li>
-                                <li onClick={() => handleOnClick(8)}><a href="#catalysis">Catalysis</a></li>
-                                <li onClick={() => handleOnClick(2)}><a href="#portfolio">Results</a></li>
-                                <li onClick={() => handleOnClick(7)}><a href="#service">Applications</a></li>
-                                <li onClick={() => handleOnClick(3)}><a href="#news">Publications</a></li>
-                                <li onClick={() => handleOnClick(4)}><a href="#contact">Contact</a></li>
+                                <li onClick={() => handleOnClick(1)}><a href="#dynamics">Dynamics</a></li>
+                                <li onClick={() => handleOnClick(2)}><a href="#folding">Folding</a></li>
+                                <li onClick={() => handleOnClick(3)}><a href="#catalysis">Catalysis</a></li>
+                                <li onClick={() => handleOnClick(4)}><a href="#news">Publications</a></li>
+                                <li onClick={() => handleOnClick(5)}><a href="#contact">Contact</a></li>
                             </ul>
                         </div>
                         <div className="social">
