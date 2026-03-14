@@ -46,19 +46,19 @@ export default function ContactDefault({ ActiveIndex }) {
                                 <li>
                                     <div className="list_inner">
                                         <i className="icon-location"></i>
-                                        <span>Ave Street, New York, USA</span>
+                                        <span>Bitspark Gmbh</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="list_inner">
                                         <i className="icon-mail-3"></i>
-                                        <span><a href="#">hello@cavani.com</a></span>
+                                        <span><a href="#">kundai.sachikonye@bitspark.com</a></span>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="list_inner">
                                         <i className="icon-mobile"></i>
-                                        <span>+77 022 444 05 05</span>
+                                        <span>+491626386344</span>
                                     </div>
                                 </li>
                             </ul>

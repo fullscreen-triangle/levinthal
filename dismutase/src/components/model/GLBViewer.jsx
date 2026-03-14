@@ -9,25 +9,21 @@ function Model({ url, autoRotate }) {
     const { scene, animations } = useGLTF(url);
     const { actions, names } = useAnimations(animations, group);
 
-    // Play animations if they exist
     useEffect(() => {
         if (names.length > 0) {
             console.log("Available animations:", names);
-            // Play all animations
             names.forEach((name) => {
                 actions[name]?.play();
             });
         }
     }, [actions, names]);
 
-    // Auto-rotate if enabled and no animations
     useFrame((state, delta) => {
         if (autoRotate && group.current) {
             group.current.rotation.y += delta * 0.5;
         }
     });
 
-    // Center and scale the model
     useEffect(() => {
         if (scene) {
             const box = new THREE.Box3().setFromObject(scene);
@@ -37,12 +33,13 @@ function Model({ url, autoRotate }) {
             // Center the model
             scene.position.sub(center);
 
-            // Scale to fit
+            // Adjust this scale value to make model smaller/larger
             const maxDim = Math.max(size.x, size.y, size.z);
-            const scale = 3 / maxDim;
+            const scale = 2 / maxDim; // Changed from 3 to 2 for smaller model
             scene.scale.setScalar(scale);
 
-            console.log("Model loaded successfully");
+            console.log("Model size:", size);
+            console.log("Model scale:", scale);
         }
     }, [scene]);
 
@@ -77,7 +74,12 @@ export default function GLBViewer({
 
             <Canvas
                 shadows
-                camera={{ position: [0, 0, 5], fov: 50 }}
+                camera={{ 
+                    position: [0, 0, 10],  // Move camera further back (was 5)
+                    fov: 45,               // Narrower FOV (was 50) - less distortion
+                    near: 0.1,             // Near clipping plane
+                    far: 1000              // Far clipping plane
+                }}
                 gl={{
                     antialias: true,
                     alpha: true,
@@ -111,38 +113,17 @@ export default function GLBViewer({
                 {/* The 3D Model */}
                 <Model url={modelPath} autoRotate={autoRotate} />
 
-                {/* Camera Controls */}
+                {/* Add OrbitControls if you want user interaction */}
                 {showControls && (
                     <OrbitControls
                         enableZoom={true}
                         enablePan={true}
-                        enableRotate={true}
-                        minDistance={2}
-                        maxDistance={20}
-                        autoRotate={false}
-                        autoRotateSpeed={2}
+                        minDistance={5}    // Minimum zoom distance
+                        maxDistance={20}   // Maximum zoom distance
+                        target={[0, 0, 0]} // Look at center
                     />
                 )}
             </Canvas>
-
-            {/* Info Overlay */}
-            {showControls && (
-                <div style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    background: 'rgba(0, 0, 0, 0.7)',
-                    color: '#fff',
-                    padding: '10px 20px',
-                    borderRadius: '8px',
-                    fontSize: '0.9rem',
-                    zIndex: 10,
-                    backdropFilter: 'blur(10px)'
-                }}>
-                    🖱️ Left Click: Rotate | 🖱️ Right Click: Pan | 🖱️ Scroll: Zoom
-                </div>
-            )}
         </div>
     );
 }

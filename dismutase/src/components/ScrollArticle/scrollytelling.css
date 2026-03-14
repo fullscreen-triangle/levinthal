@@ -1,57 +1,99 @@
 /* ======================================================
    Scrollytelling Layout
-   Left: sticky chart panel | Right: scrolling article text
+   Left: chart panel (pinned via GSAP) | Right: scrolling text
+
+   The template's .cavani_tm_section has overflow-y:scroll and
+   position:absolute, which breaks CSS position:sticky.
+   We use GSAP ScrollTrigger pin + scrollerProxy instead.
    ====================================================== */
 
+/* --- Template overrides for scrollytelling sections --- */
+
+/*
+ * When a scrollytelling page is active, index.js adds .fullwidth-mode
+ * to .cavani_tm_mainpart. This expands .main_content from 60% to 100%
+ * and hides the left image panel so charts get the full screen.
+ */
+.cavani_tm_mainpart.fullwidth-mode .author_image,
+.cavani_tm_mainpart.fullwidth-mode .glitch_wrap,
+.cavani_tm_mainpart.fullwidth-mode .particle_wrapper,
+.cavani_tm_mainpart.fullwidth-mode .ripple {
+  display: none !important;
+}
+
+.cavani_tm_mainpart.fullwidth-mode .main_content {
+  width: 100% !important;
+  left: 0 !important;
+}
+
+.scrollytelling-section .section_inner {
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  float: none !important;
+}
+
+.scrollytelling-section .section_inner::before {
+  display: none !important;
+}
+
+/* --- Core layout --- */
+
 .scroll-article {
-  display: flex;
   position: relative;
   width: 100%;
-  min-height: 100vh;
 }
 
-/* Left panel: chart stays sticky */
+/*
+ * Chart panel is position:fixed via JS (positioned to fill left half
+ * of the .cavani_tm_section container). This keeps it stationary
+ * while the text scrolls. flex layout is NOT used because the chart
+ * is taken out of flow by position:fixed.
+ */
 .scroll-article__chart-panel {
-  flex: 0 0 50%;
-  width: 50%;
-  position: relative;
+  /* JS sets position:fixed, top, left, width, height */
 }
 
-.scroll-article__chart-sticky {
-  position: sticky;
-  top: 80px;
-  height: calc(100vh - 100px);
+.scroll-article__chart-inner {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
-.scroll-article__chart-sticky svg {
+.scroll-article__chart-inner svg {
   max-width: 100%;
   max-height: 100%;
 }
 
-/* Right panel: scrolling text */
+/* Right: scrolling text — offset to the right 50% since chart is fixed */
 .scroll-article__text-panel {
-  flex: 0 0 50%;
   width: 50%;
-  padding: 40px 60px 40px 40px;
+  margin-left: 50%;
+  padding: 40px 50px 40px 40px;
 }
 
-/* Each step/section in the article */
+/* Each step/section */
 .scroll-article__step {
-  min-height: 80vh;
-  padding: 40px 0;
-  opacity: 0.3;
+  min-height: 90vh;
+  padding: 60px 0;
+  opacity: 0.2;
   transition: opacity 0.5s ease;
+}
+
+.scroll-article__step:first-child {
+  padding-top: 10px;
 }
 
 .scroll-article__step--active {
   opacity: 1;
 }
 
-/* Article typography */
+/* --- Article typography --- */
+
 .scroll-article__step h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 28px;
@@ -150,7 +192,8 @@
   background: var(--accent-primary, #f9d77e);
 }
 
-/* Chart container styles */
+/* --- Chart container --- */
+
 .chart-container {
   width: 100%;
   height: 100%;
@@ -160,21 +203,11 @@
   justify-content: center;
 }
 
-.chart-container .chart-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-muted, #808080);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 16px;
-}
-
 .chart-container svg {
   overflow: visible;
 }
 
-/* D3 chart theme overrides for dark background */
+/* D3 dark theme overrides */
 .chart-container .Axis__line {
   stroke: var(--border-color, #333);
 }
@@ -212,7 +245,8 @@
   opacity: 0.85;
 }
 
-/* Responsive */
+/* --- Responsive --- */
+
 @media (max-width: 1024px) {
   .scroll-article {
     flex-direction: column;
@@ -221,11 +255,6 @@
   .scroll-article__chart-panel {
     flex: none;
     width: 100%;
-    height: 50vh;
-  }
-
-  .scroll-article__chart-sticky {
-    top: 0;
     height: 50vh;
   }
 

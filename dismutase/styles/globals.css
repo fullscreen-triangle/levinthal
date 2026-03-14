@@ -19,6 +19,131 @@
   --card-bg: #1a1a1a;
   --card-hover: #252525;
 }
+/* === HD CLEAN STYLES === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  
+  /* Layout */
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+  /* Colors */
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* High-quality images */
+img, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Canvas (for R3F) */
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+/* Smooth transitions */
+a, button {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Custom focus states */
+*:focus-visible {
+  outline: 2px solid #0066ff;
+  outline-offset: 2px;
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Remove button defaults */
+button {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Clean links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Smooth transitions for interactive elements */
+a, button, input, select, textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+
+/* Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* IE and Edge */
+body {
+  -ms-overflow-style: none;
+}
+
 
 /* Base Styles */
 * {
@@ -33,6 +158,7 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  -ms-overflow-style: none;
 }
 
 body {
@@ -56,15 +182,41 @@ a {
   margin-left: 2px;
 }
 
-.cavani_tm_mainpart .author_image .jquery-ripples {
-  width: 100%;
-  height: 100%;
+
+
+/* === 3D Background with Text Overlay === */
+
+/* Container for the 3D scene */
+.cavani_tm_mainpart {
   position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-image: url(../public/img/about/3.jpg) !important;
-  /* Optional: Dunkler Overlay über dem Bild */
-  filter: brightness(0.8);
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* GLB Viewer - Background layer */
+.glb-viewer-container {
+  position: fixed; /* or absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none; /* Allow clicking through to content below */
+}
+
+/* If you want interaction with the 3D model */
+.glb-viewer-container.interactive {
+  pointer-events: auto;
+}
+
+/* Main content - Foreground layer */
+.main_content {
+  position: relative;
+  z-index: 10;
+  /* Add padding so content doesn't touch edges */
+  padding: 2rem;
+  /* Optional: make text more readable over 3D */
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
