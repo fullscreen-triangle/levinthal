@@ -1,10 +1,11 @@
 /* ======================================================
    Scrollytelling Layout
-   Left: chart panel (pinned via GSAP) | Right: scrolling text
+   Left: chart panel (pinned via GSAP ScrollTrigger) | Right: scrolling text
 
-   The template's .cavani_tm_section has overflow-y:scroll and
-   position:absolute, which breaks CSS position:sticky.
-   We use GSAP ScrollTrigger pin + scrollerProxy instead.
+   Follows the vanilla JS GSAP ScrollTrigger pin pattern:
+   - Chart wrapper is pinned with ScrollTrigger pin: true
+   - Text steps flow on the right with margin-left: 50%
+   - scroller option targets .cavani_tm_section (overflow-y:scroll)
    ====================================================== */
 
 /* --- Template overrides for scrollytelling sections --- */
@@ -37,7 +38,7 @@
   display: none !important;
 }
 
-/* --- Core layout --- */
+/* --- Core layout (mirrors the vanilla example) --- */
 
 .scroll-article {
   position: relative;
@@ -45,13 +46,15 @@
 }
 
 /*
- * Chart panel is position:fixed via JS (positioned to fill left half
- * of the .cavani_tm_section container). This keeps it stationary
- * while the text scrolls. flex layout is NOT used because the chart
- * is taken out of flow by position:fixed.
+ * Chart panel — sits on the left, gets pinned by GSAP ScrollTrigger.
+ * Like #chart-wrapper in the vanilla example:
+ *   width: 60%; margin-left: 40%  (but flipped: chart LEFT, text RIGHT)
+ *
+ * GSAP pin: true handles the sticky behaviour.
  */
 .scroll-article__chart-panel {
-  /* JS sets position:fixed, top, left, width, height */
+  width: 50%;
+  margin-right: 50%;
 }
 
 .scroll-article__chart-inner {
@@ -62,6 +65,7 @@
   justify-content: center;
   padding: 30px;
   box-sizing: border-box;
+  min-height: 70vh;
 }
 
 .scroll-article__chart-inner svg {
@@ -69,23 +73,31 @@
   max-height: 100%;
 }
 
-/* Right: scrolling text — offset to the right 50% since chart is fixed */
+/*
+ * Text steps — sit on the right, scroll past the pinned chart.
+ * Like .step in the vanilla example:
+ *   width: 30%; margin-right: 70%  (but flipped to the right side)
+ */
 .scroll-article__text-panel {
-  width: 50%;
-  margin-left: 50%;
-  padding: 40px 50px 40px 40px;
+  width: 45%;
+  margin-left: 52%;
+  padding: 0 30px;
 }
 
-/* Each step/section */
+/* Each step/section — large bottom margin creates scroll distance */
 .scroll-article__step {
-  min-height: 90vh;
-  padding: 60px 0;
+  padding: 30px;
+  margin-bottom: 60vh;
   opacity: 0.2;
   transition: opacity 0.5s ease;
 }
 
 .scroll-article__step:first-child {
   padding-top: 10px;
+}
+
+.scroll-article__step:last-child {
+  margin-bottom: 20vh;
 }
 
 .scroll-article__step--active {
@@ -248,23 +260,18 @@
 /* --- Responsive --- */
 
 @media (max-width: 1024px) {
-  .scroll-article {
-    flex-direction: column;
-  }
-
   .scroll-article__chart-panel {
-    flex: none;
     width: 100%;
-    height: 50vh;
+    margin-right: 0;
   }
 
   .scroll-article__text-panel {
-    flex: none;
     width: 100%;
+    margin-left: 0;
     padding: 20px 30px;
   }
 
   .scroll-article__step {
-    min-height: 60vh;
+    margin-bottom: 40vh;
   }
 }

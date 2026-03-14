@@ -1,5 +1,8 @@
 /* globals.css */
 
+/* ========================================
+   CSS VARIABLES
+   ======================================== */
 :root {
   /* Dark Theme Colors */
   --bg-primary: #0a0a0a;
@@ -19,8 +22,10 @@
   --card-bg: #1a1a1a;
   --card-hover: #252525;
 }
-/* === HD CLEAN STYLES === */
 
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +35,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -38,22 +45,58 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   
-
+  /* Typography */
   font-size: 16px;
   line-height: 1.6;
   letter-spacing: -0.01em;
   
   /* Layout */
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
   
   /* Colors */
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  
+  /* Scrollbar */
+  -ms-overflow-style: none;
 }
 
-/* High-quality images */
+/* ========================================
+   LINKS & BUTTONS
+   ======================================== */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input, select, textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ========================================
+   FOCUS STATES
+   ======================================== */
+*:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MEDIA ELEMENTS
+   ======================================== */
 img, video {
   display: block;
   max-width: 100%;
@@ -63,25 +106,16 @@ img, video {
   -webkit-user-drag: none;
 }
 
-/* Canvas (for R3F) */
 canvas {
   display: block;
   touch-action: none;
+  outline: none;
 }
 
-/* Smooth transitions */
-a, button {
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-/* Custom focus states */
-*:focus-visible {
-  outline: 2px solid #0066ff;
-  outline-offset: 2px;
-}
-
-/* Thin scrollbar */
+/* ========================================
+   SCROLLBAR STYLES
+   ======================================== */
+/* WebKit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -92,86 +126,92 @@ a, button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.4);
 }
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-
-/* Remove button defaults */
-button {
-  border: none;
-  background: none;
-  font: inherit;
-  cursor: pointer;
-}
-
-/* Clean links */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  /* Hardware acceleration */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  
-  /* Smooth scrolling */
-  scroll-behavior: smooth;
-}
-
-/* Smooth transitions for interactive elements */
-a, button, input, select, textarea {
-  transition: all 0.2s ease-in-out;
-}
-
 
 /* Firefox */
 * {
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
-/* IE and Edge */
-body {
-  -ms-overflow-style: none;
+/* ========================================
+   3D BACKGROUND & LAYOUT
+   ======================================== */
+.cavani_tm_mainpart {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-
-/* Base Styles */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.cavani_tm_mainpart.full-width {
+  width: 100vw;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  -ms-overflow-style: none;
+/* GLB Viewer - Fixed Background */
+.glb-viewer-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background: #1a1a1a; /* Visible background for debugging */
 }
 
-body {
-  color: var(--text-primary);
-  background: var(--bg-primary);
+.glb-viewer-container canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none !important;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Main Content Overlay */
+.main_content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
 }
 
-/* Deine bestehenden Styles - Dark Theme Version */
+/* Text readability over 3D background */
+.main_content h1,
+.main_content h2,
+.main_content h3,
+.main_content p {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Optional gradient overlay for better contrast */
+.main_content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.6) 0%,
+    rgba(10, 10, 10, 0.3) 50%,
+    rgba(10, 10, 10, 0.6) 100%
+  );
+  z-index: 10;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* ========================================
+   COMPONENT SPECIFIC STYLES
+   ======================================== */
 .cavani_tm_home .job .styles_type__2Teeh {
   font-weight: 600;
   color: var(--accent-primary);
@@ -182,41 +222,391 @@ a {
   margin-left: 2px;
 }
 
-
-
-/* === 3D Background with Text Overlay === */
-
-/* Container for the 3D scene */
-.cavani_tm_mainpart {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+  .main_content {
+    padding: 2rem 1rem;
+  }
+  
+  /* Reduce 3D complexity on mobile */
+  .glb-viewer-container {
+    opacity: 0.5;
+  }
+  
+  /* Stronger text contrast on mobile */
+  .main_content h1,
+  .main_content h2,
+  .main_content h3 {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
+  }
 }
 
-/* GLB Viewer - Background layer */
-.glb-viewer-container {
-  position: fixed; /* or absolute */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .main_content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+/* landing-page.css or add to globals.css */
+
+/* ========================================
+   LANDING PAGE STYLES
+   ======================================== */
+
+.landing-page-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.landing-page-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.landing-page-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* 3D Background Layer */
+.landing-glb-background {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
-  pointer-events: none; /* Allow clicking through to content below */
+  pointer-events: none;
 }
 
-/* If you want interaction with the 3D model */
-.glb-viewer-container.interactive {
+.landing-glb-background canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Content Overlay Layer */
+.landing-content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.landing-hero {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
   pointer-events: auto;
 }
 
-/* Main content - Foreground layer */
-.main_content {
-  position: relative;
-  z-index: 10;
-  /* Add padding so content doesn't touch edges */
-  padding: 2rem;
-  /* Optional: make text more readable over 3D */
-  color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+.landing-text-content {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Typography */
+.landing-title {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.8),
+    0 4px 20px rgba(0, 0, 0, 0.6);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.landing-subtitle {
+  display: block;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-weight: 300;
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.landing-job {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 600;
+  color: var(--accent-primary, #f9d77e);
+  margin-bottom: 3rem;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+/* CTA Button */
+.landing-cta {
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.landing-button {
+  display: inline-block;
+  padding: 1.2rem 3.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  background: var(--accent-primary, #f9d77e);
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 15px rgba(249, 215, 126, 0.4),
+    0 0 0 0 rgba(249, 215, 126, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.landing-button:hover {
+  background: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 30px rgba(249, 215, 126, 0.6),
+    0 0 0 8px rgba(249, 215, 126, 0.2);
+}
+
+.landing-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.landing-button:active {
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVE - LANDING PAGE
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .landing-text-content {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .landing-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-hero {
+    padding: 1rem;
+  }
+  
+  .landing-text-content {
+    padding: 2rem 1.5rem;
+    background: rgba(10, 10, 10, 0.8);
+    border-radius: 20px;
+  }
+  
+  .landing-title {
+    font-size: clamp(2rem, 9vw, 4rem);
+    margin-bottom: 0.8rem;
+  }
+  
+  .landing-subtitle {
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .landing-job {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    min-height: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .landing-button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-text-content {
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+  }
+  
+  .landing-title {
+    font-size: clamp(1.8rem, 10vw, 3rem);
+  }
+  
+  .landing-subtitle {
+    font-size: clamp(0.9rem, 4vw, 1.5rem);
+  }
+  
+  .landing-job {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    min-height: 2.5rem;
+  }
+  
+  .landing-button {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .landing-page-container {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .landing-text-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .landing-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .landing-job {
+    min-height: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .landing-title,
+  .landing-subtitle,
+  .landing-job,
+  .landing-cta {
+    animation: none;
+  }
+  
+  .landing-button {
+    transition: none;
+  }
+}
+
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-shadow-strong {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+.glass-effect {
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+
+/* Clean floating text version */
+.cavani_tm_home .content {
+  position: relative;
+  z-index: 102;
+  padding: 2rem;
+  background: none; /* Remove backdrop */
+  backdrop-filter: none;
+  border: none;
+}
+
+.cavani_tm_home .content .name {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.cavani_tm_home .content .line,
+.cavani_tm_home .content .job {
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 4px 8px rgba(0, 0, 0, 0.7);
+}
