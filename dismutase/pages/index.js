@@ -58,8 +58,8 @@ export default function Home() {
           <Mobilemenu toggleTrueFalse={toggleTrueFalse} isToggled={isToggled} handleOnClick={handleOnClick} />
 
           {/* MAINPART */}
-          <div className="cavani_tm_mainpart">
-              <GLBViewer className="author_image" />
+          <div className={`cavani_tm_mainpart${[1, 2, 3].includes(ActiveIndex) ? ' fullwidth-mode' : ''}`}>
+              <GLBViewer className="glb-viewer-container" />
             <div className="main_content">
               <Landing ActiveIndex={ActiveIndex} handleOnClick={handleOnClick} />
               <Dynamics ActiveIndex={ActiveIndex} />

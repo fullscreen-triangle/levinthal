@@ -149,10 +149,10 @@ export default function Catalysis({ ActiveIndex }) {
 
   return (
     <div
-      className={ActiveIndex === 3 ? "cavani_tm_section active animated rollIn" : "cavani_tm_section active hidden animated rollOut"}
+      className={ActiveIndex === 3 ? "cavani_tm_section scrollytelling-section active animated rollIn" : "cavani_tm_section scrollytelling-section active hidden animated rollOut"}
       id="catalysis_"
     >
-      <div className="section_inner" style={{ padding: 0, maxWidth: 'none' }}>
+      <div className="section_inner">
         <ScrollArticle
           chartComponent={<CatalysisChart activeStep={activeStep} />}
           sections={sections}
