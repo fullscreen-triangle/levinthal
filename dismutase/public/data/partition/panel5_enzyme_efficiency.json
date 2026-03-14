@@ -1,0 +1,116 @@
+{
+  "experiment": "Enzyme Catalytic Efficiency",
+  "timestamp": "2026-02-23T00:36:38.844260",
+  "enzymes": [
+    {
+      "name": "Superoxide dismutase",
+      "d_C": 1,
+      "kcat_Km_observed": 7000000000.0,
+      "kcat_Km_predicted": 1000000000,
+      "log_observed": 9.845098040014257,
+      "log_predicted": 9,
+      "error": 0.8450980400142569
+    },
+    {
+      "name": "Carbonic anhydrase",
+      "d_C": 1,
+      "kcat_Km_observed": 100000000.0,
+      "kcat_Km_predicted": 1000000000,
+      "log_observed": 8.0,
+      "log_predicted": 9,
+      "error": 1.0
+    },
+    {
+      "name": "Acetylcholinesterase",
+      "d_C": 1,
+      "kcat_Km_observed": 160000000.0,
+      "kcat_Km_predicted": 1000000000,
+      "log_observed": 8.204119982655925,
+      "log_predicted": 9,
+      "error": 0.795880017344075
+    },
+    {
+      "name": "Catalase",
+      "d_C": 1,
+      "kcat_Km_observed": 40000000.0,
+      "kcat_Km_predicted": 1000000000,
+      "log_observed": 7.6020599913279625,
+      "log_predicted": 9,
+      "error": 1.3979400086720375
+    },
+    {
+      "name": "Fumarase",
+      "d_C": 2,
+      "kcat_Km_observed": 160000000.0,
+      "kcat_Km_predicted": 100000000,
+      "log_observed": 8.204119982655925,
+      "log_predicted": 8,
+      "error": 0.20411998265592501
+    },
+    {
+      "name": "Triose-P isomerase",
+      "d_C": 2,
+      "kcat_Km_observed": 430000000.0,
+      "kcat_Km_predicted": 100000000,
+      "log_observed": 8.633468455579587,
+      "log_predicted": 8,
+      "error": 0.6334684555795871
+    },
+    {
+      "name": "Beta-Lactamase",
+      "d_C": 2,
+      "kcat_Km_observed": 100000000.0,
+      "kcat_Km_predicted": 100000000,
+      "log_observed": 8.0,
+      "log_predicted": 8,
+      "error": 0.0
+    },
+    {
+      "name": "Phosphotriesterase",
+      "d_C": 3,
+      "kcat_Km_observed": 40000000.0,
+      "kcat_Km_predicted": 10000000,
+      "log_observed": 7.6020599913279625,
+      "log_predicted": 7,
+      "error": 0.6020599913279625
+    },
+    {
+      "name": "Lysozyme",
+      "d_C": 3,
+      "kcat_Km_observed": 5000000.0,
+      "kcat_Km_predicted": 10000000,
+      "log_observed": 6.698970004336019,
+      "log_predicted": 7,
+      "error": 0.30102999566398125
+    },
+    {
+      "name": "Chymotrypsin",
+      "d_C": 4,
+      "kcat_Km_observed": 10000.0,
+      "kcat_Km_predicted": 1000000,
+      "log_observed": 4.0,
+      "log_predicted": 6,
+      "error": 2.0
+    },
+    {
+      "name": "Pepsin",
+      "d_C": 4,
+      "kcat_Km_observed": 30000.0,
+      "kcat_Km_predicted": 1000000,
+      "log_observed": 4.477121254719663,
+      "log_predicted": 6,
+      "error": 1.5228787452803374
+    },
+    {
+      "name": "Urease",
+      "d_C": 5,
+      "kcat_Km_observed": 40000.0,
+      "kcat_Km_predicted": 100000,
+      "log_observed": 4.6020599913279625,
+      "log_predicted": 5,
+      "error": 0.3979400086720375
+    }
+  ],
+  "mean_error": 0.80836793710085,
+  "max_error": 2.0
+}

@@ -1,0 +1,302 @@
+{
+  "total_passed": 34,
+  "total_tests": 36,
+  "pass_rate": 0.9444444444444444,
+  "domains": {
+    "Atomic structure": {
+      "passed": 7,
+      "total": 7
+    },
+    "Electron transfer": {
+      "passed": 5,
+      "total": 5
+    },
+    "Enzyme catalysis": {
+      "passed": 11,
+      "total": 12
+    },
+    "Protein folding": {
+      "passed": 5,
+      "total": 5
+    },
+    "Disease (ALS)": {
+      "passed": 6,
+      "total": 7
+    }
+  },
+  "all_tests": [
+    {
+      "id": 1,
+      "name": "Capacity C(1) = 2\u00d71\u00b2 = 2",
+      "predicted": 2,
+      "expected": 2,
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 2,
+      "name": "Capacity C(2) = 2\u00d72\u00b2 = 8",
+      "predicted": 8,
+      "expected": 8,
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 3,
+      "name": "Capacity C(3) = 2\u00d73\u00b2 = 18",
+      "predicted": 18,
+      "expected": 18,
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 4,
+      "name": "Capacity C(4) = 2\u00d74\u00b2 = 32",
+      "predicted": 32,
+      "expected": 32,
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 5,
+      "name": "Subshell capacity 2(2l+1) for l=0..3",
+      "predicted": [
+        2,
+        6,
+        10,
+        14
+      ],
+      "expected": [
+        2,
+        6,
+        10,
+        14
+      ],
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 6,
+      "name": "Cumulative capacity matches noble gas positions",
+      "predicted": [
+        2,
+        10,
+        28,
+        60
+      ],
+      "expected": [
+        2,
+        10,
+        28,
+        60
+      ],
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 7,
+      "name": "Shell filling follows Aufbau ordering",
+      "passed": true,
+      "equation": "I",
+      "domain": "Atomic structure"
+    },
+    {
+      "id": 1,
+      "name": "Electron velocity v_e = 9.5 km/s",
+      "expected": "12.4 \u00b1 0.8 km/s",
+      "value": 9.464613991005221,
+      "passed": true,
+      "domain": "Electron transfer"
+    },
+    {
+      "id": 2,
+      "name": "Backaction delta = 1.65e-04",
+      "expected": "(1.68 +/- 0.32) x 10^-4",
+      "value": 0.00016532726440550522,
+      "passed": true,
+      "domain": "Electron transfer"
+    },
+    {
+      "id": 3,
+      "name": "S-entropy conservation: 1.000",
+      "expected": "1.000 \u00b1 0.003",
+      "value": 1.0,
+      "passed": true,
+      "domain": "Electron transfer"
+    },
+    {
+      "id": 4,
+      "name": "Selection rules: valid trit sequence",
+      "passed": true,
+      "domain": "Electron transfer"
+    },
+    {
+      "id": 5,
+      "name": "Improvement vs Heisenberg: 6049\u00d7",
+      "expected": ">5000\u00d7",
+      "value": 6048.609124428851,
+      "passed": true,
+      "domain": "Electron transfer"
+    },
+    {
+      "id": 1,
+      "name": "SOD1: pred=9.0, obs=9.8",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 2,
+      "name": "Carbonic anhydrase: pred=9.0, obs=8.0",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 3,
+      "name": "Catalase: pred=9.0, obs=7.6",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 4,
+      "name": "Acetylcholinesterase: pred=9.0, obs=8.3",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 5,
+      "name": "Fumarase: pred=8.0, obs=8.9",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 6,
+      "name": "\u03b2-Amylase: pred=8.0, obs=7.6",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 7,
+      "name": "Lysozyme: pred=7.0, obs=6.5",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 8,
+      "name": "Chymotrypsin: pred=6.0, obs=4.0",
+      "passed": false,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 9,
+      "name": "MAE = 0.97 log units",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 10,
+      "name": "SOD1 catalytic coherence r = 1.000",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 11,
+      "name": "SOD1 phase coherence > 0.9",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 12,
+      "name": "Trajectory CV = 0.0000",
+      "passed": true,
+      "domain": "Enzyme catalysis"
+    },
+    {
+      "id": 1,
+      "name": "Categorical steps = 5",
+      "expected": 5,
+      "value": 5,
+      "passed": true,
+      "domain": "Protein folding"
+    },
+    {
+      "id": 2,
+      "name": "Final order parameter r = 1.000",
+      "expected": "> 0.8",
+      "value": 0.9997847443469301,
+      "passed": true,
+      "domain": "Protein folding"
+    },
+    {
+      "id": 3,
+      "name": "Trajectory variance \u03c3\u00b2 = 1.08e-09",
+      "expected": "< 10\u207b\u00b3",
+      "value": 1.0800025736189353e-09,
+      "passed": true,
+      "domain": "Protein folding"
+    },
+    {
+      "id": 4,
+      "name": "Phase order parameter monotonically increases",
+      "passed": true,
+      "domain": "Protein folding"
+    },
+    {
+      "id": 5,
+      "name": "Five distinct phases identified",
+      "passed": true,
+      "domain": "Protein folding"
+    },
+    {
+      "id": 1,
+      "name": "WT coherence r = 1.000",
+      "expected": "> 0.8",
+      "passed": true,
+      "domain": "Disease (ALS)"
+    },
+    {
+      "id": 2,
+      "name": "A4V coherence r = 0.850",
+      "expected": "< 0.5",
+      "passed": false,
+      "domain": "Disease (ALS)"
+    },
+    {
+      "id": 3,
+      "name": "D90A coherence r = 0.998",
+      "expected": "> 0.5",
+      "passed": true,
+      "domain": "Disease (ALS)"
+    },
+    {
+      "id": 4,
+      "name": "Variant ordering matches severity",
+      "passed": true,
+      "domain": "Disease (ALS)"
+    },
+    {
+      "id": 5,
+      "name": "Survival correlation \u03c1 = 0.841",
+      "expected": "> 0.5",
+      "passed": true,
+      "domain": "Disease (ALS)"
+    },
+    {
+      "id": 6,
+      "name": "Chaperone rescue: \u0394r = 0.049",
+      "passed": true,
+      "domain": "Disease (ALS)"
+    },
+    {
+      "id": 7,
+      "name": "4 distinct mutation mechanisms",
+      "passed": true,
+      "domain": "Disease (ALS)"
+    }
+  ]
+}
