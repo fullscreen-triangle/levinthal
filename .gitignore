@@ -267,3 +267,9 @@ logs
 
 # Storybook
 storybook-static
+
+# ============================================================================
+# DISMUTASE WEBSITE - un-ignore public assets
+# ============================================================================
+!dismutase/public/
+!dismutase/public/**
