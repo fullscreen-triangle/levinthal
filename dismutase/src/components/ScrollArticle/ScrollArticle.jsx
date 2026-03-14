@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useCallback } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 /**
  * ScrollArticle - Scrollytelling layout component
  *
- * Two-column layout: left chart (position:fixed) + right scrolling text.
+ * Follows the GSAP ScrollTrigger pin pattern from the vanilla JS example:
+ * - Chart wrapper is pinned via ScrollTrigger.create({ pin: true })
+ * - Text steps sit on the right, each with large bottom margins
+ * - Each step triggers onEnter/onLeaveBack to change the chart
+ * - Steps get toggleClass 'active' for opacity transitions
  *
- * Uses IntersectionObserver rooted on the .cavani_tm_section scroll
- * container to detect which text step is in view, then fires
- * onStepChange to update the chart. No GSAP dependency — this is
- * simpler and works reliably inside overflow:scroll containers.
- *
- * The chart panel is position:fixed when the section is active,
- * manually positioned to fill the left half of the mainpart area.
+ * Uses `scroller` option to target .cavani_tm_section (the overflow-y:scroll
+ * container in this template) instead of window scroll.
  */
 export default function ScrollArticle({ chartComponent, sections, onStepChange, activeStep = 0 }) {
+  const chartWrapperRef = useRef(null)
   const containerRef = useRef(null)
-  const chartPanelRef = useRef(null)
   const stepRefs = useRef([])
 
   // Find the .cavani_tm_section ancestor (the overflow-y:scroll container)
@@ -29,82 +32,54 @@ export default function ScrollArticle({ chartComponent, sections, onStepChange, 
   }, [])
 
   useEffect(() => {
-    if (!containerRef.current) return
+    if (!containerRef.current || !chartWrapperRef.current) return
 
     const scroller = findScroller(containerRef.current)
     if (!scroller) return
 
-    // Use IntersectionObserver rooted on the scroll container
-    // to detect which step is currently in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const idx = stepRefs.current.indexOf(entry.target)
-            if (idx !== -1 && onStepChange) {
-              onStepChange(idx)
-            }
-          }
-        })
-      },
-      {
-        root: scroller,
-        // Trigger when a step crosses the middle 20% band of the viewport
-        rootMargin: '-40% 0px -40% 0px',
-        threshold: 0,
-      }
-    )
+    const lastStepEl = stepRefs.current[stepRefs.current.length - 1]
+    if (!lastStepEl) return
 
-    stepRefs.current.forEach(el => {
-      if (el) observer.observe(el)
+    // Pin the chart wrapper — exactly like the vanilla example
+    // but with scroller pointing to .cavani_tm_section
+    const pinTrigger = ScrollTrigger.create({
+      trigger: chartWrapperRef.current,
+      endTrigger: lastStepEl,
+      scroller: scroller,
+      start: 'top top',
+      end: () => {
+        const scrollerHeight = scroller.clientHeight
+        const chartHeight = chartWrapperRef.current.offsetHeight
+        return `bottom ${chartHeight + (scrollerHeight - chartHeight) / 2}px`
+      },
+      pin: true,
+      pinSpacing: false,
     })
 
-    return () => observer.disconnect()
-  }, [sections.length, onStepChange, findScroller])
+    // Toggle active class on each step for opacity
+    const stepTriggers = stepRefs.current.map((step, i) => {
+      if (!step) return null
 
-  // Position the chart panel as fixed, aligned to the left half of the layout
-  useEffect(() => {
-    if (!chartPanelRef.current || !containerRef.current) return
-
-    const scroller = findScroller(containerRef.current)
-    if (!scroller) return
-
-    function updateChartPosition() {
-      const panel = chartPanelRef.current
-      if (!panel) return
-
-      const scrollerRect = scroller.getBoundingClientRect()
-
-      // Fixed position within the left half of the scroller
-      panel.style.position = 'fixed'
-      panel.style.top = scrollerRect.top + 'px'
-      panel.style.left = scrollerRect.left + 'px'
-      panel.style.width = (scrollerRect.width / 2) + 'px'
-      panel.style.height = scrollerRect.height + 'px'
-      panel.style.zIndex = '5'
-    }
-
-    updateChartPosition()
-
-    // Update on resize
-    window.addEventListener('resize', updateChartPosition)
-
-    // Also update if the scroller repositions (e.g., nav changes)
-    const resizeObserver = new ResizeObserver(updateChartPosition)
-    resizeObserver.observe(scroller)
+      return ScrollTrigger.create({
+        trigger: step,
+        scroller: scroller,
+        start: 'top 80%',
+        end: 'center top',
+        toggleClass: { targets: step, className: 'scroll-article__step--active' },
+        onEnter: () => onStepChange && onStepChange(i),
+        onEnterBack: () => onStepChange && onStepChange(i),
+      })
+    })
 
     return () => {
-      window.removeEventListener('resize', updateChartPosition)
-      resizeObserver.disconnect()
-      if (chartPanelRef.current) {
-        chartPanelRef.current.style.position = ''
-      }
+      pinTrigger.kill()
+      stepTriggers.forEach(t => t && t.kill())
     }
-  }, [findScroller])
+  }, [sections.length, onStepChange, findScroller])
 
   return (
     <div className="scroll-article" ref={containerRef}>
-      <div className="scroll-article__chart-panel" ref={chartPanelRef}>
+      <div className="scroll-article__chart-panel" ref={chartWrapperRef}>
         <div className="scroll-article__chart-inner">
           {chartComponent}
         </div>
@@ -114,7 +89,7 @@ export default function ScrollArticle({ chartComponent, sections, onStepChange, 
           <div
             key={section.id || i}
             ref={el => stepRefs.current[i] = el}
-            className={`scroll-article__step ${i === activeStep ? 'scroll-article__step--active' : ''}`}
+            className="scroll-article__step"
           >
             {section.content}
           </div>
