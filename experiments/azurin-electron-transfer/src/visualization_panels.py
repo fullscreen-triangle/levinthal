@@ -57,13 +57,13 @@ def plot_panel_1_trajectory(results: Dict[str, Any], output_path: Path) -> plt.F
     """
     Panel 1: 3D Electron Trajectory with projections.
 
-    Layout (2x2):
+    Layout (1x4):
     - Top-left: 3D trajectory (main view)
     - Top-right: XY projection (top view)
     - Bottom-left: XZ projection (front view)
     - Bottom-right: YZ projection (side view)
     """
-    fig = plt.figure(figsize=(16, 14))
+    fig = plt.figure(figsize=(32, 7))
 
     trajectory = results['trajectory']
     positions = np.array([step['position'] for step in trajectory])
@@ -92,7 +92,7 @@ def plot_panel_1_trajectory(results: Dict[str, Any], output_path: Path) -> plt.F
     }
 
     # ===================== Chart 1: 3D Trajectory (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Plot trajectory segments colored by time
     for i in range(len(positions_A) - 1):
@@ -127,7 +127,7 @@ def plot_panel_1_trajectory(results: Dict[str, Any], output_path: Path) -> plt.F
     ax1.legend(loc='upper left', fontsize=8)
 
     # ===================== Chart 2: XY Projection (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2)
+    ax2 = fig.add_subplot(1, 4, 2)
 
     # Trajectory
     ax2.scatter(positions_A[:, 0], positions_A[:, 1], c=times_fs, cmap='coolwarm',
@@ -162,7 +162,7 @@ def plot_panel_1_trajectory(results: Dict[str, Any], output_path: Path) -> plt.F
     cbar.set_label('Time (fs)')
 
     # ===================== Chart 3: XZ Projection (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     ax3.scatter(positions_A[:, 0], positions_A[:, 2], c=times_fs, cmap='coolwarm',
                s=30, alpha=0.7, edgecolors='black', linewidths=0.3)
@@ -188,7 +188,7 @@ def plot_panel_1_trajectory(results: Dict[str, Any], output_path: Path) -> plt.F
     ax3.grid(True, alpha=0.3)
 
     # ===================== Chart 4: YZ Projection (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     ax4.scatter(positions_A[:, 1], positions_A[:, 2], c=times_fs, cmap='coolwarm',
                s=30, alpha=0.7, edgecolors='black', linewidths=0.3)
@@ -219,7 +219,7 @@ def plot_panel_1_trajectory(results: Dict[str, Any], output_path: Path) -> plt.F
                  f'Cu(I) -> Cu(II) Transfer (tau = {transfer_time:.0f} fs)',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -234,13 +234,13 @@ def plot_panel_2_backaction(results: Dict[str, Any], output_path: Path) -> plt.F
     """
     Panel 2: Backaction Verification.
 
-    Layout (2x2):
+    Layout (1x4):
     - Top-left: 3D surface (iteration x position-radius x backaction)
     - Top-right: Backaction vs iteration (line plot)
     - Bottom-left: Cumulative backaction
     - Bottom-right: Backaction distribution histogram
     """
-    fig = plt.figure(figsize=(16, 14))
+    fig = plt.figure(figsize=(32, 7))
 
     trajectory = results['trajectory']
     threshold = results['validation']['threshold']
@@ -255,7 +255,7 @@ def plot_panel_2_backaction(results: Dict[str, Any], output_path: Path) -> plt.F
     cumulative = np.cumsum(backaction)
 
     # ===================== Chart 1: 3D Surface (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Create mesh for surface
     n_iter = len(iterations)
@@ -289,7 +289,7 @@ def plot_panel_2_backaction(results: Dict[str, Any], output_path: Path) -> plt.F
     ax1.set_title('3D Backaction Surface', fontweight='bold')
 
     # ===================== Chart 2: Backaction vs Iteration (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2)
+    ax2 = fig.add_subplot(1, 4, 2)
 
     # Error bars (10% uncertainty)
     backaction_err = backaction * 0.1
@@ -320,7 +320,7 @@ def plot_panel_2_backaction(results: Dict[str, Any], output_path: Path) -> plt.F
     ax2.grid(True, alpha=0.3, which='both')
 
     # ===================== Chart 3: Cumulative Backaction (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     ax3.fill_between(iterations, 0, cumulative, alpha=0.3, color='royalblue')
     ax3.plot(iterations, cumulative, 'b-', linewidth=2, label='Cumulative backaction')
@@ -350,7 +350,7 @@ def plot_panel_2_backaction(results: Dict[str, Any], output_path: Path) -> plt.F
                 arrowprops=dict(arrowstyle='->', color='black'))
 
     # ===================== Chart 4: Histogram (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     # Histogram of backaction values
     n_bins = min(20, len(backaction))
@@ -385,7 +385,7 @@ def plot_panel_2_backaction(results: Dict[str, Any], output_path: Path) -> plt.F
                  f'Total Backaction: {cumulative[-1]:.2e} | Status: {status}',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -400,13 +400,13 @@ def plot_panel_3_categorical(results: Dict[str, Any], output_path: Path) -> plt.
     """
     Panel 3: Categorical Coordinates Evolution.
 
-    Layout (2x2):
+    Layout (1x4):
     - Top-left: 3D (n, l, m) quantum state trajectory
     - Top-right: n and l vs time
     - Bottom-left: m and s vs time
     - Bottom-right: Phase space (n vs l colored by time)
     """
-    fig = plt.figure(figsize=(16, 14))
+    fig = plt.figure(figsize=(32, 7))
 
     cat_trajectory = results['categorical_trajectory']
 
@@ -424,7 +424,7 @@ def plot_panel_3_categorical(results: Dict[str, Any], output_path: Path) -> plt.
     cmap = plt.cm.viridis
 
     # ===================== Chart 1: 3D Quantum State Space (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Plot trajectory in (n, l, m) space
     scatter = ax1.scatter(n_vals, l_vals, m_vals, c=times, cmap='viridis',
@@ -448,7 +448,7 @@ def plot_panel_3_categorical(results: Dict[str, Any], output_path: Path) -> plt.
     cbar.set_label('Time (fs)')
 
     # ===================== Chart 2: n and l vs Time (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2)
+    ax2 = fig.add_subplot(1, 4, 2)
 
     ax2.plot(times, n_vals, 'o-', color='royalblue', markersize=4,
             linewidth=1.5, label='n (Principal)', alpha=0.8)
@@ -470,7 +470,7 @@ def plot_panel_3_categorical(results: Dict[str, Any], output_path: Path) -> plt.
     ax2.grid(True, alpha=0.3)
 
     # ===================== Chart 3: m and s vs Time (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     ax3.plot(times, m_vals, 'o-', color='darkorange', markersize=4,
             linewidth=1.5, label='m (Magnetic)', alpha=0.8)
@@ -492,7 +492,7 @@ def plot_panel_3_categorical(results: Dict[str, Any], output_path: Path) -> plt.
     ax3.grid(True, alpha=0.3)
 
     # ===================== Chart 4: Phase Space n vs l (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     scatter = ax4.scatter(n_vals, l_vals, c=times, cmap='viridis',
                          s=60, alpha=0.8, edgecolors='black', linewidths=0.5)
@@ -523,7 +523,7 @@ def plot_panel_3_categorical(results: Dict[str, Any], output_path: Path) -> plt.
                  f'Total Transitions: {n_total_trans}',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -540,13 +540,13 @@ def plot_panel_4_probability(results: Dict[str, Any],
     """
     Panel 4: Probability Density Visualization.
 
-    Layout (2x2):
+    Layout (1x4):
     - Top-left: 3D isosurface at mid-time
     - Top-right: XY slice (z=0)
     - Bottom-left: XZ slice (y=0)
     - Bottom-right: YZ slice (x=0)
     """
-    fig = plt.figure(figsize=(16, 14))
+    fig = plt.figure(figsize=(32, 7))
 
     psi_real = wavefunction['psi_real']
     psi_imag = wavefunction['psi_imag']
@@ -573,7 +573,7 @@ def plot_panel_4_probability(results: Dict[str, Any],
     t_fs_mid = t_mid / n_times * transfer_time
 
     # ===================== Chart 1: 3D Isosurface (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     rho_mid = rho[t_mid]
     rho_max = rho_mid.max()
@@ -605,7 +605,7 @@ def plot_panel_4_probability(results: Dict[str, Any],
     ax1.legend(loc='upper left', fontsize=8)
 
     # ===================== Chart 2: XY Slice (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2)
+    ax2 = fig.add_subplot(1, 4, 2)
 
     z_idx = nz // 2
     rho_xy = rho_mid[:, :, z_idx]
@@ -624,7 +624,7 @@ def plot_panel_4_probability(results: Dict[str, Any],
     plt.colorbar(im2, ax=ax2, shrink=0.8, label='rho(r)')
 
     # ===================== Chart 3: XZ Slice (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     y_idx = ny // 2
     rho_xz = rho_mid[:, y_idx, :]
@@ -642,7 +642,7 @@ def plot_panel_4_probability(results: Dict[str, Any],
     plt.colorbar(im3, ax=ax3, shrink=0.8, label='rho(r)')
 
     # ===================== Chart 4: YZ Slice (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     x_idx = nx // 2
     rho_yz = rho_mid[x_idx, :, :]
@@ -664,7 +664,7 @@ def plot_panel_4_probability(results: Dict[str, Any],
                  f'Snapshot at t = {t_fs_mid:.0f} fs (mid-transfer)',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -679,13 +679,13 @@ def plot_panel_5_sentropy(results: Dict[str, Any], output_path: Path) -> plt.Fig
     """
     Panel 5: S-Entropy Space Trajectory.
 
-    Layout (2x2):
+    Layout (1x4):
     - Top-left: 3D trajectory in (S_k, S_t, S_e) space
     - Top-right: S_k vs S_t projection
     - Bottom-left: S_k vs S_e projection
     - Bottom-right: S_t vs S_e projection
     """
-    fig = plt.figure(figsize=(16, 14))
+    fig = plt.figure(figsize=(32, 7))
 
     cat_trajectory = results['categorical_trajectory']
 
@@ -702,7 +702,7 @@ def plot_panel_5_sentropy(results: Dict[str, Any], output_path: Path) -> plt.Fig
     cmap = plt.cm.coolwarm
 
     # ===================== Chart 1: 3D S-Entropy Trajectory (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     scatter = ax1.scatter(s_k, s_t, s_e, c=times, cmap='coolwarm',
                          s=50, alpha=0.8, edgecolors='black', linewidths=0.3)
@@ -734,7 +734,7 @@ def plot_panel_5_sentropy(results: Dict[str, Any], output_path: Path) -> plt.Fig
     cbar.set_label('Time (fs)')
 
     # ===================== Chart 2: S_k vs S_t (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2)
+    ax2 = fig.add_subplot(1, 4, 2)
 
     scatter2 = ax2.scatter(s_k, s_t, c=times, cmap='coolwarm',
                           s=50, alpha=0.8, edgecolors='black', linewidths=0.3)
@@ -757,7 +757,7 @@ def plot_panel_5_sentropy(results: Dict[str, Any], output_path: Path) -> plt.Fig
     plt.colorbar(scatter2, ax=ax2, shrink=0.8, label='Time (fs)')
 
     # ===================== Chart 3: S_k vs S_e (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     scatter3 = ax3.scatter(s_k, s_e, c=times, cmap='coolwarm',
                           s=50, alpha=0.8, edgecolors='black', linewidths=0.3)
@@ -780,7 +780,7 @@ def plot_panel_5_sentropy(results: Dict[str, Any], output_path: Path) -> plt.Fig
     plt.colorbar(scatter3, ax=ax3, shrink=0.8, label='Time (fs)')
 
     # ===================== Chart 4: S_t vs S_e (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     scatter4 = ax4.scatter(s_t, s_e, c=times, cmap='coolwarm',
                           s=50, alpha=0.8, edgecolors='black', linewidths=0.3)
@@ -813,7 +813,7 @@ def plot_panel_5_sentropy(results: Dict[str, Any], output_path: Path) -> plt.Fig
                  f'Path Length: {path_length:.3f} | States: {len(cat_trajectory)}',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -828,13 +828,13 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
     """
     Panel 6: Protein Structure with Electron Trajectory.
 
-    Layout (2x2) - ALL 3D CHARTS:
+    Layout (1x4) - ALL 3D CHARTS:
     - Top-left: Full protein structure with trajectory (overview)
     - Top-right: Copper active site zoom with ligands
     - Bottom-left: Protein backbone/ribbon representation
     - Bottom-right: Multi-angle view with trajectory time evolution
     """
-    fig = plt.figure(figsize=(18, 16))
+    fig = plt.figure(figsize=(36, 8))
 
     trajectory = results['trajectory']
     positions = np.array([step['position'] for step in trajectory])
@@ -878,7 +878,7 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
     }
 
     # ===================== Chart 1: Full Protein Overview (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Draw backbone as tubes
     ax1.plot(backbone_x, backbone_y, backbone_z, 'gray', linewidth=2, alpha=0.6,
@@ -927,7 +927,7 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
     ax1.legend(loc='upper left', fontsize=8)
 
     # ===================== Chart 2: Active Site Zoom (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+    ax2 = fig.add_subplot(1, 4, 2, projection='3d')
 
     # Copper center
     ax2.scatter(0, 0, 0, s=600, c='orange', marker='o', edgecolors='black',
@@ -981,7 +981,7 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
     ax2.set_title('Copper Active Site (Zoomed)', fontweight='bold', fontsize=12)
 
     # ===================== Chart 3: Backbone Ribbon (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3, projection='3d')
+    ax3 = fig.add_subplot(1, 4, 3, projection='3d')
 
     # Draw ribbon representation
     # Create ribbon width perpendicular to backbone
@@ -1035,7 +1035,7 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
     ax3.legend(loc='upper left', fontsize=8)
 
     # ===================== Chart 4: Time Evolution Multi-View (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4, projection='3d')
+    ax4 = fig.add_subplot(1, 4, 4, projection='3d')
 
     # Show trajectory with time-coded markers and velocity vectors
     # Copper center
@@ -1103,7 +1103,7 @@ def plot_panel_6_protein_structure(results: Dict[str, Any], output_path: Path) -
                  f'PDB: 4AZU | Cu(I) -> Cu(II) Transfer | tau = {transfer_time:.0f} fs',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 0.9, 0.95])
+    plt.tight_layout(rect=[0, 0, 0.95, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -1119,13 +1119,13 @@ def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict
     """
     Panel 7: Wavefunction Analysis and Evolution.
 
-    Layout (2x2):
+    Layout (1x4):
     - Top-left: 3D probability density isosurface at peak time
     - Top-right: Time evolution of probability density (waterfall plot)
     - Bottom-left: Phase coherence map (real vs imaginary)
     - Bottom-right: Spatial localization metrics over time
     """
-    fig = plt.figure(figsize=(18, 16))
+    fig = plt.figure(figsize=(36, 8))
 
     psi_real = wavefunction['psi_real']
     psi_imag = wavefunction['psi_imag']
@@ -1154,7 +1154,7 @@ def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict
         times_fs = np.arange(n_times) * 10.0  # Default 10 fs spacing
 
     # ===================== Chart 1: 3D Probability Isosurface (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Find timestep with maximum integrated probability (peak localization)
     total_prob = np.sum(prob_density, axis=(1, 2, 3))
@@ -1201,7 +1201,7 @@ def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict
                   fontweight='bold', fontsize=12)
 
     # ===================== Chart 2: Time Evolution Waterfall (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+    ax2 = fig.add_subplot(1, 4, 2, projection='3d')
 
     # Compute integrated probability along z for each time (2D slices)
     # This gives a "movie" of probability evolution
@@ -1230,7 +1230,7 @@ def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict
     ax2.view_init(elev=25, azim=-60)
 
     # ===================== Chart 3: Phase Coherence Map (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     # Compute phase coherence: correlation between real and imaginary parts
     # High coherence = well-defined phase, Low coherence = decoherence
@@ -1290,7 +1290,7 @@ def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict
     ax3.grid(True, alpha=0.3)
 
     # ===================== Chart 4: Spatial Localization Metrics (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     # Compute localization metrics over time
     # 1. Position expectation values <x>, <y>, <z>
@@ -1362,7 +1362,7 @@ def plot_panel_7_wavefunction(wavefunction: Dict[str, np.ndarray], results: Dict
                  f'Electron Transfer Dynamics | Grid: {nx}×{ny}×{nz} | {n_times} timesteps',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -1378,13 +1378,13 @@ def plot_panel_8_electron_cloud(wavefunction: Dict[str, np.ndarray], results: Di
     """
     Panel 8: 3D Electron Probability Cloud Visualization.
 
-    Layout (2x2) - ALL 3D CHARTS:
+    Layout (1x4) - ALL 3D CHARTS:
     - Top-left: Electron cloud at t=0 (initial state at Cu donor)
     - Top-right: Electron cloud at t=mid (during transfer)
     - Bottom-left: Electron cloud at t=end (final state)
     - Bottom-right: Time-lapse overlay (multiple timesteps combined)
     """
-    fig = plt.figure(figsize=(18, 16))
+    fig = plt.figure(figsize=(36, 8))
 
     psi_real = wavefunction['psi_real']
     psi_imag = wavefunction['psi_imag']
@@ -1496,22 +1496,22 @@ def plot_panel_8_electron_cloud(wavefunction: Dict[str, np.ndarray], results: Di
         ax.set_zlim(z.min(), z.max())
 
     # ===================== Chart 1: Initial State (Top-Left) =====================
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
     plot_electron_cloud(ax1, prob_density[t_indices[0]], titles[0], 'Blues')
     ax1.view_init(elev=20, azim=-60)
 
     # ===================== Chart 2: Early Transfer (Top-Right) =====================
-    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+    ax2 = fig.add_subplot(1, 4, 2, projection='3d')
     plot_electron_cloud(ax2, prob_density[t_indices[1]], titles[1], 'Greens')
     ax2.view_init(elev=20, azim=-120)
 
     # ===================== Chart 3: Late Transfer (Bottom-Left) =====================
-    ax3 = fig.add_subplot(2, 2, 3, projection='3d')
+    ax3 = fig.add_subplot(1, 4, 3, projection='3d')
     plot_electron_cloud(ax3, prob_density[t_indices[2]], titles[2], 'Oranges')
     ax3.view_init(elev=20, azim=60)
 
     # ===================== Chart 4: Time-Lapse Overlay (Bottom-Right) =====================
-    ax4 = fig.add_subplot(2, 2, 4, projection='3d')
+    ax4 = fig.add_subplot(1, 4, 4, projection='3d')
 
     # Overlay multiple timesteps with different colors
     time_colors = ['blue', 'green', 'orange', 'red']
@@ -1587,7 +1587,7 @@ def plot_panel_8_electron_cloud(wavefunction: Dict[str, np.ndarray], results: Di
                  f'Grid: {nx}×{ny}×{nz}',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 0.9, 0.95])
+    plt.tight_layout(rect=[0, 0, 0.95, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -1608,7 +1608,7 @@ def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Fi
     3. Field Magnitude Evolution
     4. Perturbation Response Summary
     """
-    fig = plt.figure(figsize=(20, 16))
+    fig = plt.figure(figsize=(40, 8))
 
     # Extract trajectory data
     trajectory = results['trajectory']
@@ -1699,7 +1699,7 @@ def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 1: 3D Electric Field (P1)
     # -------------------------------------------------------------------------
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Sample points for quiver
     step = 3
@@ -1743,7 +1743,7 @@ def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 2: 3D Magnetic Field (P2)
     # -------------------------------------------------------------------------
-    ax2 = fig.add_subplot(2, 2, 2, projection='3d')
+    ax2 = fig.add_subplot(1, 4, 2, projection='3d')
 
     Bx_s = Bx[::step, ::step, ::step].flatten()
     By_s = By[::step, ::step, ::step].flatten()
@@ -1784,7 +1784,7 @@ def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 3: Field Magnitude Evolution
     # -------------------------------------------------------------------------
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     # Compute field magnitudes at each trajectory point
     E_mags = []
@@ -1832,7 +1832,7 @@ def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 4: Perturbation Response Summary
     # -------------------------------------------------------------------------
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     # Count responses
     trits = [t.get('trit', 1) for t in trajectory]
@@ -1884,7 +1884,7 @@ def plot_panel_9_perturbation_fields(results: Dict, output_path: Path) -> plt.Fi
                  'P1 (Electric/Radial) & P2 (Magnetic/Angular) Internal Perturbations',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -1905,7 +1905,7 @@ def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Fi
     3. Complexity Comparison (O(log₃ N) vs O(N))
     4. Localization Precision vs Iteration
     """
-    fig = plt.figure(figsize=(20, 16))
+    fig = plt.figure(figsize=(40, 8))
 
     # Extract data
     trajectory = results['trajectory']
@@ -1918,7 +1918,7 @@ def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 1: 3D Trisection Search Space
     # -------------------------------------------------------------------------
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
+    ax1 = fig.add_subplot(1, 4, 1, projection='3d')
 
     # Draw initial bounding box
     def draw_box(ax, min_pt, max_pt, color, alpha=0.3, linewidth=1):
@@ -1989,7 +1989,7 @@ def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 2: Convergence Analysis
     # -------------------------------------------------------------------------
-    ax2 = fig.add_subplot(2, 2, 2)
+    ax2 = fig.add_subplot(1, 4, 2)
 
     # Compute region volume at each iteration
     volumes = []
@@ -2039,7 +2039,7 @@ def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 3: Complexity Comparison
     # -------------------------------------------------------------------------
-    ax3 = fig.add_subplot(2, 2, 3)
+    ax3 = fig.add_subplot(1, 4, 3)
 
     # Compare O(log₃ N) vs O(N) vs O(log₂ N)
     N_values = np.logspace(1, 6, 50)
@@ -2074,7 +2074,7 @@ def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Fi
     # -------------------------------------------------------------------------
     # Chart 4: Localization Precision vs Iteration
     # -------------------------------------------------------------------------
-    ax4 = fig.add_subplot(2, 2, 4)
+    ax4 = fig.add_subplot(1, 4, 4)
 
     # Precision in each dimension
     precisions = []
@@ -2136,7 +2136,7 @@ def plot_panel_10_ternary_trisection(results: Dict, output_path: Path) -> plt.Fi
                  f'Final Δr = {final_precision:.3f} Å',
                  fontsize=14, fontweight='bold', y=0.98)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
 
