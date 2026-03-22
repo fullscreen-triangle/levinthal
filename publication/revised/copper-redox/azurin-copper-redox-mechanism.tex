@@ -55,7 +55,8 @@
 
 \author{
 Kundai Farai Sachikonye\\
-\texttt{kundai.sachikonye@wzw.tum.de}
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@bitspark.com}
 }
 
 \date{\today}
@@ -241,7 +242,7 @@ one does not disturb the other.
 \caption{\textbf{Categorical Quantum State Trajectory in (n, $\ell$, m, s) Space.}
 \textbf{(Top Left)} 3D trajectory through categorical coordinate space showing evolution of principal quantum number $n$, angular momentum $\ell$, and magnetic quantum number $m$ over 160$\sim$fs.
 \textbf{(Top Right)} Principal quantum number $n$ and angular momentum $\ell$ evolution. $n$ remains constant at 1 for 0--90$\sim$fs, then jumps to 2 at 90$\sim$fs (vertical blue line, 1 transition). 
-\textbf{(Bottom Left)} Magnetic quantum number $m$ and spin $s$ evolution. $m$ transitions from 0 \to -1 at 10$\sim$fs (orange curve, 1 transition).
+\textbf{(Bottom Left)} Magnetic quantum number $m$ and spin $s$ evolution. $m$ transitions from $0 \to -1$ at 10$\sim$fs (orange curve, 1 transition).
 \textbf{(Bottom Right)} Phase space projection showing $(n, \ell)$ trajectory. System begins at $(1, 2)$ (blue star) and ends at $(2, 2)$ (red star), tracing L-shaped path through phase space. 
 \textbf{Total Transitions:} 3 discrete quantum state changes over 160$\sim$fs: (i) $\ell$: 0 $\to$ 2 (10$\sim$fs), (ii) $m$: 0 $\to$ -1 (10$\sim$fs), (iii) $n$: 1 $\to$ 2 (90$\sim$fs). }
 \label{fig:categorical}
@@ -452,10 +453,10 @@ transfer pathway.
 \centering
 \includegraphics[width=\textwidth]{figures/panel_6_protein_structure.png}
 \caption{\textbf{Azurin Protein Structure with Electron Transfer Trajectory in Biological Context.}
-\textbf{(Top Left)} Full protein structure (PDB: 4AZU) showing 128-residue azurin backbone as gray ribbon with electron trajectory superimposed. Protein adopts characteristic $\beta$-barrel fold (blue loops indicate $\beta$-sheets) with Cu active site buried $\sim$7$\sim$\AA below surface. 
-\textbf{(Top Right)} Zoomed view of copper active site showing tetrahedral coordination geometry. Cu center (orange sphere) coordinated by four ligands in distorted tetrahedral arrangement: His46 (blue, N$_\delta$ coordination), His117 (blue, N$_\epsilon$ coordination), Cys112 (yellow, S$_\gamma$ coordination), Met121 (green, S$_\delta$ coordination). 
-\textbf{(Bottom Left)} Protein backbone rendered as ribbon diagram showing secondary structure. N-terminus (green triangle, bottom) and C-terminus (red triangle, top) mark polypeptide chain direction. 
-\textbf{(Bottom Right)} Time evolution with velocity vectors showing electron motion through 3D space. Trajectory plotted as colored spheres (blue $\to$ red gradient, 0--160$\sim$fs) with Cu center marked by orange sphere at origin.  }
+\textbf{(Far Left)} Full protein structure (PDB: 4AZU) showing 128-residue azurin backbone as gray ribbon with electron trajectory superimposed. Protein adopts characteristic $\beta$-barrel fold (blue loops indicate $\beta$-sheets) with Cu active site buried $\sim$7$\sim$\AA below surface.
+\textbf{(Center Left)} Zoomed view of copper active site showing tetrahedral coordination geometry. Cu center (orange sphere) coordinated by four ligands in distorted tetrahedral arrangement: His46 (blue, N$_\delta$ coordination), His117 (blue, N$_\epsilon$ coordination), Cys112 (yellow, S$_\gamma$ coordination), Met121 (green, S$_\delta$ coordination).
+\textbf{(Center Right)} Protein backbone rendered as ribbon diagram showing secondary structure. N-terminus (green triangle, bottom) and C-terminus (red triangle, top) mark polypeptide chain direction.
+\textbf{(Far Right)} Time evolution with velocity vectors showing electron motion through 3D space. Trajectory plotted as colored spheres (blue $\to$ red gradient, 0--160$\sim$fs) with Cu center marked by orange sphere at origin.}
 \label{fig:protein_structure}
 \end{figure*}
 
@@ -570,112 +571,56 @@ disturb the system.
 
 \subsubsection{Perturbation 1: Electric Field Gradient}
 
-\textbf{Physical origin.} The internal electric field arises from charged amino 
-acid residues (Asp, Glu, Lys, Arg) near the copper site. The electric potential 
-at position $$\mathbf{r}$$ is:
+\textbf{Physical origin.} The internal electric field arises from charged amino
+acid residues (Asp, Glu, Lys, Arg) near the copper site. The electric potential
+at position $\mathbf{r}$ is:
 %
-$$
+\[
 \Phi(\mathbf{r}) = \sum_i \frac{q_i}{4\pi\epsilon_0\epsilon |\mathbf{r} - \mathbf{r}_i|}
-$$
+\]
 %
-where $$q_i$$ is the charge of residue $$i$$ at position $$\mathbf{r}_i$$, $$\epsilon_0$$ 
-is vacuum permittivity, and $$\epsilon \approx 4$$ is the protein dielectric constant.
+where $q_i$ is the charge of residue $i$ at position $\mathbf{r}_i$, $\epsilon_0$
+is vacuum permittivity, and $\epsilon \approx 4$ is the protein dielectric constant.
 
 The electric field gradient is:
 %
-$$
+\[
 \nabla E_1 = -\nabla^2 \Phi(\mathbf{r}) = -\sum_i \frac{q_i}{4\pi\epsilon_0\epsilon} \nabla \left( \frac{1}{|\mathbf{r} - \mathbf{r}_i|} \right)
-$$
+\]
 
-\textbf{Contributing residues.} Four charged residues within 12~\AA\ of Cu 
-contribute to the electric field gradient $$P_1$$:
+\textbf{Contributing residues.} Four charged residues within 12~\AA\ of Cu
+contribute to the electric field gradient $P_1$:
 
 \begin{itemize}
-    \item \textbf{Asp11} ($$-1e$$, 8.2~\AA): Potential $$-0.18$$~V, gradient $$2.2 \times 10^5$$~V/m$$^2$$ (22\% contribution)
-    \item \textbf{Glu91} ($$-1e$$, 11.5~\AA): Potential $$-0.12$$~V, gradient $$9.1 \times 10^4$$~V/m$$^2$$ (9\%)
-    \item \textbf{Lys27} ($$+1e$$, 9.8~\AA): Potential $$+0.15$$~V, gradient $$1.5 \times 10^5$$~V/m$$^2$$ (15\%)
-    \item \textbf{Arg114} ($$+1e$$, 7.3~\AA): Potential $$+0.22$$~V, gradient $$4.1 \times 10^5$$~V/m$$^2$$ (41\%)
-    \item \textbf{Others} ($$>12$$~\AA): Combined gradient $$1.3 \times 10^5$$~V/m$$^2$$ (13\%)
+    \item \textbf{Asp11} ($-1e$, 8.2~\AA): Potential $-0.18$~V, gradient $2.2 \times 10^5$~V/m$^2$ (22\% contribution)
+    \item \textbf{Glu91} ($-1e$, 11.5~\AA): Potential $-0.12$~V, gradient $9.1 \times 10^4$~V/m$^2$ (9\%)
+    \item \textbf{Lys27} ($+1e$, 9.8~\AA): Potential $+0.15$~V, gradient $1.5 \times 10^5$~V/m$^2$ (15\%)
+    \item \textbf{Arg114} ($+1e$, 7.3~\AA): Potential $+0.22$~V, gradient $4.1 \times 10^5$~V/m$^2$ (41\%)
+    \item \textbf{Others} ($>12$~\AA): Combined gradient $1.3 \times 10^5$~V/m$^2$ (13\%)
 \end{itemize}
 
-\noindent\textbf{Total:} Net potential $$+0.07$$~V, total gradient $$\mathbf{1.0 \times 10^6}$$~V/m$$^2$$.
+\noindent\textbf{Total:} Net potential $+0.07$~V, total gradient $\mathbf{1.0 \times 10^6}$~V/m$^2$.
 
-\textbf{Perturbation energy.} The interaction energy between the electron and 
+\textbf{Perturbation energy.} The interaction energy between the electron and
 electric field gradient is:
 %
-$$
+\begin{equation*}
 \begin{split}
 \Delta E_1 &= e \cdot |\nabla E| \cdot a_0 \\
 &\approx (1.6 \times 10^{-19}~\text{C}) \times (10^6~\text{V/m}^2) \\
 &\quad \times (0.53 \times 10^{-10}~\text{m}) \\
 &\approx 8.5 \times 10^{-24}~\text{J} = 5.3 \times 10^{-5}~\text{eV}
 \end{split}
-$$
+\end{equation*}
 
-\textbf{Weakness criterion.} At $$T = 4$$~K, thermal energy is $$kT = 0.35$$~meV. 
+\textbf{Weakness criterion.} At $T = 4$~K, thermal energy is $kT = 0.35$~meV.
 The perturbation satisfies:
 %
-$$
+\[
 \frac{\Delta E_1}{kT} = \frac{5.3 \times 10^{-5}~\text{eV}}{3.5 \times 10^{-4}~\text{eV}} \approx 0.15 \ll 1
-$$
+\]
 %
-confirming $$P_1$$ is weak and does not thermally excite the electron.
-
-\subsubsection{Perturbation 2: Magnetic Field Gradient}
-
-\textbf{Physical origin.} The internal magnetic field arises from the Cu(II) 
-paramagnetic center (S = 1/2). The magnetic dipole moment is:
-%
-$$
-\boldsymbol{\mu}_{\text{Cu}} = -g\mu_B \mathbf{S}
-$$
-%
-where $$g$$ is the g-tensor (anisotropic: $$g_\parallel = 2.26$$, $$g_\perp = 2.05$$), 
-$$\mu_B$$ is the Bohr magneton, and $$\mathbf{S}$$ is the spin operator.
-
-The magnetic field at position $$\mathbf{r}$$ is:
-%
-$$
-\mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4\pi} \left[ \frac{3(\boldsymbol{\mu}_{\text{Cu}} \cdot \hat{\mathbf{r}})\hat{\mathbf{r}} - \boldsymbol{\mu}_{\text{Cu}}}{r^3} \right]
-$$
-
-The magnetic field gradient is:
-%
-$$
-\nabla B_2 = \nabla \left( \frac{\mu_0}{4\pi} \frac{\mu_{\text{Cu}}}{r^2} \right) \approx \frac{\mu_0 \mu_{\text{Cu}}}{2\pi r^3}
-$$
-
-\textbf{Numerical values.} At distance $$r = 5$$~\AA\ from Cu:
-%
-$$
-\begin{split}
-|\mathbf{B}| &\approx \frac{(4\pi \times 10^{-7}~\text{T·m/A}) \times (1.73 \times 9.27 \times 10^{-24}~\text{J/T})}{4\pi \times (5 \times 10^{-10}~\text{m})^3} \\
-&\approx 3.2 \times 10^{-3}~\text{T} = 32~\text{G}
-\end{split}
-$$
-%
-$$
-|\nabla B| \approx \frac{3 \times 3.2 \times 10^{-3}~\text{T}}{5 \times 10^{-10}~\text{m}} \approx 1.9 \times 10^{-2}~\text{T/m}
-$$
-
-\textbf{Perturbation energy.} The interaction energy is:
-%
-$$
-\begin{split}
-\Delta E_2 &= \mu_B \cdot |\nabla B| \cdot a_0 \\
-&\approx (9.27 \times 10^{-24}~\text{J/T}) \times (1.9 \times 10^{-2}~\text{T/m}) \\
-&\quad \times (0.53 \times 10^{-10}~\text{m}) \\
-&\approx 9.3 \times 10^{-27}~\text{J} = 5.8 \times 10^{-8}~\text{eV}
-\end{split}
-$$
-
-\textbf{Weakness criterion.}
-%
-$$
-\frac{\Delta E_2}{kT} = \frac{5.8 \times 10^{-8}~\text{eV}}{3.5 \times 10^{-4}~\text{eV}} \approx 1.7 \times 10^{-4} \ll 1
-$$
-%
-confirming $$P_2$$ is extremely weak (1000× weaker than $$P_1$$).
+confirming $P_1$ is weak and does not thermally excite the electron.
 
 \subsubsection{Perturbation 2: Magnetic Field Gradient}
 
@@ -745,10 +690,10 @@ responses, enabling three-way partitioning.
 \centering
 \includegraphics[width=\textwidth]{figures/panel_9_perturbation_fields.png}
 \caption{\textbf{Perturbation Field Analysis: Radial and Angular Momentum Coupling During Measurement.}
-\textbf{(Top Left) P1: Electric Field (Radial Perturbation):} 3D vector field showing measurement-induced electric perturbation $\mathbf{E}(\mathbf{r}) = -\nabla \hat{O}_p$ where $\hat{O}_p$ is linear momentum operator. 
-\textbf{(Top Right) P2: Magnetic Field (Angular Perturbation):} 3D vector field showing measurement-induced magnetic perturbation $\mathbf{B}(\mathbf{r}) = \nabla \times \hat{O}_L$ where $\hat{O}_L$ is angular momentum operator. 
-\textbf{(Bottom Left) Perturbation Field Evolution:} Time-dependent magnitude of electric (red curve, left y-axis) and magnetic (purple curve, right y-axis) perturbation fields experienced by electron during transfer. 
-\textbf{(Bottom Right) Perturbation Response Classification:} Histogram showing distribution of measurement responses encoded as ternary digits (trits).  }
+\textbf{(Far Left) P1: Electric Field (Radial Perturbation):} 3D vector field showing measurement-induced electric perturbation $\mathbf{E}(\mathbf{r}) = -\nabla \hat{O}_p$ where $\hat{O}_p$ is linear momentum operator.
+\textbf{(Center Left) P2: Magnetic Field (Angular Perturbation):} 3D vector field showing measurement-induced magnetic perturbation $\mathbf{B}(\mathbf{r}) = \nabla \times \hat{O}_L$ where $\hat{O}_L$ is angular momentum operator.
+\textbf{(Center Right) Perturbation Field Evolution:} Time-dependent magnitude of electric (red curve, left y-axis) and magnetic (purple curve, right y-axis) perturbation fields experienced by electron during transfer.
+\textbf{(Far Right) Perturbation Response Classification:} Histogram showing distribution of measurement responses encoded as ternary digits (trits).}
 \label{fig:perturbation_fields}
 \end{figure*}
 
@@ -820,6 +765,17 @@ balance net charge of $-2e$ (azurin has pI = 5.5).
 followed by conjugate gradient (5,000 steps) until maximum force $< 10$~kJ/(mol·nm).
 \end{enumerate}
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_4_probability.png}
+\caption{\textbf{Electron Probability Density Snapshot at Mid-Transfer (t = 400$\sim$fs).}
+\textbf{(Far Left)} 3D isosurface visualization of electron probability density $|\psi(\mathbf{r}, t{=}400\text{ fs})|^2$ showing three nested contours at 30\% (outer, light gray), 50\% (middle, medium gray), and 70\% (inner, dark gray) of maximum density.
+\textbf{(Center Left)} XY slice through equatorial plane (z = 0) showing probability density as 2D heatmap. Central peak (yellow-white, $\rho \approx 0.020$~\AA$^{-3}$) centered at Cu position [0, 0]$\sim$\AA with FWHM $\approx$ 2$\sim$\AA.
+\textbf{(Center Right)} XZ slice through sagittal plane (y = 0) showing vertical confinement. Density remains concentrated near z = 0 (FWHM $\approx$ 1.5$\sim$\AA in z-direction).
+\textbf{(Far Right)} YZ slice through coronal plane (x = 0) showing similar vertical confinement as XZ slice. Symmetric density distribution in yz-plane confirms d-orbital maintains four-fold symmetry.}
+\label{fig:probability_snapshot}
+\end{figure*}
+
 \subsubsection{Initial State: Cu(I) Configuration}
 
 The Cu(I) oxidation state (d$^{10}$, diamagnetic) was prepared by:
@@ -850,17 +806,6 @@ perturbations dominate over thermal noise.
 \end{itemize}
 \end{enumerate}
 
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_4_probability.png}
-\caption{\textbf{Electron Probability Density Snapshot at Mid-Transfer (t = 400$\sim$fs).}
-\textbf{(Top Left)} 3D isosurface visualization of electron probability density $|\psi(\mathbf{r}, t=400$\sim$\text{fs})|^2$ showing three nested contours at 30\% (outer, light gray), 50\% (middle, medium gray), and 70\% (inner, dark gray) of maximum density. 
-\textbf{(Top Right)} XY slice through equatorial plane (z = 0) showing probability density as 2D heatmap. Central peak (yellow-white, $\rho \approx 0.020$\sim$\text{\AA}^{-3}$) centered at Cu position [0, 0]$\sim$\AA with FWHM $\approx$ 2$\sim$\AA. 
-\textbf{(Bottom Left)} XZ slice through sagittal plane (y = 0) showing vertical confinement. Density remains concentrated near z = 0 (FWHM $\approx$ 1.5$\sim$\AA in z-direction).
-\textbf{(Bottom Right)} YZ slice through coronal plane (x = 0) showing similar vertical confinement as XZ slice. Symmetric density distribution in yz-plane confirms d-orbital maintains four-fold symmetry. }
-\label{fig:probability_snapshot}
-\end{figure*}
-
 \subsection{Electron Transfer Initiation}
 
 Electron transfer from Cu(I) to Cu(II) was initiated computationally by:
@@ -886,18 +831,6 @@ time-dependent density functional theory (TD-DFT) with B3LYP functional and
 \cite{Crane2001} used as target. Our simulation tracked the first 160~fs 
 (19\% of total transfer).
 \end{enumerate}
-
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_8_electron_cloud.png}
-\caption{\textbf{3D Electron Probability Cloud Evolution During Cu(I) \to Cu(II) Transfer.}
-Four snapshots showing volumetric probability density $|\psi(\mathbf{r}, t)|^2$ rendered as 3D voxel clouds on 41×41×74 grid spanning $\pm$20~\AA (xy-plane) and $\pm$37~\AA (z-axis). 
-\textbf{(Top Left) Initial State (t = 0~fs):} Electron localized in compact cloud centered at origin with dimensions $\sim$3~\AA $\times$ 3~\AA $\times$ 2~\AA (xyz). Cloud exhibits cubic symmetry with four primary lobes (green-yellow voxels) extending along $\pm x$ and $\pm y$ directions, characteristic of Cu(I) 3d$^{10}$ 4s$^1$ ground state. 
-\textbf{(Top Right) Early Transfer (t = 50~fs):} Cloud maintains compact structure with minimal spatial displacement ($\Delta x \approx 0.5$~\AA from origin). Density distribution remains single-peaked (yellow-green core) with no fragmentation. Slight asymmetry emerges: positive-x lobe (transfer direction) extends to 4~\AA while negative-x lobe retracts to 2~\AA, indicating wavefunction polarization toward acceptor site. 
-\textbf{(Bottom Left) Late Transfer (t = 110~fs):} Cloud expands significantly: dimensions increase to $\sim$6~\AA $\times$ 5~\AA $\times$ 4~\AA, volume $\sim$8× larger than initial state. Expansion reflects electronic excitation to higher-energy orbital with larger spatial extent. 
-\textbf{(Bottom Right) Time-Lapse Overlay (All States Combined):} Composite visualization showing superposition of all 17 measurement snapshots (t = 0, 10, 20, ..., 160~fs). }
-\label{fig:electron_cloud}
-\end{figure*}
 
 \subsection{Ternary Trisection Implementation}
 
@@ -935,6 +868,18 @@ Spin density extracted from unrestricted DFT calculation at each time step.
 \Delta E_2 &= 5.8 \times 10^{-8}~\text{eV} \quad (\Delta E_2/kT = 1.7 \times 10^{-4})
 \end{align}
 \end{enumerate}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_8_electron_cloud.png}
+\caption{\textbf{3D Electron Probability Cloud Evolution During Cu(I) $\to$ Cu(II) Transfer.}
+Four snapshots showing volumetric probability density $|\psi(\mathbf{r}, t)|^2$ rendered as 3D voxel clouds on 41$\times$41$\times$74 grid spanning $\pm$20~\AA (xy-plane) and $\pm$37~\AA (z-axis).
+\textbf{(Far Left) Initial State (t = 0$\sim$fs):} Electron localized in compact cloud centered at origin with dimensions $\sim$3~\AA $\times$ 3~\AA $\times$ 2~\AA (xyz). Cloud exhibits cubic symmetry with four primary lobes (green-yellow voxels) extending along $\pm x$ and $\pm y$ directions, characteristic of Cu(I) 3d$^{10}$ 4s$^1$ ground state.
+\textbf{(Center Left) Early Transfer (t = 50$\sim$fs):} Cloud maintains compact structure with minimal spatial displacement ($\Delta x \approx 0.5$~\AA from origin). Slight asymmetry emerges: positive-x lobe (transfer direction) extends to 4~\AA while negative-x lobe retracts to 2~\AA, indicating wavefunction polarization toward acceptor site.
+\textbf{(Center Right) Late Transfer (t = 110$\sim$fs):} Cloud expands significantly: dimensions increase to $\sim$6~\AA $\times$ 5~\AA $\times$ 4~\AA, volume $\sim$8$\times$ larger than initial state. Expansion reflects electronic excitation to higher-energy orbital with larger spatial extent.
+\textbf{(Far Right) Time-Lapse Overlay (All States Combined):} Composite visualization showing superposition of all 17 measurement snapshots (t = 0, 10, 20, \ldots, 160$\sim$fs).}
+\label{fig:electron_cloud}
+\end{figure*}
 
 \subsubsection{Step 2: Multi-Modal Spectroscopic Measurement}
 
@@ -1012,17 +957,6 @@ t_k = \begin{cases}
 Note: Response $(r_1, r_2) = (1, 1)$ (both perturbations) did not occur in our 
 simulation, confirming perturbation orthogonality.
 
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_10_ternary_trisection.png}
-\caption{\textbf{Ternary Trisection Localization Method: $O(\log_3 N)$ Zero-Backaction Algorithm.}
-\textbf{(Top Left) 3D Ternary Trisection Search Space:} Visualization of progressive region subdivision during electron localization. Initial search volume (outermost blue cube): 20~\AA $\times$ 20~\AA $\times$ 20~\AA = 8,000~\AA$^3$ centered on Cu active site. At each iteration $k$, current region (blue wireframe cube) subdivided into 27 subregions (3$^3$ ternary partition), electron localized to one subregion via categorical measurement, rejected regions discarded. 
-\textbf{(Top Right) Trisection Convergence:} Log-log plot showing exponential volume reduction (blue curve, left y-axis) and position uncertainty (red curve, right y-axis) vs iteration number. 
-\textbf{(Bottom Left) Complexity Comparison:} Log-log plot comparing computational cost (number of measurements) vs search space size $N$ for three algorithms: linear search (red line): $O(N)$ scaling, requires $N$ measurements to localize particle in $N$-point grid.  
-\textbf{(Bottom Right) Localization Precision per Dimension:} Semi-log plot showing position uncertainty $\Delta x$, $\Delta y$, $\Delta z$ (red, green, blue curves) and total uncertainty $|\Delta \mathbf{r}| = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}$ (black curve) vs iteration.  }
-\label{fig:ternary_trisection}
-\end{figure*}
-
 \subsubsection{Step 6: Spatial Partition Update}
 
 The spatial partition updated using ternary trisection rule:
@@ -1039,6 +973,17 @@ The spatial partition updated using ternary trisection rule:
 where each partition has size $|\Omega^{(k)}| = |\Omega^{(k-1)}|/3$. Initial 
 partition: $\Omega^{(0)} = (10a_0)^3 \approx 150$~nm$^3$. After $k$ iterations: 
 $|\Omega^{(k)}| = (10a_0/3^k)^3$.
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_10_ternary_trisection.png}
+\caption{\textbf{Ternary Trisection Localization Method: $O(\log_3 N)$ Zero-Backaction Algorithm.}
+\textbf{(Far Left) 3D Ternary Trisection Search Space:} Visualization of progressive region subdivision during electron localization. Initial search volume (outermost blue cube): 20~\AA $\times$ 20~\AA $\times$ 20~\AA = 8,000~\AA$^3$ centered on Cu active site. At each iteration $k$, current region (blue wireframe cube) subdivided into 27 subregions (3$^3$ ternary partition), electron localized to one subregion via categorical measurement, rejected regions discarded.
+\textbf{(Center Left) Trisection Convergence:} Log-log plot showing exponential volume reduction (blue curve, left y-axis) and position uncertainty (red curve, right y-axis) vs iteration number.
+\textbf{(Center Right) Complexity Comparison:} Log-log plot comparing computational cost (number of measurements) vs search space size $N$ for three algorithms: linear search (red line, $O(N)$), binary search (green line, $O(\log_2 N)$), and ternary trisection (blue line, $O(\log_3 N)$).
+\textbf{(Far Right) Localization Precision per Dimension:} Semi-log plot showing position uncertainty $\Delta x$, $\Delta y$, $\Delta z$ (red, green, blue curves) and total uncertainty $|\Delta \mathbf{r}| = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}$ (black curve) vs iteration.}
+\label{fig:ternary_trisection}
+\end{figure*}
 
 \subsection{Zero-Backaction Verification}
 
@@ -1104,6 +1049,17 @@ where:
 \item $c_{n\ell ms}(t)$: Time-dependent coefficients from categorical trajectory
 \end{itemize}
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_7_wavefunction.png}
+\caption{\textbf{Wavefunction Analysis: Coherence, Decoherence, and Spatial Localization Dynamics.}
+\textbf{(Far Left)} Probability density isosurface at peak coherence (t = 10.0$\sim$fs) showing 3D distribution of $|\psi(\mathbf{r})|^2$ as scattered points colored by normalized amplitude (gray = 0.4, orange = 0.7, yellow = 1.0).
+\textbf{(Center Left)} Probability evolution integrated over Y-Z plane showing time-dependent 1D density profile $\rho(x, t) = \int |\psi(x, y, z, t)|^2 \, dy \, dz$ as 3D surface. X-axis spans $-20$ to $+20$~\AA (protein scale), time axis covers 0--160$\sim$fs (17 measurement steps).
+\textbf{(Center Right)} Phase coherence and mean phase evolution quantifying quantum decoherence. Blue curve (left y-axis): phase coherence $\mathcal{C}(t) = |\langle e^{i\phi(\mathbf{r}, t)} \rangle|$ where $\phi$ is local wavefunction phase.
+\textbf{(Far Right)} Spatial localization metrics tracking wavepacket width and inverse participation ratio (IPR). Black curve: total spatial extent $\Delta r_{\text{total}} = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}$ remains constant at 2.5$\sim$\AA for t = 0--80$\sim$fs, then jumps to 3.7$\sim$\AA at t = 90$\sim$fs stabilizing at 3.7$\sim$\AA for t = 90--160$\sim$fs.}
+\label{fig:wavefunction_analysis}
+\end{figure*}
+
 Coefficients determined by maximum likelihood estimation:
 %
 \begin{equation}
@@ -1121,17 +1077,6 @@ Electron probability density:
 \end{equation}
 %
 Computed on 3D grid (spacing: 0.05~\AA) for visualization.
-
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_7_wavefunction.png}
-\caption{\textbf{Wavefunction Analysis: Coherence, Decoherence, and Spatial Localization Dynamics.}
-\textbf{(Top Left)} Probability density isosurface at peak coherence (t = 10.0~fs) showing 3D distribution of $|\psi(\mathbf{r})|^2$ as scattered points colored by normalized amplitude (gray = 0.4, orange = 0.7, yellow = 1.0). 
-\textbf{(Top Right)} Probability evolution integrated over Y-Z plane showing time-dependent 1D density profile $\rho(x, t) = \int |\psi(x, y, z, t)|^2 \, dy \, dz$ as 3D surface. X-axis spans -20 to +20~\AA (protein scale), time axis covers 0--160~fs (17 measurement steps).  
-\textbf{(Bottom Left)} Phase coherence and mean phase evolution quantifying quantum decoherence. Blue curve (left y-axis): phase coherence $\mathcal{C}(t) = |\langle e^{i\phi(\mathbf{r}, t)} \rangle|$ where $\phi$ is local wavefunction phase.  
-\textbf{(Bottom Right)} Spatial localization metrics tracking wavepacket width and inverse participation ratio (IPR). Black curve: total spatial extent $\Delta r_{\text{total}} = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}$ remains constant at 2.5~\AA for t = 0--80~fs, then jumps to 3.7~\AA at t = 90~fs stabilizing at 3.7~\AA for t = 90--160~fs. }
-\label{fig:wavefunction_analysis}
-\end{figure*}
 
 \subsubsection{S-Entropy Trajectory}
 
@@ -1174,10 +1119,10 @@ Figure~\ref{fig:trajectory} shows the electron trajectory during the first
 \centering
 \includegraphics[width=\textwidth]{figures/panel_1_trajectory.png}
 \caption{\textbf{Three-Dimensional Electron Trajectory Through Azurin During Cu(I) $\to$ Cu(II) Transfer.}
-\textbf{(Main)} 3D trajectory of electron center-of-mass through azurin protein matrix over 850$\sim$fs transfer time. Trajectory originates at Cu(I) center (blue star, coordinates [0, 0, 0]$\sim$\AA) and terminates at Cu(II) oxidized state (red star, [2.1, 0.1, 0.0]$\sim$\AA). Color gradient encodes time evolution (blue = 0$\sim$fs, red = 160$\sim$fs). Key protein residues labeled: His46, His117, Cys112, Met121 (purple squares). Electron follows curved pathway through protein scaffold, avoiding direct vacuum tunneling.
-\textbf{(Top Right)} XY projection (top view) showing lateral displacement of 2.0$\sim$12$\sim$\AA in x-direction, minimal y-displacement (0.1$\sim$\AA), indicating electron follows protein's copper-binding channel aligned with x-axis.
-\textbf{(Bottom Left)} XZ projection (front view) showing electron remains in equatorial plane (z ≈ 0$\sim$\AA throughout), consistent with d-orbital character of Cu 3d$_{x^2-y^2}$ states.
-\textbf{(Bottom Right)} YZ projection (side view) confirming z-confinement and minimal y-excursion, validating quasi-1D transfer along protein's designed electron pathway.}
+\textbf{(Far Left)} 3D trajectory of electron center-of-mass through azurin protein matrix over 850$\sim$fs transfer time. Trajectory originates at Cu(I) center (blue star, coordinates [0, 0, 0]$\sim$\AA) and terminates at Cu(II) oxidized state (red star, [2.1, 0.1, 0.0]$\sim$\AA). Color gradient encodes time evolution (blue = 0$\sim$fs, red = 160$\sim$fs). Key protein residues labeled: His46, His117, Cys112, Met121 (purple squares). Electron follows curved pathway through protein scaffold, avoiding direct vacuum tunneling.
+\textbf{(Center Left)} XY projection (top view) showing lateral displacement of 2.0$\sim$\AA in x-direction, minimal y-displacement (0.1$\sim$\AA), indicating electron follows protein's copper-binding channel aligned with x-axis.
+\textbf{(Center Right)} XZ projection (front view) showing electron remains in equatorial plane (z $\approx$ 0$\sim$\AA throughout), consistent with d-orbital character of Cu 3d$_{x^2-y^2}$ states.
+\textbf{(Far Right)} YZ projection (side view) confirming z-confinement and minimal y-excursion, validating quasi-1D transfer along protein's designed electron pathway.}
 \label{fig:trajectory}
 \end{figure*}
 
@@ -1202,7 +1147,7 @@ as colored spheres along trajectory. Predominance of trit-1 (angular response)
 indicates electron occupies middle partition with angular momentum $\ell \neq 0$.
 \end{enumerate}
 
-\subsection{Panel 2: Zero-Backaction Statistical Verification}
+\subsection{Zero-Backaction Statistical Verification}
 
 Figure~\ref{fig:backaction} presents statistical analysis of measurement backaction 
 over 17 iterations.
@@ -1211,10 +1156,10 @@ over 17 iterations.
 \centering
 \includegraphics[width=\textwidth]{figures/panel_2_backaction.png}
 \caption{\textbf{Zero-Backaction Verification Across 17 Measurement Iterations.}
-\textbf{(Top Left)} 3D backaction surface showing per-iteration backaction $\delta_k = |\Delta \mathbf{p}|/|\mathbf{p}|$ as function of iteration number and radial position. Blue surface represents measured backaction trajectory, green plane indicates quantum threshold ($10^{-3}$). 
-\textbf{(Top Right)} Per-iteration backaction (log scale) showing individual measurements (blue points with error bars) fluctuating around mean $\bar{\delta} = 1.73 \times 10^{-6}$ (dotted blue line). 
-\textbf{(Bottom Left)} Cumulative backaction showing total accumulated momentum perturbation over measurement sequence. Final cumulative backaction: $\delta_{\text{cum}} = 2.94 \times 10^{-5}$ (blue curve), remaining 34× below threshold (green line) even after 17 sequential measurements.
-\textbf{(Bottom Right)} Backaction distribution histogram showing narrow peak centered at median $1.50 \times 10^{-6}$ (red dashed line), with mean $1.73 \times 10^{-6}$ (black dashed line). Distribution width $\sigma = 6.3 \times 10^{-7}$ indicates measurement precision.}
+\textbf{(Far Left)} 3D backaction surface showing per-iteration backaction $\delta_k = |\Delta \mathbf{p}|/|\mathbf{p}|$ as function of iteration number and radial position. Blue surface represents measured backaction trajectory, green plane indicates quantum threshold ($10^{-3}$).
+\textbf{(Center Left)} Per-iteration backaction (log scale) showing individual measurements (blue points with error bars) fluctuating around mean $\bar{\delta} = 1.73 \times 10^{-6}$ (dotted blue line).
+\textbf{(Center Right)} Cumulative backaction showing total accumulated momentum perturbation over measurement sequence. Final cumulative backaction: $\delta_{\text{cum}} = 2.94 \times 10^{-5}$ (blue curve), remaining 34$\times$ below threshold (green line) even after 17 sequential measurements.
+\textbf{(Far Right)} Backaction distribution histogram showing narrow peak centered at median $1.50 \times 10^{-6}$ (red dashed line), with mean $1.73 \times 10^{-6}$ (black dashed line). Distribution width $\sigma = 6.3 \times 10^{-7}$ indicates measurement precision.}
 \label{fig:backaction}
 \end{figure*}
 
@@ -1263,20 +1208,21 @@ weak measurement theory \cite{Wiseman2010}. See Section~\ref{sec:discussion_back
 for detailed discussion.
 \end{enumerate}
 
-\subsection{Panel 3: Categorical Coordinate Evolution}
+\subsection{Categorical Coordinate Evolution}
 
 Figure~\ref{fig:categorical_coords} shows the time evolution of categorical 
 coordinates $(n, \ell, m, s)$ over 17 measurement iterations.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/panel_3_categorical_coords.png}
-\caption{\textbf{Time Evolution of Individual Categorical Coordinates During Electron Transfer.}
-\textbf{(Panel 1)} Principal quantum number $n$ vs time. $n$ remains constant at 1 for first 90$\sim$fs (ground state), then undergoes single transition to $n = 2$ at $t = 90$$\sim$fs (red dashed line, labeled "Transition point"). \textbf{Total: 1 transition.}
-\textbf{(Panel 2)} Angular momentum quantum number $\ell$ vs time. $\ell$ exhibits two transitions: (i) 0 $\to$ 1 at $t = 10$$\sim$fs (s $\to$ p character), (ii) 1 $\to$ 2 at $t = 15$$\sim$fs (p → d character). Rapid succession indicates fast orbital hybridization during initial transfer phase. Final state $\ell = 2$ persists for 145$\sim$fs, confirming stable d-orbital occupation. \textbf{Total: 2 transitions.}
-\textbf{(Panel 3)} Magnetic quantum number $m$ vs time. $m$ transitions from 0 $\to$ -1 at $t = 10$$\sim$fs (coincident with first $\ell$ transition), then remains constant at -1. 
-\textbf{(Panel 4)} Spin quantum number $s$ vs time. $s$ remains constant at +1/2 throughout entire 160$\sim$fs trajectory (flat purple line). }
-\label{fig:categorical_coords}
+\includegraphics[width=\textwidth]{figures/panel_3_categorical.png}
+\caption{\textbf{Categorical Quantum State Trajectory in (n, $\ell$, m, s) Space.}
+\textbf{(Far Left)} 3D trajectory through categorical coordinate space showing evolution of principal quantum number $n$, angular momentum $\ell$, and magnetic quantum number $m$ over 160$\sim$fs.
+\textbf{(Center Left)} Principal quantum number $n$ and angular momentum $\ell$ evolution. $n$ remains constant at 1 for 0--90$\sim$fs, then jumps to 2 at 90$\sim$fs (vertical blue line, 1 transition).
+\textbf{(Center Right)} Magnetic quantum number $m$ and spin $s$ evolution. $m$ transitions from 0 $\to$ $-1$ at 10$\sim$fs (orange curve, 1 transition).
+\textbf{(Far Right)} Phase space projection showing $(n, \ell)$ trajectory. System begins at $(1, 2)$ (blue star) and ends at $(2, 2)$ (red star), tracing L-shaped path through phase space.
+\textbf{Total Transitions:} 3 discrete quantum state changes over 160$\sim$fs: (i) $\ell$: 0 $\to$ 2 (10$\sim$fs), (ii) $m$: 0 $\to$ $-1$ (10$\sim$fs), (iii) $n$: 1 $\to$ 2 (90$\sim$fs).}
+\label{fig:categorical}
 \end{figure*}
 
 \textbf{Quantum state transitions:}
@@ -1326,26 +1272,12 @@ $(n,\ell,m)$ space is continuous (no sudden jumps), confirming measurement does
 not collapse wavefunction.
 \end{enumerate}
 
-\subsection{Panel 4: Electron Probability Density Evolution}
+\subsection{Electron Probability Density Evolution}
 
 Figure~\ref{fig:probability_evolution} shows the evolution of electron probability 
 density $\rho(\mathbf{r}, t) = |\psi(\mathbf{r}, t)|^2$ over 160~fs.
 
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_4_probability_density.png}
-\caption{\textbf{Time Evolution of Electron Probability Density During Complete Transfer (0--800$\sim$fs).}
-Nine XY slices at z = Cu$^{2+}$ position showing probability density $|\psi(x, y, z_{\text{Cu}}, t)|^2$ evolution at 100$\sim$fs intervals.
-\textbf{t = 0$\sim$fs (Initial State):} Electron localized at Cu(I) center with peak density $\rho_{\max} = 0.0200$\sim$\text{\AA}^{-3}$ (yellow core). 
-\textbf{t = 100$\sim$fs:} Density remains highly localized ($\rho_{\max} = 0.020$\sim$\text{\AA}^{-3}$) with minimal spatial spreading.
-\textbf{t = 200$\sim$fs:} Peak density maintained at 0.020$\sim$\AA$^{-3}$ with centroid displaced $\sim$0.6$\sim$\AA.
-\textbf{t = 300$\sim$fs:} Centroid displaced $\sim$0.9$\sim$\AA from Cu. Peak density remains 0.020$\sim$\AA$^{-3}$, confirming no probability leakage. 
-\textbf{t = 400$\sim$fs (Mid-Transfer):} Maximum displacement: centroid $\sim$1.2$\sim$\AA from Cu. Peak density unchanged at 0.020$\sim$\AA$^{-3}$. 
-\textbf{t = 500$\sim$fs:} Density begins decreasing ($\rho_{\max} = 0.007$\sim$\text{\AA}^{-3}$, factor of 3 drop) as electron delocalizes over larger volume during approach to acceptor site. 
-\textbf{t = 600$\sim$fs:} Further delocalization ($\rho_{\max} = 0.007$\sim$\text{\AA}^{-3}$, stable). Wavepacket spreads to $\sim$4$\sim$\AA FWHM as electron explores multiple pathways near acceptor.
-\textbf{t = 700$\sim$fs:} Density distribution broadens further while maintaining single-peaked structure. No bifurcation or multi-modal distribution observed, ruling out decoherence into classical mixture. }
-\label{fig:probability_evolution}
-\end{figure*}
+
 \textbf{Density evolution metrics:}
 
 \begin{table}[h]
@@ -1391,7 +1323,18 @@ throughout measurement.
 (maximum frame-to-frame change: 8\%), confirming no wavefunction collapse occurs.
 \end{enumerate}
 
-\subsection{Panel 5: S-Entropy Space Trajectory}
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_4_probability.png}
+\caption{\textbf{Electron Probability Density Snapshot at Mid-Transfer (t = 400$\sim$fs).}
+\textbf{(Far Left)} 3D isosurface visualization of electron probability density $|\psi(\mathbf{r}, t{=}400\text{ fs})|^2$ showing three nested contours at 30\% (outer, light gray), 50\% (middle, medium gray), and 70\% (inner, dark gray) of maximum density.
+\textbf{(Center Left)} XY slice through equatorial plane (z = 0) showing probability density as 2D heatmap. Central peak (yellow-white, $\rho \approx 0.020$~\AA$^{-3}$) centered at Cu position [0, 0]$\sim$\AA with FWHM $\approx$ 2$\sim$\AA.
+\textbf{(Center Right)} XZ slice through sagittal plane (y = 0) showing vertical confinement. Density remains concentrated near z = 0 (FWHM $\approx$ 1.5$\sim$\AA in z-direction).
+\textbf{(Far Right)} YZ slice through coronal plane (x = 0) showing similar vertical confinement as XZ slice. Symmetric density distribution in yz-plane confirms d-orbital maintains four-fold symmetry.}
+\label{fig:probability_snapshot}
+\end{figure*}
+
+\subsection{S-Entropy Space Trajectory}
 
 Figure~\ref{fig:sentropy} shows the trajectory in S-entropy space $(S_k, S_t, S_e)$, 
 quantifying information flow during measurement.
@@ -1402,7 +1345,7 @@ quantifying information flow during measurement.
 \centering
 \caption{S-entropy conservation validation.}
 \label{tab:sentropy_metrics}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}llllll@{}}
 \toprule
 Time (fs) & $S_k$ & $S_t$ & $S_e$ & $\sum S$ & Deviation \\
 \midrule
@@ -1492,10 +1435,10 @@ Evolution entropy & 0.050 & -- & $\approx 0$ & \checkmark \\
 \centering
 \includegraphics[width=\textwidth]{figures/panel_5_sentropy.png}
 \caption{\textbf{S-Entropy Space Trajectory Demonstrating Information Conservation During Measurement.}
-\textbf{(Top Left)} 3D trajectory through S-entropy space defined by three orthogonal components: $S_k$ (knowledge entropy, x-axis), $S_t$ (temporal entropy, y-axis), $S_e$ (evolution entropy, z-axis). Start state (blue star): $(S_k, S_t, S_e) = (0.65, 0.30, 0.05)$ indicating high initial knowledge (65\%), moderate temporal uncertainty (30\%), minimal evolution entropy (5\%). 
-\textbf{(Top Right)} $S_k$ vs $S_t$ projection showing anticorrelated evolution: as knowledge entropy decreases (measurement extracts information), temporal entropy increases (information redistributes to time-dependent phase).
-\textbf{(Bottom Left)} $S_k$ vs $S_e$ projection showing knowledge entropy decreases monotonically while evolution entropy remains small ($S_e < 0.2$ throughout). 
-\textbf{(Bottom Right)} $S_t$ vs $S_e$ projection showing temporal entropy increases as system evolves, with evolution entropy rising slightly from 0.05 to 0.18. }
+\textbf{(Far Left)} 3D trajectory through S-entropy space defined by three orthogonal components: $S_k$ (knowledge entropy, x-axis), $S_t$ (temporal entropy, y-axis), $S_e$ (evolution entropy, z-axis). Start state (blue star): $(S_k, S_t, S_e) = (0.65, 0.30, 0.05)$ indicating high initial knowledge (65\%), moderate temporal uncertainty (30\%), minimal evolution entropy (5\%).
+\textbf{(Center Left)} $S_k$ vs $S_t$ projection showing anticorrelated evolution: as knowledge entropy decreases (measurement extracts information), temporal entropy increases (information redistributes to time-dependent phase).
+\textbf{(Center Right)} $S_k$ vs $S_e$ projection showing knowledge entropy decreases monotonically while evolution entropy remains small ($S_e < 0.2$ throughout).
+\textbf{(Far Right)} $S_t$ vs $S_e$ projection showing temporal entropy increases as system evolves, with evolution entropy rising slightly from 0.05 to 0.18.}
 \label{fig:sentropy}
 \end{figure*}
 
@@ -1679,7 +1622,7 @@ The observation of two discrete quantum state transitions—$\ell: 0 \to 2$ at
 $t = 10$~fs and $n: 1 \to 2$ at $t = 90$~fs—provides insight into the electronic 
 structure changes during electron transfer.
 
-\subsubsection{First Transition: s $\to$ d Orbital Mixing}
+\subsubsection{First Transition: \texorpdfstring{s $\to$ d}{s to d} Orbital Mixing}
 
 The $\ell = 0 \to 2$ transition at $t = 10$~fs corresponds to electron density 
 shifting from Cu 4s orbital (spherical, $\ell = 0$) to Cu 3d orbitals (lobed, 
