@@ -1,0 +1,222 @@
+\begin{thebibliography}{30}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215\penalty0 (3):\penalty0
+  403--410, 1990.
+\newblock \doi{10.1016/S0022-2836(05)80360-2}.
+
+\bibitem[Anfinsen(1973)]{anfinsen1973}
+Christian~B. Anfinsen.
+\newblock Principles that govern the folding of protein chains.
+\newblock \emph{Science}, 181\penalty0 (4096):\penalty0 223--230, 1973.
+\newblock \doi{10.1126/science.181.4096.223}.
+
+\bibitem[Bahar et~al.(1997)Bahar, Atilgan, and Erman]{bahar1997}
+Ivet Bahar, Ali~Rana Atilgan, and Burak Erman.
+\newblock Direct evaluation of thermal fluctuations in proteins using a
+  single-parameter harmonic potential.
+\newblock \emph{Folding and Design}, 2\penalty0 (3):\penalty0 173--181, 1997.
+\newblock \doi{10.1016/S1359-0278(97)00024-2}.
+
+\bibitem[Barth(2007)]{barth2007}
+Andreas Barth.
+\newblock Infrared spectroscopy of proteins.
+\newblock \emph{Biochimica et Biophysica Acta (BBA) -- Bioenergetics},
+  1767\penalty0 (9):\penalty0 1073--1101, 2007.
+\newblock \doi{10.1016/j.bbabio.2007.06.004}.
+
+\bibitem[Barth and Zscherp(2002)]{barth2002}
+Andreas Barth and Christian Zscherp.
+\newblock What vibrations tell us about proteins.
+\newblock \emph{Quarterly Reviews of Biophysics}, 35\penalty0 (4):\penalty0
+  369--430, 2002.
+\newblock \doi{10.1017/S0033583502003815}.
+
+\bibitem[Berman et~al.(2000)Berman, Westbrook, Feng, Gilliland, Bhat, Weissig,
+  Shindyalov, and Bourne]{berman2000}
+Helen~M. Berman, John Westbrook, Zukang Feng, Gary Gilliland, T.~N. Bhat, Helge
+  Weissig, Ilya~N. Shindyalov, and Philip~E. Bourne.
+\newblock The {P}rotein {D}ata {B}ank.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 235--242,
+  2000.
+\newblock \doi{10.1093/nar/28.1.235}.
+
+\bibitem[Branden and Tooze(1999)]{branden1999}
+Carl-Ivar Branden and John Tooze.
+\newblock \emph{Introduction to Protein Structure}.
+\newblock Garland Science, New York, 2nd edition, 1999.
+
+\bibitem[Creighton(1993)]{creighton1993}
+Thomas~E. Creighton.
+\newblock \emph{Proteins: Structures and Molecular Properties}.
+\newblock W. H. Freeman, New York, 2nd edition, 1993.
+
+\bibitem[Dill and MacCallum(2012)]{dill2012}
+Ken~A. Dill and Justin~L. MacCallum.
+\newblock The protein-folding problem, 50 years on.
+\newblock \emph{Science}, 338\penalty0 (6110):\penalty0 1042--1046, 2012.
+\newblock \doi{10.1126/science.1219021}.
+
+\bibitem[G{\=o} et~al.(1983)G{\=o}, Noguti, and Nishikawa]{go1983}
+Nobuhiro G{\=o}, Toshio Noguti, and Toshio Nishikawa.
+\newblock Dynamics of a small globular protein in terms of low-frequency
+  vibrational modes.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 80\penalty0
+  (12):\penalty0 3696--3700, 1983.
+\newblock \doi{10.1073/pnas.80.12.3696}.
+
+\bibitem[Hartl and Hayer-Hartl(2002)]{hartl2002}
+F.~Ulrich Hartl and Manajit Hayer-Hartl.
+\newblock Molecular chaperones in the cytosol: from nascent chain to folded
+  protein.
+\newblock \emph{Science}, 295\penalty0 (5561):\penalty0 1852--1858, 2002.
+\newblock \doi{10.1126/science.1068408}.
+
+\bibitem[Holm and Sander(1993)]{holm1993}
+Liisa Holm and Chris Sander.
+\newblock Protein structure comparison by alignment of distance matrices.
+\newblock \emph{Journal of Molecular Biology}, 233\penalty0 (1):\penalty0
+  123--138, 1993.
+\newblock \doi{10.1006/jmbi.1993.1489}.
+
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
+  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'\i}dek, Potapenko,
+  et~al.]{jumper2021}
+John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
+  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
+  {\v{Z}}{\'\i}dek, Anna Potapenko, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596\penalty0 (7873):\penalty0 583--589, 2021.
+\newblock \doi{10.1038/s41586-021-03819-2}.
+
+\bibitem[Kabsch and Sander(1983)]{kabsch1983}
+Wolfgang Kabsch and Christian Sander.
+\newblock Dictionary of protein secondary structure: pattern recognition of
+  hydrogen-bonded and geometrical features.
+\newblock \emph{Biopolymers}, 22\penalty0 (12):\penalty0 2577--2637, 1983.
+\newblock \doi{10.1002/bip.360221211}.
+
+\bibitem[Kac(1947)]{kac1947}
+Mark Kac.
+\newblock On the notion of recurrence in discrete stochastic processes.
+\newblock \emph{Bulletin of the American Mathematical Society}, 53\penalty0
+  (10):\penalty0 1002--1010, 1947.
+
+\bibitem[Koopman(1931)]{koopman1931}
+Bernard~O. Koopman.
+\newblock Hamiltonian systems and transformation in {H}ilbert space.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 17\penalty0
+  (5):\penalty0 315--318, 1931.
+\newblock \doi{10.1073/pnas.17.5.315}.
+
+\bibitem[Krimm and Bandekar(1986)]{krimm1986}
+Samuel Krimm and Jagdeesh Bandekar.
+\newblock Vibrational spectroscopy and conformation of peptides, polypeptides,
+  and proteins.
+\newblock \emph{Advances in Protein Chemistry}, 38:\penalty0 181--364, 1986.
+\newblock \doi{10.1016/S0065-3233(08)60528-8}.
+
+\bibitem[Kyte and Doolittle(1982)]{kyte1982}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157\penalty0 (1):\penalty0
+  105--132, 1982.
+\newblock \doi{10.1016/0022-2836(82)90515-0}.
+
+\bibitem[Levinthal(1968)]{levinthal1968}
+Cyrus Levinthal.
+\newblock Are there pathways for protein folding?
+\newblock \emph{Journal de Chimie Physique}, 65:\penalty0 44--45, 1968.
+
+\bibitem[Levinthal(1969)]{levinthal1969}
+Cyrus Levinthal.
+\newblock How to fold graciously.
+\newblock In \emph{M{\"o}ssbauer Spectroscopy in Biological Systems:
+  Proceedings of a Meeting held at Allerton House, Monticello, Illinois}, pages
+  22--24. University of Illinois Press, 1969.
+
+\bibitem[Poincar{\'e}(1890)]{poincare1890}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+
+\bibitem[Rosen et~al.(1993)Rosen, Siddique, Patterson, Figlewicz, Sapp,
+  Hentati, Donaldson, Goto, O'Regan, Deng, et~al.]{rosen1993}
+Daniel~R. Rosen, Teepu Siddique, David Patterson, Denise~A. Figlewicz, Peter
+  Sapp, Afif Hentati, Deirdre Donaldson, Jun Goto, Jeremiah~P. O'Regan,
+  Han-Xiang Deng, et~al.
+\newblock Mutations in {Cu/Zn} superoxide dismutase gene are associated with
+  familial amyotrophic lateral sclerosis.
+\newblock \emph{Nature}, 362\penalty0 (6415):\penalty0 59--62, 1993.
+\newblock \doi{10.1038/362059a0}.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025a}
+Kundai~Farai Sachikonye.
+\newblock Categorical compound database: Oscillation-counted molecular
+  identification through ternary phase space addressing.
+\newblock \emph{Preprint}, 2025{\natexlab{a}}.
+\newblock Companion paper I.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025b}
+Kundai~Farai Sachikonye.
+\newblock Spectroscopic derivation of the chemical elements: Atomic structure
+  and virtual instrumentation from bounded phase space geometry.
+\newblock \emph{Preprint}, 2025{\natexlab{b}}.
+\newblock Companion paper II.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025c}
+Kundai~Farai Sachikonye.
+\newblock Purpose-based protein models.
+\newblock \emph{Preprint}, 2025{\natexlab{c}}.
+\newblock In preparation.
+
+\bibitem[Sakurai and Napolitano(2017)]{sakurai2017}
+Jun~John Sakurai and Jim Napolitano.
+\newblock \emph{Modern Quantum Mechanics}.
+\newblock Cambridge University Press, 2nd edition, 2017.
+
+\bibitem[Smith and Waterman(1981)]{smith1981}
+Temple~F. Smith and Michael~S. Waterman.
+\newblock Identification of common molecular subsequences.
+\newblock \emph{Journal of Molecular Biology}, 147\penalty0 (1):\penalty0
+  195--197, 1981.
+\newblock \doi{10.1016/0022-2836(81)90087-5}.
+
+\bibitem[{The UniProt Consortium}(2023)]{uniprot2023}
+{The UniProt Consortium}.
+\newblock {UniProt}: the universal protein knowledgebase in 2023.
+\newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D523--D531,
+  2023.
+\newblock \doi{10.1093/nar/gkac1052}.
+
+\bibitem[Tirion(1996)]{tirion1996}
+Monique~M. Tirion.
+\newblock Large amplitude elastic motions in proteins from a single-parameter,
+  atomic analysis.
+\newblock \emph{Physical Review Letters}, 77\penalty0 (9):\penalty0 1905--1908,
+  1996.
+\newblock \doi{10.1103/PhysRevLett.77.1905}.
+
+\bibitem[Varadi et~al.(2022)Varadi, Anyango, Deshpande, Nair, Natassia,
+  Yordanova, Yuan, Stroe, Wood, Laydon, et~al.]{varadi2022}
+Mihaly Varadi, Stephen Anyango, Mandar Deshpande, Sreenath Nair, Cindy
+  Natassia, Galabina Yordanova, David Yuan, Oana Stroe, Gemma Wood, Agata
+  Laydon, et~al.
+\newblock {AlphaFold} protein structure database: massively expanding the
+  structural coverage of protein-sequence space with high-accuracy models.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D439--D444,
+  2022.
+\newblock \doi{10.1093/nar/gkab1061}.
+
+\end{thebibliography}

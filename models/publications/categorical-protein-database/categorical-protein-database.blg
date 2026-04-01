@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: categorical-protein-database.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 30 entries,
+            2773 wiz_defined-function locations,
+            804 strings with 10123 characters,
+and the built_in function-call counts, 14692 in all, are:
+= -- 1360
+> -- 826
+< -- 24
++ -- 287
+- -- 255
+* -- 1235
+:= -- 2300
+add.period$ -- 114
+call.type$ -- 30
+change.case$ -- 172
+chr.to.int$ -- 28
+cite$ -- 60
+duplicate$ -- 614
+empty$ -- 1173
+format.name$ -- 305
+if$ -- 3032
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 33
+newline$ -- 181
+num.names$ -- 120
+pop$ -- 294
+preamble$ -- 1
+purify$ -- 142
+quote$ -- 0
+skip$ -- 468
+stack$ -- 0
+substring$ -- 695
+swap$ -- 41
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 315
+warning$ -- 0
+while$ -- 139
+width$ -- 0
+write$ -- 443

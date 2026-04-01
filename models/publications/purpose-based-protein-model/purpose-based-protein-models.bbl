@@ -1,0 +1,187 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bengio et~al.(2009)Bengio, Louradour, Collobert, and
+  Weston]{bengio2009}
+Yoshua Bengio, J{\'e}r{\^o}me Louradour, Ronan Collobert, and Jason Weston.
+\newblock Curriculum learning.
+\newblock In \emph{Proceedings of the 26th International Conference on Machine
+  Learning}, pages 41--48. ACM, 2009.
+
+\bibitem[Berman et~al.(2000)Berman, Westbrook, Feng, Gilliland, Bhat, Weissig,
+  Shindyalov, and Bourne]{berman2000}
+Helen~M Berman, John Westbrook, Zukang Feng, Gary Gilliland, Talapady~N Bhat,
+  Helge Weissig, Ilya~N Shindyalov, and Philip~E Bourne.
+\newblock The {Protein Data Bank}.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 235--242,
+  2000.
+\newblock \doi{10.1093/nar/28.1.235}.
+
+\bibitem[Elnaggar et~al.(2022)Elnaggar, Heinzinger, Dallago, Rehawi, Wang,
+  Jones, Gibbs, Feher, Angerer, Steinegger, Bhowmik, and Rost]{elnaggar2021}
+Ahmed Elnaggar, Michael Heinzinger, Christian Dallago, Ghalia Rehawi, Yu~Wang,
+  Llion Jones, Tom Gibbs, Tamas Feher, Christoph Angerer, Martin Steinegger,
+  Debsindhu Bhowmik, and Burkhard Rost.
+\newblock {ProtTrans}: Toward understanding the language of life through
+  self-supervised learning.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 44\penalty0 (10):\penalty0 7112--7127, 2022.
+\newblock \doi{10.1109/TPAMI.2021.3095381}.
+
+\bibitem[{fullscreen-triangle}(2024)]{purpose2024}
+{fullscreen-triangle}.
+\newblock Purpose: Domain-specific language models via knowledge distillation.
+\newblock \url{https://github.com/fullscreen-triangle/purpose}, 2024.
+\newblock Framework for creating domain-specific LLMs that encode domain
+  knowledge in parameters rather than retrieving it at inference time.
+
+\bibitem[Hu et~al.(2022)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen]{hu2022}
+Edward~J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+\newblock URL \url{https://openreview.net/forum?id=nZeVKeeFYf9}.
+
+\bibitem[Huang et~al.(2016)Huang, Boyken, and Baker]{huang2016}
+Po-Ssu Huang, Scott~E Boyken, and David Baker.
+\newblock The coming of age of de novo protein design.
+\newblock \emph{Nature}, 537\penalty0 (7620):\penalty0 320--327, 2016.
+\newblock \doi{10.1038/nature19946}.
+
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
+  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'\i}dek, Potapenko,
+  et~al.]{jumper2021}
+John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
+  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
+  {\v{Z}}{\'\i}dek, Anna Potapenko, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596\penalty0 (7873):\penalty0 583--589, 2021.
+\newblock \doi{10.1038/s41586-021-03819-2}.
+
+\bibitem[Karczewski et~al.(2020)Karczewski, Francioli, Tiao, Cummings, Alfoldi,
+  Wang, Collins, Laricchia, Ganna, Birnbaum, et~al.]{karczewski2020}
+Konrad~J Karczewski, Laurent~C Francioli, Grace Tiao, Beryl~B Cummings, Jessica
+  Alfoldi, Qingbo Wang, Ryan~L Collins, Kristen~M Laricchia, Andrea Ganna,
+  Daniel~P Birnbaum, et~al.
+\newblock The mutational constraint spectrum quantified from variation in
+  141,456 humans.
+\newblock \emph{Nature}, 581\penalty0 (7809):\penalty0 434--443, 2020.
+\newblock \doi{10.1038/s41586-020-2308-7}.
+
+\bibitem[Karplus and McCammon(2002)]{karplus2002}
+Martin Karplus and J~Andrew McCammon.
+\newblock Molecular dynamics simulations of biomolecules.
+\newblock \emph{Nature Structural Biology}, 9\penalty0 (9):\penalty0 646--652,
+  2002.
+\newblock \doi{10.1038/nsb0902-646}.
+
+\bibitem[Landrum et~al.(2018)Landrum, Lee, Benson, Brown, Chao, Chitipiralla,
+  Gu, Hart, Hoffman, Jang, et~al.]{landrum2018}
+Melissa~J Landrum, Jennifer~M Lee, Mark Benson, Garth~R Brown, Chen Chao,
+  Shanmuga Chitipiralla, Baoshan Gu, Jennifer Hart, Douglas Hoffman, Wonhee
+  Jang, et~al.
+\newblock {ClinVar}: improving access to variant interpretations and supporting
+  evidence.
+\newblock \emph{Nucleic Acids Research}, 46\penalty0 (D1):\penalty0
+  D1062--D1067, 2018.
+\newblock \doi{10.1093/nar/gkx1153}.
+
+\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smerity,
+  et~al.]{lin2023}
+Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu,
+  Stephen Smerity, et~al.
+\newblock Evolutionary-scale prediction of atomic-level protein structure with
+  a language model.
+\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
+\newblock \doi{10.1126/science.ade2574}.
+
+\bibitem[Moult et~al.(2018)Moult, Fidelis, Kryshtafovych, Schwede, and
+  Tramontano]{moult2018}
+John Moult, Krzysztof Fidelis, Andriy Kryshtafovych, Torsten Schwede, and Anna
+  Tramontano.
+\newblock Critical assessment of methods of protein structure prediction
+  ({CASP})---round {XII}.
+\newblock \emph{Proteins: Structure, Function, and Bioinformatics},
+  86:\penalty0 7--15, 2018.
+\newblock \doi{10.1002/prot.25415}.
+
+\bibitem[Nooren and Thornton(2003)]{nooren2003}
+Irene~MA Nooren and Janet~M Thornton.
+\newblock Diversity of protein--protein interactions.
+\newblock \emph{The EMBO Journal}, 22\penalty0 (14):\penalty0 3486--3492, 2003.
+\newblock \doi{10.1093/emboj/cdg359}.
+
+\bibitem[Rives et~al.(2021)Rives, Meier, Sercu, Goyal, Lin, Liu, Guo, Ott,
+  Zitnick, Ma, and Fergus]{rives2021}
+Alexander Rives, Joshua Meier, Tom Sercu, Siddharth Goyal, Zeming Lin, Jason
+  Liu, Demi Guo, Myle Ott, C~Lawrence Zitnick, Jerry Ma, and Rob Fergus.
+\newblock Biological structure and function emerge from scaling unsupervised
+  learning to 250 million protein sequences.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 118\penalty0
+  (15):\penalty0 e2016239118, 2021.
+\newblock \doi{10.1073/pnas.2016239118}.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025a}
+Kundai~Farai Sachikonye.
+\newblock Partition coordinate geometry of bounded systems.
+\newblock Establishes S-entropy coordinates and ternary addressing for bounded
+  phase space systems. Derives the four geometric primitives and trajectory
+  completion., 2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025b}
+Kundai~Farai Sachikonye.
+\newblock Domain-specific neural compilation for categorical image access:
+  Trainable morphism chain generation through knowledge distillation in life
+  science microscopy.
+\newblock Neural compilation framework for microscopy: natural language to
+  morphism chains via knowledge distillation, LoRA fine-tuning, teacher-student
+  architecture., 2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025c}
+Kundai~Farai Sachikonye.
+\newblock The categorical protein database: An empty dictionary for structural
+  biology.
+\newblock Establishes the categorical protein database as an empty dictionary
+  that synthesizes protein structures on demand from S-entropy space geometry.,
+  2025{\natexlab{c}}.
+
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025d}
+Kundai~Farai Sachikonye.
+\newblock Ternary unit representation of bounded phase space.
+\newblock Derives ternary encoding of molecular states and establishes the
+  $3^d$ addressing scheme for categorical state spaces., 2025{\natexlab{d}}.
+
+\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025e}
+Kundai~Farai Sachikonye.
+\newblock Disease state equations: Categorical differential equations for
+  pathological trajectories.
+\newblock Derives equations of state for disease as address deviation in
+  S-entropy space., 2025{\natexlab{e}}.
+
+\bibitem[Sachikonye(2025{\natexlab{f}})]{sachikonye2025f}
+Kundai~Farai Sachikonye.
+\newblock Bijective proteomics: One-to-one correspondence between sequence and
+  structure in bounded phase space.
+\newblock Proves bijective mapping between amino acid sequences and S-entropy
+  addresses under bounded phase space constraints., 2025{\natexlab{f}}.
+
+\bibitem[Shannon(1948)]{shannon1948}
+Claude~E Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{The Bell System Technical Journal}, 27\penalty0 (3):\penalty0
+  379--423, 1948.
+\newblock \doi{10.1002/j.1538-7305.1948.tb01338.x}.
+
+\bibitem[Valiant(1984)]{valiant1984}
+Leslie~G Valiant.
+\newblock A theory of the learnable.
+\newblock \emph{Communications of the ACM}, 27\penalty0 (11):\penalty0
+  1134--1142, 1984.
+\newblock \doi{10.1145/1968.1972}.
+
+\end{thebibliography}
