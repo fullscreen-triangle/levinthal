@@ -70,18 +70,26 @@ def run_kuramoto(sequence, K_scale=2.0, dt=0.01, T_steps=500):
     omega = np.array([c[0] * 10.0 + 1.0 for c in coords])  # scale to 1-11 rad/s
 
     # Coupling matrix: inversely proportional to S-entropy distance
-    # Nearby residues in sequence get stronger coupling (locality)
+    # Three coupling regimes: backbone, helix (i,i+4), tertiary (S-entropy matching)
     K = np.zeros((N, N))
     for i in range(N):
         for j in range(N):
             if i != j:
                 s_dist = sentropy_distance(coords[i], coords[j])
                 seq_dist = abs(i - j)
-                # Coupling: strong for close S-entropy AND close in sequence
-                # Also strong for distant residues with matching S-entropy (tertiary)
-                local = np.exp(-seq_dist / 4.0)  # local backbone coupling
-                tertiary = np.exp(-s_dist / 0.3) * np.exp(-seq_dist / 20.0)
-                K[i, j] = K_scale * (0.7 * local + 0.3 * tertiary)
+                # Backbone nearest-neighbour coupling
+                backbone = np.exp(-seq_dist / 2.0)
+                # Helix coupling: strong at i,i+3 and i,i+4 (hydrogen bonding)
+                helix = 0.8 * np.exp(-(seq_dist - 4)**2 / 1.0) + \
+                        0.4 * np.exp(-(seq_dist - 3)**2 / 1.0)
+                # Tertiary: S-entropy similarity for sequence-distant residues
+                tertiary = np.exp(-s_dist / 0.2) * (1 - np.exp(-seq_dist / 8.0))
+                # Disulfide-like: Cys-Cys strong coupling regardless of distance
+                cys_bonus = 0.0
+                if sequence[i] == 'C' and sequence[j] == 'C':
+                    cys_bonus = 2.0 * np.exp(-s_dist / 0.5)
+                K[i, j] = K_scale * (0.3 * backbone + 0.35 * helix +
+                                     0.25 * tertiary + 0.1 * cys_bonus)
 
     # Initial phases: random
     theta = np.random.uniform(0, 2 * np.pi, N)
@@ -138,18 +146,33 @@ def compute_coupling_spectrum(couplings, dt=0.1):
     return freqs, magnitude, phase
 
 
-def predict_contacts(K, threshold_percentile=80):
-    """Predict contacts from coupling matrix eigenstructure."""
+def predict_contacts(K, threshold_percentile=75):
+    """Predict contacts from coupling matrix eigenstructure + direct coupling."""
+    N = K.shape[0]
     eigenvalues, eigenvectors = np.linalg.eigh(K)
     # Top eigenvalues indicate strongest collective modes
-    top_k = max(3, len(eigenvalues) // 5)
+    top_k = max(5, N // 4)
     contact_score = np.zeros_like(K)
     for k in range(-top_k, 0):
         v = eigenvectors[:, k]
         contact_score += eigenvalues[k] * np.outer(v, v)
     contact_score = np.abs(contact_score)
-    threshold = np.percentile(contact_score, threshold_percentile)
+    # Also add direct coupling strength (strong K_ij = likely contact)
+    contact_score += K * 0.5
+    # Normalize
+    contact_score = contact_score / (contact_score.max() + 1e-10)
+    # Only consider long-range contacts (|i-j| > 4)
+    for i in range(N):
+        for j in range(N):
+            if abs(i - j) <= 4:
+                contact_score[i, j] *= 0.3  # downweight short-range
+    threshold = np.percentile(contact_score[np.triu_indices(N, k=5)], threshold_percentile)
     contacts = (contact_score > threshold).astype(float)
+    # Zero out diagonal and near-diagonal
+    for i in range(N):
+        for j in range(N):
+            if abs(i - j) <= 4:
+                contacts[i, j] = 0
     return contact_score, contacts
 
 
@@ -161,7 +184,7 @@ print("VALIDATION: Protein Folding as Partition Calculus")
 print("=" * 70)
 
 print("\n[1] Running Kuramoto dynamics for Crambin (46 residues)...")
-result = run_kuramoto(CRAMBIN_SEQ, K_scale=2.5, dt=0.01, T_steps=500)
+result = run_kuramoto(CRAMBIN_SEQ, K_scale=5.0, dt=0.01, T_steps=800)
 N = result['N']
 
 # Save coherence trajectory
@@ -245,7 +268,6 @@ scaling = []
 for n in [20, 46, 100, 150, 200, 300, 500, 1000]:
     for P in [256, 1024, 4096]:
         wall_time_ms = (n * n * 500) / (P * 1000)  # N^2*T / P
-        levinthal = 3.0 ** n
         scaling.append({
             'n_residues': n,
             'gpu_fragments': P,

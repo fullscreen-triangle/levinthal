@@ -9,7 +9,8 @@
       "Bash(bibtex:*)",
       "Bash(grep:*)",
       "WebFetch(domain:github.com)",
-      "Bash(python models/publications/categorical-protein-database/validation/amino_acid_encoding.py)"
+      "Bash(python models/publications/categorical-protein-database/validation/amino_acid_encoding.py)",
+      "Bash(python models/publications/folding-partition-calculus/validation/generate_panels_and_data.py)"
     ]
   }
 }
