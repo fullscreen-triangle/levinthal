@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: purpose-based-protein-models.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 22 entries,
+            2773 wiz_defined-function locations,
+            744 strings with 10514 characters,
+and the built_in function-call counts, 12366 in all, are:
+= -- 1072
+> -- 989
+< -- 12
++ -- 342
+- -- 315
+* -- 1132
+:= -- 2017
+add.period$ -- 82
+call.type$ -- 22
+change.case$ -- 167
+chr.to.int$ -- 17
+cite$ -- 44
+duplicate$ -- 417
+empty$ -- 780
+format.name$ -- 341
+if$ -- 2471
+int.to.chr$ -- 6
+int.to.str$ -- 1
+missing$ -- 15
+newline$ -- 133
+num.names$ -- 88
+pop$ -- 282
+preamble$ -- 1
+purify$ -- 145
+quote$ -- 0
+skip$ -- 363
+stack$ -- 0
+substring$ -- 428
+swap$ -- 31
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 242
+warning$ -- 0
+while$ -- 94
+width$ -- 0
+write$ -- 316

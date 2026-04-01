@@ -77,8 +77,11 @@ Hierarchical Oscillatory Synthesis Through \\
 Ternary Phase Space Addressing}}
 
 \author{
-Kundai Farai Sachikonye\\[0.3em]
-AIMe Registry for Artificial Intelligence\\[0.3em]
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+Experimental Bioinformatics\\
+Maximus-von-Imhof-Forum 3\\
+85354 Freising, Germany\\
 \texttt{kundai.sachikonye@bitspark.com}
 }
 
@@ -89,12 +92,9 @@ AIMe Registry for Artificial Intelligence\\[0.3em]
 \begin{abstract}
 Current protein databases---the Protein Data Bank ($\sim$200{,}000 experimentally determined structures), UniProt ($\sim$250 million sequences), AlphaFold DB ($\sim$200 million predicted structures)---store representations of proteins: coordinate files, sequence strings, predicted models. Each entry is a static record that must be retrieved and compared against queries through pairwise alignment at $O(N \times L)$ cost, where $N$ is the database size and $L$ the sequence or structure length. We demonstrate that this computational burden arises from storing representations rather than encoding the physics. We extend the categorical compound database framework---which achieved $O(k)$ molecular identification through ternary phase space addressing---from small molecules to proteins by exploiting the hierarchical oscillatory structure of macromolecular systems. Proteins are bounded oscillatory systems whose vibrational modes span five organizational scales: bond vibrations, amide modes ($\sim$1650, $\sim$1550, $\sim$1300~cm$^{-1}$), secondary structure modes, domain breathing modes (1--100~cm$^{-1}$), and global hinge motions ($<$1~cm$^{-1}$). We define S-entropy coordinates $(\Sk, \St, \Se) \in [0,1]^3$ for each of the 20 standard amino acids from normalized physicochemical properties---hydrophobicity, molecular volume, electrostatic character---and prove that they occupy distinct points in $\Sspace$ at trit depth 9. Proteins are words in this 20-letter alphabet: hierarchical ternary addresses encoding residue-level, secondary-structure-level, domain-level, and global structure simultaneously. The categorical protein database stores \emph{zero} protein structures. When probed with a vibrational spectrum, partial sequence, or structural constraint, it synthesizes the answer through trajectory completion in S-entropy space. The probe is the measurement; the measurement is the synthesis; the synthesis is the identification. We prove that protein folding reduces to trajectory completion under selection rules ($\Delta l = \pm 1$, $|\Delta m| \leq 1$, $\Delta s = 0$), resolving Levinthal's paradox by replacing the $3^N$ conformational search with $O(\log_3 N)$ trajectory completion steps. Disease-causing mutations are formalized as ternary address deviations, with categorical distance quantifying pathological severity. The engine performs four geometric operations---Identify, Similar, Predict, React---each in $O(k)$ time independent of database size, achieving projected speedups exceeding $10^{9}$ over sequence alignment at proteome scale.
 
-\medskip
 \noindent\textbf{Keywords:} categorical protein database, S-entropy coordinates, ternary phase space addressing, protein vibrational modes, trajectory completion, empty dictionary, Levinthal's paradox, oscillatory synthesis, hierarchical trie, protein folding
 \end{abstract}
 
-\tableofcontents
-\newpage
 
 %==============================================================================
 % PART I: FOUNDATIONS
@@ -339,16 +339,7 @@ The nesting is strict: each level refines the partition established by all highe
 The \emph{oscillatory identity} of a protein is its complete mode spectrum: the set of all vibrational frequencies $\{\omega_1, \omega_2, \ldots, \omega_{\Nvib}\}$ together with their hierarchical level assignments. Two proteins have the same oscillatory identity if and only if their mode spectra are identical at all five hierarchical levels.
 \end{definition}
 
-\begin{figure*}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figures/panel_1_vibrational_hierarchy.png}
-    \caption{\textbf{Protein Vibrational Mode Hierarchy.}
-    (\textbf{A})~Frequency spectrum of a 150-residue globular protein showing all $\sim$3600 normal modes. Modes are coloured by hierarchical level: Level~1 bond vibrations (red, $>$2000~cm$^{-1}$), Level~2 amide modes (orange, 1200--1700~cm$^{-1}$), Level~3 secondary structure modes (green, 100--1200~cm$^{-1}$), Level~4 domain breathing modes (blue, 1--100~cm$^{-1}$), Level~5 global modes (purple, $<$1~cm$^{-1}$).
-    (\textbf{B})~Hierarchical partition tree showing the correspondence between vibrational levels and partition depths. Each level refines the partition established by higher-frequency levels, producing a nested trie structure.
-    (\textbf{C})~Timescale separation across the five levels. The ratio $\omega_{\mathrm{max}}/\omega_{\mathrm{min}}$ within each level is moderate ($\sim$2--5$\times$), while the ratio between adjacent levels spans one to two orders of magnitude, ensuring clean hierarchical separation.
-    (\textbf{D})~Amide I band shapes for three secondary structure types: $\alpha$-helix (single peak at $\sim$1650~cm$^{-1}$), $\beta$-sheet (split band at $\sim$1630 and $\sim$1680~cm$^{-1}$), and random coil (broad peak at $\sim$1645~cm$^{-1}$). These distinct spectral signatures enable Level~3 partition refinement.}
-    \label{fig:vibrational_hierarchy}
-\end{figure*}
+
 
 %==============================================================================
 \section{Amino Acid S-Entropy Coordinates}
@@ -447,6 +438,17 @@ d_{\min} = \min_{a \neq b} \sqrt{(\Delta\Sk)^2 + (\Delta\St)^2 + (\Delta\Se)^2} 
 More precisely, we check the 190 pairwise ternary addresses at depth 9 by exhaustive enumeration. At depth 9, the residue pair (Asn, Gln) has addresses differing in the $\St$ trits (positions 2, 5, 8), since $\St(\text{Asn}) = 0.322$ and $\St(\text{Gln}) = 0.499$ encode to distinct ternary expansions by position 5. All 190 pairs are verified to have distinct 9-trit addresses.
 \end{proof}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_1_amino_acid_sentropy.png}
+    \caption{\textbf{Amino Acid S-Entropy Encoding and Resolution.}
+    (\textbf{A})~All 20 standard amino acids embedded in three-dimensional S-entropy space $\mathcal{S} = [0,1]^3$ with axes $S_k$ (hydrophobicity), $S_t$ (van der Waals volume), $S_e$ (electrostatic index). Points are coloured by physicochemical class: nonpolar (blue), polar (green), aromatic (purple), positively charged (red), negatively charged (orange). Charged residues cluster in the high-$S_e$ region ($S_e = 0.5$--$1.0$); nonpolar residues occupy the $S_e = 0$ plane with high $S_k$; aromatics span intermediate $S_k$ with high $S_t$ reflecting their large side-chain volumes.
+    (\textbf{B})~Two-dimensional $S_k$--$S_t$ projection. Nonpolar residues (I, V, L, F, M, A) form a high-$S_k$ cluster. Glycine occupies the origin of $S_t$ (minimal volume). Tryptophan reaches $S_t = 1.0$ (largest side chain). The projection reveals a continuous gradient from small hydrophobic (Ala, $S_k = 0.70$, $S_t = 0.17$) to large aromatic (Trp, $S_k = 0.40$, $S_t = 1.00$).
+    (\textbf{C})~Resolution curve: percentage of 190 pairwise amino acid combinations uniquely resolved as a function of ternary trit depth $k$. At $k = 3$, 94.2\% of pairs are resolved (12 unique addresses). At $k = 6$, 99.5\% (19 unique). Full resolution (100\%, all 20 unique) is achieved at $k = 9$, corresponding to cell width $3^{-3} \approx 0.037$ per dimension.
+    (\textbf{D})~Distribution of all 190 pairwise Euclidean distances in $\mathcal{S}$-space. The minimum distance (red dashed line) is 0.073 (Lys--Arg), confirming that even the closest pair exceeds the $k = 9$ cell diagonal ($\sqrt{3} \times 3^{-3} = 0.064$). The mean distance is 0.729, with a right-skewed distribution reflecting the separation between charged and nonpolar classes.}
+    \label{fig:amino_acid_sentropy}
+\end{figure*}
+
 \begin{theorem}[Chemical Family Emergence]
 \label{thm:family}
 At trit depth 3, the 20 amino acids cluster into physicochemical classes---nonpolar, polar uncharged, positively charged, negatively charged, aromatic---without any chemical knowledge being encoded in the coordinate system.
@@ -475,16 +477,7 @@ The ternary address of amino acid $a$ at trit depth $k$ is:
 computed from $(\Sk(a), \St(a), \Se(a))$ via Definition~\ref{def:ternary}.
 \end{definition}
 
-\begin{figure*}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figures/panel_2_amino_acid_space.png}
-    \caption{\textbf{Amino Acid S-Entropy Space.}
-    (\textbf{A})~All 20 amino acids embedded in three-dimensional S-entropy space $\Sspace = [0,1]^3$. Points coloured by chemical class: nonpolar (blue), polar uncharged (green), positively charged (red), negatively charged (orange), aromatic (purple). The class-dependent clustering emerges from normalized physicochemical properties alone.
-    (\textbf{B})~Chemical family clustering at trit depth 3. The unit cube is partitioned into 27 cells ($3 \times 3 \times 3$). Shaded cells contain amino acids; colour indicates the dominant chemical class within each cell. Nonpolar residues concentrate in the high-$\Sk$, low-$\Se$ corner; charged residues in the low-$\Sk$, high-$\Se$ corner.
-    (\textbf{C})~Pairwise Euclidean distance matrix for all 20 amino acids in $\Sspace$, sorted by chemical class. Block diagonal structure confirms within-class proximity.
-    (\textbf{D})~Resolution depth analysis: number of uniquely resolved amino acid pairs as a function of trit depth $k$. All 190 pairs are resolved by $k = 9$.}
-    \label{fig:amino_acid_space}
-\end{figure*}
+
 
 %==============================================================================
 \section{Protein Ternary Addressing}
@@ -583,13 +576,13 @@ At trit depth $k$ in the ternary encoding, the cell width per dimension is $3^{-
 
 \begin{figure*}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{figures/panel_3_protein_trie.png}
-    \caption{\textbf{Multi-Scale Protein Trie Structure.}
-    (\textbf{A})~Schematic of the nested trie. The outermost level (global modes) classifies proteins by fold class ($\alpha$, $\beta$, $\alpha/\beta$, etc.). Intermediate levels refine by domain and secondary structure. The innermost level resolves individual residues.
-    (\textbf{B})~A sample protein address at four hierarchical levels, showing how each level's S-entropy coordinates contribute trits to the full address.
-    (\textbf{C})~Address comparison between two structurally similar proteins (same fold, different sequence) showing shared prefixes at global and domain levels diverging at residue level.
-    (\textbf{D})~Address comparison between two structurally dissimilar proteins (different fold class) showing divergence at the global level (first few trits).}
-    \label{fig:protein_trie}
+    \includegraphics[width=\textwidth]{figures/panel_2_clustering_similarity.png}
+    \caption{\textbf{Chemical Family Clustering and Ternary Similarity.}
+    (\textbf{A})~Three-dimensional S-entropy space with amino acids coloured by $S_e$ value on a coolwarm gradient (blue = low $S_e$, red = high $S_e$). The electrostatic axis provides the primary separation between nonpolar residues ($S_e = 0$, blue cluster at bottom) and charged residues ($S_e = 1.0$, red cluster at top), with polar residues at intermediate $S_e$ values. This gradient emerges from the physicochemical encoding without any chemical knowledge being imposed.
+    (\textbf{B})~Pairwise ternary similarity matrix for all 20 amino acids, sorted by ternary address to place similar residues adjacent. Cell colour encodes shared prefix depth (dark = low similarity, bright = high). The bright diagonal confirms self-identity (depth 18). Off-diagonal bright blocks reveal natural clusters: a nonpolar block (I, V, L, F, M, A), a charged block (D, E, K, R), and aromatic groupings (F, W, Y), all emerging from ternary address proximity.
+    (\textbf{C})~Hierarchical clustering dendrogram computed from Euclidean distances in $\mathcal{S}$-space using Ward's method. The tree recovers standard biochemical groupings: charged residues (D, E, K, R, H) form one major clade; nonpolar residues (I, V, L, F, M, A) form another; polar and aromatic residues occupy intermediate branches. No chemical classification was provided to the algorithm.
+    (\textbf{D})~Cohesion ratio $R$ (intra-class mean shared prefix depth divided by inter-class mean) for five physicochemical families. $R > 1$ (dashed line) indicates the family is cohesive in ternary space. Aromatic residues show the strongest cohesion ($R = 5.67$), followed by nonpolar ($R = 4.03$), positive ($R = 2.83$), and negative ($R = 1.90$). Polar residues ($R = 0.44$) are non-cohesive, reflecting genuine heterogeneity spanning Cys ($S_k = 0.78$) to Gln ($S_k = 0.11$). Four of five families pass the cohesion test.}
+    \label{fig:clustering_similarity}
 \end{figure*}
 
 %==============================================================================
@@ -836,6 +829,17 @@ The GroEL/GroES chaperonin system \citep{hartl2002} provides a physical implemen
 In the categorical framework, the GroEL cavity acts as a resonance chamber that enforces partition constraints. By confining the protein and cycling through conformational states, GroEL ensures that the protein samples the correct hierarchical trajectory---global $\to$ domain $\to$ secondary structure $\to$ residue---rather than becoming trapped in a local minimum. The ATP-driven conformational cycle of GroEL corresponds to the partition refinement cycle: each ATP hydrolysis step advances the trajectory by one hierarchical level. The 7-fold symmetry of GroEL corresponds to $\sim$7 partition refinement cycles per folding event, consistent with the logarithmic scaling of trajectory completion.
 \end{remark}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_4_protein_trajectories.png}
+    \caption{\textbf{Protein Trajectory Completion and Folding Complexity.}
+    (\textbf{A})~Eight test proteins embedded in S-entropy space, coloured by SCOP fold class: all-$\alpha$ (red), all-$\beta$ (blue), $\alpha + \beta$ (purple), $\alpha / \beta$ (orange), small-$\beta$ (green). Point size scales with protein length (30--259 residues). Fold classes occupy distinct regions: all-$\alpha$ proteins (Insulin, Myoglobin) show higher $S_k$ (more hydrophobic composition); all-$\beta$ proteins (SOD1, Carbonic Anhydrase II) show higher $S_e$ (more charged residues). The $\alpha + \beta$ class (Crambin, Lysozyme) occupies an intermediate position with lower $S_e$.
+    (\textbf{B})~Folding complexity scaling on log--log axes. Trajectory completion steps (blue circles) grow as $O(\log_3 N)$ with protein length $N$, compared with $O(N)$ (red dashed) and $O(\sqrt{N})$ (orange dotted) references. A 150-residue protein requires 5 trajectory steps; a 10{,}000-residue complex requires only 9. The shaded region represents the complexity reduction from Levinthal's $O(3^N)$ brute-force search. For a 150-residue protein, this corresponds to a reduction from $3^{150} \approx 10^{71}$ conformations to 5 steps---a factor of $\sim 10^{69}$.
+    (\textbf{C})~Helix content versus sheet content for the eight test proteins, with point colour encoding $S_k$ (hydrophobicity) and point size encoding protein length. $S_k$ correlates positively with helix content ($r = +0.46$) and negatively with sheet content ($r = -0.48$), consistent with the known preference of hydrophobic residues for $\alpha$-helical packing.
+    (\textbf{D})~Fold class centroid distance matrix. Each cell shows the Euclidean distance between fold class centroids in $\mathcal{S}$-space. The largest separation is $\alpha + \beta$ versus $\alpha / \beta$ ($d = 0.117$); the smallest is all-$\beta$ versus small-$\beta$ ($d = 0.030$). The block structure confirms that sequence-level S-entropy coordinates carry structural information sufficient to discriminate major fold classes.}
+    \label{fig:protein_trajectories}
+\end{figure*}
+
 %==============================================================================
 \section{Disease as Address Deviation}
 \label{sec:disease}
@@ -942,6 +946,17 @@ For each test protein with known secondary structure assignment:
 \end{enumerate}
 \end{protocol}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_3_secondary_structure.png}
+    \caption{\textbf{Secondary Structure Encoding from Amide Band Frequencies.}
+    (\textbf{A})~Eight secondary structure types embedded in S-entropy space, computed from their characteristic amide I, II, III, and A band frequencies. All structures occupy a compact region near $S_k \approx 0.94$, $S_t \approx 0.31$, $S_e \approx 0.67$, reflecting the fact that amide bands are chemically similar backbone vibrations. Separation between structure types is achieved through fine differences in $S_t$ (timescale span), requiring higher trit depths for resolution.
+    (\textbf{B})~Amide I versus Amide III frequency scatter plot for all eight structure types. $\alpha$-helix (red) and $\beta$-sheet (blue shades) occupy distinct frequency regions: $\alpha$-helix at amide I $\approx 1650$ cm$^{-1}$, $\beta$-sheet parallel at $\approx 1630$ cm$^{-1}$, $\beta$-sheet antiparallel at $\approx 1680$ cm$^{-1}$. These frequency differences, though small ($\sim 30$--$50$ cm$^{-1}$), are the physical basis for infrared secondary structure determination and map to distinct S-entropy coordinates.
+    (\textbf{C})~Pairwise Euclidean distance matrix in $\mathcal{S}$-space. The maximum distance is 0.019 ($\alpha$-helix vs.\ $\beta$-sheet antiparallel); the minimum is 0.0004 ($\beta$-sheet parallel vs.\ polyproline II). The viridis colour scale reveals that $\alpha$-helix and $3_{10}$-helix (warm colours) are most distant from $\beta$-sheet variants (cool colours), consistent with the known spectroscopic distinction between helical and extended conformations.
+    (\textbf{D})~$S_t$ coordinate (timescale span) for each secondary structure type, sorted by value. $S_t$ is the primary discriminating coordinate: $3_{10}$-helix has the lowest $S_t$ (narrowest frequency range) while $\beta$-sheet antiparallel and polyproline II have the highest (broadest range due to split amide I band). Full resolution of all eight types is achieved at trit depth 18.}
+    \label{fig:secondary_structure}
+\end{figure*}
+
 \subsection{Protein Identification Validation}
 
 \begin{protocol}[Identification Test]
@@ -1029,16 +1044,7 @@ For the identification task, we predict $O(k)$ time complexity with $k \sim 30$-
 
 For the folding task, trajectory completion is predicted to converge for all test proteins with well-defined native states, with the number of steps scaling as $O(\log_3 \Nres)$. For a 150-residue protein: $\log_3 150 \approx 4.6$, so $\sim$5 hierarchical trajectory completion steps are predicted.
 
-\begin{figure*}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figures/panel_4_validation.png}
-    \caption{\textbf{Validation Framework.}
-    (\textbf{A})~Amino acid resolution profile: number of uniquely resolved pairs vs.\ trit depth. The curve reaches 190/190 at depth 9.
-    (\textbf{B})~Chemical family clustering at depth 3 in $\Sspace$. The five biochemical classes occupy distinct regions without chemical labels being encoded.
-    (\textbf{C})~Predicted identification speedup as a function of database size $N$. The categorical approach (flat line at $O(k)$) versus sequence alignment ($O(NL)$, diagonal line).
-    (\textbf{D})~Folding trajectory completion: number of hierarchical steps vs.\ protein length $\Nres$, showing logarithmic scaling.}
-    \label{fig:validation}
-\end{figure*}
+
 
 %==============================================================================
 \section{Benchmarks}
