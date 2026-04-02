@@ -1,0 +1,272 @@
+\begin{thebibliography}{35}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Acebr{\'o}n et~al.(2005)Acebr{\'o}n, Bonilla, P{\'e}rez~Vicente,
+  Ritort, and Spigler]{acebron2005}
+Juan~A. Acebr{\'o}n, Luis~L. Bonilla, Conrad~J. P{\'e}rez~Vicente, F{\'e}lix
+  Ritort, and Renato Spigler.
+\newblock The {K}uramoto model: A simple paradigm for synchronization
+  phenomena.
+\newblock \emph{Reviews of Modern Physics}, 77\penalty0 (1):\penalty0 137--185,
+  2005.
+\newblock \doi{10.1103/RevModPhys.77.137}.
+
+\bibitem[Anfinsen(1973)]{anfinsen1973}
+Christian~B. Anfinsen.
+\newblock Principles that govern the folding of protein chains.
+\newblock \emph{Science}, 181\penalty0 (4096):\penalty0 223--230, 1973.
+\newblock \doi{10.1126/science.181.4096.223}.
+
+\bibitem[Bahar et~al.(1997)Bahar, Atilgan, and Erman]{bahar1997}
+Ivet Bahar, Ali~Rana Atilgan, and Burak Erman.
+\newblock Direct evaluation of thermal fluctuations in proteins using a
+  single-parameter harmonic potential.
+\newblock \emph{Folding and Design}, 2\penalty0 (3):\penalty0 173--181, 1997.
+\newblock \doi{10.1016/S1359-0278(97)00024-2}.
+
+\bibitem[Barth(2007)]{barth2007}
+Andreas Barth.
+\newblock Infrared spectroscopy of proteins.
+\newblock \emph{Biochimica et Biophysica Acta (BBA) -- Bioenergetics},
+  1767\penalty0 (9):\penalty0 1073--1101, 2007.
+\newblock \doi{10.1016/j.bbabio.2007.06.004}.
+
+\bibitem[Berman et~al.(2000)Berman, Westbrook, Feng, Gilliland, Bhat, Weissig,
+  Shindyalov, and Bourne]{berman2000}
+Helen~M. Berman, John Westbrook, Zukang Feng, Gary Gilliland, T.~N. Bhat, Helge
+  Weissig, Ilya~N. Shindyalov, and Philip~E. Bourne.
+\newblock The {P}rotein {D}ata {B}ank.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 235--242,
+  2000.
+\newblock \doi{10.1093/nar/28.1.235}.
+
+\bibitem[Bryngelson et~al.(1995)Bryngelson, Onuchic, Socci, and
+  Wolynes]{bryngelson1995}
+Joseph~D. Bryngelson, Jos{\'e}~Nelson Onuchic, Nicholas~D. Socci, and Peter~G.
+  Wolynes.
+\newblock Funnels, pathways, and the energy landscape of protein folding: A
+  synthesis.
+\newblock \emph{Proteins: Structure, Function, and Bioinformatics}, 21\penalty0
+  (3):\penalty0 167--195, 1995.
+\newblock \doi{10.1002/prot.340210302}.
+
+\bibitem[Englander(2006)]{englander2006}
+S.~Walter Englander.
+\newblock Hydrogen exchange and mass spectrometry: A historical perspective.
+\newblock \emph{Journal of the American Society for Mass Spectrometry},
+  17\penalty0 (11):\penalty0 1481--1489, 2006.
+\newblock \doi{10.1016/j.jasms.2006.06.006}.
+
+\bibitem[Ganim et~al.(2008)Ganim, Chung, Smith, DeFlores, Jones, and
+  Tokmakoff]{ganim2008}
+Ziad Ganim, Hoi~Sung Chung, Adam~W. Smith, Lauren~P. DeFlores, Kevin~C. Jones,
+  and Andrei Tokmakoff.
+\newblock Amide {I} two-dimensional infrared spectroscopy of proteins.
+\newblock \emph{Accounts of Chemical Research}, 41\penalty0 (3):\penalty0
+  432--441, 2008.
+\newblock \doi{10.1021/ar700188n}.
+
+\bibitem[G{\=o} et~al.(1983)G{\=o}, Noguti, and Nishikawa]{go1983}
+Nobuhiro G{\=o}, Toshio Noguti, and Toshio Nishikawa.
+\newblock Dynamics of a small globular protein in terms of low-frequency
+  vibrational modes.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 80\penalty0
+  (12):\penalty0 3696--3700, 1983.
+\newblock \doi{10.1073/pnas.80.12.3696}.
+
+\bibitem[G{\"o}bel et~al.(1994)G{\"o}bel, Sander, Schneider, and
+  Valencia]{gobel1994}
+Ulrike G{\"o}bel, Chris Sander, Reinhard Schneider, and Alfonso Valencia.
+\newblock Correlated mutations and residue contacts in proteins.
+\newblock \emph{Proteins: Structure, Function, and Bioinformatics}, 18\penalty0
+  (4):\penalty0 309--317, 1994.
+\newblock \doi{10.1002/prot.340180402}.
+
+\bibitem[Hamm and Zanni(2011)]{hamm2011}
+Peter Hamm and Martin Zanni.
+\newblock \emph{Concepts and Methods of 2D Infrared Spectroscopy}.
+\newblock Cambridge University Press, 2011.
+\newblock \doi{10.1017/CBO9780511675935}.
+
+\bibitem[Hamm et~al.(1998)Hamm, Lim, and Hochstrasser]{hamm1998}
+Peter Hamm, Manho Lim, and Robin~M. Hochstrasser.
+\newblock Structure of the amide {I} band of peptides measured by femtosecond
+  nonlinear-infrared spectroscopy.
+\newblock \emph{The Journal of Physical Chemistry B}, 102\penalty0
+  (31):\penalty0 6123--6138, 1998.
+\newblock \doi{10.1021/jp9813286}.
+
+\bibitem[Hartl and Hayer-Hartl(2002)]{hartl2002}
+F.~Ulrich Hartl and Manajit Hayer-Hartl.
+\newblock Molecular chaperones in the cytosol: from nascent chain to folded
+  protein.
+\newblock \emph{Science}, 295\penalty0 (5561):\penalty0 1852--1858, 2002.
+\newblock \doi{10.1126/science.1068408}.
+
+\bibitem[Hochstrasser(2007)]{hochstrasser2007}
+Robin~M. Hochstrasser.
+\newblock Two-dimensional spectroscopy at infrared and optical frequencies.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 104\penalty0
+  (36):\penalty0 14190--14196, 2007.
+\newblock \doi{10.1073/pnas.0704079104}.
+
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
+  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'\i}dek, Potapenko,
+  et~al.]{jumper2021}
+John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
+  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
+  {\v{Z}}{\'\i}dek, Anna Potapenko, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596\penalty0 (7873):\penalty0 583--589, 2021.
+\newblock \doi{10.1038/s41586-021-03819-2}.
+
+\bibitem[Kim and Hochstrasser(2009)]{kim2009}
+Yung~Sam Kim and Robin~M. Hochstrasser.
+\newblock Applications of 2d ir spectroscopy to peptides, proteins, and
+  hydrogen-bond dynamics.
+\newblock \emph{The Journal of Physical Chemistry B}, 113\penalty0
+  (24):\penalty0 8231--8251, 2009.
+\newblock \doi{10.1021/jp8113978}.
+
+\bibitem[Krimm and Bandekar(1986)]{krimm1986}
+Samuel Krimm and Jagdeesh Bandekar.
+\newblock Vibrational spectroscopy and conformation of peptides, polypeptides,
+  and proteins.
+\newblock \emph{Advances in Protein Chemistry}, 38:\penalty0 181--364, 1986.
+\newblock \doi{10.1016/S0065-3233(08)60528-8}.
+
+\bibitem[Kuramoto(1975)]{kuramoto1975}
+Yoshiki Kuramoto.
+\newblock Self-entrainment of a population of coupled non-linear oscillators.
+\newblock \emph{Lecture Notes in Physics}, 39:\penalty0 420--422, 1975.
+\newblock \doi{10.1007/BFb0013365}.
+
+\bibitem[Kuramoto(1984)]{kuramoto1984}
+Yoshiki Kuramoto.
+\newblock \emph{Chemical Oscillations, Waves, and Turbulence}.
+\newblock Springer-Verlag, Berlin, 1984.
+\newblock \doi{10.1007/978-3-642-69689-3}.
+
+\bibitem[Kyte and Doolittle(1982)]{kyte1982}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157\penalty0 (1):\penalty0
+  105--132, 1982.
+\newblock \doi{10.1016/0022-2836(82)90515-0}.
+
+\bibitem[Leitner et~al.(2016)Leitner, Faini, Stengel, and
+  Aebersold]{leitner2016}
+Alexander Leitner, Matteo Faini, Florian Stengel, and Ruedi Aebersold.
+\newblock Crosslinking and mass spectrometry: An integrated technology to
+  understand the structure and function of molecular machines.
+\newblock \emph{Trends in Biochemical Sciences}, 41\penalty0 (1):\penalty0
+  20--32, 2016.
+\newblock \doi{10.1016/j.tibs.2015.10.008}.
+
+\bibitem[Levinthal(1968)]{levinthal1968}
+Cyrus Levinthal.
+\newblock Are there pathways for protein folding?
+\newblock \emph{Journal de Chimie Physique}, 65:\penalty0 44--45, 1968.
+\newblock Establishes the Levinthal paradox: random search of conformational
+  space would take longer than the age of the universe.
+
+\bibitem[Marks et~al.(2011)Marks, Colwell, Sheridan, Hopf, Pagnani, Zecchina,
+  and Sander]{marks2011}
+Debora~S. Marks, Lucy~J. Colwell, Robert Sheridan, Thomas~A. Hopf, Andrea
+  Pagnani, Riccardo Zecchina, and Chris Sander.
+\newblock Protein 3d structure computed from evolutionary sequence variation.
+\newblock \emph{PLoS ONE}, 6\penalty0 (12):\penalty0 e28766, 2011.
+\newblock \doi{10.1371/journal.pone.0028766}.
+
+\bibitem[Onuchic et~al.(1997)Onuchic, Luthey-Schulten, and
+  Wolynes]{onuchic1997}
+Jos{\'e}~Nelson Onuchic, Zaida Luthey-Schulten, and Peter~G. Wolynes.
+\newblock Theory of protein folding: The energy landscape perspective.
+\newblock \emph{Annual Review of Physical Chemistry}, 48:\penalty0 545--600,
+  1997.
+\newblock \doi{10.1146/annurev.physchem.48.1.545}.
+
+\bibitem[Oppenheim and Schafer(1999)]{oppenheim1999}
+Alan~V. Oppenheim and Ronald~W. Schafer.
+\newblock \emph{Discrete-Time Signal Processing}.
+\newblock Prentice Hall, 2nd edition, 1999.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_partition}
+Kundai~Farai Sachikonye.
+\newblock Domain-specific neural compilation for categorical image access:
+  Trainable morphism chain generation through knowledge distillation in life
+  science microscopy.
+\newblock Establishes the Partition Calculus with typed operations observe,
+  catalyze, fuse, access. Proves the tripartite equivalence and commutation
+  theorem., 2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025a}
+Kundai~Farai Sachikonye.
+\newblock Partition coordinate geometry of bounded systems.
+\newblock Establishes bounded phase space law, S-entropy coordinates, and
+  ternary addressing. Derives the four geometric primitives and trajectory
+  completion., 2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025c}
+Kundai~Farai Sachikonye.
+\newblock Categorical protein database: Hierarchical oscillatory synthesis
+  through ternary phase space addressing.
+\newblock Companion paper III. Protein database as empty dictionary with
+  S-entropy coordinates for all 20 amino acids., 2025{\natexlab{c}}.
+
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025f}
+Kundai~Farai Sachikonye.
+\newblock Purpose-based protein models: Compiled probes for the categorical
+  protein database.
+\newblock Companion paper. Neural compilation from natural language to
+  geometric operations on S-entropy space., 2025{\natexlab{d}}.
+
+\bibitem[Strogatz(2000)]{strogatz2000}
+Steven~H. Strogatz.
+\newblock From {K}uramoto to {C}rawford: exploring the onset of synchronization
+  in populations of coupled oscillators.
+\newblock \emph{Physica D: Nonlinear Phenomena}, 143\penalty0 (1--4):\penalty0
+  1--20, 2000.
+\newblock \doi{10.1016/S0167-2789(00)00094-4}.
+
+\bibitem[Tirion(1996)]{tirion1996}
+Monique~M. Tirion.
+\newblock Large amplitude elastic motions in proteins from a single-parameter,
+  atomic analysis.
+\newblock \emph{Physical Review Letters}, 77\penalty0 (9):\penalty0 1905--1908,
+  1996.
+\newblock \doi{10.1103/PhysRevLett.77.1905}.
+
+\bibitem[Torii and Tasumi(1992)]{torii1992}
+Hajime Torii and Mitsuo Tasumi.
+\newblock Model calculations on the amide-{I} infrared bands of globular
+  proteins.
+\newblock \emph{The Journal of Chemical Physics}, 96\penalty0 (5):\penalty0
+  3379--3387, 1992.
+\newblock \doi{10.1063/1.461940}.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008, 2017.
+
+\bibitem[Wolynes(2015)]{wolynes2015}
+Peter~G. Wolynes.
+\newblock Evolution, energy landscapes and the paradoxes of protein folding.
+\newblock \emph{Biochimie}, 119:\penalty0 218--230, 2015.
+\newblock \doi{10.1016/j.biochi.2014.12.007}.
+
+\bibitem[W{\"u}thrich(1986)]{wuthrich1986}
+Kurt W{\"u}thrich.
+\newblock \emph{{NMR} of Proteins and Nucleic Acids}.
+\newblock John Wiley \& Sons, New York, 1986.
+
+\end{thebibliography}

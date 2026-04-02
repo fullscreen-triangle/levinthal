@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: protein-folding-partition-calculus.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 35 entries,
+            2773 wiz_defined-function locations,
+            844 strings with 11983 characters,
+and the built_in function-call counts, 16860 in all, are:
+= -- 1562
+> -- 956
+< -- 24
++ -- 332
+- -- 294
+* -- 1443
+:= -- 2655
+add.period$ -- 133
+call.type$ -- 35
+change.case$ -- 199
+chr.to.int$ -- 32
+cite$ -- 70
+duplicate$ -- 699
+empty$ -- 1321
+format.name$ -- 343
+if$ -- 3460
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 35
+newline$ -- 211
+num.names$ -- 140
+pop$ -- 330
+preamble$ -- 1
+purify$ -- 167
+quote$ -- 0
+skip$ -- 533
+stack$ -- 0
+substring$ -- 792
+swap$ -- 48
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 365
+warning$ -- 0
+while$ -- 159
+width$ -- 0
+write$ -- 514

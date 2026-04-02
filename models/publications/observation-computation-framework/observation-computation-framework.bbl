@@ -1,0 +1,167 @@
+\begin{thebibliography}{23}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Akenine-M{\"o}ller et~al.(2018)Akenine-M{\"o}ller, Haines, and
+  Hoffman]{akenine2018}
+Tomas Akenine-M{\"o}ller, Eric Haines, and Naty Hoffman.
+\newblock \emph{Real-Time Rendering}.
+\newblock CRC Press, 4th edition, 2018.
+\newblock ISBN 978-1138627000.
+
+\bibitem[Braginsky and Khalili(1992)]{braginsky1992}
+Vladimir~B. Braginsky and Farid~Ya. Khalili.
+\newblock \emph{Quantum Measurement}.
+\newblock Cambridge University Press, 1992.
+\newblock \doi{10.1017/CBO9780511622748}.
+
+\bibitem[Harris(2005)]{harris2005}
+Mark Harris.
+\newblock Mapping computational concepts to {GPUs}.
+\newblock In \emph{ACM SIGGRAPH 2005 Courses}, pages 50--es. ACM, 2005.
+\newblock \doi{10.1145/1198555.1198768}.
+
+\bibitem[Hinton et~al.(2015)Hinton, Vinyals, and Dean]{hinton2015}
+Geoffrey Hinton, Oriol Vinyals, and Jeff Dean.
+\newblock Distilling the knowledge in a neural network.
+\newblock \emph{arXiv preprint arXiv:1503.02531}, 2015.
+
+\bibitem[Hu et~al.(2022)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen]{hu2022}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+\newblock URL \url{https://openreview.net/forum?id=nZeVKeeFYf9}.
+
+\bibitem[{Khronos Group}(2012)]{glsl_es3_spec}
+{Khronos Group}.
+\newblock The {OpenGL ES} shading language, version 3.00.
+\newblock
+  \url{https://www.khronos.org/registry/OpenGL/specs/es/3.0/GLSL_ES_Specification_3.00.pdf},
+  2012.
+\newblock Accessed 2025.
+
+\bibitem[{Khronos Group}(2017)]{webgl2_spec}
+{Khronos Group}.
+\newblock {WebGL} 2.0 specification.
+\newblock \url{https://www.khronos.org/registry/webgl/specs/latest/2.0/}, 2017.
+\newblock Accessed 2025.
+
+\bibitem[Koopman(1931)]{koopman1931}
+Bernard~O. Koopman.
+\newblock Hamiltonian systems and transformation in {H}ilbert space.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 17\penalty0
+  (5):\penalty0 315--318, 1931.
+\newblock \doi{10.1073/pnas.17.5.315}.
+
+\bibitem[Kuramoto(1975)]{kuramoto1975}
+Yoshiki Kuramoto.
+\newblock Self-entrainment of a population of coupled non-linear oscillators.
+\newblock \emph{Lecture Notes in Physics}, 39:\penalty0 420--422, 1975.
+\newblock \doi{10.1007/BFb0013365}.
+
+\bibitem[Kuramoto(1984)]{kuramoto1984}
+Yoshiki Kuramoto.
+\newblock \emph{Chemical Oscillations, Waves, and Turbulence}.
+\newblock Springer-Verlag, Berlin, 1984.
+\newblock \doi{10.1007/978-3-642-69689-3}.
+
+\bibitem[Michelson(1927)]{michelson1927}
+Albert~A. Michelson.
+\newblock \emph{Studies in Optics}.
+\newblock University of Chicago Press, 1927.
+
+\bibitem[Owens et~al.(2007)Owens, Luebke, Govindaraju, Harris, Kr{\"u}ger,
+  Lefohn, and Purcell]{owens2007}
+John~D. Owens, David Luebke, Naga Govindaraju, Mark Harris, Jens Kr{\"u}ger,
+  Aaron~E. Lefohn, and Timothy~J. Purcell.
+\newblock A survey of general-purpose computation on graphics hardware.
+\newblock \emph{Computer Graphics Forum}, 26\penalty0 (1):\penalty0 80--113,
+  2007.
+\newblock \doi{10.1111/j.1467-8659.2007.01012.x}.
+
+\bibitem[Poincar{\'e}(1890)]{poincare1890}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+\newblock Establishes recurrence theorem for bounded Hamiltonian systems.
+
+\bibitem[Robbins and Monro(1951)]{robbins1951}
+Herbert Robbins and Sutton Monro.
+\newblock A stochastic approximation method.
+\newblock \emph{The Annals of Mathematical Statistics}, 22\penalty0
+  (3):\penalty0 400--407, 1951.
+\newblock \doi{10.1214/aoms/1177729586}.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_partition}
+Kundai~Farai Sachikonye.
+\newblock Domain-specific neural compilation for categorical image access:
+  Trainable morphism chain generation through knowledge distillation in life
+  science microscopy.
+\newblock Establishes the Partition Calculus with typed operations observe,
+  catalyze, fuse, access. Proves the tripartite equivalence and commutation
+  theorem., 2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025a}
+Kundai~Farai Sachikonye.
+\newblock Partition coordinate geometry of bounded systems.
+\newblock Establishes bounded phase space law, S-entropy coordinates, and
+  ternary addressing. Derives the four geometric primitives and trajectory
+  completion., 2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025b}
+Kundai~Farai Sachikonye.
+\newblock Categorical compound database: Oscillation-counted molecular
+  identification through ternary phase space addressing.
+\newblock Companion paper. Small-molecule categorical database with $O(k)$
+  identification via S-entropy coordinates., 2025{\natexlab{c}}.
+
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025c}
+Kundai~Farai Sachikonye.
+\newblock Categorical protein database: Hierarchical oscillatory synthesis
+  through ternary phase space addressing.
+\newblock Companion paper. Protein database as empty dictionary with S-entropy
+  coordinates for all 20 amino acids., 2025{\natexlab{d}}.
+
+\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025d}
+Kundai~Farai Sachikonye.
+\newblock Spectroscopic derivation of the chemical elements: Atomic structure
+  and virtual instrumentation from bounded phase space geometry.
+\newblock Companion paper. Derives atomic spectroscopy from partition
+  coordinates., 2025{\natexlab{e}}.
+
+\bibitem[Sachikonye(2025{\natexlab{f}})]{sachikonye2025e}
+Kundai~Farai Sachikonye.
+\newblock Disease state equations: Categorical differential equations for
+  pathological trajectories.
+\newblock Companion paper. Disease as address deviation in S-entropy space.,
+  2025{\natexlab{f}}.
+
+\bibitem[Sachikonye(2025{\natexlab{g}})]{sachikonye2025f}
+Kundai~Farai Sachikonye.
+\newblock Purpose-based protein models: Compiled probes for the categorical
+  protein database.
+\newblock Companion paper. Neural compilation from natural language to
+  geometric operations on S-entropy space., 2025{\natexlab{g}}.
+
+\bibitem[Shannon(1948)]{shannon1948}
+Claude~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27\penalty0 (3):\penalty0
+  379--423, 1948.
+\newblock \doi{10.1002/j.1538-7305.1948.tb01338.x}.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008, 2017.
+
+\end{thebibliography}
