@@ -4,31 +4,21 @@ import Layout from "./Layout";
 
 const Footer = () => {
   return (
-    <footer
-      className="w-full border-t-2 border-solid border-dark
-    font-medium text-lg dark:text-light dark:border-light sm:text-base
-    "
-    >
-      <Layout className="py-8 flex items-center justify-between lg:flex-col lg:py-6">
-        <span>{new Date().getFullYear()} &copy; All Rights Reserved.</span>
-
-        <div className="flex items-center lg:py-2">
-          Built with <span className="text-primary text-2xl px-1 dark:text-primaryDark">&#9825;	</span> by&nbsp;
-          <Link
-            href="https://devdreaming.com"
-            target="_blank"
-            className="underline underline-offset-2"
-          >
-            CodeBucks
-          </Link>
-        </div>
-
+    <footer className="w-full border-t border-solid border-dark/10
+      font-medium text-sm dark:text-light/50 dark:border-light/10">
+      <Layout className="!py-6 flex items-center justify-between lg:flex-col lg:!py-4">
+        <span className="text-dark/40 dark:text-light/30">
+          {new Date().getFullYear()} &copy; shakespear
+        </span>
+        <span className="text-dark/30 dark:text-light/20 text-xs tracking-wider lg:mt-2">
+          Observation = Computation = Processing
+        </span>
         <Link
-          href="https://devdreaming.com/about"
+          href="https://github.com/fullscreen-triangle/shakespear"
           target="_blank"
-          className="underline underline-offset-2"
+          className="text-dark/40 dark:text-light/30 hover:text-primaryDark transition-colors"
         >
-          Say Hello
+          GitHub
         </Link>
       </Layout>
     </footer>
