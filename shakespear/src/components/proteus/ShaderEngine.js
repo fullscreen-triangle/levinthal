@@ -92,11 +92,15 @@ export class ShaderEngine {
     const pass3Src = await this._fetchShader('/shaders/pass3_coupling.frag');
     const pass6Src = await this._fetchShader('/shaders/pass6_spectrum.frag');
     const pass7Src = await this._fetchShader('/shaders/pass7_coherence.frag');
+    const displaySrc = await this._fetchShader('/shaders/display.frag');
+    const cavitySrc = await this._fetchShader('/shaders/pass_cavity.frag');
 
     this.programs.pass1 = this._createProgram(vertSrc, pass1Src);
     this.programs.pass3 = this._createProgram(vertSrc, pass3Src);
     this.programs.pass6 = this._createProgram(vertSrc, pass6Src);
     this.programs.pass7 = this._createProgram(vertSrc, pass7Src);
+    this.programs.display = this._createProgram(vertSrc, displaySrc);
+    this.programs.cavity = this._createProgram(vertSrc, cavitySrc);
   }
 
   async _fetchShader(path) {
@@ -210,6 +214,7 @@ export class ShaderEngine {
     this.framebuffers.coupling = this._createFBO(this.N, this.N);
     this.framebuffers.spectrum = this._createFBO(this.N, this.N);
     this.framebuffers.coherence = this._createFBO(this.N, this.N);
+    this.framebuffers.cavity = this._createFBO(this.N, this.N);
 
     this.time = 0;
   }
@@ -248,11 +253,20 @@ export class ShaderEngine {
       u_coherence_threshold: 0.3,
     }, this.framebuffers.coherence);
 
+    // Pass Cavity: Harmonic network + cavity detection
+    this._renderPass(this.programs.cavity, {
+      u_sentropy: this.framebuffers.sentropy.tex,
+      u_coupling: this.framebuffers.coupling.tex,
+      u_N: this.N,
+      u_harmonic_tol: 0.05,
+    }, this.framebuffers.cavity);
+
     return {
       sentropy: this.framebuffers.sentropy.tex,
       coupling: this.framebuffers.coupling.tex,
       spectrum: this.framebuffers.spectrum.tex,
       coherence: this.framebuffers.coherence.tex,
+      cavity: this.framebuffers.cavity.tex,
     };
   }
 
@@ -303,19 +317,17 @@ export class ShaderEngine {
     return result;
   }
 
-  /** Render a specific observation texture to the canvas for display. */
-  displayTexture(texture, mode) {
-    // For now, render directly. In production, use a display shader
-    // that maps RGBA float data to visible colors.
-    const gl = this.gl;
-    // Simple blit: bind texture and draw quad
-    // (The texture values are already 0-1 range for coupling/spectrum)
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+  /** Render observation texture to canvas using GPU display shader. No CPU readback. */
+  renderToCanvas(viewName) {
+    const modeMap = { spectrum: 0, coupling: 1, contacts: 2, sentropy: 3, cavity: 4 };
+    const fbKey = viewName === 'contacts' ? 'coherence' : viewName;
+    const fb = this.framebuffers[fbKey];
+    if (!fb) return;
 
-    // Use the coupling program as a passthrough (it reads a texture)
-    // For proper display, we'd have a dedicated display shader
-    // For now, the React component reads back and draws to a 2D canvas
+    this._renderPass(this.programs.display, {
+      u_observation: fb.tex,
+      u_mode: modeMap[viewName] || 0,
+    }, null); // null = render to screen
   }
 
   destroy() {
