@@ -75,7 +75,8 @@ const Navbar = () => {
 
         {/* Nav links */}
         <nav className="flex items-center gap-6">
-          <NavLink href="/" title="Instrument" />
+          <NavLink href="/" title="Home" />
+          <NavLink href="/instrument" title="Instrument" />
           <NavLink href="/about" title="Theory" />
           <NavLink href="/projects" title="Models" />
           <NavLink href="/articles" title="Papers" />
@@ -107,7 +108,8 @@ const Navbar = () => {
           initial={{ scale: 0, x: "-50%", y: "-50%", opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}>
           <nav className="flex flex-col items-center">
-            <MobileNavLink toggle={() => setIsOpen(false)} href="/" title="Instrument" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/" title="Home" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/instrument" title="Instrument" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/about" title="Theory" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/projects" title="Models" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/articles" title="Papers" />
