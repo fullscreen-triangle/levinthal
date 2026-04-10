@@ -15,8 +15,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { parsePDB, computeBounds } from './PDBParser';
 import { ShaderEngine, AA_SENTROPY, AA_INDEX } from './ShaderEngine';
-import { extractFingerprint } from './CavityDatabase';
+import { extractFingerprint, CavityDB, SARPredictor } from './CavityDatabase';
 import SARPanel from './SARPanel';
+import QueryInterface from './QueryInterface';
 
 const EXAMPLE_SEQUENCES = {
   'Crambin (46 aa)': 'TTCCPSIVARSNFNVCRLPGTPEALCATYTGCIIIPGATCPGDYAN',
@@ -141,6 +142,8 @@ export default function ProteusViewer() {
   const [ready, setReady] = useState(false);
   const [showGlb, setShowGlb] = useState(true);
   const [fingerprint, setFingerprint] = useState(null);
+  const dbRef = useRef(null);
+  const sarRef = useRef(null);
 
   // ---- Initialize Three.js scene + shader engine ----
   useEffect(() => {
@@ -244,6 +247,44 @@ export default function ProteusViewer() {
       if (mount.contains(renderer.domElement)) mount.removeChild(renderer.domElement);
       renderer.dispose();
     };
+  }, []);
+
+  // ---- Initialize cavity DB + SAR predictor ----
+  useEffect(() => {
+    const db = new CavityDB();
+    const examples = [
+      { id: 'crambin', name: 'Crambin', type: 'protein',
+        fp: { nCavities: 3, meanQ: 520, meanOmega: 6.2, meanArea: 35, coherence: 0.72,
+              nEdges: 8, meanSk: 0.54, meanSt: 0.37, meanSe: 0.19, nResidues: 46, cavities: [] }},
+      { id: 'lysozyme', name: 'Lysozyme', type: 'protein',
+        fp: { nCavities: 7, meanQ: 680, meanOmega: 5.8, meanArea: 48, coherence: 0.81,
+              nEdges: 22, meanSk: 0.45, meanSt: 0.42, meanSe: 0.33, nResidues: 129, cavities: [] }},
+      { id: 'myoglobin', name: 'Myoglobin', type: 'protein',
+        fp: { nCavities: 5, meanQ: 720, meanOmega: 5.5, meanArea: 52, coherence: 0.85,
+              nEdges: 18, meanSk: 0.46, meanSt: 0.47, meanSe: 0.38, nResidues: 153, cavities: [] }},
+      { id: 'sod1', name: 'SOD1', type: 'protein',
+        fp: { nCavities: 6, meanQ: 590, meanOmega: 5.9, meanArea: 41, coherence: 0.76,
+              nEdges: 15, meanSk: 0.46, meanSt: 0.39, meanSe: 0.33, nResidues: 153, cavities: [] }},
+      { id: 'trypsin', name: 'Trypsin', type: 'protein',
+        fp: { nCavities: 8, meanQ: 750, meanOmega: 5.6, meanArea: 55, coherence: 0.83,
+              nEdges: 28, meanSk: 0.44, meanSt: 0.45, meanSe: 0.35, nResidues: 223, cavities: [] }},
+      { id: 'insulin', name: 'Insulin', type: 'protein',
+        fp: { nCavities: 2, meanQ: 450, meanOmega: 6.5, meanArea: 28, coherence: 0.69,
+              nEdges: 5, meanSk: 0.52, meanSt: 0.47, meanSe: 0.26, nResidues: 51, cavities: [] }},
+      { id: 'hemoglobin', name: 'Hemoglobin', type: 'protein',
+        fp: { nCavities: 10, meanQ: 780, meanOmega: 5.5, meanArea: 55, coherence: 0.86,
+              nEdges: 38, meanSk: 0.44, meanSt: 0.46, meanSe: 0.36, nResidues: 574, cavities: [] }},
+    ];
+    for (const ex of examples) db.add(ex.id, ex.name, ex.type, ex.fp);
+    dbRef.current = db;
+
+    const sar = new SARPredictor();
+    examples.forEach(ex => {
+      const mockActivity = -Math.log10((20 - ex.fp.nCavities) * 0.1 + (1 - ex.fp.coherence) * 5 + 0.5);
+      sar.addTrainingPoint(ex.fp, mockActivity);
+    });
+    sar.fit();
+    sarRef.current = sar;
   }, []);
 
   // ---- GLB visibility toggle ----
@@ -435,14 +476,25 @@ export default function ProteusViewer() {
                    resize-none focus:outline-none focus:border-primaryDark"
         placeholder="Enter protein sequence..." />
 
-      {/* View Tabs */}
+      {/* Query Interface (model-driven) */}
+      <QueryInterface
+        engine={engineRef.current}
+        sequence={sequence}
+        setSequence={setSequence}
+        setView={setView}
+        db={dbRef.current}
+        sar={sarRef.current}
+        fingerprint={fingerprint}
+      />
+
+      {/* Manual view tabs (secondary) */}
       <div className="mt-3 mb-4 flex gap-1 flex-wrap">
         {VIEWS.map(([key, label]) => (
           <button key={key} onClick={() => setView(key)}
-            className={`px-3 py-1.5 text-[11px] uppercase tracking-wider rounded transition-colors
+            className={`px-2 py-1 text-[10px] uppercase tracking-wider rounded transition-colors
               ${view === key
-                ? 'bg-primaryDark text-dark font-bold'
-                : 'bg-dark/5 dark:bg-dark/50 text-dark/50 dark:text-light/50 hover:text-dark dark:hover:text-light/80'}`}>
+                ? 'bg-primaryDark/20 text-primaryDark border border-primaryDark/30'
+                : 'bg-dark/5 dark:bg-dark/50 text-dark/30 dark:text-light/30 border border-transparent hover:text-dark/50 dark:hover:text-light/50'}`}>
             {label}
           </button>
         ))}
