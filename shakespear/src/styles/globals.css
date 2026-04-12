@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '../components/ScrollArticle/scrollytelling.css';
+
 @layer base {
   html {
     @apply antialiased;

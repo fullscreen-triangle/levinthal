@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import Head from 'next/head'
-import ScrollArticle from '../ScrollArticle/ScrollArticle'
-import DynamicsChart from './DynamicsChart'
+import ScrollArticle from '@/components/ScrollArticle/ScrollArticle'
+import DynamicsChart from '@/components/dynamics/DynamicsChart'
 
 const sections = [
   {

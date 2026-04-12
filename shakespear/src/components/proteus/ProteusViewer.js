@@ -186,26 +186,7 @@ export default function ProteusViewer() {
     // Load default protein (first in registry)
     // Deferred to after engine init via loadProtein()
 
-    // Shader engine -- uses the visible observation canvas
-    const obsCanvas = obsCanvasRef.current;
-    if (obsCanvas) {
-      obsCanvas.width = 280;
-      obsCanvas.height = 280;
-
-      (async () => {
-        try {
-          const engine = new ShaderEngine(obsCanvas);
-          await engine.init();
-          engineRef.current = engine;
-          setReady(true);
-        } catch (e) {
-          console.warn('ShaderEngine:', e.message);
-          setReady(true);
-        }
-      })();
-    } else {
-      setReady(true);
-    }
+    // Shader engine initialized in separate effect (needs obsCanvasRef)
 
     // Render loop
     const animate = () => {
@@ -221,6 +202,36 @@ export default function ProteusViewer() {
       renderer.dispose();
     };
   }, []);
+
+  // ---- Initialize shader engine after canvas is mounted ----
+  const [canvasMounted, setCanvasMounted] = useState(false);
+  const obsCanvasCallback = useCallback((node) => {
+    if (node !== null) {
+      obsCanvasRef.current = node;
+      setCanvasMounted(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!canvasMounted || engineRef.current) return;
+    const obsCanvas = obsCanvasRef.current;
+    if (!obsCanvas) return;
+
+    obsCanvas.width = 280;
+    obsCanvas.height = 280;
+
+    (async () => {
+      try {
+        const engine = new ShaderEngine(obsCanvas);
+        await engine.init();
+        engineRef.current = engine;
+        setReady(true);
+      } catch (e) {
+        console.warn('ShaderEngine:', e.message);
+        setReady(true);
+      }
+    })();
+  }, [canvasMounted]);
 
   // ---- Initialize cavity DB + SAR predictor ----
   useEffect(() => {
@@ -536,7 +547,7 @@ export default function ProteusViewer() {
           {/* 2D Observation (GPU-rendered via display shader) */}
           <div className="relative rounded-lg overflow-hidden border border-dark/10 dark:border-dark/20"
                style={{ width: 280, height: 280 }}>
-            <canvas ref={obsCanvasRef}
+            <canvas ref={obsCanvasCallback}
               width={280} height={280}
               style={{ width: 280, height: 280, imageRendering: 'pixelated' }} />
             <div className="absolute top-2 left-2 bg-black/50 px-2 py-1 rounded text-[10px] text-white/60 font-mono">
