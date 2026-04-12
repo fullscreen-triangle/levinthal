@@ -2,8 +2,8 @@ import { useState, useCallback } from 'react'
 import Head from 'next/head'
 import Layout from '@/components/Layout'
 import TransitionEffect from '@/components/TransitionEffect'
-import ScrollArticle from '@/components/ScrollArticle'
-import FoldingChart from '@/components/FoldingChart'
+import ScrollArticle from '@/components/ScrollArticle/ScrollArticle'
+import FoldingChart from '@/components/folding/FoldingChart'
 
 const sections = [
   {

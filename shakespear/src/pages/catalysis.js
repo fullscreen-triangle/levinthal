@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import Head from 'next/head'
-import ScrollArticle from '@/components/ScrollArticle'
-import CatalysisChart from '@/components/CatalysisChart'
+import ScrollArticle from '@/components/ScrollArticle/ScrollArticle'
+import CatalysisChart from '@/components/catalysis/CatalysisChart'
 
 const sections = [
   {
