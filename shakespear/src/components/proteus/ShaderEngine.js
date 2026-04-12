@@ -54,12 +54,20 @@ export class ShaderEngine {
       premultipliedAlpha: false,
       preserveDrawingBuffer: true,
     });
-    if (!this.gl) throw new Error('WebGL2 not supported');
+    if (!this.gl) throw new Error('WebGL2 not supported on this browser/device');
 
     const gl = this.gl;
-    // Check float texture support
-    const ext = gl.getExtension('EXT_color_buffer_float');
-    if (!ext) console.warn('EXT_color_buffer_float not available, falling back');
+    // Check float texture support -- critical for the pipeline
+    this.hasFloat = !!gl.getExtension('EXT_color_buffer_float');
+    if (!this.hasFloat) {
+      // Try half-float fallback
+      this.hasFloat = !!gl.getExtension('EXT_color_buffer_half_float');
+    }
+    // Also need float linear filtering
+    gl.getExtension('OES_texture_float_linear');
+
+    this.floatInternalFormat = this.hasFloat ? gl.RGBA32F : gl.RGBA16F;
+    this.floatType = this.hasFloat ? gl.FLOAT : gl.HALF_FLOAT;
 
     this.programs = {};
     this.textures = {};
@@ -68,6 +76,8 @@ export class ShaderEngine {
     this.sequence = '';
     this.N = 0;
     this.time = 0;
+    this.error = null;
+    this.initialized = false;
 
     this._initQuad();
   }
@@ -101,6 +111,15 @@ export class ShaderEngine {
     this.programs.pass7 = this._createProgram(vertSrc, pass7Src);
     this.programs.display = this._createProgram(vertSrc, displaySrc);
     this.programs.cavity = this._createProgram(vertSrc, cavitySrc);
+    this.initialized = true;
+    this.status = {
+      hasFloat: this.hasFloat,
+      programs: Object.keys(this.programs).length,
+      renderer: this.gl.getParameter(this.gl.RENDERER),
+      vendor: this.gl.getParameter(this.gl.VENDOR),
+      version: this.gl.getParameter(this.gl.VERSION),
+    };
+    console.log('ShaderEngine initialized:', this.status);
   }
 
   async _fetchShader(path) {
@@ -144,21 +163,53 @@ export class ShaderEngine {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA32F, width, height, 0,
-                  gl.RGBA, gl.FLOAT, data);
+    if (this.hasFloat) {
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA32F, width, height, 0,
+                    gl.RGBA, gl.FLOAT, data);
+    } else {
+      // Fallback: use RGBA8 (loses precision but works everywhere)
+      const u8 = data ? new Uint8Array(data.length) : null;
+      if (data) for (let i = 0; i < data.length; i++) u8[i] = Math.round(Math.max(0, Math.min(1, data[i])) * 255);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0,
+                    gl.RGBA, gl.UNSIGNED_BYTE, u8);
+    }
     return tex;
   }
 
   _createFBO(width, height) {
     const gl = this.gl;
-    const tex = this._createTexture(width, height, null);
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    if (this.hasFloat) {
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA32F, width, height, 0,
+                    gl.RGBA, gl.FLOAT, null);
+    } else {
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0,
+                    gl.RGBA, gl.UNSIGNED_BYTE, null);
+    }
+
     const fbo = gl.createFramebuffer();
     gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
     gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
                             gl.TEXTURE_2D, tex, 0);
+
+    // Check framebuffer status
+    const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
+    if (status !== gl.FRAMEBUFFER_COMPLETE) {
+      console.error(`FBO incomplete: ${status} (${width}x${height})`);
+      this.error = `Framebuffer incomplete: ${status}`;
+    }
+
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     return { fbo, tex, width, height };
   }
+
+  // Names of uniforms that are integers in GLSL (all others are float)
+  static INT_UNIFORMS = new Set(['u_N', 'u_mode']);
 
   _renderPass(program, uniforms, output) {
     const gl = this.gl;
@@ -174,8 +225,11 @@ export class ShaderEngine {
         gl.uniform1i(loc, texUnit);
         texUnit++;
       } else if (typeof val === 'number') {
-        if (Number.isInteger(val)) gl.uniform1i(loc, val);
-        else gl.uniform1f(loc, val);
+        if (ShaderEngine.INT_UNIFORMS.has(name)) {
+          gl.uniform1i(loc, val);
+        } else {
+          gl.uniform1f(loc, val);
+        }
       }
     }
 
@@ -223,6 +277,8 @@ export class ShaderEngine {
   observe(dt) {
     if (this.N === 0) return null;
     this.time += dt || 0.016;
+    const debugOnce = !this._debugDone;
+    if (debugOnce) this._debugDone = true;
 
     // Pass 1: Sequence → S-Entropy
     this._renderPass(this.programs.pass1, {
@@ -230,12 +286,23 @@ export class ShaderEngine {
       u_N: this.N,
     }, this.framebuffers.sentropy);
 
+    if (debugOnce) {
+      const s = this._readFBO(this.framebuffers.sentropy.fbo, this.N, 1);
+      console.log('Pass1 sentropy [0]:', s[0], s[1], s[2], '(expect ~0.42, ~0.33, ~0.30 for T)');
+    }
+
     // Pass 3: S-Entropy → Coupling Matrix
     this._renderPass(this.programs.pass3, {
       u_sentropy: this.framebuffers.sentropy.tex,
       u_N: this.N,
       u_K_scale: 5.0,
     }, this.framebuffers.coupling);
+
+    if (debugOnce) {
+      const c = this._readFBO(this.framebuffers.coupling.fbo, this.N, this.N);
+      const mid = Math.floor(this.N / 2) * this.N * 4 + Math.floor(this.N / 2 + 1) * 4;
+      console.log('Pass3 coupling [N/2, N/2+1]:', c[mid], c[mid+1], c[mid+2]);
+    }
 
     // Pass 6: Coupling → Spectrum (animated)
     this._renderPass(this.programs.pass6, {
@@ -245,6 +312,12 @@ export class ShaderEngine {
       u_time: this.time,
     }, this.framebuffers.spectrum);
 
+    if (debugOnce) {
+      const sp = this._readFBO(this.framebuffers.spectrum.fbo, this.N, this.N);
+      const mid = Math.floor(this.N / 2) * this.N * 4 + Math.floor(this.N / 2 + 1) * 4;
+      console.log('Pass6 spectrum [N/2, N/2+1]:', sp[mid], sp[mid+1], sp[mid+2]);
+    }
+
     // Pass 7: Spectrum → Coherence / Contacts
     this._renderPass(this.programs.pass7, {
       u_spectrum: this.framebuffers.spectrum.tex,
@@ -252,6 +325,13 @@ export class ShaderEngine {
       u_N: this.N,
       u_coherence_threshold: 0.3,
     }, this.framebuffers.coherence);
+
+    if (debugOnce) {
+      const h = this._readFBO(this.framebuffers.coherence.fbo, this.N, this.N);
+      const mid = Math.floor(this.N / 2) * this.N * 4 + Math.floor(this.N / 2 + 1) * 4;
+      console.log('Pass7 coherence [N/2, N/2+1]:', h[mid], h[mid+1], h[mid+2]);
+      console.log('GL error after pipeline:', this.gl.getError());
+    }
 
     // Pass Cavity: Harmonic network + cavity detection
     this._renderPass(this.programs.cavity, {
@@ -270,15 +350,29 @@ export class ShaderEngine {
     };
   }
 
+  /** Read pixels from an FBO, handling both float and uint8 formats. */
+  _readFBO(fbo, width, height) {
+    const gl = this.gl;
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+    let pixels;
+    if (this.hasFloat) {
+      pixels = new Float32Array(width * height * 4);
+      gl.readPixels(0, 0, width, height, gl.RGBA, gl.FLOAT, pixels);
+    } else {
+      const u8 = new Uint8Array(width * height * 4);
+      gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, u8);
+      pixels = new Float32Array(u8.length);
+      for (let i = 0; i < u8.length; i++) pixels[i] = u8[i] / 255;
+    }
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    return pixels;
+  }
+
   /** Read back coherence data from GPU for scalar metrics. */
   readCoherence() {
     if (this.N === 0) return { eta: 0, contacts: 0 };
-    const gl = this.gl;
     const N = this.N;
-    const pixels = new Float32Array(N * N * 4);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffers.coherence.fbo);
-    gl.readPixels(0, 0, N, N, gl.RGBA, gl.FLOAT, pixels);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    const pixels = this._readFBO(this.framebuffers.coherence.fbo, N, N);
 
     // Compute order parameter: mean of spectral magnitudes
     let sumReal = 0, sumImag = 0, count = 0, contacts = 0;
@@ -300,11 +394,7 @@ export class ShaderEngine {
   /** Read back S-entropy for CPU-side analysis. */
   readSEntropy() {
     if (this.N === 0) return [];
-    const gl = this.gl;
-    const pixels = new Float32Array(this.N * 1 * 4);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffers.sentropy.fbo);
-    gl.readPixels(0, 0, this.N, 1, gl.RGBA, gl.FLOAT, pixels);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    const pixels = this._readFBO(this.framebuffers.sentropy.fbo, this.N, 1);
     const result = [];
     for (let i = 0; i < this.N; i++) {
       result.push({

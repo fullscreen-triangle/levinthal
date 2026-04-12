@@ -1,0 +1,226 @@
+{
+  "alpha_helix_vs_beta_sheet_parallel": {
+    "structure_1": "alpha_helix",
+    "structure_2": "beta_sheet_parallel",
+    "euclidean_distance": 0.016378,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "alpha_helix_vs_beta_sheet_antiparallel": {
+    "structure_1": "alpha_helix",
+    "structure_2": "beta_sheet_antiparallel",
+    "euclidean_distance": 0.01656,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "alpha_helix_vs_310_helix": {
+    "structure_1": "alpha_helix",
+    "structure_2": "310_helix",
+    "euclidean_distance": 0.001649,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "alpha_helix_vs_random_coil": {
+    "structure_1": "alpha_helix",
+    "structure_2": "random_coil",
+    "euclidean_distance": 0.011715,
+    "shared_prefix_depth": 12,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "alpha_helix_vs_beta_turn_type_I": {
+    "structure_1": "alpha_helix",
+    "structure_2": "beta_turn_type_I",
+    "euclidean_distance": 0.007446,
+    "shared_prefix_depth": 12,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "alpha_helix_vs_beta_turn_type_II": {
+    "structure_1": "alpha_helix",
+    "structure_2": "beta_turn_type_II",
+    "euclidean_distance": 0.0082,
+    "shared_prefix_depth": 12,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "alpha_helix_vs_polyproline_II": {
+    "structure_1": "alpha_helix",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.016812,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_parallel_vs_beta_sheet_antiparallel": {
+    "structure_1": "beta_sheet_parallel",
+    "structure_2": "beta_sheet_antiparallel",
+    "euclidean_distance": 0.001265,
+    "shared_prefix_depth": 13,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_parallel_vs_310_helix": {
+    "structure_1": "beta_sheet_parallel",
+    "structure_2": "310_helix",
+    "euclidean_distance": 0.018027,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_parallel_vs_random_coil": {
+    "structure_1": "beta_sheet_parallel",
+    "structure_2": "random_coil",
+    "euclidean_distance": 0.004669,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_parallel_vs_beta_turn_type_I": {
+    "structure_1": "beta_sheet_parallel",
+    "structure_2": "beta_turn_type_I",
+    "euclidean_distance": 0.008944,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_parallel_vs_beta_turn_type_II": {
+    "structure_1": "beta_sheet_parallel",
+    "structure_2": "beta_turn_type_II",
+    "euclidean_distance": 0.008179,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_parallel_vs_polyproline_II": {
+    "structure_1": "beta_sheet_parallel",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.000447,
+    "shared_prefix_depth": 13,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_antiparallel_vs_310_helix": {
+    "structure_1": "beta_sheet_antiparallel",
+    "structure_2": "310_helix",
+    "euclidean_distance": 0.018201,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_antiparallel_vs_random_coil": {
+    "structure_1": "beta_sheet_antiparallel",
+    "structure_2": "random_coil",
+    "euclidean_distance": 0.005016,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_antiparallel_vs_beta_turn_type_I": {
+    "structure_1": "beta_sheet_antiparallel",
+    "structure_2": "beta_turn_type_I",
+    "euclidean_distance": 0.009209,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_antiparallel_vs_beta_turn_type_II": {
+    "structure_1": "beta_sheet_antiparallel",
+    "structure_2": "beta_turn_type_II",
+    "euclidean_distance": 0.008415,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_sheet_antiparallel_vs_polyproline_II": {
+    "structure_1": "beta_sheet_antiparallel",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.0014,
+    "shared_prefix_depth": 15,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "310_helix_vs_random_coil": {
+    "structure_1": "310_helix",
+    "structure_2": "random_coil",
+    "euclidean_distance": 0.013365,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "310_helix_vs_beta_turn_type_I": {
+    "structure_1": "310_helix",
+    "structure_2": "beta_turn_type_I",
+    "euclidean_distance": 0.009096,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "310_helix_vs_beta_turn_type_II": {
+    "structure_1": "310_helix",
+    "structure_2": "beta_turn_type_II",
+    "euclidean_distance": 0.009849,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "310_helix_vs_polyproline_II": {
+    "structure_1": "310_helix",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.018461,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "random_coil_vs_beta_turn_type_I": {
+    "structure_1": "random_coil",
+    "structure_2": "beta_turn_type_I",
+    "euclidean_distance": 0.004276,
+    "shared_prefix_depth": 13,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "random_coil_vs_beta_turn_type_II": {
+    "structure_1": "random_coil",
+    "structure_2": "beta_turn_type_II",
+    "euclidean_distance": 0.003517,
+    "shared_prefix_depth": 16,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "random_coil_vs_polyproline_II": {
+    "structure_1": "random_coil",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.005099,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_turn_type_I_vs_beta_turn_type_II": {
+    "structure_1": "beta_turn_type_I",
+    "structure_2": "beta_turn_type_II",
+    "euclidean_distance": 0.000806,
+    "shared_prefix_depth": 13,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_turn_type_I_vs_polyproline_II": {
+    "structure_1": "beta_turn_type_I",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.009374,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  },
+  "beta_turn_type_II_vs_polyproline_II": {
+    "structure_1": "beta_turn_type_II",
+    "structure_2": "polyproline_II",
+    "euclidean_distance": 0.008612,
+    "shared_prefix_depth": 10,
+    "distinct_at_depth_3": false,
+    "distinct_at_depth_6": false
+  }
+}

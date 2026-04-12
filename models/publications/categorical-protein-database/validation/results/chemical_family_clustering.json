@@ -1,0 +1,67 @@
+{
+  "aromatic": {
+    "members": [
+      "Phe",
+      "Trp",
+      "Tyr"
+    ],
+    "n_members": 3,
+    "mean_intra_spd": 1.333,
+    "mean_inter_spd": 0.235,
+    "cohesion_ratio_R": 5.667,
+    "cohesive": true
+  },
+  "negative": {
+    "members": [
+      "Asp",
+      "Glu"
+    ],
+    "n_members": 2,
+    "mean_intra_spd": 1.0,
+    "mean_inter_spd": 0.528,
+    "cohesion_ratio_R": 1.895,
+    "cohesive": true
+  },
+  "nonpolar": {
+    "members": [
+      "Ile",
+      "Val",
+      "Leu",
+      "Met",
+      "Ala",
+      "Gly",
+      "Pro"
+    ],
+    "n_members": 7,
+    "mean_intra_spd": 1.286,
+    "mean_inter_spd": 0.319,
+    "cohesion_ratio_R": 4.034,
+    "cohesive": true
+  },
+  "polar": {
+    "members": [
+      "Cys",
+      "Thr",
+      "Ser",
+      "Asn",
+      "Gln"
+    ],
+    "n_members": 5,
+    "mean_intra_spd": 0.2,
+    "mean_inter_spd": 0.453,
+    "cohesion_ratio_R": 0.441,
+    "cohesive": false
+  },
+  "positive": {
+    "members": [
+      "His",
+      "Lys",
+      "Arg"
+    ],
+    "n_members": 3,
+    "mean_intra_spd": 1.333,
+    "mean_inter_spd": 0.471,
+    "cohesion_ratio_R": 2.833,
+    "cohesive": true
+  }
+}

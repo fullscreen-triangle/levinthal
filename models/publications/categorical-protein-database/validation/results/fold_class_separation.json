@@ -1,0 +1,60 @@
+{
+  "all-alpha": {
+    "members": [
+      "Insulin B-chain",
+      "Myoglobin"
+    ],
+    "n_members": 2,
+    "centroid_Sk": 0.4932,
+    "centroid_St": 0.4692,
+    "centroid_Se": 0.3174
+  },
+  "all-beta": {
+    "members": [
+      "SOD1",
+      "Carbonic Anhydrase II"
+    ],
+    "n_members": 2,
+    "centroid_Sk": 0.4424,
+    "centroid_St": 0.4163,
+    "centroid_Se": 0.3468
+  },
+  "alpha+beta": {
+    "members": [
+      "Crambin",
+      "Lysozyme"
+    ],
+    "n_members": 2,
+    "centroid_Sk": 0.4935,
+    "centroid_St": 0.3935,
+    "centroid_Se": 0.2603
+  },
+  "alpha/beta": {
+    "members": [
+      "Triose Phosphate Isomerase"
+    ],
+    "n_members": 1,
+    "centroid_Sk": 0.4525,
+    "centroid_St": 0.4696,
+    "centroid_Se": 0.3388
+  },
+  "small-beta": {
+    "members": [
+      "BPTI"
+    ],
+    "n_members": 1,
+    "centroid_Sk": 0.4468,
+    "centroid_St": 0.4308,
+    "centroid_Se": 0.3207
+  },
+  "all-alpha_vs_all-beta": 0.079,
+  "all-alpha_vs_alpha+beta": 0.0948,
+  "all-alpha_vs_alpha/beta": 0.046,
+  "all-alpha_vs_small-beta": 0.0603,
+  "all-beta_vs_alpha+beta": 0.103,
+  "all-beta_vs_alpha/beta": 0.0548,
+  "all-beta_vs_small-beta": 0.0302,
+  "alpha+beta_vs_alpha/beta": 0.1168,
+  "alpha+beta_vs_small-beta": 0.085,
+  "alpha/beta_vs_small-beta": 0.0432
+}
