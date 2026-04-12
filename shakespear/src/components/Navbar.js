@@ -77,15 +77,16 @@ const Navbar = () => {
         <nav className="flex items-center gap-6">
           <NavLink href="/" title="Home" />
           <NavLink href="/instrument" title="Instrument" />
-          <NavLink href="/about" title="Theory" />
-          <NavLink href="/projects" title="Models" />
-          <NavLink href="/articles" title="Papers" />
+          <NavLink href="/folding" title="Folding" />
+          <NavLink href="/trajectory" title="Trajectory" />
+          <NavLink href="/catalysis" title="Catalysis" />
+          <NavLink href="/dynamics" title="Dynamics" />
         </nav>
 
         {/* Right: GitHub + Theme */}
         <nav className="flex items-center gap-3">
           <motion.a target="_blank" className="w-5"
-            href="https://github.com/fullscreen-triangle/shakespear"
+            href="https://github.com/fullscreen-triangle/levinthal"
             whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }}>
             <GithubIcon />
           </motion.a>

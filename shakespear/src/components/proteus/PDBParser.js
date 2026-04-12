@@ -1,20 +1,8 @@
 /**
- * PDB File Parser
- * ===============
- * Parses PDB format text into atom coordinates and residue identities.
- * Pure JS, no dependencies. 50 lines of actual parsing.
- *
- * PDB format: fixed-width columns
- *   ATOM      1  N   ALA A   1       1.000   2.000   3.000  1.00  0.00           N
- *   cols 1-6: record type
- *   cols 7-11: atom serial
- *   cols 13-16: atom name
- *   cols 18-20: residue name
- *   cols 22: chain ID
- *   cols 23-26: residue sequence number
- *   cols 31-38: x coordinate
- *   cols 39-46: y coordinate
- *   cols 47-54: z coordinate
+ * Structure File Parser (PDB + mmCIF)
+ * =====================================
+ * Parses both PDB format and mmCIF format into atom coordinates and residues.
+ * Pure JS, zero dependencies.
  */
 
 const AA_3TO1 = {
@@ -23,9 +11,19 @@ const AA_3TO1 = {
   THR:'T', TRP:'W', TYR:'Y', VAL:'V',
 };
 
-export function parsePDB(text) {
+/** Detect format from file content. */
+function detectFormat(text) {
+  const first = text.trim().substring(0, 200);
+  if (first.startsWith('data_')) return 'cif';
+  if (first.match(/^(HEADER|ATOM|HETATM|REMARK)/m)) return 'pdb';
+  if (first.includes('_atom_site.')) return 'cif';
+  return 'pdb'; // default
+}
+
+/** Parse PDB format (fixed-width columns). */
+function parsePDBFormat(text) {
   const atoms = [];
-  const residues = new Map(); // resId -> { name, chain, atoms: [{x,y,z,name}] }
+  const residues = new Map();
 
   for (const line of text.split('\n')) {
     const record = line.substring(0, 6).trim();
@@ -42,27 +40,144 @@ export function parsePDB(text) {
 
     if (isNaN(x) || isNaN(y) || isNaN(z)) continue;
 
-    const atom = { atomName, resName, chain, resSeq, x, y, z, element };
-    atoms.push(atom);
+    atoms.push({ atomName, resName, chain, resSeq, x, y, z, element });
 
     const resId = `${chain}:${resSeq}`;
     if (!residues.has(resId)) {
       residues.set(resId, {
-        name: resName,
-        code1: AA_3TO1[resName] || 'X',
-        chain, resSeq,
-        atoms: [],
+        name: resName, code1: AA_3TO1[resName] || 'X',
+        chain, resSeq, atoms: [],
       });
     }
     residues.get(resId).atoms.push({ x, y, z, name: atomName, element });
   }
 
-  // Compute CA positions (alpha carbons) for each residue
+  return { atoms, residues };
+}
+
+/** Parse mmCIF format (whitespace-delimited with column headers). */
+function parseCIFFormat(text) {
+  const atoms = [];
+  const residues = new Map();
+
+  // Find the _atom_site loop
+  const lines = text.split('\n');
+  let inAtomSite = false;
+  let columns = [];
+  let colMap = {};
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // Detect start of atom_site loop
+    if (line === 'loop_') {
+      // Check if next lines are _atom_site columns
+      const nextLine = (lines[i + 1] || '').trim();
+      if (nextLine.startsWith('_atom_site.')) {
+        inAtomSite = true;
+        columns = [];
+        colMap = {};
+        continue;
+      }
+    }
+
+    if (inAtomSite && line.startsWith('_atom_site.')) {
+      columns.push(line);
+      colMap[line] = columns.length - 1;
+      continue;
+    }
+
+    // Data lines in atom_site loop
+    if (inAtomSite && columns.length > 0 && !line.startsWith('_') && !line.startsWith('#') && line.length > 0 && !line.startsWith('loop_')) {
+      // Split by whitespace, respecting quoted strings
+      const fields = splitCIFLine(line);
+      if (fields.length < columns.length) {
+        // End of atom_site block
+        if (line.startsWith('#') || line.startsWith('loop_') || line === '') {
+          inAtomSite = false;
+          continue;
+        }
+        // Might be a continuation or short line, skip
+        continue;
+      }
+
+      const get = (col) => fields[colMap[col]] || '';
+
+      const group = get('_atom_site.group_PDB');
+      if (group !== 'ATOM' && group !== 'HETATM') continue;
+
+      const atomName = get('_atom_site.label_atom_id') || get('_atom_site.auth_atom_id');
+      const resName = get('_atom_site.label_comp_id') || get('_atom_site.auth_comp_id');
+      const chain = get('_atom_site.auth_asym_id') || get('_atom_site.label_asym_id');
+      const resSeq = parseInt(get('_atom_site.auth_seq_id') || get('_atom_site.label_seq_id'));
+      const x = parseFloat(get('_atom_site.Cartn_x'));
+      const y = parseFloat(get('_atom_site.Cartn_y'));
+      const z = parseFloat(get('_atom_site.Cartn_z'));
+      const element = get('_atom_site.type_symbol');
+      const modelNum = get('_atom_site.pdbx_PDB_model_num');
+
+      // Only take model 1
+      if (modelNum && modelNum !== '1') continue;
+      if (isNaN(x) || isNaN(y) || isNaN(z)) continue;
+
+      atoms.push({ atomName, resName, chain, resSeq, x, y, z, element });
+
+      const resId = `${chain}:${resSeq}`;
+      if (!residues.has(resId)) {
+        residues.set(resId, {
+          name: resName, code1: AA_3TO1[resName] || 'X',
+          chain, resSeq, atoms: [],
+        });
+      }
+      residues.get(resId).atoms.push({ x, y, z, name: atomName, element });
+    }
+
+    // End of atom_site block
+    if (inAtomSite && columns.length > 0 && (line.startsWith('#') || line.startsWith('loop_'))) {
+      inAtomSite = false;
+    }
+  }
+
+  return { atoms, residues };
+}
+
+/** Split a CIF data line by whitespace, handling single-quoted strings. */
+function splitCIFLine(line) {
+  const fields = [];
+  let i = 0;
+  while (i < line.length) {
+    // Skip whitespace
+    while (i < line.length && line[i] === ' ') i++;
+    if (i >= line.length) break;
+
+    if (line[i] === "'") {
+      // Quoted string
+      i++;
+      let start = i;
+      while (i < line.length && !(line[i] === "'" && (i + 1 >= line.length || line[i + 1] === ' '))) i++;
+      fields.push(line.substring(start, i));
+      i++; // skip closing quote
+    } else {
+      // Unquoted field
+      let start = i;
+      while (i < line.length && line[i] !== ' ') i++;
+      fields.push(line.substring(start, i));
+    }
+  }
+  return fields;
+}
+
+/** Parse any structure file (PDB or mmCIF). */
+export function parsePDB(text) {
+  const format = detectFormat(text);
+  const { atoms, residues } = format === 'cif' ? parseCIFFormat(text) : parsePDBFormat(text);
+
+  // Compute CA positions
   const caPositions = [];
   const sequence = [];
   for (const [, res] of residues) {
     const ca = res.atoms.find(a => a.name === 'CA');
-    if (ca) {
+    if (ca && res.code1 !== 'X') {
       caPositions.push([ca.x, ca.y, ca.z]);
       sequence.push(res.code1);
     }
@@ -71,10 +186,11 @@ export function parsePDB(text) {
   return {
     atoms,
     residues: Array.from(residues.values()),
-    caPositions,         // Nx3 array of alpha-carbon coords
+    caPositions,
     sequence: sequence.join(''),
     nResidues: sequence.length,
     nAtoms: atoms.length,
+    format,
   };
 }
 

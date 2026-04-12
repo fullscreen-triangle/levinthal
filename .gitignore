@@ -73,14 +73,7 @@ ENV/
 # DIRECTORIES TO IGNORE
 # ============================================================================
 
-# Public data directories (contain large mzML files)
-public/
-precursor/public/
 
-# All results directories
-results/
-precursor/results/
-validation/results/
 
 # Analysis output directories
 *_analysis/

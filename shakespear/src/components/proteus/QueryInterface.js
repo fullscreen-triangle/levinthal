@@ -10,6 +10,7 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { parseQuery, executeOperation, formatResult } from './OperationExecutor';
+import { compileWithModel, compileWithModelDirect } from './ModelCompiler';
 
 const SUGGESTIONS = [
   'Will this protein fold?',
@@ -27,6 +28,10 @@ export default function QueryInterface({ engine, sequence, setSequence, setView,
   const [query, setQuery] = useState('');
   const [history, setHistory] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [useModel, setUseModel] = useState(true);
+  const [apiKey, setApiKey] = useState('');
+  const [showKeyInput, setShowKeyInput] = useState(false);
+  const [compiling, setCompiling] = useState(false);
   const inputRef = useRef(null);
   const historyRef = useRef(null);
 
@@ -37,14 +42,53 @@ export default function QueryInterface({ engine, sequence, setSequence, setView,
     }
   }, [history]);
 
-  const handleSubmit = useCallback((q) => {
+  const handleSubmit = useCallback(async (q) => {
     const text = q || query;
-    if (!text.trim()) return;
+    if (!text.trim() || compiling) return;
 
-    const parsed = parseQuery(text);
+    let parsed = null;
+
+    // Try model compilation first (if enabled)
+    if (useModel) {
+      setCompiling(true);
+      try {
+        // Try server-side route first (key in .env.local)
+        let modelResult = await compileWithModel(text, sequence);
+
+        // If server route fails, try direct with client key
+        if (!modelResult && apiKey) {
+          modelResult = await compileWithModelDirect(text, sequence, apiKey);
+        }
+
+        if (modelResult && modelResult.operation) {
+          parsed = {
+            operation: modelResult.operation,
+            view: modelResult.view,
+            args: modelResult.args,
+            raw: text,
+            source: 'model',
+            explanation: modelResult.explanation,
+          };
+        }
+      } catch (e) {
+        // Fall through to pattern matching
+      }
+      setCompiling(false);
+    }
+
+    // Fallback to pattern matching
+    if (!parsed) {
+      parsed = parseQuery(text);
+      parsed.source = 'pattern';
+    }
 
     // Execute on engine
     const result = executeOperation(parsed, engine, sequence, db, sar);
+
+    // Add model explanation if available
+    if (parsed.explanation) {
+      result.message = parsed.explanation;
+    }
 
     // Switch view
     if (result.view) setView(result.view);
@@ -56,11 +100,14 @@ export default function QueryInterface({ engine, sequence, setSequence, setView,
 
     // Add to history
     const formatted = formatResult(result);
-    setHistory(prev => [...prev, { query: text, result: formatted, timestamp: Date.now() }]);
+    const sourceTag = parsed.source === 'model' ? ' [model]' : ' [local]';
+    setHistory(prev => [...prev, {
+      query: text, result: formatted + sourceTag, timestamp: Date.now()
+    }]);
 
     setQuery('');
     setShowSuggestions(false);
-  }, [query, engine, sequence, setSequence, setView, db, sar]);
+  }, [query, engine, sequence, setSequence, setView, db, sar, useModel, apiKey, compiling]);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -138,8 +185,8 @@ export default function QueryInterface({ engine, sequence, setSequence, setView,
         )}
       </div>
 
-      {/* Quick action chips */}
-      <div className="mt-2 flex flex-wrap gap-1">
+      {/* Quick action chips + model controls */}
+      <div className="mt-2 flex flex-wrap gap-1 items-center">
         {['Fold?', 'Spectrum', 'Cavities', 'Coherence', 'Search DB', 'Predict'].map(chip => (
           <button key={chip}
             onClick={() => handleSubmit(chip)}
@@ -149,7 +196,54 @@ export default function QueryInterface({ engine, sequence, setSequence, setView,
             {chip}
           </button>
         ))}
+
+        <span className="mx-1 text-dark/10 dark:text-light/10">|</span>
+
+        {/* Model toggle */}
+        <button onClick={() => setUseModel(!useModel)}
+          className={`px-2 py-0.5 text-[10px] rounded-full border transition-colors font-mono
+            ${useModel
+              ? 'border-primaryDark/50 text-primaryDark bg-primaryDark/10'
+              : 'border-dark/10 dark:border-dark/30 text-dark/30 dark:text-light/25'}`}>
+          {useModel ? 'Model ON' : 'Model OFF'}
+        </button>
+
+        {/* API key button */}
+        {useModel && (
+          <button onClick={() => setShowKeyInput(!showKeyInput)}
+            className={`px-2 py-0.5 text-[10px] rounded-full border transition-colors font-mono
+              ${apiKey
+                ? 'border-green-500/50 text-green-500'
+                : 'border-dark/10 dark:border-dark/30 text-dark/30 dark:text-light/25'}`}>
+            {apiKey ? 'Key Set' : 'Set API Key'}
+          </button>
+        )}
+
+        {compiling && (
+          <span className="text-[10px] text-primaryDark font-mono animate-pulse">compiling...</span>
+        )}
       </div>
+
+      {/* API Key Input (hidden by default) */}
+      {showKeyInput && (
+        <div className="mt-2 flex gap-2">
+          <input
+            type="password"
+            value={apiKey}
+            onChange={e => setApiKey(e.target.value)}
+            className="flex-1 bg-light dark:bg-dark/80 border border-dark/10 dark:border-dark/30
+                       rounded-lg py-1.5 px-3 font-mono text-[11px] text-dark dark:text-light
+                       focus:outline-none focus:border-primaryDark
+                       placeholder:text-dark/30 dark:placeholder:text-light/20"
+            placeholder="sk-... (OpenAI API key, stored in session only)"
+          />
+          <button onClick={() => setShowKeyInput(false)}
+            className="px-3 py-1.5 text-[10px] rounded-lg border border-dark/10 dark:border-dark/30
+                       text-dark/40 dark:text-light/40 font-mono">
+            Done
+          </button>
+        </div>
+      )}
     </div>
   );
 }

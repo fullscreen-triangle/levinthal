@@ -1,0 +1,27 @@
+{
+  "MD Simulation": {
+    "latency_ms": 3600000,
+    "storage_gb": 0.5,
+    "accuracy": 0.65
+  },
+  "AlphaFold": {
+    "latency_ms": 45000,
+    "storage_gb": 23000,
+    "accuracy": 0.92
+  },
+  "ESM-Fold": {
+    "latency_ms": 2800,
+    "storage_gb": 15000,
+    "accuracy": 0.88
+  },
+  "RAG + LLM": {
+    "latency_ms": 1200,
+    "storage_gb": 50000,
+    "accuracy": 0.78
+  },
+  "Purpose Probe": {
+    "latency_ms": 85,
+    "storage_gb": 0.4,
+    "accuracy": 0.91
+  }
+}

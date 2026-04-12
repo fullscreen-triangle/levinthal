@@ -203,7 +203,7 @@ export function AnimatedShakespeareBook({ className = "" }) {
           />
           
           {/* The Book Model */}
-          <BookModel />
+          <BookModel scale={[0.2, 0.2, 0.2]} />
           
           {/* Controls */}
           <OrbitControls 
