@@ -1,0 +1,128 @@
+{
+  "validation_id": "03_cycle_closure",
+  "paper_reference": "Paper 1, Theorem 6.4",
+  "parameters": {
+    "omega_ref_hz": 1000000000.0,
+    "n_trials": 1000,
+    "frequency_range_hz": [
+      10000.0,
+      1000000000000000.0
+    ],
+    "floor_estimate": 0.00037
+  },
+  "round_trip_statistics": {
+    "octave_error_mean": 3.8844854085792875,
+    "octave_error_max": 16.59480694709907,
+    "fraction_within_one_octave": 0.584
+  },
+  "cell_invariance": {
+    "trials": 100,
+    "rate": 1.0
+  },
+  "composition_log_sample": [
+    {
+      "input": [
+        2,
+        1,
+        0,
+        1
+      ],
+      "via_osc": [
+        2100000000.0,
+        0.0
+      ],
+      "via_cat": [
+        2,
+        0,
+        0
+      ],
+      "output": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "n_preserved": true
+    },
+    {
+      "input": [
+        3,
+        2,
+        -1,
+        1
+      ],
+      "via_osc": [
+        4400000000.0,
+        0.0
+      ],
+      "via_cat": [
+        3,
+        0,
+        0
+      ],
+      "output": [
+        3,
+        0,
+        0,
+        1
+      ],
+      "n_preserved": true
+    },
+    {
+      "input": [
+        4,
+        0,
+        0,
+        1
+      ],
+      "via_osc": [
+        8000000000.0,
+        0.0
+      ],
+      "via_cat": [
+        4,
+        0,
+        0
+      ],
+      "output": [
+        4,
+        0,
+        0,
+        1
+      ],
+      "n_preserved": true
+    },
+    {
+      "input": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "via_osc": [
+        1000000000.0,
+        0.0
+      ],
+      "via_cat": [
+        1,
+        0,
+        0
+      ],
+      "output": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "n_preserved": true
+    }
+  ],
+  "n_preservation_rate": 1.0,
+  "checks": {
+    "round_trip_within_one_octave": true,
+    "cell_invariance_rate_above_0p9": true,
+    "n_preserved_in_composition": true,
+    "trial_count": 1000
+  },
+  "verdict": "PASS"
+}

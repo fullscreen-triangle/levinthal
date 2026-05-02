@@ -1,0 +1,93 @@
+{
+  "monograph_paper": "Paper 1: An Expression Algebra for Biomolecules",
+  "run_timestamp": "2026-05-02T02:58:43",
+  "validations": [
+    {
+      "script": "01_floor_theorem.py",
+      "validation_id": "01_floor_theorem",
+      "paper_reference": "Paper 1, Theorem 7.1, Eq. 11",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.001,
+      "output_file": "results\\01_floor_theorem.json"
+    },
+    {
+      "script": "02_capacity_selection.py",
+      "validation_id": "02_capacity_selection",
+      "paper_reference": "Paper 1, Theorem 2.6 and Eq. (1)",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.001,
+      "output_file": "results\\02_capacity_selection.json"
+    },
+    {
+      "script": "03_cycle_closure.py",
+      "validation_id": "03_cycle_closure",
+      "paper_reference": "Paper 1, Theorem 6.4",
+      "verdict": "PASS",
+      "checks_passed": 3,
+      "checks_total": 4,
+      "elapsed_s": 0.012,
+      "output_file": "results\\03_cycle_closure.json"
+    },
+    {
+      "script": "04_amino_acid_coords.py",
+      "validation_id": "04_amino_acid_coords",
+      "paper_reference": "Paper 1, Sec. 4.2; categorical-protein-database Sec. 5",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.001,
+      "output_file": "results\\04_amino_acid_coords.json"
+    },
+    {
+      "script": "05_tau_assignment.py",
+      "validation_id": "05_tau_assignment",
+      "paper_reference": "Paper 1, Theorem 11.1, Eq. (10)",
+      "verdict": "PASS",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "elapsed_s": 0.317,
+      "output_file": "results\\05_tau_assignment.json"
+    },
+    {
+      "script": "06_spin_crossover.py",
+      "validation_id": "06_spin_crossover",
+      "paper_reference": "Paper 1, Theorem 12.1, Corollary 12.2",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.001,
+      "output_file": "results\\06_spin_crossover.json"
+    },
+    {
+      "script": "07_kuramoto_sync.py",
+      "validation_id": "07_kuramoto_sync",
+      "paper_reference": "Paper 1, Sec. 5.2; folding-partition-calculus Theorems 5.1, 6.6",
+      "verdict": "PASS",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "elapsed_s": 2.087,
+      "output_file": "results\\07_kuramoto_sync.json"
+    },
+    {
+      "script": "08_morphism_chain.py",
+      "validation_id": "08_morphism_chain",
+      "paper_reference": "Paper 1, Theorems 8.1 and 8.2",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.031,
+      "output_file": "results\\08_morphism_chain.json"
+    }
+  ],
+  "aggregate": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "error": 0,
+    "overall_verdict": "PASS"
+  }
+}

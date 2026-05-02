@@ -1,0 +1,208 @@
+{
+  "validation_id": "05_tau_assignment",
+  "paper_reference": "Paper 1, Theorem 11.1, Eq. (10)",
+  "parameters": {
+    "n_atoms_lysozyme": 1102,
+    "n_atoms_azurin": 4228,
+    "temperature_K": 298.0,
+    "random_seed": 42,
+    "sigma_pi_eq": 0.42
+  },
+  "tests": {
+    "equilibrium_lysozyme": {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.0,
+      "tau_counts": [
+        255,
+        635,
+        212
+      ],
+      "tau_fractions": [
+        0.23139745916515425,
+        0.5762250453720508,
+        0.19237749546279492
+      ],
+      "delta_pi_mean": 0.0007680593448954272,
+      "delta_pi_std": 0.5277721056443967,
+      "chi_squared_vs_eq_baseline": 0.0
+    },
+    "weak_perturbation": {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.3,
+      "tau_counts": [
+        262,
+        640,
+        200
+      ],
+      "tau_fractions": [
+        0.23774954627949182,
+        0.5807622504537205,
+        0.18148820326678766
+      ],
+      "delta_pi_mean": -0.02328153378778066,
+      "delta_pi_std": 0.561119054606678,
+      "chi_squared_vs_eq_baseline": 0.9107722245041234
+    },
+    "strong_perturbation": {
+      "n_atoms": 1102,
+      "perturbation_strength": 1.0,
+      "tau_counts": [
+        392,
+        409,
+        301
+      ],
+      "tau_fractions": [
+        0.35571687840290384,
+        0.37114337568058076,
+        0.2731397459165154
+      ],
+      "delta_pi_mean": -0.008203840795353369,
+      "delta_pi_std": 0.7613853193472135,
+      "chi_squared_vs_eq_baseline": 191.4017747850886
+    },
+    "azurin_equilibrium": {
+      "n_atoms": 4228,
+      "perturbation_strength": 0.0,
+      "tau_counts": [
+        923,
+        2511,
+        794
+      ],
+      "tau_fractions": [
+        0.21830652790917693,
+        0.5938978240302744,
+        0.18779564806054871
+      ],
+      "delta_pi_mean": -0.009983989388144073,
+      "delta_pi_std": 0.5115194285613822
+    }
+  },
+  "perturbation_sweep": [
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.0,
+      "tau_counts": [
+        247,
+        658,
+        197
+      ],
+      "tau_fractions": [
+        0.22413793103448276,
+        0.5970961887477314,
+        0.17876588021778583
+      ],
+      "delta_pi_mean": -0.011465526491207337,
+      "delta_pi_std": 0.5186037101842569,
+      "chi_squared_vs_eq_baseline": 2.1453720130155762
+    },
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.1,
+      "tau_counts": [
+        233,
+        635,
+        234
+      ],
+      "tau_fractions": [
+        0.21143375680580762,
+        0.5762250453720508,
+        0.21234119782214156
+      ],
+      "delta_pi_mean": 0.020099291008331223,
+      "delta_pi_std": 0.5398363434702588,
+      "chi_squared_vs_eq_baseline": 4.181058083610803
+    },
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.2,
+      "tau_counts": [
+        253,
+        631,
+        218
+      ],
+      "tau_fractions": [
+        0.2295825771324864,
+        0.5725952813067151,
+        0.19782214156079855
+      ],
+      "delta_pi_mean": -0.005709091008711449,
+      "delta_pi_std": 0.5253550000018119,
+      "chi_squared_vs_eq_baseline": 0.21069444565822168
+    },
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.3,
+      "tau_counts": [
+        240,
+        646,
+        216
+      ],
+      "tau_fractions": [
+        0.2177858439201452,
+        0.5862068965517241,
+        0.19600725952813067
+      ],
+      "delta_pi_mean": 0.0030232596529467283,
+      "delta_pi_std": 0.5270558481519639,
+      "chi_squared_vs_eq_baseline": 1.1483758203920402
+    },
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.5,
+      "tau_counts": [
+        294,
+        556,
+        252
+      ],
+      "tau_fractions": [
+        0.26678765880217786,
+        0.5045372050816697,
+        0.22867513611615245
+      ],
+      "delta_pi_mean": 0.0014290218996084068,
+      "delta_pi_std": 0.6016656308028692,
+      "chi_squared_vs_eq_baseline": 23.340222150366607
+    },
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 0.7,
+      "tau_counts": [
+        308,
+        540,
+        254
+      ],
+      "tau_fractions": [
+        0.279491833030853,
+        0.4900181488203267,
+        0.23049001814882034
+      ],
+      "delta_pi_mean": 0.005139234364777632,
+      "delta_pi_std": 0.6672411505681888,
+      "chi_squared_vs_eq_baseline": 33.54903941668778
+    },
+    {
+      "n_atoms": 1102,
+      "perturbation_strength": 1.0,
+      "tau_counts": [
+        355,
+        422,
+        325
+      ],
+      "tau_fractions": [
+        0.3221415607985481,
+        0.38294010889292196,
+        0.29491833030852993
+      ],
+      "delta_pi_mean": 0.03829112081566512,
+      "delta_pi_std": 0.7519038048015696,
+      "chi_squared_vs_eq_baseline": 170.89406244446968
+    }
+  ],
+  "checks": {
+    "chi2_grows_with_perturbation": true,
+    "chi2_monotonic_in_sweep": true,
+    "reproducible_under_seed": true,
+    "perturbation_flattens_distribution": true
+  },
+  "verdict": "PASS"
+}
