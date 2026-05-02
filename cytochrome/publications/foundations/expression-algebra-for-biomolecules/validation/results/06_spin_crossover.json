@@ -1,0 +1,199 @@
+{
+  "validation_id": "06_spin_crossover",
+  "paper_reference": "Paper 1, Theorem 12.1, Corollary 12.2",
+  "catalytic_states": [
+    {
+      "index": 1,
+      "name": "Resting Fe(III)-H2O low-spin",
+      "fe_oxidation": "+3",
+      "fe_d_count": 5,
+      "s_orbital_fe": 0.5,
+      "S_total": 0.5,
+      "ligand_axial": "H2O",
+      "spin_state": "LS",
+      "pdb_example": "1TQN"
+    },
+    {
+      "index": 2,
+      "name": "Substrate-bound Fe(III) high-spin",
+      "fe_oxidation": "+3",
+      "fe_d_count": 5,
+      "s_orbital_fe": 0.5,
+      "S_total": 2.5,
+      "ligand_axial": "(none, 5-coord)",
+      "spin_state": "HS",
+      "pdb_example": "1W0E"
+    },
+    {
+      "index": 3,
+      "name": "One-electron-reduced Fe(II)",
+      "fe_oxidation": "+2",
+      "fe_d_count": 6,
+      "s_orbital_fe": 0.5,
+      "S_total": 2.0,
+      "ligand_axial": "(5-coord)",
+      "spin_state": "HS",
+      "pdb_example": null
+    },
+    {
+      "index": 4,
+      "name": "Oxy-complex Fe(II)-O2 singlet",
+      "fe_oxidation": "+2",
+      "fe_d_count": 6,
+      "s_orbital_fe": 0.5,
+      "S_total": 0.0,
+      "ligand_axial": "O2",
+      "spin_state": "Singlet",
+      "pdb_example": null
+    },
+    {
+      "index": 5,
+      "name": "Peroxo Fe(III)-O2(2-) low-spin",
+      "fe_oxidation": "+3",
+      "fe_d_count": 5,
+      "s_orbital_fe": 0.5,
+      "S_total": 0.5,
+      "ligand_axial": "O2 peroxo",
+      "spin_state": "LS",
+      "pdb_example": null
+    },
+    {
+      "index": 6,
+      "name": "Compound I Fe(IV)=O porphyrin radical",
+      "fe_oxidation": "+4",
+      "fe_d_count": 4,
+      "s_orbital_fe": 0.5,
+      "S_total": 0.5,
+      "ligand_axial": "oxo",
+      "spin_state": "LS-doublet",
+      "pdb_example": null
+    },
+    {
+      "index": 7,
+      "name": "Product-bound Fe(III) low-spin",
+      "fe_oxidation": "+3",
+      "fe_d_count": 5,
+      "s_orbital_fe": 0.5,
+      "S_total": 0.5,
+      "ligand_axial": "OH/product",
+      "spin_state": "LS",
+      "pdb_example": null
+    }
+  ],
+  "transitions": [
+    {
+      "from": 1,
+      "to": 2,
+      "from_name": "Resting Fe(III)-H2O low-spin",
+      "to_name": "Substrate-bound Fe(III) high-spin",
+      "orbital_preserved": true,
+      "delta_S_state": 2.0,
+      "delta_S_state_nonzero": true,
+      "delta_S_orbital": 0.0
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "from_name": "Substrate-bound Fe(III) high-spin",
+      "to_name": "One-electron-reduced Fe(II)",
+      "orbital_preserved": true,
+      "delta_S_state": -0.5,
+      "delta_S_state_nonzero": true,
+      "delta_S_orbital": 0.0
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "from_name": "One-electron-reduced Fe(II)",
+      "to_name": "Oxy-complex Fe(II)-O2 singlet",
+      "orbital_preserved": true,
+      "delta_S_state": -2.0,
+      "delta_S_state_nonzero": true,
+      "delta_S_orbital": 0.0
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "from_name": "Oxy-complex Fe(II)-O2 singlet",
+      "to_name": "Peroxo Fe(III)-O2(2-) low-spin",
+      "orbital_preserved": true,
+      "delta_S_state": 0.5,
+      "delta_S_state_nonzero": true,
+      "delta_S_orbital": 0.0
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "from_name": "Peroxo Fe(III)-O2(2-) low-spin",
+      "to_name": "Compound I Fe(IV)=O porphyrin radical",
+      "orbital_preserved": true,
+      "delta_S_state": 0.0,
+      "delta_S_state_nonzero": false,
+      "delta_S_orbital": 0.0
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "from_name": "Compound I Fe(IV)=O porphyrin radical",
+      "to_name": "Product-bound Fe(III) low-spin",
+      "orbital_preserved": true,
+      "delta_S_state": 0.0,
+      "delta_S_state_nonzero": false,
+      "delta_S_orbital": 0.0
+    },
+    {
+      "from": 7,
+      "to": 1,
+      "from_name": "Product-bound Fe(III) low-spin",
+      "to_name": "Resting Fe(III)-H2O low-spin",
+      "orbital_preserved": true,
+      "delta_S_state": 0.0,
+      "delta_S_state_nonzero": false,
+      "delta_S_orbital": 0.0
+    }
+  ],
+  "summary": {
+    "n_states": 7,
+    "n_spin_crossover_events": 4,
+    "expected_crossover_steps": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "found_crossover_steps": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ]
+  },
+  "checks": {
+    "s_orbital_invariant_across_cycle": true,
+    "expected_spin_crossover_steps_present": true,
+    "cycle_orbital_closure": true,
+    "compound_i_S_one_half": true,
+    "fe_d_counts_valid": true
+  },
+  "verdict": "PASS"
+}

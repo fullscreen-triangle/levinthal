@@ -1,0 +1,110 @@
+{
+  "validation_id": "01_floor_theorem",
+  "paper_reference": "Paper 1, Theorem 7.1, Eq. 11",
+  "parameters": {
+    "recursion_depth": 9,
+    "integration_time_s": 0.001,
+    "oscillators": [
+      {
+        "name": "CPU clock",
+        "freq_hz": 3000000000.0,
+        "Q": 1000000.0
+      },
+      {
+        "name": "memory bus",
+        "freq_hz": 800000000.0,
+        "Q": 100000.0
+      },
+      {
+        "name": "GPU/LED",
+        "freq_hz": 460000000000000.0,
+        "Q": 100000000.0
+      },
+      {
+        "name": "refresh/RTC",
+        "freq_hz": 64000.0,
+        "Q": 10000.0
+      }
+    ]
+  },
+  "floor_components": {
+    "floor_disc": 2.540263171264543e-05,
+    "floor_Q": {
+      "per_oscillator": [
+        {
+          "oscillator": "CPU clock",
+          "sigma": 5.773502691896258e-10
+        },
+        {
+          "oscillator": "memory bus",
+          "sigma": 1.1180339887498947e-08
+        },
+        {
+          "oscillator": "GPU/LED",
+          "sigma": 1.474419561548971e-14
+        },
+        {
+          "oscillator": "refresh/RTC",
+          "sigma": 1.25e-05
+        }
+      ],
+      "quadrature_sum": 1.2500005013332328e-05
+    },
+    "floor_conv": 0.00030483158055174517
+  },
+  "floor_total": 0.0003427342172777229,
+  "paper_quoted_estimate": 0.00037,
+  "checks": {
+    "floor_disc_positive": true,
+    "floor_Q_positive": true,
+    "floor_conv_positive": true,
+    "floor_total_positive": true,
+    "floor_total_finite": true,
+    "matches_paper_estimate_3p7e-4": true
+  },
+  "depth_sensitivity": [
+    {
+      "depth": 6,
+      "floor_disc": 0.0006858710562414266,
+      "floor_conv": 0.00823045267489712,
+      "floor_total": 0.00892882373615188
+    },
+    {
+      "depth": 7,
+      "floor_disc": 0.00022862368541380886,
+      "floor_conv": 0.0027434842249657062,
+      "floor_total": 0.0029846079153928473
+    },
+    {
+      "depth": 8,
+      "floor_disc": 7.620789513793629e-05,
+      "floor_conv": 0.0009144947416552355,
+      "floor_total": 0.0010032026418065041
+    },
+    {
+      "depth": 9,
+      "floor_disc": 2.540263171264543e-05,
+      "floor_conv": 0.00030483158055174517,
+      "floor_total": 0.0003427342172777229
+    },
+    {
+      "depth": 10,
+      "floor_disc": 8.467543904215143e-06,
+      "floor_conv": 0.00010161052685058171,
+      "floor_total": 0.0001225780757681292
+    },
+    {
+      "depth": 11,
+      "floor_disc": 2.822514634738381e-06,
+      "floor_conv": 3.387017561686057e-05,
+      "floor_total": 4.919269526493128e-05
+    },
+    {
+      "depth": 12,
+      "floor_disc": 9.408382115794604e-07,
+      "floor_conv": 1.1290058538953524e-05,
+      "floor_total": 2.4730901763865313e-05
+    }
+  ],
+  "verdict": "PASS"
+}

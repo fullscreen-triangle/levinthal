@@ -1,0 +1,243 @@
+{
+  "validation_id": "08_morphism_chain",
+  "paper_reference": "Paper 1, Theorems 8.1 and 8.2",
+  "parameters": {
+    "n_leaves": 12,
+    "fuse_weights": [
+      0.4,
+      0.4,
+      0.2
+    ],
+    "access_threshold": 1.2822643216029295,
+    "random_seed": 42
+  },
+  "type_trace": [
+    {
+      "step": "observe",
+      "input_type": "coupling_matrix [12 x 12]",
+      "output_type": "Sigma [12 x 12]",
+      "shape_match": true
+    },
+    {
+      "step": "catalyze (helix)",
+      "input_type": "Sigma [12 x 12]",
+      "output_type": "Sigma [12 x 12]",
+      "shape_match": true
+    },
+    {
+      "step": "catalyze (cofactor)",
+      "input_type": "Sigma [12 x 12]",
+      "output_type": "Sigma [12 x 12]",
+      "shape_match": true
+    },
+    {
+      "step": "fuse",
+      "input_type": "3 Sigmas [12 x 12], weights (0.4, 0.4, 0.2)",
+      "output_type": "Sigma [12 x 12]",
+      "shape_match": true
+    },
+    {
+      "step": "access (contact map)",
+      "input_type": "Sigma [12 x 12], threshold=1.2823",
+      "output_type": "binary contact map [12 x 12]",
+      "shape_match": true,
+      "binary_check": true
+    }
+  ],
+  "entropy_trace": {
+    "S_after_observe": 4.391796213832907,
+    "S_after_catalyze": 4.3484005509769315,
+    "S_after_fuse": 4.362516480743712,
+    "actual_change": 0.029279733089195403,
+    "theoretical_bound": 74.45111714828447,
+    "kernel_bound": 2.1972245773362196,
+    "binary_entropy_term": 72.25352257094825,
+    "floor": 0.00037
+  },
+  "contact_map": {
+    "shape": [
+      12,
+      12
+    ],
+    "n_contacts": 46,
+    "density": 0.3194444444444444,
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  "checks": {
+    "all_steps_shape_match": true,
+    "access_output_binary": true,
+    "n_chain_steps_executed": true,
+    "s_entropy_change_bounded": true,
+    "contact_density_reasonable": true
+  },
+  "verdict": "PASS"
+}

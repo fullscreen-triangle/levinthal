@@ -1,0 +1,242 @@
+{
+  "validation_id": "02_capacity_selection",
+  "paper_reference": "Paper 1, Theorem 2.6 and Eq. (1)",
+  "capacity_table": [
+    {
+      "n": 1,
+      "C_direct": 2,
+      "C_formula_2n2": 2,
+      "agree": true
+    },
+    {
+      "n": 2,
+      "C_direct": 8,
+      "C_formula_2n2": 8,
+      "agree": true
+    },
+    {
+      "n": 3,
+      "C_direct": 18,
+      "C_formula_2n2": 18,
+      "agree": true
+    },
+    {
+      "n": 4,
+      "C_direct": 32,
+      "C_formula_2n2": 32,
+      "agree": true
+    },
+    {
+      "n": 5,
+      "C_direct": 50,
+      "C_formula_2n2": 50,
+      "agree": true
+    },
+    {
+      "n": 6,
+      "C_direct": 72,
+      "C_formula_2n2": 72,
+      "agree": true
+    },
+    {
+      "n": 7,
+      "C_direct": 98,
+      "C_formula_2n2": 98,
+      "agree": true
+    }
+  ],
+  "shell_match_table": [
+    {
+      "n": 1,
+      "C(n)": 2,
+      "shell_occupancy": 2
+    },
+    {
+      "n": 2,
+      "C(n)": 8,
+      "shell_occupancy": 8
+    },
+    {
+      "n": 3,
+      "C(n)": 18,
+      "shell_occupancy": 18
+    },
+    {
+      "n": 4,
+      "C(n)": 32,
+      "shell_occupancy": 32
+    },
+    {
+      "n": 5,
+      "C(n)": 50,
+      "shell_occupancy": 50
+    },
+    {
+      "n": 6,
+      "C(n)": 72,
+      "shell_occupancy": 72
+    },
+    {
+      "n": 7,
+      "C(n)": 98,
+      "shell_occupancy": 98
+    }
+  ],
+  "transition_audit": {
+    "total_state_pairs_n_le_3": 378,
+    "allowed_count": 72,
+    "forbidden_count": 306,
+    "allowed_examples": [
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          1,
+          -1,
+          -1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          1,
+          0,
+          -1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          1,
+          1,
+          -1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          3,
+          1,
+          -1,
+          -1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          3,
+          1,
+          0,
+          -1
+        ]
+      }
+    ],
+    "forbidden_examples": [
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          1,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          0,
+          0,
+          -1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          1,
+          -1,
+          1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0,
+          0,
+          -1
+        ],
+        "to": [
+          2,
+          1,
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "checks": {
+    "capacity_formula_consistent_n1_to_7": true,
+    "matches_electron_shells_K_to_Q": true,
+    "same_l_transition_rejected": true,
+    "delta_l_eq_2_rejected": true,
+    "spin_flip_rejected": true
+  },
+  "verdict": "PASS"
+}
