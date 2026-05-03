@@ -1,0 +1,1183 @@
+{
+  "validation_id": "05_allele_resolution",
+  "paper_reference": "Paper 2, Theorem 7.1",
+  "parameters": {
+    "n_alleles": 13,
+    "depth": 9,
+    "cell_diagonal": 0.06415002990995841,
+    "n_cells_total": 19683,
+    "random_seed": 42
+  },
+  "allele_data": [
+    {
+      "allele": "*1",
+      "phenotype": "NM",
+      "n_mutations": 0,
+      "Sk": 0.537961099932931,
+      "St": 0.4855153580997013,
+      "Se": 0.3090543259557344,
+      "address": "110112212"
+    },
+    {
+      "allele": "*2",
+      "phenotype": "NM",
+      "n_mutations": 2,
+      "Sk": 0.5397496087636933,
+      "St": 0.47933156482124706,
+      "Se": 0.3067404426559356,
+      "address": "110112202"
+    },
+    {
+      "allele": "*3",
+      "phenotype": "PM",
+      "n_mutations": 1,
+      "Sk": 0.4838363514419852,
+      "St": 0.48956709847636803,
+      "Se": 0.3345070422535211,
+      "address": "111110110"
+    },
+    {
+      "allele": "*4",
+      "phenotype": "PM",
+      "n_mutations": 2,
+      "Sk": 0.5386765034652359,
+      "St": 0.4755089871368941,
+      "Se": 0.3050301810865191,
+      "address": "110112202"
+    },
+    {
+      "allele": "*5",
+      "phenotype": "PM",
+      "n_mutations": 0,
+      "Sk": 0.5,
+      "St": 0.5,
+      "Se": 0.5,
+      "address": "555555555"
+    },
+    {
+      "allele": "*6",
+      "phenotype": "PM",
+      "n_mutations": 1,
+      "Sk": 0.4788508830762352,
+      "St": 0.47996146227394176,
+      "Se": 0.3365191146881288,
+      "address": "111110000"
+    },
+    {
+      "allele": "*9",
+      "phenotype": "IM",
+      "n_mutations": 1,
+      "Sk": 0.5377822490498547,
+      "St": 0.4736864838404307,
+      "Se": 0.30181086519114686,
+      "address": "110112202"
+    },
+    {
+      "allele": "*10",
+      "phenotype": "IM",
+      "n_mutations": 2,
+      "Sk": 0.5303152246814219,
+      "St": 0.4725478692068931,
+      "Se": 0.3059356136820926,
+      "address": "110112202"
+    },
+    {
+      "allele": "*17",
+      "phenotype": "IM",
+      "n_mutations": 2,
+      "Sk": 0.5480438184663537,
+      "St": 0.485852503212477,
+      "Se": 0.30573440643863176,
+      "address": "110112212"
+    },
+    {
+      "allele": "*29",
+      "phenotype": "IM",
+      "n_mutations": 2,
+      "Sk": 0.5444220880840599,
+      "St": 0.48617885008320644,
+      "Se": 0.3050301810865191,
+      "address": "110112212"
+    },
+    {
+      "allele": "*41",
+      "phenotype": "IM",
+      "n_mutations": 1,
+      "Sk": 0.5352336239660184,
+      "St": 0.4830785548112767,
+      "Se": 0.31016096579476865,
+      "address": "110112212"
+    },
+    {
+      "allele": "*1xN",
+      "phenotype": "UM",
+      "n_mutations": 0,
+      "Sk": 0.537961099932931,
+      "St": 0.4855153580997013,
+      "Se": 0.3090543259557344,
+      "address": "110112212"
+    },
+    {
+      "allele": "*2xN",
+      "phenotype": "UM",
+      "n_mutations": 2,
+      "Sk": 0.5396601833221552,
+      "St": 0.4807509337479858,
+      "Se": 0.30523138832997987,
+      "address": "110112202"
+    }
+  ],
+  "pair_distances": [
+    {
+      "pair": [
+        "*1",
+        "*2"
+      ],
+      "distance": 0.006840476523858453,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "NM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*3"
+      ],
+      "distance": 0.05994785872926289,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*4"
+      ],
+      "distance": 0.010808931676524632,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*5"
+      ],
+      "distance": 0.195220645412612,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*6"
+      ],
+      "distance": 0.06541542720034814,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*9"
+      ],
+      "distance": 0.013871624913042115,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*10"
+      ],
+      "distance": 0.01537340374778814,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*17"
+      ],
+      "distance": 0.010620581220033823,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*29"
+      ],
+      "distance": 0.007640571407272897,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*41"
+      ],
+      "distance": 0.0038212284870052537,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*1xN"
+      ],
+      "distance": 0.0,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*1",
+        "*2xN"
+      ],
+      "distance": 0.006340463378741909,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*3"
+      ],
+      "distance": 0.06326169889230994,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*4"
+      ],
+      "distance": 0.004323037100270311,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*5"
+      ],
+      "distance": 0.19838465695317448,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*6"
+      ],
+      "distance": 0.06779248386921741,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*9"
+      ],
+      "distance": 0.007748430647877163,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*10"
+      ],
+      "distance": 0.01164791306960854,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*17"
+      ],
+      "distance": 0.010598521640514358,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*29"
+      ],
+      "distance": 0.008464181773433443,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*41"
+      ],
+      "distance": 0.006792203708775642,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*1xN"
+      ],
+      "distance": 0.006840476523858453,
+      "same_cell": false,
+      "phenotype_pair": [
+        "NM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*2",
+        "*2xN"
+      ],
+      "distance": 0.0020736079712596034,
+      "same_cell": true,
+      "phenotype_pair": [
+        "NM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*4"
+      ],
+      "distance": 0.06382756546058295,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*5"
+      ],
+      "distance": 0.166607406895932,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*6"
+      ],
+      "distance": 0.011007796199120172,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*9"
+      ],
+      "distance": 0.06504916436379499,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*10"
+      ],
+      "distance": 0.05715125854385724,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*17"
+      ],
+      "distance": 0.0704575163584138,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*29"
+      ],
+      "distance": 0.06746107808133002,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*41"
+      ],
+      "distance": 0.05724082686980466,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*1xN"
+      ],
+      "distance": 0.05994785872926289,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*3",
+        "*2xN"
+      ],
+      "distance": 0.06364816477286996,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*5"
+      ],
+      "distance": 0.20027209470745735,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*6"
+      ],
+      "distance": 0.06775309829920273,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*9"
+      ],
+      "distance": 0.003805943254864009,
+      "same_cell": true,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*10"
+      ],
+      "distance": 0.008916221760429591,
+      "same_cell": true,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*17"
+      ],
+      "distance": 0.013972503300503047,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*29"
+      ],
+      "distance": 0.01211848661777353,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*41"
+      ],
+      "distance": 0.009771219255834858,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*1xN"
+      ],
+      "distance": 0.010808931676524632,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*4",
+        "*2xN"
+      ],
+      "distance": 0.005337238489075161,
+      "same_cell": true,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*6"
+      ],
+      "distance": 0.1660567011692299,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "PM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*9"
+      ],
+      "distance": 0.20346703082373546,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*10"
+      ],
+      "distance": 0.1983270490112555,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*17"
+      ],
+      "distance": 0.2006177484669082,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*29"
+      ],
+      "distance": 0.20044344933652983,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*41"
+      ],
+      "distance": 0.19382105786789203,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*1xN"
+      ],
+      "distance": 0.195220645412612,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*5",
+        "*2xN"
+      ],
+      "distance": 0.1996954400695932,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*9"
+      ],
+      "distance": 0.06868001043245739,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*10"
+      ],
+      "distance": 0.06032321570345334,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*17"
+      ],
+      "distance": 0.07596094347259827,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*29"
+      ],
+      "distance": 0.07300542292676314,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*41"
+      ],
+      "distance": 0.06231758780003667,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*1xN"
+      ],
+      "distance": 0.06541542720034814,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*6",
+        "*2xN"
+      ],
+      "distance": 0.06839090642965026,
+      "same_cell": false,
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*9",
+        "*10"
+      ],
+      "distance": 0.008606186514132424,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*9",
+        "*17"
+      ],
+      "distance": 0.01639225457865237,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*9",
+        "*29"
+      ],
+      "distance": 0.014508985890750371,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*9",
+        "*41"
+      ],
+      "distance": 0.012823052172941229,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*9",
+        "*1xN"
+      ],
+      "distance": 0.013871624913042115,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*9",
+        "*2xN"
+      ],
+      "distance": 0.008070506066581405,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*10",
+        "*17"
+      ],
+      "distance": 0.02216656960308665,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*10",
+        "*29"
+      ],
+      "distance": 0.019637388902199644,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*10",
+        "*41"
+      ],
+      "distance": 0.012366874758692543,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*10",
+        "*1xN"
+      ],
+      "distance": 0.01537340374778814,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*10",
+        "*2xN"
+      ],
+      "distance": 0.012454495301251879,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*17",
+        "*29"
+      ],
+      "distance": 0.0037039663320045818,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*17",
+        "*41"
+      ],
+      "distance": 0.013834388334955317,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*17",
+        "*1xN"
+      ],
+      "distance": 0.010620581220033823,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*17",
+        "*2xN"
+      ],
+      "distance": 0.009826717480914118,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*29",
+        "*41"
+      ],
+      "distance": 0.010971082687870606,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "IM"
+      ]
+    },
+    {
+      "pair": [
+        "*29",
+        "*1xN"
+      ],
+      "distance": 0.007640571407272897,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*29",
+        "*2xN"
+      ],
+      "distance": 0.007223468492243008,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*41",
+        "*1xN"
+      ],
+      "distance": 0.0038212284870052537,
+      "same_cell": true,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*41",
+        "*2xN"
+      ],
+      "distance": 0.007022320238285284,
+      "same_cell": false,
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ]
+    },
+    {
+      "pair": [
+        "*1xN",
+        "*2xN"
+      ],
+      "distance": 0.006340463378741909,
+      "same_cell": false,
+      "phenotype_pair": [
+        "UM",
+        "UM"
+      ]
+    }
+  ],
+  "metrics": {
+    "n_pairs": 78,
+    "cell_distinctness": 0.7435897435897436,
+    "n_phenotypes": 4,
+    "avg_intra_phenotype_spread": 0.021681079832288692,
+    "avg_inter_phenotype_distance": 0.037843171648884684,
+    "separability_ratio": 1.7454468108422574
+  },
+  "phenotype_centroids": {
+    "NM": {
+      "n_alleles": 2,
+      "centroid": [
+        0.5388553543483121,
+        0.4824234614604742,
+        0.307897384305835
+      ],
+      "members": [
+        "*1",
+        "*2"
+      ]
+    },
+    "PM": {
+      "n_alleles": 4,
+      "centroid": [
+        0.500340934495864,
+        0.486259386971801,
+        0.36901408450704226
+      ],
+      "members": [
+        "*3",
+        "*4",
+        "*5",
+        "*6"
+      ]
+    },
+    "IM": {
+      "n_alleles": 5,
+      "centroid": [
+        0.5391594008495417,
+        0.4802688522308568,
+        0.3057344064386318
+      ],
+      "members": [
+        "*9",
+        "*10",
+        "*17",
+        "*29",
+        "*41"
+      ]
+    },
+    "UM": {
+      "n_alleles": 2,
+      "centroid": [
+        0.5388106416275431,
+        0.48313314592384354,
+        0.30714285714285716
+      ],
+      "members": [
+        "*1xN",
+        "*2xN"
+      ]
+    }
+  },
+  "phenotype_pairwise_distances": [
+    {
+      "phenotype_pair": [
+        "NM",
+        "PM"
+      ],
+      "centroid_distance": 0.07234173003587445
+    },
+    {
+      "phenotype_pair": [
+        "NM",
+        "IM"
+      ],
+      "centroid_distance": 0.003068103398074035
+    },
+    {
+      "phenotype_pair": [
+        "NM",
+        "UM"
+      ],
+      "centroid_distance": 0.0010368039856297803
+    },
+    {
+      "phenotype_pair": [
+        "PM",
+        "IM"
+      ],
+      "centroid_distance": 0.07447870496306802
+    },
+    {
+      "phenotype_pair": [
+        "PM",
+        "UM"
+      ],
+      "centroid_distance": 0.07292283953219171
+    },
+    {
+      "phenotype_pair": [
+        "IM",
+        "UM"
+      ],
+      "centroid_distance": 0.00321084797847011
+    }
+  ],
+  "checks": {
+    "all_alleles_processed": true,
+    "cell_distinctness_above_0p70": true,
+    "n_phenotypes_recovered": true,
+    "phenotype_separability_ratio_above_1": true,
+    "PM_alleles_distinct_from_NM": true
+  },
+  "verdict": "PASS"
+}

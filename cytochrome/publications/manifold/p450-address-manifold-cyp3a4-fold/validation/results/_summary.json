@@ -1,0 +1,93 @@
+{
+  "monograph_paper": "Paper 2: P450 Address Manifold and CYP3A4 Worked Example",
+  "run_timestamp": "2026-05-03T16:46:43",
+  "validations": [
+    {
+      "script": "01_address_encoding.py",
+      "validation_id": "01_address_encoding",
+      "paper_reference": "Paper 2, Definition 4.1, Eq. 1",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.174,
+      "output_file": "results\\01_address_encoding.json"
+    },
+    {
+      "script": "02_manifold_density.py",
+      "validation_id": "02_manifold_density",
+      "paper_reference": "Paper 2, Theorem 4.2",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.407,
+      "output_file": "results\\02_manifold_density.json"
+    },
+    {
+      "script": "03_family_clustering.py",
+      "validation_id": "03_family_clustering",
+      "paper_reference": "Paper 2, Theorem 5.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.616,
+      "output_file": "results\\03_family_clustering.json"
+    },
+    {
+      "script": "04_isoform_separation.py",
+      "validation_id": "04_isoform_separation",
+      "paper_reference": "Paper 2, Theorem 6.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.049,
+      "output_file": "results\\04_isoform_separation.json"
+    },
+    {
+      "script": "05_allele_resolution.py",
+      "validation_id": "05_allele_resolution",
+      "paper_reference": "Paper 2, Theorem 7.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.008,
+      "output_file": "results\\05_allele_resolution.json"
+    },
+    {
+      "script": "06_cyp3a4_address.py",
+      "validation_id": "06_cyp3a4_address",
+      "paper_reference": "Paper 2, Construction 8.1",
+      "verdict": "PASS",
+      "checks_passed": 7,
+      "checks_total": 7,
+      "elapsed_s": 0.003,
+      "output_file": "results\\06_cyp3a4_address.json"
+    },
+    {
+      "script": "07_kuramoto_folding.py",
+      "validation_id": "07_kuramoto_folding",
+      "paper_reference": "Paper 2, Theorem 8.4",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 13.556,
+      "output_file": "results\\07_kuramoto_folding.json"
+    },
+    {
+      "script": "08_contact_map_validation.py",
+      "validation_id": "08_contact_map_validation",
+      "paper_reference": "Paper 2, Section 9.2",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 17.82,
+      "output_file": "results\\08_contact_map_validation.json"
+    }
+  ],
+  "aggregate": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "error": 0,
+    "overall_verdict": "PASS"
+  }
+}

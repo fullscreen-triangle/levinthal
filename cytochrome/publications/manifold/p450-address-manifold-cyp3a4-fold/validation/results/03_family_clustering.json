@@ -1,0 +1,413 @@
+{
+  "validation_id": "03_family_clustering",
+  "paper_reference": "Paper 2, Theorem 5.1",
+  "parameters": {
+    "n_families": 18,
+    "n_per_family": 100,
+    "depth": 5,
+    "length_range": [
+      470,
+      540
+    ],
+    "n_cells_total": 27,
+    "random_seed": 42
+  },
+  "family_summary": {
+    "CYP1": {
+      "dominant_cell": "11011",
+      "dominant_count": 98,
+      "purity": 0.98,
+      "n_unique_cells": 2
+    },
+    "CYP2": {
+      "dominant_cell": "11011",
+      "dominant_count": 76,
+      "purity": 0.76,
+      "n_unique_cells": 4
+    },
+    "CYP3": {
+      "dominant_cell": "11021",
+      "dominant_count": 91,
+      "purity": 0.91,
+      "n_unique_cells": 2
+    },
+    "CYP4": {
+      "dominant_cell": "11101",
+      "dominant_count": 96,
+      "purity": 0.96,
+      "n_unique_cells": 2
+    },
+    "CYP5": {
+      "dominant_cell": "11000",
+      "dominant_count": 50,
+      "purity": 0.5,
+      "n_unique_cells": 6
+    },
+    "CYP7": {
+      "dominant_cell": "11100",
+      "dominant_count": 55,
+      "purity": 0.55,
+      "n_unique_cells": 2
+    },
+    "CYP8": {
+      "dominant_cell": "11100",
+      "dominant_count": 69,
+      "purity": 0.69,
+      "n_unique_cells": 2
+    },
+    "CYP11": {
+      "dominant_cell": "11101",
+      "dominant_count": 100,
+      "purity": 1.0,
+      "n_unique_cells": 1
+    },
+    "CYP17": {
+      "dominant_cell": "11111",
+      "dominant_count": 57,
+      "purity": 0.57,
+      "n_unique_cells": 2
+    },
+    "CYP19": {
+      "dominant_cell": "11101",
+      "dominant_count": 87,
+      "purity": 0.87,
+      "n_unique_cells": 3
+    },
+    "CYP20": {
+      "dominant_cell": "11011",
+      "dominant_count": 60,
+      "purity": 0.6,
+      "n_unique_cells": 3
+    },
+    "CYP21": {
+      "dominant_cell": "11101",
+      "dominant_count": 97,
+      "purity": 0.97,
+      "n_unique_cells": 3
+    },
+    "CYP24": {
+      "dominant_cell": "11111",
+      "dominant_count": 72,
+      "purity": 0.72,
+      "n_unique_cells": 3
+    },
+    "CYP26": {
+      "dominant_cell": "11021",
+      "dominant_count": 53,
+      "purity": 0.53,
+      "n_unique_cells": 2
+    },
+    "CYP27": {
+      "dominant_cell": "11101",
+      "dominant_count": 69,
+      "purity": 0.69,
+      "n_unique_cells": 2
+    },
+    "CYP39": {
+      "dominant_cell": "11100",
+      "dominant_count": 72,
+      "purity": 0.72,
+      "n_unique_cells": 2
+    },
+    "CYP46": {
+      "dominant_cell": "11021",
+      "dominant_count": 100,
+      "purity": 1.0,
+      "n_unique_cells": 1
+    },
+    "CYP51": {
+      "dominant_cell": "11021",
+      "dominant_count": 87,
+      "purity": 0.87,
+      "n_unique_cells": 2
+    }
+  },
+  "metrics": {
+    "recall": 0.9444444444444444,
+    "precision": 0.7716666666666666,
+    "n_cells_used": 6,
+    "n_collisions": 5,
+    "pairwise_distinguishability": 0.8496732026143791,
+    "n_distinct_pairs": 130,
+    "n_total_pairs": 153
+  },
+  "collisions": {
+    "11011": [
+      "CYP1",
+      "CYP2",
+      "CYP20"
+    ],
+    "11021": [
+      "CYP3",
+      "CYP26",
+      "CYP46",
+      "CYP51"
+    ],
+    "11101": [
+      "CYP4",
+      "CYP11",
+      "CYP19",
+      "CYP21",
+      "CYP27"
+    ],
+    "11100": [
+      "CYP7",
+      "CYP8",
+      "CYP39"
+    ],
+    "11111": [
+      "CYP17",
+      "CYP24"
+    ]
+  },
+  "pair_distances_sample": [
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP2"
+      ],
+      "hamming": 0,
+      "same_cell": true
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP3"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP4"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP5"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP7"
+      ],
+      "hamming": 3,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP8"
+      ],
+      "hamming": 3,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP11"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP17"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP19"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP20"
+      ],
+      "hamming": 0,
+      "same_cell": true
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP21"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP24"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP26"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP27"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP39"
+      ],
+      "hamming": 3,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP46"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP1",
+        "CYP51"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP3"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP4"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP5"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP7"
+      ],
+      "hamming": 3,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP8"
+      ],
+      "hamming": 3,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP11"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP17"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP19"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP20"
+      ],
+      "hamming": 0,
+      "same_cell": true
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP21"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP24"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP26"
+      ],
+      "hamming": 1,
+      "same_cell": false
+    },
+    {
+      "family_pair": [
+        "CYP2",
+        "CYP27"
+      ],
+      "hamming": 2,
+      "same_cell": false
+    }
+  ],
+  "checks": {
+    "recall_above_0p90": true,
+    "precision_above_0p60": true,
+    "few_collisions": true,
+    "cells_used_at_least_5": true,
+    "pairwise_distinguishability_above_0p50": true
+  },
+  "verdict": "PASS"
+}

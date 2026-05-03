@@ -1,0 +1,115 @@
+{
+  "validation_id": "01_address_encoding",
+  "paper_reference": "Paper 2, Definition 4.1, Eq. 1",
+  "determinism_log": [
+    {
+      "seq_head": "MAALSCFEEKLG",
+      "len": 36,
+      "match": true
+    },
+    {
+      "seq_head": "RKDEHACFGRKD",
+      "len": 45,
+      "match": true
+    },
+    {
+      "seq_head": "GGGGAAAAVVVV",
+      "len": 12,
+      "match": true
+    }
+  ],
+  "depth_scaling_log": [
+    {
+      "depth": 3,
+      "address_length": 3,
+      "address": "110",
+      "expected_length": 3
+    },
+    {
+      "depth": 6,
+      "address_length": 6,
+      "address": "110102",
+      "expected_length": 6
+    },
+    {
+      "depth": 9,
+      "address_length": 9,
+      "address": "110102210",
+      "expected_length": 9
+    },
+    {
+      "depth": 12,
+      "address_length": 12,
+      "address": "110102210220",
+      "expected_length": 12
+    }
+  ],
+  "substitution_sensitivity_log": [
+    {
+      "depth": 3,
+      "address_base": "110",
+      "address_subst": "110",
+      "hamming_distance": 0,
+      "differs": false
+    },
+    {
+      "depth": 6,
+      "address_base": "110102",
+      "address_subst": "110102",
+      "hamming_distance": 0,
+      "differs": false
+    },
+    {
+      "depth": 9,
+      "address_base": "110102210",
+      "address_subst": "110102121",
+      "hamming_distance": 3,
+      "differs": true
+    },
+    {
+      "depth": 12,
+      "address_base": "110102210220",
+      "address_subst": "110102121212",
+      "hamming_distance": 5,
+      "differs": true
+    }
+  ],
+  "coverage_at_k_6": {
+    "n_samples": 2000,
+    "n_unique_cells": 40,
+    "max_possible_cells": 729,
+    "coverage_fraction": 0.05486968449931413
+  },
+  "centroid_sanity_log": [
+    {
+      "seq": "VVVVIIIILLLL",
+      "label": "hydrophobic",
+      "Sk": 0.963,
+      "St": 0.5826,
+      "Se": 0.1
+    },
+    {
+      "seq": "DDDDEEEKKKR",
+      "label": "charged",
+      "Sk": 0.0889,
+      "St": 0.4758,
+      "Se": 0.9682
+    },
+    {
+      "seq": "GGGGAAAA",
+      "label": "small",
+      "Sk": 0.5778,
+      "St": 0.085,
+      "Se": 0.075
+    }
+  ],
+  "checks": {
+    "deterministic_encoding": true,
+    "depth_scaling_correct": true,
+    "substitution_sensitive_at_k_eq_9": true,
+    "coverage_at_k_eq_6_above_5pct": true,
+    "address_alphabet_ternary": true,
+    "address_length_matches_depth": true
+  },
+  "verdict": "PASS"
+}
