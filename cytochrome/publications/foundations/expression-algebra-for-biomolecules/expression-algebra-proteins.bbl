@@ -1,0 +1,168 @@
+\begin{thebibliography}{24}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abe and Kyogoku(1987)]{abe2002}
+Masaru Abe and Yoshimasa Kyogoku.
+\newblock Vibrational analysis of flavin derivatives: Normal coordinate
+  treatments of lumiflavin.
+\newblock \emph{Spectrochimica Acta Part A}, 43:\penalty0 1027--1037, 1987.
+
+\bibitem[Allan(1966)]{allan1966}
+David~W. Allan.
+\newblock Statistics of atomic frequency standards.
+\newblock \emph{Proceedings of the IEEE}, 54:\penalty0 221--230, 1966.
+
+\bibitem[Barth(2007)]{barth2007}
+Andreas Barth.
+\newblock Infrared spectroscopy of proteins.
+\newblock \emph{Biochimica et Biophysica Acta - Bioenergetics}, 1767:\penalty0
+  1073--1101, 2007.
+
+\bibitem[Kyte and Doolittle(1982)]{kyte1982}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157:\penalty0 105--132, 1982.
+
+\bibitem[Nakahara(2003)]{nakahara2003}
+Mikio Nakahara.
+\newblock \emph{Geometry, Topology and Physics}.
+\newblock Institute of Physics Publishing, Bristol, 2nd edition, 2003.
+
+\bibitem[Poulos(2003)]{poulos2003}
+Thomas~L. Poulos.
+\newblock The past and present of {P450} structural biology.
+\newblock \emph{Biochemical and Biophysical Research Communications},
+  312:\penalty0 35--39, 2003.
+
+\bibitem[Rittle and Green(2010)]{rittle2010}
+Jonathan Rittle and Michael~T. Green.
+\newblock Cytochrome {P450} compound {I}: Capture, characterization, and {C--H}
+  bond activation kinetics.
+\newblock \emph{Science}, 330:\penalty0 933--937, 2010.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_atoms}
+Kundai~Farai Sachikonye.
+\newblock Proteins from first principles: Deriving molecular structure via
+  categorical partitioning and completion-driven observation.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025_azurin}
+Kundai~Farai Sachikonye.
+\newblock Zero-backaction ternary trisection for {Cu(I)$\to$Cu(II)} electron
+  transfer in azurin.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025_hmr}
+Kundai~Farai Sachikonye.
+\newblock The harmonic molecular resonator: Number-theoretic resonance and loop
+  topology in vibrational spectra.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{c}}.
+
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025_holo}
+Kundai~Farai Sachikonye.
+\newblock Superimposed multi-modal spectral holography: Coherent superposition
+  of electronic state spectra for categorical trajectory reconstruction.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{d}}.
+
+\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025_hyperfine}
+Kundai~Farai Sachikonye.
+\newblock Measuring atoms and molecules into existence: A complete spectral
+  atlas of hydrogen, molecular hydrogen, and water via the categorical
+  spectrometer.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{e}}.
+
+\bibitem[Sachikonye(2025{\natexlab{f}})]{sachikonye2025_partition}
+Kundai~Farai Sachikonye.
+\newblock Spectroscopic derivation of the chemical elements: Atomic structure
+  and virtual instrumentation from bounded phase space geometry.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{f}}.
+
+\bibitem[Sachikonye(2025{\natexlab{g}})]{sachikonye2025_sod1}
+Kundai~Farai Sachikonye.
+\newblock Categorical mechanics of bounded systems: A first-principles
+  derivation with application to {Cu/Zn} superoxide dismutase.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{g}}.
+
+\bibitem[Sachikonye(2025{\natexlab{h}})]{sachikonye2025_strobes}
+Kundai~Farai Sachikonye.
+\newblock Convertible recursive-depth ensemble strobes: A tier-4 categorical
+  spectrometer.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{h}}.
+
+\bibitem[Sachikonye(2025{\natexlab{i}})]{sachikonye2025c}
+Kundai~Farai Sachikonye.
+\newblock The categorical protein database: An empty dictionary engine for
+  protein identity.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{i}}.
+
+\bibitem[Sachikonye(2025{\natexlab{j}})]{sachikonye2025fold}
+Kundai~Farai Sachikonye.
+\newblock On the consequences of oscillator synchronisation on protein folding
+  partition calculus: Gpu morphism chains for contact map prediction from
+  coupling spectra.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{j}}.
+
+\bibitem[Sachikonye(2025{\natexlab{k}})]{sachikonye2025occ}
+Kundai~Farai Sachikonye.
+\newblock Observation as computation: Gpu fragment shaders as physical
+  observation apparatus via the triple equivalence theorem.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{k}}.
+
+\bibitem[Sachikonye(2025{\natexlab{l}})]{sachikonye2025spec}
+Kundai~Farai Sachikonye.
+\newblock Spectroscopic derivation of the chemical elements: Atomic structure
+  and virtual instrumentation from bounded phase space geometry.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{l}}.
+
+\bibitem[Sachikonye(2025{\natexlab{m}})]{sachikonye2025unc}
+Kundai~Farai Sachikonye.
+\newblock An equivalence calculus of unconstrained subtask recursion.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{m}}.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2025_compoundI}
+Kundai~Farai Sachikonye.
+\newblock Compound~i formation via {O--O} heterolysis: A bond-order partition
+  trajectory.
+\newblock Paper~8 of the cytochrome P450 monograph (in preparation),
+  2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_membrane}
+Kundai~Farai Sachikonye.
+\newblock Membrane anchoring, cofactor insertion, and partner coupling in
+  eukaryotic cytochromes p450.
+\newblock Paper~5 of the cytochrome P450 monograph (in preparation),
+  2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_p450monograph}
+Kundai~Farai Sachikonye.
+\newblock Categorical mechanics of cytochrome p450: A complete description of
+  substrate oxidation in bounded phase space.
+\newblock Monograph in preparation, AIMe Registry for Artificial Intelligence,
+  2026{\natexlab{c}}.
+
+\bibitem[Sachikonye(2026{\natexlab{d}})]{sachikonye2025_pcet}
+Kundai~Farai Sachikonye.
+\newblock Proton-coupled electron transfer and the peroxo intermediate in
+  cytochrome p450.
+\newblock Paper~10 of the cytochrome P450 monograph (in preparation),
+  2026{\natexlab{d}}.
+
+\end{thebibliography}
