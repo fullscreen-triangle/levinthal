@@ -1,0 +1,441 @@
+{
+  "validation_id": "06_cyp3a4_address",
+  "paper_reference": "Paper 2, Construction 8.1",
+  "parameters": {
+    "n_residues": 503,
+    "depth_per_residue": 9,
+    "raw_trit_count": 4527,
+    "random_seed": 42
+  },
+  "sequence_summary": {
+    "length": 503,
+    "centroid": [
+      0.5449525071791473,
+      0.48313458545092,
+      0.31590457256461235
+    ],
+    "full_address_d9": "110112212",
+    "family_address_d3": "110"
+  },
+  "topology": {
+    "n_elements": 26,
+    "type_counts": {
+      "helix": 13,
+      "sheet": 5,
+      "loop": 8
+    }
+  },
+  "element_addresses": [
+    {
+      "element": "anchor",
+      "type": "loop",
+      "range": [
+        1,
+        23
+      ],
+      "length": 23,
+      "centroid": [
+        0.5183574879227053,
+        0.47172746363848483,
+        0.34130434782608693
+      ],
+      "address": "111110100"
+    },
+    {
+      "element": "alpha-A",
+      "type": "helix",
+      "range": [
+        24,
+        49
+      ],
+      "length": 26,
+      "centroid": [
+        0.5324786324786325,
+        0.46864822714554377,
+        0.35192307692307695
+      ],
+      "address": "111110200"
+    },
+    {
+      "element": "alpha-B",
+      "type": "helix",
+      "range": [
+        50,
+        70
+      ],
+      "length": 21,
+      "centroid": [
+        0.5671957671957673,
+        0.49342647017065616,
+        0.3142857142857143
+      ],
+      "address": "110212012"
+    },
+    {
+      "element": "alpha-Bp",
+      "type": "helix",
+      "range": [
+        71,
+        85
+      ],
+      "length": 15,
+      "centroid": [
+        0.5133333333333333,
+        0.5077718147485589,
+        0.3266666666666667
+      ],
+      "address": "110112112"
+    },
+    {
+      "element": "beta-1",
+      "type": "sheet",
+      "range": [
+        86,
+        94
+      ],
+      "length": 9,
+      "centroid": [
+        0.45802469135802465,
+        0.4825415755648314,
+        0.4166666666666667
+      ],
+      "address": "111110012"
+    },
+    {
+      "element": "loop-1",
+      "type": "loop",
+      "range": [
+        95,
+        105
+      ],
+      "length": 11,
+      "centroid": [
+        0.7151515151515151,
+        0.47861440884696693,
+        0.19090909090909092
+      ],
+      "address": "210011102"
+    },
+    {
+      "element": "alpha-C",
+      "type": "helix",
+      "range": [
+        106,
+        130
+      ],
+      "length": 25,
+      "centroid": [
+        0.5657777777777777,
+        0.43692307692307686,
+        0.26
+      ],
+      "address": "110202021"
+    },
+    {
+      "element": "alpha-D",
+      "type": "helix",
+      "range": [
+        131,
+        165
+      ],
+      "length": 35,
+      "centroid": [
+        0.45365079365079364,
+        0.5239798960729193,
+        0.43857142857142856
+      ],
+      "address": "111110022"
+    },
+    {
+      "element": "alpha-E",
+      "type": "helix",
+      "range": [
+        166,
+        195
+      ],
+      "length": 30,
+      "centroid": [
+        0.5207407407407407,
+        0.5541840588352216,
+        0.35833333333333334
+      ],
+      "address": "111110220"
+    },
+    {
+      "element": "alpha-F",
+      "type": "helix",
+      "range": [
+        196,
+        225
+      ],
+      "length": 30,
+      "centroid": [
+        0.6577777777777778,
+        0.47835420393559924,
+        0.25833333333333336
+      ],
+      "address": "110212200"
+    },
+    {
+      "element": "alpha-G",
+      "type": "helix",
+      "range": [
+        226,
+        250
+      ],
+      "length": 25,
+      "centroid": [
+        0.56,
+        0.5280143112701252,
+        0.314
+      ],
+      "address": "110212022"
+    },
+    {
+      "element": "alpha-H",
+      "type": "helix",
+      "range": [
+        251,
+        270
+      ],
+      "length": 20,
+      "centroid": [
+        0.5283333333333333,
+        0.5007453786523554,
+        0.365
+      ],
+      "address": "111110210"
+    },
+    {
+      "element": "loop-2",
+      "type": "loop",
+      "range": [
+        271,
+        289
+      ],
+      "length": 19,
+      "centroid": [
+        0.41871345029239765,
+        0.43944386906443206,
+        0.33157894736842103
+      ],
+      "address": "110002222"
+    },
+    {
+      "element": "alpha-I",
+      "type": "helix",
+      "range": [
+        290,
+        325
+      ],
+      "length": 36,
+      "centroid": [
+        0.5805555555555555,
+        0.43152454780361754,
+        0.2222222222222222
+      ],
+      "address": "110202020"
+    },
+    {
+      "element": "loop-3",
+      "type": "loop",
+      "range": [
+        326,
+        343
+      ],
+      "length": 18,
+      "centroid": [
+        0.38518518518518513,
+        0.30457828132246734,
+        0.2888888888888889
+      ],
+      "address": "100022121"
+    },
+    {
+      "element": "alpha-J",
+      "type": "helix",
+      "range": [
+        344,
+        365
+      ],
+      "length": 22,
+      "centroid": [
+        0.6530303030303031,
+        0.48780289477963895,
+        0.20227272727272727
+      ],
+      "address": "110211212"
+    },
+    {
+      "element": "alpha-K",
+      "type": "helix",
+      "range": [
+        366,
+        390
+      ],
+      "length": 25,
+      "centroid": [
+        0.48044444444444445,
+        0.517447823494335,
+        0.41600000000000004
+      ],
+      "address": "111110012"
+    },
+    {
+      "element": "loop-4",
+      "type": "loop",
+      "range": [
+        391,
+        410
+      ],
+      "length": 20,
+      "centroid": [
+        0.6088888888888888,
+        0.4798747763864043,
+        0.2875
+      ],
+      "address": "110212101"
+    },
+    {
+      "element": "beta-2",
+      "type": "sheet",
+      "range": [
+        411,
+        416
+      ],
+      "length": 6,
+      "centroid": [
+        0.4611111111111111,
+        0.4727688332339495,
+        0.2833333333333333
+      ],
+      "address": "110112001"
+    },
+    {
+      "element": "beta-3",
+      "type": "sheet",
+      "range": [
+        417,
+        422
+      ],
+      "length": 6,
+      "centroid": [
+        0.4185185185185185,
+        0.5388590737427946,
+        0.5583333333333333
+      ],
+      "address": "111012220"
+    },
+    {
+      "element": "PERF",
+      "type": "loop",
+      "range": [
+        423,
+        427
+      ],
+      "length": 5,
+      "centroid": [
+        0.1222222222222222,
+        0.5204531902206321,
+        0.67
+      ],
+      "address": "012110020"
+    },
+    {
+      "element": "alpha-L",
+      "type": "helix",
+      "range": [
+        428,
+        437
+      ],
+      "length": 10,
+      "centroid": [
+        0.6944444444444444,
+        0.5317233154442456,
+        0.215
+      ],
+      "address": "210011022"
+    },
+    {
+      "element": "heme-loop",
+      "type": "loop",
+      "range": [
+        438,
+        451
+      ],
+      "length": 14,
+      "centroid": [
+        0.5015873015873016,
+        0.3867450379078286,
+        0.25
+      ],
+      "address": "110102110"
+    },
+    {
+      "element": "beta-4",
+      "type": "sheet",
+      "range": [
+        452,
+        460
+      ],
+      "length": 9,
+      "centroid": [
+        0.5259259259259259,
+        0.49354005167958653,
+        0.38333333333333336
+      ],
+      "address": "111110211"
+    },
+    {
+      "element": "beta-5",
+      "type": "sheet",
+      "range": [
+        461,
+        470
+      ],
+      "length": 10,
+      "centroid": [
+        0.3822222222222222,
+        0.48610614192009544,
+        0.485
+      ],
+      "address": "111011111"
+    },
+    {
+      "element": "c-terminus",
+      "type": "loop",
+      "range": [
+        471,
+        503
+      ],
+      "length": 33,
+      "centroid": [
+        0.7286195286195286,
+        0.5334381380893007,
+        0.19999999999999998
+      ],
+      "address": "210011122"
+    }
+  ],
+  "compression": {
+    "raw_trit_count": 4527,
+    "compressed_trit_count": 234,
+    "ratio": 0.05168986083499006,
+    "x_compression": 19.346153846153847
+  },
+  "landmark_addresses_d3": {
+    "I_helix": "110",
+    "heme_loop": "110",
+    "full_protein": "110"
+  },
+  "checks": {
+    "raw_trit_count_correct": true,
+    "n_helices_eq_13": true,
+    "n_sheets_eq_5": true,
+    "n_elements_in_predicted_range": true,
+    "compression_ratio_above_5x": true,
+    "compression_ratio_within_30x": true,
+    "address_length_matches": true
+  },
+  "verdict": "PASS"
+}
