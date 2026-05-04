@@ -1,0 +1,117 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215:\penalty0 403--410, 1990.
+
+\bibitem[Barth(2007)]{barth2007}
+Andreas Barth.
+\newblock Infrared spectroscopy of proteins.
+\newblock \emph{Biochimica et Biophysica Acta - Bioenergetics}, 1767:\penalty0
+  1073--1101, 2007.
+
+\bibitem[Eddy(2011)]{eddy2011}
+Sean~R. Eddy.
+\newblock Accelerated profile {HMM} searches.
+\newblock \emph{PLOS Computational Biology}, 7:\penalty0 e1002195, 2011.
+
+\bibitem[Gaedigk et~al.(2017)Gaedigk, Ingelman-Sundberg, Miller, Leeder,
+  Whirl-Carrillo, and Klein]{gaedigk2017}
+Andrea Gaedigk, Magnus Ingelman-Sundberg, Neil~A. Miller, J.~Steven Leeder,
+  Michelle Whirl-Carrillo, and Teri~E. Klein.
+\newblock The pharmacogene variation ({PharmVar}) consortium: Incorporation of
+  the human cytochrome {P450} ({CYP}) allele nomenclature database.
+\newblock \emph{Clinical Pharmacology \& Therapeutics}, 103:\penalty0 399--401,
+  2017.
+
+\bibitem[Guengerich et~al.(2018)Guengerich, Waterman, and Egli]{guengerich2018}
+F.~Peter Guengerich, Michael~R. Waterman, and Martin Egli.
+\newblock Recent structural insights into cytochrome {P450} function.
+\newblock \emph{Trends in Pharmacological Sciences}, 37:\penalty0 625--640,
+  2018.
+
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, et~al.]{jumper2021}
+John Jumper, Richard Evans, Alexander Pritzel, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596:\penalty0 583--589, 2021.
+
+\bibitem[Nelson(2009)]{nelson2009}
+David~R. Nelson.
+\newblock The cytochrome {P450} homepage.
+\newblock \emph{Human Genomics}, 4:\penalty0 59--65, 2009.
+
+\bibitem[Nelson(2018)]{nelson2018}
+David~R. Nelson.
+\newblock Cytochrome {P450} diversity in the tree of life.
+\newblock \emph{Biochimica et Biophysica Acta - Proteins and Proteomics},
+  1866:\penalty0 141--154, 2018.
+
+\bibitem[{PharmVar Consortium}(2024)]{pharmvar}
+{PharmVar Consortium}.
+\newblock {PharmVar}: Pharmacogene variation consortium.
+\newblock \url{https://www.pharmvar.org}, 2024.
+
+\bibitem[Poulos(2003)]{poulos2003}
+Thomas~L. Poulos.
+\newblock The past and present of {P450} structural biology.
+\newblock \emph{Biochemical and Biophysical Research Communications},
+  312:\penalty0 35--39, 2003.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025c}
+Kundai~Farai Sachikonye.
+\newblock The categorical protein database: An empty dictionary engine for
+  protein identity.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025fold}
+Kundai~Farai Sachikonye.
+\newblock On the consequences of oscillator synchronisation on protein folding
+  partition calculus: Gpu morphism chains for contact map prediction from
+  coupling spectra.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{paper2_validation}
+Kundai~Farai Sachikonye.
+\newblock Validation suite for paper 2: P450 address manifold and cyp3a4
+  folding.
+\newblock Validation scripts and JSON results, accompanying this paper,
+  2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_membrane}
+Kundai~Farai Sachikonye.
+\newblock Membrane anchoring, cofactor insertion, and partner coupling in
+  eukaryotic cytochromes p450.
+\newblock Paper~5 of the cytochrome P450 monograph (in preparation),
+  2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_paper1}
+Kundai~Farai Sachikonye.
+\newblock An expression algebra for biomolecules: The receiver
+  {$\mathcal{R}_{\mathrm{bio}}$} as a type-safe morphism chain.
+\newblock Paper~1 of the cytochrome P450 monograph, 2026{\natexlab{c}}.
+
+\bibitem[Shaw et~al.(2010)Shaw, Maragakis, Lindorff-Larsen, et~al.]{shaw2010}
+David~E. Shaw, Paul Maragakis, Kresten Lindorff-Larsen, et~al.
+\newblock Atomic-level characterization of the structural dynamics of proteins.
+\newblock \emph{Science}, 330:\penalty0 341--346, 2010.
+
+\bibitem[Yano et~al.(2004)Yano, Wester, Schoch, Griffin, Stout, and
+  Johnson]{yano2004}
+Jason~K. Yano, Michael~R. Wester, Guillaume~A. Schoch, Keith~J. Griffin,
+  C.~David Stout, and Eric~F. Johnson.
+\newblock The structure of human microsomal cytochrome {P450 3A4} determined by
+  {X}-ray crystallography to 2.05-{\aa} resolution.
+\newblock \emph{Journal of Biological Chemistry}, 279:\penalty0 38091--38094,
+  2004.
+
+\end{thebibliography}

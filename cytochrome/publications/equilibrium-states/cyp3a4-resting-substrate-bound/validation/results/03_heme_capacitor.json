@@ -1,0 +1,115 @@
+{
+  "validation_id": "03_heme_capacitor",
+  "paper_reference": "Paper 3, Section 5",
+  "parameters": {
+    "epsilon_r": 6.0,
+    "area_m2": 6.400000000000001e-19,
+    "separation_m": 6e-10,
+    "Q_inner_C": 1.602176634e-19,
+    "R_protein_ohm": 1000000000.0
+  },
+  "canonical_values": {
+    "C_heme_F": 5.666680200192e-20,
+    "C_heme_aF": 0.05666680200192,
+    "U_heme_J": 2.2649680905308496e-19,
+    "U_heme_eV": 1.4136818890412366,
+    "tau_RC_s": 5.666680200192e-11,
+    "tau_RC_ps": 56.666802001920004
+  },
+  "paper_predictions": {
+    "C_F": 5.7e-20,
+    "U_eV": 1.4,
+    "tau_RC_ps": 60.0
+  },
+  "epsilon_r_sweep": [
+    {
+      "epsilon_r": 3.0,
+      "C_F": 2.833340100096e-20,
+      "U_J": 4.529936181061699e-19,
+      "U_eV": 2.827363778082473,
+      "tau_RC_s": 2.833340100096e-11
+    },
+    {
+      "epsilon_r": 4.0,
+      "C_F": 3.7777868001280006e-20,
+      "U_J": 3.3974521357962737e-19,
+      "U_eV": 2.1205228335618544,
+      "tau_RC_s": 3.7777868001280005e-11
+    },
+    {
+      "epsilon_r": 6.0,
+      "C_F": 5.666680200192e-20,
+      "U_J": 2.2649680905308496e-19,
+      "U_eV": 1.4136818890412366,
+      "tau_RC_s": 5.666680200192e-11
+    },
+    {
+      "epsilon_r": 8.0,
+      "C_F": 7.555573600256001e-20,
+      "U_J": 1.6987260678981368e-19,
+      "U_eV": 1.0602614167809272,
+      "tau_RC_s": 7.555573600256001e-11
+    },
+    {
+      "epsilon_r": 10.0,
+      "C_F": 9.444467000320002e-20,
+      "U_J": 1.3589808543185094e-19,
+      "U_eV": 0.8482091334247417,
+      "tau_RC_s": 9.444467000320002e-11
+    },
+    {
+      "epsilon_r": 12.0,
+      "C_F": 1.1333360400384e-19,
+      "U_J": 1.1324840452654248e-19,
+      "U_eV": 0.7068409445206183,
+      "tau_RC_s": 1.1333360400384e-10
+    }
+  ],
+  "separation_sweep": [
+    {
+      "sep_A": 4.0,
+      "C_F": 8.500020300288001e-20,
+      "U_eV": 0.9424545926941575,
+      "tau_RC_s": 8.500020300288001e-11
+    },
+    {
+      "sep_A": 5.0,
+      "C_F": 6.8000162402304e-20,
+      "U_eV": 1.178068240867697,
+      "tau_RC_s": 6.800016240230401e-11
+    },
+    {
+      "sep_A": 6.0,
+      "C_F": 5.666680200192e-20,
+      "U_eV": 1.4136818890412366,
+      "tau_RC_s": 5.666680200192e-11
+    },
+    {
+      "sep_A": 7.0,
+      "C_F": 4.8571544573074286e-20,
+      "U_eV": 1.6492955372147757,
+      "tau_RC_s": 4.857154457307429e-11
+    },
+    {
+      "sep_A": 8.0,
+      "C_F": 4.2500101501440005e-20,
+      "U_eV": 1.884909185388315,
+      "tau_RC_s": 4.2500101501440004e-11
+    }
+  ],
+  "comparison": {
+    "membrane_patch_clamp_pF": 1e-12,
+    "DNA_chromatin_pF": 3e-10,
+    "heme_pocket_F": 5.666680200192e-20,
+    "heme_pocket_aF": 0.05666680200192
+  },
+  "checks": {
+    "C_heme_within_factor_2_of_paper": true,
+    "C_heme_in_attofarad_range": true,
+    "U_heme_within_factor_2_of_paper_eV": true,
+    "U_heme_above_redox_potential_range": true,
+    "tau_RC_within_factor_2_of_paper_ps": true,
+    "tau_RC_below_ms_turnover": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,128 @@
+{
+  "validation_id": "05_spin_crossover",
+  "paper_reference": "Paper 3, Section 10",
+  "parameters": {
+    "S_Fe_LS": [
+      0.745,
+      0.52,
+      0.413
+    ],
+    "S_Fe_HS": [
+      0.815,
+      0.51,
+      0.56
+    ],
+    "T_part_kJ_per_mol_per_M": 65.0
+  },
+  "F_CB_results": {
+    "Fe_LS": {
+      "S": [
+        0.745,
+        0.52,
+        0.413
+      ],
+      "M": 6.212106214437899,
+      "n": 5,
+      "l": 1,
+      "regularized": false
+    },
+    "Fe_HS": {
+      "S": [
+        0.815,
+        0.51,
+        0.56
+      ],
+      "M": 7.130000000000019,
+      "n": 5,
+      "l": 1,
+      "regularized": true
+    }
+  },
+  "delta_M": 0.9178937855621205,
+  "activation_energy": {
+    "E_a_kJ_per_mol": 59.663096061537836,
+    "E_a_kcal_per_mol": 14.259822194440208,
+    "E_a_eV": 0.6183644297173242
+  },
+  "rate_prediction": {
+    "arrhenius_prefactor_per_s": 40585305154233.984,
+    "k_predicted_per_s": 16208118740380.35,
+    "experimental_range_per_s": [
+      10000000.0,
+      100000000.0
+    ]
+  },
+  "paper_predictions": {
+    "delta_M": 0.92,
+    "E_a_kcal": 14.0,
+    "k_range_per_s": [
+      10000000.0,
+      100000000.0
+    ]
+  },
+  "sensitivity_sweep": [
+    {
+      "hs_offset": -0.05,
+      "S_HS_perturbed": [
+        0.7649999999999999,
+        0.51,
+        0.51
+      ],
+      "M_HS": 7.130000000000019,
+      "delta_M": 0.9178937855621205,
+      "E_a_kcal": 14.259822194440208
+    },
+    {
+      "hs_offset": -0.02,
+      "S_HS_perturbed": [
+        0.7949999999999999,
+        0.51,
+        0.54
+      ],
+      "M_HS": 7.130000000000019,
+      "delta_M": 0.9178937855621205,
+      "E_a_kcal": 14.259822194440208
+    },
+    {
+      "hs_offset": 0.0,
+      "S_HS_perturbed": [
+        0.815,
+        0.51,
+        0.56
+      ],
+      "M_HS": 7.130000000000019,
+      "delta_M": 0.9178937855621205,
+      "E_a_kcal": 14.259822194440208
+    },
+    {
+      "hs_offset": 0.02,
+      "S_HS_perturbed": [
+        0.835,
+        0.51,
+        0.5800000000000001
+      ],
+      "M_HS": 7.130000000000019,
+      "delta_M": 0.9178937855621205,
+      "E_a_kcal": 14.259822194440208
+    },
+    {
+      "hs_offset": 0.05,
+      "S_HS_perturbed": [
+        0.865,
+        0.51,
+        0.6100000000000001
+      ],
+      "M_HS": 7.130000000000019,
+      "delta_M": 0.9178937855621205,
+      "E_a_kcal": 14.259822194440208
+    }
+  ],
+  "checks": {
+    "delta_M_within_0p15_of_0p92": true,
+    "E_a_within_factor_2_of_paper": true,
+    "categorical_rate_exceeds_experimental": true,
+    "M_HS_greater_than_M_LS": true,
+    "M_LS_finite": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,72 @@
+{
+  "validation_id": "04_water_variance_free_energy",
+  "paper_reference": "Paper 3, Section 6 and Equation var_F",
+  "parameters": {
+    "n_waters": 6,
+    "variance_rest_rad2": 0.04,
+    "variance_bound_rad2": 0.12,
+    "N_effective_binding": 150,
+    "n_replicates": 200,
+    "random_seed": 42
+  },
+  "resting_state": {
+    "mean_variance_rad2": 0.03267251055683017,
+    "F_J": 8.390324039166525e-22,
+    "F_kcal_per_mol": 0.12076130823102489
+  },
+  "bound_state": {
+    "mean_variance_rad2": 0.10454725737464766,
+    "F_J": 2.6847810340551286e-21,
+    "F_kcal_per_mol": 0.3864185321959843
+  },
+  "substrate_binding": {
+    "delta_variance_rad2": 0.0718747468178175,
+    "delta_F_bind_J": -4.6143715753461904e-20,
+    "delta_F_bind_kcal_per_mol": -6.641430599123987
+  },
+  "paper_predictions": {
+    "rest_F_kcal_per_mol": 0.6,
+    "bind_F_kcal_per_mol": -7.4
+  },
+  "variance_to_F_sweep": [
+    {
+      "variance_rad2": 0.01,
+      "F_J": 2.56800714e-22,
+      "F_kcal_per_mol": 0.03696113527026769
+    },
+    {
+      "variance_rad2": 0.04,
+      "F_J": 1.027202856e-21,
+      "F_kcal_per_mol": 0.14784454108107076
+    },
+    {
+      "variance_rad2": 0.08,
+      "F_J": 2.054405712e-21,
+      "F_kcal_per_mol": 0.2956890821621415
+    },
+    {
+      "variance_rad2": 0.12,
+      "F_J": 3.081608568e-21,
+      "F_kcal_per_mol": 0.4435336232432122
+    },
+    {
+      "variance_rad2": 0.2,
+      "F_J": 5.13601428e-21,
+      "F_kcal_per_mol": 0.7392227054053538
+    },
+    {
+      "variance_rad2": 0.3,
+      "F_J": 7.70402142e-21,
+      "F_kcal_per_mol": 1.1088340581080307
+    }
+  ],
+  "checks": {
+    "rest_F_within_factor_3_of_paper": true,
+    "bound_variance_exceeds_rest": true,
+    "delta_F_bind_negative": true,
+    "delta_F_bind_within_factor_3_of_paper": true,
+    "F_monotonic_in_variance": true,
+    "reproducible_under_seed": true
+  },
+  "verdict": "PASS"
+}
