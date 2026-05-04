@@ -1,0 +1,72 @@
+{
+  "validation_id": "05_semiquinone_ladder",
+  "paper_reference": "Paper 4, Definition 5.1, Section 12",
+  "flavin_states": [
+    {
+      "name": "oxidized",
+      "label": "FAD or FMN",
+      "S": [
+        0.605,
+        0.5,
+        0.475
+      ],
+      "M": 2.4939253505012497,
+      "n_partition": 3,
+      "l_partition": 0,
+      "m_input": 0,
+      "s_input": 0
+    },
+    {
+      "name": "semiquinone_neutral",
+      "label": "FADH^. or FMNH^.",
+      "S": [
+        0.62,
+        0.502,
+        0.48
+      ],
+      "M": 2.6739835139038433,
+      "n_partition": 3,
+      "l_partition": 0,
+      "m_input": 1,
+      "s_input": 0.5
+    },
+    {
+      "name": "hydroquinone",
+      "label": "FADH^- or FMNH^-",
+      "S": [
+        0.64,
+        0.505,
+        0.485
+      ],
+      "M": 2.968199557676749,
+      "n_partition": 3,
+      "l_partition": 0,
+      "m_input": 0,
+      "s_input": 0
+    }
+  ],
+  "depth_differences": {
+    "delta_M_oxidized_to_semi": 0.1800581634025935,
+    "delta_M_semi_to_reduced": 0.2942160437729058,
+    "delta_M_oxidized_to_reduced": 0.4742742071754993
+  },
+  "free_energies": {
+    "delta_G_semi_kcal_per_mol": 2.797270702956161,
+    "delta_G_red_kcal_per_mol": 4.570755938154607,
+    "T_part_kJ_per_mol_per_M_unit": 65.0,
+    "paper_semi_stabilization_kcal_per_mol": -3.0
+  },
+  "hop2_analysis": {
+    "via_semiquinone": true,
+    "categorical_distance": 2,
+    "explanation": "Two sequential 1e^- transfers via semiquinone bridge"
+  },
+  "checks": {
+    "three_states_distinct_coords": true,
+    "M_progression_monotonic": true,
+    "semi_to_oxidized_finite_energy": true,
+    "hop2_via_semiquinone_dC_eq_2": true,
+    "semiquinone_thermodynamically_distinct": true
+  },
+  "verdict": "PASS"
+}

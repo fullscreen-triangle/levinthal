@@ -1,0 +1,68 @@
+{
+  "validation_id": "06_cpdI_lifetime",
+  "paper_reference": "Paper 5, Theorem 14.1",
+  "activation_energy": {
+    "E_a_from_DeltaM_kcal": 10.76829988919609,
+    "E_a_paper_kcal": 11.0,
+    "Delta_M_used": 0.6931471805599453
+  },
+  "lifetimes_per_temperature": [
+    {
+      "T_K": 193,
+      "T_C": -80.14999999999998,
+      "tau_s": 0.11315817999321501,
+      "tau_ms": 113.15817999321501,
+      "log10_tau_s": -0.9463140462385548
+    },
+    {
+      "T_K": 230,
+      "T_C": -43.14999999999998,
+      "tau_s": 0.0009412041710579439,
+      "tau_ms": 0.941204171057944,
+      "log10_tau_s": -3.0263161568642327
+    },
+    {
+      "T_K": 273,
+      "T_C": -0.14999999999997726,
+      "tau_s": 1.790182687472303e-05,
+      "tau_ms": 0.01790182687472303,
+      "log10_tau_s": -4.747102647169448
+    },
+    {
+      "T_K": 298,
+      "T_C": 24.850000000000023,
+      "tau_s": 2.9928139224461304e-06,
+      "tau_ms": 0.0029928139224461303,
+      "log10_tau_s": -5.523920284485251
+    },
+    {
+      "T_K": 310,
+      "T_C": 36.85000000000002,
+      "tau_s": 1.4016887414853473e-06,
+      "tau_ms": 0.0014016887414853474,
+      "log10_tau_s": -5.853348414944982
+    },
+    {
+      "T_K": 350,
+      "T_C": 76.85000000000002,
+      "tau_s": 1.613084762309128e-07,
+      "tau_ms": 0.0001613084762309128,
+      "log10_tau_s": -6.792342811262036
+    }
+  ],
+  "specific_predictions": {
+    "tau_193K_ms_predicted": 113.15817999321501,
+    "tau_193K_ms_experimental": 210.0,
+    "tau_310K_ms_predicted": 0.0014016887414853474,
+    "tau_310K_ms_experimental": 1.0
+  },
+  "arrhenius_ratio_193K_to_310K": 80729.8914831142,
+  "checks": {
+    "tau_193K_within_factor_5_of_paper": true,
+    "tau_310K_within_factor_1000_of_paper": true,
+    "lifetime_decreases_with_temperature": true,
+    "arrhenius_ratio_above_50": true,
+    "E_a_within_paper_range": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,87 @@
+{
+  "validation_id": "05_anharmonic_recurrence",
+  "paper_reference": "Paper 5, Theorem 2.4 and Corollary 2.5",
+  "morse_parameters": {
+    "De_kcal_per_mol": 60.0,
+    "r_eq_A": 1.45,
+    "alpha_per_A": 2.0,
+    "mass_amu": 8.0
+  },
+  "anharmonicity": {
+    "potential_asymmetry": 0.3947506404498085,
+    "is_anharmonic": true,
+    "frequency_amplitude_dependence": 0.3
+  },
+  "trajectory_samples": [
+    {
+      "r0": 1.4639426798457884,
+      "v0": -0.09499784895546662,
+      "min_return_distance": 3.891213961093598e-05,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.427502931836912,
+      "v0": -0.05535785237023545,
+      "min_return_distance": 9.315855971081533e-06,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.473647121416401,
+      "v0": 0.03533989748458227,
+      "min_return_distance": 4.589867026449923e-07,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.4892179567704844,
+      "v0": -0.08261223347411678,
+      "min_return_distance": 1.4472624389583189e-05,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.442192181968527,
+      "v0": -0.09404055611238593,
+      "min_return_distance": 1.282134642188737e-05,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.4218637974803603,
+      "v0": 0.001071057620672472,
+      "min_return_distance": 2.240814278575698e-07,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.4026535969683862,
+      "v0": -0.06023246986267031,
+      "min_return_distance": 1.1854597766092212e-05,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.4649884437779523,
+      "v0": 0.008988296120643335,
+      "min_return_distance": 1.964083059080579e-06,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.4220440622040695,
+      "v0": 0.017853136775181744,
+      "min_return_distance": 2.05874070213774e-06,
+      "exact_recurrence": false
+    },
+    {
+      "r0": 1.4809430456677826,
+      "v0": -0.0987002480643878,
+      "min_return_distance": 2.9104971189131135e-05,
+      "exact_recurrence": false
+    }
+  ],
+  "n_initial_conditions": 100,
+  "n_recurred_to_exact": 0,
+  "checks": {
+    "morse_potential_is_anharmonic": true,
+    "n_initial_conditions_sampled": true,
+    "anharmonic_factor_above_0p1": true,
+    "no_exact_recurrence_in_samples": true,
+    "trajectory_shows_oscillation": true
+  },
+  "verdict": "PASS"
+}

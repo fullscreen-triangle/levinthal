@@ -1,0 +1,66 @@
+{
+  "validation_id": "08_falsifiable_predictions",
+  "paper_reference": "Paper 4, Section 17",
+  "prediction_1_isotope_transfer": {
+    "framework_predicted": 0.0,
+    "marcus_predicted": 1.0,
+    "distinguishable": true,
+    "experimental_test": "labelled NADPH delivery \u2192 labelled electron at heme?"
+  },
+  "prediction_2_semiquinone_necessity": {
+    "intact_log_kcat_KM": 6.0,
+    "destabilised_log_kcat_KM": 2.0,
+    "rate_drop_orders": 4.0,
+    "experimental_test": "CPR mutants D632A, S457A vs WT k_cat/K_M"
+  },
+  "prediction_3_dc_scaling": {
+    "engineered_chains": [
+      {
+        "n_cofactors": 3,
+        "d_C": 3,
+        "log10_kcat_KM": 7,
+        "kcat_KM_M_per_s": 10000000
+      },
+      {
+        "n_cofactors": 4,
+        "d_C": 4,
+        "log10_kcat_KM": 6,
+        "kcat_KM_M_per_s": 1000000
+      },
+      {
+        "n_cofactors": 5,
+        "d_C": 5,
+        "log10_kcat_KM": 5,
+        "kcat_KM_M_per_s": 100000
+      },
+      {
+        "n_cofactors": 6,
+        "d_C": 6,
+        "log10_kcat_KM": 4,
+        "kcat_KM_M_per_s": 10000
+      }
+    ],
+    "slopes": [
+      -1,
+      -1,
+      -1
+    ],
+    "uniform_slope_minus_one": true,
+    "experimental_test": "engineered CPR variants with extra/fewer cofactors"
+  },
+  "prediction_4_bunching": {
+    "fano_poisson": 0.9259999999999999,
+    "fano_bunched": 16.052,
+    "poisson_close_to_1": true,
+    "bunched_super_poissonian": true,
+    "distinguishable": true
+  },
+  "checks": {
+    "isotope_non_transfer_predicted": true,
+    "marcus_baseline_predicts_transfer": true,
+    "semiquinone_destabilisation_predicts_rate_drop": true,
+    "dc_scaling_slope_minus_one": true,
+    "bunching_distinguishable_from_poisson": true
+  },
+  "verdict": "PASS"
+}

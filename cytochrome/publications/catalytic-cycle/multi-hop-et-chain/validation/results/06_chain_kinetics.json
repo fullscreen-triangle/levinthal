@@ -1,0 +1,44 @@
+{
+  "validation_id": "06_chain_kinetics",
+  "paper_reference": "Paper 4, Section 16",
+  "hop_rates_per_s": {
+    "hop1_NADPH_FAD": 600.0,
+    "hop2_FAD_FMN": 10000000.0,
+    "hop3_FMN_heme": 50000000.0
+  },
+  "intrinsic_rate_per_s": 40585305154233.984,
+  "damping_factors": {
+    "hop1_NADPH_FAD": 67642175257.05664,
+    "hop2_FAD_FMN": 4058530.5154233985,
+    "hop3_FMN_heme": 811706.1030846797
+  },
+  "rate_limiting_hop": "hop1_NADPH_FAD",
+  "rate_limiting_value_per_s": 600.0,
+  "series_total_k_per_s": 599.956803110176,
+  "predicted_k_cat_per_s": 599.956803110176,
+  "measured_k_cat_per_s": 100.0,
+  "log_deviation": 0.7781199823065839,
+  "sorted_hops": [
+    [
+      "hop1_NADPH_FAD",
+      600.0
+    ],
+    [
+      "hop2_FAD_FMN",
+      10000000.0
+    ],
+    [
+      "hop3_FMN_heme",
+      50000000.0
+    ]
+  ],
+  "checks": {
+    "three_hops_specified": true,
+    "all_rates_positive": true,
+    "all_rates_below_intrinsic_clock": true,
+    "rate_limiting_hop_identified": true,
+    "k_cat_within_3_orders_of_measured": true,
+    "matrix_damping_above_1": true
+  },
+  "verdict": "PASS"
+}

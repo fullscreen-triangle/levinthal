@@ -17,7 +17,8 @@
       "Bash(python run_all.py)",
       "Bash(python -c ' *)",
       "Bash(python -c \"import matplotlib; print\\('matplotlib', matplotlib.__version__\\)\")",
-      "Bash(python generate_panels.py)"
+      "Bash(python generate_panels.py)",
+      "Bash(pip install *)"
     ]
   }
 }
