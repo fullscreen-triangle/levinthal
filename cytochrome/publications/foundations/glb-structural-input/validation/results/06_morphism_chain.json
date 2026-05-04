@@ -1,0 +1,51 @@
+{
+  "validation_id": "06_morphism_chain",
+  "paper_reference": "Paper 2.5, Section 4.3 (the four-stage chain)",
+  "n_atoms": 146,
+  "matrix_diagnostics": {
+    "observe": {
+      "symmetric": true,
+      "diag_zero": true,
+      "nonneg": true,
+      "max_entry": 0.9484580321713066
+    },
+    "catalyze": {
+      "symmetric": true,
+      "monotonic": true,
+      "max_entry": 1.8969160643426133
+    },
+    "fuse": {
+      "symmetric": true,
+      "within_min_max": true,
+      "max_entry": 1.42268704825696
+    },
+    "access": {
+      "symmetric": true,
+      "binary": true,
+      "diag_zero": true
+    }
+  },
+  "n_contacts": 3446,
+  "max_possible_contacts": 10585,
+  "contact_density": 0.3255550307038262,
+  "partition_depth_M": 1.9331932848148934,
+  "partition_n": 3,
+  "partition_l": 0,
+  "trit_address": "111210011",
+  "checks": {
+    "observe_zero_diagonal": true,
+    "observe_nonnegative": true,
+    "observe_symmetric": true,
+    "catalyze_monotonic_boost": true,
+    "catalyze_symmetric": true,
+    "fuse_within_min_max": true,
+    "fuse_symmetric": true,
+    "access_binary": true,
+    "access_symmetric": true,
+    "access_zero_diagonal": true,
+    "partition_depth_finite": true,
+    "trit_address_correct_length": true,
+    "contact_density_reasonable": true
+  },
+  "verdict": "PASS"
+}

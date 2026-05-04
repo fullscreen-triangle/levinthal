@@ -4,7 +4,7 @@
 
 Author: Kundai Farai Sachikonye
 Affiliation: AIMe Registry for Artificial Intelligence / Technical University of Munich
-Status: In progress (3 of ~14 papers complete)
+Status: In progress (5 thesis papers + 1 methods paper complete; ~14 total planned)
 
 ---
 
@@ -35,6 +35,7 @@ catalytic cycle predicted at fs/pm resolution.
 |---|---|---|
 | 1 | The S-Expression Algebra for Biomolecules | **DONE** ✓ |
 | 2 | The P450 Address Manifold + CYP3A4 Fold | **DONE** ✓ |
+| 2.5 | GLB-Based Structural Input to the Receiver (methods) | **DONE** ✓ |
 | 3 | The Resting and Substrate-Bound States of CYP3A4 | **DONE** ✓ |
 | 4 | Multi-Hop Electron Transfer through CPR | **DONE** ✓ |
 | 5 | **Compound I Formation via O-O Heterolysis (HEADLINE)** | **DONE** ✓ |
@@ -107,6 +108,43 @@ isoform separation, CYP2D6 allele resolution, CYP3A4 address assembly, Kuramoto
 folding trajectory, contact map vs 1TQN).
 
 **Compares against:** AlphaFold2, MD simulation, BLAST/HMMER classification.
+
+#### **Paper 2.5: GLB-Based Structural Input to the Receiver** ✓ DONE *(methods)*
+
+**Path:** `publications/foundations/glb-structural-input/`
+
+**Type:** Methods companion paper. Documents `cytochrome/glb/levinthal_glb/`,
+the Python package that bridges binary glTF (GLB) 3D structural files to the
+receiver $\mathcal{R}_{\mathrm{bio}}$.
+
+**Thesis:** Public PDB-derived GLB files (Sketchfab, Mol* exports) are how
+modern web-deployed structural biology distributes 3D coordinates. By walking
+the GLB scene graph and mapping CPK baseColorFactor values to chemical
+elements, atomistic ball-and-stick GLBs yield per-atom positions and
+elements at no parsing cost — providing a real-PDB-grounded validation
+upgrade path for the existing synthetic CYP3A4 validation suites in
+Papers 2--5. The package establishes the **five GLB roles** taxonomy
+(calibration references, initial conditions, validation targets,
+interactive probes, trajectory waypoints).
+
+**Headline result:** On the productive test GLB, the parser auto-detects
+Fe coordination at canonical CYP450 distances — Fe-N$_\text{porphyrin}$ at
+2.01--2.04~Å, Fe-S$_\text{thiolate}$ at 2.228~Å, Fe-O$_\text{axial}$ at
+1.814~Å. The 1.814~Å Fe-O specifically identifies the GLB as modelling
+**state 4 (oxy-complex Fe$^{II}$-O$_2$)** of the catalytic cycle —
+between Fe-O$_2$ (1.80~Å) and Fe-OOH (1.85~Å), two apertures before
+Compound~I (1.65~Å, Paper~5).
+
+**Limitations:** Two of three test GLBs are ribbon-only (smoothed
+surface meshes); they yield no atomic resolution. Future work: PDB-companion
+RCSB API lookups for ribbon-only GLBs.
+
+**Validation:** 8/8 PASS (parser smoke, CPK decoder, artifact filtering,
+Fe coordination shell, state-4 identification, morphism chain, S-entropy
+address, five-roles taxonomy).
+
+**Imports:** `levinthal_glb` package (parser, cpk, structure, s_entropy,
+rbio modules) at `cytochrome/glb/`.
 
 #### **Paper 3: The Resting and Substrate-Bound States of CYP3A4** ✓ DONE
 
@@ -384,20 +422,36 @@ cytochrome/
 │   ├── harmonic-molecular-resonator.tex
 │   ├── ensemble-strobes.tex
 │   └── superimposed-multi-modal-holograms.tex
+├── glb/                                      # Test GLBs + the levinthal_glb package
+│   ├── README.md
+│   ├── levinthal_glb/                        # Python package (Paper 2.5)
+│   │   ├── __init__.py
+│   │   ├── cpk.py                            # CPK colour decoder + vdW + S-coords
+│   │   ├── parser.py                         # GLB scene-graph traversal
+│   │   ├── structure.py                      # contact maps, Fe finder
+│   │   ├── s_entropy.py                      # element -> S-coord, trit address
+│   │   └── rbio.py                           # R_bio applied to GLB structures
+│   ├── test_glb_pipeline.py                  # end-to-end pipeline smoke
+│   └── *.glb                                 # three CYP test GLBs
 └── publications/                             # Monograph papers
     ├── foundations/
-    │   └── expression-algebra-for-biomolecules/   ✓ Paper 1
-    │       ├── expression-algebra-proteins.tex
+    │   ├── expression-algebra-for-biomolecules/   ✓ Paper 1
+    │   │   ├── expression-algebra-proteins.tex
+    │   │   ├── references.bib
+    │   │   └── validation/
+    │   │       ├── README.md
+    │   │       ├── run_all.py
+    │   │       ├── scripts/                  (8 .py files)
+    │   │       ├── results/                  (8 .json files + summary)
+    │   │       └── figures/
+    │   │           ├── generate_panels.py
+    │   │           ├── algebra-captions.tex
+    │   │           └── panel_NN_*.png        (8 panels)
+    │   └── glb-structural-input/             ✓ Paper 2.5 (methods)
+    │       ├── glb-structural-input.tex
     │       ├── references.bib
-    │       └── validation/
-    │           ├── README.md
-    │           ├── run_all.py
-    │           ├── scripts/                  (8 .py files)
-    │           ├── results/                  (8 .json files + summary)
-    │           └── figures/
-    │               ├── generate_panels.py
-    │               ├── algebra-captions.tex
-    │               └── panel_NN_*.png        (8 panels)
+    │       ├── validation/                   (same structure as Paper 1)
+    │       └── figures/                      (8 panels + captions)
     ├── manifold/
     │   └── p450-address-manifold-cyp3a4-fold/   ✓ Paper 2
     │       ├── p450-manifold-cyp3a4-fold.tex
@@ -581,6 +635,9 @@ reproducibility container.
 | RC discharge | 56.7 ps | ~60 | 3 |
 | **Redox shift +120 mV** | **122 mV** | **120 mV (Daff 1997)** | **3** |
 | Resting state ⟨r⟩ | 0.999 | coherent regime | 3 |
+| GLB Fe-N$_\text{porphyrin}$ | 2.01–2.04 Å | 2.0 Å (crystallographic) | 2.5 |
+| GLB Fe-S$_\text{thiolate}$ | 2.228 Å | 2.2 Å (crystallographic) | 2.5 |
+| GLB Fe-O$_\text{axial}$ (state 4) | 1.814 Å | 1.80–1.85 Å (oxy/peroxo) | 2.5 |
 
 ---
 

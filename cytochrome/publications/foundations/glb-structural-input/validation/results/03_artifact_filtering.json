@@ -1,0 +1,91 @@
+{
+  "validation_id": "03_artifact_filtering",
+  "paper_reference": "Paper 2.5, Section 3.3",
+  "filter_settings": {
+    "max_sphere_size_A": 5.0,
+    "drop_zero_position": true
+  },
+  "per_glb": {
+    "cytochrome_p450_with_haem_highlighted.glb": {
+      "raw": {
+        "n_atoms": 4,
+        "max_sphere_size": 66.29145812988281,
+        "min_sphere_size": 2.8596771955490112,
+        "fe_count": 0,
+        "zero_position_count": 0
+      },
+      "filtered": {
+        "n_atoms": 1,
+        "max_sphere_size": 2.8596771955490112,
+        "min_sphere_size": 2.8596771955490112,
+        "fe_count": 0,
+        "zero_position_count": 0
+      },
+      "twice": {
+        "n_atoms": 1,
+        "max_sphere_size": 2.8596771955490112,
+        "min_sphere_size": 2.8596771955490112,
+        "fe_count": 0,
+        "zero_position_count": 0
+      }
+    },
+    "model_of_cytochrome_p450__oxygen__drug_complex.glb": {
+      "raw": {
+        "n_atoms": 171,
+        "max_sphere_size": 57.135108947753906,
+        "min_sphere_size": 2.0,
+        "fe_count": 1,
+        "zero_position_count": 25
+      },
+      "filtered": {
+        "n_atoms": 146,
+        "max_sphere_size": 2.0,
+        "min_sphere_size": 2.0,
+        "fe_count": 1,
+        "zero_position_count": 0
+      },
+      "twice": {
+        "n_atoms": 146,
+        "max_sphere_size": 2.0,
+        "min_sphere_size": 2.0,
+        "fe_count": 1,
+        "zero_position_count": 0
+      }
+    },
+    "practice_molecules_cytochrome_c.glb": {
+      "raw": {
+        "n_atoms": 4,
+        "max_sphere_size": 31.472734451293945,
+        "min_sphere_size": 11.865410566329956,
+        "fe_count": 0,
+        "zero_position_count": 0
+      },
+      "filtered": {
+        "n_atoms": 0,
+        "max_sphere_size": 0.0,
+        "min_sphere_size": 0.0,
+        "fe_count": 0,
+        "zero_position_count": 0
+      },
+      "twice": {
+        "n_atoms": 0,
+        "max_sphere_size": 0.0,
+        "min_sphere_size": 0.0,
+        "fe_count": 0,
+        "zero_position_count": 0
+      }
+    }
+  },
+  "checks": {
+    "atomistic_filtered_count_matches_published": true,
+    "atomistic_drops_oversized": true,
+    "atomistic_keeps_fe": true,
+    "filtered_max_size_le_5": true,
+    "filtered_no_zero_positions": true,
+    "filter_idempotent_atomistic": true,
+    "filter_idempotent_ribbon1": true,
+    "filter_idempotent_ribbon2": true,
+    "ribbon_glbs_yield_at_most_one_atom_after_filter": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,185 @@
+{
+  "validation_id": "07_s_entropy_address",
+  "paper_reference": "Paper 2.5, Section 4.1 + Paper 1 trit-address Eq. (1)",
+  "n_elements_covered": 14,
+  "element_table": {
+    "H": {
+      "S": [
+        0.5,
+        0.2,
+        0.3
+      ],
+      "norm": 0.6164414002968976,
+      "in_unit_cube": true,
+      "trit_address_depth9": "100112122"
+    },
+    "C": {
+      "S": [
+        0.7,
+        0.55,
+        0.3
+      ],
+      "norm": 0.9394147114027968,
+      "in_unit_cube": true,
+      "trit_address_depth9": "210012022"
+    },
+    "N": {
+      "S": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "norm": 0.9110433579144299,
+      "in_unit_cube": true,
+      "trit_address_depth9": "012210210"
+    },
+    "O": {
+      "S": [
+        0.2,
+        0.45,
+        0.85
+      ],
+      "norm": 0.982344135219425,
+      "in_unit_cube": true,
+      "trit_address_depth9": "012111201"
+    },
+    "F": {
+      "S": [
+        0.1,
+        0.4,
+        0.95
+      ],
+      "norm": 1.035615758860399,
+      "in_unit_cube": true,
+      "trit_address_depth9": "012002211"
+    },
+    "P": {
+      "S": [
+        0.45,
+        0.65,
+        0.45
+      ],
+      "norm": 0.9096702699330127,
+      "in_unit_cube": true,
+      "trit_address_depth9": "111121020"
+    },
+    "S": {
+      "S": [
+        0.6,
+        0.65,
+        0.4
+      ],
+      "norm": 0.97082439194738,
+      "in_unit_cube": true,
+      "trit_address_depth9": "111220121"
+    },
+    "Cl": {
+      "S": [
+        0.2,
+        0.55,
+        0.8
+      ],
+      "norm": 0.9912113800799506,
+      "in_unit_cube": true,
+      "trit_address_depth9": "012111220"
+    },
+    "Fe": {
+      "S": [
+        0.78,
+        0.55,
+        0.5
+      ],
+      "norm": 1.0774506949276148,
+      "in_unit_cube": true,
+      "trit_address_depth9": "211111021"
+    },
+    "Mg": {
+      "S": [
+        0.4,
+        0.6,
+        0.3
+      ],
+      "norm": 0.7810249675906654,
+      "in_unit_cube": true,
+      "trit_address_depth9": "110022112"
+    },
+    "Cu": {
+      "S": [
+        0.78,
+        0.55,
+        0.5
+      ],
+      "norm": 1.0774506949276148,
+      "in_unit_cube": true,
+      "trit_address_depth9": "211111021"
+    },
+    "Zn": {
+      "S": [
+        0.6,
+        0.55,
+        0.4
+      ],
+      "norm": 0.9069178573608527,
+      "in_unit_cube": true,
+      "trit_address_depth9": "111210121"
+    },
+    "X": {
+      "S": [
+        0.7,
+        0.55,
+        0.3
+      ],
+      "norm": 0.9394147114027968,
+      "in_unit_cube": true,
+      "trit_address_depth9": "210012022"
+    },
+    "?": {
+      "S": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "norm": 0.8660254037844386,
+      "in_unit_cube": true,
+      "trit_address_depth9": "111111111"
+    }
+  },
+  "structure_centroid_S": [
+    0.5847945205479452,
+    0.4883561643835617,
+    0.3886986301369863
+  ],
+  "structure_centroid_norm": 0.855314561798579,
+  "F_CB_on_centroid": {
+    "M": 1.9331932848148934,
+    "n": 3,
+    "l": 0,
+    "norm": 0.855314561798579
+  },
+  "structure_centroid_address": "111210011",
+  "n_atoms": 146,
+  "n_distinct_per_atom_addresses": 7,
+  "distinct_per_atom_addresses": [
+    "012111201",
+    "012210210",
+    "100112122",
+    "111121020",
+    "111220121",
+    "210012022",
+    "211111021"
+  ],
+  "checks": {
+    "all_element_S_in_unit_cube": true,
+    "centroid_in_unit_cube": true,
+    "centroid_norm_below_one": true,
+    "F_CB_finite": true,
+    "F_CB_n_at_least_one": true,
+    "F_CB_l_within_range": true,
+    "centroid_address_correct_length": true,
+    "centroid_address_only_trits": true,
+    "trit_address_deterministic": true,
+    "per_atom_address_consistent_with_element": true,
+    "per_atom_address_diversity": true
+  },
+  "verdict": "PASS"
+}
