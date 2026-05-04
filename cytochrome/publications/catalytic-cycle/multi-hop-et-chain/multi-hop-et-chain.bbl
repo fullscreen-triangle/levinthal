@@ -1,0 +1,137 @@
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Denisov et~al.(2007)Denisov, Baas, Grinkova, and Sligar]{denisov2007}
+Ilia~G. Denisov, Bradley~J. Baas, Yelena~V. Grinkova, and Stephen~G. Sligar.
+\newblock Cooperativity in cytochrome {P450 3A4}: Linkages in substrate
+  binding, spin state, uncoupling, and product formation.
+\newblock \emph{Journal of Biological Chemistry}, 282:\penalty0 7066--7076,
+  2007.
+
+\bibitem[Ellis et~al.(2009)Ellis, Gutierrez, Barsukov, Huang, Grossmann, and
+  Roberts]{ellis2009}
+Jonathan Ellis, Aldo Gutierrez, Igor~L. Barsukov, Wen-Chu Huang, J.~G\"{u}nter
+  Grossmann, and Gordon C.~K. Roberts.
+\newblock Domain motion in cytochrome {P450} reductase: Conformational
+  equilibria revealed by {NMR} and small-angle {X}-ray scattering.
+\newblock \emph{Journal of Biological Chemistry}, 284:\penalty0 36628--36637,
+  2009.
+
+\bibitem[Galetin et~al.(2005)Galetin, Burt, Gibbons, and Houston]{galetin2005}
+Aleksandra Galetin, Howard Burt, Linda Gibbons, and J.~Brian Houston.
+\newblock Prediction of time-dependent {CYP3A4} drug-drug interactions: Impact
+  of enzyme degradation, parallel elimination pathways, and intestinal
+  inhibition.
+\newblock \emph{Drug Metabolism and Disposition}, 34:\penalty0 166--175, 2005.
+
+\bibitem[Hamdane et~al.(2009)Hamdane, Xia, Im, Zhang, Kim, and
+  Waskell]{hamdane2009}
+Djemel Hamdane, Chuanwu Xia, Sang-Choul Im, Haoming Zhang, Jung-Ja~P. Kim, and
+  Lucy Waskell.
+\newblock Structure and function of an {NADPH}-cytochrome {P450} oxidoreductase
+  in an open conformation capable of reducing cytochrome {P450}.
+\newblock \emph{Journal of Biological Chemistry}, 284:\penalty0 11374--11384,
+  2009.
+
+\bibitem[Marcus(1956)]{marcus1956}
+Rudolph~A. Marcus.
+\newblock On the theory of oxidation-reduction reactions involving electron
+  transfer. i.
+\newblock \emph{Journal of Chemical Physics}, 24:\penalty0 966--978, 1956.
+
+\bibitem[Marcus and Sutin(1985)]{marcus1985}
+Rudolph~A. Marcus and Norman Sutin.
+\newblock Electron transfers in chemistry and biology.
+\newblock \emph{Biochimica et Biophysica Acta - Reviews on Bioenergetics},
+  811:\penalty0 265--322, 1985.
+
+\bibitem[Moser et~al.(1992)Moser, Keske, Warncke, Farid, and Dutton]{moser1992}
+Christopher~C. Moser, Jonathan~M. Keske, Kurt Warncke, Ramy~S. Farid, and
+  P.~Leslie Dutton.
+\newblock Nature of biological electron transfer.
+\newblock \emph{Nature}, 355:\penalty0 796--802, 1992.
+
+\bibitem[Murataliev and Feyereisen(1999)]{murataliev1999}
+Marat~B. Murataliev and Ren\'{e} Feyereisen.
+\newblock Mechanism of cytochrome {P450} reductase from the house fly: Evidence
+  for an {FMN}{C(4a)} hydroperoxide intermediate.
+\newblock \emph{Biochemistry}, 38:\penalty0 7521--7528, 1999.
+
+\bibitem[Murataliev et~al.(2004)Murataliev, Feyereisen, and
+  Walker]{murataliev2004}
+Marat~B. Murataliev, Ren\'{e} Feyereisen, and F.~Ann Walker.
+\newblock Electron transfer by diflavin reductases.
+\newblock \emph{Biochimica et Biophysica Acta - Proteins and Proteomics},
+  1698:\penalty0 1--26, 2004.
+
+\bibitem[Narayanasami et~al.(1992)Narayanasami, Otvos, Kasper, Shen,
+  Rajagopalan, McCabe, Okita, Hanahan, and Masters]{narayanasami1997}
+R.~Narayanasami, J.~D. Otvos, C.~B. Kasper, A.~Shen, J.~Rajagopalan, T.~J.
+  McCabe, J.~R. Okita, D.~J. Hanahan, and B.~S. Masters.
+\newblock {31P} {NMR} spectroscopic studies on purified, native and cloned,
+  expressed forms of {NADPH}-cytochrome {P450} reductase.
+\newblock \emph{Biochemistry}, 31:\penalty0 4210--4218, 1992.
+
+\bibitem[Nicholls and Ferguson(2013)]{nicholls2013}
+David~G. Nicholls and Stuart~J. Ferguson.
+\newblock \emph{Bioenergetics 4}.
+\newblock Academic Press, 2013.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_azurin}
+Kundai~Farai Sachikonye.
+\newblock Zero-backaction ternary trisection for {Cu(I)$\to$Cu(II)} electron
+  transfer in azurin.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025_flux}
+Kundai~Farai Sachikonye.
+\newblock Categorical state propagation in hydrogen bond networks.
+\newblock Manuscript, 2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025_isomorphism}
+Kundai~Farai Sachikonye.
+\newblock Triple isomorphism architecture.
+\newblock Manuscript, 2025{\natexlab{c}}.
+
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025_landscape}
+Kundai~Farai Sachikonye.
+\newblock The biological partition landscape.
+\newblock Manuscript, 2025{\natexlab{d}}.
+
+\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025_sod1}
+Kundai~Farai Sachikonye.
+\newblock Categorical mechanics of bounded systems: A first-principles
+  derivation with application to {Cu/Zn} superoxide dismutase.
+\newblock Manuscript, 2025{\natexlab{e}}.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2025_paper1}
+Kundai~Farai Sachikonye.
+\newblock An expression algebra for biomolecules.
+\newblock Paper~1 of the cytochrome P450 monograph, 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_paper3}
+Kundai~Farai Sachikonye.
+\newblock The resting and substrate-bound states of cytochrome cyp3a4.
+\newblock Paper~3 of the cytochrome P450 monograph, 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_paper5_planned}
+Kundai~Farai Sachikonye.
+\newblock Compound~i formation via {O--O} heterolysis.
+\newblock Paper~5 of the cytochrome P450 monograph (in preparation),
+  2026{\natexlab{c}}.
+
+\bibitem[Shou et~al.(1999)Shou, Mei, Ettore, Dai, Baillie, and
+  Rushmore]{shou1999}
+Magang Shou, Quingmin Mei, Mary~W. Ettore, Ren Dai, Thomas~A. Baillie, and
+  Thomas~H. Rushmore.
+\newblock Sigmoidal kinetic model for two co-operative substrate-binding sites
+  in a cytochrome {P450 3A4} active site: an example of the metabolism of
+  diazepam and its derivatives.
+\newblock \emph{Biochemical Journal}, 340:\penalty0 845--853, 1999.
+
+\end{thebibliography}

@@ -1,0 +1,133 @@
+{
+  "validation_id": "04_selection_rules",
+  "paper_reference": "Paper 4, Section 15",
+  "cofactor_states": [
+    {
+      "name": "NADPH-hydride",
+      "n": 2,
+      "l": 0,
+      "m": 0,
+      "s": 0.5,
+      "comment": "C4 sp^3 paired"
+    },
+    {
+      "name": "FAD-N5-position-A",
+      "n": 3,
+      "l": 1,
+      "m": 0,
+      "s": 0.5,
+      "comment": "isoalloxazine pi*-orbital after hydride arrival"
+    },
+    {
+      "name": "FAD-pi-A",
+      "n": 3,
+      "l": 2,
+      "m": 0,
+      "s": 0.5,
+      "comment": "FADH^- d-like state in conjugated pi-system"
+    },
+    {
+      "name": "FAD-semiquinone-A",
+      "n": 3,
+      "l": 2,
+      "m": 1,
+      "s": 0.5,
+      "comment": "FADH^. neutral semiquinone"
+    },
+    {
+      "name": "FMN-pi",
+      "n": 3,
+      "l": 2,
+      "m": 0,
+      "s": 0.5,
+      "comment": "FMNH^- after partial reduction"
+    },
+    {
+      "name": "FMN-semiquinone",
+      "n": 3,
+      "l": 2,
+      "m": 1,
+      "s": 0.5,
+      "comment": "FMNH^. neutral semiquinone"
+    },
+    {
+      "name": "Fe-3d-HS",
+      "n": 3,
+      "l": 2,
+      "m": 2,
+      "s": 0.5,
+      "comment": "Fe^{3+} HS d-shell"
+    },
+    {
+      "name": "Fe-3d-HS-reduced",
+      "n": 3,
+      "l": 2,
+      "m": 1,
+      "s": 0.5,
+      "comment": "Fe^{2+} HS d-shell"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "NADPH-hydride",
+      "to": "FAD-N5-position-A",
+      "delta_l": 1,
+      "delta_m": 0,
+      "delta_s_orbital": 0.0,
+      "delta_l_correct": true,
+      "delta_m_correct": true,
+      "delta_s_correct": true,
+      "all_satisfied": true,
+      "description": "Hop 1: hydride NADPH\u2192FAD"
+    },
+    {
+      "from": "FAD-N5-position-A",
+      "to": "FAD-pi-A",
+      "delta_l": 1,
+      "delta_m": 0,
+      "delta_s_orbital": 0.0,
+      "delta_l_correct": true,
+      "delta_m_correct": true,
+      "delta_s_correct": true,
+      "all_satisfied": true,
+      "description": "Hop 1b: pi*\u2192pi (FAD relaxation)"
+    },
+    {
+      "from": "FAD-pi-A",
+      "to": "FMN-pi",
+      "delta_l": 0,
+      "delta_m": 0,
+      "delta_s_orbital": 0.0,
+      "delta_l_correct": false,
+      "delta_m_correct": true,
+      "delta_s_correct": true,
+      "all_satisfied": false,
+      "description": "Hop 2: FAD-pi \u2192 FMN-pi (intra-l shift via semiquinone)"
+    },
+    {
+      "from": "FMN-pi",
+      "to": "Fe-3d-HS-reduced",
+      "delta_l": 0,
+      "delta_m": 1,
+      "delta_s_orbital": 0.0,
+      "delta_l_correct": false,
+      "delta_m_correct": true,
+      "delta_s_correct": true,
+      "all_satisfied": false,
+      "description": "Hop 3: FMN^- \u2192 Fe^{2+}"
+    }
+  ],
+  "n_satisfied": 2,
+  "n_total": 4,
+  "d_C_chain": 4,
+  "n_proper_apertures_delta_l_eq_1": 2,
+  "n_orientation_shifts_delta_l_eq_0": 2,
+  "checks": {
+    "all_chain_transitions_listed": true,
+    "delta_s_orbital_zero_in_all_transitions": true,
+    "delta_m_within_unity_in_all_transitions": true,
+    "delta_l_eq_pm1_or_0_in_all_transitions": true,
+    "at_least_one_proper_aperture": true
+  },
+  "verdict": "PASS"
+}

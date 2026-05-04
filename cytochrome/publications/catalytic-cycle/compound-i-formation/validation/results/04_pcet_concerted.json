@@ -1,0 +1,29 @@
+{
+  "validation_id": "04_pcet_concerted",
+  "paper_reference": "Paper 5, Theorem 9.1",
+  "concerted": {
+    "d_C": 1,
+    "predicted_intrinsic_rate_per_s": 1000000000.0,
+    "log10_rate": 9,
+    "predicted_KIE": 2.0
+  },
+  "sequential": {
+    "d_C": 2,
+    "predicted_intrinsic_rate_per_s": 100000000.0,
+    "log10_rate": 8,
+    "predicted_KIE": 6.0
+  },
+  "discrimination": {
+    "rate_ratio_concerted_to_sequential": 10.0,
+    "experimental_KIE": 1.7,
+    "nearer_to_concerted": true
+  },
+  "checks": {
+    "concerted_dC_eq_1": true,
+    "sequential_dC_eq_2": true,
+    "rate_ratio_above_5": true,
+    "rate_ratio_factor_10": true,
+    "experimental_KIE_supports_concerted": true
+  },
+  "verdict": "PASS"
+}

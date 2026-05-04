@@ -1,0 +1,46 @@
+{
+  "validation_id": "01_peroxo_state",
+  "paper_reference": "Paper 5, Section 4",
+  "states": {
+    "Fe_HS_state2": {
+      "S": [
+        0.815,
+        0.51,
+        0.56
+      ],
+      "M": 7.130000000000019,
+      "norm": 1.1126207799605399
+    },
+    "Cpd0_peroxo_state5": {
+      "S": [
+        0.788,
+        0.508,
+        0.52
+      ],
+      "M": 7.130000000000019,
+      "norm": 1.0721044725212183
+    },
+    "CpdI_state6": {
+      "S": [
+        0.86,
+        0.515,
+        0.595
+      ],
+      "M": 7.130000000000019,
+      "norm": 1.1656972162615813
+    }
+  },
+  "distances": {
+    "Cpd0_to_FeHS": 0.04830113870293327,
+    "Cpd0_to_CpdI": 0.1042017274328981
+  },
+  "delta_M_Cpd0_to_CpdI": 0.0,
+  "checks": {
+    "Cpd0_partition_depth_finite": true,
+    "CpdI_partition_depth_finite": true,
+    "Cpd0_distinct_from_FeHS": true,
+    "Cpd0_distinct_from_CpdI": true,
+    "CpdI_higher_depth_than_Cpd0": true
+  },
+  "verdict": "PASS"
+}

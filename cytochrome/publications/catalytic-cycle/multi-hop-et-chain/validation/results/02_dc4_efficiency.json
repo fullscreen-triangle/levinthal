@@ -1,0 +1,116 @@
+{
+  "validation_id": "02_dc4_efficiency",
+  "paper_reference": "Paper 4, Section 13 (Equation efficiency)",
+  "categorical_distance": 4,
+  "predicted_kcat_KM_M_per_s": 1000000,
+  "predicted_log10": 6,
+  "measured_data": [
+    {
+      "substrate": "Testosterone (6\u03b2-OH)",
+      "kcat_KM_M_per_s": 1500000.0,
+      "ref": "Shou1999"
+    },
+    {
+      "substrate": "Midazolam (1'-OH)",
+      "kcat_KM_M_per_s": 4000000.0,
+      "ref": "Galetin2005"
+    },
+    {
+      "substrate": "Erythromycin",
+      "kcat_KM_M_per_s": 700000.0,
+      "ref": "Shou1999"
+    },
+    {
+      "substrate": "Nifedipine",
+      "kcat_KM_M_per_s": 2000000.0,
+      "ref": "Shou1999"
+    }
+  ],
+  "measured_log10": [
+    6.176091259055681,
+    6.6020599913279625,
+    5.845098040014257,
+    6.301029995663981
+  ],
+  "measured_geometric_mean_log10": 6.2310698215154705,
+  "measured_geometric_mean_M_per_s": 1702432.1863844942,
+  "deviations": [
+    {
+      "substrate": "Testosterone (6\u03b2-OH)",
+      "kcat_KM_M_per_s": 1500000.0,
+      "log10_kcat_KM": 6.176091259055681,
+      "log_deviation_from_prediction": 0.17609125905568135
+    },
+    {
+      "substrate": "Midazolam (1'-OH)",
+      "kcat_KM_M_per_s": 4000000.0,
+      "log10_kcat_KM": 6.6020599913279625,
+      "log_deviation_from_prediction": 0.6020599913279625
+    },
+    {
+      "substrate": "Erythromycin",
+      "kcat_KM_M_per_s": 700000.0,
+      "log10_kcat_KM": 5.845098040014257,
+      "log_deviation_from_prediction": -0.15490195998574308
+    },
+    {
+      "substrate": "Nifedipine",
+      "kcat_KM_M_per_s": 2000000.0,
+      "log10_kcat_KM": 6.301029995663981,
+      "log_deviation_from_prediction": 0.30102999566398125
+    }
+  ],
+  "mean_log_deviation": 0.2310698215154705,
+  "max_log_deviation": 0.6020599913279625,
+  "dc_sweep": [
+    {
+      "d_C": 1,
+      "log10_kcat_KM": 9,
+      "kcat_KM_M_per_s": 1000000000
+    },
+    {
+      "d_C": 2,
+      "log10_kcat_KM": 8,
+      "kcat_KM_M_per_s": 100000000
+    },
+    {
+      "d_C": 3,
+      "log10_kcat_KM": 7,
+      "kcat_KM_M_per_s": 10000000
+    },
+    {
+      "d_C": 4,
+      "log10_kcat_KM": 6,
+      "kcat_KM_M_per_s": 1000000
+    },
+    {
+      "d_C": 5,
+      "log10_kcat_KM": 5,
+      "kcat_KM_M_per_s": 100000
+    },
+    {
+      "d_C": 6,
+      "log10_kcat_KM": 4,
+      "kcat_KM_M_per_s": 10000
+    },
+    {
+      "d_C": 7,
+      "log10_kcat_KM": 3,
+      "kcat_KM_M_per_s": 1000
+    },
+    {
+      "d_C": 8,
+      "log10_kcat_KM": 2,
+      "kcat_KM_M_per_s": 100
+    }
+  ],
+  "checks": {
+    "d_C_eq_4": true,
+    "predicted_kcat_KM_eq_1e6": true,
+    "geometric_mean_within_1_log": true,
+    "max_substrate_deviation_within_1_log": true,
+    "all_substrates_above_1e5": true,
+    "monotonic_decreasing_in_dc": true
+  },
+  "verdict": "PASS"
+}

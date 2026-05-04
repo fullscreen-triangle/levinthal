@@ -1,0 +1,106 @@
+{
+  "validation_id": "07_oxidation_potential",
+  "paper_reference": "Paper 5, Theorem 15.1",
+  "Delta_M_contributions": {
+    "spin_state_change": 0.92,
+    "oxidation_change": 1.0,
+    "Fe_O_bond_formation": 1.5,
+    "porphyrin_radical_localization": 0.6
+  },
+  "Delta_M_cumulative": 4.02,
+  "n_eff": 5,
+  "E_predicted_V": 0.536946035564266,
+  "E_predicted_mV": 536.946035564266,
+  "E_experimental_V": 0.9,
+  "paper_predicted_range_V": [
+    0.5,
+    0.9
+  ],
+  "decomposed_contributions_V": {
+    "spin_state_change": {
+      "Delta_M": 0.92,
+      "E_contribution_V": 0.12288317231819024
+    },
+    "oxidation_change": {
+      "Delta_M": 1.0,
+      "E_contribution_V": 0.13356866556325026
+    },
+    "Fe_O_bond_formation": {
+      "Delta_M": 1.5,
+      "E_contribution_V": 0.20035299834487538
+    },
+    "porphyrin_radical_localization": {
+      "Delta_M": 0.6,
+      "E_contribution_V": 0.08014119933795015
+    }
+  },
+  "n_eff_sweep": [
+    {
+      "n_eff": 1,
+      "E_V": 0.1073892071128532,
+      "E_mV": 107.3892071128532
+    },
+    {
+      "n_eff": 2,
+      "E_V": 0.2147784142257064,
+      "E_mV": 214.7784142257064
+    },
+    {
+      "n_eff": 3,
+      "E_V": 0.32216762133855964,
+      "E_mV": 322.1676213385596
+    },
+    {
+      "n_eff": 4,
+      "E_V": 0.4295568284514128,
+      "E_mV": 429.5568284514128
+    },
+    {
+      "n_eff": 5,
+      "E_V": 0.536946035564266,
+      "E_mV": 536.946035564266
+    },
+    {
+      "n_eff": 6,
+      "E_V": 0.6443352426771193,
+      "E_mV": 644.3352426771193
+    },
+    {
+      "n_eff": 7,
+      "E_V": 0.7517244497899724,
+      "E_mV": 751.7244497899725
+    }
+  ],
+  "Delta_M_sweep": [
+    {
+      "Delta_M_cumulative": 2.0,
+      "E_V": 0.2671373311265005
+    },
+    {
+      "Delta_M_cumulative": 3.0,
+      "E_V": 0.40070599668975077
+    },
+    {
+      "Delta_M_cumulative": 4.0,
+      "E_V": 0.534274662253001
+    },
+    {
+      "Delta_M_cumulative": 5.0,
+      "E_V": 0.6678433278162512
+    },
+    {
+      "Delta_M_cumulative": 6.0,
+      "E_V": 0.8014119933795015
+    }
+  ],
+  "E_FeIII_FeII_V": -0.18,
+  "E_cpdI_FeIII_V": 0.536946035564266,
+  "checks": {
+    "E_predicted_in_paper_range": true,
+    "E_predicted_above_FeIII_FeII": true,
+    "Delta_M_cumulative_above_2": true,
+    "n_eff_in_d_shell_range": true,
+    "scaling_linear_in_dM": true
+  },
+  "verdict": "PASS"
+}

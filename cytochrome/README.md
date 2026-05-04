@@ -36,8 +36,8 @@ catalytic cycle predicted at fs/pm resolution.
 | 1 | The S-Expression Algebra for Biomolecules | **DONE** ✓ |
 | 2 | The P450 Address Manifold + CYP3A4 Fold | **DONE** ✓ |
 | 3 | The Resting and Substrate-Bound States of CYP3A4 | **DONE** ✓ |
-| 4 | Multi-Hop Electron Transfer through CPR | planned |
-| 5 | **Compound I Formation via O-O Heterolysis (HEADLINE)** | planned |
+| 4 | Multi-Hop Electron Transfer through CPR | **DONE** ✓ |
+| 5 | **Compound I Formation via O-O Heterolysis (HEADLINE)** | **DONE** ✓ |
 | 6 | C-H Activation (Hydroxylation, Epoxidation, Rebound) | planned |
 | 7 | Heteroatom Oxidation and Dealkylation | planned |
 | 8 | Atypical Reactions Atlas | planned |

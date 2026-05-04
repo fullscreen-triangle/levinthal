@@ -1,0 +1,93 @@
+{
+  "monograph_paper": "Paper 4: Multi-Hop ET Chain through CPR",
+  "run_timestamp": "2026-05-04T17:47:59",
+  "validations": [
+    {
+      "script": "01_chain_topology.py",
+      "validation_id": "01_chain_topology",
+      "paper_reference": "Paper 4, Section 8",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.001,
+      "output_file": "results\\01_chain_topology.json"
+    },
+    {
+      "script": "02_dc4_efficiency.py",
+      "validation_id": "02_dc4_efficiency",
+      "paper_reference": "Paper 4, Section 13 (Equation efficiency)",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.0,
+      "output_file": "results\\02_dc4_efficiency.json"
+    },
+    {
+      "script": "03_marcus_distance.py",
+      "validation_id": "03_marcus_distance",
+      "paper_reference": "Paper 4, Section 14",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.0,
+      "output_file": "results\\03_marcus_distance.json"
+    },
+    {
+      "script": "04_selection_rules.py",
+      "validation_id": "04_selection_rules",
+      "paper_reference": "Paper 4, Section 15",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.004,
+      "output_file": "results\\04_selection_rules.json"
+    },
+    {
+      "script": "05_semiquinone_ladder.py",
+      "validation_id": "05_semiquinone_ladder",
+      "paper_reference": "Paper 4, Definition 5.1, Section 12",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.0,
+      "output_file": "results\\05_semiquinone_ladder.json"
+    },
+    {
+      "script": "06_chain_kinetics.py",
+      "validation_id": "06_chain_kinetics",
+      "paper_reference": "Paper 4, Section 16",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.0,
+      "output_file": "results\\06_chain_kinetics.json"
+    },
+    {
+      "script": "07_newton_cradle.py",
+      "validation_id": "07_newton_cradle",
+      "paper_reference": "Paper 4, Theorem 4.4",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.0,
+      "output_file": "results\\07_newton_cradle.json"
+    },
+    {
+      "script": "08_falsifiable_predictions.py",
+      "validation_id": "08_falsifiable_predictions",
+      "paper_reference": "Paper 4, Section 17",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.003,
+      "output_file": "results\\08_falsifiable_predictions.json"
+    }
+  ],
+  "aggregate": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "error": 0,
+    "overall_verdict": "PASS"
+  }
+}

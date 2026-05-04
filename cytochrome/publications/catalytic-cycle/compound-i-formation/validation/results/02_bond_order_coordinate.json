@@ -1,0 +1,47 @@
+{
+  "validation_id": "02_bond_order_coordinate",
+  "paper_reference": "Paper 5, Definition 6.1, Theorem 7.1",
+  "bond_states": [
+    {
+      "beta": 0,
+      "label": "cleaved",
+      "categorical_capacity": 2,
+      "partition_contribution": 0.0
+    },
+    {
+      "beta": 1,
+      "label": "bonded",
+      "categorical_capacity": 2,
+      "partition_contribution": 1.0
+    }
+  ],
+  "delta_M_cleavage": 0.6931471805599453,
+  "delta_M_paper": 0.6931471805599453,
+  "schemes_comparison": {
+    "categorical_binary": {
+      "states": 2,
+      "delta_M": 0.6931471805599453,
+      "categorical": true
+    },
+    "MO_continuous": {
+      "states": "infinite",
+      "delta_M": "n/a",
+      "categorical": false
+    },
+    "Linnett_double_quartet": {
+      "states": 8,
+      "delta_M": 2.0794415416798357,
+      "categorical": true
+    }
+  },
+  "tau_cleave_fs": 49.27891985533965,
+  "tau_p_fs": 24.639459927669826,
+  "checks": {
+    "delta_M_matches_ln2": true,
+    "delta_M_within_1pct_of_paper": true,
+    "bond_states_binary": true,
+    "categorical_capacity_eq_2": true,
+    "tau_cleave_in_fs_range": true
+  },
+  "verdict": "PASS"
+}

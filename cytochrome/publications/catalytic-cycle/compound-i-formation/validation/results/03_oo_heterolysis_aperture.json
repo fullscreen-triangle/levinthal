@@ -1,0 +1,26 @@
+{
+  "validation_id": "03_oo_heterolysis_aperture",
+  "paper_reference": "Paper 5, Theorem 7.1",
+  "selection_rules": {
+    "delta_beta": 1,
+    "delta_s_orbital": 0,
+    "delta_m_max": 1
+  },
+  "activation_energy_kcal_per_mol": 10.76829988919609,
+  "experimental_range_kcal_per_mol": [
+    8.0,
+    14.0
+  ],
+  "d_C": 1,
+  "kcat_intrinsic_predicted_per_s": 1000000000,
+  "log10_kcat_intrinsic": 9,
+  "checks": {
+    "delta_beta_eq_1": true,
+    "delta_s_orbital_eq_0": true,
+    "delta_m_within_unity": true,
+    "d_C_eq_1": true,
+    "E_a_in_experimental_range": true,
+    "kcat_intrinsic_above_1e8": true
+  },
+  "verdict": "PASS"
+}

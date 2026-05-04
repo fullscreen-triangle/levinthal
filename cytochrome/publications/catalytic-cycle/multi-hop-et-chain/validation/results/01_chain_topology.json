@@ -1,0 +1,132 @@
+{
+  "validation_id": "01_chain_topology",
+  "paper_reference": "Paper 4, Section 8",
+  "cofactor_partition_data": [
+    {
+      "name": "NADPH",
+      "S": [
+        0.625,
+        0.51,
+        0.5
+      ],
+      "M": 2.9772114415178454,
+      "n": 3,
+      "l": 0,
+      "norm": 0.9490653296796802
+    },
+    {
+      "name": "FAD",
+      "S": [
+        0.605,
+        0.5,
+        0.475
+      ],
+      "M": 2.4939253505012497,
+      "n": 3,
+      "l": 0,
+      "norm": 0.9174148461846473
+    },
+    {
+      "name": "FMN",
+      "S": [
+        0.58,
+        0.495,
+        0.47
+      ],
+      "M": 2.2607328698958993,
+      "n": 3,
+      "l": 0,
+      "norm": 0.8957259625577456
+    },
+    {
+      "name": "Fe(III) HS (state 2)",
+      "S": [
+        0.815,
+        0.51,
+        0.56
+      ],
+      "M": 7.130000000000019,
+      "n": 5,
+      "l": 1,
+      "norm": 1.1126207799605399
+    },
+    {
+      "name": "Fe(II) HS (state 3)",
+      "S": [
+        0.802,
+        0.508,
+        0.552
+      ],
+      "M": 7.130000000000019,
+      "n": 5,
+      "l": 1,
+      "norm": 1.0981675646275482
+    }
+  ],
+  "distances_A": [
+    {
+      "hop": 1,
+      "from": "NADPH",
+      "to": "FAD",
+      "distance_A": 4.0
+    },
+    {
+      "hop": 2,
+      "from": "FAD",
+      "to": "FMN",
+      "distance_A": 4.0
+    },
+    {
+      "hop": 3,
+      "from": "FMN",
+      "to": "Fe\u00b3\u207a",
+      "distance_A": 14.0
+    }
+  ],
+  "pairwise_S_distances": [
+    {
+      "from": "NADPH",
+      "to": "FAD",
+      "S_distance": 0.033541019662496875
+    },
+    {
+      "from": "NADPH",
+      "to": "FMN",
+      "S_distance": 0.056124860801609174
+    },
+    {
+      "from": "NADPH",
+      "to": "Fe(III) HS (state 2)",
+      "S_distance": 0.19924858845171273
+    },
+    {
+      "from": "FAD",
+      "to": "FMN",
+      "S_distance": 0.025980762113533184
+    },
+    {
+      "from": "FAD",
+      "to": "Fe(III) HS (state 2)",
+      "S_distance": 0.22677080940897132
+    },
+    {
+      "from": "FMN",
+      "to": "Fe(III) HS (state 2)",
+      "S_distance": 0.25209125331911064
+    }
+  ],
+  "M_chain": [
+    2.9772114415178454,
+    2.4939253505012497,
+    2.2607328698958993,
+    7.130000000000019
+  ],
+  "checks": {
+    "all_cofactors_have_finite_M": true,
+    "chain_S_coords_distinct": true,
+    "three_distances_specified": true,
+    "FMN_heme_distance_largest": true,
+    "interprotein_distance_above_10A": true
+  },
+  "verdict": "PASS"
+}

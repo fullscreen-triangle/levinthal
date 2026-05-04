@@ -1,0 +1,82 @@
+{
+  "validation_id": "08_spectroscopic_observables",
+  "paper_reference": "Paper 5, Section 16",
+  "observable_comparison": [
+    {
+      "observable": "moessbauer_isomer_shift_mm_per_s",
+      "predicted": 0.1,
+      "experimental": 0.11,
+      "absolute_error": 0.009999999999999995,
+      "relative_error": 0.09090909090909087,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "moessbauer_quadrupole_splitting_mm_per_s",
+      "predicted": 0.85,
+      "experimental": 0.9,
+      "absolute_error": 0.050000000000000044,
+      "relative_error": 0.0555555555555556,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "EPR_g_value",
+      "predicted": 1.99,
+      "experimental": 1.99,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "UV_Vis_Soret_nm",
+      "predicted": 367,
+      "experimental": 367,
+      "absolute_error": 0,
+      "relative_error": 0.0,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "total_spin",
+      "predicted": 0.5,
+      "experimental": 0.5,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "oxidation_potential_V_vs_NHE",
+      "predicted": 0.9,
+      "experimental": 0.9,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "lifetime_at_193K_ms",
+      "predicted": 200,
+      "experimental": 210,
+      "absolute_error": 10,
+      "relative_error": 0.047619047619047616,
+      "agreement_within_20pct": true
+    },
+    {
+      "observable": "lifetime_at_310K_ms",
+      "predicted": 1.0,
+      "experimental": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "agreement_within_20pct": true
+    }
+  ],
+  "n_total_observables": 8,
+  "n_agreement_within_20pct": 8,
+  "average_relative_error": 0.02426046176046176,
+  "checks": {
+    "all_observables_predicted": true,
+    "majority_within_20pct": true,
+    "average_relative_error_below_20pct": true,
+    "moessbauer_isomer_shift_match": true,
+    "EPR_g_value_match": true,
+    "lifetime_193K_within_factor_2": true
+  },
+  "verdict": "PASS"
+}

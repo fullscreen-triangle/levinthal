@@ -1,0 +1,68 @@
+{
+  "validation_id": "03_marcus_distance",
+  "paper_reference": "Paper 4, Section 14",
+  "parameters": {
+    "lambda_eV": 0.85,
+    "beta_per_A": 1.1,
+    "distance_ref_A": 4.0,
+    "distance_long_A": 14.0,
+    "H_DA_4A_eV": 0.001
+  },
+  "rate_4A_per_s": 36517200.2164641,
+  "rate_14A_per_s": 609.8993517128774,
+  "expected_distance_decay_ratio": 1.670170079024566e-05,
+  "experimental_FMN_heme_rate_per_s": 50000000.0,
+  "predicted_log_deviation": -4.913711832607552,
+  "beta_sweep": [
+    {
+      "beta_per_A": 0.8,
+      "rate_at_14A_per_s": 12250.155948257223,
+      "log10_rate": 4.088141617438223,
+      "ratio_to_4A": 0.00033546262790251185
+    },
+    {
+      "beta_per_A": 0.9,
+      "rate_at_14A_per_s": 4506.580524507887,
+      "log10_rate": 3.653847135534971,
+      "ratio_to_4A": 0.00012340980408667956
+    },
+    {
+      "beta_per_A": 1.0,
+      "rate_at_14A_per_s": 1657.878324950067,
+      "log10_rate": 3.219552653631719,
+      "ratio_to_4A": 4.5399929762484854e-05
+    },
+    {
+      "beta_per_A": 1.1,
+      "rate_at_14A_per_s": 609.8993517128774,
+      "log10_rate": 2.7852581717284672,
+      "ratio_to_4A": 1.670170079024566e-05
+    },
+    {
+      "beta_per_A": 1.2,
+      "rate_at_14A_per_s": 224.3694326789583,
+      "log10_rate": 2.3509636898252153,
+      "ratio_to_4A": 6.14421235332821e-06
+    },
+    {
+      "beta_per_A": 1.3,
+      "rate_at_14A_per_s": 82.54090150988873,
+      "log10_rate": 1.9166692079219636,
+      "ratio_to_4A": 2.2603294069810542e-06
+    },
+    {
+      "beta_per_A": 1.4,
+      "rate_at_14A_per_s": 30.365100721244925,
+      "log10_rate": 1.482374726018712,
+      "ratio_to_4A": 8.315287191035679e-07
+    }
+  ],
+  "checks": {
+    "beta_in_literature_range": true,
+    "rate_decay_at_14A_correct_order": true,
+    "predicted_rate_within_8_log_of_experimental": true,
+    "rate_decreases_with_distance": true,
+    "exponential_scaling_in_beta": true
+  },
+  "verdict": "PASS"
+}

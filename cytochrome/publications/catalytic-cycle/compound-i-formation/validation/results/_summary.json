@@ -1,0 +1,93 @@
+{
+  "monograph_paper": "Paper 5: Compound I Formation via O-O Heterolysis",
+  "run_timestamp": "2026-05-04T18:49:45",
+  "validations": [
+    {
+      "script": "01_peroxo_state.py",
+      "validation_id": "01_peroxo_state",
+      "paper_reference": "Paper 5, Section 4",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.002,
+      "output_file": "results\\01_peroxo_state.json"
+    },
+    {
+      "script": "02_bond_order_coordinate.py",
+      "validation_id": "02_bond_order_coordinate",
+      "paper_reference": "Paper 5, Definition 6.1, Theorem 7.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.0,
+      "output_file": "results\\02_bond_order_coordinate.json"
+    },
+    {
+      "script": "03_oo_heterolysis_aperture.py",
+      "validation_id": "03_oo_heterolysis_aperture",
+      "paper_reference": "Paper 5, Theorem 7.1",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.0,
+      "output_file": "results\\03_oo_heterolysis_aperture.json"
+    },
+    {
+      "script": "04_pcet_concerted.py",
+      "validation_id": "04_pcet_concerted",
+      "paper_reference": "Paper 5, Theorem 9.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.0,
+      "output_file": "results\\04_pcet_concerted.json"
+    },
+    {
+      "script": "05_anharmonic_recurrence.py",
+      "validation_id": "05_anharmonic_recurrence",
+      "paper_reference": "Paper 5, Theorem 2.4 and Corollary 2.5",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.017,
+      "output_file": "results\\05_anharmonic_recurrence.json"
+    },
+    {
+      "script": "06_cpdI_lifetime.py",
+      "validation_id": "06_cpdI_lifetime",
+      "paper_reference": "Paper 5, Theorem 14.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.004,
+      "output_file": "results\\06_cpdI_lifetime.json"
+    },
+    {
+      "script": "07_oxidation_potential.py",
+      "validation_id": "07_oxidation_potential",
+      "paper_reference": "Paper 5, Theorem 15.1",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.001,
+      "output_file": "results\\07_oxidation_potential.json"
+    },
+    {
+      "script": "08_spectroscopic_observables.py",
+      "validation_id": "08_spectroscopic_observables",
+      "paper_reference": "Paper 5, Section 16",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.001,
+      "output_file": "results\\08_spectroscopic_observables.json"
+    }
+  ],
+  "aggregate": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "error": 0,
+    "overall_verdict": "PASS"
+  }
+}

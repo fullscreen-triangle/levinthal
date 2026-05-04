@@ -1,0 +1,72 @@
+{
+  "validation_id": "07_newton_cradle",
+  "paper_reference": "Paper 4, Theorem 4.4",
+  "simulation_log": [
+    {
+      "iteration": 0,
+      "step": "donor extraction",
+      "from_cofactor": 0,
+      "carrier_label": "L0_0"
+    },
+    {
+      "iteration": 0,
+      "step": "hop 1",
+      "from_cofactor": 1,
+      "to_cofactor": 2,
+      "incoming_carrier": "L0_0",
+      "outgoing_label": "L1_0",
+      "stays_at_cofactor": "L0_0"
+    },
+    {
+      "iteration": 0,
+      "step": "hop 2",
+      "from_cofactor": 2,
+      "to_cofactor": 3,
+      "incoming_carrier": "L1_0",
+      "outgoing_label": "L2_0",
+      "stays_at_cofactor": "L1_0"
+    },
+    {
+      "iteration": 0,
+      "step": "final hop 3",
+      "to_cofactor_terminal": 3,
+      "delivered_label": "L2_0"
+    }
+  ],
+  "cofactors_final_state": [
+    [
+      "L0_1",
+      "L0_2"
+    ],
+    [
+      "L1_1",
+      "L1_2",
+      "L0_0"
+    ],
+    [
+      "L2_1",
+      "L2_2",
+      "L1_0"
+    ],
+    [
+      "L3_0",
+      "L3_1",
+      "L3_2",
+      "L2_0"
+    ]
+  ],
+  "original_donor_label": "L0_0",
+  "delivered_to_terminal": "L2_0",
+  "label_non_identity_observed": true,
+  "initial_electron_count": 12,
+  "expected_final_electron_count": 12,
+  "final_electron_count": 12,
+  "checks": {
+    "label_non_identity": true,
+    "donor_label_stayed_at_intermediate": true,
+    "terminal_received_intermediate_label": true,
+    "propagation_steps_eq_3_for_4cofactor_chain": true,
+    "chain_mass_balance_maintained": true
+  },
+  "verdict": "PASS"
+}
