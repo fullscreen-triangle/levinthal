@@ -1,0 +1,93 @@
+{
+  "monograph_paper": "Paper 3: Resting and Substrate-Bound CYP3A4",
+  "run_timestamp": "2026-05-04T00:23:37",
+  "validations": [
+    {
+      "script": "01_closed_form_functors.py",
+      "validation_id": "01_closed_form_functors",
+      "paper_reference": "Paper 3, Constructions 2.1-2.3",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.002,
+      "output_file": "results\\01_closed_form_functors.json"
+    },
+    {
+      "script": "02_resting_state_regime.py",
+      "validation_id": "02_resting_state_regime",
+      "paper_reference": "Paper 3, Theorem 4.3",
+      "verdict": "PASS",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "elapsed_s": 16.814,
+      "output_file": "results\\02_resting_state_regime.json"
+    },
+    {
+      "script": "03_heme_capacitor.py",
+      "validation_id": "03_heme_capacitor",
+      "paper_reference": "Paper 3, Section 5",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.001,
+      "output_file": "results\\03_heme_capacitor.json"
+    },
+    {
+      "script": "04_water_variance_free_energy.py",
+      "validation_id": "04_water_variance_free_energy",
+      "paper_reference": "Paper 3, Section 6 and Equation var_F",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.004,
+      "output_file": "results\\04_water_variance_free_energy.json"
+    },
+    {
+      "script": "05_spin_crossover.py",
+      "validation_id": "05_spin_crossover",
+      "paper_reference": "Paper 3, Section 10",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.005,
+      "output_file": "results\\05_spin_crossover.json"
+    },
+    {
+      "script": "06_substrate_bound_regime.py",
+      "validation_id": "06_substrate_bound_regime",
+      "paper_reference": "Paper 3, Section 9",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 27.949,
+      "output_file": "results\\06_substrate_bound_regime.json"
+    },
+    {
+      "script": "07_chamber_confinement.py",
+      "validation_id": "07_chamber_confinement",
+      "paper_reference": "Paper 3, Section 11",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.001,
+      "output_file": "results\\07_chamber_confinement.json"
+    },
+    {
+      "script": "08_redox_shift.py",
+      "validation_id": "08_redox_shift",
+      "paper_reference": "Paper 3, Theorem 14.1",
+      "verdict": "PASS",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "elapsed_s": 0.001,
+      "output_file": "results\\08_redox_shift.json"
+    }
+  ],
+  "aggregate": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "error": 0,
+    "overall_verdict": "PASS"
+  }
+}

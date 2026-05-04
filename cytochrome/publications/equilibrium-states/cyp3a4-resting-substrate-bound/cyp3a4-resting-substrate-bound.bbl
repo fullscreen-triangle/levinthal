@@ -1,0 +1,134 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Daff et~al.(1997)Daff, Chapman, Turner, Holt, Govindaraj, Poulos, and
+  Munro]{daff1997}
+Simon~N. Daff, Stephen~K. Chapman, Kenneth~L. Turner, Robert~A. Holt, Siamala
+  Govindaraj, Thomas~L. Poulos, and Andrew~W. Munro.
+\newblock Redox control of the catalytic cycle of flavocytochrome {P-450 BM3}.
+\newblock \emph{Biochemistry}, 36:\penalty0 13816--13823, 1997.
+
+\bibitem[Denisov et~al.(2005)Denisov, Makris, Sligar, and
+  Schlichting]{denisov2005}
+Ilia~G. Denisov, Thomas~M. Makris, Stephen~G. Sligar, and Ilme Schlichting.
+\newblock Structure and chemistry of cytochrome {P450}.
+\newblock \emph{Chemical Reviews}, 105:\penalty0 2253--2277, 2005.
+
+\bibitem[Denisov et~al.(2007)Denisov, Baas, Grinkova, and Sligar]{denisov2007}
+Ilia~G. Denisov, Bradley~J. Baas, Yelena~V. Grinkova, and Stephen~G. Sligar.
+\newblock Cooperativity in cytochrome {P450 3A4}: Linkages in substrate
+  binding, spin state, uncoupling, and product formation.
+\newblock \emph{Journal of Biological Chemistry}, 282:\penalty0 7066--7076,
+  2007.
+
+\bibitem[Egawa et~al.(1991)Egawa, Shimada, and Ishimura]{egawa1991}
+Tsuyoshi Egawa, Hideo Shimada, and Yuzuru Ishimura.
+\newblock Evidence for compound {I} formation in the reaction of cytochrome
+  {P450cam} with $m$-chloroperbenzoic acid.
+\newblock \emph{Biochemical and Biophysical Research Communications},
+  201:\penalty0 1464--1469, 1991.
+
+\bibitem[Ekroos and Sj\"{o}gren(2006)]{ekroos2006}
+Marika Ekroos and Tove Sj\"{o}gren.
+\newblock Structural basis for ligand promiscuity in cytochrome {P450 3A4}.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 103:\penalty0
+  13682--13687, 2006.
+
+\bibitem[Guengerich(2008)]{guengerich2008}
+F.~Peter Guengerich.
+\newblock Cytochrome {P450} and chemical toxicology.
+\newblock \emph{Chemical Research in Toxicology}, 21:\penalty0 70--83, 2008.
+
+\bibitem[Guengerich et~al.(2018)Guengerich, Waterman, and Egli]{guengerich2018}
+F.~Peter Guengerich, Michael~R. Waterman, and Martin Egli.
+\newblock Recent structural insights into cytochrome {P450} function.
+\newblock \emph{Trends in Pharmacological Sciences}, 37:\penalty0 625--640,
+  2018.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_charge}
+Kundai~Farai Sachikonye.
+\newblock Categorical mechanics of charge-bounded systems: A framework for
+  cellular electrostatics.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025_flux}
+Kundai~Farai Sachikonye.
+\newblock Categorical state propagation in hydrogen bond networks: A partition
+  framework for proton transport in biological membranes.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025_fold}
+Kundai~Farai Sachikonye.
+\newblock On the consequences of oscillator synchronisation on protein folding
+  partition calculus.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{c}}.
+
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025_hyperfine}
+Kundai~Farai Sachikonye.
+\newblock Measuring atoms and molecules into existence: A complete spectral
+  atlas of hydrogen, molecular hydrogen, and water via the categorical
+  spectrometer.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{d}}.
+
+\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025_isomorphism}
+Kundai~Farai Sachikonye.
+\newblock Triple isomorphism architecture: Constructive functors between
+  oscillatory, categorical, and biological-membrane categories.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{e}}.
+
+\bibitem[Sachikonye(2025{\natexlab{f}})]{sachikonye2025_landscape}
+Kundai~Farai Sachikonye.
+\newblock The biological partition landscape: Depth, gradient flow, and
+  catalytic efficiency in bounded phase space.
+\newblock Manuscript, AIMe Registry for Artificial Intelligence,
+  2025{\natexlab{f}}.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2025_paper1}
+Kundai~Farai Sachikonye.
+\newblock An expression algebra for biomolecules: The receiver
+  {$\mathcal{R}_{\mathrm{bio}}$} as a type-safe morphism chain.
+\newblock Paper~1 of the cytochrome P450 monograph, 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_paper2}
+Kundai~Farai Sachikonye.
+\newblock The cytochrome p450 address manifold: From 400{,}000 sequences to the
+  native fold of cyp3a4.
+\newblock Paper~2 of the cytochrome P450 monograph, 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_paper7_planned}
+Kundai~Farai Sachikonye.
+\newblock Multi-hop electron transfer through cytochrome p450 reductase:
+  {NADPH}$\to${FAD}$\to${FMN}$\to$heme.
+\newblock Paper~7 of the cytochrome P450 monograph (in preparation),
+  2026{\natexlab{c}}.
+
+\bibitem[Sch\"{u}nemann and Paulsen(2007)]{schunemann2007}
+Volker Sch\"{u}nemann and Hauke Paulsen.
+\newblock Spin crossover and variable frequency m\"{o}ssbauer spectroscopy.
+\newblock \emph{Topics in Current Chemistry}, 235:\penalty0 97--143, 2007.
+
+\bibitem[Warshel et~al.(2006)Warshel, Sharma, Kato, Xiang, Liu, and
+  Olsson]{warshel2006}
+Arieh Warshel, Pankaz~K. Sharma, Mitsunori Kato, Yun Xiang, Hanbin Liu, and
+  Mats H.~M. Olsson.
+\newblock Electrostatic basis for enzyme catalysis.
+\newblock \emph{Chemical Reviews}, 106:\penalty0 3210--3235, 2006.
+
+\bibitem[Watanabe et~al.(2018)Watanabe, Imamura, Hayashi, Sugiyama, and
+  Kondev]{kondev2018}
+Atsushi Watanabe, Kazuya Imamura, Hideyuki Hayashi, Toru Sugiyama, and Jane
+  Kondev.
+\newblock Water network reorganization in cytochrome {P450} active sites.
+\newblock \emph{Journal of Physical Chemistry B}, 122:\penalty0 5837--5849,
+  2018.
+
+\end{thebibliography}

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: p450-manifold-cyp3a4-fold.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 17 entries,
+            2773 wiz_defined-function locations,
+            688 strings with 7712 characters,
+and the built_in function-call counts, 7037 in all, are:
+= -- 644
+> -- 378
+< -- 11
++ -- 137
+- -- 117
+* -- 548
+:= -- 1138
+add.period$ -- 51
+call.type$ -- 17
+change.case$ -- 88
+chr.to.int$ -- 14
+cite$ -- 34
+duplicate$ -- 306
+empty$ -- 566
+format.name$ -- 134
+if$ -- 1423
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 11
+newline$ -- 93
+num.names$ -- 68
+pop$ -- 143
+preamble$ -- 1
+purify$ -- 71
+quote$ -- 0
+skip$ -- 227
+stack$ -- 0
+substring$ -- 314
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 187
+warning$ -- 0
+while$ -- 72
+width$ -- 0
+write$ -- 222

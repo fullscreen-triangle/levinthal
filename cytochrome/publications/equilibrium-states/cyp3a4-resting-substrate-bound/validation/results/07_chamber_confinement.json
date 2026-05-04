@@ -1,0 +1,115 @@
+{
+  "validation_id": "07_chamber_confinement",
+  "paper_reference": "Paper 3, Section 11",
+  "parameters": {
+    "delta_sigma_C_per_m2": 0.05,
+    "patch_radius_m": 6e-10,
+    "channel_length_m": 3e-09,
+    "Q_heme_C": 3.204353268e-19,
+    "epsilon_r": 6.0
+  },
+  "canonical_values": {
+    "z_star_nm": 796.6328451305345,
+    "z_star_m": 7.966328451305345e-07,
+    "delta_phi_V": 0.28235226684325476,
+    "delta_phi_mV": 282.35226684325477,
+    "confinement_kT_units": 10.569554829817077
+  },
+  "paper_predictions": {
+    "z_star_nm": 5.0,
+    "delta_phi_V": 0.18,
+    "confinement_kT_units": 7.0
+  },
+  "sigma_sweep": [
+    {
+      "delta_sigma_C_per_m2": 0.01,
+      "z_star_nm": 465.8737140009332,
+      "delta_phi_V": 0.056470453368650954,
+      "confinement_kT_units": 2.113910965963415
+    },
+    {
+      "delta_sigma_C_per_m2": 0.02,
+      "z_star_nm": 586.9640988624795,
+      "delta_phi_V": 0.11294090673730191,
+      "confinement_kT_units": 4.22782193192683
+    },
+    {
+      "delta_sigma_C_per_m2": 0.05,
+      "z_star_nm": 796.6328451305345,
+      "delta_phi_V": 0.28235226684325476,
+      "confinement_kT_units": 10.569554829817077
+    },
+    {
+      "delta_sigma_C_per_m2": 0.1,
+      "z_star_nm": 1003.694490617603,
+      "delta_phi_V": 0.5647045336865095,
+      "confinement_kT_units": 21.139109659634155
+    },
+    {
+      "delta_sigma_C_per_m2": 0.2,
+      "z_star_nm": 1264.57581639263,
+      "delta_phi_V": 1.129409067373019,
+      "confinement_kT_units": 42.27821931926831
+    }
+  ],
+  "epsilon_r_sweep": [
+    {
+      "epsilon_r": 4.0,
+      "delta_phi_V": 0.42352840026488214,
+      "confinement_kT_units": 15.854332244725617
+    },
+    {
+      "epsilon_r": 6.0,
+      "delta_phi_V": 0.28235226684325476,
+      "confinement_kT_units": 10.569554829817077
+    },
+    {
+      "epsilon_r": 8.0,
+      "delta_phi_V": 0.21176420013244107,
+      "confinement_kT_units": 7.9271661223628085
+    },
+    {
+      "epsilon_r": 10.0,
+      "delta_phi_V": 0.16941136010595287,
+      "confinement_kT_units": 6.341732897890247
+    }
+  ],
+  "mutational_predictions": [
+    {
+      "n_mutated_arg": 0,
+      "sigma_effective_C_per_m2": 0.05,
+      "delta_phi_V": 0.28235226684325476,
+      "confinement_kT_units": 10.569554829817077,
+      "relative_binding_rate": 1.0
+    },
+    {
+      "n_mutated_arg": 1,
+      "sigma_effective_C_per_m2": 0.001,
+      "delta_phi_V": 0.005647045336865095,
+      "confinement_kT_units": 0.21139109659634153,
+      "relative_binding_rate": 0.0011265399475974998
+    },
+    {
+      "n_mutated_arg": 2,
+      "sigma_effective_C_per_m2": 0.001,
+      "delta_phi_V": 0.005647045336865095,
+      "confinement_kT_units": 0.21139109659634153,
+      "relative_binding_rate": 0.0011265399475974998
+    },
+    {
+      "n_mutated_arg": 3,
+      "sigma_effective_C_per_m2": 0.001,
+      "delta_phi_V": 0.005647045336865095,
+      "confinement_kT_units": 0.21139109659634153,
+      "relative_binding_rate": 0.0011265399475974998
+    }
+  ],
+  "checks": {
+    "z_star_finite_positive": true,
+    "delta_phi_within_factor_2_V": true,
+    "confinement_above_unity": true,
+    "confinement_within_factor_2": true,
+    "mutational_decrease_in_confinement": true
+  },
+  "verdict": "PASS"
+}
