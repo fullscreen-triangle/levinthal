@@ -1,0 +1,93 @@
+{
+  "monograph_paper": "Paper 2.5: GLB-Based Structural Input to the Biomolecular Receiver",
+  "run_timestamp": "2026-05-04T19:51:18",
+  "validations": [
+    {
+      "script": "01_glb_parser_smoke.py",
+      "validation_id": "01_glb_parser_smoke",
+      "paper_reference": "Paper 2.5, Section 3 (the parser, Construction 3.1)",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 5.696,
+      "output_file": "results\\01_glb_parser_smoke.json"
+    },
+    {
+      "script": "02_cpk_color_decoder.py",
+      "validation_id": "02_cpk_color_decoder",
+      "paper_reference": "Paper 2.5, Section 3.2",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.002,
+      "output_file": "results\\02_cpk_color_decoder.json"
+    },
+    {
+      "script": "03_artifact_filtering.py",
+      "validation_id": "03_artifact_filtering",
+      "paper_reference": "Paper 2.5, Section 3.3",
+      "verdict": "PASS",
+      "checks_passed": 9,
+      "checks_total": 9,
+      "elapsed_s": 1.438,
+      "output_file": "results\\03_artifact_filtering.json"
+    },
+    {
+      "script": "04_iron_coordination_shell.py",
+      "validation_id": "04_iron_coordination_shell",
+      "paper_reference": "Paper 2.5, Section 4 (Construction 4.1)",
+      "verdict": "PASS",
+      "checks_passed": 7,
+      "checks_total": 7,
+      "elapsed_s": 1.574,
+      "output_file": "results\\04_iron_coordination_shell.json"
+    },
+    {
+      "script": "05_state4_oxy_complex.py",
+      "validation_id": "05_state4_oxy_complex",
+      "paper_reference": "Paper 2.5, Section 5.2 (state-4 identification)",
+      "verdict": "PASS",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "elapsed_s": 1.599,
+      "output_file": "results\\05_state4_oxy_complex.json"
+    },
+    {
+      "script": "06_morphism_chain.py",
+      "validation_id": "06_morphism_chain",
+      "paper_reference": "Paper 2.5, Section 4.3 (the four-stage chain)",
+      "verdict": "PASS",
+      "checks_passed": 13,
+      "checks_total": 13,
+      "elapsed_s": 1.977,
+      "output_file": "results\\06_morphism_chain.json"
+    },
+    {
+      "script": "07_s_entropy_address.py",
+      "validation_id": "07_s_entropy_address",
+      "paper_reference": "Paper 2.5, Section 4.1 + Paper 1 trit-address Eq. (1)",
+      "verdict": "PASS",
+      "checks_passed": 11,
+      "checks_total": 11,
+      "elapsed_s": 1.466,
+      "output_file": "results\\07_s_entropy_address.json"
+    },
+    {
+      "script": "08_five_roles_taxonomy.py",
+      "validation_id": "08_five_roles_taxonomy",
+      "paper_reference": "Paper 2.5, Section 1.3 (the five roles)",
+      "verdict": "PASS",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "elapsed_s": 2.29,
+      "output_file": "results\\08_five_roles_taxonomy.json"
+    }
+  ],
+  "aggregate": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "error": 0,
+    "overall_verdict": "PASS"
+  }
+}

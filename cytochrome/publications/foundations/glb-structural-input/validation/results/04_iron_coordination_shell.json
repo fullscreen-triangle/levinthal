@@ -1,0 +1,228 @@
+{
+  "validation_id": "04_iron_coordination_shell",
+  "paper_reference": "Paper 2.5, Section 4 (Construction 4.1)",
+  "iron_atom_index": 100,
+  "first_shell_neighbours": [
+    {
+      "index": 2,
+      "element": "X",
+      "distance_A": 0.7958
+    },
+    {
+      "index": 10,
+      "element": "X",
+      "distance_A": 0.8666
+    },
+    {
+      "index": 4,
+      "element": "X",
+      "distance_A": 0.8671
+    },
+    {
+      "index": 8,
+      "element": "X",
+      "distance_A": 0.8673
+    },
+    {
+      "index": 6,
+      "element": "X",
+      "distance_A": 0.8721
+    },
+    {
+      "index": 0,
+      "element": "X",
+      "distance_A": 0.9096
+    },
+    {
+      "index": 3,
+      "element": "X",
+      "distance_A": 1.2932
+    },
+    {
+      "index": 11,
+      "element": "X",
+      "distance_A": 1.5764
+    },
+    {
+      "index": 5,
+      "element": "X",
+      "distance_A": 1.5784
+    },
+    {
+      "index": 9,
+      "element": "X",
+      "distance_A": 1.5794
+    },
+    {
+      "index": 7,
+      "element": "X",
+      "distance_A": 1.5982
+    },
+    {
+      "index": 1,
+      "element": "X",
+      "distance_A": 1.7485
+    },
+    {
+      "index": 99,
+      "element": "O",
+      "distance_A": 1.8141
+    },
+    {
+      "index": 104,
+      "element": "N",
+      "distance_A": 2.013
+    },
+    {
+      "index": 101,
+      "element": "N",
+      "distance_A": 2.0154
+    },
+    {
+      "index": 103,
+      "element": "N",
+      "distance_A": 2.0167
+    },
+    {
+      "index": 102,
+      "element": "N",
+      "distance_A": 2.0402
+    },
+    {
+      "index": 143,
+      "element": "S",
+      "distance_A": 2.2281
+    },
+    {
+      "index": 55,
+      "element": "N",
+      "distance_A": 2.233
+    },
+    {
+      "index": 70,
+      "element": "N",
+      "distance_A": 2.235
+    },
+    {
+      "index": 35,
+      "element": "N",
+      "distance_A": 2.2398
+    },
+    {
+      "index": 41,
+      "element": "N",
+      "distance_A": 2.2429
+    },
+    {
+      "index": 76,
+      "element": "N",
+      "distance_A": 2.2438
+    },
+    {
+      "index": 51,
+      "element": "N",
+      "distance_A": 2.2472
+    },
+    {
+      "index": 61,
+      "element": "N",
+      "distance_A": 2.2485
+    },
+    {
+      "index": 45,
+      "element": "N",
+      "distance_A": 2.2673
+    },
+    {
+      "index": 28,
+      "element": "O",
+      "distance_A": 2.34
+    },
+    {
+      "index": 12,
+      "element": "S",
+      "distance_A": 2.4453
+    },
+    {
+      "index": 52,
+      "element": "C",
+      "distance_A": 2.74
+    },
+    {
+      "index": 56,
+      "element": "C",
+      "distance_A": 2.7418
+    },
+    {
+      "index": 71,
+      "element": "C",
+      "distance_A": 2.7533
+    },
+    {
+      "index": 36,
+      "element": "C",
+      "distance_A": 2.7638
+    },
+    {
+      "index": 42,
+      "element": "C",
+      "distance_A": 2.7678
+    },
+    {
+      "index": 77,
+      "element": "C",
+      "distance_A": 2.7746
+    },
+    {
+      "index": 62,
+      "element": "C",
+      "distance_A": 2.7799
+    },
+    {
+      "index": 46,
+      "element": "C",
+      "distance_A": 2.789
+    },
+    {
+      "index": 98,
+      "element": "O",
+      "distance_A": 2.9061
+    }
+  ],
+  "summary_counts": {
+    "n_porphyrin_N": 4,
+    "n_thiolate_S": 1,
+    "n_axial_oxycomplex_O": 1,
+    "total_first_shell": 37
+  },
+  "closest_O": {
+    "index": 99,
+    "element": "O",
+    "distance_A": 1.8141
+  },
+  "ranges_used": {
+    "Fe_N_porphyrin_A": [
+      1.95,
+      2.1
+    ],
+    "Fe_S_thiolate_A": [
+      2.2,
+      2.35
+    ],
+    "Fe_O_oxy_complex_A": [
+      1.75,
+      1.9
+    ]
+  },
+  "rbio_iron_atom_index_cross_check": true,
+  "checks": {
+    "exactly_one_iron": true,
+    "first_shell_nonempty": true,
+    "all_neighbours_within_3A": true,
+    "four_or_more_porphyrin_N": true,
+    "one_or_more_thiolate_S": true,
+    "axial_O_in_oxy_complex_range": true,
+    "closest_O_in_oxy_complex_range": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,53 @@
+{
+  "validation_id": "08_five_roles_taxonomy",
+  "paper_reference": "Paper 2.5, Section 1.3 (the five roles)",
+  "role_definitions": {
+    "1_calibration_reference": "Fe + non-empty first-shell coordination",
+    "2_initial_conditions": ">= 50 atoms (sufficient to seed a Kuramoto simulation)",
+    "3_validation_target": ">= 10 atoms with computable contact map",
+    "4_interactive_probe": "GLB loads and yields mesh data (always satisfied)",
+    "5_trajectory_waypoint": "Fe-O closest distance falls in a canonical state window"
+  },
+  "per_glb": {
+    "cytochrome_p450_with_haem_highlighted.glb": {
+      "n_atoms": 1,
+      "roles": {
+        "role_1_calibration": false,
+        "role_2_initial_conditions": false,
+        "role_3_validation_target": false,
+        "role_4_interactive_probe": true,
+        "role_5_trajectory_waypoint": false
+      },
+      "n_roles_satisfied": 1
+    },
+    "model_of_cytochrome_p450__oxygen__drug_complex.glb": {
+      "n_atoms": 146,
+      "roles": {
+        "role_1_calibration": true,
+        "role_2_initial_conditions": true,
+        "role_3_validation_target": true,
+        "role_4_interactive_probe": true,
+        "role_5_trajectory_waypoint": true
+      },
+      "n_roles_satisfied": 5
+    },
+    "practice_molecules_cytochrome_c.glb": {
+      "n_atoms": 0,
+      "roles": {
+        "role_1_calibration": false,
+        "role_2_initial_conditions": false,
+        "role_3_validation_target": false,
+        "role_4_interactive_probe": true,
+        "role_5_trajectory_waypoint": false
+      },
+      "n_roles_satisfied": 1
+    }
+  },
+  "checks": {
+    "atomistic_satisfies_all_five_roles": true,
+    "ribbon_glbs_satisfy_at_most_role_four": true,
+    "ribbon_glbs_satisfy_role_4": true,
+    "atomistic_role_5_oxy_complex": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,192 @@
+{
+  "validation_id": "02_cpk_color_decoder",
+  "paper_reference": "Paper 2.5, Section 3.2",
+  "n_cpk_reference_colours": 25,
+  "n_aliases": 4,
+  "exact_match_summary": {
+    "total": 25,
+    "correct": 25
+  },
+  "alias_results": [
+    {
+      "rgb": [
+        211,
+        211,
+        211
+      ],
+      "expected": "H",
+      "decoded": "H",
+      "match": true
+    },
+    {
+      "rgb": [
+        210,
+        180,
+        140
+      ],
+      "expected": "P",
+      "decoded": "P",
+      "match": true
+    },
+    {
+      "rgb": [
+        147,
+        112,
+        219
+      ],
+      "expected": "X",
+      "decoded": "X",
+      "match": true
+    },
+    {
+      "rgb": [
+        180,
+        90,
+        20
+      ],
+      "expected": "Fe",
+      "decoded": "Fe",
+      "match": true
+    }
+  ],
+  "perturbation_results": [
+    {
+      "element": "Fe",
+      "ref_rgb": [
+        224,
+        102,
+        51
+      ],
+      "perturbed_rgb": [
+        239,
+        92,
+        66
+      ],
+      "decoded": "Fe",
+      "match": true
+    },
+    {
+      "element": "S",
+      "ref_rgb": [
+        255,
+        255,
+        48
+      ],
+      "perturbed_rgb": [
+        255,
+        245,
+        63
+      ],
+      "decoded": "S",
+      "match": true
+    },
+    {
+      "element": "O",
+      "ref_rgb": [
+        255,
+        13,
+        13
+      ],
+      "perturbed_rgb": [
+        255,
+        3,
+        28
+      ],
+      "decoded": "O",
+      "match": true
+    },
+    {
+      "element": "N",
+      "ref_rgb": [
+        48,
+        80,
+        248
+      ],
+      "perturbed_rgb": [
+        63,
+        70,
+        255
+      ],
+      "decoded": "N",
+      "match": true
+    },
+    {
+      "element": "C",
+      "ref_rgb": [
+        144,
+        144,
+        144
+      ],
+      "perturbed_rgb": [
+        159,
+        134,
+        159
+      ],
+      "decoded": "C",
+      "match": true
+    }
+  ],
+  "out_of_tolerance_results": [
+    {
+      "rgb": [
+        50,
+        80,
+        120
+      ],
+      "decoded": "?"
+    },
+    {
+      "rgb": [
+        200,
+        200,
+        200
+      ],
+      "decoded": "?"
+    },
+    {
+      "rgb": [
+        100,
+        30,
+        200
+      ],
+      "decoded": "?"
+    }
+  ],
+  "vdw_radii_table": {
+    "H": 1.2,
+    "He": 1.4,
+    "Li": 1.82,
+    "Be": 1.53,
+    "B": 1.92,
+    "C": 1.7,
+    "N": 1.55,
+    "O": 1.52,
+    "F": 1.47,
+    "Ne": 1.54,
+    "Na": 2.27,
+    "Mg": 1.73,
+    "Al": 1.84,
+    "Si": 2.1,
+    "P": 1.8,
+    "S": 1.8,
+    "Cl": 1.75,
+    "Ar": 1.88,
+    "K": 2.75,
+    "Ca": 2.31,
+    "Fe": 1.94,
+    "Cu": 1.4,
+    "Zn": 1.39,
+    "Br": 1.85,
+    "I": 1.98,
+    "X": 1.7,
+    "?": 1.7
+  },
+  "checks": {
+    "every_reference_colour_decodes_correctly": true,
+    "all_aliases_decode_correctly": true,
+    "perturbed_colours_within_tolerance_decode_correctly": true,
+    "none_input_decodes_to_unknown": true,
+    "every_cpk_element_has_vdw_radius": true
+  },
+  "verdict": "PASS"
+}

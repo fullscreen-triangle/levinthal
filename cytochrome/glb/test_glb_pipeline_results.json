@@ -1,0 +1,290 @@
+{
+  "cytochrome_p450_with_haem_highlighted.glb": {
+    "glb_file": "cytochrome_p450_with_haem_highlighted.glb",
+    "metadata": {
+      "author": "marcusjoncoffey (https://sketchfab.com/marcusjoncoffey)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/cytochrome-p450-with-haem-highlighted-33a58a899626485f87d974fca8e5a729",
+      "title": "Cytochrome P450 with haem highlighted",
+      "generator": "Sketchfab-15.19.0"
+    },
+    "n_atoms_total": 4,
+    "n_atoms_filtered": 1,
+    "composition": {
+      "H": 1
+    },
+    "n_bonds_inferred": 0,
+    "receiver_evaluation": {
+      "n_atoms": 1,
+      "composition": {
+        "H": 1
+      },
+      "centre_of_mass_A": [
+        6.661584854125977,
+        -12.316093444824219,
+        19.874576568603516
+      ],
+      "radius_of_gyration_A": 0.0,
+      "iron_atom_index": null,
+      "iron_first_shell_neighbours": [],
+      "structure_S_centroid": [
+        0.5,
+        0.2,
+        0.3
+      ],
+      "partition_depth_M": 0.9582628674930216,
+      "partition_n": 2,
+      "partition_l": 0,
+      "trit_address_depth9": "100112122",
+      "contact_map_n_contacts": 0,
+      "contact_map_density": NaN
+    }
+  },
+  "model_of_cytochrome_p450__oxygen__drug_complex.glb": {
+    "glb_file": "model_of_cytochrome_p450__oxygen__drug_complex.glb",
+    "metadata": {
+      "author": "MedChemProf (https://sketchfab.com/MedChemProf)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/model-of-cytochrome-p450-oxygen-drug-complex-e68a8ec6167f49d68f8ed66715d450de",
+      "title": "Model of Cytochrome P450 / Oxygen / Drug Complex",
+      "generator": "Sketchfab-12.68.0"
+    },
+    "n_atoms_total": 171,
+    "n_atoms_filtered": 146,
+    "composition": {
+      "X": 12,
+      "S": 2,
+      "P": 4,
+      "H": 22,
+      "O": 13,
+      "C": 80,
+      "N": 12,
+      "Fe": 1
+    },
+    "n_bonds_inferred": 611,
+    "receiver_evaluation": {
+      "n_atoms": 146,
+      "composition": {
+        "X": 12,
+        "S": 2,
+        "P": 4,
+        "H": 22,
+        "O": 13,
+        "C": 80,
+        "N": 12,
+        "Fe": 1
+      },
+      "centre_of_mass_A": [
+        18.40190676877329,
+        12.329033901974087,
+        25.632467387652103
+      ],
+      "radius_of_gyration_A": 4.5890796379614995,
+      "iron_atom_index": 100,
+      "iron_first_shell_neighbours": [
+        {
+          "index": 0,
+          "element": "X",
+          "distance_A": 0.9096406281664757
+        },
+        {
+          "index": 1,
+          "element": "X",
+          "distance_A": 1.748517367119735
+        },
+        {
+          "index": 2,
+          "element": "X",
+          "distance_A": 0.7958126510572004
+        },
+        {
+          "index": 3,
+          "element": "X",
+          "distance_A": 1.293249564740537
+        },
+        {
+          "index": 4,
+          "element": "X",
+          "distance_A": 0.8670721776289709
+        },
+        {
+          "index": 5,
+          "element": "X",
+          "distance_A": 1.5783555215045573
+        },
+        {
+          "index": 6,
+          "element": "X",
+          "distance_A": 0.8720708282334251
+        },
+        {
+          "index": 7,
+          "element": "X",
+          "distance_A": 1.598167566663996
+        },
+        {
+          "index": 8,
+          "element": "X",
+          "distance_A": 0.8673221594078702
+        },
+        {
+          "index": 9,
+          "element": "X",
+          "distance_A": 1.579358022907029
+        },
+        {
+          "index": 10,
+          "element": "X",
+          "distance_A": 0.866616164709349
+        },
+        {
+          "index": 11,
+          "element": "X",
+          "distance_A": 1.576419762263135
+        },
+        {
+          "index": 12,
+          "element": "S",
+          "distance_A": 2.445308940791108
+        },
+        {
+          "index": 28,
+          "element": "O",
+          "distance_A": 2.3399862179282986
+        },
+        {
+          "index": 35,
+          "element": "N",
+          "distance_A": 2.239835701483404
+        },
+        {
+          "index": 36,
+          "element": "C",
+          "distance_A": 2.763784329506676
+        },
+        {
+          "index": 41,
+          "element": "N",
+          "distance_A": 2.24290088987746
+        },
+        {
+          "index": 42,
+          "element": "C",
+          "distance_A": 2.7678403787001846
+        },
+        {
+          "index": 45,
+          "element": "N",
+          "distance_A": 2.2672528417698454
+        },
+        {
+          "index": 46,
+          "element": "C",
+          "distance_A": 2.789040056793532
+        },
+        {
+          "index": 51,
+          "element": "N",
+          "distance_A": 2.2471764542087107
+        },
+        {
+          "index": 52,
+          "element": "C",
+          "distance_A": 2.7399983779561556
+        },
+        {
+          "index": 55,
+          "element": "N",
+          "distance_A": 2.2330085983174497
+        },
+        {
+          "index": 56,
+          "element": "C",
+          "distance_A": 2.7418380605081802
+        },
+        {
+          "index": 61,
+          "element": "N",
+          "distance_A": 2.248508876483871
+        },
+        {
+          "index": 62,
+          "element": "C",
+          "distance_A": 2.7799439145196105
+        },
+        {
+          "index": 70,
+          "element": "N",
+          "distance_A": 2.2349672489910346
+        },
+        {
+          "index": 71,
+          "element": "C",
+          "distance_A": 2.7532794744196085
+        },
+        {
+          "index": 76,
+          "element": "N",
+          "distance_A": 2.2437503537410475
+        },
+        {
+          "index": 77,
+          "element": "C",
+          "distance_A": 2.7746344623547756
+        },
+        {
+          "index": 98,
+          "element": "O",
+          "distance_A": 2.9060695105734746
+        },
+        {
+          "index": 99,
+          "element": "O",
+          "distance_A": 1.814065599707092
+        },
+        {
+          "index": 101,
+          "element": "N",
+          "distance_A": 2.015401944953316
+        },
+        {
+          "index": 102,
+          "element": "N",
+          "distance_A": 2.0401600427784725
+        },
+        {
+          "index": 103,
+          "element": "N",
+          "distance_A": 2.016708704899854
+        },
+        {
+          "index": 104,
+          "element": "N",
+          "distance_A": 2.0129883258162593
+        },
+        {
+          "index": 143,
+          "element": "S",
+          "distance_A": 2.2281321773778706
+        }
+      ],
+      "structure_S_centroid": [
+        0.5847945205479452,
+        0.4883561643835617,
+        0.3886986301369863
+      ],
+      "partition_depth_M": 1.9331932848148934,
+      "partition_n": 3,
+      "partition_l": 0,
+      "trit_address_depth9": "111210011",
+      "contact_map_n_contacts": 3446,
+      "contact_map_density": 0.3255550307038262
+    }
+  },
+  "practice_molecules_cytochrome_c.glb": {
+    "glb_file": "practice_molecules_cytochrome_c.glb",
+    "n_atoms_total": 4,
+    "n_atoms_filtered": 0,
+    "skipped": true
+  }
+}

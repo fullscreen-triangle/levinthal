@@ -1,0 +1,34 @@
+{
+  "validation_id": "05_state4_oxy_complex",
+  "paper_reference": "Paper 2.5, Section 5.2 (state-4 identification)",
+  "fe_atom_index": 100,
+  "all_oxygen_distances_A": [
+    1.814065599707092,
+    2.3399862179282986,
+    2.9060695105734746
+  ],
+  "closest_Fe_O_A": 1.814065599707092,
+  "reference_distances_A": {
+    "compound_I_ferryl": 1.65,
+    "oxy_complex_Fe_O2": 1.8,
+    "hydroperoxo_Fe_OOH": 1.85,
+    "water_axial_FeIII_OH": 2.1
+  },
+  "delta_to_each_state_A": {
+    "compound_I_ferryl": 0.1640655997070921,
+    "oxy_complex_Fe_O2": 0.01406559970709198,
+    "hydroperoxo_Fe_OOH": 0.035934400292908064,
+    "water_axial_FeIII_OH": 0.28593440029290806
+  },
+  "nearest_canonical_state": "oxy_complex_Fe_O2",
+  "delta_to_oxy_complex_A": 0.01406559970709198,
+  "delta_to_compound_I_A": 0.1640655997070921,
+  "interpretation": "Fe-O = 1.814 \u00c5 places the GLB at state 4 (oxy-complex) between Fe-O_2 (1.80) and Fe-OOH (1.85). Compound I (1.65 \u00c5) is two apertures further along the cycle and is not observed here.",
+  "checks": {
+    "fe_o_in_oxy_complex_range": true,
+    "closer_to_oxy_complex_than_compound_I": true,
+    "compound_I_distance_not_observed": true,
+    "nearest_state_is_oxy_complex_or_hydroperoxo": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,93 @@
+{
+  "validation_id": "01_glb_parser_smoke",
+  "paper_reference": "Paper 2.5, Section 3 (the parser, Construction 3.1)",
+  "per_glb": {
+    "cytochrome_p450_with_haem_highlighted.glb": {
+      "n_positioned_objects": 4,
+      "metadata_keys": [
+        "author",
+        "generator",
+        "license",
+        "source",
+        "title"
+      ],
+      "has_author": true,
+      "has_license": true,
+      "has_source": true,
+      "first_atom": {
+        "position": [
+          6.661584854125977,
+          -12.316093444824219,
+          19.874576568603516
+        ],
+        "color_rgb": [
+          255,
+          2,
+          3
+        ],
+        "element": "O",
+        "sphere_size": 12.566225051879883,
+        "node_name": "Object_7",
+        "geometry_name": "Object_3"
+      }
+    },
+    "model_of_cytochrome_p450__oxygen__drug_complex.glb": {
+      "n_positioned_objects": 171,
+      "metadata_keys": [
+        "author",
+        "generator",
+        "license",
+        "source",
+        "title"
+      ],
+      "has_author": true,
+      "has_license": true,
+      "has_source": true,
+      "first_atom": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "color_rgb": null,
+        "element": "?",
+        "sphere_size": 19.201549530029297,
+        "node_name": "matsym_24",
+        "geometry_name": "matsym_24"
+      }
+    },
+    "practice_molecules_cytochrome_c.glb": {
+      "n_positioned_objects": 4,
+      "metadata_keys": [
+        "author",
+        "generator",
+        "license",
+        "source",
+        "title"
+      ],
+      "has_author": true,
+      "has_license": true,
+      "has_source": true,
+      "first_atom": {
+        "position": [
+          -0.05330601021140424,
+          0.2655746969948112,
+          0.2488357053751411
+        ],
+        "color_rgb": null,
+        "element": "?",
+        "sphere_size": 11.865410566329956,
+        "node_name": "Object_7",
+        "geometry_name": "Object_3"
+      }
+    }
+  },
+  "checks": {
+    "all_glbs_loaded": true,
+    "all_have_metadata": true,
+    "first_atom_has_position": true,
+    "atomistic_glb_yields_many_atoms": true,
+    "ribbon_glbs_yield_few_objects": true
+  },
+  "verdict": "PASS"
+}

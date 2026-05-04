@@ -18,7 +18,11 @@
       "Bash(python -c ' *)",
       "Bash(python -c \"import matplotlib; print\\('matplotlib', matplotlib.__version__\\)\")",
       "Bash(python generate_panels.py)",
-      "Bash(pip install *)"
+      "Bash(pip install *)",
+      "Bash(python test_glb_pipeline.py)",
+      "Bash(python cytochrome/publications/foundations/glb-structural-input/validation/run_all.py)",
+      "Bash(python -c \"import json; d = json.load\\(open\\('cytochrome/publications/foundations/glb-structural-input/validation/results/_summary.json'\\)\\); print\\(json.dumps\\(d['aggregate'], indent=2\\)\\)\")",
+      "Bash(python cytochrome/publications/foundations/glb-structural-input/figures/generate_panels.py)"
     ]
   }
 }
