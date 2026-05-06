@@ -34,7 +34,18 @@
       "Bash(awk -F/ '{print $0}')",
       "Bash(cp publications/foundations/expression-algebra-for-biomolecules/figures/panel_*.png public/panels/paper-1/)",
       "Bash(cp publications/manifold/p450-address-manifold-cyp3a4-fold/figures/panel_*.png public/panels/paper-2/)",
-      "Bash(cp publications/equilibrium-states/cyp3a4-resting-substrate-bound/figures/panel_*.png public/panels/paper-3/)"
+      "Bash(cp publications/equilibrium-states/cyp3a4-resting-substrate-bound/figures/panel_*.png public/panels/paper-3/)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -sS -o /dev/null -w \"GET /:           %{http_code}\\\\n\" http://localhost:3137/)",
+      "Bash(curl -sS -o /dev/null -w \"GET /transfer:   %{http_code}\\\\n\" http://localhost:3137/transfer)",
+      "Bash(curl -sS -o /dev/null -w \"GET /apparatus:  %{http_code}\\\\n\" http://localhost:3137/apparatus)",
+      "Bash(curl -sS -o /dev/null -w \"GET /gallery:    %{http_code}\\\\n\" http://localhost:3137/gallery)",
+      "Bash(pkill -f \"next\")",
+      "Bash(curl -sS -o /dev/null -w \"/:           %{http_code}\\\\n\" http://localhost:3138/)",
+      "Bash(curl -sS -o /dev/null -w \"/transfer:   %{http_code}\\\\n\" http://localhost:3138/transfer)",
+      "Bash(curl -sS -o /dev/null -w \"/glb-input:  %{http_code}\\\\n\" http://localhost:3138/glb-input)",
+      "Bash(curl -sS -o /dev/null -w \"/foundations:%{http_code}\\\\n\" http://localhost:3138/foundations)"
     ]
   }
 }
