@@ -1,0 +1,48 @@
+{
+  "validation_id": "11_hologram_marcus_lambda",
+  "paper_reference": "Paper 4, Section 2.5 (Layer 5 hologram observable #5 = Marcus lambda)",
+  "literature_lambda_range_eV": [
+    0.7,
+    1.0
+  ],
+  "test_recoveries": [
+    {
+      "lambda_target_eV": 0.7,
+      "sigma_observed_J": 3.0001687730020443e-20,
+      "lambda_recovered_eV": 0.6563054443525583,
+      "relative_error": 0.06242079378205947,
+      "within_20_percent": true
+    },
+    {
+      "lambda_target_eV": 0.85,
+      "sigma_observed_J": 3.5439418362179486e-20,
+      "lambda_recovered_eV": 0.9157729372753284,
+      "relative_error": 0.07737992620626871,
+      "within_20_percent": true
+    },
+    {
+      "lambda_target_eV": 1.0,
+      "sigma_observed_J": 3.6806649415618946e-20,
+      "lambda_recovered_eV": 0.9877958634549227,
+      "relative_error": 0.012204136545077349,
+      "within_20_percent": true
+    }
+  ],
+  "FMN_heme_recovery": {
+    "lambda_target_eV": 0.85,
+    "sigma_observed_J": 3.5439418362179486e-20,
+    "lambda_recovered_eV": 0.9157729372753284,
+    "relative_error": 0.07737992620626871,
+    "within_20_percent": true
+  },
+  "headline_lambda_FMN_heme_eV": 0.9157729372753284,
+  "framework_canonical_lambda_eV": 0.85,
+  "checks": {
+    "all_test_lambdas_within_20_percent": true,
+    "FMN_heme_lambda_in_literature_range": true,
+    "FMN_heme_lambda_within_20_percent_of_canonical": true,
+    "lambda_recovered_positive": true,
+    "lambda_recovered_below_2_eV": true
+  },
+  "verdict": "PASS"
+}

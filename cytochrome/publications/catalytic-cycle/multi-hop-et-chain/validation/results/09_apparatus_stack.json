@@ -1,0 +1,74 @@
+{
+  "validation_id": "09_apparatus_stack",
+  "paper_reference": "Paper 4, Section 2 (the five-layer instrument stack)",
+  "Layer_1_oscillators": {
+    "CPU_clock": {
+      "freq_Hz": 1000000000.0,
+      "resolves": "n"
+    },
+    "memory_bus": {
+      "freq_Hz": 100000000.0,
+      "resolves": "ell"
+    },
+    "LED_emission": {
+      "freq_Hz": 100000000000000.0,
+      "resolves": "m"
+    },
+    "memory_refresh": {
+      "freq_Hz": 10000.0,
+      "resolves": "s"
+    }
+  },
+  "Layer_1_frequency_span_OOM": 10.0,
+  "Layer_2_floor": 0.00037,
+  "Layer_2_admissibility_threshold": 0.00037,
+  "Layer_3_strobes": {
+    "W_Sk_absorption": {
+      "timescale_s": 1e-15,
+      "resolves": "n"
+    },
+    "W_St_lifetime": {
+      "timescale_s": 1e-09,
+      "resolves": "t"
+    },
+    "W_Se_decay": {
+      "timescale_s": 1e-06,
+      "resolves": "e"
+    }
+  },
+  "Layer_3_cross_talk_threshold": 0.0037,
+  "Layer_4_params": {
+    "eta_max": 10,
+    "delta_max": 0.05,
+    "min_cycle_rank_required": 6
+  },
+  "Layer_5_pipeline": {
+    "n_passes": 5,
+    "texture_size": [
+      1024,
+      1024
+    ],
+    "draw_cycle_ms": 1.0,
+    "observables": [
+      "vibrational_coupling_matrix_K",
+      "Franck_Condon_factors",
+      "Stokes_shift_decomposition",
+      "Huang_Rhys_factors",
+      "Marcus_reorganisation_energy_lambda",
+      "molecular_point_group_from_2D_FFT"
+    ]
+  },
+  "checks": {
+    "L1_four_oscillators": true,
+    "L1_each_partition_coord_resolved": true,
+    "L1_frequency_span_at_least_10_OOM": true,
+    "L2_floor_admissible_at_threshold": true,
+    "L3_three_strobes": true,
+    "L3_timescales_distinctly_separated": true,
+    "L3_cross_talk_threshold_set": true,
+    "L4_resonator_params_in_range": true,
+    "L5_pipeline_correctly_specified": true,
+    "stack_total_layers": true
+  },
+  "verdict": "PASS"
+}

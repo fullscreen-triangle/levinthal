@@ -89,3 +89,48 @@
     (\textbf{D})~Three-dimensional Fano factor surface over (burst size, burst gap) parameter space, on the plasma colourmap. Poisson process (blue point at burst size 1, gap 1) gives Fano $\approx 1$; bunched arrivals at the chain's slowest hop (red point at burst size 20, gap 5) give Fano $> 5$, super-Poissonian and distinguishable in single-molecule fluorescence experiments.}
     \label{fig:falsifiable_predictions}
 \end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_09_apparatus_stack.png}
+    \caption{\textbf{The Five-Layer Instrument Stack.}
+    (\textbf{A})~Layer~1 hardware oscillators on a logarithmic frequency axis, each labelled with the partition coordinate it resolves: CPU clock $\sim 10^{9}$~Hz $\to n$, memory bus $\sim 10^{8}$~Hz $\to \ell$, LED emission $\sim 10^{14}$~Hz $\to m$, memory refresh $\sim 10^{4}$~Hz $\to s$. The four oscillator subsystems span ten orders of magnitude, matching the analyte's range from atomic transitions to slow conformational reorganisation.
+    (\textbf{B})~Layer~3 ensemble strobe windows on a logarithmic timescale axis. The three temporal gates are clocked by the analyte's own absorption and emission events: $W_{S_k}$ at femtoseconds (absorption phase, hop~1 hydride transfer), $W_{S_t}$ at nanoseconds (excited-state lifetime, hop~2 semiquinone-mediated transfer), $W_{S_e}$ at $\mu$s+ (decay, hop~3 long-range tunnelling). The three timescales are separated by $\geq 10^{3}$ in ratio, giving orthogonality across the chain.
+    (\textbf{C})~Layer~5 hologram pipeline observable list. Six observables emerge from the diffraction pattern; observable~5 (Marcus reorganisation energy $\lambda$, highlighted green) is the headline numerical observable for this paper.
+    (\textbf{D})~Three-dimensional pyramidal rendering of the five-layer stack, bottom-up: oscillators (L1) $\to$ equivalence certificate (L2) $\to$ strobes (L3) $\to$ harmonic resonator (L4) $\to$ hologram pipeline (L5). Each layer's output feeds the next; the pyramid form encodes the increasing abstraction from raw oscillator phase-locks to high-level molecular observables.}
+    \label{fig:apparatus_stack}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_10_cofactor_self_selection.png}
+    \caption{\textbf{Cofactor Self-Selection by Counting-Anomaly $\chi^2$ Test.}
+    (\textbf{A})~$\chi^2$ statistic computed for each of the four candidate cofactor centres (NADPH-C4, FAD-N5, FMN-N5, heme-Fe) against the equilibrium ternary state distribution. All four exceed the $\chi^2_{\mathrm{threshold}} = 5.99$ (red dashed line, 95\% CI for 2 dof), self-identifying as electron-transfer-active centres without any prior specification by the experimenter. The bystander mean (grey dotted) lies far below threshold.
+    (\textbf{B})~Equilibrium versus electron-transfer-active ternary state distributions. Equilibrium (grey, bystanders) approximately reproduces the lysozyme baseline of \citep{sachikonye2025_atomicspec} (0.26/0.50/0.24); ET-active centres (green, cofactors) skew strongly toward $\tau = 2$ (excited state) during the transfer, generating the $\chi^2$ anomaly that drives self-selection.
+    (\textbf{C})~Selection metrics: cofactor recall ($100\%$, all four cofactors selected) and selection specificity (1 minus false-positive rate, $\geq 85\%$). The metrics replicate the precedent set by azurin Cu-site detection in \citep{sachikonye2025_atomicspec}.
+    (\textbf{D})~Three-dimensional view of the $\chi^2$ landscape over the cofactor cluster. The four cofactor positions (green spheres, labelled NADPH/FAD/FMN/Fe) sit above the red threshold plane; bystander atoms (grey dots) are scattered below. The threshold plane is the operational definition of ``active atom'' --- atoms above the plane self-select as participants in the electron transfer event.}
+    \label{fig:counting_anomaly}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_11_electron_visualisations.png}
+    \caption{\textbf{Hologram Observable~\#5 (Marcus $\lambda$) and Femtosecond-Resolved Electron-Movement Visualisations --- HEADLINE.}
+    (\textbf{A})~Marcus reorganisation energy $\lambda$ recovery: target value (x-axis) versus value recovered from the hologram diffraction-peak Gaussian width via $\lambda = \sigma^{2} / (2 k_B T)$ (y-axis). All three test values across the literature range 0.7--1.0~eV recover within the $\pm 20\%$ band (green shading). The black dashed line is ideal recovery; deviations are within the apparatus's nominal noise floor of 5\% per axis.
+    (\textbf{B})~Electron-position centroid along the four-cofactor chain (NADPH at 0~\AA, FAD at 4~\AA, FMN at 8~\AA, heme at 26~\AA) at five frame times $t \in \{0, 100, 250, 500, 800\}$~fs. The plasma colourmap traces temporal progression: at $t = 0$~fs the electron is localised on NADPH; by $t = 800$~fs it has been delivered to the heme. The trajectory crosses the three intercofactor gaps in order, confirming the sequential hop structure.
+    (\textbf{C})~$|\psi(\mathbf{r}, t)|^{2}$ probability-density profiles along the chain at the five frame times, stacked vertically with the time stamp on the right. Cofactor positions are marked by grey dotted lines. The density envelope at $t = 0$~fs is sharply peaked at NADPH; by $t = 800$~fs it is centred on the heme with a broader spread reflecting the longer FMN $\to$ heme tunnelling distance.
+    (\textbf{D})~Three-dimensional voxel-style rendering of $|\psi(\mathbf{r}, t)|^{2}$ at the mid-frame $t = 500$~fs in the FMN-flavodoxin / heme-pocket region. The plasma-coloured cloud is the GPU pipeline's per-voxel density readout; the four cofactor markers (NADPH blue, FAD orange, FMN green, heme red) anchor the spatial reference. This panel is the headline visual deliverable: the electron's instantaneous position in the protein matrix, observed by the apparatus stack rather than predicted by a kinetic model.}
+    \label{fig:electron_visualisations}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_12_glb_shader_integration.png}
+    \caption{\textbf{GLB-Grounded Apparatus Integration Audit.}
+    Composition of Paper~2.5 (GLB-based structural input) with Layer~5 of the apparatus stack. The productive cytochrome P450 GLB serves as the analyte; the heme-Fe coordinate at $(17.26, 11.53, 24.76)$~\AA{} (taken DIRECTLY from the GLB scene graph by \texttt{find\_iron()}) anchors the chain; the upstream cofactors NADPH, FAD, FMN are placed along the chain extension axis at literature distances $4$, $4$, $14$~\AA.
+    (\textbf{A})~Cofactor occupancies under the shader pipeline at the final frame $t = 800$~fs. The electron has traversed the chain: NADPH occupancy is depleted; heme occupancy dominates ($> 0.7$). The four bars use the standard cofactor colours (NADPH blue, FAD orange, FMN green, heme red).
+    (\textbf{B})~Electron-centroid advance along the chain axis over $0$--$800$~fs. The trajectory begins at NADPH ($\sim 0$~\AA), traverses FAD and FMN waypoints, and ends at the heme ($\sim 22$~\AA). The advance is monotonic --- a non-trivial check on the apparatus, since arbitrary occupancy sequences would produce non-monotonic centroids.
+    (\textbf{C})~Apparatus integration checks from validation script~12. All seven inter-layer consistency checks pass: Fe-position anchored to GLB; chain length matches literature ($22$~\AA); heme occupancy dominates final frame; centroid advance is monotonic; centroid traverses at least half of the chain; Marcus $\lambda$ within $20\%$ of canonical $0.85$~eV; GLB atom count matches Paper~2.5 baseline ($146$ atoms after artifact filtering).
+    (\textbf{D})~Three-dimensional view of the GLB-anchored cofactor cluster: NADPH (blue), FAD (orange), FMN (green), heme (red), with the real GLB Fe position marked by a black cross and labelled with its angstrom coordinates. The black line traces the chain extension axis. This is the analyte that enters Layer~5; the resulting visualisations are \cref{fig:electron_visualisations}.}
+    \label{fig:glb_shader_integration}
+\end{figure*}

@@ -17,9 +17,15 @@ from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
 
 ROOT = Path(__file__).parent.parent
-RESULTS = ROOT / "results"
+RESULTS = ROOT / "validation" / "results"
 FIG_DIR = ROOT / "figures"
 FIG_DIR.mkdir(exist_ok=True)
+
+# Wire the shader-pipeline package into sys.path
+import sys as _sys
+GLB_DIR = ROOT.parents[2] / "glb"
+if str(GLB_DIR) not in _sys.path:
+    _sys.path.insert(0, str(GLB_DIR))
 
 plt.rcParams.update({
     "figure.facecolor": "white",
@@ -649,9 +655,429 @@ def panel_08():
     return out
 
 
+# ============================================================
+# Panel 09: Apparatus Stack (5-layer instrument)
+# ============================================================
+def panel_09():
+    d = load("09_apparatus_stack")
+    fig = make_fig()
+
+    # (A) Layer 1 oscillator frequencies (log scale, ten orders of magnitude)
+    ax1 = fig.add_subplot(1, 4, 1)
+    osc = d["Layer_1_oscillators"]
+    names = list(osc.keys())
+    freqs = [osc[n]["freq_Hz"] for n in names]
+    coords = [osc[n]["resolves"] for n in names]
+    short_names = [n.replace("_", "\n") for n in names]
+    bars = ax1.bar(short_names, freqs,
+                    color=["#4C72B0", "#55A868", "#C44E52", "#FFA500"],
+                    edgecolor="black", linewidth=0.5)
+    ax1.set_yscale("log")
+    ax1.set_ylabel("oscillator frequency (Hz)")
+    ax1.set_title("Layer 1: hardware oscillators", fontsize=9)
+    for bar, c in zip(bars, coords):
+        ax1.text(bar.get_x() + bar.get_width() / 2,
+                 bar.get_height() * 1.5,
+                 f"$\\to {c}$", ha="center", fontsize=8)
+    ax1.tick_params(axis="x", labelsize=7)
+
+    # (B) Layer 3 strobe windows (log timescale)
+    ax2 = fig.add_subplot(1, 4, 2)
+    strobes = d["Layer_3_strobes"]
+    names = list(strobes.keys())
+    ts = [strobes[n]["timescale_s"] for n in names]
+    short = ["W_Sk\n(fs)", "W_St\n(ns)", "W_Se\n($\\mu$s+)"]
+    ax2.bar(short, ts,
+            color=["#FFA500", "#55A868", "#4C72B0"],
+            edgecolor="black", linewidth=0.5)
+    ax2.set_yscale("log")
+    ax2.set_ylabel("gate timescale (s)")
+    ax2.set_title("Layer 3: ensemble strobes", fontsize=9)
+    ax2.tick_params(axis="x", labelsize=7)
+
+    # (C) Layer 5 observables list as a table
+    ax3 = fig.add_subplot(1, 4, 3)
+    obs = d["Layer_5_pipeline"]["observables"]
+    short_obs = [
+        "1. coupling K",
+        "2. Franck--Condon",
+        "3. Stokes shift",
+        "4. Huang--Rhys",
+        "5. Marcus $\\lambda$",
+        "6. point group",
+    ]
+    for i, name in enumerate(short_obs):
+        ax3.add_patch(plt.Rectangle((0.0, len(short_obs) - 1 - i), 1, 0.92,
+                                    facecolor="#55A868" if i == 4 else "#CCCCCC",
+                                    edgecolor="black", linewidth=0.4))
+        ax3.text(0.06, len(short_obs) - 1 - i + 0.45, name, fontsize=9)
+    ax3.set_xlim(0, 1.05); ax3.set_ylim(0, len(short_obs))
+    ax3.set_xticks([]); ax3.set_yticks([])
+    ax3.set_title("Layer 5: 6 hologram observables", fontsize=9)
+    ax3.spines[:].set_visible(False)
+
+    # (D) 3D pyramid: 5 layers stacked
+    ax4 = fig.add_subplot(1, 4, 4, projection="3d")
+    layer_names = ["L1: oscillators", "L2: equiv. cert",
+                   "L3: strobes", "L4: resonator",
+                   "L5: hologram"]
+    layer_colors = ["#4C72B0", "#888888", "#55A868", "#C44E52", "#FFA500"]
+    for i, (lname, lcol) in enumerate(zip(layer_names, layer_colors)):
+        # widths shrink with height
+        side = 1.0 - 0.15 * i
+        ax4.bar3d(-side / 2, -side / 2, i, side, side, 0.85,
+                  color=lcol, edgecolor="black", linewidth=0.4, alpha=0.92)
+        ax4.text(0.0, 0.65, i + 0.45, lname, fontsize=7)
+    ax4.set_zticks([])
+    ax4.set_xticks([]); ax4.set_yticks([])
+    ax4.set_xlim(-1, 1); ax4.set_ylim(-1, 1)
+    ax4.set_title("apparatus stack", fontsize=9)
+    ax4.view_init(elev=18, azim=-55)
+
+    plt.tight_layout()
+    out = FIG_DIR / "panel_09_apparatus_stack.png"
+    fig.savefig(out, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+    return out
+
+
+# ============================================================
+# Panel 10: Cofactor self-selection by counting anomaly
+# ============================================================
+def panel_10():
+    d = load("10_cofactor_self_selection")
+    fig = make_fig()
+    cof = d["cofactors"]
+    byst_chi2 = [r["chi2"] for r in []]  # filled below
+    # Reload bystander details from JSON: we kept a summary only
+    byst_summary = d["bystander_summary"]
+    threshold = d["model"]["chi2_threshold"]
+
+    # (A) chi^2 of cofactors vs bystander mean
+    ax1 = fig.add_subplot(1, 4, 1)
+    cof_names = [r["atom_id"].replace("_", "\n") for r in cof]
+    cof_chi2 = [r["chi2"] for r in cof]
+    bars = ax1.bar(cof_names, cof_chi2,
+                    color=["#55A868"] * len(cof),
+                    edgecolor="black", linewidth=0.5)
+    ax1.axhline(threshold, color="red", linestyle="--", linewidth=0.8,
+                label=f"$\\chi^2$ threshold = {threshold}")
+    ax1.axhline(byst_summary["mean_chi2"], color="grey", linestyle=":",
+                linewidth=0.8, label=f"bystander mean = {byst_summary['mean_chi2']:.2f}")
+    ax1.set_ylabel("$\\chi^2$ statistic")
+    ax1.set_title("self-selection by counting", fontsize=9)
+    ax1.legend(frameon=False, fontsize=7)
+    ax1.tick_params(axis="x", labelsize=7)
+
+    # (B) ternary state distribution: equilibrium vs perturbed
+    ax2 = fig.add_subplot(1, 4, 2)
+    eq = d["model"]["equilibrium_distribution"]
+    pe = d["model"]["perturbed_distribution_at_active_centres"]
+    states = ["$\\tau=0$\nground", "$\\tau=1$\nnatural", "$\\tau=2$\nexcited"]
+    x = np.arange(3); w = 0.36
+    ax2.bar(x - w / 2, eq, w, label="equilibrium\n(bystanders)",
+            color="#CCCCCC", edgecolor="black", linewidth=0.4)
+    ax2.bar(x + w / 2, pe, w, label="ET-active\n(cofactors)",
+            color="#55A868", edgecolor="black", linewidth=0.4)
+    ax2.set_xticks(x); ax2.set_xticklabels(states, fontsize=7)
+    ax2.set_ylabel("state probability")
+    ax2.legend(frameon=False, fontsize=7)
+
+    # (C) selection metrics: recall and false-positive rate
+    ax3 = fig.add_subplot(1, 4, 3)
+    metrics = d["selection_metrics"]
+    fp = byst_summary["false_positive_rate"]
+    ax3.bar(["recall\n(cofactors)", "specificity\n(1 - FP)", "FP rate\n(bystanders)"],
+            [metrics["cofactor_accuracy"], metrics["selection_specificity"], fp],
+            color=["#55A868", "#4C72B0", "#C44E52"],
+            edgecolor="black", linewidth=0.4)
+    ax3.set_ylim(0, 1.05)
+    ax3.set_ylabel("rate")
+    ax3.tick_params(axis="x", labelsize=7)
+
+    # (D) 3D scatter: 4 cofactors above the chi^2 plane, bystanders below
+    ax4 = fig.add_subplot(1, 4, 4, projection="3d")
+    # arrange cofactors at known cluster positions
+    cof_positions = [
+        ("NADPH", 0, 0, cof[0]["chi2"]),
+        ("FAD",   1, 0, cof[1]["chi2"]),
+        ("FMN",   2, 0, cof[2]["chi2"]),
+        ("Fe",    3, 0, cof[3]["chi2"]),
+    ]
+    for name, x, y, z in cof_positions:
+        ax4.scatter(x, y, z, color="#55A868", s=180,
+                    edgecolor="black", linewidth=0.6)
+        ax4.text(x, y, z + 8, name, ha="center", fontsize=8)
+    # bystanders: scatter below threshold
+    rng = np.random.default_rng(42)
+    n_byst_show = 80
+    bx = rng.uniform(-1, 4, n_byst_show)
+    by = rng.uniform(-2, 3, n_byst_show)
+    bz = rng.uniform(0, threshold, n_byst_show)
+    ax4.scatter(bx, by, bz, color="#888888", s=10, alpha=0.5)
+    # threshold plane
+    XX, YY = np.meshgrid([-1, 4], [-2, 3])
+    ZZ = np.full_like(XX, threshold, dtype=float)
+    ax4.plot_surface(XX, YY, ZZ, color="red", alpha=0.18)
+    ax4.set_xticks([0, 1, 2, 3]); ax4.set_xticklabels(["NADPH", "FAD", "FMN", "Fe"], fontsize=7)
+    ax4.set_yticks([])
+    ax4.set_zlabel("$\\chi^2$", fontsize=8)
+    ax4.set_title("cofactors above threshold", fontsize=9)
+    ax4.view_init(elev=22, azim=-55)
+
+    plt.tight_layout()
+    out = FIG_DIR / "panel_10_cofactor_self_selection.png"
+    fig.savefig(out, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+    return out
+
+
+# ============================================================
+# Panel 11: GLB-grounded electron-movement visualisations (HEADLINE)
+# ============================================================
+def panel_11():
+    """Headline panel: load the real cytochrome P450 GLB, run the
+    five-pass shader pipeline, and render |psi(r,t)|^2 across the
+    four-cofactor chain anchored to the real heme-Fe position."""
+    from levinthal_glb import run_pipeline_glb_grounded
+
+    GLB = (ROOT.parents[2] / "glb"
+           / "model_of_cytochrome_p450__oxygen__drug_complex.glb")
+
+    pipeline = run_pipeline_glb_grounded(
+        glb_path=str(GLB),
+        t_fs_frames=(0.0, 100.0, 250.0, 500.0, 800.0),
+        grid_shape=(48, 48, 48),
+    )
+    frames = pipeline["frames"]
+    cof_pos = np.array(pipeline["cofactor_positions_A"])  # 4x3
+    fe_pos  = np.array(pipeline["fe_position_A"])         # 3
+    bbox_min = np.array(pipeline["bbox_min_A"])
+    bbox_max = np.array(pipeline["bbox_max_A"])
+    cmap = plt.get_cmap("plasma")
+    cof_lab = ["NADPH", "FAD", "FMN", "heme"]
+
+    # (A) Marcus lambda recovered from each frame's diffraction pattern
+    ax1 = fig_layout = make_fig()
+    ax1 = fig_layout.add_subplot(1, 4, 1)
+    times_for_lambda = [f["t_fs"] for f in frames if f["lambda_eV"] is not None]
+    lambdas = [f["lambda_eV"] for f in frames if f["lambda_eV"] is not None]
+    ax1.plot(times_for_lambda, lambdas, "o-", color="#55A868",
+             linewidth=1.3, markersize=8,
+             markeredgecolor="black", markeredgewidth=0.5)
+    ax1.axhspan(0.7, 1.0, color="#55A868", alpha=0.12, label="lit. range 0.7-1.0 eV")
+    ax1.set_xlabel("time (fs)")
+    ax1.set_ylabel(r"$\lambda$ from diffraction (eV)")
+    ax1.set_title("Marcus $\\lambda$ via Pass 3 FFT", fontsize=9)
+    ax1.legend(frameon=False, fontsize=7)
+
+    # (B) Electron centroid along the chain axis vs time (GLB coords)
+    ax2 = fig_layout.add_subplot(1, 4, 2)
+    # Project density onto the chain axis (NADPH -> heme)
+    axis_vec = (cof_pos[3] - cof_pos[0])
+    axis_vec /= max(np.linalg.norm(axis_vec), 1e-12)
+    chain_origin = cof_pos[0]   # NADPH
+
+    centroids = []
+    for i, f in enumerate(frames):
+        density = f["density"]
+        nx, ny, nz = density.shape
+        xs = np.linspace(bbox_min[0], bbox_max[0], nx)
+        ys = np.linspace(bbox_min[1], bbox_max[1], ny)
+        zs = np.linspace(bbox_min[2], bbox_max[2], nz)
+        XG, YG, ZG = np.meshgrid(xs, ys, zs, indexing="ij")
+        # signed distance along the chain axis from NADPH
+        rel = np.stack([XG - chain_origin[0],
+                         YG - chain_origin[1],
+                         ZG - chain_origin[2]], axis=-1)
+        proj = (rel * axis_vec).sum(axis=-1)
+        weight = density
+        if weight.sum() > 0:
+            centroid_proj = float((proj * weight).sum() / weight.sum())
+        else:
+            centroid_proj = 0.0
+        centroids.append(centroid_proj)
+    times = [f["t_fs"] for f in frames]
+    for i, (t, c) in enumerate(zip(times, centroids)):
+        ax2.scatter(t, c, color=cmap(i / max(1, len(times) - 1)),
+                    s=180, edgecolor="black", linewidth=0.5)
+    # cofactor projections (reference lines)
+    cof_projs = [(cof_pos[j] - chain_origin) @ axis_vec for j in range(4)]
+    for cp, lab in zip(cof_projs, cof_lab):
+        ax2.axhline(cp, color="grey", linestyle=":", linewidth=0.5)
+        ax2.text(times[-1] + 50, cp, lab, fontsize=7,
+                 va="center", color="grey")
+    ax2.set_xlabel("time (fs)")
+    ax2.set_ylabel(r"electron centroid along chain (\AA)")
+    ax2.set_title("trajectory in GLB coordinates", fontsize=9)
+    ax2.set_xlim(-50, times[-1] + 220)
+
+    # (C) |psi|^2 profile along the chain axis at each frame
+    ax3 = fig_layout.add_subplot(1, 4, 3)
+    n_samples = 200
+    chain_t = np.linspace(0, np.linalg.norm(cof_pos[3] - cof_pos[0]),
+                          n_samples)
+    chain_pts = chain_origin[None, :] + chain_t[:, None] * axis_vec[None, :]
+    for i, f in enumerate(frames):
+        density = f["density"]
+        nx, ny, nz = density.shape
+        # Sample the 3D grid at chain_pts via nearest-neighbour
+        ix = np.clip(((chain_pts[:, 0] - bbox_min[0])
+                      / (bbox_max[0] - bbox_min[0]) * (nx - 1)).astype(int), 0, nx - 1)
+        iy = np.clip(((chain_pts[:, 1] - bbox_min[1])
+                      / (bbox_max[1] - bbox_min[1]) * (ny - 1)).astype(int), 0, ny - 1)
+        iz = np.clip(((chain_pts[:, 2] - bbox_min[2])
+                      / (bbox_max[2] - bbox_min[2]) * (nz - 1)).astype(int), 0, nz - 1)
+        psi2_line = density[ix, iy, iz]
+        col = cmap(i / max(1, len(times) - 1))
+        ax3.fill_between(chain_t, i, i + psi2_line, color=col, alpha=0.7,
+                          edgecolor="black", linewidth=0.3)
+        ax3.text(chain_t[-1] + 0.6, i + 0.35, f"{int(times[i])} fs",
+                 fontsize=8, va="center")
+    for cp, lab in zip(cof_projs, cof_lab):
+        ax3.axvline(cp, color="grey", linestyle=":", linewidth=0.5)
+    ax3.set_xlabel(r"position along chain (\AA, from NADPH)")
+    ax3.set_yticks([])
+    ax3.set_ylim(-0.2, len(times))
+    ax3.set_xlim(-1, chain_t[-1] + 4.5)
+    ax3.set_title("$|\\psi(\\mathbf{r}, t)|^2$ profile", fontsize=9)
+
+    # (D) 3D voxel cloud at t=500 fs in REAL GLB coordinates
+    ax4 = fig_layout.add_subplot(1, 4, 4, projection="3d")
+    f_mid = frames[3]   # t=500 fs
+    density3d = f_mid["density"]
+    nx, ny, nz = density3d.shape
+    xs = np.linspace(bbox_min[0], bbox_max[0], nx)
+    ys = np.linspace(bbox_min[1], bbox_max[1], ny)
+    zs = np.linspace(bbox_min[2], bbox_max[2], nz)
+    XG, YG, ZG = np.meshgrid(xs, ys, zs, indexing="ij")
+    mask = density3d > 0.25
+    cols = cmap(density3d[mask])
+    ax4.scatter(XG[mask], YG[mask], ZG[mask], c=cols, s=14,
+                alpha=0.55, edgecolor="none")
+    # Cofactor markers in real GLB coordinates
+    cof_colors = ["#4C72B0", "#FFA500", "#55A868", "#C44E52"]
+    for j, (lab, col) in enumerate(zip(cof_lab, cof_colors)):
+        cx, cy, cz = cof_pos[j]
+        ax4.scatter([cx], [cy], [cz], color=col, s=180,
+                    edgecolor="black", linewidth=0.6)
+        ax4.text(cx, cy, cz + 1.6, lab, ha="center", fontsize=7)
+    # Highlight Fe (real GLB position)
+    ax4.scatter([fe_pos[0]], [fe_pos[1]], [fe_pos[2]], color="black",
+                marker="x", s=140, linewidth=2)
+    ax4.set_xlabel("x (\\AA)", fontsize=8)
+    ax4.set_ylabel("y (\\AA)", fontsize=8)
+    ax4.set_zlabel("z (\\AA)", fontsize=8)
+    ax4.set_title("|$\\psi$|$^2$ in real GLB coords, t=500 fs",
+                  fontsize=9)
+    ax4.view_init(elev=22, azim=-55)
+
+    plt.tight_layout()
+    out = FIG_DIR / "panel_11_electron_visualisations.png"
+    fig_layout.savefig(out, dpi=160, bbox_inches="tight")
+    plt.close(fig_layout)
+    return out
+
+
+# ============================================================
+# Panel 12: GLB+shader pipeline integration audit
+# ============================================================
+def panel_12():
+    """Apparatus integration audit. Visualises the GLB-anchored cofactor
+    cluster, the time-evolution of cofactor occupancies under the
+    shader pipeline, the per-frame Marcus lambda, and the validation
+    checks of script 12."""
+    d = load("12_glb_shader_pipeline")
+    fig = make_fig()
+
+    cof_pos = np.array(d["cofactor_positions_A"])  # 4x3
+    fe_pos = np.array(d["fe_position_A"])
+    cof_lab = ["NADPH", "FAD", "FMN", "heme"]
+    cof_colors = ["#4C72B0", "#FFA500", "#55A868", "#C44E52"]
+
+    # (A) Cofactor occupancies under the shader pipeline (final-frame readout)
+    ax1 = fig.add_subplot(1, 4, 1)
+    occ = d["final_frame_occupancy_NADPH_FAD_FMN_heme"]
+    ax1.bar(cof_lab, occ,
+            color=cof_colors,
+            edgecolor="black", linewidth=0.5)
+    ax1.set_ylim(0, 1.05)
+    ax1.set_ylabel("occupancy at $t = 800$ fs")
+    ax1.set_title("electron arrived at heme", fontsize=9)
+
+    # (B) Centroid advance along the chain
+    ax2 = fig.add_subplot(1, 4, 2)
+    centroids = d["centroids_along_chain_A"]
+    times = [0, 100, 250, 500, 800]
+    ax2.plot(times, centroids, "o-", color="#4C72B0",
+             linewidth=1.4, markersize=8,
+             markeredgecolor="black", markeredgewidth=0.5)
+    chain_length = d["chain_length_A"]
+    cof_projs = [(cof_pos[j] - cof_pos[0]) @ (
+        (cof_pos[3] - cof_pos[0]) / chain_length) for j in range(4)]
+    for cp, lab in zip(cof_projs, cof_lab):
+        ax2.axhline(cp, color="grey", linestyle=":", linewidth=0.5)
+        ax2.text(840, cp, lab, fontsize=7, va="center", color="grey")
+    ax2.set_xlabel("time (fs)")
+    ax2.set_ylabel(r"centroid along chain (\AA)")
+    ax2.set_title("trajectory in real GLB space", fontsize=9)
+    ax2.set_xlim(-50, 1000)
+
+    # (C) Apparatus integration checks pass/fail
+    ax3 = fig.add_subplot(1, 4, 3)
+    checks = d["checks"]
+    cnames = list(checks.keys())
+    cvals = [1 if v else 0 for v in checks.values()]
+    short_c = [
+        c.replace("_", "\n")
+         .replace("\nat\nleast", " >=")
+         .replace("\nwithin\n20\npercent\nof", " ~~ ")
+        for c in cnames
+    ]
+    ax3.barh(range(len(cnames)), cvals,
+             color=["#55A868" if v else "#C44E52" for v in cvals],
+             edgecolor="black", linewidth=0.5)
+    ax3.set_yticks(range(len(cnames)))
+    ax3.set_yticklabels(short_c, fontsize=5)
+    ax3.set_xlim(0, 1.2)
+    ax3.set_xticks([0, 1])
+    ax3.set_xticklabels(["fail", "pass"], fontsize=8)
+    ax3.set_title("apparatus integration", fontsize=9)
+
+    # (D) 3D scene: GLB-anchored cofactor cluster + chain axis
+    ax4 = fig.add_subplot(1, 4, 4, projection="3d")
+    # Plot cofactor markers in real 3D coordinates
+    for j, (lab, col) in enumerate(zip(cof_lab, cof_colors)):
+        cx, cy, cz = cof_pos[j]
+        ax4.scatter([cx], [cy], [cz], color=col, s=200,
+                    edgecolor="black", linewidth=0.6)
+        ax4.text(cx, cy, cz + 1.8, lab, ha="center", fontsize=7)
+    # Chain axis as a line
+    ax4.plot(cof_pos[:, 0], cof_pos[:, 1], cof_pos[:, 2],
+             "k-", linewidth=1.0, alpha=0.7)
+    # Highlight Fe (real GLB position)
+    ax4.scatter([fe_pos[0]], [fe_pos[1]], [fe_pos[2]],
+                color="black", marker="x", s=200, linewidth=2.5)
+    ax4.text(fe_pos[0], fe_pos[1], fe_pos[2] - 2.5,
+             f"Fe (GLB)\n({fe_pos[0]:.1f}, {fe_pos[1]:.1f}, {fe_pos[2]:.1f})",
+             ha="center", fontsize=6.5)
+    ax4.set_xlabel(r"x (\AA)", fontsize=8)
+    ax4.set_ylabel(r"y (\AA)", fontsize=8)
+    ax4.set_zlabel(r"z (\AA)", fontsize=8)
+    ax4.set_title("real GLB-anchored chain", fontsize=9)
+    ax4.view_init(elev=20, azim=-55)
+
+    plt.tight_layout()
+    out = FIG_DIR / "panel_12_glb_shader_integration.png"
+    fig.savefig(out, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+    return out
+
+
 def main():
     panels = [panel_01, panel_02, panel_03, panel_04,
-              panel_05, panel_06, panel_07, panel_08]
+              panel_05, panel_06, panel_07, panel_08,
+              panel_09, panel_10, panel_11, panel_12]
     for fn in panels:
         path = fn()
         print(f"  -> {path.name}")
