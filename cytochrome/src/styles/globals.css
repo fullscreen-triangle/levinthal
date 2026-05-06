@@ -1,3 +1,95 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default text colour for the whole monograph site:
+   anything not explicitly coloured inherits these. Fixes the
+   "black-on-dark" invisibility on body text inside paper-page bodies. */
+html {
+  color: #1b1b1b;          /* same token as `dark` in tailwind.config.js */
+}
+html.dark {
+  color: #f5f5f5;          /* same token as `light` */
+}
+
+/* Paper page body styles. The site does NOT use the @tailwindcss/typography
+   plugin, so the typical `prose` classes are no-ops. We style the elements
+   the per-paper pages use directly. */
+.paper-body h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+.paper-body h2:first-child {
+  margin-top: 0;
+}
+.paper-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: inherit;
+}
+.paper-body p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+  color: inherit;
+}
+.paper-body ul, .paper-body ol {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+  padding-left: 1.4rem;
+}
+.paper-body ul { list-style: disc; }
+.paper-body ol { list-style: decimal; }
+.paper-body li {
+  margin-bottom: 0.3rem;
+  color: inherit;
+}
+.paper-body strong {
+  font-weight: 700;
+  color: inherit;
+}
+.paper-body em {
+  font-style: italic;
+  color: inherit;
+}
+.paper-body code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: rgba(88, 230, 217, 0.10);
+  color: #58E6D9;          /* primaryDark */
+  padding: 0.05em 0.3em;
+  border-radius: 0.25em;
+}
+.paper-body pre {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.9rem;
+  overflow-x: auto;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: inherit;
+}
+html.dark .paper-body pre {
+  background: rgba(255, 255, 255, 0.05);
+}
+.paper-body pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.paper-body a {
+  color: #B63E96;          /* primary */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+html.dark .paper-body a {
+  color: #58E6D9;          /* primaryDark */
+}
