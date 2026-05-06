@@ -1,6 +1,6 @@
 {
   "monograph_paper": "Paper 4: Multi-Hop ET Chain through CPR",
-  "run_timestamp": "2026-05-04T17:47:59",
+  "run_timestamp": "2026-05-06T04:58:41",
   "validations": [
     {
       "script": "01_chain_topology.py",
@@ -9,7 +9,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.001,
+      "elapsed_s": 0.003,
       "output_file": "results\\01_chain_topology.json"
     },
     {
@@ -19,7 +19,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 0.0,
+      "elapsed_s": 0.002,
       "output_file": "results\\02_dc4_efficiency.json"
     },
     {
@@ -29,7 +29,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.0,
+      "elapsed_s": 0.001,
       "output_file": "results\\03_marcus_distance.json"
     },
     {
@@ -39,7 +39,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.004,
+      "elapsed_s": 0.001,
       "output_file": "results\\04_selection_rules.json"
     },
     {
@@ -49,7 +49,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.0,
+      "elapsed_s": 0.001,
       "output_file": "results\\05_semiquinone_ladder.json"
     },
     {
@@ -59,7 +59,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 0.0,
+      "elapsed_s": 0.001,
       "output_file": "results\\06_chain_kinetics.json"
     },
     {
@@ -69,7 +69,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.0,
+      "elapsed_s": 0.001,
       "output_file": "results\\07_newton_cradle.json"
     },
     {
@@ -79,13 +79,53 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.003,
+      "elapsed_s": 0.012,
       "output_file": "results\\08_falsifiable_predictions.json"
+    },
+    {
+      "script": "09_apparatus_stack.py",
+      "validation_id": "09_apparatus_stack",
+      "paper_reference": "Paper 4, Section 2 (the five-layer instrument stack)",
+      "verdict": "PASS",
+      "checks_passed": 10,
+      "checks_total": 10,
+      "elapsed_s": 0.001,
+      "output_file": "results\\09_apparatus_stack.json"
+    },
+    {
+      "script": "10_cofactor_self_selection.py",
+      "validation_id": "10_cofactor_self_selection",
+      "paper_reference": "Paper 4, Section 3.3 (cofactor self-selection); atomic-ternary-spectrometers, Theorem 4",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.012,
+      "output_file": "results\\10_cofactor_self_selection.json"
+    },
+    {
+      "script": "11_hologram_marcus_lambda.py",
+      "validation_id": "11_hologram_marcus_lambda",
+      "paper_reference": "Paper 4, Section 2.5 (Layer 5 hologram observable #5 = Marcus lambda)",
+      "verdict": "PASS",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "elapsed_s": 0.0,
+      "output_file": "results\\11_hologram_marcus_lambda.json"
+    },
+    {
+      "script": "12_glb_shader_pipeline.py",
+      "validation_id": "12_glb_shader_pipeline",
+      "paper_reference": "Paper 4, Section 2 (apparatus) + Paper 2.5 (GLB structural input)",
+      "verdict": "PASS",
+      "checks_passed": 7,
+      "checks_total": 7,
+      "elapsed_s": 3.097,
+      "output_file": "results\\12_glb_shader_pipeline.json"
     }
   ],
   "aggregate": {
-    "total": 8,
-    "pass": 8,
+    "total": 12,
+    "pass": 12,
     "fail": 0,
     "error": 0,
     "overall_verdict": "PASS"

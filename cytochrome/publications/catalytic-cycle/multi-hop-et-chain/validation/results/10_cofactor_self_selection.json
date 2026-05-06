@@ -1,0 +1,82 @@
+{
+  "validation_id": "10_cofactor_self_selection",
+  "paper_reference": "Paper 4, Section 3.3 (cofactor self-selection); atomic-ternary-spectrometers, Theorem 4",
+  "model": {
+    "n_atoms_total": 200,
+    "n_cofactors": 4,
+    "n_bystanders": 196,
+    "n_obs_per_atom": 50,
+    "equilibrium_distribution": [
+      0.261,
+      0.499,
+      0.24
+    ],
+    "perturbed_distribution_at_active_centres": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "chi2_threshold": 5.99
+  },
+  "cofactors": [
+    {
+      "atom_id": "NADPH_C4",
+      "counts": [
+        3,
+        15,
+        32
+      ],
+      "chi2": 45.041,
+      "selected": true
+    },
+    {
+      "atom_id": "FAD_N5",
+      "counts": [
+        7,
+        18,
+        25
+      ],
+      "chi2": 18.824,
+      "selected": true
+    },
+    {
+      "atom_id": "FMN_N5",
+      "counts": [
+        2,
+        13,
+        35
+      ],
+      "chi2": 59.163,
+      "selected": true
+    },
+    {
+      "atom_id": "heme_Fe",
+      "counts": [
+        5,
+        17,
+        28
+      ],
+      "chi2": 28.832,
+      "selected": true
+    }
+  ],
+  "bystander_summary": {
+    "n_bystanders": 196,
+    "n_selected": 11,
+    "false_positive_rate": 0.05612244897959184,
+    "max_chi2": 13.026,
+    "mean_chi2": 1.9069081632653062
+  },
+  "selection_metrics": {
+    "cofactor_accuracy": 1.0,
+    "selection_specificity": 0.9438775510204082
+  },
+  "checks": {
+    "cofactor_recall_100_percent": true,
+    "cofactor_accuracy_at_least_75_percent": true,
+    "false_positive_rate_below_15_percent": true,
+    "selection_specificity_above_85_percent": true,
+    "chi2_cofactor_mean_above_threshold": true
+  },
+  "verdict": "PASS"
+}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -81,49 +81,110 @@ David~G. Nicholls and Stuart~J. Ferguson.
 \newblock \emph{Bioenergetics 4}.
 \newblock Academic Press, 2013.
 
-\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_azurin}
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_atomicspec}
+Kundai~Farai Sachikonye.
+\newblock Atomic ternary spectrometers: Proteins from first principles via
+  categorical partitioning and completion-driven observation.
+\newblock Source paper. Demonstrates the apparatus on real PDB analytes:
+  100\,\% binding-site accuracy on azurin (PDB 4AZU); $\chi^2 = 1910.9$
+  helix-motion detection on lysozyme (PDB 1LYZ). Establishes triple identity:
+  Measurement $=$ Computation $=$ Observation., 2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025_azurin}
 Kundai~Farai Sachikonye.
 \newblock Zero-backaction ternary trisection for {Cu(I)$\to$Cu(II)} electron
   transfer in azurin.
 \newblock Manuscript, AIMe Registry for Artificial Intelligence,
-  2025{\natexlab{a}}.
+  2025{\natexlab{b}}.
 
-\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025_flux}
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025_flux}
 Kundai~Farai Sachikonye.
 \newblock Categorical state propagation in hydrogen bond networks.
-\newblock Manuscript, 2025{\natexlab{b}}.
-
-\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025_isomorphism}
-Kundai~Farai Sachikonye.
-\newblock Triple isomorphism architecture.
 \newblock Manuscript, 2025{\natexlab{c}}.
 
-\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025_landscape}
+\bibitem[Sachikonye(2025{\natexlab{d}})]{sachikonye2025_hmr}
+Kundai~Farai Sachikonye.
+\newblock The harmonic molecular resonator: Cycle-rank cross-validation for
+  per-molecule categorical observation.
+\newblock Source paper. Layer~4 of the instrument stack: graph-theoretic
+  per-molecule spectrometer; cycle rank $C = |E| - |V| + 1$ counts independent
+  cross-validation loops., 2025{\natexlab{d}}.
+
+\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025_holograms}
+Kundai~Farai Sachikonye.
+\newblock Superimposed multi-modal holograms: A five-pass {GPU} pipeline for
+  categorical visualisation.
+\newblock Source paper. Layer~5 of the instrument stack: coherent superposition
+  $H(\omega,t) = \sum_n c_n(t) S_n(\omega) e^{i\phi_n(t)}$ of three electronic
+  states; six observables incl.\ Marcus reorganisation energy $\lambda$.,
+  2025{\natexlab{e}}.
+
+\bibitem[Sachikonye(2025{\natexlab{f}})]{sachikonye2025_hyperfine}
+Kundai~Farai Sachikonye.
+\newblock Hyperfine transitions and the categorical spectrometer: A
+  hardware-oscillator network resolving atomic partition coordinates.
+\newblock Source paper. Layer~1 of the instrument stack: CPU/bus/LED/refresh
+  oscillators resolving $(n,\ell,m,s)$. Calibrated against NIST Atomic Spectra
+  Database., 2025{\natexlab{f}}.
+
+\bibitem[Sachikonye(2025{\natexlab{g}})]{sachikonye2025_isomorphism}
+Kundai~Farai Sachikonye.
+\newblock Triple isomorphism architecture.
+\newblock Manuscript, 2025{\natexlab{g}}.
+
+\bibitem[Sachikonye(2025{\natexlab{h}})]{sachikonye2025_landscape}
 Kundai~Farai Sachikonye.
 \newblock The biological partition landscape.
-\newblock Manuscript, 2025{\natexlab{d}}.
+\newblock Manuscript, 2025{\natexlab{h}}.
 
-\bibitem[Sachikonye(2025{\natexlab{e}})]{sachikonye2025_sod1}
+\bibitem[Sachikonye(2025{\natexlab{i}})]{sachikonye2025_sod1}
 Kundai~Farai Sachikonye.
 \newblock Categorical mechanics of bounded systems: A first-principles
   derivation with application to {Cu/Zn} superoxide dismutase.
-\newblock Manuscript, 2025{\natexlab{e}}.
+\newblock Manuscript, 2025{\natexlab{i}}.
+
+\bibitem[Sachikonye(2025{\natexlab{j}})]{sachikonye2025_specderiv}
+Kundai~Farai Sachikonye.
+\newblock Spectroscopic derivation of the elements: The triple-equivalence
+  theorem.
+\newblock Source paper. Layer~2 of the instrument stack: oscillation $\equiv$
+  category $\equiv$ partition equivalence licensing hardware oscillators as
+  legitimate atomic-coordinate resolvers., 2025{\natexlab{j}}.
+
+\bibitem[Sachikonye(2025{\natexlab{k}})]{sachikonye2025_strobes}
+Kundai~Farai Sachikonye.
+\newblock Convertible recursive-depth ensemble strobes: Three temporal gates
+  for categorical observation.
+\newblock Source paper. Layer~3 of the instrument stack: $W_{S_k}$ (fs) $|$
+  $W_{S_t}$ (ns) $|$ $W_{S_e}$ (long) gates clocked by analyte emission. Three
+  self-validation channels., 2025{\natexlab{k}}.
 
 \bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2025_paper1}
 Kundai~Farai Sachikonye.
 \newblock An expression algebra for biomolecules.
 \newblock Paper~1 of the cytochrome P450 monograph, 2026{\natexlab{a}}.
 
-\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_paper3}
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_paper2}
+Kundai~Farai Sachikonye.
+\newblock The cytochrome p450 address manifold.
+\newblock Paper~2 of the cytochrome P450 monograph, 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_paper25}
+Kundai~Farai Sachikonye.
+\newblock {GLB}-based structural input to the biomolecular receiver.
+\newblock Paper~2.5 (methods companion) of the cytochrome P450 monograph,
+  2026{\natexlab{c}}.
+
+\bibitem[Sachikonye(2026{\natexlab{d}})]{sachikonye2025_paper3}
 Kundai~Farai Sachikonye.
 \newblock The resting and substrate-bound states of cytochrome cyp3a4.
-\newblock Paper~3 of the cytochrome P450 monograph, 2026{\natexlab{b}}.
+\newblock Paper~3 of the cytochrome P450 monograph, 2026{\natexlab{d}}.
 
-\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_paper5_planned}
+\bibitem[Sachikonye(2026{\natexlab{e}})]{sachikonye2025_paper5_planned}
 Kundai~Farai Sachikonye.
 \newblock Compound~i formation via {O--O} heterolysis.
 \newblock Paper~5 of the cytochrome P450 monograph (in preparation),
-  2026{\natexlab{c}}.
+  2026{\natexlab{e}}.
 
 \bibitem[Shou et~al.(1999)Shou, Mei, Ettore, Dai, Baillie, and
   Rushmore]{shou1999}

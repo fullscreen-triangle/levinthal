@@ -22,7 +22,19 @@
       "Bash(python test_glb_pipeline.py)",
       "Bash(python cytochrome/publications/foundations/glb-structural-input/validation/run_all.py)",
       "Bash(python -c \"import json; d = json.load\\(open\\('cytochrome/publications/foundations/glb-structural-input/validation/results/_summary.json'\\)\\); print\\(json.dumps\\(d['aggregate'], indent=2\\)\\)\")",
-      "Bash(python cytochrome/publications/foundations/glb-structural-input/figures/generate_panels.py)"
+      "Bash(python cytochrome/publications/foundations/glb-structural-input/figures/generate_panels.py)",
+      "Bash(python cytochrome/publications/catalytic-cycle/multi-hop-et-chain/validation/run_all.py)",
+      "Bash(python cytochrome/publications/catalytic-cycle/multi-hop-et-chain/figures/generate_panels.py)",
+      "Bash(pdfinfo multi-hop-et-chain.pdf)",
+      "Bash(cp publications/foundations/expression-algebra-for-biomolecules/validation/figures/panel_*.png public/panels/paper-1/)",
+      "Bash(cp publications/manifold/p450-address-manifold-cyp3a4-fold/validation/figures/panel_*.png public/panels/paper-2/)",
+      "Bash(cp publications/foundations/glb-structural-input/figures/panel_*.png public/panels/paper-2.5/)",
+      "Bash(cp publications/equilibrium-states/cyp3a4-resting-substrate-bound/validation/figures/panel_*.png public/panels/paper-3/)",
+      "Bash(cp publications/catalytic-cycle/multi-hop-et-chain/figures/panel_*.png public/panels/paper-4/)",
+      "Bash(awk -F/ '{print $0}')",
+      "Bash(cp publications/foundations/expression-algebra-for-biomolecules/figures/panel_*.png public/panels/paper-1/)",
+      "Bash(cp publications/manifold/p450-address-manifold-cyp3a4-fold/figures/panel_*.png public/panels/paper-2/)",
+      "Bash(cp publications/equilibrium-states/cyp3a4-resting-substrate-bound/figures/panel_*.png public/panels/paper-3/)"
     ]
   }
 }

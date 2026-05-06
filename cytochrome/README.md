@@ -37,8 +37,8 @@ catalytic cycle predicted at fs/pm resolution.
 | 2 | The P450 Address Manifold + CYP3A4 Fold | **DONE** ✓ |
 | 2.5 | GLB-Based Structural Input to the Receiver (methods) | **DONE** ✓ |
 | 3 | The Resting and Substrate-Bound States of CYP3A4 | **DONE** ✓ |
-| 4 | Multi-Hop Electron Transfer through CPR | **DONE** ✓ |
-| 5 | **Compound I Formation via O-O Heterolysis (HEADLINE)** | **DONE** ✓ |
+| 4 | **Observing Electron Transfer through CPR (HEADLINE)** | **DONE** ✓ |
+| 5 | Compound I Formation via O-O Heterolysis (downstream chemistry) | **DONE** ✓ |
 | 6 | C-H Activation (Hydroxylation, Epoxidation, Rebound) | planned |
 | 7 | Heteroatom Oxidation and Dealkylation | planned |
 | 8 | Atypical Reactions Atlas | planned |
@@ -176,25 +176,62 @@ locked regime, chamber confinement, redox shift derivation).
 
 ### Part III — The Catalytic Cycle (3 papers)
 
-#### **Paper 4: Multi-Hop Electron Transfer through Cytochrome P450 Reductase**
+#### **Paper 4: Observing Electron Transfer through Cytochrome P450 Reductase** — **HEADLINE PAPER**
 
-**Path:** `publications/catalytic-cycle/multi-hop-et-chain/` (planned)
+**Path:** `publications/catalytic-cycle/multi-hop-et-chain/`
 
-**Thesis:** Extend the azurin/SOD single-hop electron trajectory machinery to
-NADPH → FAD → FMN → heme Fe³⁺. Each hop is a categorical transition; flavin
-semiquinone intermediates stabilize the chain. Selection rules
-($\Delta \ell = \pm 1$, $|\Delta m| \leq 1$, plus extended $s_{\mathrm{state}}$
-machinery for spin-crossover) checked at each step.
+**Thesis (the monograph's centre of gravity):** With the protein constructed by
+Papers 1–3 (receiver, sequence/fold manifold, resting/substrate-bound states)
+and grounded in real PDB coordinates by Paper 2.5, the four-cofactor electron
+transfer chain NADPH → FAD → FMN → heme Fe³⁺ is **observed**, not simulated.
+The observation is performed by a five-layer instrument stack already specified
+in the source papers — a stack that is hardware all the way down. The headline
+deliverable is per-frame visualisations of |ψ(r,t)|² across the four hops at
+femtosecond resolution, with the Marcus reorganisation energy λ extracted as
+hologram observable #5 of the same pipeline that produces the visualisations.
 
-**Headline result:** $d_C = 4$ multi-hop chain predicts
-$k_{\mathrm{cat}}/K_M \sim 10^6$ M⁻¹s⁻¹ (testable against measured CPR turnover).
+**The five-layer instrument stack:**
+
+| Layer | Apparatus | Source paper |
+|---|---|---|
+| 5 | 5-pass GPU hologram pipeline → 6 observables incl. Marcus λ | `superimposed-multi-modal-holograms.tex` |
+| 4 | Harmonic Molecular Resonator (cycle-rank cross-validation) | `harmonic-molecular-resonator.tex` |
+| 3 | Ensemble Strobes (W_Sk fs / W_St ns / W_Se long) | `ensemble-strobes.tex` |
+| 2 | Triple-Equivalence Theorem (calibration certificate) | `spectroscopic-derivation-of-elements.tex` |
+| 1 | Categorical Spectrometer (CPU/bus/LED/refresh oscillators) | `hyperfine-transitions.tex` |
+
+**Categorical predictions (from $d_C{=}4$, no fitted parameters):**
+$k_{\mathrm{cat}}/K_M \sim 10^6$ M⁻¹s⁻¹; per-hop intrinsic rate $\sim 10^9$ s⁻¹;
+Newton's-cradle non-identity (NADPH electron and heme-arriving electron are
+categorically continuous but not materially identical — an isotope-tracking
+falsifier).
+
+**Apparatus-as-experiment validation:** counting-anomaly self-selection
+identifies the four cofactor centres as active atoms (precedent: 100% accuracy
+on azurin Cu site, [atomic-ternary-spectrometers.tex](publication/atomic-spectrometers/atomic-ternary-spectrometers.tex));
+cycle-rank loops in the harmonic molecular resonator give independent
+cross-validation channels; Marcus λ recovered from hologram observable #5
+matches measured ET reorganisation energy.
+
+**Why this is the headline, not Paper 5:** the monograph's promise was to first
+*construct* the protein (Papers 1–3), then *observe* the actual electron
+transfer through it (this paper). Compound I formation (Paper 5) is downstream
+chemistry that follows the electrons' arrival.
 
 **Data:** BRENDA (CPR/P450 kinetics), published transient absorption
-spectroscopy, EPR.
+spectroscopy (Murataliev 2004), EPR characterisation of flavin semiquinones
+(Narayanasami 1997), PDB structures for CPR (1AMO, 3ES9) and CYP3A4 (1TQN).
 
-#### **Paper 5: Compound I Formation via O-O Heterolysis** — **HEADLINE PAPER**
+#### **Paper 5: Compound I Formation via O-O Heterolysis** *(downstream chemistry of the headline)*
 
-**Path:** `publications/catalytic-cycle/compound-i-formation/` (planned)
+**Path:** `publications/catalytic-cycle/compound-i-formation/`
+
+**Role in the monograph:** What happens *after* the electrons delivered by
+Paper 4 arrive at the heme iron. Paper 4 is the headline (the observation
+event); Paper 5 is the chemistry that the observed electrons subsequently
+drive. The Compound I result is not the monograph's centre of gravity — it
+is a demonstration that the framework, having observed the transfer, also
+predicts the downstream catalytic chemistry without additional machinery.
 
 **Thesis:** Compound I (Fe⁴⁺=O porphyrin•⁺) is the most controversial intermediate
 in all of biocatalysis. Compute its formation as a partition transition involving

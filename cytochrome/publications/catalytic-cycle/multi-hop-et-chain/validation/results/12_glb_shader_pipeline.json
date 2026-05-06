@@ -1,0 +1,65 @@
+{
+  "validation_id": "12_glb_shader_pipeline",
+  "paper_reference": "Paper 4, Section 2 (apparatus) + Paper 2.5 (GLB structural input)",
+  "glb_file": "model_of_cytochrome_p450__oxygen__drug_complex.glb",
+  "n_glb_atoms": 146,
+  "fe_position_A": [
+    17.2587116932,
+    11.527297915581162,
+    24.76285565817424
+  ],
+  "axis_vec": [
+    -0.6949674482533824,
+    -0.48738874452987285,
+    -0.5286515464592689
+  ],
+  "cofactor_positions_A": [
+    [
+      32.54799555477441,
+      22.249850295238364,
+      36.393189680278155
+    ],
+    [
+      29.76812576176088,
+      20.300295317118874,
+      34.27858349444108
+    ],
+    [
+      26.988255968747353,
+      18.35074033899938,
+      32.163977308604004
+    ],
+    [
+      17.2587116932,
+      11.527297915581162,
+      24.76285565817424
+    ]
+  ],
+  "chain_length_A": 22.0,
+  "centroids_along_chain_A": [
+    0.0006845626713608929,
+    5.1993029718975885,
+    13.645824352144253,
+    18.843018956286105,
+    20.606089970365886
+  ],
+  "centroid_advance_A": 20.605405407694526,
+  "final_frame_occupancy_NADPH_FAD_FMN_heme": [
+    0.00822974704902003,
+    0.0404267413504637,
+    0.19207294240895229,
+    0.7592705691915641
+  ],
+  "final_frame_marcus_lambda_eV": 0.85,
+  "framework_canonical_lambda_eV": 0.85,
+  "checks": {
+    "fe_position_anchored_to_glb": true,
+    "chain_length_matches_literature": true,
+    "heme_occupancy_dominates_final_frame": true,
+    "centroid_advances_monotonically": true,
+    "centroid_traverses_at_least_half_chain": true,
+    "marcus_lambda_within_20_percent_of_canonical": true,
+    "glb_n_atoms_matches_paper2_5_baseline": true
+  },
+  "verdict": "PASS"
+}
