@@ -1,0 +1,21 @@
+{
+  "script": "06_anharmonic_check",
+  "verdict": "PASS",
+  "checks": {
+    "DM_max_lt_10": true,
+    "DM_max_lt_ln10_classical_threshold": true,
+    "k_min_positive": true,
+    "k_min_gt_1_per_second": true,
+    "all_steps_faster_than_protein": true
+  },
+  "DM_max": 0.92,
+  "DM_min": 0.3,
+  "step_with_max_DM": "1_to_2_substrate_binding",
+  "step_with_min_DM": "product_release",
+  "k_min_s_inv": 3985190410.85,
+  "tau_max_ns": 0.2509,
+  "DM_critical_ln10": 2.3026,
+  "all_below_classical_sink": true,
+  "k_protein_degradation_s_inv": 0.0002777777777777778,
+  "all_steps_faster_than_protein": true
+}

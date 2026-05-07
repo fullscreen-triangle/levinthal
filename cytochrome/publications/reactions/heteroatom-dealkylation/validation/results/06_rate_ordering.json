@@ -1,0 +1,30 @@
+{
+  "script": "06_rate_ordering",
+  "verdict": "PASS",
+  "checks": {
+    "delta_m_monotonic": true,
+    "rate_monotonic_decreasing": true,
+    "direct_transfer_faster_than_hat": true,
+    "s_ox_fastest": true,
+    "aliphatic_slowest": true,
+    "five_distinct_rates": true
+  },
+  "delta_m_list": [
+    0.28,
+    0.32,
+    0.5,
+    0.58,
+    0.65
+  ],
+  "k_list_s": [
+    7557837414.56,
+    7261490370.74,
+    6065306597.13,
+    5598983665.65,
+    5220457767.61
+  ],
+  "dm_monotonic": true,
+  "k_monotonic_decreasing": true,
+  "direct_transfers_faster": true,
+  "max_delta_m": 0.65
+}

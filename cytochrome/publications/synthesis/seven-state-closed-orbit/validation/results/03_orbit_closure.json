@@ -1,0 +1,28 @@
+{
+  "script": "03_orbit_closure",
+  "verdict": "PASS",
+  "checks": {
+    "orbit_closed_product_release": true,
+    "DM_sum_in_range_4.5_to_6.0": true,
+    "all_transitions_dC_1": true,
+    "n_transitions_is_8": true,
+    "all_k_positive": true
+  },
+  "orbit_closed": true,
+  "n_transitions": 8,
+  "DM_sum": 4.963,
+  "DM_critical_ln10": 2.3026,
+  "all_d_C_1": true,
+  "all_k_positive": true,
+  "poincare_return_defined": true,
+  "DM_values_list": [
+    0.92,
+    0.68,
+    0.55,
+    0.72,
+    0.45,
+    0.693,
+    0.65,
+    0.3
+  ]
+}

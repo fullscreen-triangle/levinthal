@@ -1,0 +1,41 @@
+{
+  "script": "05_membrane_enrichment",
+  "verdict": "PASS",
+  "checks": {
+    "enrichment_logP3_ge_5": true,
+    "enrichment_logP3_equals_10": true,
+    "enrichment_logP2_equals_1": true,
+    "enrichment_increases_with_logP": true,
+    "K_m_apparent_less_than_intrinsic": true
+  },
+  "membrane_thickness_ang": 40.0,
+  "enrichment_model": "10^(logP - 2) for logP > 2",
+  "enrichment_logP3": 10.0,
+  "enrichment_logP45": 316.23,
+  "substrate_results": {
+    "hydrophilic": {
+      "logP": 0.5,
+      "enrichment_factor": 1.0,
+      "K_m_intrinsic_uM": 50.0,
+      "K_m_apparent_uM": 50.0
+    },
+    "borderline": {
+      "logP": 2.0,
+      "enrichment_factor": 1.0,
+      "K_m_intrinsic_uM": 20.0,
+      "K_m_apparent_uM": 20.0
+    },
+    "lipophilic": {
+      "logP": 3.0,
+      "enrichment_factor": 10.0,
+      "K_m_intrinsic_uM": 10.0,
+      "K_m_apparent_uM": 1.0
+    },
+    "very_lipo": {
+      "logP": 4.5,
+      "enrichment_factor": 316.23,
+      "K_m_intrinsic_uM": 5.0,
+      "K_m_apparent_uM": 0.016
+    }
+  }
+}

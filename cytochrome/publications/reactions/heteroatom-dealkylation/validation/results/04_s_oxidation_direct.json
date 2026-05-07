@@ -1,0 +1,17 @@
+{
+  "script": "04_s_oxidation_direct",
+  "verdict": "PASS",
+  "checks": {
+    "k_s_ox_gt_5e9": true,
+    "k_s_ox_lt_1e10": true,
+    "k_s_ox_gt_k_n_dealk": true,
+    "no_kie_for_s_ox": true,
+    "ea_s_ox_lt_ea_n_dealk": true
+  },
+  "delta_m_s_ox": 0.28,
+  "k_s_ox_s": 7557837414.56,
+  "k_n_dealk_s": 6065306597.13,
+  "ea_s_ox_kcal": 4.35,
+  "kie_s_ox": 1.0,
+  "selectivity_s_over_n": 1.246
+}

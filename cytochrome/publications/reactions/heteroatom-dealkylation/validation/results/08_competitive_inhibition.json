@@ -1,0 +1,18 @@
+{
+  "script": "08_competitive_inhibition",
+  "verdict": "PASS",
+  "checks": {
+    "delta_m_keto_lt_delta_m_lid": true,
+    "ki_keto_less_than_100nM": true,
+    "keto_binds_tighter": true,
+    "keto_tighter_than_substrate": true,
+    "fold_inhibition_gt_1": true
+  },
+  "delta_m_keto_bind": 0.15,
+  "delta_m_lid_dealk": 0.5,
+  "ki_keto_nM": 1.0,
+  "k_bind_keto_s": 8607079764.25,
+  "k_bind_lid_s": 6065306597.13,
+  "km_lid_relative_to_keto": 1.4,
+  "fold_inhibition_at_1uM_keto": 1001.0
+}

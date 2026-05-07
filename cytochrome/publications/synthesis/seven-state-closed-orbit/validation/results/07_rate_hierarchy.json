@@ -1,0 +1,22 @@
+{
+  "script": "07_rate_hierarchy",
+  "verdict": "PASS",
+  "checks": {
+    "k_heterolysis_faster_than_ET": true,
+    "k_HAT_faster_than_ET": true,
+    "min_chem_ratio_ge_100": true,
+    "ratio_HAT_ET_ge_100": true,
+    "ET_is_rate_determining_over_chemistry": true
+  },
+  "k_heterolysis_s_inv": 5000735957.0,
+  "k_HAT_s_inv": 5220457768.0,
+  "k_protonation_s_inv": 6376281516.0,
+  "k_O2_binding_s_inv": 5769498104.0,
+  "k_FMN_heme_paper11": 5000000.0,
+  "ratio_heterolysis_ET": 1000.0,
+  "ratio_HAT_ET": 1044.0,
+  "ratio_protonation_ET": 1275.0,
+  "ratio_O2_ET": 1154.0,
+  "min_chem_over_ET_ratio": 1000.0,
+  "DM_FMN_heme_paper11": 7.6009
+}

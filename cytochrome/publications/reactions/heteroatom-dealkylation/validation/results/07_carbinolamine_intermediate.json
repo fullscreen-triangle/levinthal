@@ -1,0 +1,17 @@
+{
+  "script": "07_carbinolamine_intermediate",
+  "verdict": "PASS",
+  "checks": {
+    "delta_m_cn_cleavage_small": true,
+    "delta_m_co_cleavage_small": true,
+    "cn_cleavage_fast": true,
+    "co_cleavage_fast": true,
+    "intermediate_labile": true
+  },
+  "delta_m_cn_cleavage": 0.12,
+  "delta_m_co_cleavage": 0.14,
+  "k_cn_cleavage_s": 8869204367.17,
+  "k_co_cleavage_s": 8693582353.99,
+  "k_overall_n_dealk_s": 3602022449.08,
+  "k_rebound_ref_s": 7400000000.0
+}

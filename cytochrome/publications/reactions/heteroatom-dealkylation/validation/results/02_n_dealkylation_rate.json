@@ -1,0 +1,17 @@
+{
+  "script": "02_n_dealkylation_rate",
+  "verdict": "PASS",
+  "checks": {
+    "k_n_dealk_in_range": true,
+    "k_n_dealk_gt_k_aliphatic": true,
+    "k_n_dealk_gt_k_o_dealk": true,
+    "rate_ordering_correct": true,
+    "ea_n_in_range_6_to_10": true
+  },
+  "delta_m_n_dealk": 0.5,
+  "k_n_dealk_s": 6065306597.13,
+  "k_o_dealk_s": 5598983665.65,
+  "k_aliphatic_s": 5220457767.61,
+  "ratio_n_dealk_to_aliphatic": 1.162,
+  "ea_n_dealk_kcal": 7.768
+}

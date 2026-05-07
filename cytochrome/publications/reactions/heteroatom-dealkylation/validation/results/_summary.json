@@ -1,0 +1,17 @@
+{
+  "paper": "Paper 7: Heteroatom Oxidation and Dealkylation",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "verdict": "PASS",
+  "scripts": {
+    "01_alpha_carbon_bde": "PASS",
+    "02_n_dealkylation_rate": "PASS",
+    "03_kie_dealkylation": "PASS",
+    "04_s_oxidation_direct": "PASS",
+    "05_n_oxide_formation": "PASS",
+    "06_rate_ordering": "PASS",
+    "07_carbinolamine_intermediate": "PASS",
+    "08_competitive_inhibition": "PASS"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "script": "03_kie_dealkylation",
+  "verdict": "PASS",
+  "checks": {
+    "kie_n_in_range_3p5_to_8": true,
+    "kie_n_lt_kie_aliphatic": true,
+    "kie_n_gt_1": true,
+    "softer_frequency_reduces_zpe": true,
+    "kie_n_zpe_correct_sign": true
+  },
+  "nu_n_ch_cm1": 2800.0,
+  "nu_n_cd_cm1": 1979.9,
+  "delta_zpe_n_J": 0.0,
+  "delta_zpe_n_over_kBT": 1.9031,
+  "kie_n_zpe": 6.707,
+  "kie_n_dealk": 6.707,
+  "kie_aliphatic_ref": 7.2,
+  "kie_n_lt_kie_ali": true
+}

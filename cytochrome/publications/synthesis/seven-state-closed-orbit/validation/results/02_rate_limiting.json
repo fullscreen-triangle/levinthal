@@ -1,0 +1,40 @@
+{
+  "script": "02_rate_limiting",
+  "verdict": "PASS",
+  "checks": {
+    "slowest_step_DM_gt_0.5": true,
+    "T_return_gt_0.1_ps": true,
+    "T_return_lt_1_ms": true,
+    "k_cat_intrinsic_gt_1e8": true,
+    "slowest_is_substrate_binding": true
+  },
+  "k_values_s_inv": {
+    "1_to_2_substrate_binding": "3.985e+09",
+    "2_to_3_first_electron": "5.066e+09",
+    "3_to_4_O2_binding": "5.769e+09",
+    "4_to_5_second_electron": "4.868e+09",
+    "5_to_Cpd0_protonation": "6.376e+09",
+    "Cpd0_to_CpdI_heterolysis": "5.001e+09",
+    "CpdI_HAT_activation": "5.220e+09",
+    "product_release": "7.408e+09"
+  },
+  "tau_values_ps": {
+    "1_to_2_substrate_binding": 250.929,
+    "2_to_3_first_electron": 197.3878,
+    "3_to_4_O2_binding": 173.3253,
+    "4_to_5_second_electron": 205.4433,
+    "5_to_Cpd0_protonation": 156.8312,
+    "Cpd0_to_CpdI_heterolysis": 199.9706,
+    "CpdI_HAT_activation": 191.5541,
+    "product_release": 134.9859
+  },
+  "T_return_ns": 1.5104,
+  "T_return_ps": 1510.43,
+  "slowest_step": "1_to_2_substrate_binding",
+  "slowest_DM": 0.92,
+  "slowest_k_s_inv": "3.985e+09",
+  "slowest_tau_ps": 250.93,
+  "k_cat_intrinsic_s_inv": 662064355.72,
+  "k_FMN_heme_paper11_s_inv": 5000000.0,
+  "k_cat_faster_than_FMN_tunneling": true
+}

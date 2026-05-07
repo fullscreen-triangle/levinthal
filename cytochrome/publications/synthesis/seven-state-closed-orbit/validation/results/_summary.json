@@ -1,0 +1,17 @@
+{
+  "paper": "Paper 12: The Seven-State Catalytic Cycle as Closed Categorical Orbit",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "verdict": "PASS",
+  "scripts": {
+    "01_seven_states": "PASS",
+    "02_rate_limiting": "PASS",
+    "03_orbit_closure": "PASS",
+    "04_non_identity": "PASS",
+    "05_poincare_return": "PASS",
+    "06_anharmonic_check": "PASS",
+    "07_rate_hierarchy": "PASS",
+    "08_full_cycle_summary": "PASS"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "script": "06_complex_stoichiometry",
+  "verdict": "PASS",
+  "checks": {
+    "stoichiometry_10_P450_per_CPR": true,
+    "k_ET_much_faster_than_kcat": true,
+    "ratio_ET_kcat_gt_1e5": true,
+    "k_cat_intrinsic_faster_than_measured": true,
+    "k_ET_dominates_series": true
+  },
+  "n_P450_per_CPR": 10,
+  "k_cat_measured_per_min": 100.0,
+  "k_cat_measured_per_s": 1.667,
+  "k_ET_FMN_heme_s_inv": 5000000.0,
+  "ratio_kET_over_kcat": 3000000.0,
+  "k_sub_bind_s_inv": 10000000.0,
+  "k_chem_s_inv": 1000000000.0,
+  "k_cat_intrinsic_s_inv": 3322259.1,
+  "rate_limit_is_substrate_diffusion": true
+}

@@ -1,0 +1,24 @@
+{
+  "script": "04_cytb5_comparison",
+  "verdict": "PASS",
+  "checks": {
+    "k_b5_faster_than_k_CPR": true,
+    "rate_ratio_b5_CPR_positive": true,
+    "KD_b5_tighter_than_CPR": true,
+    "DG_b5_more_negative": true,
+    "r_b5_shorter_than_CPR": true,
+    "DM_b5_less_than_DM_CPR": true
+  },
+  "k_b5_s_inv": 30000000.0,
+  "k_CPR_s_inv": 5000000.0,
+  "ratio_k_b5_over_k_CPR": 6.0,
+  "DM_b5": 5.8091,
+  "DM_CPR": 7.6009,
+  "KD_b5_uM": 0.049999999999999996,
+  "KD_CPR_uM": 0.09999999999999999,
+  "DG_b5_kcal": -10.356,
+  "DG_CPR_kcal": -9.929,
+  "r_b5_heme_ang": 11.0,
+  "r_CPR_heme_ang": 14.0,
+  "b5_stimulates_second_electron": true
+}
