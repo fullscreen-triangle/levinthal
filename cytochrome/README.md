@@ -4,7 +4,7 @@
 
 Author: Kundai Farai Sachikonye
 Affiliation: AIMe Registry for Artificial Intelligence / Technical University of Munich
-Status: In progress (5 thesis papers + 1 methods paper complete; ~14 total planned)
+Status: In progress (6 thesis papers + 1 methods paper complete; ~14 total planned)
 
 ---
 
@@ -39,7 +39,7 @@ catalytic cycle predicted at fs/pm resolution.
 | 3 | The Resting and Substrate-Bound States of CYP3A4 | **DONE** ✓ |
 | 4 | **Observing Electron Transfer through CPR (HEADLINE)** | **DONE** ✓ |
 | 5 | Compound I Formation via O-O Heterolysis (downstream chemistry) | **DONE** ✓ |
-| 6 | C-H Activation (Hydroxylation, Epoxidation, Rebound) | planned |
+| 6 | C-H Activation (Hydroxylation, Epoxidation, Rebound) | **DONE** ✓ |
 | 7 | Heteroatom Oxidation and Dealkylation | planned |
 | 8 | Atypical Reactions Atlas | planned |
 | 9 | The 57 Human Isoforms as Variants | planned |

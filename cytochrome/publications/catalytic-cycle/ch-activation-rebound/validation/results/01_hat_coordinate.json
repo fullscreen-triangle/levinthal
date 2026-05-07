@@ -1,0 +1,22 @@
+{
+  "script": "01_hat_coordinate",
+  "verdict": "PASS",
+  "checks": {
+    "beta_CH_binary": true,
+    "delta_M_CH_cleavage_eq_ln2": true,
+    "delta_M_OH_formation_eq_neg_ln2": true,
+    "bond_changes_cancel": true,
+    "tau_cleave_40_to_60_fs": true,
+    "delta_M_HAT_activation_in_range": true
+  },
+  "beta_CH_states": [
+    0,
+    1
+  ],
+  "delta_M_CH_cleavage": 0.693147,
+  "delta_M_OH_formation": -0.693147,
+  "delta_M_bond_only": 0.0,
+  "delta_M_HAT_activation": 0.6466,
+  "tau_p_fs": 24.639,
+  "tau_cleave_fs": 49.28
+}

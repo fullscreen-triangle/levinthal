@@ -43,7 +43,7 @@ export default function Home() {
             <div className="flex-1 min-w-0">
               <span className="inline-block text-[11px] uppercase tracking-widest
                 text-dark/45 dark:text-light/45 mb-3">
-                A monograph in {PAPERS.length} papers
+                A monograph · {PAPERS.length} papers complete
               </span>
 
               <AnimatedText
@@ -87,7 +87,7 @@ export default function Home() {
 
               <div className="grid grid-cols-3 gap-4 max-w-xl sm:grid-cols-1">
                 <Stat label="Papers complete" value="6 / 14" />
-                <Stat label="Validations" value="52 / 52" sub="all PASS" />
+                <Stat label="Validations" value="60 / 60" sub="all PASS" />
                 <Stat label="Marcus λ" value="0.85 eV" sub="Layer 5 readout" />
               </div>
             </div>

@@ -1,0 +1,29 @@
+{
+  "script": "04_radical_intermediate",
+  "verdict": "PASS",
+  "checks": {
+    "sigma_rad_equals_1": true,
+    "Fe_is_HS": true,
+    "beta_OH_formed": true,
+    "k_rebound_above_1e9": true,
+    "stereo_f_small_above_40pct": true,
+    "stereo_f_benzylic_above_40pct": true,
+    "stereo_range_spans_40_to_90pct": true
+  },
+  "radical_state": {
+    "sigma_rad": 1,
+    "beta_OH": 1,
+    "Fe_spin": "HS"
+  },
+  "M_radical": 6.98,
+  "k_rebound_s": "7.408e+09",
+  "stereo_retentions": {
+    "small_aliphatic": 0.9867,
+    "terpenoid": 0.9368,
+    "benzylic": 0.4024
+  },
+  "tau_rad_min_ps": 54.324,
+  "tau_rad_max_ps": 133.188,
+  "f_min_benzylic": 0.4024,
+  "f_max_small": 0.9867
+}

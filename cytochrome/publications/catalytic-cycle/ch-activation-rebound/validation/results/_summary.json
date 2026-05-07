@@ -1,0 +1,17 @@
+{
+  "paper": "Paper 6: C-H Activation by Compound I",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "verdict": "PASS",
+  "scripts": {
+    "01_hat_coordinate": "PASS",
+    "02_three_body_aperture": "PASS",
+    "03_kie_prediction": "PASS",
+    "04_radical_intermediate": "PASS",
+    "05_rebound_aperture": "PASS",
+    "06_regioselectivity": "PASS",
+    "07_reaction_types": "PASS",
+    "08_full_state7_transition": "PASS"
+  }
+}

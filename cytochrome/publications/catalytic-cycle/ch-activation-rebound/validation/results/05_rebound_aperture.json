@@ -1,0 +1,25 @@
+{
+  "script": "05_rebound_aperture",
+  "verdict": "PASS",
+  "checks": {
+    "rebound_is_dC_1": true,
+    "delta_M_rebound_below_HAT": true,
+    "delta_M_rebound_matches_formula": true,
+    "k_rebound_above_newcomb_bound": true,
+    "rebound_faster_than_HAT": true,
+    "rate_ratio_above_1": true
+  },
+  "rebound_selection_rule": {
+    "delta_beta_CO": -1,
+    "delta_sigma_rad": 1,
+    "delta_s_orbital": 0,
+    "dC": 1
+  },
+  "xi_rad": 0.57,
+  "delta_M_rebound_calc": 0.2981,
+  "DELTA_M_REBOUND": 0.3,
+  "DELTA_M_HAT": 0.65,
+  "k_rebound_s": "7.408e+09",
+  "k_HAT_s": "5.220e+09",
+  "k_rebound_over_k_HAT": 1.4191
+}

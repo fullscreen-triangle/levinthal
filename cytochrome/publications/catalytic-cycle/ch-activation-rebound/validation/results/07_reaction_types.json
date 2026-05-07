@@ -1,0 +1,60 @@
+{
+  "script": "07_reaction_types",
+  "verdict": "PASS",
+  "checks": {
+    "rate_ordering_aliphatic_slowest": true,
+    "all_HAT_KIE_above_4": true,
+    "non_HAT_KIE_equals_1": true,
+    "aliphatic_allylic_ratio_below_2": true,
+    "aliphatic_delta_M_largest": true,
+    "five_reaction_types_present": true
+  },
+  "reaction_types": {
+    "aliphatic": {
+      "delta_M": 0.65,
+      "k_s": 5220457767.61,
+      "log10_k": 9.718,
+      "E_a_kcalmol": 10.1,
+      "has_kie": true,
+      "KIE": 9.63
+    },
+    "benzylic": {
+      "delta_M": 0.5,
+      "k_s": 6065306597.126,
+      "log10_k": 9.783,
+      "E_a_kcalmol": 7.77,
+      "has_kie": true,
+      "KIE": 9.5
+    },
+    "allylic": {
+      "delta_M": 0.45,
+      "k_s": 6376281516.218,
+      "log10_k": 9.805,
+      "E_a_kcalmol": 6.99,
+      "has_kie": true,
+      "KIE": 9.46
+    },
+    "aromatic": {
+      "delta_M": 0.38,
+      "k_s": 6838614092.124,
+      "log10_k": 9.835,
+      "E_a_kcalmol": 5.9,
+      "has_kie": false,
+      "KIE": 1.0
+    },
+    "epoxidation": {
+      "delta_M": 0.35,
+      "k_s": 7046880897.187,
+      "log10_k": 9.848,
+      "E_a_kcalmol": 5.44,
+      "has_kie": false,
+      "KIE": 1.0
+    }
+  },
+  "rate_ordering_correct": true,
+  "rate_ratio_aliphatic_over_allylic": 0.8187,
+  "KIE_aliphatic": 9.63,
+  "KIE_allylic": 9.46,
+  "KIE_aromatic": 1.0,
+  "KIE_epoxidation": 1.0
+}

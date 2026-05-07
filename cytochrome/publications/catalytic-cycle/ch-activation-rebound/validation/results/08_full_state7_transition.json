@@ -1,0 +1,72 @@
+{
+  "script": "08_full_state7_transition",
+  "verdict": "PASS",
+  "checks": {
+    "delta_M_total_consistent": true,
+    "dC_total_equals_2": true,
+    "beta_CH_cleaved": true,
+    "beta_CO_formed": true,
+    "radical_quenched": true,
+    "Fe_reduced_to_III": true,
+    "kcat_KM_within_BRENDA_range": true,
+    "E_a_total_reasonable": true
+  },
+  "state_6": {
+    "beta_CH": 1,
+    "beta_OH": 0,
+    "beta_CO": 0,
+    "sigma_rad": 0,
+    "Fe_state": "Fe(IV)",
+    "M": 7.6
+  },
+  "state_radical_intermediate": {
+    "beta_CH": 0,
+    "beta_OH": 1,
+    "beta_CO": 0,
+    "sigma_rad": 1,
+    "Fe_state": "Fe(III)",
+    "M": 8.25
+  },
+  "state_7": {
+    "beta_CH": 0,
+    "beta_OH": 0,
+    "beta_CO": 1,
+    "sigma_rad": 0,
+    "Fe_state": "Fe(III)",
+    "M": 8.55
+  },
+  "DELTA_M_HAT": 0.65,
+  "DELTA_M_REBOUND": 0.3,
+  "delta_M_total": 0.95,
+  "delta_M_total_check": 0.95,
+  "dC_total": 2,
+  "log10_kcat_KM_pred": 8,
+  "kcat_KM_pred_M_inv_s": "1.00e+08",
+  "kcat_KM_lit_range": [
+    "2.0e+05",
+    "5.0e+06"
+  ],
+  "E_a_total_kcalmol": 14.76,
+  "transitions": {
+    "beta_CH": [
+      1,
+      0
+    ],
+    "beta_OH": [
+      0,
+      0
+    ],
+    "beta_CO": [
+      0,
+      1
+    ],
+    "sigma_rad": [
+      0,
+      0
+    ],
+    "Fe_state": [
+      "Fe(IV)",
+      "Fe(III)"
+    ]
+  }
+}
