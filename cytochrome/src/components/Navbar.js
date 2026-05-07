@@ -87,6 +87,7 @@ const Navbar = () => {
           <NavLink href="/equilibrium" title="Equilibrium" />
           <NavLink href="/transfer" title="Transfer" headline />
           <NavLink href="/compound-i" title="Compound I" />
+          <NavLink href="/ch-activation" title="C–H" />
           <NavLink href="/apparatus" title="Apparatus" />
           <NavLink href="/gallery" title="Gallery" />
         </nav>
@@ -124,6 +125,7 @@ const Navbar = () => {
             <MobileNavLink toggle={() => setIsOpen(false)} href="/equilibrium" title="Equilibrium · P3" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/transfer" title="Transfer · P4 ★" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/compound-i" title="Compound I · P5" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/ch-activation" title="C–H Activation · P6" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/apparatus" title="Apparatus" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/gallery" title="Gallery" />
           </nav>

@@ -45,7 +45,11 @@
       "Bash(curl -sS -o /dev/null -w \"/:           %{http_code}\\\\n\" http://localhost:3138/)",
       "Bash(curl -sS -o /dev/null -w \"/transfer:   %{http_code}\\\\n\" http://localhost:3138/transfer)",
       "Bash(curl -sS -o /dev/null -w \"/glb-input:  %{http_code}\\\\n\" http://localhost:3138/glb-input)",
-      "Bash(curl -sS -o /dev/null -w \"/foundations:%{http_code}\\\\n\" http://localhost:3138/foundations)"
+      "Bash(curl -sS -o /dev/null -w \"/foundations:%{http_code}\\\\n\" http://localhost:3138/foundations)",
+      "Bash(mkdir -p \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/public/panels/paper-6\" && cp \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/publications/catalytic-cycle/ch-activation-rebound/figures/panel_\"*.png \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/public/panels/paper-6/\" && ls \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/public/panels/paper-6/\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures"
     ]
   }
 }

@@ -1,0 +1,24 @@
+{
+  "script": "03_kie_prediction",
+  "verdict": "PASS",
+  "checks": {
+    "delta_ZPE_positive": true,
+    "delta_ZPE_kcalmol_in_range": true,
+    "KIE_ZPE_above_4": true,
+    "kappa_ratio_above_1": true,
+    "KIE_total_in_range_4_to_11": true,
+    "KIE_decreases_at_higher_T": true
+  },
+  "omega_CH_rad_s": "5.6510e+14",
+  "omega_CD_rad_s": "3.9958e+14",
+  "nu_CH_cm1": 3000.0,
+  "nu_CD_cm1": 2121.3,
+  "delta_ZPE_J": "8.7272e-21",
+  "delta_ZPE_kcalmol": 1.2561,
+  "delta_ZPE_kBT": 2.0391,
+  "KIE_ZPE_310K": 7.683,
+  "kappa_H_over_kappa_D": 1.253,
+  "KIE_total_310K": 9.63,
+  "KIE_total_350K": 7.63,
+  "KIE_decreases_with_T": true
+}

@@ -1,0 +1,108 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Groves and McClusky(1976)]{groves1976}
+John~T. Groves and Gail~A. McClusky.
+\newblock Aliphatic hydroxylation via oxygen rebound.
+\newblock \emph{Journal of the American Chemical Society}, 98:\penalty0
+  859--861, 1976.
+
+\bibitem[Groves and Watanabe(1985)]{groves1985}
+John~T. Groves and Yoichi Watanabe.
+\newblock On the mechanism of olefin epoxidation by oxo-iron porphyrins. direct
+  observation of stepwise oxygen transfer.
+\newblock \emph{Journal of the American Chemical Society}, 107:\penalty0
+  7834--7836, 1985.
+
+\bibitem[Guengerich(1998)]{guengerich1998}
+F.~Peter Guengerich.
+\newblock The rate-limiting step of cytochrome {P450} reactions.
+\newblock \emph{Accounts of Chemical Research}, 31:\penalty0 693--700, 1998.
+
+\bibitem[Guengerich(2001)]{guengerich2001}
+F.~Peter Guengerich.
+\newblock Common and uncommon cytochrome {P450} reactions related to metabolism
+  and chemical toxicity.
+\newblock \emph{Chemical Research in Toxicology}, 14:\penalty0 611--650, 2001.
+
+\bibitem[Newcomb et~al.(1995)Newcomb, Le~Tadic, Putt, and
+  Hollenberg]{newcomb1995}
+Martin Newcomb, Marie-Helene Le~Tadic, Daryl~A. Putt, and Paul~F. Hollenberg.
+\newblock An incredibly fast apparent oxygen rebound rate constant for
+  hydrocarbon hydroxylation by cytochrome {P450} enzymes.
+\newblock \emph{Journal of the American Chemical Society}, 117:\penalty0
+  3312--3313, 1995.
+
+\bibitem[Newcomb et~al.(1997)Newcomb, Shen, Lu, et~al.]{newcomb1997}
+Martin Newcomb, Rui Shen, Yuan Lu, et~al.
+\newblock Cytochrome {P450}-catalyzed hydroxylation of mechanistic probes that
+  distinguish between radicals and cations.
+\newblock \emph{Journal of the American Chemical Society}, 119:\penalty0
+  10660--10668, 1997.
+
+\bibitem[Ortiz~de Montellano(2015)]{ortizdemontellano2015}
+Paul~R. Ortiz~de Montellano, editor.
+\newblock \emph{Cytochrome {P450}: Structure, Mechanism, and Biochemistry}.
+\newblock Springer, 4th edition, 2015.
+
+\bibitem[Rendic(2002)]{rendic2002}
+Slobodan Rendic.
+\newblock Summary of information on human {CYP} enzymes: Human {P450}
+  metabolism data.
+\newblock \emph{Drug Metabolism Reviews}, 34:\penalty0 83--448, 2002.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025_isomorphism}
+Kundai~Farai Sachikonye.
+\newblock Triple isomorphism architecture.
+\newblock Manuscript, 2025{\natexlab{a}}.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025_landscape}
+Kundai~Farai Sachikonye.
+\newblock The biological partition landscape.
+\newblock Manuscript, 2025{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2025_paper1}
+Kundai~Farai Sachikonye.
+\newblock An expression algebra for biomolecules.
+\newblock Paper 1 of monograph, 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025_paper25}
+Kundai~Farai Sachikonye.
+\newblock {GLB}-based structural input to the receiver.
+\newblock Paper 2.5 of monograph (methods), 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025_paper4}
+Kundai~Farai Sachikonye.
+\newblock Multi-hop electron transfer through cytochrome p450 reductase.
+\newblock Paper 4 of monograph, 2026{\natexlab{c}}.
+
+\bibitem[Sachikonye(2026{\natexlab{d}})]{sachikonye2025_paper5}
+Kundai~Farai Sachikonye.
+\newblock Compound~i formation via o--o heterolysis.
+\newblock Paper 5 of monograph, 2026{\natexlab{d}}.
+
+\bibitem[Shaik et~al.(2010)Shaik, Cohen, Wang, et~al.]{shaik2010}
+Sason Shaik, Shimrit Cohen, Yong Wang, et~al.
+\newblock {P450} enzymes: Their structure, reactivity, and selectivity ---
+  modeled by {QM/MM} calculations.
+\newblock \emph{Chemical Reviews}, 110:\penalty0 949--1017, 2010.
+
+\bibitem[Shen et~al.(1997)Shen, Bhatt, Bhatt, and Bhatt]{shen1997}
+Wen Shen, Deepali Bhatt, Bhavesh Bhatt, and Bhavesh Bhatt.
+\newblock Kinetics of hydrogen atom transfer reactions in cytochrome {P450}.
+\newblock \emph{Biochemistry}, 36:\penalty0 15811--15819, 1997.
+
+\bibitem[Yano et~al.(2004)Yano, Wester, Schoch, Griffin, Stout, and
+  Johnson]{yano2004}
+Joy~K. Yano, Matthew~R. Wester, Gregory~A. Schoch, Keith~J. Griffin, C.~David
+  Stout, and Eric~F. Johnson.
+\newblock The structure of human microsomal cytochrome {P450 3A4} determined by
+  x-ray crystallography to 2.05-\aa{} resolution.
+\newblock \emph{Journal of Biological Chemistry}, 279:\penalty0 38091--38094,
+  2004.
+
+\end{thebibliography}

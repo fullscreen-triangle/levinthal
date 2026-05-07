@@ -1,0 +1,45 @@
+{
+  "script": "06_regioselectivity",
+  "verdict": "PASS",
+  "checks": {
+    "6beta_dominant_position": true,
+    "f_6beta_above_40pct": true,
+    "f_6beta_within_experimental_range": true,
+    "fractions_sum_to_1": true,
+    "sensitivity_robust": true
+  },
+  "positions": {
+    "6beta": {
+      "delta_M": 0.55,
+      "g": 1.0,
+      "k_eff": "5.769e+09",
+      "f_pred": 0.4875
+    },
+    "2beta": {
+      "delta_M": 0.68,
+      "g": 0.4,
+      "k_eff": "2.026e+09",
+      "f_pred": 0.1712
+    },
+    "15beta": {
+      "delta_M": 0.8,
+      "g": 0.3,
+      "k_eff": "1.348e+09",
+      "f_pred": 0.1139
+    },
+    "16beta": {
+      "delta_M": 0.62,
+      "g": 0.5,
+      "k_eff": "2.690e+09",
+      "f_pred": 0.2273
+    }
+  },
+  "f_6beta_predicted": 0.4875,
+  "f_6beta_low_g": 0.4322,
+  "f_6beta_high_g": 0.5331,
+  "sum_all_fractions": 1.0,
+  "experimental_6beta_range": [
+    0.5,
+    0.7
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "script": "02_three_body_aperture",
+  "verdict": "PASS",
+  "checks": {
+    "selection_rule_satisfied": true,
+    "dC_equals_1": true,
+    "E_a_in_range_8_14_kcal": true,
+    "log10_k_hat_near_9": true,
+    "sequential_slower": true,
+    "concerted_faster_than_sequential": true
+  },
+  "selection_rule": {
+    "delta_beta_CH": 1,
+    "delta_beta_OH": -1,
+    "delta_s_orbital": 0,
+    "satisfied": true,
+    "dC": 1
+  },
+  "E_a_HAT_kJmol": 42.25,
+  "E_a_HAT_kcalmol": 10.1,
+  "k_HAT_predicted_s": "5.220e+09",
+  "log10_k_HAT": 9.72,
+  "k_sequential_s": "1.000e+08",
+  "rate_ratio_conc_over_seq": 52.2,
+  "DELTA_M_HAT": 0.65
+}
