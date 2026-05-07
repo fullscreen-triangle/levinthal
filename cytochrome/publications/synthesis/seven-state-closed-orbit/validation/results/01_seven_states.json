@@ -1,0 +1,35 @@
+{
+  "script": "01_seven_states",
+  "verdict": "PASS",
+  "checks": {
+    "exactly_7_states": true,
+    "exactly_8_transitions": true,
+    "all_DM_valid_range": true,
+    "states_unique": true,
+    "orbit_closed_by_7_to_1": true
+  },
+  "n_states": 7,
+  "n_transitions": 8,
+  "states": {
+    "1": "Resting_Fe3plus_H2O_LS",
+    "2": "Substrate_bound_Fe3plus_HS",
+    "3": "Reduced_Fe2plus",
+    "4": "Oxy_Fe2plus_O2",
+    "5": "Peroxo_Fe3plus_OO2minus",
+    "6": "Compound0_Fe3plus_OOH",
+    "7": "CompoundI_Fe4plus_O_radical"
+  },
+  "DM_values": {
+    "1_to_2_substrate_binding": 0.92,
+    "2_to_3_first_electron": 0.68,
+    "3_to_4_O2_binding": 0.55,
+    "4_to_5_second_electron": 0.72,
+    "5_to_Cpd0_protonation": 0.45,
+    "Cpd0_to_CpdI_heterolysis": 0.693,
+    "CpdI_HAT_activation": 0.65,
+    "product_release": 0.3
+  },
+  "DM_sum": 4.963,
+  "all_DM_positive": true,
+  "all_DM_lt_10": true
+}

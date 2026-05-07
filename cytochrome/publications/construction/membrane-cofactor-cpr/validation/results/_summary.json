@@ -1,0 +1,17 @@
+{
+  "paper": "Paper 11: Membrane Anchoring and Partner Coupling in Cytochrome P450",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "verdict": "PASS",
+  "scripts": {
+    "01_tm_helix_insertion": "PASS",
+    "02_cpr_binding": "PASS",
+    "03_fmn_heme_distance": "PASS",
+    "04_cytb5_comparison": "PASS",
+    "05_membrane_enrichment": "PASS",
+    "06_complex_stoichiometry": "PASS",
+    "07_proximal_face_electrostatics": "PASS",
+    "08_full_complex_validation": "PASS"
+  }
+}

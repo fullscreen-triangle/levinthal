@@ -1,0 +1,19 @@
+{
+  "script": "03_fmn_heme_distance",
+  "verdict": "PASS",
+  "checks": {
+    "DM_ET_slow_step": true,
+    "k_ET_in_range_1e6_1e8": true,
+    "k_ET_reconstructed_matches": true,
+    "r_FMN_heme_14_ang": true,
+    "DM_ET_positive": true
+  },
+  "r_FMN_heme_ang": 14.0,
+  "beta_protein_ang_inv": 1.4,
+  "lambda_eV": 0.85,
+  "k_ET_exp_s_inv": 5000000.0,
+  "DM_ET": 7.6009,
+  "k_ET_reconstructed": 5000000.0,
+  "tunneling_factor_Marcus": "3.075e-09",
+  "rate_limiting_for_CPR_P450": true
+}

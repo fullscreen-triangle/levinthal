@@ -1,0 +1,20 @@
+{
+  "script": "07_proximal_face_electrostatics",
+  "verdict": "PASS",
+  "checks": {
+    "complementarity_score_ge_60": true,
+    "dG_elec_lt_neg2": true,
+    "n_pos_P450_correct": true,
+    "n_neg_CPR_correct": true,
+    "fraction_electrostatic_reasonable": true
+  },
+  "n_positive_charges_P450_proximal": 8,
+  "n_negative_charges_CPR_FMN": 10,
+  "complementarity_score": 80,
+  "dG_per_pair_kcal": -0.5,
+  "n_effective_pairs": 8,
+  "dG_elec_total_kcal": -4.0,
+  "dG_total_bind_kcal": -8.2,
+  "fraction_electrostatic": 0.488,
+  "dG_hydrophobic_kcal": -4.2
+}

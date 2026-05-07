@@ -1,0 +1,19 @@
+{
+  "script": "01_tm_helix_insertion",
+  "verdict": "PASS",
+  "checks": {
+    "DG_insert_strongly_favorable": true,
+    "DM_TM_in_range_0.30_0.55": true,
+    "n_residues_TM_helix_correct": true,
+    "DM_TM_spec_value_correct": true,
+    "hinge_at_correct_residues": true
+  },
+  "n_residues_TM": 20,
+  "dG_per_residue_kcal": -0.5,
+  "DG_INSERT_kcal": -10.0,
+  "DM_TM_spec": 0.42,
+  "T_PART_MEM_kcal_per_unit": 23.8095,
+  "T_PART_bulk_kcal_per_unit": 15.5354,
+  "proline_hinge_residues": "30-34",
+  "hinge_length": 5
+}

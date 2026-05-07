@@ -1,0 +1,17 @@
+{
+  "script": "05_n_oxide_formation",
+  "verdict": "PASS",
+  "checks": {
+    "k_n_ox_in_range": true,
+    "k_n_ox_between_s_and_dealk": true,
+    "no_kie_n_ox": true,
+    "ea_n_ox_lt_8_kcal": true,
+    "n_ox_faster_than_dealk": true
+  },
+  "delta_m_n_ox": 0.32,
+  "k_n_ox_s": 7261490370.74,
+  "k_s_ox_s": 7557837414.56,
+  "k_n_dealk_s": 6065306597.13,
+  "ea_n_ox_kcal": 4.971,
+  "selectivity_nox_ndealk": 1.197
+}

@@ -1,0 +1,27 @@
+{
+  "script": "08_full_complex_validation",
+  "verdict": "PASS",
+  "checks": {
+    "KD_b5_tighter_than_CPR": true,
+    "k_b5_faster_than_kFMN": true,
+    "membrane_enrichment_gt1": true,
+    "DG_TM_insert_lt_neg8": true,
+    "DM_FMN_slow_step": true,
+    "DM_TM_in_range": true,
+    "complementarity_ge_60": true,
+    "DG_CPR_in_lit_range": true
+  },
+  "KD_CPR_uM": 0.09999999999999999,
+  "KD_B5_uM": 0.049999999999999996,
+  "k_FMN_heme_s_inv": 5000000.0,
+  "k_b5_heme_s_inv": 30000000.0,
+  "DG_TM_insert_kcal": -10.0,
+  "DM_TM": 0.42,
+  "DM_FMN_heme": 7.6009,
+  "enrichment_logP3": 10.0,
+  "complementarity_score": 80,
+  "DG_CPR_bind_kcal": -9.929,
+  "DG_B5_bind_kcal": -10.356,
+  "k_b5_over_k_FMN": 6.0,
+  "total_checks": 8
+}

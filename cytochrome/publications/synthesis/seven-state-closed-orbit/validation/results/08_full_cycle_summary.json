@@ -1,0 +1,46 @@
+{
+  "script": "08_full_cycle_summary",
+  "verdict": "PASS",
+  "checks": {
+    "DM_sum_in_range_4.5_6.0": true,
+    "T_return_gt_0.1_ps": true,
+    "ratio_chem_ET_ge_100": true,
+    "n_states_7": true,
+    "orbit_closed": true,
+    "all_k_positive": true,
+    "k_cat_intrinsic_gt_1e5": true,
+    "DM_max_lt_10": true
+  },
+  "n_states": 7,
+  "n_transitions": 8,
+  "DM_values": {
+    "1_to_2_substrate_binding": 0.92,
+    "2_to_3_first_electron": 0.68,
+    "3_to_4_O2_binding": 0.55,
+    "4_to_5_second_electron": 0.72,
+    "5_to_Cpd0_protonation": 0.45,
+    "Cpd0_to_CpdI_heterolysis": 0.693,
+    "CpdI_HAT_activation": 0.65,
+    "product_release": 0.3
+  },
+  "k_values_s_inv": {
+    "1_to_2_substrate_binding": "3.985e+09",
+    "2_to_3_first_electron": "5.066e+09",
+    "3_to_4_O2_binding": "5.769e+09",
+    "4_to_5_second_electron": "4.868e+09",
+    "5_to_Cpd0_protonation": "6.376e+09",
+    "Cpd0_to_CpdI_heterolysis": "5.001e+09",
+    "CpdI_HAT_activation": "5.220e+09",
+    "product_release": "7.408e+09"
+  },
+  "DM_sum": 4.963,
+  "T_return_ps": 1510.43,
+  "T_return_ns": 1.510427,
+  "k_cat_intrinsic_s_inv": 662064355.7,
+  "DM_max": 0.92,
+  "k_chem_min_s_inv": 5000735957.0,
+  "k_ET_s_inv": 5000000.0,
+  "ratio_chem_over_ET": 1000.0,
+  "orbit_closed": true,
+  "total_checks": 8
+}

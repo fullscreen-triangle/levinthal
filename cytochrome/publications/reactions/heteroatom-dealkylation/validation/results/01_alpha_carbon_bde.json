@@ -1,0 +1,20 @@
+{
+  "script": "01_alpha_carbon_bde",
+  "verdict": "PASS",
+  "checks": {
+    "bde_ordering_n_lt_o_lt_ali": true,
+    "delta_m_ordering_n_lt_o_lt_ali": true,
+    "ea_n_in_range_6_to_10": true,
+    "ea_ali_in_range_9_to_13": true,
+    "delta_m_scaled_consistent": true
+  },
+  "bde_n_ch3_kcal": 87.0,
+  "bde_o_ch3_kcal": 92.0,
+  "bde_aliphatic_kcal": 100.0,
+  "delta_m_n_dealk": 0.5,
+  "delta_m_o_dealk": 0.58,
+  "delta_m_aliphatic": 0.65,
+  "ea_n_kcal": 7.768,
+  "ea_o_kcal": 9.011,
+  "ea_aliphatic_kcal": 10.098
+}

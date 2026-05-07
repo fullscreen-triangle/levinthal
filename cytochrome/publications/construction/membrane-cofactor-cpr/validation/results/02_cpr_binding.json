@@ -1,0 +1,20 @@
+{
+  "script": "02_cpr_binding",
+  "verdict": "PASS",
+  "checks": {
+    "DG_bind_kcal_in_range": true,
+    "DG_bind_negative_favorable": true,
+    "KD_CPR_correct": true,
+    "DM_CPR_positive": true,
+    "DM_CPR_reasonable": true
+  },
+  "KD_CPR_M": 1e-07,
+  "KD_CPR_uM": 0.09999999999999999,
+  "DG_bind_kJmol": -41.542,
+  "DG_bind_kcal": -9.929,
+  "DM_CPR_bind": 0.6391,
+  "T_PART_kcal_per_unit": 15.5354,
+  "CPR_binding_face": "proximal (Cys thiolate region)",
+  "CPR_FMN_domain_charge": "predominantly negative (Asp-rich)",
+  "P450_proximal_charge": "predominantly positive (Arg/Lys cluster)"
+}
