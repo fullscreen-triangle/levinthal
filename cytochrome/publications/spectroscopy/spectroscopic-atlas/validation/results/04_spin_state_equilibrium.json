@@ -1,0 +1,19 @@
+{
+  "script": "04_spin_state_equilibrium",
+  "verdict": "PASS",
+  "checks": {
+    "ls_favored_substrate_free": true,
+    "hs_favored_substrate_bound": true,
+    "frac_hs_sb_gt_0.7": true,
+    "frac_hs_sf_lt_0.4": true,
+    "dm_spin_positive": true
+  },
+  "delta_g_sf_kJ": 2.0,
+  "delta_g_sb_kJ": -4.0,
+  "K_hs_ls_sf": 0.4603,
+  "K_hs_ls_sb": 4.7204,
+  "frac_hs_sf": 0.3152,
+  "frac_hs_sb": 0.8252,
+  "dm_spin_sf": 0.0308,
+  "dm_spin_sb": 0.0615
+}

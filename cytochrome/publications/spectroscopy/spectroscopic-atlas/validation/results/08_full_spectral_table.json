@@ -1,0 +1,51 @@
+{
+  "script": "08_full_spectral_table",
+  "verdict": "PASS",
+  "checks": {
+    "seven_states_in_atlas": true,
+    "all_soret_positive": true,
+    "cpd1_has_raman_signal": true,
+    "hs_soret_blueshifted": true,
+    "raman_shift_gt_30cm1": true,
+    "all_soret_between_350_470": true
+  },
+  "atlas": {
+    "resting_FeIII_LS": {
+      "soret_nm": 417,
+      "spin": "LS",
+      "epr_g1": 2.42
+    },
+    "substrate_bound_HS": {
+      "soret_nm": 392,
+      "spin": "HS",
+      "epr_g1": 7.7
+    },
+    "ferrous_FeII": {
+      "soret_nm": 408,
+      "spin": "LS"
+    },
+    "oxy_complex": {
+      "soret_nm": 418,
+      "spin": "LS",
+      "epr_g1": 2.0
+    },
+    "peroxo": {
+      "soret_nm": 440,
+      "spin": "LS",
+      "epr_g1": 2.31
+    },
+    "compound0": {
+      "soret_nm": 367,
+      "spin": "LS"
+    },
+    "compound_I": {
+      "soret_nm": 370,
+      "spin": "HS_radical",
+      "epr_g1": 2.0,
+      "raman": 795.0
+    }
+  },
+  "raman_16O_cm1": 795.0,
+  "raman_18O_shift": 45.5,
+  "n_states": 7
+}

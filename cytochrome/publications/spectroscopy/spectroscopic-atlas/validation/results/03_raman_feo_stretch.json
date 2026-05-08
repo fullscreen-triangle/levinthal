@@ -1,0 +1,18 @@
+{
+  "script": "03_raman_feo_stretch",
+  "verdict": "PASS",
+  "checks": {
+    "nu_16O_near_795": true,
+    "shift_gt_30cm1": true,
+    "shift_lt_50cm1": true,
+    "nu_18O_lt_nu_16O": true,
+    "pred_shift_within_10_of_lit": true
+  },
+  "nu_16O_cm1": 795.0,
+  "nu_18O_pred_cm1": 759.9,
+  "nu_18O_lit_cm1": 757.0,
+  "shift_pred_cm1": 35.1,
+  "shift_lit_cm1": 38.0,
+  "mu_16_amu": 12.4362,
+  "mu_18_amu": 13.6119
+}

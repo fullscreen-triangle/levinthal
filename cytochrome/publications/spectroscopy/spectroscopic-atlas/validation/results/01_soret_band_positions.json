@@ -1,0 +1,32 @@
+{
+  "script": "01_soret_band_positions",
+  "verdict": "PASS",
+  "checks": {
+    "resting_soret_414_420nm": true,
+    "hs_soret_blueshifted": true,
+    "hs_ls_delta_ge_15nm": true,
+    "co_complex_near_450nm": true,
+    "oxy_soret_similar_to_resting": true,
+    "seven_states_parameterized": true
+  },
+  "soret_peaks_nm": {
+    "resting_FeIII_LS": 417,
+    "substrate_bound_HS": 392,
+    "ferrous_FeII": 408,
+    "oxy_complex": 418,
+    "peroxo": 440,
+    "compound0": 367,
+    "compound_I": 370
+  },
+  "soret_dm": {
+    "resting_FeIII_LS": 4.4125,
+    "substrate_bound_HS": 4.6939,
+    "ferrous_FeII": 4.5098,
+    "oxy_complex": 4.4019,
+    "peroxo": 4.1818,
+    "compound0": 5.0136,
+    "compound_I": 4.973
+  },
+  "delta_soret_nm_hs_ls": 25,
+  "co_complex_nm": 450
+}
