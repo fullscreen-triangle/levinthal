@@ -1,0 +1,39 @@
+{
+  "script": "08_full_taxonomy_table",
+  "verdict": "PASS",
+  "checks": {
+    "total_isoforms_eq_57": true,
+    "n_families_eq_18": true,
+    "depth3_covers_families": true,
+    "depth6_covers_isoforms": true,
+    "family_recall_ge_0.90": true,
+    "isoform_distinct_ge_0.95": true,
+    "cyp2_largest_family": true
+  },
+  "isoforms_per_family": {
+    "CYP1": 4,
+    "CYP2": 16,
+    "CYP3": 4,
+    "CYP4": 11,
+    "CYP5": 1,
+    "CYP7": 2,
+    "CYP8": 2,
+    "CYP11": 3,
+    "CYP17": 1,
+    "CYP19": 1,
+    "CYP20": 1,
+    "CYP21": 1,
+    "CYP24": 1,
+    "CYP26": 3,
+    "CYP27": 3,
+    "CYP39": 1,
+    "CYP46": 1,
+    "CYP51": 1
+  },
+  "total_isoforms": 57,
+  "n_families": 18,
+  "depth3_capacity": 27,
+  "depth6_capacity": 729,
+  "family_recall": 0.94,
+  "isoform_distinct": 0.97
+}

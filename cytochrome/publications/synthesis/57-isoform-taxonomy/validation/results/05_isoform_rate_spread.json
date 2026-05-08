@@ -1,0 +1,30 @@
+{
+  "script": "05_isoform_rate_spread",
+  "verdict": "PASS",
+  "checks": {
+    "sigma_2c_lt_0.10": true,
+    "sigma_2d_lt_0.10": true,
+    "rate_spread_2c_lt_5": true,
+    "rate_spread_2d_lt_5": true,
+    "mean_2c_between_0.4_0.7": true,
+    "mean_2d_between_0.4_0.7": true
+  },
+  "dm_cyp2c": [
+    0.48,
+    0.52,
+    0.58,
+    0.6
+  ],
+  "dm_cyp2d": [
+    0.52,
+    0.55,
+    0.58,
+    0.62,
+    0.65,
+    0.68
+  ],
+  "sigma_dm_2c": 0.0551,
+  "sigma_dm_2d": 0.061,
+  "rate_spread_2c": 1.127,
+  "rate_spread_2d": 1.174
+}

@@ -1,0 +1,16 @@
+{
+  "script": "03_cyp3a4_fold_depth",
+  "verdict": "PASS",
+  "checks": {
+    "fold_depth_approx_6": true,
+    "depth6_covers_all_residues": true,
+    "fold_depth_between_5_and_7": true,
+    "n_aa_gt_500": true,
+    "log3_503_close_to_5.69": true
+  },
+  "n_amino_acids": 503,
+  "fold_depth_log3N": 5.6622,
+  "addresses_at_depth6": 729,
+  "sequence_coverage": 1.4493,
+  "rmsd_threshold_A": 2.5
+}

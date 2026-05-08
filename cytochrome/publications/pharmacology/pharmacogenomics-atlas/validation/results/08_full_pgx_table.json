@@ -1,0 +1,46 @@
+{
+  "script": "08_full_pgx_table",
+  "verdict": "PASS",
+  "checks": {
+    "all_rates_positive": true,
+    "UM_faster_than_EM": true,
+    "PM_slower_than_IM_2d6": true,
+    "2c9_star3_lt_5pct_em": true,
+    "six_alleles_covered": true,
+    "frequency_sum_approx_1": true
+  },
+  "alleles": {
+    "CYP2D6*1_EM": {
+      "dm": 0.55,
+      "k_s": 5769498103.8,
+      "function": "normal"
+    },
+    "CYP2D6*4_PM": {
+      "dm": 2.5,
+      "k_s": 820849986.24,
+      "function": "none"
+    },
+    "CYP2D6*10_IM": {
+      "dm": 0.75,
+      "k_s": 4723665527.41,
+      "function": "reduced"
+    },
+    "CYP2D6*1xN_UM": {
+      "dm": 0.27,
+      "k_s": 7633794943.37,
+      "function": "increased"
+    },
+    "CYP2C9*1_EM": {
+      "dm": 0.48,
+      "k_s": 6187833918.06,
+      "function": "normal"
+    },
+    "CYP2C9*3_PM": {
+      "dm": 3.6,
+      "k_s": 273237224.47,
+      "function": "none"
+    }
+  },
+  "n_alleles": 6,
+  "all_rates_positive": true
+}

@@ -1,0 +1,43 @@
+{
+  "script": "07_ethnic_variation",
+  "verdict": "PASS",
+  "checks": {
+    "euro_pm_highest": true,
+    "east_asian_pm_lowest": true,
+    "east_asian_im_highest": true,
+    "euro_pop_rate_gt_asian": true,
+    "all_freqs_sum_to_1": true
+  },
+  "ancestry_freqs": {
+    "European": {
+      "PM": 0.07,
+      "IM": 0.15,
+      "EM": 0.7,
+      "UM": 0.08
+    },
+    "East_Asian": {
+      "PM": 0.01,
+      "IM": 0.5,
+      "EM": 0.41,
+      "UM": 0.08
+    },
+    "African": {
+      "PM": 0.02,
+      "IM": 0.35,
+      "EM": 0.55,
+      "UM": 0.08
+    },
+    "South_Asian": {
+      "PM": 0.05,
+      "IM": 0.2,
+      "EM": 0.67,
+      "UM": 0.08
+    }
+  },
+  "pop_rates_s": {
+    "European": 5415361596.28,
+    "East_Asian": 5346239081.6,
+    "African": 5453627486.88,
+    "South_Asian": 5462042929.81
+  }
+}

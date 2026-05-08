@@ -1,0 +1,17 @@
+{
+  "script": "04_codeine_toxicity_model",
+  "verdict": "PASS",
+  "checks": {
+    "UM_excess_morphine": true,
+    "PM_reduced_morphine": true,
+    "UM_PM_ratio_gt_2": true,
+    "k_UM_gt_k_EM": true,
+    "k_EM_gt_k_PM": true,
+    "ratio_um_em_between_1_3": true
+  },
+  "k_codeine_EM_s": 5769498103.8,
+  "k_codeine_UM_s": 7633794943.37,
+  "k_codeine_PM_s": 820849986.24,
+  "morphine_ratio_UM_EM": 1.3231,
+  "morphine_ratio_PM_EM": 0.1423
+}

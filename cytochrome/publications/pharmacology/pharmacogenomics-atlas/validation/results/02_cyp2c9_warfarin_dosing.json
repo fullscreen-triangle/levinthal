@@ -1,0 +1,17 @@
+{
+  "script": "02_cyp2c9_warfarin_dosing",
+  "verdict": "PASS",
+  "checks": {
+    "k_star2_lt_k_em": true,
+    "k_star3_lt_k_star2": true,
+    "dose_star3_gt_3x": true,
+    "dose_star2_between_1_2": true,
+    "em_rate_gt_star2_rate": true,
+    "star3_rate_lt_5pct_em": true
+  },
+  "k_2c9_EM_s": 6187833918.06,
+  "k_2c9_star2_s": 5379444375.95,
+  "k_2c9_star3_s": 273237224.47,
+  "relative_dose_star2": 1.15,
+  "relative_dose_star3": 22.646
+}

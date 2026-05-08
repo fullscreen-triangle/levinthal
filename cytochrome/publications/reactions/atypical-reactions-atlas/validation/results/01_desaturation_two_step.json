@@ -1,0 +1,21 @@
+{
+  "script": "01_desaturation_two_step",
+  "verdict": "PASS",
+  "checks": {
+    "k_desat_eff_lt_k_single_hat": true,
+    "k_desat_eff_gt_1e8": true,
+    "k_desat_eff_gt_0": true,
+    "fraction_desat_between_0_and_1": true,
+    "fraction_hydrox_gt_0": true,
+    "fractions_sum_to_1": true
+  },
+  "delta_m_desat_step1": 0.65,
+  "delta_m_desat_step2": 0.55,
+  "k_desat_step1_s": 5220457767.61,
+  "k_desat_step2_s": 5769498103.8,
+  "k_rebound_s": 7400000000.0,
+  "k_desat_eff_s": 2287059153.95,
+  "k_single_hat_s": 5220457767.61,
+  "fraction_desaturation": 0.4381,
+  "fraction_hydroxylation": 0.5619
+}

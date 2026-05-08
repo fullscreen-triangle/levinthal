@@ -1,0 +1,15 @@
+{
+  "script": "03_arene_oxide",
+  "verdict": "PASS",
+  "checks": {
+    "k_epox_in_range_4e9_1e10": true,
+    "kie_epox_is_1": true,
+    "ea_epox_lt_6": true,
+    "k_epox_gt_k_aliphatic": true,
+    "delta_m_epox_lt_delta_m_aliphatic": true
+  },
+  "delta_m_epoxidation": 0.35,
+  "k_epox_s": 7046880897.19,
+  "kie_epox": 1.0,
+  "ea_epox_kcal": 5.437
+}

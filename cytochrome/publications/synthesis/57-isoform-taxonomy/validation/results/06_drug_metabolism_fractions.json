@@ -1,0 +1,29 @@
+{
+  "script": "06_drug_metabolism_fractions",
+  "verdict": "PASS",
+  "checks": {
+    "top3_ge_0.80": true,
+    "cyp3a4_largest": true,
+    "total_sums_to_1": true,
+    "cyp3a4_km_weighted_top": true,
+    "five_major_cyps_listed": true,
+    "cyp2d6_gt_10pct": true
+  },
+  "metabolism_fractions": {
+    "CYP3A4": 0.46,
+    "CYP2D6": 0.19,
+    "CYP2C9": 0.15,
+    "CYP1A2": 0.1,
+    "CYP2C19": 0.06,
+    "other": 0.04
+  },
+  "top3_fraction": 0.8,
+  "total_fraction": 1.0,
+  "km_weighted": {
+    "CYP3A4": 0.3083,
+    "CYP2D6": 0.113,
+    "CYP2C9": 0.0928,
+    "CYP1A2": 0.0607,
+    "CYP2C19": 0.0364
+  }
+}

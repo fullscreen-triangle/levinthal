@@ -1,0 +1,35 @@
+{
+  "script": "08_full_validation_table",
+  "verdict": "PASS",
+  "checks": {
+    "desaturation_in_range": true,
+    "epoxidation_in_range": true,
+    "nih_shift_in_range": true,
+    "nucleophilic_in_range": true,
+    "carbene_in_range": true,
+    "all_kie_correct": true,
+    "five_reactions_covered": true,
+    "all_rates_positive": true
+  },
+  "predicted_rates": {
+    "desaturation": 2287059153.95,
+    "epoxidation": 7046880897.19,
+    "nih_shift": 8352702114.11,
+    "nucleophilic": 6570468198.15,
+    "carbene": 8187307530.78
+  },
+  "within_lit_range": {
+    "desaturation": true,
+    "epoxidation": true,
+    "nih_shift": true,
+    "nucleophilic": true,
+    "carbene": true
+  },
+  "kie_checks": {
+    "desaturation_has_kie": true,
+    "epoxidation_no_kie": true,
+    "nih_no_primary_kie": true,
+    "nucleophilic_no_kie": true,
+    "carbene_no_kie": true
+  }
+}
