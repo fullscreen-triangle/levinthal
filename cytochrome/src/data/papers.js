@@ -409,6 +409,74 @@ export const PAPERS = [
     status: "Validation 8/8 PASS",
   },
   {
+    id: "13",
+    slug: "spectroscopy",
+    href: "/spectroscopy",
+    title: "Spectroscopic Atlas of Cytochrome P450 Catalytic States: UV-Vis, EPR, Resonance Raman, and CD",
+    short: "Spectroscopic Atlas",
+    part: "Part IV — Spectroscopy",
+    role: "Multi-technique atlas; Soret/EPR/Raman signatures; ΔM_spec correlation",
+    abstract: `All seven P450 catalytic states carry distinct spectroscopic
+      signatures. Resting Fe³⁺ LS absorbs at 417 nm (EPR: g = 2.42, 2.25, 1.92);
+      substrate-bound HS at 392 nm (EPR: g = 7.70, 3.50, 1.80). Compound I
+      is uniquely identified by the resonance Raman Fe=O stretch at 795 cm⁻¹
+      (¹⁸O shift to ~758 cm⁻¹). Soret photon energy correlates linearly
+      with spectroscopic ΔM_spec across all seven states (Pearson r > 0.9),
+      confirming that the categorical mechanics partition depth encodes
+      measurable spectral information.`,
+    headline: [
+      { label: "Soret LS resting",         computed: "417 nm",           target: "literature 417–420 nm" },
+      { label: "Fe=O Raman stretch",        computed: "795 cm⁻¹",         target: "795 cm⁻¹ (Rittle 2010)" },
+      { label: "Soret energy–ΔM Pearson r", computed: "> 0.9",           target: "linear correlation" },
+    ],
+    panelDir: "/panels/paper-13",
+    panels: [
+      ["panel_01_soret_atlas.png",     "Soret band positions for all 7 states + CO complex"],
+      ["panel_02_epr_signals.png",     "EPR derivative spectra: LS (g=2.42) and HS (g=7.70)"],
+      ["panel_03_raman_feo.png",       "Fe=O Raman 795 cm⁻¹ and ¹⁸O isotope shift surface"],
+      ["panel_04_spin_equilibrium.png","Spin-state equilibrium: f_HS vs ΔG_spin"],
+      ["panel_05_dm_correlation.png",  "Soret energy vs ΔM_spec — r > 0.9"],
+      ["panel_06_cd_spectrum.png",     "Far-UV CD: CYP3A4 α-helix 45%, β-sheet 15%"],
+      ["panel_07_discrimination.png",  "Spectral discrimination map: UV-Vis + EPR + Raman"],
+      ["panel_08_validation.png",      "Validation summary: 8/8 PASS"],
+    ],
+    status: "Validation 8/8 PASS",
+  },
+  {
+    id: "14",
+    slug: "database",
+    href: "/database",
+    title: "P450 Database Recovery via Ternary Address Encoding: Information Capacity and Cross-Species Interpolation",
+    short: "Database Recovery",
+    part: "Part IV — Informatics",
+    role: "Shannon capacity of ternary encoding; partial recovery; ~40× compression",
+    abstract: `The ternary address encoding provides a formal recovery mechanism
+      for incomplete P450 databases. Information capacity at k=6 (9.51 bits)
+      exceeds Shannon entropy for 57 isoforms (5.83 bits) by 3.68 bits.
+      A 70%-complete k=6 address provides 6.66 bits — sufficient for unique
+      isoform identification with >92% probability. Sequence fidelity reaches
+      >97% at k=9. The encoding achieves ~40× compression over raw sequence
+      storage. Cross-species recovery (bacterial vs. human, ~20% identity)
+      achieves ~30%; within-family human recovery (~65% identity) achieves ~98%.`,
+    headline: [
+      { label: "Capacity margin at k=6",    computed: "+3.68 bits",       target: "above 5.83-bit entropy" },
+      { label: "Sequence fidelity k=9",     computed: "> 97%",            target: "> 95% target" },
+      { label: "Compression ratio",         computed: "~40×",             target: "> 10× practical" },
+    ],
+    panelDir: "/panels/paper-14",
+    panels: [
+      ["panel_01_info_capacity.png",    "Trit capacity 3^k and bits vs depth; capacity surface"],
+      ["panel_02_recovery_accuracy.png","Recovery accuracy A(k,H) for family/isoform/allele levels"],
+      ["panel_03_partial_recovery.png", "P(correct) vs fraction of k=6 address known"],
+      ["panel_04_sequence_fidelity.png","Sequence fidelity F(k) and fidelity surface F(k, H_aa)"],
+      ["panel_05_compression.png",      "~40× compression: raw sequence vs ternary encoding"],
+      ["panel_06_cross_species.png",    "Cross-species vs within-family recovery accuracy surface"],
+      ["panel_07_pharmvar_capacity.png","PharmVar allele counts vs 3^k capacity at k=9"],
+      ["panel_08_validation.png",       "Validation summary: 8/8 PASS"],
+    ],
+    status: "Validation 8/8 PASS",
+  },
+  {
     id: "12",
     slug: "closed-orbit",
     href: "/closed-orbit",
