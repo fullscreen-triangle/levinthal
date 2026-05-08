@@ -1,0 +1,24 @@
+{
+  "script": "07_spectral_discrimination",
+  "verdict": "PASS",
+  "checks": {
+    "min_separation_gt_0": true,
+    "all_soret_between_350_470": true,
+    "epr_needed_for_spin": true,
+    "raman_needed_for_cpd1": true,
+    "seven_states_analyzed": true
+  },
+  "min_separation_nm": 1,
+  "min_pair": [
+    "resting_FeIII_LS",
+    "oxy_complex"
+  ],
+  "hard_pairs_lt_5nm": 2,
+  "states_need_epr": [
+    "resting_FeIII_LS",
+    "substrate_bound_HS"
+  ],
+  "states_need_raman": [
+    "compound_I"
+  ]
+}

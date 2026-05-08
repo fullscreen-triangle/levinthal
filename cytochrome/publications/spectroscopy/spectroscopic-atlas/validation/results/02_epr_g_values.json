@@ -1,0 +1,25 @@
+{
+  "script": "02_epr_g_values",
+  "verdict": "PASS",
+  "checks": {
+    "ls_g1_gt_g2_gt_g3": true,
+    "ls_g1_near_2.4": true,
+    "ls_g3_near_1.9": true,
+    "hs_low_field_gt_6": true,
+    "hs_g_max_near_7.7": true,
+    "rhombicity_between_0_1": true
+  },
+  "g_ls": [
+    2.42,
+    2.25,
+    1.92
+  ],
+  "g_hs": [
+    7.7,
+    3.5,
+    1.8
+  ],
+  "g_ls_product": 10.454,
+  "rhombicity_ls": 0.34,
+  "hs_max_g": 7.7
+}

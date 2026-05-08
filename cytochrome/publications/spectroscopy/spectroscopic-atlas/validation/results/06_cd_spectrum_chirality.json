@@ -1,0 +1,18 @@
+{
+  "script": "06_cd_spectrum_chirality",
+  "verdict": "PASS",
+  "checks": {
+    "fractions_sum_to_1": true,
+    "theta_222_negative": true,
+    "theta_208_negative": true,
+    "theta_195_positive": true,
+    "helix_dominant": true,
+    "f_helix_gt_0.40": true
+  },
+  "f_helix": 0.45,
+  "f_sheet": 0.15,
+  "f_coil": 0.4,
+  "theta_222": -14250.0,
+  "theta_208": -11000.0,
+  "theta_195": 26400.0
+}
