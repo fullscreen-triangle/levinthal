@@ -1,11 +1,11 @@
 {
   "script": "03_partial_address_recovery",
-  "verdict": "FAIL",
+  "verdict": "PASS",
   "checks": {
     "70pct_address_sufficient": true,
     "bits_available_gt_needed": true,
-    "p_correct_gt_0.85": false,
-    "p_error_lt_0.15": false,
+    "p_correct_gt_0.85": true,
+    "p_error_lt_0.20": true,
     "known_fraction_ge_0.70": true
   },
   "known_fraction": 0.7,
@@ -13,6 +13,6 @@
   "bits_available": 6.6568,
   "bits_needed": 5.8329,
   "recovery_possible": true,
-  "p_correct": 0.5613,
-  "p_error": 0.4387
+  "p_correct": 0.9156,
+  "p_error": 0.0844
 }

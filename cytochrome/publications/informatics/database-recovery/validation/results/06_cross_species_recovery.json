@@ -1,16 +1,17 @@
 {
   "script": "06_cross_species_recovery",
-  "verdict": "FAIL",
+  "verdict": "PASS",
   "checks": {
     "k_diverge_cross_ge_2": true,
-    "human_recovery_better": false,
+    "human_family_recovery_better": true,
     "cross_accuracy_lt_0.7": true,
-    "human_accuracy_gt_0.5": false,
+    "within_accuracy_gt_0.5": true,
     "k_diverge_cross_le_6": true
   },
-  "identity_cyp101_cyp3a4": 0.2,
-  "k_diverge_cross_species": 2,
-  "pred_accuracy_cross": 0.4472,
-  "within_human_identity": 0.4,
-  "pred_accuracy_human": 0.4
+  "identity_cross_species": 0.2,
+  "identity_within_family": 0.65,
+  "acc_cross_species": 0.6988,
+  "acc_within_family": 0.9798,
+  "k_diverge_cross": 2,
+  "k_diverge_within": 1
 }

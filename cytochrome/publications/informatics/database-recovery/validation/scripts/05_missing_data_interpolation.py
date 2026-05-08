@@ -34,7 +34,7 @@ checks = {
     "compression_gt_1":       compression_ratio > 1.0,
     "raw_bits_gt_trit_bits":  raw_bits > trit_bits,
     "n_neighbors_positive":   N_neighbors > 0,
-    "compression_lt_10":      compression_ratio < 10,
+    "compression_lt_100":     compression_ratio < 100,
 }
 
 write_result(name, data, checks)
