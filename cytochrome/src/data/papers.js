@@ -306,6 +306,42 @@ export const PAPERS = [
     status: "Validation 8/8 PASS",
   },
   {
+    id: "8",
+    slug: "atypical",
+    href: "/atypical",
+    title: "Atypical Reactions of Cytochrome P450: Desaturation, Epoxidation, NIH Shift, Nucleophilic O-Atom Transfer, and Carbene Insertion",
+    short: "Atypical Reactions",
+    part: "Part III — Reaction Mechanisms",
+    role: "Five non-HAT reaction modes; rate hierarchy; KIE predictions",
+    abstract: `Beyond canonical hydroxylation, P450 Compound I (and related
+      iron-oxo species) catalyzes five mechanistically distinct atypical
+      reactions. Within the categorical mechanics framework each is assigned
+      a single activation partition depth ΔM: NIH shift (0.18), carbene
+      insertion (0.20), epoxidation (0.35), nucleophilic O-atom transfer (0.42),
+      and desaturation (two-step HAT; k_eff ≈ 1.3×10⁸ s⁻¹). The predicted
+      rate hierarchy NIH > carbene > epoxidation > nucleophilic > desaturation
+      matches experimental literature for all five classes. Only desaturation
+      carries a primary KIE (≈ 4–6); the others have KIE ≈ 1. Eight validation
+      scripts confirm all 40 quantitative checks (100% PASS).`,
+    headline: [
+      { label: "NIH shift rate",         computed: "8.4 × 10⁹ s⁻¹",  target: "5×10⁹ – 10¹⁰ s⁻¹" },
+      { label: "Desaturation k_eff",     computed: "1.3 × 10⁸ s⁻¹",  target: "10⁸ – 5×10⁹ s⁻¹" },
+      { label: "KIE desaturation",       computed: "4 – 6",           target: "> 3 (primary KIE)" },
+    ],
+    panelDir: "/panels/paper-8",
+    panels: [
+      ["panel_01_desaturation_two_step.png", "Desaturation: two-step HAT vs. rebound competition"],
+      ["panel_02_desaturation_kie.png",      "KIE analysis: desaturation vs. single HAT"],
+      ["panel_03_arene_oxide.png",           "Arene epoxidation: rate and KIE"],
+      ["panel_04_nih_shift.png",             "NIH shift: fastest atypical mechanism"],
+      ["panel_05_nucleophilic_aldehyde.png", "Nucleophilic O-atom transfer to aldehyde C=O"],
+      ["panel_06_rate_ordering.png",         "Rate ordering of all five atypical mechanisms"],
+      ["panel_07_product_partitioning.png",  "Product partitioning: phenol vs. dihydrodiol"],
+      ["panel_08_validation.png",            "Validation summary: 8/8 PASS"],
+    ],
+    status: "Validation 8/8 PASS",
+  },
+  {
     id: "12",
     slug: "closed-orbit",
     href: "/closed-orbit",
