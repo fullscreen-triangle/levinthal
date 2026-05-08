@@ -1,0 +1,18 @@
+{
+  "script": "01_information_capacity",
+  "verdict": "PASS",
+  "checks": {
+    "bits_k3_exceeds_families": true,
+    "bits_k6_exceeds_isoforms": true,
+    "bits_k9_exceeds_alleles": true,
+    "bits_per_trit_approx_1.585": true,
+    "monotonic_bits_with_depth": true
+  },
+  "bits_per_trit": 1.585,
+  "bits_at_k3": 4.7549,
+  "bits_at_k6": 9.5098,
+  "bits_at_k9": 14.2647,
+  "bits_needed_18_families": 4.1699,
+  "bits_needed_57_isoforms": 5.8329,
+  "bits_needed_1000_alleles": 9.9658
+}

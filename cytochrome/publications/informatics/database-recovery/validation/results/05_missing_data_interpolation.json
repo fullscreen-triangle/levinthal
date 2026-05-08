@@ -1,0 +1,16 @@
+{
+  "script": "05_missing_data_interpolation",
+  "verdict": "FAIL",
+  "checks": {
+    "interp_error_lt_0.5": true,
+    "compression_gt_1": true,
+    "raw_bits_gt_trit_bits": true,
+    "n_neighbors_positive": true,
+    "compression_lt_10": false
+  },
+  "N_neighbors": 6,
+  "interp_error": 0.4082,
+  "raw_bits": 123175.0,
+  "trit_bits": 2974.0,
+  "compression_ratio": 41.417
+}

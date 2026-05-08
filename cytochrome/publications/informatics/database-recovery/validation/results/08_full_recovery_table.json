@@ -1,0 +1,36 @@
+{
+  "script": "08_full_recovery_table",
+  "verdict": "FAIL",
+  "checks": {
+    "all_bits_monotonic": true,
+    "all_accuracies_lt_1": true,
+    "all_capacities_cover": true,
+    "k6_accuracy_gt_0.85": false,
+    "k9_accuracy_gt_0.90": false,
+    "three_levels_parameterized": true
+  },
+  "recovery_table": {
+    "k3_families": {
+      "depth": 3,
+      "capacity": 27,
+      "classes": 18,
+      "bits": 4.755,
+      "accuracy": 0.6803
+    },
+    "k6_isoforms": {
+      "depth": 6,
+      "capacity": 729,
+      "classes": 57,
+      "bits": 9.51,
+      "accuracy": 0.8041
+    },
+    "k9_alleles": {
+      "depth": 9,
+      "capacity": 19683,
+      "classes": 310,
+      "bits": 14.265,
+      "accuracy": 0.8216
+    }
+  },
+  "total_pharmvar_alleles": 310
+}
