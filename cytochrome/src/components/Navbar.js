@@ -88,6 +88,8 @@ const Navbar = () => {
           <NavLink href="/transfer" title="Transfer" headline />
           <NavLink href="/compound-i" title="Compound I" />
           <NavLink href="/ch-activation" title="C–H" />
+          <NavLink href="/spectroscopy" title="Spectroscopy" />
+          <NavLink href="/database" title="Database" />
           <NavLink href="/apparatus" title="Apparatus" />
           <NavLink href="/gallery" title="Gallery" />
         </nav>
@@ -126,6 +128,8 @@ const Navbar = () => {
             <MobileNavLink toggle={() => setIsOpen(false)} href="/transfer" title="Transfer · P4 ★" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/compound-i" title="Compound I · P5" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/ch-activation" title="C–H Activation · P6" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/spectroscopy" title="Spectroscopy · P13" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/database" title="Database · P14" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/apparatus" title="Apparatus" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/gallery" title="Gallery" />
           </nav>
