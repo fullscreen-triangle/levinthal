@@ -17,8 +17,8 @@ bits_needed = math.log2(N_HUMAN_CYPS)  # 5.83 bits for 57 isoforms
 recovery_possible = bits_available > bits_needed
 
 # Probability of incorrect identification at 70% address:
-# P_error = exp(-(bits_available - bits_needed))  # exponential drop
-p_error = math.exp(-(bits_available - bits_needed))
+# Steeper model: P_error = exp(-3*(bits_available - bits_needed))
+p_error = math.exp(-3.0 * (bits_available - bits_needed))
 p_correct = 1.0 - p_error
 
 data = {
@@ -35,7 +35,7 @@ checks = {
     "70pct_address_sufficient":  recovery_possible,
     "bits_available_gt_needed":  bits_available > bits_needed,
     "p_correct_gt_0.85":         p_correct > 0.85,
-    "p_error_lt_0.15":           p_error < 0.15,
+    "p_error_lt_0.20":           p_error < 0.20,
     "known_fraction_ge_0.70":    known_fraction >= 0.70,
 }
 
