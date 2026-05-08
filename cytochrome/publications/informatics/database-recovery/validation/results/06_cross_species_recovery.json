@@ -1,0 +1,16 @@
+{
+  "script": "06_cross_species_recovery",
+  "verdict": "FAIL",
+  "checks": {
+    "k_diverge_cross_ge_2": true,
+    "human_recovery_better": false,
+    "cross_accuracy_lt_0.7": true,
+    "human_accuracy_gt_0.5": false,
+    "k_diverge_cross_le_6": true
+  },
+  "identity_cyp101_cyp3a4": 0.2,
+  "k_diverge_cross_species": 2,
+  "pred_accuracy_cross": 0.4472,
+  "within_human_identity": 0.4,
+  "pred_accuracy_human": 0.4
+}

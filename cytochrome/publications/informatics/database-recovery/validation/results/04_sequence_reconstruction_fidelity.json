@@ -1,0 +1,15 @@
+{
+  "script": "04_sequence_reconstruction_fidelity",
+  "verdict": "PASS",
+  "checks": {
+    "fidelity_k3_gt_0.5": true,
+    "fidelity_k6_gt_0.85": true,
+    "fidelity_k9_gt_0.95": true,
+    "fidelity_increases": true,
+    "fidelity_lt_1_at_k9": true
+  },
+  "H_codon_bits": 4.3219,
+  "fidelity_at_k3": 0.6672,
+  "fidelity_at_k6": 0.8892,
+  "fidelity_at_k9": 0.9631
+}

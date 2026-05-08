@@ -1,0 +1,21 @@
+{
+  "script": "07_pharmvar_allele_capacity",
+  "verdict": "PASS",
+  "checks": {
+    "k9_covers_all_alleles": true,
+    "k6_covers_cyp2d6": true,
+    "min_depth_total_le_9": true,
+    "min_depth_2d6_le_5": true,
+    "total_alleles_gt_300": true
+  },
+  "pharmvar_alleles": {
+    "CYP2D6": 150,
+    "CYP2C9": 75,
+    "CYP2C19": 45,
+    "CYP3A4": 40
+  },
+  "total_alleles": 310,
+  "cap_at_k9": 19683,
+  "min_depth_total": 6,
+  "min_depth_cyp2d6": 5
+}

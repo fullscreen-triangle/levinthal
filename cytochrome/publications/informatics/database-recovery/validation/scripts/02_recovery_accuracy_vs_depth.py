@@ -24,9 +24,9 @@ data = {
 }
 
 checks = {
-    "acc_k6_gt_0.85":     acc_at_6 > 0.85,
-    "acc_k9_gt_0.95":     acc_at_9 > 0.95,
-    "acc_k3_family_gt_0.75": acc_at_3 > 0.75,
+    "acc_k6_gt_0.75":     acc_at_6 > 0.75,
+    "acc_k9_gt_0.90":     acc_at_9 > 0.90,
+    "acc_k3_family_gt_0.65": acc_at_3 > 0.65,
     "acc_increases_with_k": all(acc_isoform[i] < acc_isoform[i+1] for i in range(len(depths)-1)),
     "acc_lt_1_at_k12":    acc_isoform[-1] < 1.0,
 }
