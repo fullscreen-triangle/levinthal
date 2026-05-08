@@ -1,0 +1,17 @@
+{
+  "script": "05_ddI_cyp3a4_induction",
+  "verdict": "PASS",
+  "checks": {
+    "cl_ratio_eq_fold_induction": true,
+    "auc_ratio_lt_0.1": true,
+    "k_induced_gt_k_base": true,
+    "fold_induction_gt_10": true,
+    "dm_base_between_0.4_0.5": true
+  },
+  "dm_base": 0.45,
+  "fold_induction": 20.0,
+  "k_base_s": 6376281516.22,
+  "k_induced_s": 127525630324.35,
+  "cl_ratio": 20.0,
+  "auc_ratio": 0.05
+}

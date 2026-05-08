@@ -1,0 +1,29 @@
+{
+  "script": "04_capacity_shell_rule",
+  "verdict": "PASS",
+  "checks": {
+    "C1_eq_2": true,
+    "C2_eq_8": true,
+    "C3_eq_18": true,
+    "C4_eq_32": true,
+    "formula_exact_all_n": true,
+    "depth9_holds_20aa": true,
+    "depth3_min_for_20aa": true
+  },
+  "capacity_per_shell": {
+    "1": 2,
+    "2": 8,
+    "3": 18,
+    "4": 32,
+    "5": 50
+  },
+  "formula_correct_n1_5": {
+    "1": true,
+    "2": true,
+    "3": true,
+    "4": true,
+    "5": true
+  },
+  "aa_capacity_depth9": 19683,
+  "max_depth_needed_20aa": 3
+}

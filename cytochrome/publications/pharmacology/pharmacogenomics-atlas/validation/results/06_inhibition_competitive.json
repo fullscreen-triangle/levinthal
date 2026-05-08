@@ -1,0 +1,19 @@
+{
+  "script": "06_inhibition_competitive",
+  "verdict": "PASS",
+  "checks": {
+    "alpha_gt_1": true,
+    "dm_apparent_gt_dm_em": true,
+    "k_apparent_lt_k_em": true,
+    "R_inhibition_lt_0.50": true,
+    "auc_ddi_gt_1.5": true,
+    "alpha_between_2_and_4": true
+  },
+  "Ki_uM": 0.24,
+  "I_uM": 0.5,
+  "alpha": 3.0833,
+  "dm_apparent": 1.676,
+  "k_apparent_s": 1871188574.21,
+  "R_inhibition": 0.3243,
+  "auc_ratio_ddi": 3.0833
+}

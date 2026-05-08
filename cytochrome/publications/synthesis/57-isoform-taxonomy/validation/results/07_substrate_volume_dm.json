@@ -1,0 +1,39 @@
+{
+  "script": "07_substrate_volume_dm",
+  "verdict": "PASS",
+  "checks": {
+    "r_negative_vol_vs_dm": true,
+    "abs_r_gt_0.4": true,
+    "testosterone_dm_lt_acetaminophen_dm": true,
+    "midazolam_dm_lt_0.50": true,
+    "six_substrates_parameterized": true
+  },
+  "substrates": {
+    "acetaminophen": {
+      "vol": 115,
+      "dm": 0.55
+    },
+    "testosterone": {
+      "vol": 320,
+      "dm": 0.45
+    },
+    "midazolam": {
+      "vol": 280,
+      "dm": 0.42
+    },
+    "warfarin": {
+      "vol": 250,
+      "dm": 0.48
+    },
+    "dextromethorphan": {
+      "vol": 270,
+      "dm": 0.55
+    },
+    "caffeine": {
+      "vol": 160,
+      "dm": 0.5
+    }
+  },
+  "pearson_r_vol_dm": -0.6068,
+  "correlation_direction": "negative"
+}

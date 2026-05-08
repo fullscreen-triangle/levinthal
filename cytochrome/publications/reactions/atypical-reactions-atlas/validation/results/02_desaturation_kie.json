@@ -1,0 +1,16 @@
+{
+  "script": "02_desaturation_kie",
+  "verdict": "PASS",
+  "checks": {
+    "KIE_desat_gt_3": true,
+    "KIE_desat_lt_KIE_single_HAT": true,
+    "KIE_desat_in_range_3_to_9": true,
+    "KIE_single_HAT_gt_7": true,
+    "commitment_positive": true
+  },
+  "KIE_single_HAT": 8.913,
+  "KIE_intrinsic": 8.913,
+  "commitment_factor": 1.1052,
+  "KIE_desat_apparent": 5.154,
+  "f_desat": 0.4381
+}

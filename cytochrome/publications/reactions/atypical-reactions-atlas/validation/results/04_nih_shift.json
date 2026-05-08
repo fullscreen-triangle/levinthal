@@ -1,0 +1,17 @@
+{
+  "script": "04_nih_shift",
+  "verdict": "PASS",
+  "checks": {
+    "k_nih_gt_k_epox": true,
+    "no_primary_kie_nih": true,
+    "nih_spontaneous_low_dm": true,
+    "k_nih_gt_7e9": true,
+    "secondary_kie_lt_2": true
+  },
+  "delta_m_nih_shift": 0.18,
+  "k_nih_s": 8352702114.11,
+  "k_epox_s": 7046880897.19,
+  "kie_nih_primary": 1.0,
+  "kie_nih_secondary": 1.15,
+  "nih_faster_than_epox": true
+}

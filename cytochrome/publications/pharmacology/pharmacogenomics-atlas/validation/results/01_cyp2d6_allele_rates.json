@@ -1,0 +1,20 @@
+{
+  "script": "01_cyp2d6_allele_rates",
+  "verdict": "PASS",
+  "checks": {
+    "rate_order_UM_gt_EM": true,
+    "rate_order_EM_gt_IM": true,
+    "rate_order_IM_gt_PM": true,
+    "um_pm_ratio_gt_5": true,
+    "pm_rate_lt_1e9": true,
+    "um_rate_gt_em_rate": true
+  },
+  "k_UM_s": 7633794943.37,
+  "k_EM_s": 5769498103.8,
+  "k_IM_s": 4723665527.41,
+  "k_PM_s": 820849986.24,
+  "ratio_UM_EM": 1.323,
+  "ratio_EM_IM": 1.221,
+  "ratio_IM_PM": 5.755,
+  "ratio_UM_PM": 9.3
+}

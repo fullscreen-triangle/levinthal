@@ -1,0 +1,16 @@
+{
+  "script": "07_product_partitioning",
+  "verdict": "PASS",
+  "checks": {
+    "fraction_phenol_gt_0.45": true,
+    "phenol_dominant": true,
+    "fractions_sum_to_1": true,
+    "k_nih_gt_k_competing": true,
+    "fraction_dihydrodiol_nonzero": true
+  },
+  "k_nih_s": 8352702114.11,
+  "k_hydration_competing_s": 5488116360.94,
+  "fraction_phenol": 0.6035,
+  "fraction_dihydrodiol": 0.3965,
+  "phenol_dominant": true
+}

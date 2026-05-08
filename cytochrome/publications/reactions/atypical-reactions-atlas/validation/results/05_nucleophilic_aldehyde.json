@@ -1,0 +1,15 @@
+{
+  "script": "05_nucleophilic_aldehyde",
+  "verdict": "PASS",
+  "checks": {
+    "k_nuc_in_range_1e9_to_1e10": true,
+    "no_kie_nucleophilic": true,
+    "ea_nuc_lt_8_kcal": true,
+    "k_nuc_gt_k_desat_eff": true,
+    "delta_m_nuc_between_epox_and_n_dealk": true
+  },
+  "delta_m_nucleophilic": 0.42,
+  "k_nuc_s": 6570468198.15,
+  "kie_nuc": 1.0,
+  "ea_nuc_kcal": 6.525
+}

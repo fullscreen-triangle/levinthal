@@ -1,0 +1,21 @@
+{
+  "script": "01_ternary_depth_families",
+  "verdict": "PASS",
+  "checks": {
+    "depth3_separates_families": true,
+    "depth6_separates_isoforms": true,
+    "trit_cap3_ge_18": true,
+    "trit_cap6_ge_57": true,
+    "trit_cap9_ge_1000_alleles": true,
+    "family_recall_ge_0.9": true,
+    "isoform_distinct_ge_0.95": true
+  },
+  "depth_families": 3,
+  "depth_isoforms": 4,
+  "depth_alleles": 7,
+  "trit_cap_at_3": 27,
+  "trit_cap_at_6": 729,
+  "trit_cap_at_9": 19683,
+  "n_families": 18,
+  "n_isoforms": 57
+}

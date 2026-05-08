@@ -1,0 +1,27 @@
+{
+  "script": "06_rate_ordering",
+  "verdict": "PASS",
+  "checks": {
+    "dm_monotonic_increasing": true,
+    "k_monotonic_decreasing": true,
+    "nih_is_fastest": true,
+    "desat_is_slowest": true,
+    "five_distinct_reactions": true
+  },
+  "delta_m_values": {
+    "NIH_shift": 0.18,
+    "carbene": 0.2,
+    "epoxidation": 0.35,
+    "nucleophilic": 0.42,
+    "desaturation": 1.4753
+  },
+  "k_values_s": {
+    "NIH_shift": 8352702114.11,
+    "carbene": 8187307530.78,
+    "epoxidation": 7046880897.19,
+    "nucleophilic": 6570468198.15,
+    "desaturation": 2287059153.95
+  },
+  "dm_monotonic": true,
+  "k_monotonic_decreasing": true
+}
