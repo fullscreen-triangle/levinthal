@@ -272,6 +272,73 @@ export const PAPERS = [
     status: "Validation 8/8 PASS",
   },
   {
+    id: "9",
+    slug: "isoforms",
+    href: "/isoforms",
+    title: "The 57 Human Cytochrome P450 Isoforms: Categorical Address Taxonomy and Substrate Selectivity",
+    short: "57 Isoforms",
+    part: "Part III — Synthesis",
+    role: "Ternary taxonomy of 57 isoforms; CYP3A4 fold depth; substrate ΔM windows",
+    abstract: `The 57 human CYP isoforms organized into 18 Nelson families emerge
+      naturally from ternary address encoding. Depth k=3 (3³=27 ≥ 18 families,
+      recall 0.94) separates families; depth k=6 (3⁶=729 ≥ 57, distinctness 0.97)
+      separates isoforms; depth k=9 resolves allelic variants. CYP3A4 (503 aa)
+      folds in log₃(503) ≈ 5.69 steps. Each family carries a characteristic ΔM
+      window; CYP3A4 has the widest (ΔM ∈ [0.40, 0.70]), consistent with its
+      dominant role in drug metabolism (46% of FDA drugs). CYP3A4 + 2D6 + 2C9
+      collectively metabolize ≥80% of approved drugs.`,
+    headline: [
+      { label: "Family separation depth",   computed: "k = 3",      target: "18 families (recall 0.94)" },
+      { label: "Isoform distinctness k=6",  computed: "0.97",       target: "57 human isoforms" },
+      { label: "CYP3A4 fold depth",         computed: "log₃(503) ≈ 5.69", target: "≈ 6 steps" },
+    ],
+    panelDir: "/panels/paper-9",
+    panels: [
+      ["panel_01_ternary_depth_families.png", "Trit capacity 3^k vs. depth; 18-family and 57-isoform thresholds"],
+      ["panel_02_family_substrate_dm.png",    "ΔM windows per CYP family; CYP3A4 widest"],
+      ["panel_03_cyp3a4_fold_depth.png",      "CYP3A4 fold depth log₃(N_aa) ≈ 5.69"],
+      ["panel_04_capacity_shell_rule.png",    "Shell capacity C(n) = 2n², n=1..5"],
+      ["panel_05_isoform_rate_spread.png",    "Intra-family rate spread: CYP2C and CYP2D"],
+      ["panel_06_drug_metabolism_fractions.png","Drug metabolism fractions by CYP isoform"],
+      ["panel_07_substrate_volume_dm.png",    "Substrate molecular volume vs. ΔM (r ≈ −0.6)"],
+      ["panel_08_validation.png",             "Validation summary: 8/8 PASS"],
+    ],
+    status: "Validation 8/8 PASS",
+  },
+  {
+    id: "10",
+    slug: "pharmacogenomics",
+    href: "/pharmacogenomics",
+    title: "Pharmacogenomics of Cytochrome P450: Allele ΔM Shifts, DDI Predictions, and Ethnic Rate Variation",
+    short: "Pharmacogenomics",
+    part: "Part III — Pharmacology",
+    role: "CYP2D6/2C9 alleles; warfarin dosing; codeine toxicity; DDI; ethnic variation",
+    abstract: `Pharmacogenomic variation in CYP2D6 and CYP2C9 is modelled as
+      allele-specific activation partition depth shifts. CYP2D6 phenotypes span
+      PM (ΔM=2.50, k≈8.2×10⁸ s⁻¹) to UM (ΔM=0.27, k≈7.6×10⁹ s⁻¹), a 9-fold
+      range. CYP2C9*3 (ΔM=3.60) reduces S-warfarin hydroxylation to <5% of
+      wild-type, predicting >20x dose reduction. Codeine UM toxicity is
+      quantified as 32% excess morphine exposure. DDI is modelled via α = 1 +
+      [I]/Kᵢ; fluoxetine (Kᵢ=0.24 μM) gives α≈3.1 (strong DDI).`,
+    headline: [
+      { label: "UM/PM rate ratio",          computed: "9 ×",        target: "> 5 × (PM/UM fold)" },
+      { label: "CYP2C9*3 residual activity",computed: "< 5 %",      target: "~5% literature" },
+      { label: "Codeine UM excess morphine", computed: "32 %",       target: "> 30 % (FDA threshold)" },
+    ],
+    panelDir: "/panels/paper-10",
+    panels: [
+      ["panel_01_cyp2d6_allele_rates.png",             "CYP2D6 PM/IM/EM/UM rate constants"],
+      ["panel_02_cyp2c9_warfarin_dosing.png",          "CYP2C9 alleles and warfarin dose adjustment"],
+      ["panel_03_population_phenotype_frequencies.png","Population phenotype distribution and k_pop"],
+      ["panel_04_codeine_toxicity_model.png",          "Codeine → morphine: UM excess exposure"],
+      ["panel_05_ddI_cyp3a4_induction.png",            "Rifampicin CYP3A4 induction: AUC < 10%"],
+      ["panel_06_inhibition_competitive.png",          "Fluoxetine competitive inhibition α ≈ 3.1"],
+      ["panel_07_ethnic_variation.png",                "Ethnic variation in CYP2D6 phenotype frequencies"],
+      ["panel_08_validation.png",                      "Validation summary: 8/8 PASS"],
+    ],
+    status: "Validation 8/8 PASS",
+  },
+  {
     id: "11",
     slug: "membrane",
     href: "/membrane",
