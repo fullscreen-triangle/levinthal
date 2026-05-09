@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -56,7 +56,7 @@ This paper derives quantitative predictions for:
 \end{itemize}
 
 %% ============================================================
-\section{CYP2D6 Allele ΔM Parameters}
+\section{CYP2D6 Allele Î”M Parameters}
 %% ============================================================
 
 \subsection{Phenotypic Classes}
@@ -76,9 +76,9 @@ Poor (PM)       & $*4$/$*5$    & 2.50 & $8.2\times10^8$ & 7\,\% \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_01_cyp2d6_allele_rates.png}
+\includegraphics[width=\textwidth]{figures/panel_01_cyp2d6_allele_rates.png}
 \caption{CYP2D6 allele rate constants across four phenotypic classes.}
 \end{figure}
 
@@ -105,9 +105,9 @@ The predicted warfarin dose adjustment:
 Clinical data show *3/*3 homozygotes require only 5--15\,\% of the standard dose
 to achieve therapeutic anticoagulation, consistent with our prediction.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_02_cyp2c9_warfarin_dosing.png}
+\includegraphics[width=\textwidth]{figures/panel_02_cyp2c9_warfarin_dosing.png}
 \caption{CYP2C9 allele rate constants and predicted warfarin dose adjustments.}
 \end{figure}
 
@@ -124,9 +124,9 @@ In Europeans, $k_\text{pop} \approx k_\text{EM}$ since EM is the dominant
 phenotype.  The EM phenotype accounts for $>$60\,\% of the population
 metabolic rate flux.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_03_population_phenotype_frequencies.png}
+\includegraphics[width=\textwidth]{figures/panel_03_population_phenotype_frequencies.png}
 \caption{Phenotype frequency distribution and population-weighted rate.}
 \end{figure}
 
@@ -144,9 +144,9 @@ excess morphine exposure at standard doses:
 The FDA black-box warning on codeine for nursing mothers carrying UM genotype
 is consistent with this $>30$\,\% excess exposure prediction.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_04_codeine_toxicity_model.png}
+\includegraphics[width=\textwidth]{figures/panel_04_codeine_toxicity_model.png}
 \caption{Morphine exposure ratio as a function of CYP2D6 phenotype.}
 \end{figure}
 
@@ -163,9 +163,9 @@ In the categorical mechanics model, this scales the effective rate by 20:
   \text{AUC ratio} = 1/20 = 0.05 < 0.1.
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_05_ddI_cyp3a4_induction.png}
+\includegraphics[width=\textwidth]{figures/panel_05_ddI_cyp3a4_induction.png}
 \caption{CYP3A4 induction by rifampicin: AUC ratio for a sensitive substrate.}
 \end{figure}
 
@@ -181,9 +181,9 @@ The predicted AUC ratio for a CYP2D6 victim drug is $\sim 3.1\times$,
 corresponding to a strong DDI risk (FDA classification: $>5\times$ =
 contraindicated, $2$--$5\times$ = strong inhibitor).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_06_inhibition_competitive.png}
+\includegraphics[width=\textwidth]{figures/panel_06_inhibition_competitive.png}
 \caption{Competitive inhibition: $\alpha$ vs.\ $[I]/K_i$; fluoxetine marked.}
 \end{figure}
 
@@ -201,9 +201,9 @@ Europeans:
   \quad\text{(IM dominant in East Asian).}
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_07_ethnic_variation.png}
+\includegraphics[width=\textwidth]{figures/panel_07_ethnic_variation.png}
 \caption{Phenotype frequency distributions and population rates by ancestry.}
 \end{figure}
 
@@ -215,9 +215,9 @@ All 8 validation scripts pass (100\,\% PASS rate).  Six alleles across two
 genes (CYP2D6, CYP2C9) are parameterized; the model correctly predicts
 drug dose adjustments, toxicity risks, and population-level metabolic variation.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_08_validation.png}
+\includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary for Paper 10.}
 \end{figure}
 

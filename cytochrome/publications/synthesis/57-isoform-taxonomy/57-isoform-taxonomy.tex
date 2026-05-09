@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx,longtable}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -74,14 +74,14 @@ Allelic variants & $>$1000 & 7 & 2187 & PharmVar ($k=9$, $19\,683$) \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_01_ternary_depth_families.png}
+\includegraphics[width=\textwidth]{figures/panel_01_ternary_depth_families.png}
 \caption{Ternary capacity $3^k$ vs.\ depth $k$ with thresholds for 18 families and 57 isoforms.}
 \end{figure}
 
 %% ============================================================
-\section{Substrate Selectivity: ΔM Ranges per Family}
+\section{Substrate Selectivity: Î”M Ranges per Family}
 %% ============================================================
 
 Each CYP family has a characteristic range of substrate activation partition
@@ -109,9 +109,9 @@ CYP2E1  & 0.60 & 0.75 & 0.15 (smallest substrates) \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_02_family_substrate_dm.png}
+\includegraphics[width=\textwidth]{figures/panel_02_family_substrate_dm.png}
 \caption{$\Delta M$ ranges per CYP family.  CYP3A4 has the widest window;
 CYP2E1 is shifted to higher $\Delta M$ (smaller, more polar substrates).}
 \end{figure}
@@ -129,15 +129,15 @@ This is consistent with the observation from Paper~2 that CYP3A4 folds
 against PDB~1TQN in $\approx 6$ depth steps with RMSD $< 2.5$~\AA.
 At depth 6, $3^6 = 729 > 503$, providing full sequence coverage.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_03_cyp3a4_fold_depth.png}
+\includegraphics[width=\textwidth]{figures/panel_03_cyp3a4_fold_depth.png}
 \caption{CYP3A4 fold depth $\log_3 N_\text{aa}$ as a function of protein length
 (other P450s shown for comparison).}
 \end{figure}
 
 %% ============================================================
-\section{Shell Capacity: C(n) = 2n²}
+\section{Shell Capacity: C(n) = 2nÂ²}
 %% ============================================================
 
 The receiver $R_\text{bio}$ imposes the standard shell capacity formula
@@ -173,9 +173,9 @@ This modest spread reflects conserved active-site architecture within
 subfamilies, with individual polymorphisms shifting $\Delta M$ by
 0.05--0.30 depth units.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_05_isoform_rate_spread.png}
+\includegraphics[width=\textwidth]{figures/panel_05_isoform_rate_spread.png}
 \caption{Rate spread within CYP2C and CYP2D subfamilies.}
 \end{figure}
 
@@ -188,9 +188,9 @@ $\approx 46$\,\% of drug metabolism, while CYP2D6 and CYP2C9 contribute
 19\,\% and 15\,\%, respectively.  Together, these three isoforms account for
 $\geq 80$\,\% of FDA-approved drugs.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_06_drug_metabolism_fractions.png}
+\includegraphics[width=\textwidth]{figures/panel_06_drug_metabolism_fractions.png}
 \caption{Drug metabolism fractions by CYP isoform.  CYP3A4 dominates.}
 \end{figure}
 
@@ -199,7 +199,7 @@ confirms that CYP3A4 contributes the largest effective metabolic flux, consisten
 with its broad substrate scope and low $\Delta M$ lower bound.
 
 %% ============================================================
-\section{Substrate Volume–ΔM Correlation}
+\section{Substrate Volumeâ€“Î”M Correlation}
 %% ============================================================
 
 Across representative substrates spanning acetaminophen to testosterone,
@@ -209,9 +209,9 @@ site, lowering the activation depth.  This confirms that $\Delta M$ encodes
 a real physical quantity (steric and electrostatic complementarity) rather
 than a phenomenological parameter.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_07_substrate_volume_dm.png}
+\includegraphics[width=\textwidth]{figures/panel_07_substrate_volume_dm.png}
 \caption{Substrate molecular volume vs.\ $\Delta M$ (Pearson $r \approx -0.6$).}
 \end{figure}
 
@@ -222,9 +222,9 @@ than a phenomenological parameter.
 Eight validation scripts confirm all quantitative predictions (8/8 PASS,
 100\,\%).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_08_validation.png}
+\includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary for Paper 9.}
 \end{figure}
 

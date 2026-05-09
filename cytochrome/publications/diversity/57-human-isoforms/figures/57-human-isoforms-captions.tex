@@ -1,8 +1,8 @@
-% Figure captions for Paper 9: The 57 Human CYP Isoforms as Address-Manifold Variants
+﻿% Figure captions for Paper 9: The 57 Human CYP Isoforms as Address-Manifold Variants
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_01_address_tree}
+\includegraphics[width=\textwidth]{figures/panel_01_address_tree}
 \caption{\textbf{Panel 1 -- Address-tree dendrogram and 3D manifold of 57 human CYP isoforms.}
 \emph{Left:} Hierarchical clustering dendrogram of the 57 isoforms using Hamming distance on
 6-trit addresses. Major family clades (CYP1, CYP2, CYP3, CYP4--51) are annotated.
@@ -12,9 +12,9 @@ The clear family-level segregation at the first bifurcation confirms $k{=}3$ fam
 \label{fig:panel01}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_02_family_clusters}
+\includegraphics[width=\textwidth]{figures/panel_02_family_clusters}
 \caption{\textbf{Panel 2 -- Family separation at $k{=}3$ versus $k{=}6$.}
 \emph{Left:} Intra- and inter-family Hamming distances at trit-depth $k{=}3$;
 mean inter-family $2.1 \pm 0.4$, intra-family $0.6 \pm 0.3$, ratio 3.5.
@@ -25,9 +25,9 @@ monotonically from $k{=}1$ to $k{=}3$ and plateaus thereafter.}
 \label{fig:panel02}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_03_promiscuity_map}
+\includegraphics[width=\textwidth]{figures/panel_03_promiscuity_map}
 \caption{\textbf{Panel 3 -- Substrate promiscuity map: address spread $\sigma_{\rm address}$ vs.\ substrate count.}
 \emph{Main panel:} Each bubble represents one isoform; horizontal axis is address spread $\sigma$
 (trits), vertical axis is number of known substrates from ChEMBL; bubble area proportional to
@@ -39,9 +39,9 @@ isoforms.
 \label{fig:panel03}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_04_affinity_heatmap}
+\includegraphics[width=\textwidth]{figures/panel_04_affinity_heatmap}
 \caption{\textbf{Panel 4 -- Substrate affinity heatmap for 10 isoforms $\times$ 10 compounds.}
 Colour encodes $\mathcal{A}(S,I) = \exp(-d_6({\rm addr}(S), {\rm addr}(I)))$; dark red = high
 affinity. Known substrate pairs (from DrugBank/ChEMBL) are marked with a dot.
@@ -52,9 +52,9 @@ prediction using address affinity threshold; AUC $= 0.81$.
 \label{fig:panel04}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_05_delta_m_shifts}
+\includegraphics[width=\textwidth]{figures/panel_05_delta_m_shifts}
 \caption{\textbf{Panel 5 -- Isoform-specific $\Delta\mathcal{M}$ offsets and predicted rate ratios.}
 \emph{Left:} Bar chart of $\Delta\mathcal{M}_I$ relative to CYP3A4 baseline for major
 drug-metabolising isoforms; dashed line at zero (CYP3A4).  CYP2D6: $+0.08$; CYP2C9: $+0.05$.
@@ -65,9 +65,9 @@ drug-metabolising isoforms; dashed line at zero (CYP3A4).  CYP2D6: $+0.08$; CYP2
 \label{fig:panel05}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_06_tissue_expression}
+\includegraphics[width=\textwidth]{figures/panel_06_tissue_expression}
 \caption{\textbf{Panel 6 -- Tissue expression heatmap and address-layer interpretation.}
 \emph{Left:} Heatmap of relative expression $E(I,T)$ for 12 isoforms $\times$ 6 tissues
 (liver, gut, lung, kidney, brain, skin); colour scale 0--100\%.  CYP3A4 dominates liver and gut;
@@ -78,9 +78,9 @@ ratio, showing the $a_5=2$ enrichment for enterocyte-expressed isoforms.
 \label{fig:panel06}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_07_57_isoform_space}
+\includegraphics[width=\textwidth]{figures/panel_07_57_isoform_space}
 \caption{\textbf{Panel 7 -- Full 57-isoform address cloud in 3D.}
 Three-dimensional scatter of all 57 human CYP isoforms in PCA-reduced 6-trit Hamming space.
 Families are colour-coded; the convex hull of each family is shown as a transparent polygon.
@@ -89,9 +89,9 @@ Inset: histogram of pairwise Hamming distances.}
 \label{fig:panel07}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/panel_08_validation}
+\includegraphics[width=\textwidth]{figures/panel_08_validation}
 \caption{\textbf{Panel 8 -- Validation dashboard: 8/8 PASS.}
 Summary of all eight computational validation scripts.  Each row shows script name, key check,
 computed value, target value, and PASS/FAIL verdict (green = PASS, red = FAIL).

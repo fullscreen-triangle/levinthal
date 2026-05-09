@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -70,9 +70,9 @@ Depth $k$ & Capacity (trits) & Bits & Classes & Shannon entropy & Margin \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_01_info_capacity.png}
+\includegraphics[width=\textwidth]{figures/panel_01_info_capacity.png}
 \caption{Trit capacity $3^k$ and information bits $k\log_2 3$ vs.\ depth.}
 \end{figure}
 
@@ -88,9 +88,9 @@ where $H$ is the Shannon entropy of the classification problem.
 This exponential saturation model reflects the diminishing returns of
 additional depth as entropy is exhausted.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_02_recovery_accuracy.png}
+\includegraphics[width=\textwidth]{figures/panel_02_recovery_accuracy.png}
 \caption{Recovery accuracy $A(k, H)$ for isoform identification as a
 function of ternary depth $k$.}
 \end{figure}
@@ -111,9 +111,9 @@ recovery of the correct isoform is possible because 6.66~bits $>$ 5.83~bits
 \end{equation}
 giving $P_\text{correct} \approx 0.92 > 85$\,\%.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_03_partial_recovery.png}
+\includegraphics[width=\textwidth]{figures/panel_03_partial_recovery.png}
 \caption{Recovery probability vs.\ fraction of address known at $k=6$.}
 \end{figure}
 
@@ -130,9 +130,9 @@ position.  Using the amino-acid Shannon entropy $H_\text{aa} = \log_2 20
 At $k=6$: $F \approx 0.89$ (89\,\% of residues correctly assigned).
 At $k=9$: $F \approx 0.97$ (97\,\% fidelity).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_04_sequence_fidelity.png}
+\includegraphics[width=\textwidth]{figures/panel_04_sequence_fidelity.png}
 \caption{Sequence reconstruction fidelity $F(k)$ as a function of ternary depth.}
 \end{figure}
 
@@ -152,9 +152,9 @@ storing raw sequences:
   \approx 41.
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_05_compression.png}
+\includegraphics[width=\textwidth]{figures/panel_05_compression.png}
 \caption{Information compression: ternary encoding vs.\ raw sequence storage.}
 \end{figure}
 
@@ -173,9 +173,9 @@ Within-human family recovery ($\sim 65$\,\% identity) achieves:
   A_\text{family} = 1 - e^{-0.65 \times 6} = 1 - e^{-3.9} \approx 0.98.
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_06_cross_species.png}
+\includegraphics[width=\textwidth]{figures/panel_06_cross_species.png}
 \caption{Cross-species vs.\ within-family recovery accuracy.}
 \end{figure}
 
@@ -188,9 +188,9 @@ alleles, and $\sim$310 total alleles across 4 major genes.  Ternary depth
 $k=9$ provides capacity $3^9 = 19\,683 \gg 310$, with over 60-fold excess
 capacity to accommodate future allele discoveries.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_07_pharmvar_capacity.png}
+\includegraphics[width=\textwidth]{figures/panel_07_pharmvar_capacity.png}
 \caption{PharmVar allele counts vs.\ ternary capacity at $k=9$.}
 \end{figure}
 
@@ -200,9 +200,9 @@ capacity to accommodate future allele discoveries.
 
 All 8 validation scripts pass (8/8 PASS).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_08_validation.png}
+\includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary for Paper~14.}
 \end{figure}
 

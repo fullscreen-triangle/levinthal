@@ -1,4 +1,4 @@
-\documentclass[twocolumn,10pt,a4paper]{article}
+﻿\documentclass[twocolumn,10pt,a4paper]{article}
 
 % Page layout
 \usepackage[margin=2cm, columnsep=0.6cm]{geometry}
@@ -182,7 +182,7 @@ This formula exactly reproduces atomic shell structure: $C(1) = 2$ (H, He), $C(2
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel1_partition_coordinates.png}
+\includegraphics[width=\textwidth]{figures/panel1_partition_coordinates.png}
 \caption{\textbf{Partition Coordinates from Bounded Phase Space: Derivation and Validation of Atomic Shell Structure.}
 The partition coordinate system $(n, \ell, m, s)$ emerges as a geometric necessity from bounded phase space admitting hierarchical partition.
 \textbf{Panel A:} Three-dimensional visualization of the partition state space showing discrete quantum states indexed by principal quantum number $n$ (depth), angular momentum $\ell$ (complexity), and magnetic quantum number $m$ (orientation). Sphere colors indicate shell membership via viridis colormap; sizes scale with $\ell$-value. The constraint $\ell < n$ naturally excludes forbidden regions, yielding $n^2$ states per shell before spin degeneracy.
@@ -266,7 +266,7 @@ A system with $\Depth = 0$ is unobservable. Existence as a distinct entity requi
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel2_partition_depth.png}
+\includegraphics[width=\textwidth]{figures/panel2_partition_depth.png}
 \caption{\textbf{Partition Depth and Entropy Equivalence: The Fundamental Measure of Distinguishability.}
 Partition depth $\mathcal{M}$ measures the hierarchical structure required to distinguish categorical states, connecting directly to thermodynamic entropy via $S_{\mathcal{P}} = k_B \mathcal{M} \ln b$.
 \textbf{Panel A:} Three-dimensional surface plot of partition depth $\mathcal{M}(n, \ell)$ as a function of principal quantum number $n$ and angular momentum $\ell$. The surface shows depth increasing with both coordinates according to $\mathcal{M} = \log_2 n + \log_2 n + \log_2(2\ell + 1) + 1$, with the constraint $\ell < n$ naturally masking forbidden regions. Higher shells require more partition levels for unique specification.
@@ -390,7 +390,7 @@ The activation energy is not a mysterious ``barrier to overcome.'' It is the par
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel3_activation_energy.png}
+\includegraphics[width=\textwidth]{figures/panel3_activation_energy.png}
 \caption{\textbf{Activation Energy as Partition Reorganization Cost: Deriving Transition State Theory from First Principles.}
 Activation energy emerges not as an empirical barrier but as the partition reorganization cost $E_a = T_{\mathcal{P}} k_B \ln b \cdot \Delta\mathcal{M}$---the unavoidable price of creating transition state partition structure.
 \textbf{Panel A:} Three-dimensional potential energy surface showing reactant well (left), product well (right), and transition state saddle point (red star) at $\xi = 0.5$. The surface is computed as a sum of Gaussian wells with the transition state representing the partition structure that must encode both origin and destination, hence higher partition depth than either endpoint.
@@ -506,7 +506,7 @@ If we remove product B (reducing $[B]$), the partition depth gradient steepens t
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel4_ball_game.png}
+\includegraphics[width=\textwidth]{figures/panel4_ball_game.png}
 \caption{\textbf{Ball Game Analogy: Equilibrium Dynamics and Le Chatelier Response in Partition Space.}
 The ball game analogy captures essential features of chemical dynamics: two teams separated by a wall with holes (partition apertures), where scoring requires traversing holes and each score forces position rearrangement (entropy generation).
 \textbf{Panel A:} Three-dimensional trajectory through phase space $(n_A, n_B, t)$ showing system evolution from initial state (green circle: 80 balls team A, 20 balls team B) toward equilibrium (red square). The trajectory spirals inward as the scoring rates balance, colored by time via coolwarm colormap. The attractor at equilibrium demonstrates how partition gradients drive dynamics.
@@ -622,7 +622,7 @@ This propagation occurs through the enzyme's partition network.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{panel5_enzyme_efficiency.png}
+\includegraphics[width=\textwidth]{panel5_enzyme_efficiency.png}
 \caption{\textbf{Enzyme Catalytic Efficiency from Categorical Distance: Predicting $k_{cat}/K_M$ with Zero Free Parameters.}
 Catalytic efficiency depends inversely on categorical distance $d_C$---the number of partition boundaries crossed during the reaction---with the prediction $\log_{10}(k_{cat}/K_M) \approx 10 - d_C$.
 \textbf{Panel A:} Three-dimensional visualization of enzyme efficiency landscape showing categorical distance $d_C$, observed $\log_{10}(k_{cat}/K_M)$, and prediction error. Points colored by $d_C$ via viridis colormap. The theoretical prediction plane (red dashed line at error $= 0$) passes through the data cloud, with $d_C = 1$ enzymes clustering at maximum efficiency ($\sim 10^9$ M$^{-1}$s$^{-1}$) and $d_C \geq 4$ enzymes at minimum efficiency ($\sim 10^4$ M$^{-1}$s$^{-1}$).
@@ -688,7 +688,7 @@ This is a partition topology change that gates substrate access.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel6_catalysis.png}
+\includegraphics[width=\textwidth]{figures/panel6_catalysis.png}
 \caption{\textbf{Catalytic Mechanism: $d_C = 1$ Aperture Traversal.}
 \textbf{Panel A (left):} Three-dimensional active site structure showing Cu (orange) and Zn (gray) metal centers with His ligand coordination (blue triangles). Dashed red trajectory indicates superoxide approach vector, red star marks substrate entry point at 5~\AA\ from active site.
 \textbf{Panel B (center-left):} Categorical distance $d_C$ across enzyme families. Green bars ($d_C = 1$) indicate diffusion-limited enzymes (SOD1, CA~II, Catalase), orange ($d_C = 2$) moderately efficient (TIM), red ($d_C = 4$) slow (Chymotrypsin). $d_C = 1$ corresponds to single aperture traversal.
@@ -770,7 +770,7 @@ The net effect is transfer of partition depth from input (acetyl-CoA) to output 
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel6_metabolism.png}
+\includegraphics[width=\textwidth]{figures/panel6_metabolism.png}
 \caption{\textbf{Metabolic Pathways as Partition Cascades: Glycolysis and Optimal Pathway Architecture.}
 Metabolic pathways are sequences of partition depth reductions, with pathway architecture optimized to balance step-wise reorganization costs against cumulative entropy production.
 \textbf{Panel A:} Three-dimensional visualization of glycolysis as a partition cascade. Each bar represents one enzymatic step, with height indicating the partition depth change $\Delta\mathcal{M}$. Green bars (negative $\Delta\mathcal{M}$) indicate energetically favorable steps; red bars (positive $\Delta\mathcal{M}$, e.g., GAPDH) indicate thermodynamically unfavorable steps requiring coupling. The cascade flows ``downhill'' in total partition depth from glucose to pyruvate.
@@ -824,7 +824,7 @@ Living systems continuously perform partition operations:
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel8_life.png}
+\includegraphics[width=\textwidth]{figures/panel8_life.png}
 \caption{\textbf{Life as Self-Maintaining Partition Structure: Entropy Balance, Growth, and Replication.}
 Living systems are partition structures that maintain themselves by locally decreasing partition depth while exporting entropy to the environment, satisfying $\Delta\mathcal{M}_{local} < 0$ and $\Delta\mathcal{M}_{total} > 0$ simultaneously.
 \textbf{Panel A:} Three-dimensional trajectory through entropy space $(t, S_{local}, S_{environment})$ showing the coupled dynamics of organism and surroundings. The trajectory evolves from early time (blue) to late time (red) via coolwarm colormap. Local entropy decreases (organism becomes more organized) while environmental entropy increases (waste heat, metabolic byproducts). The trajectory satisfies thermodynamic constraints: total entropy always increases.
@@ -903,7 +903,7 @@ Genetic & Inherited partition structure error \\
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel7_disease.png}
+\includegraphics[width=\textwidth]{figures/panel7_disease.png}
 \caption{\textbf{Disease as Partition Malformation: SOD1-linked ALS and the Coherence-Survival Correlation.}
 Disease emerges when partition structure becomes malformed---misfolded, dysregulated, or autonomous. For protein misfolding diseases, the order parameter $\langle r \rangle$ quantifies partition coherence, with $\langle r \rangle < 0.5$ indicating instability.
 \textbf{Panel A:} Three-dimensional representation of SOD1 variant data in coherence-survival-severity space. Each point represents a characterized ALS-linked mutation, colored by order parameter (RdYlGn colormap: green = stable, red = misfolded). Wild-type SOD1 ($\langle r \rangle = 0.87$) is not shown (no disease). The inverse relationship between coherence and severity is evident: low $\langle r \rangle$ variants (A4V, H46R) cluster in the high-severity, short-survival region.
@@ -1047,7 +1047,7 @@ All predictions derive from $\nabla\Depth$ with zero free parameters. The framew
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel9_summary.png}
+\includegraphics[width=\textwidth]{figures/panel9_summary.png}
 \caption{\textbf{Comprehensive Validation Summary: 39 Tests Across Five Biological Domains.}
 The partition framework is validated against experimental data spanning atomic physics, enzyme kinetics, metabolism, disease progression, and cellular organization, with an overall accuracy of $89\%$ using zero free parameters.
 \textbf{Panel A:} Three-dimensional bar chart showing validation accuracy by domain. Each bar represents one of five validation domains: atomic structure (100\%), enzyme kinetics (85\%), metabolism (90\%), disease/pathology (88\%), and life/organization (82\%). Bar heights indicate fraction of tests passed; colors follow viridis colormap. All domains exceed the 80\% threshold (base plane), confirming broad applicability.
