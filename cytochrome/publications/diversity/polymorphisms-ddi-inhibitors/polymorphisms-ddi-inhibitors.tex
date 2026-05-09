@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -102,9 +102,9 @@ The effective $\Delta M$ shift is $\ln 2 \approx 0.693$, giving
 $\Delta M_\text{*22} = 0.55 + 0.693 = 1.243$ and $\approx 50$\,\% of wild-type
 activity, consistent with midazolam pharmacokinetic data~\cite{Werk2014}.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_01_allele_dm_rates.png}
+\includegraphics[width=\textwidth]{figures/panel_01_allele_dm_rates.png}
 \caption{CYP2D6 and CYP2C9 allele $\Delta M$ values and resulting rate constants.}
 \end{figure}
 
@@ -144,9 +144,9 @@ $1/6.4 \approx 16$\,\% of baseline ($< 20$\,\% criterion met).
 Quinidine at 0.5\,$\mu$M gives $\alpha = 19.5$, reducing CYP2D6 below
 the natural PM rate ($\Delta M_\text{EM+quin} = 3.52 > \Delta M_\text{PM} = 2.50$).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_02_alpha_ddi_surface.png}
+\includegraphics[width=\textwidth]{figures/panel_02_alpha_ddi_surface.png}
 \caption{AUC ratio $\alpha = 1 + [I]/K_i$ as a function of concentration
 and $K_i$; contours at strong/moderate/weak DDI thresholds.}
 \end{figure}
@@ -184,9 +184,9 @@ At clinical concentrations ($[I]_u \approx 4\,\mu$M for clarithromycin),
 $k_\text{obs} \approx 0.021$\,min$^{-1} \gg k_\text{deg} = 3.2\times10^{-4}$\,min$^{-1}$,
 and CYP3A4 reaches $< 50$\,\% activity within 60\,min.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_03_mbi_kinetics.png}
+\includegraphics[width=\textwidth]{figures/panel_03_mbi_kinetics.png}
 \caption{MBI enzyme activity $E(t)/E_0$ for clarithromycin, diltiazem, and
 erythromycin.  Right: Kitz--Wilson surface $k_\text{obs}([I], K_I)$.}
 \end{figure}
@@ -225,9 +225,9 @@ Omeprazole   &  5 & $-1.61$ & 0.20 & Theophylline \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_04_induction_auc.png}
+\includegraphics[width=\textwidth]{figures/panel_04_induction_auc.png}
 \caption{AUC ratio vs.\ fold-induction; PXR $E_\text{max}$ model for rifampicin.}
 \end{figure}
 
@@ -237,9 +237,9 @@ Omeprazole   &  5 & $-1.61$ & 0.20 & Theophylline \\
 
 Major inhibitor classes are ranked by $K_i$:
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_05_inhibitor_atlas.png}
+\includegraphics[width=\textwidth]{figures/panel_05_inhibitor_atlas.png}
 \caption{$K_i$ values and DDI risk tiers for key CYP inhibitor classes.
 Azoles (CYP3A4), quinolines (CYP2D6), SSRIs (CYP2D6), azoles (CYP2C9).}
 \end{figure}
@@ -265,11 +265,11 @@ Key clinical implications:
     drops to $< 50$\,\% of drug-free rate across European phenotype frequencies.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_06_compound_phenotype.png}
+\includegraphics[width=\textwidth]{figures/panel_06_compound_phenotype.png}
 \caption{Compound phenotype landscape: $\Delta M_\text{eff}$ for genotype--
-inhibitor combinations; rate heatmap across allele × inhibitor space.}
+inhibitor combinations; rate heatmap across allele Ã— inhibitor space.}
 \end{figure}
 
 %% ============================================================
@@ -298,9 +298,9 @@ Fluoxetine     & 0.48 & $\approx 0.48$ & 1.00 (reversible) \\
 Clarithromycin shows the strongest TDI signal ($r = 0.28 < 0.5$), consistent
 with its position as the most potent MBI by $k_\text{inact}/K_I$ ratio.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_07_tdi_shift.png}
+\includegraphics[width=\textwidth]{figures/panel_07_tdi_shift.png}
 \caption{TDI IC$_{50}$ shift assay: 60-min preincubation vs.\ dilution
 experiment; clarithromycin, diltiazem, erythromycin, fluoxetine.}
 \end{figure}
@@ -311,9 +311,9 @@ experiment; clarithromycin, diltiazem, erythromycin, fluoxetine.}
 
 All 8 validation scripts pass (8/8 PASS).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_08_validation.png}
+\includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary for Paper~15.}
 \end{figure}
 

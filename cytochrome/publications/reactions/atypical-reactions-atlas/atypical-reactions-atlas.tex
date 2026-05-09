@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -124,9 +124,9 @@ where $k_1 = \nu_\text{floor}\,e^{-0.65}$, $k_2 = \nu_\text{floor}\,e^{-0.55}$,
 and $k_\text{rebound} = \SI{7.4e9}{\per\second}$ (from Paper~6).
 This gives $k_\text{desat,eff} \approx \SI{1.3e8}{\per\second}$.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_01_desaturation_two_step.png}
+\includegraphics[width=\textwidth]{figures/panel_01_desaturation_two_step.png}
 \caption{Desaturation two-step HAT kinetics and product partitioning.}
 \end{figure}
 
@@ -143,9 +143,9 @@ This yields $\text{KIE}\approx 5$--$9$ for the intrinsic step, attenuated
 to $\approx 4$--$6$ for the effective two-step process due to the commitment
 factor from the second HAT step.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_02_desaturation_kie.png}
+\includegraphics[width=\textwidth]{figures/panel_02_desaturation_kie.png}
 \caption{KIE analysis for desaturation versus single-HAT hydroxylation.}
 \end{figure}
 
@@ -164,9 +164,9 @@ no primary isotope effect:
 
 Because no hydrogen is transferred in the rate-limiting step, $\text{KIE} = 1.0$.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_03_arene_oxide.png}
+\includegraphics[width=\textwidth]{figures/panel_03_arene_oxide.png}
 \caption{Arene oxide formation: rate, KIE, and comparison to aliphatic HAT.}
 \end{figure}
 
@@ -190,9 +190,9 @@ In the NIH shift, a hydride migrates (1,2-shift) rather than breaking a
 C--H bond by radical abstraction.  No primary isotope effect is expected;
 only a secondary $\text{KIE} < 2$ from hyperconjugation in the transition state.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_04_nih_shift.png}
+\includegraphics[width=\textwidth]{figures/panel_04_nih_shift.png}
 \caption{NIH shift: rate constant, isotope effect, and product distribution.}
 \end{figure}
 
@@ -207,9 +207,9 @@ dominates:
   > 0.5.
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_07_product_partitioning.png}
+\includegraphics[width=\textwidth]{figures/panel_07_product_partitioning.png}
 \caption{Product partitioning: phenol (NIH pathway) versus trans-dihydrodiol.}
 \end{figure}
 
@@ -227,9 +227,9 @@ transition state:
 This mechanism is relevant for CYP11A1 (cholesterol side-chain cleavage)
 and steroidogenic P450s.  Since no C--H bond is broken, $\text{KIE} = 1.0$.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_05_nucleophilic_aldehyde.png}
+\includegraphics[width=\textwidth]{figures/panel_05_nucleophilic_aldehyde.png}
 \caption{Nucleophilic O-atom transfer to aldehyde: rate and isotope effect.}
 \end{figure}
 
@@ -264,9 +264,9 @@ reorganization; nucleophilic attack on a polarized C=O is slightly more
 demanding; and desaturation is rate-limited by two HAT steps competing with
 fast radical rebound.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_06_rate_ordering.png}
+\includegraphics[width=\textwidth]{figures/panel_06_rate_ordering.png}
 \caption{Rate ordering of all five atypical mechanisms from lowest to highest $\Delta M$.}
 \label{fig:ordering}
 \end{figure}
@@ -279,9 +279,9 @@ Eight Python validation scripts (01--08) implement all quantitative
 predictions and compare them to literature ranges.  All 40 individual
 checks pass (PASS rate: 100\,\%).
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/panel_08_validation.png}
+\includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary: predicted vs.\ literature ranges for all five reaction classes.}
 \end{figure}
 
