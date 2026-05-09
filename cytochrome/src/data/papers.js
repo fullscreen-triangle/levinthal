@@ -477,6 +477,41 @@ export const PAPERS = [
     status: "Validation 8/8 PASS",
   },
   {
+    id: "15",
+    slug: "polymorphisms",
+    href: "/polymorphisms",
+    title: "Polymorphisms, Drug–Drug Interactions, and Inhibitors in Cytochrome P450",
+    short: "Polymorphisms & DDI",
+    part: "Part IV — Diversity",
+    role: "Allele ΔM shifts; competitive/MBI inhibition; induction; compound phenotype",
+    abstract: `Genetic polymorphisms and chemical modulators are unified as ΔM
+      shifts within the categorical mechanics framework. CYP2D6 phenotypes span
+      UM (ΔM=0.27) to PM (ΔM=2.50), a 7-fold rate range. Competitive inhibitors
+      shift apparent ΔM by ΔΔM = ln(α), where α = 1 + [I]/Ki; ketoconazole at
+      0.2 μM reduces CYP3A4 to <20% activity. Mechanism-based inactivation is
+      modelled via Kitz-Wilson kinetics; clarithromycin (KI=3.7 μM,
+      kinact=0.04 min⁻¹) inactivates CYP3A4 to <50% within 60 min. Rifampicin
+      induction (20×) reduces victim AUC to 5% of baseline (ΔΔM = -ln 20).
+      An EM patient receiving quinidine becomes more inhibited than a natural PM.`,
+    headline: [
+      { label: "EM/PM rate ratio",      computed: "7×",         target: "> 5× (7-fold CYP2D6)" },
+      { label: "Ketoconazole CYP3A4",   computed: "< 20% residual", target: "strong DDI >5× AUC" },
+      { label: "Rifampicin AUC ratio",  computed: "0.05",       target: "< 10% (clinical)" },
+    ],
+    panelDir: "/panels/paper-15",
+    panels: [
+      ["panel_01_allele_dm_rates.png",    "CYP2D6 phenotype and CYP2C9 allele rate constants"],
+      ["panel_02_alpha_ddi_surface.png",  "AUC ratio surface α = 1 + [I]/Ki; DDI tier contours"],
+      ["panel_03_mbi_kinetics.png",       "MBI inactivation curves + Kitz-Wilson kobs surface"],
+      ["panel_04_induction_auc.png",      "Induction AUC ratio; PXR Emax model for rifampicin"],
+      ["panel_05_inhibitor_atlas.png",    "Ki atlas for key CYP3A4/2D6/2C9 inhibitors"],
+      ["panel_06_compound_phenotype.png", "3D rate landscape: genotype × inhibitor combinations"],
+      ["panel_07_tdi_shift.png",          "TDI IC50 shift ratios at 60 min preincubation"],
+      ["panel_08_validation.png",         "Validation summary: 8/8 PASS"],
+    ],
+    status: "Validation 8/8 PASS",
+  },
+  {
     id: "12",
     slug: "closed-orbit",
     href: "/closed-orbit",
