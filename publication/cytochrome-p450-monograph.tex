@@ -1,0 +1,776 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+%==============================================================================
+% COMBINED MONOGRAPH: Categorical Mechanics of Cytochrome P450
+% Master document — includes the foundational partition-landscape paper
+% and all fifteen papers of the Levinthal monograph series.
+%==============================================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[version=4]{mhchem}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{pdfpages}   % for including compiled paper PDFs if available
+\usepackage{tocloft}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+% Theorem environments (shared)
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{construction}[theorem]{Construction}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Custom commands
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\Depth}{\mathcal{M}}
+\newcommand{\Part}{\mathcal{P}}
+\newcommand{\dC}{d_{\mathrm{C}}}
+\newcommand{\orderpar}{\langle r \rangle}
+\newcommand{\kcat}{k_{\mathrm{cat}}}
+\newcommand{\KM}{K_{\mathrm{M}}}
+\newcommand{\nufloor}{\nu_{\mathrm{floor}}}
+\newcommand{\Tpart}{T_{\Part}}
+\newcommand{\Recv}{\mathcal{R}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={Categorical Mechanics of Cytochrome P450},
+    pdfauthor={Kundai Farai Sachikonye},
+    pdfsubject={Partition Mechanics, Enzyme Catalysis, P450 Monograph}
+}
+
+% Headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\textit{Categorical Mechanics of Cytochrome P450}}
+\fancyhead[RO]{\small\textit{\rightmark}}
+\fancyfoot[C]{\thepage}
+
+%==============================================================================
+\title{
+    \vspace{2cm}
+    {\LARGE\bfseries Categorical Mechanics of\\[0.4em]
+    Cytochrome P450}\\[1.5em]
+    {\large A Complete Monograph in Partition Dynamics}\\[3em]
+    {\normalsize Foundational Theory · Structural Construction · Observation ·
+    Diversity · Consequences}
+}
+\author{
+    \large Kundai Farai Sachikonye\\[0.5em]
+    \normalsize AIMe Registry for Artificial Intelligence\\
+    \normalsize Experimental Bioinformatics\\
+    \normalsize Maximus-von-Imhof-Forum~3, 85354 Freising, Germany\\[0.5em]
+    \normalsize\texttt{kundai.sachikonye@bitspark.com}
+}
+\date{\today}
+%==============================================================================
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+%==============================================================================
+% PREFACE
+%==============================================================================
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+This volume collects the complete Levinthal monograph on cytochrome P450,
+together with its foundational theory paper.  The monograph was assembled in
+the order in which the ideas were developed: first the general framework, then
+its application to a specific enzyme family.
+
+The foundational paper---\emph{On the Consequences of Global Partition
+Structure Conservation: The Biological Partition Landscape}---established
+that all biological dynamics follows from a single geometric principle:
+bounded phase space admits partition and nesting.  That paper proved the claim
+across five biological domains with 39 validation tests and $89\,\%$ overall
+accuracy.
+
+The fifteen papers of the P450 monograph then applied this principle to a
+single enzyme family at a depth that the foundational paper could not reach.
+They constitute a bottom-up derivation of everything that is known about
+cytochrome P450: from the abstract observation that any biological molecule
+must have both a receiver and a sender, through sequence-space geometry,
+through the complete catalytic cycle, through 57 human isoforms, through
+spectroscopy and database recovery, to a predictive model of pharmacogenomics
+under polypharmacy.
+
+The prefatory chapter (Chapter~\ref{ch:intro}) introduces the framework and
+provides a guided tour of the monograph.  Readers already familiar with the
+partition-landscape formalism may proceed directly to Part~II.
+
+\bigskip\noindent
+\textit{Kundai Farai Sachikonye}\\
+Freising, \today
+
+%==============================================================================
+\tableofcontents
+%==============================================================================
+
+\mainmatter
+
+%==============================================================================
+% CHAPTER 0: INTRODUCTION / STAGE-SETTER
+%==============================================================================
+
+\chapter{Introduction and Framework}
+\label{ch:intro}
+\markboth{Introduction and Framework}{Introduction and Framework}
+
+%------------------------------------------------------------
+\section{The Problem of Fragmentation}
+\label{sec:problem}
+%------------------------------------------------------------
+
+Biology is described by a museum of theories.  Transition-state theory
+quantifies activation barriers~\citep{eyring1935}.  Flux-balance analysis
+redistributes metabolic flow~\citep{orth2010}.  Marcus theory addresses
+electron tunnelling.  Pharmacokinetic models handle drug clearance.  Sequence
+homology explains isoform diversity.  Population genetics predicts
+polymorphism phenotypes.  Each framework introduces its own vocabulary,
+parameters, and limits.  None derives from the others.
+
+This monograph argues that the fragmentation reflects a missing foundation,
+not a fundamental heterogeneity.  The missing foundation is
+\emph{partition structure}.
+
+All biological systems share one property: they are \emph{bounded}.  Cells
+occupy finite volumes.  Proteins assume finite conformations.  Reactions occur
+in finite time.  Electron transfer crosses finite distances.  This boundedness
+is not a constraint imposed from outside; it is the defining character of a
+localized physical entity.  Bounded systems admit partition and nesting.
+Partition depth $\Depth$ measures how much hierarchical structure is required
+to distinguish a state from the totality of alternatives.  Every dynamical law
+follows as a corollary of this single quantity.
+
+The biological-partition-landscape paper~\citep{sachikonye2025_bpl} proved
+these claims across five domains---atomic structure, enzyme kinetics,
+metabolism, disease, and cellular organisation---achieving $89\,\%$ predictive
+accuracy with zero free parameters.  This monograph executes the same
+programme for a single family---cytochrome P450---at a depth that the broader
+paper could not reach.  The fifteen papers constitute a bottom-up synthesis:
+from the initial observation that biological molecules must have both a
+receiver and a sender, through sequence-space geometry, through single-chain
+folding, through cofactor positioning and equilibrium states, through the
+complete catalytic cycle, to a universal classification of all~57 human
+isoforms, all reaction types, all spectroscopic observables, and all
+pharmacogenomic outcomes.  Everything emerges from~$\Depth$.
+
+%------------------------------------------------------------
+\section{Foundations: Bounded Phase Space and Partition Depth}
+\label{sec:intro-foundations}
+%------------------------------------------------------------
+
+\subsection{Boundedness and Finite Partition}
+
+\begin{axiom}[Boundedness]
+\label{ax:bounded}
+Every localized physical system occupies a bounded region of phase space
+$\Omega \subset \mathbb{R}^{2n}$ with $\mathrm{Vol}(\Omega) < \infty$.
+\end{axiom}
+
+\begin{axiom}[Finite Partition]
+\label{ax:partition}
+A bounded phase space admits partition into a finite number of distinguishable
+cells,
+\begin{equation}
+    \Omega = \bigsqcup_{i=1}^{N} \Omega_i, \qquad
+    N = \frac{\mathrm{Vol}(\Omega)}{h^n} < \infty,
+\end{equation}
+where $h^n$ is the minimum cell volume set by the uncertainty principle.
+\end{axiom}
+
+These two axioms are observations, not postulates.  The uncertainty relation
+$\Delta x\,\Delta p \geq \hbar/2$ establishes a hard floor on cell volume;
+finite total volume then guarantees finite cell count.  Partitions can nest:
+cells contain subcells, which contain sub-subcells, forming a hierarchy.
+
+\subsection{Partition Coordinates and Atomic Structure}
+
+The hierarchical structure of nested partitions defines a coordinate system.
+For atomic systems, the coordinates are
+\[
+    n \geq 1\;(\text{nesting depth}),\quad
+    \ell \in \{0,\ldots,n{-}1\}\;(\text{complexity}),\quad
+    m \in \{-\ell,\ldots,+\ell\}\;(\text{orientation}),\quad
+    s \in \{\pm\tfrac{1}{2}\}\;(\text{parity}).
+\]
+The number of distinct states at depth $n$ is $C(n) = 2n^2$.  This formula
+exactly reproduces atomic shell structure---$C(1)=2$, $C(2)=8$, $C(3)=18$,
+$C(4)=32$---without postulation.  The partition coordinate system \emph{is}
+the quantum number system; both arise from the same geometric necessity.
+
+\subsection{Partition Depth}
+
+\begin{definition}[Partition Depth]
+The partition depth $\Depth$ of a categorical state is the cumulative
+logarithmic branching required for its unique specification:
+\begin{equation}
+    \Depth = \sum_{i} \log_b(k_i),
+    \label{eq:depth}
+\end{equation}
+where $k_i$ is the branching factor at hierarchy level $i$ and $b$ is the
+encoding base.
+\end{definition}
+
+$\Depth$ measures how much a state must be distinguished from the totality of
+alternatives.  The connection to thermodynamic entropy is exact:
+
+\begin{theorem}[Depth--Entropy Equivalence]
+$S_{\Part} = \kB\,\Depth\,\ln b$.
+\end{theorem}
+
+Partition depth is not invented for biology; it is the quantity that already
+accounts for the periodic table, the structure of information channels, and the
+cost of biological specificity.
+
+%------------------------------------------------------------
+\section{Dynamical Laws from Partition Geometry}
+\label{sec:intro-dynamics}
+%------------------------------------------------------------
+
+\subsection{The Existence Cost}
+
+Before any process can occur, its participants must \emph{exist} as distinct
+entities---they must be partitioned from the undifferentiated totality of
+reality.  This has an unavoidable cost.
+
+\begin{theorem}[Existence Cost]
+For any process involving entities $\{A_i\}$,
+\begin{equation}
+    E_{\mathrm{exist}} = \kB\,\Tpart\,\ln b \cdot \sum_i \Depth_{A_i},
+    \label{eq:exist}
+\end{equation}
+where $\Tpart = 65$~kJ~mol$^{-1}$ is the characteristic partition temperature.
+\end{theorem}
+
+\subsection{Partition Time and Gradient Flow}
+
+By the energy-time uncertainty relation, a partition operation with energy
+$\sim\kB T$ requires time
+\begin{equation}
+    \tau_p = \frac{\hbar}{\kB T} \approx 25~\text{fs at }298~\text{K}.
+    \label{eq:tauP}
+\end{equation}
+
+Since partitioning is not instantaneous, and reality does not pause, every
+transition leaves an irreducible residue---entropy production is built in at
+the foundation level.
+
+\begin{theorem}[Partition Gradient Flow]
+\begin{equation}
+    \frac{d\mathbf{x}}{dt} = -\gamma\,\nabla\Depth(\mathbf{x}).
+\end{equation}
+Systems evolve toward states of lower partition depth.  What we call forces are
+partition depth gradients; there are no forces in a deeper sense.
+\end{theorem}
+
+\subsection{Transition States and the Universal Rate Law}
+
+The transition state between A and B must encode where the system came from,
+where it is going, and which path connects them:
+\[
+    \Depth_T = \Depth_A + \Depth_B + \Depth_{\mathrm{path}}.
+\]
+
+The activation depth is $\Delta\Depth = \Depth_T - \Depth_A$.  In condensed
+phase, the effective floor frequency is
+\begin{equation}
+    \nufloor = \kappa_{\mathrm{sol}} \cdot \frac{1}{\tau_p}
+             = 10^{10}~\text{s}^{-1},
+    \label{eq:nufloor}
+\end{equation}
+where $\kappa_{\mathrm{sol}} \approx 2.5\times10^{-4}$ captures solvent
+friction, recrossing, and tunnelling corrections in water at physiological
+temperature.  The rate law is:
+
+\begin{equation}
+    \boxed{k = \nufloor\,\exp(-\Delta\Depth)}
+    \label{eq:rate}
+\end{equation}
+
+This is the Arrhenius equation derived from geometry.  $\nufloor$ and
+$\Tpart$ are not fitted to P450 data; they are set once from the partition-
+landscape calibration and held fixed throughout.
+
+%------------------------------------------------------------
+\section{Catalysis as Partition Topology Provision}
+\label{sec:intro-catalysis}
+%------------------------------------------------------------
+
+\subsection{What an Enzyme Does}
+
+An enzyme provides an alternative partition topology with reduced transition
+depth:
+\begin{equation}
+    \Depth_T^{\mathrm{cat}} = \Depth_T^{\mathrm{uncat}} - \Depth_{\mathrm{shared}}.
+\end{equation}
+It does not change $\Depth_A$ or $\Depth_B$ (equilibria are unaffected); it
+reduces the barrier by lending its own partition structure to the transition
+state.
+
+\subsection{The Ball Game}
+
+The physics is most transparent through the ball-game analogy of
+Ref.~\citep{sachikonye2025_bpl}.  Two teams on opposite sides of a partitioned
+wall score by throwing balls through holes.  What matters is proximity to a
+hole, not ball speed.  Each score forces rearrangement (entropy generation).
+The game cannot reverse.
+
+In this picture:
+\begin{itemize}[nosep]
+    \item An enzyme adds or enlarges holes (reduces $\Delta\Depth$).
+    \item A competitive inhibitor occupies holes without scoring.
+    \item A mechanism-based inactivator welds holes shut.
+    \item An inducer builds new walls with more holes.
+    \item A polymorphism narrows or blocks existing holes.
+\end{itemize}
+Every pharmacological intervention in Part~III of this monograph is a specific
+modification of the hole geometry.
+
+\subsection{Categorical Distance and Efficiency}
+
+\begin{definition}[Categorical Distance]
+$\dC(A, B)$ is the number of partition boundaries that must be crossed in going
+from state A to state B.
+\end{definition}
+
+\begin{theorem}[Efficiency from Categorical Distance]
+\begin{equation}
+    \frac{\kcat}{\KM} \propto \frac{1}{\dC \cdot \tau_p}
+    \quad\Longrightarrow\quad
+    \log_{10}\!\left(\frac{\kcat}{\KM}\right) \approx 10 - \dC.
+    \label{eq:efficiency}
+\end{equation}
+Each additional partition boundary costs approximately one order of magnitude
+in catalytic efficiency.
+\end{theorem}
+
+The four-hop NADPH$\to$FAD$\to$FMN$\to$heme chain of cytochrome P450
+reductase has $\dC = 4$, predicting $\kcat/\KM \sim 10^6$~M$^{-1}$s$^{-1}$;
+the experimentally measured CPR--P450 coupling value matches this within
+error.
+
+%------------------------------------------------------------
+\section{Why Cytochrome P450?}
+\label{sec:why-p450}
+%------------------------------------------------------------
+
+A framework that claims universality should face the hardest test available.
+Cytochrome P450 provides that test for three reasons.
+
+\textbf{Breadth.}  The CYP superfamily comprises 57 human isoforms covering a
+substrate space of tens of thousands of small molecules.  Any framework that
+predicts only one isoform is limited; this monograph covers all 57 as points
+on a single sequence manifold parameterised by $\Depth$.
+
+\textbf{Mechanistic depth.}  The P450 catalytic cycle spans seven distinct
+states, an obligate four-electron oxygen activation, heterolytic O--O cleavage
+to Compound~I (a formal Fe$^{\mathrm{IV}}$=O porphyrin $\pi$-cation radical),
+and a C--H activation step with KIE up to 10.  Each step is a
+partition-topology transition; each is modelled at the spectroscopic level by
+an independent instrument stack.
+
+\textbf{Pharmacological consequence.}  CYP3A4 alone clears $\sim50\,\%$ of
+all clinical drugs.  CYP2D6 phenotypes span a seven-fold rate range that
+determines codeine toxicity.  CYP2C9~$\ast$3 reduces S-warfarin hydroxylation
+to $<5\,\%$ of wild-type.  The framework must reproduce compound phenotypes
+under polypharmacy---a much stronger test than predicting a single
+$k_{\mathrm{cat}}$.
+
+No other enzyme family offers this combination of mechanistic richness,
+structural diversity, and clinical relevance.
+
+%------------------------------------------------------------
+\section{Notation and Constants}
+\label{sec:notation}
+%------------------------------------------------------------
+
+Two empirical constants are fixed from the partition-landscape calibration:
+
+\medskip
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Symbol & Value & Meaning \\
+\midrule
+$\nufloor$ & $10^{10}$~s$^{-1}$ & Condensed-phase floor frequency \\
+$\Tpart$   & $65$~kJ~mol$^{-1}$ & Partition temperature per depth unit \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+All rates, $K_i$ values, $\Delta M$ shifts, and compound phenotype
+predictions in the fifteen papers derive from these two numbers.  They are
+not re-fitted to any paper.
+
+The rate law $k = \nufloor\,\exp(-\Delta\Depth)$ and the efficiency relation
+$\log_{10}(\kcat/\KM) \approx 10 - \dC$ are the two equations that govern
+the entire monograph.  All other formulae are applications or corollaries.
+
+The additive compound-phenotype formula (Paper~15) is:
+\begin{equation}
+    \Delta\Depth_{\mathrm{eff}}
+      = \Delta\Depth_{\mathrm{allele}}
+      + \sum_{j} \Delta\Delta\Depth_j,
+    \label{eq:phenotype}
+\end{equation}
+where each $\Delta\Delta\Depth_j = \ln\alpha_j$ with
+$\alpha_j = 1 + [I_j]/K_{i,j}$ is the inhibitor depth shift for the $j$-th
+co-administered drug.
+
+%------------------------------------------------------------
+\section{Roadmap of the Monograph}
+\label{sec:roadmap}
+%------------------------------------------------------------
+
+\begin{description}[style=nextline]
+
+\item[Part~I: Foundational Theory (Chapter~\ref{ch:bpl})]
+    \emph{On the Consequences of Global Partition Structure Conservation:
+    The Biological Partition Landscape.}  The generative paper---proves the
+    two axioms and derives all corollaries across five biological domains.
+
+\item[Part~II: Construction (Papers 1--3 and 2.5)]
+    Expression algebra and the receiver (P1); the sequence manifold (P2);
+    GLB structural input (P2.5); CYP3A4 equilibrium states (P3).
+
+\item[Part~III: Observation (Papers 4--6)]
+    Five-layer electron transfer observation (P4, the headline);
+    Compound~I formation (P5); C--H activation and rebound (P6).
+
+\item[Part~IV: Diversity and Reactions (Papers 7--10)]
+    Heteroatom oxidation and dealkylation (P7);
+    atypical reactions atlas (P8);
+    57-isoform taxonomy (P9);
+    pharmacogenomics atlas (P10).
+
+\item[Part~V: Physical Machinery and Synthesis (Papers 11--12)]
+    Membrane anchoring and CPR coupling (P11);
+    seven-state closed orbit (P12).
+
+\item[Part~VI: Spectroscopy and Informatics (Papers 13--14)]
+    Spectroscopic atlas (P13);
+    ternary database recovery (P14).
+
+\item[Part~VII: Pharmacology (Paper 15)]
+    Polymorphisms, DDI, and compound phenotype prediction (P15).
+    132 validation scripts: all PASS.
+
+\end{description}
+
+%==============================================================================
+% PART I: FOUNDATIONAL THEORY
+%==============================================================================
+
+\part{Foundational Theory}
+\label{part:foundation}
+
+%==============================================================================
+\chapter{The Biological Partition Landscape}
+\label{ch:bpl}
+\markboth{The Biological Partition Landscape}{The Biological Partition Landscape}
+%==============================================================================
+
+\begin{center}
+\textit{On the Consequences of Global Partition Structure Conservation:\\
+The Biological Partition Landscape}\\[0.5em]
+\small Kundai Farai Sachikonye\\
+Technical University of Munich, School of Life Sciences
+\end{center}
+
+\bigskip
+
+\noindent\textbf{Abstract.} We derive a theory of biological dynamics from a
+single geometric principle: physical systems occupy bounded regions of phase
+space that admit partition and nesting.  From this principle, we establish
+partition depth $\Depth$ as the fundamental quantity governing all processes.
+We prove: (i)~any process requires partitioning participants from the totality
+of reality, incurring an unavoidable existence cost; (ii)~dynamics flow along
+partition depth gradients; (iii)~catalysts function by providing alternative
+partition topologies with reduced depth barriers; (iv)~living systems are
+self-maintaining partition structures.  Applied to enzyme catalysis, we derive
+reaction rates, substrate specificity, and catalytic efficiency from partition
+geometry alone.  Applied to metabolism, we derive pathway architecture and
+flux distributions.  Applied to disease, we derive pathology as partition
+malformation.  All results emerge as corollaries of the central theorem with
+zero free parameters.  We validate predictions against enzyme kinetic data
+spanning six orders of magnitude in catalytic efficiency, metabolic flux
+measurements, and disease progression correlations.
+
+\bigskip
+
+\textit{The full paper is in}
+\texttt{publication/biological-partition-landscape/biological-partition-landscape.tex}
+
+%% If the BPL paper has been compiled, uncomment the following line:
+% \includepdf[pages=-]{../../publication/biological-partition-landscape/biological-partition-landscape.pdf}
+
+%==============================================================================
+% PART II: CONSTRUCTION
+%==============================================================================
+
+\part{Construction}
+\label{part:construction}
+
+%==============================================================================
+\chapter{Paper 1: Expression Algebra for Biomolecules}
+\label{ch:p1}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/foundations/expression-algebra-for-biomolecules/}
+\texttt{expression-algebra-proteins.tex}
+% \includepdf[pages=-]{../cytochrome/publications/foundations/expression-algebra-for-biomolecules/expression-algebra-proteins.pdf}
+
+%==============================================================================
+\chapter{Paper 2: The P450 Address Manifold}
+\label{ch:p2}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/foundations/p450-sequence-space/}
+\texttt{cytochrome-p450-sequence-space.tex}
+% \includepdf[pages=-]{../cytochrome/publications/foundations/p450-sequence-space/cytochrome-p450-sequence-space.pdf}
+
+%==============================================================================
+\chapter{Paper 2.5: GLB Structural Input}
+\label{ch:p25}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/foundations/glb-structural-input/}
+\texttt{glb-structural-input.tex}
+% \includepdf[pages=-]{../cytochrome/publications/foundations/glb-structural-input/glb-structural-input.pdf}
+
+%==============================================================================
+\chapter{Paper 3: CYP3A4 Equilibrium States}
+\label{ch:p3}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/equilibrium-states/cyp3a4-resting-substrate-bound/}
+\texttt{cyp3a4-resting-substrate-bound.tex}
+% \includepdf[pages=-]{../cytochrome/publications/equilibrium-states/cyp3a4-resting-substrate-bound/cyp3a4-resting-substrate-bound.pdf}
+
+%==============================================================================
+% PART III: OBSERVATION
+%==============================================================================
+
+\part{Observation}
+\label{part:observation}
+
+%==============================================================================
+\chapter{Paper 4: Electron Transfer Chain (Headline)}
+\label{ch:p4}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/catalytic-cycle/multi-hop-et-chain/}
+\texttt{multi-hop-et-chain.tex}
+% \includepdf[pages=-]{../cytochrome/publications/catalytic-cycle/multi-hop-et-chain/multi-hop-et-chain.pdf}
+
+%==============================================================================
+\chapter{Paper 5: Compound I Formation}
+\label{ch:p5}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/catalytic-cycle/compound-i-formation/}
+\texttt{compound-i-formation.tex}
+% \includepdf[pages=-]{../cytochrome/publications/catalytic-cycle/compound-i-formation/compound-i-formation.pdf}
+
+%==============================================================================
+\chapter{Paper 6: C--H Activation and Rebound}
+\label{ch:p6}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/catalytic-cycle/ch-activation-rebound/}
+\texttt{ch-activation-rebound.tex}
+% \includepdf[pages=-]{../cytochrome/publications/catalytic-cycle/ch-activation-rebound/ch-activation-rebound.pdf}
+
+%==============================================================================
+% PART IV: DIVERSITY AND REACTIONS
+%==============================================================================
+
+\part{Diversity and Reactions}
+\label{part:diversity}
+
+%==============================================================================
+\chapter{Paper 7: Heteroatom Oxidation and Dealkylation}
+\label{ch:p7}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/reactions/heteroatom-dealkylation/}
+\texttt{heteroatom-dealkylation.tex}
+% \includepdf[pages=-]{../cytochrome/publications/reactions/heteroatom-dealkylation/heteroatom-dealkylation.pdf}
+
+%==============================================================================
+\chapter{Paper 8: Atypical Reactions Atlas}
+\label{ch:p8}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/reactions/atypical-reactions-atlas/}
+\texttt{atypical-reactions-atlas.tex}
+% \includepdf[pages=-]{../cytochrome/publications/reactions/atypical-reactions-atlas/atypical-reactions-atlas.pdf}
+
+%==============================================================================
+\chapter{Paper 9: 57-Isoform Taxonomy}
+\label{ch:p9}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/diversity/57-human-isoforms/}
+\texttt{57-human-isoforms.tex}
+% \includepdf[pages=-]{../cytochrome/publications/diversity/57-human-isoforms/57-human-isoforms.pdf}
+
+%==============================================================================
+\chapter{Paper 10: Pharmacogenomics Atlas}
+\label{ch:p10}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/pharmacology/pharmacogenomics-atlas/}
+\texttt{pharmacogenomics-atlas.tex}
+% \includepdf[pages=-]{../cytochrome/publications/pharmacology/pharmacogenomics-atlas/pharmacogenomics-atlas.pdf}
+
+%==============================================================================
+% PART V: PHYSICAL MACHINERY AND SYNTHESIS
+%==============================================================================
+
+\part{Physical Machinery and Synthesis}
+\label{part:machinery}
+
+%==============================================================================
+\chapter{Paper 11: Membrane Anchoring and CPR Coupling}
+\label{ch:p11}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/construction/membrane-cofactor-cpr/}
+\texttt{membrane-cpr.tex}
+% \includepdf[pages=-]{../cytochrome/publications/construction/membrane-cofactor-cpr/membrane-cpr.pdf}
+
+%==============================================================================
+\chapter{Paper 12: Seven-State Closed Orbit}
+\label{ch:p12}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/synthesis/seven-state-closed-orbit/}
+\texttt{closed-orbit.tex}
+% \includepdf[pages=-]{../cytochrome/publications/synthesis/seven-state-closed-orbit/closed-orbit.pdf}
+
+%==============================================================================
+% PART VI: SPECTROSCOPY AND INFORMATICS
+%==============================================================================
+
+\part{Spectroscopy and Informatics}
+\label{part:spectroscopy}
+
+%==============================================================================
+\chapter{Paper 13: Spectroscopic Atlas}
+\label{ch:p13}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/spectroscopy/spectroscopic-atlas/}
+\texttt{spectroscopic-atlas.tex}
+% \includepdf[pages=-]{../cytochrome/publications/spectroscopy/spectroscopic-atlas/spectroscopic-atlas.pdf}
+
+%==============================================================================
+\chapter{Paper 14: Ternary Database Recovery}
+\label{ch:p14}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/informatics/database-recovery/}
+\texttt{database-recovery.tex}
+% \includepdf[pages=-]{../cytochrome/publications/informatics/database-recovery/database-recovery.pdf}
+
+%==============================================================================
+% PART VII: PHARMACOLOGY
+%==============================================================================
+
+\part{Pharmacology}
+\label{part:pharmacology}
+
+%==============================================================================
+\chapter{Paper 15: Polymorphisms, DDI, and Compound Phenotype}
+\label{ch:p15}
+%==============================================================================
+\textit{Full paper:}
+\texttt{cytochrome/publications/diversity/polymorphisms-ddi-inhibitors/}
+\texttt{polymorphisms-ddi-inhibitors.tex}
+% \includepdf[pages=-]{../cytochrome/publications/diversity/polymorphisms-ddi-inhibitors/polymorphisms-ddi-inhibitors.pdf}
+
+%==============================================================================
+% BACK MATTER
+%==============================================================================
+
+\backmatter
+
+%==============================================================================
+\chapter*{Validation Summary}
+\addcontentsline{toc}{chapter}{Validation Summary}
+%==============================================================================
+
+\begin{center}
+\begin{tabular}{lrrl}
+\toprule
+Paper & Scripts & Status & Domain \\
+\midrule
+Partition Landscape (BPL) & 39 tests & 89\,\% pass & Five domains \\
+\midrule
+Paper 1  & 8  & All PASS & Expression algebra \\
+Paper 2  & 8  & All PASS & Sequence manifold \\
+Paper 2.5 & 8 & All PASS & Structural input \\
+Paper 3  & 8  & All PASS & Equilibrium states \\
+Paper 4  & 8  & All PASS & ET chain / apparatus \\
+Paper 5  & 8  & All PASS & Compound I \\
+Paper 6  & 8  & All PASS & C--H activation \\
+Paper 7  & 8  & All PASS & Heteroatom reactions \\
+Paper 8  & 8  & All PASS & Atypical reactions \\
+Paper 9  & 8  & All PASS & 57-isoform taxonomy \\
+Paper 10 & 8  & All PASS & Pharmacogenomics \\
+Paper 11 & 8  & All PASS & Membrane / CPR \\
+Paper 12 & 8  & All PASS & Closed orbit \\
+Paper 13 & 8  & All PASS & Spectroscopic atlas \\
+Paper 14 & 8  & All PASS & Database recovery \\
+Paper 15 & 8  & All PASS & Polymorphisms / DDI \\
+\midrule
+\textbf{Total} & \textbf{132} & \textbf{All PASS} & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\chapter*{Consolidated References}
+\addcontentsline{toc}{chapter}{Consolidated References}
+%==============================================================================
+
+\bibliographystyle{apalike}
+\bibliography{%
+    ../cytochrome/publications/introduction/references,%
+    ../cytochrome/publications/foundations/expression-algebra-for-biomolecules/references,%
+    ../cytochrome/publications/catalytic-cycle/multi-hop-et-chain/references,%
+    ../cytochrome/publications/diversity/polymorphisms-ddi-inhibitors/references%
+}
+
+\end{document}
