@@ -53,7 +53,17 @@
       "Bash(cp \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/publications/synthesis/seven-state-closed-orbit/figures/panel_\"*.png \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/public/panels/paper-12/\")",
       "Bash(cp \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/publications/reactions/heteroatom-dealkylation/figures/panel_\"*.png \"c:/Users/kunda/Documents/bioinformatics/levinthal/cytochrome/public/panels/paper-7/\" && echo \"P7 panels copied\")",
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\reactions\\\\atypical-reactions-atlas\" -Recurse -Force | ForEach-Object { $_.FullName })",
-      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\" -Recurse -Depth 2 | Where-Object { $_.PSIsContainer } | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\\",\"\"\\) })"
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\" -Recurse -Depth 2 | Where-Object { $_.PSIsContainer } | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\\",\"\"\\) })",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\\" -Recurse -Directory | Select-Object FullName | Sort-Object FullName)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\polymorphisms-ddi-inhibitors\\\\\" -Recurse -File | Select-Object -ExpandProperty FullName)",
+      "Bash(python 01_polymorphism_dm_shift.py)",
+      "Bash(python 02_competitive_inhibition_alpha.py)",
+      "Bash(python 03_mbi_inactivation.py)",
+      "Bash(python 04_induction_fold.py)",
+      "Bash(python 05_inhibitor_ranking.py)",
+      "Bash(python 06_compound_phenotype_ddi.py)",
+      "Bash(python 07_tdi_ic50_shift.py)",
+      "Bash(python 08_full_ddi_table.py)"
     ],
     "additionalDirectories": [
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures",
