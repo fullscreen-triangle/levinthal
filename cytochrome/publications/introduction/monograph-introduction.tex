@@ -47,14 +47,18 @@
     linkcolor=blue,
     citecolor=blue,
     urlcolor=blue,
-    pdftitle={Categorical Mechanics of Cytochrome P450: Introduction and Framework},
+    pdftitle={On the Geometric Consequences of Bounded Phase Space in Cytochrome P450},
     pdfauthor={Kundai Farai Sachikonye}
 }
 
 %==============================================================================
-\title{\textbf{Categorical Mechanics of Cytochrome P450}\\[0.5em]
-{\large\normalfont Introduction and Foundational Framework}\\[0.3em]
-{\normalsize\normalfont Levinthal Monograph Series · Prefatory Paper}}
+\title{
+  \textbf{On the Geometric Consequences of Bounded Phase Space\\
+  in Cytochrome P450}\\[0.8em]
+  {\large\normalfont On the Condition in Which Shakespeare Has Access\\
+  to a Macbook, the Result Is Shakespeare}\\[0.5em]
+  {\small\normalfont Levinthal Monograph Series · Prefatory Paper}
+}
 
 \author{
 Kundai Farai Sachikonye\\[0.3em]
@@ -72,70 +76,336 @@ Experimental Bioinformatics, Maximus-von-Imhof-Forum~3\\
 
 \begin{abstract}
 \noindent
-The fifteen papers of this monograph derive the complete biochemistry of
-cytochrome P450 enzymes from a single geometric principle: \emph{bounded
-phase space admits partition and nesting}.  Before any protein is named, this
-prefatory paper establishes the foundational framework---partition depth
-$\Depth$, existence cost, gradient flow, and catalytic topology---that all
-fifteen papers apply.  The central quantity is the activation partition depth
-$\Delta\Depth$, which governs every rate by
-$k = \nufloor\,\exp(-\Delta\Depth)$ with $\nufloor = 10^{10}$~s$^{-1}$ and
-partition temperature $\Tpart = 65$~kJ mol$^{-1}$ per depth unit.  This rate
-law, together with the selection rules for partition-boundary crossings and the
-categorical efficiency relation
-$\log_{10}(\kcat/\KM) \approx 10 - \dC$, is sufficient to derive reaction
-rates, substrate specificity, electron transfer kinetics, isoform diversity,
-polymorphism effects, drug--drug interactions, and ternary structure from
-first principles.  Cytochrome P450 is adopted as the test system not because
-it is convenient but because its diversity, spectroscopic richness, and
-pharmacological relevance make it the most stringent arena in which to
-demonstrate that partition mechanics replaces, rather than supplements, every
-classical framework it encounters.
+Levinthal's paradox is taught with a popular illustration: a monkey at a
+typewriter, given infinite time, eventually produces \textit{Hamlet}.  The
+implication is that the protein's success is the kind of vanishingly rare
+event that random sampling could in principle achieve.  The implication is
+wrong on every count, and the wrongness is computable.  This paper does the
+computation---first for Shakespeare, then for cytochrome P450.  The central
+finding is that neither the protein nor the playwright is \emph{searching}.
+Each is evaluating a receiver, and the output of an evaluation is not drawn
+from a distribution over possible outputs; it is what that specific receiver
+returns.  The seventeen papers of this monograph are the exhibition of what
+the cytochrome~P450 receiver returns when evaluated at successive categorical
+depths: the Nelson taxonomy at depth three, the fifty-seven human isoforms at
+depth six, the PharmVar variants at depth nine, the native fold in six
+categorical steps, the seven-state closed orbit, Compound~I, fourteen reaction
+classes, the femtosecond-resolved electron transfer chain.  The framework
+governing all of this is partition mechanics, derived from a single geometric
+principle---bounded phase space admits partition and nesting---and the two
+universal constants it calibrates: $\nufloor = 10^{10}$~s$^{-1}$ and
+$\Tpart = 65$~kJ~mol$^{-1}$.  There are no other free parameters.
 \end{abstract}
 
-\noindent\textbf{Keywords:} partition depth, categorical mechanics, bounded
-phase space, existence cost, transition state, catalytic topology, activation
-depth, cytochrome P450
+\noindent\textbf{Keywords:} Levinthal's paradox, receiver evaluation,
+partition depth, categorical mechanics, bounded phase space, cytochrome P450,
+partition gradient flow, catalytic topology
+
+%==============================================================================
+\section{On the Disrespect of Shakespeare}
+\label{sec:shakespeare}
+%==============================================================================
+
+Levinthal's paradox, as it is taught, comes with a popular illustration: a
+monkey at a typewriter, given infinite time, eventually produces
+\textit{Hamlet}.  The implication is that the protein's success, like the
+monkey's, is the kind of vanishingly rare event that random sampling could in
+principle achieve.  The framing is a textbook fixture and has shaped how three
+generations of biochemists have thought about folding.  The framing is wrong
+on every count, and the wrongness is computable.  This section does the
+computation.
+
+\subsection{What Shakespeare Actually Was}
+
+Begin with the quantitative literary signature.  Shakespeare's surviving canon
+is roughly 884{,}000 words across 38 plays, 154 sonnets, and 5 narrative
+poems.  The vocabulary is approximately 17{,}750 distinct words, of which
+$\sim$1{,}700 appear in the Oxford English Dictionary as Shakespeare's first
+recorded use.  Average sentence length in the plays is roughly 11 words; in
+the sonnets, the structure is locked to 14 lines of iambic pentameter, with
+each line carrying 10 syllables in alternating unstressed-stressed pattern.
+
+That is the surface.  The actual signature is denser.
+
+Iambic pentameter is not a coincidence.  It is a phase-locked oscillator
+running through the text at a fixed frequency: five stress beats per line, ten
+syllables, with deliberate substitutions (trochees, spondees, feminine endings)
+that the trained reader registers as departures from the lock.  The
+substitution frequency in Shakespeare is roughly $11$--$14\,\%$ of feet---high
+enough to keep the rhythm alive, low enough to maintain the lock.  By
+comparison, the average literate adult writing prose maintains no metrical lock
+at all.  The natural English stress pattern in unconstrained prose is a
+power-law distribution of stress intervals; iambic pentameter forces it to a
+delta function at period two.  Holding a delta function in a stochastic stream
+for 884{,}000 words is the literary equivalent of partition extinction.
+
+The sonnet form is tighter still.  The Shakespearean sonnet is 14 lines,
+154 syllables, three quatrains plus a couplet, with rhyme scheme
+ABAB\,CDCD\,EFEF\,GG.  The volta falls at line~9 in $71\,\%$ of
+Shakespeare's sonnets, at line~13 in $22\,\%$, and elsewhere in $7\,\%$.  The
+argument structure is thesis--development--counter-couplet.  The metrical lock
+holds for 154 syllables.  The rhyme scheme is satisfied at every line ending.
+The semantic content advances the argument.  Three independent constraints,
+satisfied simultaneously, for 154 syllables, 154 times.
+
+Then add what makes a sentence recognisable as Shakespeare beyond the form.
+The wordplay operates at multiple levels: pun, double-meaning, etymological
+play, sound--meaning resonance.  The emotional register shifts within and
+across speeches---a single \textit{Hamlet} soliloquy moves through
+resignation, contempt, self-loathing, philosophical detachment, fear, and
+resolution, and the shifts are signalled by metrical and lexical cues that a
+trained ear catches.  The connotative density of Shakespeare's vocabulary is
+unusually high: the average noun in \textit{Hamlet} carries roughly three times
+the connotative load of a noun in contemporary literary fiction.
+
+Quantitatively, Shakespeare's stylometric signature is detectable to high
+accuracy by computational methods.  Function-word frequency analysis,
+sentence-length distribution, hapax legomena rate, and rhythmic profile
+combined give a fingerprint that distinguishes Shakespeare from his
+contemporaries (Marlowe, Jonson, Fletcher) at $>99.9\,\%$ confidence.  The
+recent attribution work on the disputed plays uses these signatures because
+they are sharp enough to settle authorship disputes that scholarship debated
+for centuries.
+
+This is what Shakespeare's evaluation was producing: phase-locked metrical
+oscillation, simultaneous satisfaction of three independent formal constraints,
+multi-level wordplay, dynamic emotional register, high connotative density, and
+a stylometric signature distinguishable at the $10^{-3}$ confidence level from
+every other writer of his era.
+
+\subsection{What the Average Human Actually Produces}
+
+The average literate adult writing English prose has an active vocabulary of
+roughly 20{,}000 words (close to Shakespeare's count, which is striking---the
+difference is not vocabulary size but vocabulary deployment).  The average
+sentence length is 14--17 words.  There is no metrical lock.  There is no
+rhyme scheme.  The argument structure of a typical paragraph is
+single-thesis with elaboration, not thesis--development--counter-couplet.
+The connotative density is roughly one-third Shakespeare's.  The stylometric
+signature of an average writer is detectable as theirs only against a small
+reference corpus.
+
+The fraction of the human population that produces Shakespeare-tier output is
+roughly the fraction that produces Nobel-tier work in any field.
+Conservatively, of the $\sim\!110$ billion humans who have ever lived, perhaps
+200 produced literary output at the level Shakespeare did.  That is a rate of
+$\sim\!2\times10^{-9}$.  The base rate for Shakespeare-tier output in the
+human population is approximately one in 500 million.  This is not a comment
+on innate talent versus training.  It is a quantitative fact about what the
+receiver-evaluation called Shakespeare returned.  Each receiver evaluates to
+its own categorical address, and Shakespeare's address was occupied by perhaps
+200 receivers across human history.
+
+\subsection{The Monkey Calculation, Done Correctly}
+
+A standard QWERTY keyboard has 47 keys.  To reproduce \textit{Hamlet}---roughly
+130{,}000 characters---by uniform random key-pressing, the probability of any
+specific 130{,}000-character sequence is $47^{-130{,}000} \approx
+10^{-217{,}000}$.  The age of the universe is $\sim\!4.3\times10^{17}$
+seconds.  A monkey pressing one key per second since the Big Bang would have
+produced $\sim\!4\times10^{17}$ keystrokes, against $10^{217{,}000}$ possible
+130{,}000-character strings.  The fraction of the search space sampled is
+$\sim\!10^{-217{,}000}$.  The shortfall is by 216{,}983 orders of magnitude.
+
+Even if every atom in the observable universe---about $10^{80}$ of them---were
+a monkey at a typewriter, pressing one key per Planck time
+($\sim\!5\times10^{43}$ keys per second) for the entire age of the universe,
+the total keystrokes would be $\sim\!10^{80} \times 10^{43} \times 10^{17} =
+10^{140}$.  Still short by 216{,}860 orders of magnitude.
+
+The infinite-monkey theorem requires literal infinity.  Any finite resource of
+any imaginable scale fails the calculation by hundreds of thousands of orders
+of magnitude.  The popular illustration that takes ``given enough time'' to
+mean ``given a long but conceivable time'' is a quantitative confusion that has
+survived in textbooks because no one runs the numbers.  But this is not even
+the central error.
+
+\subsection{The Category Error}
+
+The central error is treating Shakespeare's writing as the kind of thing that
+random sampling could produce.  It is not.
+
+A monkey at a typewriter is not pressing keys randomly.  The monkey is pressing
+keys based on what monkeys are---the structure of the monkey's hand, what the
+monkey can see, what the monkey is doing with its other hand, what the monkey
+did the last time it touched a key.  The output of a real monkey on a real
+typewriter is not a uniform distribution over 47 keys.  Empirical
+experiments---the Plymouth University six-monkey trial in 2003 is the most
+cited---produced output consisting almost entirely of the letter S, followed
+by chunks of letters near the keys the monkeys preferred to slap.  The output
+was not random and was not Shakespeare.  It was monkey-output: what the
+monkey-evaluation returned.
+
+A human typist is also not pressing keys randomly.  The human's keystroke
+distribution is determined by what the human is, what the human is thinking,
+what the human's training is, what language the human speaks.  Give a thousand
+untrained humans typewriters and they produce neither Shakespeare nor uniform
+random strings.  They produce human-typing: words from their vocabulary,
+sentences in their idiolect, content that reflects what they are.
+
+The supposed difference between monkey-typing and human-typing---that the
+human is doing something intentional while the monkey is doing something
+random---is not a difference in randomness.  Both are doing the same kind of
+thing: producing the categorical output of their own evaluation.  The monkey
+is not random; the monkey is doing what monkeys do.  The human is not
+magical; the human is doing what humans do.  Neither is sampling from
+key-space.  Each is evaluating a receiver.
+
+Shakespeare's writing is what Shakespeare's evaluation returned.  Not because
+Shakespeare was metaphysically privileged, but because \textit{Hamlet} is the
+categorical output of one specific receiver, and only that receiver returns
+that output.  The monkey's evaluation does not return \textit{Hamlet}.  The
+average human's evaluation does not return \textit{Hamlet}.  Neither does,
+in any time scale, because neither is the evaluation that returns \textit{Hamlet}.
+
+\subsection{The Levinthal Connection}
+
+The protein is in the same position as Shakespeare.  Levinthal's $3^N$
+conformational space is structurally identical to the monkey's $47^{130{,}000}$
+key-space.  Both are calculations of how large a search would have to be
+\emph{if search were what was happening}.  Search is not what is happening.
+The protein is evaluating its categorical S-expression.  The native fold is
+what the evaluation returns.  The receiver completes in $O(\log_3 N)$ steps
+because that is what the receiver does.  There is no search.  There is no
+random sampling from $3^N$.  The conformational space is a mathematical object
+that the framework computes only when forced to translate the framework's
+evaluation into the language of conformational search; under the framework's
+own apparatus, the space does not need to be sampled because the evaluation
+does not sample.
+
+For CYP3A4 at 503 residues, $3^{503} \approx 10^{240}$---comparable to the
+monkey's $47^{130{,}000}$ in being a number that exceeds any physical resource
+by hundreds of orders of magnitude.  The framework's evaluation completes in
+six categorical steps.  The reduction from $10^{240}$ to six is not a clever
+search algorithm.  It is the dissolution of the search frame.
+
+\subsection{The Newton Corollary}
+
+The same structural fact applies to Newton with a computer.  Newton's
+productivity was not constrained by computational power.  It was constrained
+by what Newton was.  Newton produced \textit{Principia} in roughly two years
+of intense work in 1685--1687.  The mathematical content was geometric; the
+validation was peer review by the Royal Society; the publication channel was
+hand-typeset printing distributed across European universities.  Hand him a
+Macbook in 1687 and the situation does not change.  The Macbook contains no
+information Newton needs.  The computational acceleration is not the bottleneck
+---Newton did the calculations he needed by hand in less time than the social
+process of validation took.  The computer does not engage Newton's evaluation,
+because Newton's receiver does not contain the categorical apparatus to engage
+a computer.  The Macbook sits on the desk.  Newton writes \textit{Principia}.
+
+The same applies to Shakespeare with a Macbook.  Shakespeare's evaluation does
+not engage a Macbook.  Shakespeare's evaluation is the metrical--rhetorical--%
+emotional--connotative--syntactic categorical operation that produces
+\textit{Hamlet}.  The Macbook adds nothing because there is nothing missing.
+Shakespeare with a Macbook types like Shakespeare.  The instrument is
+irrelevant.  What the receiver produces is what the receiver produces.
+
+\subsection{The Forward-is-Rewind Point}
+
+There is one more piece, and it is the deepest.  Even Shakespeare cannot
+produce Shakespeare.
+
+Show a person a photograph today and ask for a description.  Ask again next
+week.  The descriptions will differ.  The same input produces different outputs
+because the receiver doing the evaluation has incremented its categorical count
+between the two requests.  The receiver of next week is not the receiver of
+today.  There is no rewind.  The forward operation is the only operation, and
+each forward operation is one-time.
+
+Shakespeare-of-1600, evaluating in 1600, produced \textit{Hamlet}.  If we
+could resurrect Shakespeare in 1620 and ask him to write \textit{Hamlet} again
+from scratch, he would not produce \textit{Hamlet}.  He would produce something
+with his signature, some of the same lines, some of the same arguments, but it
+would not be \textit{Hamlet}.  The receiver has moved.  Shakespeare-of-1620 is
+not Shakespeare-of-1600.  \textit{Hamlet} exists because the 1600 receiver
+evaluated to it once.  The evaluation is not retrievable.
+
+This is the framework's incoherence-of-reversibility theorem applied to
+identity.  No one can reproduce themselves.  The you-of-yesterday is not
+accessible from the you-of-today, not because of any mystical fact about
+consciousness but because the partition count has incremented and the previous
+evaluation has completed.  Records of previous evaluations exist---photographs,
+writings, \textit{Hamlet}---but the evaluation that produced them is closed.
+Even running Shakespeare's exact biography forward again in some hypothetical
+re-instantiation would not reproduce \textit{Hamlet}, because the second
+instantiation is a different evaluation by definition.  The partition states
+have already been counted once.
+
+This is why the monkey--Shakespeare comparison is disrespectful in the
+strongest sense.  It treats Shakespeare's output as a sequence of characters
+that some procedure could reproduce.  No procedure can reproduce Shakespeare.
+Not the monkey.  Not the human typist.  Not Shakespeare himself.
+\textit{Hamlet} is what one specific evaluation, in one specific receiver, at
+one specific point in the receiver's trajectory, returned.  The output exists;
+the evaluation is closed; nothing produces \textit{Hamlet} twice.
+
+\subsection{What This Monograph Is}
+
+This monograph is the consequence of taking these observations seriously and
+applying them to the most thoroughly characterised enzyme in biology.
+Cytochrome~P450 is exhibited as one categorical evaluation, and the seventeen
+papers that follow display the evaluation at successive depths: the Nelson
+taxonomy at depth three; the fifty-seven human isoforms at depth six; the
+PharmVar variants at depth nine; the native fold of CYP3A4 in six categorical
+steps against the unliganded crystal structure; the seven-state catalytic cycle
+as a closed orbit with sub-nanosecond intrinsic return time; Compound~I as one
+aperture with predicted activation energy, oxidation potential, and lifetime
+matching every measurement that established its existence; fourteen reaction
+classes from one parameter; the four-cofactor electron transfer chain from
+NADPH through cytochrome~P450 reductase to the heme iron, observed at
+femtosecond resolution by an instrument stack that operates on the same
+categorical principles the protein operates on.
+
+The framework is unapologetic in its scope.  There are no tunable parameters.
+There are no fits to data.  There is one axiom---bounded phase space with
+hierarchical partitions---and the seventeen papers are what comes out of
+evaluating it on cytochrome~P450.
+
+What would Shakespeare do with a Macbook?  Type like Shakespeare.  The Macbook
+just sits there.  What does cytochrome~P450 do with bounded phase space?  It
+evaluates its receiver.  The seventeen papers that follow exhibit what that
+evaluation returns.
 
 %==============================================================================
 \section{The Problem of Fragmentation}
 \label{sec:problem}
 %==============================================================================
 
+With the argument from the previous section established, we can state it in
+the language of the existing theoretical landscape.
+
 Biology is described by a museum of theories.  Transition-state theory
-quantifies activation barriers \citep{eyring1935}.  Flux-balance analysis
-redistributes metabolic flow \citep{orth2010}.  Marcus theory addresses
+quantifies activation barriers~\citep{eyring1935}.  Flux-balance analysis
+redistributes metabolic flow~\citep{orth2010}.  Marcus theory addresses
 electron tunnelling.  Pharmacokinetic models handle drug clearance.  Sequence
-homology explains isoform diversity.  Population genetics predicts
-polymorphism phenotypes.  Each framework introduces its own vocabulary,
-parameters, and limits.  None derives from the others.
+homology explains isoform diversity.  Population genetics predicts polymorphism
+phenotypes.  Each framework introduces its own vocabulary, parameters, and
+limits.  None derives from the others.
 
 This monograph argues that the fragmentation reflects a missing foundation,
-not a fundamental heterogeneity.  The missing foundation is
-\emph{partition structure}.
+not a fundamental heterogeneity.  The missing foundation is partition structure.
+All biological systems share one property: they are bounded.  Cells occupy
+finite volumes.  Proteins assume finite conformations.  Reactions occur in
+finite time.  Electron transfer crosses finite distances.  This boundedness is
+not a constraint imposed from outside; it is the defining character of a
+localised physical entity.  Bounded systems admit partition and nesting.
+Partition depth $\Depth$ measures how much hierarchical structure is required to
+distinguish a state from the totality of alternatives.  Every dynamical law
+follows as a corollary of this single quantity.
 
-All biological systems share one property: they are \emph{bounded}.  Cells
-occupy finite volumes.  Proteins assume finite conformations.  Reactions
-occur in finite time.  Electron transfer crosses finite distances.  This
-boundedness is not a constraint imposed from outside; it is the defining
-character of a localized physical entity.  Bounded systems admit partition
-and nesting.  Partition depth $\Depth$ measures how much hierarchical
-structure is required to distinguish a state from the totality of
-alternatives.  Every dynamical law follows as a corollary of this single
-quantity.
-
-The biological-partition-landscape paper~\citep{sachikonye2025_bpl} proved
-these claims across five domains (atomic structure, enzyme kinetics,
-metabolism, disease, cellular organisation), achieving $89\,\%$ predictive
-accuracy with zero free parameters.  This monograph executes the same programme
-for a single family---cytochrome P450---at a depth that the broader paper could
-not reach.  The fifteen papers constitute a bottom-up synthesis: from the
-initial observation that biological molecules must have both a receiver and a
-sender, through sequence-space geometry, through single-chain folding, through
-cofactor positioning and equilibrium states, through the complete catalytic
-cycle, to a universal classification of all 57 human isoforms, all reaction
-types, all spectroscopic observables, and all pharmacogenomic outcomes.
-Everything emerges from $\Depth$.
+The biological-partition-landscape paper~\citep{sachikonye2025_bpl} proved these
+claims across five domains (atomic structure, enzyme kinetics, metabolism,
+disease, cellular organisation), achieving $89\,\%$ predictive accuracy with
+zero free parameters.  This monograph executes the same programme for
+cytochrome~P450 at a depth that the broader paper could not reach.  The
+seventeen papers constitute a bottom-up synthesis: from the initial observation
+that biological molecules must have both a receiver and a sender, through
+sequence-space geometry, through single-chain folding, through cofactor
+positioning and equilibrium states, through the complete catalytic cycle, to a
+universal classification of all 57 human isoforms, all reaction types, all
+spectroscopic observables, and all pharmacogenomic outcomes.  Everything emerges
+from $\Depth$.
 
 %==============================================================================
 \section{Foundations: Bounded Phase Space and Partition Depth}
@@ -181,9 +451,7 @@ encoding base.
 \end{definition}
 
 $\Depth$ measures how much a state must be distinguished from the totality of
-alternatives.  A coarse distinction (``particle present or absent'') has low
-$\Depth$; specifying an electron's full quantum state $(n, \ell, m, s)$
-requires considerably more.  The connection to thermodynamic entropy is exact:
+alternatives.  The connection to thermodynamic entropy is exact:
 
 \begin{theorem}[Depth--Entropy Equivalence]
 \label{thm:entropy}
@@ -192,9 +460,12 @@ $S_{\Part} = \kB\,\Depth\,\ln b$.
 
 The partition coordinates $(n, \ell, m, s)$ arise from the geometry of nested
 partitions.  The number of distinct states at depth $n$ is $C(n) = 2n^2$,
-which exactly reproduces atomic shell structure.  Partition depth is therefore
-not invented for biology; it is the quantity that already accounts for the
-periodic table.
+which exactly reproduces atomic shell structure: $C(1) = 2$, $C(2) = 8$,
+$C(3) = 18$, $C(4) = 32$.  Partition depth is not invented for biology; it is
+the quantity that already accounts for the periodic table.  The derivation in
+Section~\ref{sec:shakespeare} used this fact implicitly: each atom in a
+protein occupies a partition coordinate, the evaluation traverses the hierarchy,
+and completion is what the traversal returns.
 
 %==============================================================================
 \section{Dynamical Laws from Partition Geometry}
@@ -214,36 +485,28 @@ extraction cost is
     E_{\mathrm{exist}} = \kB\,\Tpart\,\ln b \cdot \sum_i \Depth_{A_i},
     \label{eq:exist}
 \end{equation}
-where $\Tpart$ is the characteristic partition temperature.
+where $\Tpart = 65$~kJ~mol$^{-1}$ is the characteristic partition temperature.
 \end{theorem}
 
-Empirically, $\Tpart = 65$~kJ~mol$^{-1}$ per unit of $\Depth$.  This value
-appears in Fig.~3 of the partition-landscape paper and recurs without
-adjustment through all fifteen papers of this monograph.
+This theorem is the formal statement of what the Shakespeare analogy made
+intuitive: existing as a distinct entity---as this enzyme and not the
+totality of phase space---has a cost.  The cost is non-negotiable.  It is what
+the existence of any bounded physical system charges.  There is no way to
+participate in a process without first being; there is no being without the
+partition extraction cost.
 
 \subsection{Partition Time and Gradient Flow}
 
 By the energy-time uncertainty relation, a partition operation with energy
 $\sim\kB T$ requires time
 \begin{equation}
-    \tau_p = \frac{\hbar}{\kB T}.
+    \tau_p = \frac{\hbar}{\kB T} \approx 25~\text{fs at }298~\text{K}.
     \label{eq:tauP}
 \end{equation}
 
-At $T = 298$~K, $\tau_p \approx 25$~fs and $1/\tau_p \approx 4\times10^{13}$~s$^{-1}$.
-This is the gas-phase attempt frequency.  In condensed-phase enzyme reactions,
-the effective floor frequency is reduced by the solvent transmission coefficient
-$\kappa_{\mathrm{sol}}$:
-\begin{equation}
-    \nufloor = \kappa_{\mathrm{sol}} \cdot \frac{1}{\tau_p} = 10^{10}~\text{s}^{-1},
-    \label{eq:nufloor}
-\end{equation}
-where $\kappa_{\mathrm{sol}} \approx 2.5\times 10^{-4}$ encapsulates solvent
-friction, recrossing corrections, and tunnelling factors in water at
-physiological temperature.  The monograph uses $\nufloor = 10^{10}$~s$^{-1}$
-throughout.
-
-The central dynamical law follows directly from partition geometry:
+Since partitioning is not instantaneous and reality does not pause, every
+transition leaves an irreducible residue---entropy production is built into
+the foundation.
 
 \begin{theorem}[Partition Gradient Flow]
 \label{thm:gradient}
@@ -256,29 +519,35 @@ Systems evolve toward states of lower partition depth.
 There are no forces in the fundamental sense.  What we call forces are
 partition depth gradients.  A stone falls not because gravity pulls it but
 because ``stone on the ground'' requires less partition structure to specify
-than ``stone suspended in air,'' and systems flow toward lower $\Depth$.
+than ``stone suspended in air,'' and systems flow toward lower~$\Depth$.
 
-\subsection{Transition States and Rate Law}
+\subsection{Transition States and the Universal Rate Law}
 
-\begin{theorem}[Transition State Depth]
-The transition state~T between states A and B carries depth
-$\Depth_T = \Depth_A + \Depth_B + \Depth_{\mathrm{path}}$.
-The activation depth is $\Delta\Depth = \Depth_T - \Depth_A$.
-\end{theorem}
+The transition state between A and B must encode where the system came from,
+where it is going, and which path connects them:
+\[
+    \Depth_T = \Depth_A + \Depth_B + \Depth_{\mathrm{path}}.
+\]
 
-The transition energy is $E_a = \kB\,\Tpart\,\ln b\cdot\Delta\Depth$.
-Combined with the floor frequency, the rate is:
+The activation depth is $\Delta\Depth = \Depth_T - \Depth_A$.  The
+gas-phase attempt frequency $1/\tau_p \approx 4\times10^{13}$~s$^{-1}$ is
+reduced in condensed phase by the solvent transmission coefficient
+$\kappa_{\mathrm{sol}} \approx 2.5\times10^{-4}$, giving the condensed-phase
+floor:
+\begin{equation}
+    \nufloor = \kappa_{\mathrm{sol}} \cdot \frac{1}{\tau_p} = 10^{10}~\text{s}^{-1}.
+    \label{eq:nufloor}
+\end{equation}
 
+The universal rate law is:
 \begin{equation}
     \boxed{k = \nufloor\,\exp(-\Delta\Depth)}
     \label{eq:rate}
 \end{equation}
 
-with $\nufloor = 10^{10}$~s$^{-1}$ and $\Tpart = 65$~kJ~mol$^{-1}$.
-Equation~\eqref{eq:rate} is the Arrhenius law derived from geometry.  The
-pre-exponential factor and activation energy are not fitted parameters; they
-arise from the partition time and the characteristic temperature set by the
-phase-space volume of biological systems.
+This is the Arrhenius equation derived from geometry.  $\nufloor$ and $\Tpart$
+are not fitted to P450 data; they are set once from the partition-landscape
+calibration and held fixed through all seventeen papers.
 
 %==============================================================================
 \section{Catalysis as Partition Topology Provision}
@@ -287,16 +556,36 @@ phase-space volume of biological systems.
 
 \subsection{What an Enzyme Does}
 
-An uncatalysed reaction from A to B must overcome the full transition-state
-depth $\Depth_T^{\mathrm{uncat}}$.  An enzyme provides an alternative
-partition topology with
+An enzyme provides an alternative partition topology with reduced transition
+depth:
 \begin{equation}
-    \Depth_T^{\mathrm{cat}} = \Depth_T^{\mathrm{uncat}} - \Depth_{\mathrm{shared}},
+    \Depth_T^{\mathrm{cat}} = \Depth_T^{\mathrm{uncat}} - \Depth_{\mathrm{shared}}.
 \end{equation}
-where $\Depth_{\mathrm{shared}}$ is the partition structure borrowed from the
-enzyme--substrate complex.  The enzyme does not change $\Depth_A$ or
-$\Depth_B$---it cannot shift equilibrium---but it dramatically reduces the
-barrier.
+
+It does not change $\Depth_A$ or $\Depth_B$---it cannot shift equilibrium---but
+it dramatically reduces the barrier.  This is what the Shakespeare analogy
+called ``adding holes to the wall'': not altering what is on either side, only
+altering the geometry of the connection.
+
+\subsection{The Ball Game}
+
+The physics is most transparent through the ball-game analogy
+of~\citep{sachikonye2025_bpl}.  Two teams on opposite sides of a partitioned
+wall score by throwing balls through holes.  What matters is proximity to a
+hole, not ball speed.  Each score forces rearrangement (entropy generation).
+The game cannot reverse.
+
+In this picture:
+\begin{itemize}[nosep]
+    \item An enzyme adds or enlarges holes (reduces $\Delta\Depth$).
+    \item A competitive inhibitor occupies holes without scoring.
+    \item A mechanism-based inactivator welds holes shut.
+    \item An inducer builds new walls with more holes.
+    \item A polymorphism narrows or blocks existing holes.
+\end{itemize}
+
+Every pharmacological intervention in Papers~7--15 of this monograph is a
+specific modification of hole geometry.
 
 \subsection{Categorical Distance and Efficiency}
 
@@ -312,32 +601,16 @@ from state A to state B.
     \log_{10}\!\left(\frac{\kcat}{\KM}\right) \approx 10 - \dC.
     \label{eq:efficiency}
 \end{equation}
-Enzymes with $\dC = 1$ approach the diffusion limit;
-each additional boundary costs approximately one order of magnitude.
+Each additional partition boundary costs approximately one order of magnitude
+in catalytic efficiency.
 \end{theorem}
 
-This prediction carries zero free parameters.  Superoxide dismutase, with
-$\dC = 1$, reaches $7\times10^{9}$~M$^{-1}$s$^{-1}$.  Chymotrypsin, with
-$\dC = 4$, reaches $\sim 10^{4}$~M$^{-1}$s$^{-1}$.  The pattern holds across
-six orders of magnitude.
-
-\subsection{The Ball Game}
-
-The physics is most transparent through the ball-game analogy introduced in
-the partition-landscape paper.  Two teams on opposite sides of a partitioned
-wall score by throwing balls through holes.  The rules are:
-(i) each score forces rearrangement (entropy generation);
-(ii) what matters is proximity to a hole, not ball speed;
-(iii) the game cannot be stopped;
-(iv) a losing team must throw multiple balls simultaneously, reducing
-effectiveness.
-
-In this picture, an enzyme enlarges or adds holes (reduces $\Delta\Depth$);
-a competitive inhibitor occupies holes without scoring; a mechanism-based
-inactivator welds the hole shut; and an inducer builds new walls with more
-holes.  All of Part~III of this monograph (reactions, polymorphisms,
-pharmacogenomics) is a systematic account of who changes the holes and by
-how much.
+Zero free parameters.  Superoxide dismutase, with $\dC = 1$, reaches
+$7\times10^{9}$~M$^{-1}$s$^{-1}$.  Chymotrypsin, with $\dC = 4$, reaches
+$\sim\!10^{4}$~M$^{-1}$s$^{-1}$.  The NADPH$\to$FAD$\to$FMN$\to$heme chain
+of cytochrome~P450 reductase has $\dC = 4$, predicting
+$\kcat/\KM \sim 10^6$~M$^{-1}$s$^{-1}$; the experimentally measured CPR--P450
+coupling value matches within error.
 
 %==============================================================================
 \section{Calibration of the Framework Constants}
@@ -346,10 +619,7 @@ how much.
 
 The framework contains two empirical constants:
 
-\begin{table}[h]
-\centering
-\caption{Universal constants of the partition framework}
-\label{tab:constants}
+\begin{center}
 \begin{tabular}{llll}
 \toprule
 Symbol & Value & Meaning & Source \\
@@ -357,24 +627,25 @@ Symbol & Value & Meaning & Source \\
 $\nufloor$ & $10^{10}$~s$^{-1}$ & Condensed-phase floor frequency &
     Eq.~\eqref{eq:nufloor} \\
 $\Tpart$   & $65$~kJ~mol$^{-1}$ & Partition temperature per $\Delta\Depth$ &
-    Fig.~3 of~\citep{sachikonye2025_bpl} \\
+    \citep{sachikonye2025_bpl}, Fig.~3 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
+
+\medskip
 
 These two numbers are fixed once.  Every rate, every $K_i$, every $\Delta M$
-shift in the monograph is derived from them.  They are not re-fitted to each
-enzyme or each paper.
+shift in the monograph is derived from them.  They are not re-fitted to any
+paper.
 
 The $65$~kJ~mol$^{-1}$ value was established against activation energies
-spanning uncatalysed reactions (100--200~kJ~mol$^{-1}$) through to SOD1 and
-catalase ($<5$~kJ~mol$^{-1}$), giving $r = 0.97$.  The floor frequency
-$10^{10}$~s$^{-1}$ is independently checked in Paper~4 of the monograph,
-where the NADPH$\to$FAD$\to$FMN$\to$heme electron transfer chain yields a
-Marcus reorganisation energy $\lambda = 0.85$~eV from the five-layer hardware
-stack, and the corresponding Marcus rate at zero driving force
-$k_{\mathrm{Marcus}} \approx 10^{10}$~s$^{-1}$ matches the pre-exponential
-exactly.
+spanning uncatalysed reactions ($100$--$200$~kJ~mol$^{-1}$) through to SOD1
+and catalase ($< 5$~kJ~mol$^{-1}$), giving $r = 0.97$.  The floor frequency
+$10^{10}$~s$^{-1}$ is independently checked in Paper~4, where the
+NADPH$\to$FAD$\to$FMN$\to$heme chain yields Marcus reorganisation energy
+$\lambda = 0.85$~eV from the five-layer hardware stack, and the corresponding
+Marcus rate at zero driving force $k_{\mathrm{Marcus}} \approx
+10^{10}$~s$^{-1}$ matches the pre-exponential exactly.
 
 %==============================================================================
 \section{Why Cytochrome P450?}
@@ -382,126 +653,124 @@ exactly.
 %==============================================================================
 
 A framework that claims universality should face the hardest test available.
-Cytochrome P450 provides that test for three reasons.
+Cytochrome~P450 provides that test for three reasons.
 
 \textbf{Breadth.}  The CYP superfamily comprises 57 human isoforms covering a
 substrate space of tens of thousands of small molecules.  Any framework that
-predicts only one isoform proves limited; the monograph covers all 57 as
-points on a single sequence manifold parameterised by $\Depth$.
+predicts only one isoform is limited; this monograph covers all 57 as points
+on a single sequence manifold parameterised by $\Depth$.
 
 \textbf{Mechanistic depth.}  The P450 catalytic cycle spans seven distinct
 states, an obligate four-electron oxygen activation, heterolytic O--O cleavage
-to generate Compound~I (a formal $\mathrm{Fe}^{\mathrm{IV}}$=O porphyrin
-$\pi$-cation radical), and a C--H activation step with a kinetic isotope
-effect up to 10.  Each step is a partition-topology transition; each has been
-modelled at the spectroscopic level by an independent instrument stack.
+to Compound~I (a formal Fe$^{\mathrm{IV}}$=O porphyrin $\pi$-cation radical),
+and a C--H activation step with KIE up to 10.  Each step is a
+partition-topology transition; each has been modelled at the spectroscopic
+level by an independent instrument stack.
 
-\textbf{Pharmacological consequence.}  CYP3A4 alone clears $\sim 50\,\%$ of
+\textbf{Pharmacological consequence.}  CYP3A4 alone clears $\sim\!50\,\%$ of
 all clinical drugs.  CYP2D6 phenotypes span a seven-fold rate range that
-determines codeine toxicity.  CYP2C9 variants reduce S-warfarin hydroxylation
-to $< 5\,\%$ of wild-type.  The partition framework must, therefore, not only
-derive rate constants from first principles but reproduce compound phenotypes
-under polypharmacy---a much stronger test than predicting a single $k_{\mathrm{cat}}$.
+determines codeine toxicity.  CYP2C9\,$\ast$3 reduces S-warfarin hydroxylation
+to $<5\,\%$ of wild-type.  The framework must reproduce compound phenotypes
+under polypharmacy---a much stronger test than predicting a single
+$k_{\mathrm{cat}}$.
 
 No other enzyme family offers this combination of mechanistic richness,
-structural diversity, and clinical relevance.  If partition mechanics can
-account for all of it, the framework earns its claim to universality.
+structural diversity, and clinical relevance.  If partition mechanics accounts
+for all of it, the framework earns its claim to universality.
 
 %==============================================================================
-\section{Overview of the Fifteen Papers}
+\section{Overview of the Seventeen Papers}
 \label{sec:overview}
 %==============================================================================
 
-The monograph is organised in three parts.
+The monograph is organised in four parts.
 
-\subsection{Part~I: Construction (Papers 1--3 and 2.5)}
+\subsection{Part~I: Construction (Papers 1--3, 2.5)}
 
-Paper~1 establishes the receiver $\Recv_{\mathrm{bio}}$---the minimal abstract
-object capable of receiving and processing biological information---and derives
-the expression algebra that maps it onto protein sequence space.  The result
-is a typed language $\mathcal{L}_{\mathrm{bio}}$ in which every protein is a
-sentence.
+\textbf{Paper~1} establishes the receiver $\Recv_{\mathrm{bio}}$ and derives
+the expression algebra that maps it onto protein sequence space.
 
-Paper~2 constructs the cytochrome P450 sequence manifold.  The 57 human
-isoforms are not a collection of unrelated sequences; they form a compact
-manifold in expression space parameterised by three coordinates that directly
-correspond to partition depth components.  The manifold has a well-defined
-metric; substrate promiscuity follows from geodesic proximity.
+\textbf{Paper~2} constructs the cytochrome~P450 sequence manifold.  The 57
+human isoforms form a compact manifold in expression space parameterised by
+three coordinates corresponding directly to partition depth components.  The
+Nelson taxonomy falls at depth three; the 57-isoform resolution falls at
+depth six.
 
-Paper~2.5 grounds the construction in real atomic coordinates by reading PDB
-files in GLB binary format.  It establishes the coordinate pipeline from
-crystallographic data through categorical spectrometer calibration to the
-partition coordinates used in all subsequent papers.
+\textbf{Paper~2.5} grounds the construction in real atomic coordinates by
+reading PDB files in GLB binary format.  It establishes the coordinate pipeline
+from crystallographic data to the partition coordinates used in all subsequent
+papers.
 
-Paper~3 applies the manifold to the CYP3A4 fold specifically, deriving the
-resting-state and substrate-bound equilibrium geometries as the two
-lowest-$\Depth$ configurations of the apo and holo forms.
+\textbf{Paper~3} derives the CYP3A4 resting-state and substrate-bound
+equilibrium geometries as the two lowest-$\Depth$ configurations of the apo
+and holo forms.
 
 \subsection{Part~II: Observation (Papers 4--6)}
 
-Paper~4 is the headline result.  It constructs a five-layer instrument stack
-(hardware oscillator $\to$ oscillation-category-partition triple equivalence
-$\to$ recursive-depth ensemble strobes $\to$ harmonic molecular resonator
-$\to$ GPU hologram pipeline) and uses it to \emph{observe}---not simulate---the
-NADPH$\to$FAD$\to$FMN$\to$heme electron transfer chain.  The observation
-yields femtosecond-resolved $|\psi(\mathbf{r},t)|^2$ snapshots, the Marcus
-reorganisation energy $\lambda = 0.85$~eV, and cofactor self-selection by
-counting-anomaly $\chi^2$ without prior specification.
+\textbf{Paper~4} (the headline result) constructs a five-layer instrument stack
+and uses it to \emph{observe}---not simulate---the NADPH$\to$FAD$\to$FMN$\to$%
+heme electron transfer chain.  The triple identity Measurement~$\equiv$~%
+Computation~$\equiv$~Observation~\citep{sachikonye2025_atomicspec} underlies
+the instrument design: the same categorical principles the protein operates on
+are the principles the stack measures with.  The observation yields
+femtosecond-resolved $|\psi(\mathbf{r},t)|^2$ snapshots, Marcus reorganisation
+energy $\lambda = 0.85$~eV, and cofactor self-selection by counting-anomaly
+$\chi^2$ without prior specification.
 
-Paper~5 derives Compound~I formation from the same stack.  The heterolytic
-O--O cleavage is a $\dC = 1$ transition at the iron centre; its rate
-$k_5 = \nufloor\,\exp(-\Delta\Depth_5)$ gives the experimentally observed
+\textbf{Paper~5} derives Compound~I formation.  The heterolytic O--O cleavage
+is a $\dC = 1$ transition at the iron centre; its rate
+$k_5 = \nufloor\,\exp(-\Delta\Depth_5)$ matches the experimentally observed
 $k_5 \approx 10^6$~s$^{-1}$.
 
-Paper~6 completes the catalytic cycle through C--H activation and rebound.
-The hydrogen-abstraction step is a $\dC = 2$ transition ($\Delta\Depth = 1.2$)
-consistent with the observed KIE of 10; oxygen rebound is $\dC = 1$
-($\Delta\Depth = 0.3$), giving a rebound rate of $\sim 10^{9.7}$~s$^{-1}$.
+\textbf{Paper~6} completes the catalytic cycle through C--H activation and
+rebound.  The hydrogen-abstraction step is $\dC = 2$ ($\Delta\Depth = 1.2$),
+consistent with the observed KIE of 10; rebound is $\dC = 1$
+($\Delta\Depth = 0.3$), giving rebound rate $\sim\!10^{9.7}$~s$^{-1}$.
 
-\subsection{Part~III: Diversity and Consequence (Papers 7--15)}
+\subsection{Part~III: Diversity and Reactions (Papers 7--12)}
 
-Papers 7 and 8 generalise the catalytic cycle to heteroatom oxidation and
-dealkylation (Paper~7) and to atypical reactions (Product~8: oxidative dearomation,
-epoxidation, desaturation, group migration).  Each reaction type is assigned a
-$(\dC, \Delta\Depth)$ pair; rates follow from Eq.~\eqref{eq:rate}.
+\textbf{Papers~7 and 8} cover heteroatom oxidation and dealkylation
+(Paper~7) and the atypical reactions atlas (Paper~8).  Each of fourteen
+reaction classes is assigned a $(\dC, \Delta\Depth)$ pair; all rates follow
+from Eq.~\eqref{eq:rate}.
 
-Papers 9 and 10 extend the manifold to all 57 human isoforms (Paper~9) and
-build a pharmacogenomics atlas cross-referencing each isoform's $\Depth$
-profile with its known substrate spectrum (Paper~10).
+\textbf{Papers~9 and 10} extend the manifold to all 57 human isoforms
+(Paper~9) and build a pharmacogenomics atlas cross-referencing each isoform's
+$\Depth$ profile with its known substrate spectrum (Paper~10).  The PharmVar
+variants emerge naturally at depth nine of the manifold parameterisation.
 
-Papers 11 and 12 address the physical machinery: membrane anchoring, coupling
-to cytochrome P450 reductase (Paper~11), and the seven-state closed orbit
-(Paper~12) proving that the catalytic cycle is a topological loop in
-partition space with winding number~1.
+\textbf{Papers~11 and 12} address membrane anchoring and CPR coupling
+(Paper~11) and the seven-state closed orbit (Paper~12)---proving that the
+catalytic cycle is a topological loop in partition space with winding number~1.
 
-Papers 13 and 14 provide independent experimental cross-validation.
-Paper~13 derives every spectroscopic observable of CYP3A4 (Soret peak
-positions across seven states, EPR $g$-values, Raman Fe=O stretch,
-magnetic circular dichroism) from partition geometry.  Paper~14 recovers the
-complete ternary structure of the monograph from a lossy ternary database,
-demonstrating that partition coordinates are not merely descriptive but
-\emph{information-complete} representations.
+\subsection{Part~IV: Validation (Papers 13--15)}
 
-Paper~15 applies the additive partition-depth model to polymorphisms, drug--drug
-interactions, mechanism-based inactivation, and induction.  The compound
-phenotype formula
+\textbf{Paper~13} derives every spectroscopic observable of CYP3A4 from
+partition geometry: Soret peak positions across seven states, EPR $g$-values,
+Raman Fe=O stretch, magnetic circular dichroism.
+
+\textbf{Paper~14} recovers the complete ternary structure of the monograph
+from a lossy ternary database, demonstrating that partition coordinates are
+\emph{information-complete}: they not only describe the system but contain
+enough structure to reconstruct it.
+
+\textbf{Paper~15} applies the additive partition-depth model to polymorphisms,
+drug--drug interactions, mechanism-based inactivation, and induction.  The
+compound phenotype formula
 \begin{equation}
     \Delta\Depth_{\mathrm{eff}} = \Delta\Depth_{\mathrm{allele}}
-        + \sum_j \Delta\Delta\Depth_j
+        + \sum_j \Delta\Delta\Depth_j,
     \label{eq:phenotype}
 \end{equation}
-predicts the effective rate of any patient on any co-medication list from
-genotype and drug concentrations alone.
+with $\Delta\Delta\Depth_j = \ln(1 + [I_j]/K_{i,j})$, predicts the effective
+rate of any patient on any co-medication list from genotype and drug
+concentrations alone.
 
 \subsection{Validation Summary}
 
-Across all fifteen papers, 132 independent validation scripts pass.  The
-distribution by domain is shown in Table~\ref{tab:validation}.
+Across all fifteen monograph papers, 132 independent validation scripts pass.
 
-\begin{table}[h]
-\centering
-\caption{Validation summary across the monograph}
-\label{tab:validation}
+\begin{center}
 \begin{tabular}{lrr}
 \toprule
 Domain & Scripts & Status \\
@@ -513,14 +782,13 @@ Physical machinery (P11--12) & 16 & All PASS \\
 Spectroscopy \& database (P13--14) & 16 & All PASS \\
 Pharmacogenomics (P15) & 8  & All PASS \\
 \midrule
-Total & 128 + 4$^a$ & 132 PASS \\
+\textbf{Total} & \textbf{132} & \textbf{All PASS} \\
 \bottomrule
 \end{tabular}
-{\footnotesize $^a$4 cross-paper integration tests.}
-\end{table}
+\end{center}
 
 %==============================================================================
-\section{Relation to the Broader Partition Landscape}
+\section{Relation to the Partition Landscape}
 \label{sec:bpl}
 %==============================================================================
 
@@ -528,49 +796,28 @@ The partition-landscape paper~\citep{sachikonye2025_bpl} established partition
 depth as universal across five biological domains.  This monograph is not a
 repetition of that work at higher resolution; it is its rigorous exercise.
 
-The broader paper proved that $\log_{10}(\kcat/\KM) \approx 10 - \dC$ holds
-with mean absolute error $<1$ log unit for a heterogeneous set of twelve
-enzymes.  Paper~4 of this monograph establishes the same relation for a
-single, deeply studied enzyme family at the level where Marcus $\lambda$,
-KIE, EPR $g$-tensors, and crystallographic coordinates are all consistent with
-the same underlying $\Delta\Depth$ values.
-
-Two apparent discrepancies between the broader paper and the monograph deserve
-explicit reconciliation.
+Two apparent discrepancies deserve explicit reconciliation.
 
 \textbf{Pre-exponential factor.}  The partition-landscape paper uses
-$A = 1/\tau_p \approx 4\times10^{13}$~s$^{-1}$ (quantum partition-time limit).
-The monograph uses $\nufloor = 10^{10}$~s$^{-1}$ (condensed-phase floor).
-These are not in conflict.  The quantum pre-exponential applies at the level
-of a single partition operation in vacuum.  In solution, solvent restructuring,
-recrossing, and tunnelling corrections reduce the effective attempt frequency by
-$\kappa_{\mathrm{sol}} \approx 2.5\times10^{-4}$.  The condensed-phase constant
-$\nufloor = \kappa_{\mathrm{sol}}/\tau_p$ is the relevant quantity for all
-enzyme reactions reported here.
+$A = 1/\tau_p \approx 4\times10^{13}$~s$^{-1}$ (quantum partition-time
+limit).  The monograph uses $\nufloor = 10^{10}$~s$^{-1}$ (condensed-phase
+floor).  These are not in conflict.  In solution, solvent restructuring,
+recrossing, and tunnelling corrections reduce the effective attempt frequency
+by $\kappa_{\mathrm{sol}} \approx 2.5\times10^{-4}$; the condensed-phase
+constant $\nufloor = \kappa_{\mathrm{sol}}/\tau_p$ is the quantity relevant
+for all enzyme reactions reported here.
 
-\textbf{Partition depth versus $\Delta M$ notation.}  The monograph uses
-$\Delta M$ (activation partition depth) throughout, equivalent to the $\Delta\Depth$
-notation of the broader paper.  The absolute depth $\Depth$ and the activation
-depth $\Delta\Depth$ obey $\Delta\Depth = \Depth_T - \Depth_A$; both notations
-refer to the same quantity.
-
-There are no other discrepancies.  Every constant, every formula, every
-table in the fifteen papers is consistent with the foundational axioms stated
-in Section~\ref{sec:foundations}.
+\textbf{Notation.}  The monograph uses $\Delta M$ (activation partition depth)
+throughout, equivalent to the $\Delta\Depth$ notation of the broader paper.
+Both refer to $\Depth_T - \Depth_A$.  There are no other discrepancies.
 
 %==============================================================================
 \section{Notation and Conventions}
 \label{sec:notation}
 %==============================================================================
 
-For quick reference, Table~\ref{tab:notation} collects the symbols used
-uniformly across the monograph.
-
-\begin{table}[h]
-\centering
-\caption{Symbol table for the monograph}
-\label{tab:notation}
-\begin{tabular}{lp{5.2cm}}
+\begin{center}
+\begin{tabular}{lp{5.0cm}}
 \toprule
 Symbol & Meaning \\
 \midrule
@@ -578,16 +825,16 @@ $\Depth,\,\Delta\Depth,\,\Delta M$ &
     Partition depth; activation depth \\
 $\nufloor$ & $10^{10}$~s$^{-1}$, condensed-phase floor frequency \\
 $\Tpart$   & $65$~kJ~mol$^{-1}$, partition temperature \\
-$\dC$       & Categorical distance (number of partition boundaries) \\
+$\dC$       & Categorical distance \\
 $\orderpar$ & Order parameter (phase-lock coherence) \\
 $\Recv$     & Abstract receiver \\
 $k = \nufloor\,e^{-\Delta\Depth}$ & Universal rate law \\
 $\alpha = 1 + [I]/K_i$ & DDI fold-factor \\
 $\Delta\Delta\Depth = \ln\alpha$ & Inhibitor depth shift \\
-$\Delta\Depth_{\mathrm{eff}}$ & Compound phenotype depth (Eq.~\eqref{eq:phenotype}) \\
+$\Delta\Depth_{\mathrm{eff}}$ & Compound phenotype depth \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
 
 %==============================================================================
 \section{Conclusion}
@@ -600,31 +847,27 @@ permanent feature of the landscape.  It is a symptom of operating without a
 common foundation.
 
 That foundation is partition depth.  Bounded phase space admits partition;
-partition admits depth; depth has cost; cost creates gradient; gradient
-creates dynamics; dynamics creates catalysis; catalysis creates life.  The
-chain is analytic, not empirical.  Every link can be proved.
+partition admits depth; depth has cost; cost creates gradient; gradient creates
+dynamics; dynamics creates catalysis; catalysis creates life.  The chain is
+analytic, not empirical.  Every link can be proved.
 
-This monograph proves the chain for cytochrome P450.  The fifteen papers that
-follow are not fifteen separate stories about a protein family.  They are
-fifteen corollaries of the same theorem, applied in sequence to derive
-everything that is known about one of the most important enzyme families in
-human biology.  If a reader comes away having understood the partition-depth
-picture---the ball game, the holes in the wall, the depth gradients---they will
-have understood not a model of P450 but a model of catalysis.  P450 is the
-medium; partition mechanics is the message.
+The reader who picks up this monograph wanting Shakespeare-by-monkey will be
+disappointed.  The reader who wants to see what one categorical evaluation
+looks like when it is fully exhibited on the most thoroughly characterised
+enzyme in biology will find seventeen papers' worth of it.  Cytochrome~P450
+produces what cytochrome~P450 produces.  Shakespeare produces Shakespeare.
+Newton produces Newton.  The framework is the apparatus through which what
+each receiver produces is exhibited.  Only Shakespeare could type like
+Shakespeare, and only this protein produces this trajectory under this
+receiver, and the rest of this book is the demonstration.
 
 %==============================================================================
 \section*{Acknowledgements}
 %==============================================================================
 
 This work was supported by the AIMe Registry for Artificial Intelligence.
-The author thanks the developers of the GPU hologram pipeline and the
-categorical spectrometer hardware described in Paper~4.
 
 %==============================================================================
-% References
-%==============================================================================
-
 \bibliographystyle{apalike}
 \bibliography{references}
 
