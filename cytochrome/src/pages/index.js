@@ -86,8 +86,8 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-3 gap-4 max-w-xl sm:grid-cols-1">
-                <Stat label="Papers complete" value="14 / 14" />
-                <Stat label="Validations" value="124 / 124" sub="all PASS" />
+                <Stat label="Papers complete" value="15 / 15" />
+                <Stat label="Validations" value="132 / 132" sub="all PASS" />
                 <Stat label="Marcus λ" value="0.85 eV" sub="Layer 5 readout" />
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Home() {
               Roadmap
             </h3>
             <p className="text-sm text-dark/70 dark:text-light/65">
-              All 14 monograph papers are complete. Papers 6–14 cover
+              All 15 monograph papers are complete. Papers 6–14 cover
               C–H activation and rebound, heteroatom oxidation and
               dealkylation, the atypical reactions atlas, the 57 human
               isoforms as variants, polymorphisms and drug–drug
