@@ -63,7 +63,12 @@
       "Bash(python 05_inhibitor_ranking.py)",
       "Bash(python 06_compound_phenotype_ddi.py)",
       "Bash(python 07_tdi_ic50_shift.py)",
-      "Bash(python 08_full_ddi_table.py)"
+      "Bash(python 08_full_ddi_table.py)",
+      "Bash(dir \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\publication\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git -C \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\" status --short)",
+      "Bash(npx next *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures",
