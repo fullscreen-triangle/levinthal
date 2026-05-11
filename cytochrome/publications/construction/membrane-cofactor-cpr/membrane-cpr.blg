@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: membrane-cpr.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 12 entries,
+            2773 wiz_defined-function locations,
+            670 strings with 7210 characters,
+and the built_in function-call counts, 6660 in all, are:
+= -- 602
+> -- 439
+< -- 6
++ -- 147
+- -- 135
+* -- 584
+:= -- 1035
+add.period$ -- 36
+call.type$ -- 12
+change.case$ -- 81
+chr.to.int$ -- 12
+cite$ -- 24
+duplicate$ -- 246
+empty$ -- 495
+format.name$ -- 157
+if$ -- 1359
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 12
+newline$ -- 68
+num.names$ -- 48
+pop$ -- 139
+preamble$ -- 1
+purify$ -- 69
+quote$ -- 0
+skip$ -- 200
+stack$ -- 0
+substring$ -- 384
+swap$ -- 12
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 132
+warning$ -- 0
+while$ -- 60
+width$ -- 0
+write$ -- 163
