@@ -1,5 +1,6 @@
 \documentclass[11pt,twocolumn,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
+\usepackage{natbib}
 \geometry{margin=2.2cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
@@ -55,7 +56,7 @@ The Soret (B) band is the dominant UV-Vis feature of porphyrin-containing
 proteins, typically appearing at 390--450~nm with extinction coefficients
 of $80$--$130~\text{mM}^{-1}\text{cm}^{-1}$.
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{Soret band peak wavelengths for all 7 P450 catalytic states.}
 \label{tab:soret}
@@ -82,7 +83,7 @@ The most important diagnostic transitions are:
     Fe$^{\text{II}}$-CO absorbs at 450~nm (giving P450 enzymes their name).
 \end{itemize}
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_01_soret_atlas.png}
 \caption{\textbf{Soret band atlas for all seven cytochrome P450 catalytic states.}
@@ -108,7 +109,7 @@ LS state shows a rhombic $S = 1/2$ spectrum at $g = 2.42, 2.25, 1.92$.
 Substrate-bound HS shows an $S = 5/2$ spectrum at low field ($g \approx 7.70$)
 and an axial zero-field-splitting pattern at $g = 3.50, 1.80$.
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{EPR $g$-values for the two major P450 spin states.}
 \begin{tabular}{lccc}
@@ -125,7 +126,7 @@ The rhombicity parameter $E/D = (g_1 - g_2)/(g_1 - g_3)$ for the LS state
 is $\approx 0.34$, consistent with moderate rhombic distortion of the ligand
 field in a thiolate-ligated porphyrin.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_02_epr_signals.png}
 \caption{\textbf{Simulated EPR derivative spectra for the two principal P450 spin states.}
@@ -134,7 +135,7 @@ three resolved $g$-values at $g_1 = 2.42$, $g_2 = 2.25$, $g_3 = 1.92$ reflect
 moderate rhombic distortion ($E/D \approx 0.34$) from the thiolate-ligated porphyrin
 scaffold.
 (\textbf{B}) High-spin (HS) Fe$^{\text{III}}$ axial $S = 5/2$ spectrum showing a
-broad low-field resonance at $g = 7.70$ and an axial signal at $g = 3.50$ and
+broad low-field resonance at $g = 7.70$ and axial signals at $g = 3.50$ and
 $g = 1.80$; the well-separated $g$-pattern is diagnostic for substrate-induced
 spin-state conversion.
 (\textbf{C}) Overlay of both spectra emphasising non-overlapping $g$-regions that
@@ -160,7 +161,7 @@ where $\mu = m_\text{Fe} m_\text{O} / (m_\text{Fe} + m_\text{O})$ is the
 reduced mass.  The predicted shift of $\Delta\tilde\nu \approx 37$~cm$^{-1}$
 matches the experimental literature value of $\sim$38~cm$^{-1}$.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_03_raman_feo.png}
 \caption{\textbf{Resonance Raman Fe$=$O stretch of Compound\,I and the $^{18}$O isotope shift.}
@@ -191,7 +192,7 @@ $f_\text{HS} \approx 29$\,\%).  Substrate-bound: $\Delta G_\text{spin} \approx
 the active site to HS raises the reduction potential by $\sim 130$~mV, making
 the first electron transfer from CPR thermodynamically favourable.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_04_spin_equilibrium.png}
 \caption{\textbf{Thermodynamic spin-state equilibrium in cytochrome P450.}
@@ -200,10 +201,10 @@ spin-state free energy $\Delta G_\text{spin}$; the substrate-free state
 ($\Delta G_\text{spin} \approx +2.0$\,kJ/mol, $f_\text{HS} \approx 29$\,\%) and
 the substrate-bound state ($\Delta G_\text{spin} \approx -4.0$\,kJ/mol,
 $f_\text{HS} \approx 82$\,\%) are annotated with dashed reference lines.
-(\textbf{B}) Reduction-potential shift ($\Delta E^\circ \approx +130$\,mV) associated
-with the LS-to-HS conversion, plotted as a function of $f_\text{HS}$; the
-substrate-induced spin-state change gates the thermodynamically favourable first
-electron transfer from cytochrome P450 reductase.}
+(\textbf{B}) Reduction-potential shift ($\Delta E^\circ \approx +130$\,mV)
+associated with the LS-to-HS conversion plotted as a function of $f_\text{HS}$;
+the substrate-induced spin-state change gates the thermodynamically favourable
+first electron transfer from cytochrome P450 reductase.}
 \label{fig:panel04_spin}
 \end{figure*}
 
@@ -217,14 +218,15 @@ across all seven states (Pearson $r > 0.9$).  This demonstrates that the
 categorical mechanics partition depth $\Delta M$ encodes measurable spectroscopic
 differences, not merely kinetic barriers.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_05_dm_correlation.png}
 \caption{\textbf{Correlation between Soret photon energy and spectroscopic activation partition depth $\Delta M_\text{spec}$.}
-(\textbf{A}) Soret band photon energy (cm$^{-1}$) versus $\Delta M_\text{spec} = hc\tilde{\nu}/T_\text{part}$
-for all seven P450 catalytic states; a linear least-squares fit (dashed) yields
-Pearson $r > 0.9$, confirming that the categorical mechanics partition depth
-encodes genuine spectroscopic information and not merely kinetic barriers.
+(\textbf{A}) Soret band photon energy (cm$^{-1}$) versus $\Delta M_\text{spec} =
+hc\tilde{\nu}/T_\text{part}$ for all seven P450 catalytic states; a linear
+least-squares fit (dashed) yields Pearson $r > 0.9$, confirming that the
+categorical mechanics partition depth encodes genuine spectroscopic information
+and not merely kinetic barriers.
 (\textbf{B}) Three-dimensional surface of $\Delta M_\text{spec}$ over Soret
 wavelength and partition temperature $T_\text{part}$, illustrating the sensitivity
 of the depth scale to the thermal calibration and enabling conversion between
@@ -246,7 +248,7 @@ CYP3A4 is predominantly $\alpha$-helical ($\sim$45\,\% helix, 15\,\% sheet,
 The two-tier chirality assignment in the categorical mechanics receiver $R_\text{bio}$
 (Paper~1) encodes this $\alpha$-helical dominance at depth $k=2$.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_06_cd_spectrum.png}
 \caption{\textbf{Far-UV circular dichroism spectrum model for CYP3A4.}
@@ -276,7 +278,7 @@ Resonance Raman uniquely identifies Compound~I via the Fe=O stretch.
 A three-technique combination (UV-Vis + EPR + Raman) provides unambiguous
 identification of all seven states.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_07_discrimination.png}
 \caption{\textbf{Spectral discrimination matrix for all seven P450 catalytic states.}
@@ -292,13 +294,14 @@ seven states.}
 \label{fig:panel07_disc}
 \end{figure*}
 
+
 %% ============================================================
 \section{Validation}
 %% ============================================================
 
 Eight scripts validate all spectroscopic parameters (8/8 PASS).
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{\textbf{Validation summary for the spectroscopic atlas of cytochrome P450.}
@@ -312,6 +315,7 @@ each spectroscopic observable, with tolerance bands defining PASS/FAIL criteria
 and confirming quantitative agreement across all four spectroscopic modalities.}
 \label{fig:panel08_val}
 \end{figure*}
+
 
 %% ============================================================
 \section{Conclusion}

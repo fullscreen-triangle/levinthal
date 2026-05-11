@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}UV-Vis Soret Band Atlas}{2}{section.2}%
+\contentsline {section}{\numberline {3}EPR Spectroscopy}{2}{section.3}%
+\contentsline {section}{\numberline {4}Resonance Raman: Fe=O Stretch}{2}{section.4}%
+\contentsline {section}{\numberline {5}Spin-State Equilibrium}{2}{section.5}%
+\contentsline {section}{\numberline {6}Soret Energyâ€“Î”M Correlation}{2}{section.6}%
+\contentsline {section}{\numberline {7}Circular Dichroism: Secondary Structure}{2}{section.7}%
+\contentsline {section}{\numberline {8}Spectral Discrimination}{8}{section.8}%
+\contentsline {section}{\numberline {9}Validation}{8}{section.9}%
+\contentsline {section}{\numberline {10}Conclusion}{8}{section.10}%
