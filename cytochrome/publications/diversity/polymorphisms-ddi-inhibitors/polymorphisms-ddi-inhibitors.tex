@@ -70,7 +70,7 @@ absorbs allelic shifts, competitive inhibition, and induction.
 The four CYP2D6 metaboliser phenotypes are assigned $\Delta M$ values
 from their known activity:
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{CYP2D6 allele $\Delta M$ values and rate constants.}
 \begin{tabular}{lcccc}
@@ -95,14 +95,7 @@ CYP2C9*3 (I359L, $\Delta M = 3.60$) reduces S-warfarin hydroxylation to
 $< 5$\,\% of wild-type ($\Delta M = 0.48$).  CYP2C9*2 (R144C,
 $\Delta M = 1.20$) retains $\approx 30$\,\% activity.
 
-\subsection{CYP3A4*22 Expression Reduction}
-
-CYP3A4*22 (intron-6 variant) reduces hepatic expression by $\approx 50$\,\%.
-The effective $\Delta M$ shift is $\ln 2 \approx 0.693$, giving
-$\Delta M_\text{*22} = 0.55 + 0.693 = 1.243$ and $\approx 50$\,\% of wild-type
-activity, consistent with midazolam pharmacokinetic data~\cite{Werk2014}.
-
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_01_allele_dm_rates.png}
 \caption{\textbf{Allele-specific activation partition depths and rate constants for CYP2D6 and CYP2C9.}
@@ -119,6 +112,13 @@ consistent with clinical dose-adjustment requirements for both alleles.}
 \label{fig:panel01_allele}
 \end{figure*}
 
+\subsection{CYP3A4*22 Expression Reduction}
+
+CYP3A4*22 (intron-6 variant) reduces hepatic expression by $\approx 50$\,\%.
+The effective $\Delta M$ shift is $\ln 2 \approx 0.693$, giving
+$\Delta M_\text{*22} = 0.55 + 0.693 = 1.243$ and $\approx 50$\,\% of wild-type
+activity, consistent with midazolam pharmacokinetic data~\cite{Werk2014}.
+
 %% ============================================================
 \section{Competitive Inhibition: The $\alpha$ Modulus}
 %% ============================================================
@@ -133,7 +133,7 @@ shift:
   k_\text{apparent} = \frac{k_0}{\alpha}.
 \end{equation}
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{Clinical DDI risk from competitive inhibition.}
 \begin{tabular}{lccccl}
@@ -155,7 +155,7 @@ $1/6.4 \approx 16$\,\% of baseline ($< 20$\,\% criterion met).
 Quinidine at 0.5\,$\mu$M gives $\alpha = 19.5$, reducing CYP2D6 below
 the natural PM rate ($\Delta M_\text{EM+quin} = 3.52 > \Delta M_\text{PM} = 2.50$).
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_02_alpha_ddi_surface.png}
 \caption{\textbf{Three-dimensional inhibition modulus surface for competitive drug--drug interactions.}
@@ -184,7 +184,7 @@ model gives:
 The intrinsic MBI potency is characterised by the ratio
 $k_\text{inact}/K_I$ (units: $\text{min}^{-1}\,\mu\text{M}^{-1}$).
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{MBI parameters for three macrolide/non-macrolide CYP3A4 inactivators.}
 \begin{tabular}{lcccc}
@@ -203,7 +203,7 @@ At clinical concentrations ($[I]_u \approx 4\,\mu$M for clarithromycin),
 $k_\text{obs} \approx 0.021$\,min$^{-1} \gg k_\text{deg} = 3.2\times10^{-4}$\,min$^{-1}$,
 and CYP3A4 reaches $< 50$\,\% activity within 60\,min.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_03_mbi_kinetics.png}
 \caption{\textbf{Mechanism-based inactivation kinetics for three CYP3A4 inactivators.}
@@ -241,7 +241,7 @@ with $E_\text{max} = 30$, $EC_{50} = 0.50\,\mu$M for rifampicin at
 $[R] = 2\,\mu$M gives $E_\text{fold} \approx 24$, consistent with the
 clinical 20-fold midazolam AUC decrease~\cite{Backman1996}.
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{CYP inducers and victim drug AUC predictions.}
 \begin{tabular}{lcccl}
@@ -255,7 +255,7 @@ Omeprazole   &  5 & $-1.61$ & 0.20 & Theophylline \\
 \end{tabular}
 \end{table*}
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_04_induction_auc.png}
 \caption{\textbf{CYP3A4 transcriptional induction and victim drug AUC reduction.}
@@ -267,10 +267,10 @@ exposure below the $< 10$\,\% clinical significance threshold.
 (\textbf{B}) PXR $E_\text{max}$ model for rifampicin:
 $E_\text{fold}([R]) = 1 + 30\cdot[R]/(0.50 + [R])$ predicting $\approx 24$-fold
 induction at 2\,$\mu$M, consistent with the 20-fold midazolam AUC decrease
-reported by Backman et al.\ and encoded in the categorical mechanics framework as
-$\Delta M_\text{induced} = \Delta M_0 - \ln E_\text{fold}$.}
+reported by Backman et al.\ and encoded as $\Delta M_\text{induced} = \Delta M_0 - \ln E_\text{fold}$.}
 \label{fig:panel04_induction}
 \end{figure*}
+
 
 %% ============================================================
 \section{Inhibitor Class Atlas}
@@ -278,7 +278,7 @@ $\Delta M_\text{induced} = \Delta M_0 - \ln E_\text{fold}$.}
 
 Major inhibitor classes are ranked by $K_i$:
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_05_inhibitor_atlas.png}
 \caption{\textbf{Inhibitor atlas: $K_i$ values and DDI risk classification across CYP3A4, CYP2D6, and CYP2C9.}
@@ -288,8 +288,8 @@ targeting CYP2D6 (quinidine 0.027\,$\mu$M, paroxetine 0.15\,$\mu$M, fluoxetine
 0.24\,$\mu$M), and azoles targeting CYP2C9 (fluconazole 7.0\,$\mu$M), colour-coded
 by FDA DDI risk tier.
 (\textbf{B}) Scatter plot of $K_i$ versus $\Delta M$ shift at clinical $[I]_u$
-($\Delta\Delta M = \ln\alpha$), demonstrating that the lowest-$K_i$ inhibitors impose
-the largest apparent partition-depth shifts on their respective P450 targets.}
+($\Delta\Delta M = \ln\alpha$), demonstrating that the lowest-$K_i$ inhibitors
+impose the largest apparent partition-depth shifts on their respective P450 targets.}
 \label{fig:panel05_atlas}
 \end{figure*}
 
@@ -314,7 +314,7 @@ Key clinical implications:
     drops to $< 50$\,\% of drug-free rate across European phenotype frequencies.
 \end{itemize}
 
-\begin{figure}[!htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_06_compound_phenotype.png}
 \caption{\textbf{Compound phenotype landscape: genotype--inhibitor interaction on effective partition depth.}
@@ -327,6 +327,7 @@ floor ($\Delta M_\text{PM} = 2.50$), constituting pharmacological phenoconversio
 CYP2C9*3/*3 + fluconazole combination ($\Delta M_\text{eff} = 4.77$) essentially
 abolishes S-warfarin hydroxylation, representing the highest-risk genotype--drug
 interaction in the atlas.}
+\label{fig:panel06_compound}
 \end{figure*}
 
 %% ============================================================
@@ -337,7 +338,7 @@ TDI is identified by the IC$_{50}$ shift assay: ratio
 $r = \text{IC}_{50,\text{shifted}} / \text{IC}_{50,\text{direct}} < 0.8$
 (FDA guidance) indicates MBI risk.  After 60\,min preincubation:
 
-\begin{table}[h]
+\begin{table*}[h]
 \centering
 \caption{TDI IC$_{50}$ shift ratios at 60\,min preincubation.}
 \begin{tabular}{lccc}
@@ -355,7 +356,7 @@ Fluoxetine     & 0.48 & $\approx 0.48$ & 1.00 (reversible) \\
 Clarithromycin shows the strongest TDI signal ($r = 0.28 < 0.5$), consistent
 with its position as the most potent MBI by $k_\text{inact}/K_I$ ratio.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_07_tdi_shift.png}
 \caption{\textbf{Time-dependent inhibition: IC$_{50}$ shift assay for mechanism-based inactivator identification.}
@@ -377,7 +378,7 @@ prediction.}
 
 All 8 validation scripts pass (8/8 PASS).
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{\textbf{Validation summary for Paper~15: polymorphisms, DDI, and inhibitors.}

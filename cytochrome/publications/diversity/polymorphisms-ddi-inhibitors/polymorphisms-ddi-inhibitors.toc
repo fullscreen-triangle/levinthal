@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Polymorphism $\Delta M$ Shifts}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}CYP2D6 Phenotypes}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}CYP2C9 Alleles}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}CYP3A4*22 Expression Reduction}{2}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Competitive Inhibition: The $\alpha $ Modulus}{2}{section.3}%
+\contentsline {section}{\numberline {4}Mechanism-Based Inactivation}{2}{section.4}%
+\contentsline {section}{\numberline {5}CYP Induction via PXR/CAR}{2}{section.5}%
+\contentsline {section}{\numberline {6}Inhibitor Class Atlas}{6}{section.6}%
+\contentsline {section}{\numberline {7}Compound Phenotype--Inhibitor Effects}{6}{section.7}%
+\contentsline {section}{\numberline {8}Time-Dependent Inhibition}{7}{section.8}%
+\contentsline {section}{\numberline {9}Validation}{9}{section.9}%
+\contentsline {section}{\numberline {10}Conclusion}{9}{section.10}%

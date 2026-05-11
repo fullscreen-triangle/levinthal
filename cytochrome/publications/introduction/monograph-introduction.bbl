@@ -1,0 +1,26 @@
+\begin{thebibliography}{}
+
+\bibitem[Eyring, 1935]{eyring1935}
+Eyring, H. (1935).
+\newblock The activated complex in chemical reactions.
+\newblock {\em Journal of Chemical Physics}, 3:107--115.
+
+\bibitem[Orth et~al., 2010]{orth2010}
+Orth, J.~D., Thiele, I., and Palsson, B.~{\O}. (2010).
+\newblock What is flux balance analysis?
+\newblock {\em Nature Biotechnology}, 28:245--248.
+
+\bibitem[Sachikonye, 2025a]{sachikonye2025_atomicspec}
+Sachikonye, K.~F. (2025a).
+\newblock Atomic spectrometers: Hardware-oscillator categorical spectroscopy.
+\newblock {\em Preprint}.
+
+\bibitem[Sachikonye, 2025b]{sachikonye2025_bpl}
+Sachikonye, K.~F. (2025b).
+\newblock On the consequences of global partition structure conservation: The
+  biological partition landscape.
+\newblock {\em Preprint}.
+\newblock Levinthal repository,
+  \texttt{publication/biological-partition-landscape/}.
+
+\end{thebibliography}

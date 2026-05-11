@@ -1,0 +1,91 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Guengerich(2018)]{guengerich2018}
+F.~P. Guengerich.
+\newblock Mechanisms of cytochrome {P450}-catalyzed oxidations.
+\newblock \emph{ACS Catalysis}, 8:\penalty0 10964--10976, 2018.
+
+\bibitem[Henderson and Wolf(2013)]{henderson2013}
+C.~J. Henderson and C.~R. Wolf.
+\newblock Cytochrome {P450} knockout mouse lines and their application in drug
+  metabolism research.
+\newblock \emph{Drug Metabolism and Disposition}, 41:\penalty0 1187--1195,
+  2013.
+
+\bibitem[Kenaan et~al.(2011)Kenaan, Zhang, Shea, and Hollenberg]{kenaan2011}
+C.~Kenaan, H.~Zhang, E.~V. Shea, and P.~F. Hollenberg.
+\newblock Uncovering the role of hydrophobic residues in cytochrome
+  {P450}--cytochrome {P450} reductase interactions.
+\newblock \emph{Biochemistry}, 50:\penalty0 3957--3967, 2011.
+
+\bibitem[Marcus and Sutin(1985)]{marcus1985}
+R.~A. Marcus and N.~Sutin.
+\newblock Electron transfers in chemistry and biology.
+\newblock \emph{Biochimica et Biophysica Acta}, 811:\penalty0 265--322, 1985.
+
+\bibitem[Margolis et~al.(2000)Margolis, O'Donnell, Mankowski, Ekins, and
+  Obach]{margolis2000}
+J.~M. Margolis, J.~P. O'Donnell, D.~C. Mankowski, S.~Ekins, and R.~S. Obach.
+\newblock Alpha, beta, and gamma elimination of cytochrome {P450} substrates
+  and the importance of substrate lipophilicity.
+\newblock \emph{Drug Metabolism and Disposition}, 28:\penalty0 1122--1128,
+  2000.
+
+\bibitem[Rendic and Guengerich(2005)]{rendic2005}
+S.~Rendic and F.~P. Guengerich.
+\newblock Survey of human oxidoreductases and cytochrome {P450} enzymes
+  involved in the metabolism of xenobiotic and natural chemicals.
+\newblock \emph{Chemical Research in Toxicology}, 28:\penalty0 38--42, 2005.
+
+\bibitem[Sevrioukova and Poulos(2010)]{sevrioukova2010}
+I.~F. Sevrioukova and T.~L. Poulos.
+\newblock Structure and mechanism of the complex between cytochrome {P4503A4}
+  and ritonavir.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 107:\penalty0
+  18422--18427, 2010.
+
+\bibitem[Sevrioukova et~al.(1999)Sevrioukova, Li, Zhang, Peterson, and
+  Poulos]{sevrioukova1999}
+I.~F. Sevrioukova, H.~Li, H.~Zhang, J.~A. Peterson, and T.~L. Poulos.
+\newblock Structure of a cytochrome {P450--Redox} partner electron-transfer
+  complex.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 96:\penalty0
+  1863--1868, 1999.
+
+\bibitem[Wang et~al.(1997)Wang, Roberts, Paschke, Shea, Masters, and
+  Kim]{wang1997}
+M.~Wang, D.~L. Roberts, R.~Paschke, T.~M. Shea, B.~S.~S. Masters, and J.-J.~P.
+  Kim.
+\newblock Three-dimensional structure of {NADPH--Cytochrome} {P450} reductase:
+  Prototype for {FMN}-and {FAD}-containing enzymes.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 94:\penalty0
+  8411--8416, 1997.
+
+\bibitem[Williams et~al.(2004)Williams, Cosme, Vinkovic, Ward, Angove, Day,
+  Vonrhein, Tickle, and Jhoti]{williams2004}
+P.~A. Williams, J.~Cosme, D.~M. Vinkovic, A.~Ward, H.~C. Angove, P.~J. Day,
+  C.~Vonrhein, I.~J. Tickle, and H.~Jhoti.
+\newblock Crystal structures of human cytochrome {P450} {3A4} bound to
+  metyrapone and progesterone.
+\newblock \emph{Science}, 305:\penalty0 683--686, 2004.
+
+\bibitem[Wimley and White(1996)]{wimley1996}
+W.~C. Wimley and S.~H. White.
+\newblock Experimentally determined hydrophobicity scale for proteins at
+  membrane interfaces.
+\newblock \emph{Nature Structural Biology}, 3:\penalty0 842--848, 1996.
+
+\bibitem[Yamazaki et~al.(1999)Yamazaki, Johnson, Ueng, Shimada, and
+  Guengerich]{yamazaki1999}
+H.~Yamazaki, W.~W. Johnson, Y.~F. Ueng, T.~Shimada, and F.~P. Guengerich.
+\newblock Lack of electron transfer from cytochrome {$b_5$} in stimulation of
+  catalytic activities of cytochrome {P450} {3A4}.
+\newblock \emph{Journal of Biological Chemistry}, 271:\penalty0 27438--27444,
+  1999.
+
+\end{thebibliography}
