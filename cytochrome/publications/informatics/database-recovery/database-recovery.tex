@@ -1,6 +1,6 @@
-﻿\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,twocolumn,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
-\geometry{margin=2.5cm}
+\geometry{margin=2.2cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
 \title{\textbf{P450 Database Recovery via Ternary Address Encoding:\\
@@ -68,13 +68,13 @@ Depth $k$ & Capacity (trits) & Bits & Classes & Shannon entropy & Margin \\
 9 & 19\,683 & 14.27 & $>$300 alleles & 8.23 bits & +6.04 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_01_info_capacity.png}
 \caption{Trit capacity $3^k$ and information bits $k\log_2 3$ vs.\ depth.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Recovery Accuracy as a Function of Depth}
@@ -93,7 +93,7 @@ additional depth as entropy is exhausted.
 \includegraphics[width=\textwidth]{figures/panel_02_recovery_accuracy.png}
 \caption{Recovery accuracy $A(k, H)$ for isoform identification as a
 function of ternary depth $k$.}
-\end{figure}
+\end{figure*}
 
 At $k=6$: $A \approx 0.80$ for isoform identification.
 At $k=9$: $A \approx 0.91$ for isoform identification.
@@ -115,7 +115,7 @@ giving $P_\text{correct} \approx 0.92 > 85$\,\%.
 \centering
 \includegraphics[width=\textwidth]{figures/panel_03_partial_recovery.png}
 \caption{Recovery probability vs.\ fraction of address known at $k=6$.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Sequence Reconstruction Fidelity}
@@ -134,7 +134,7 @@ At $k=9$: $F \approx 0.97$ (97\,\% fidelity).
 \centering
 \includegraphics[width=\textwidth]{figures/panel_04_sequence_fidelity.png}
 \caption{Sequence reconstruction fidelity $F(k)$ as a function of ternary depth.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Missing Data Interpolation and Compression}
@@ -156,7 +156,7 @@ storing raw sequences:
 \centering
 \includegraphics[width=\textwidth]{figures/panel_05_compression.png}
 \caption{Information compression: ternary encoding vs.\ raw sequence storage.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Cross-Species Recovery}
@@ -177,7 +177,7 @@ Within-human family recovery ($\sim 65$\,\% identity) achieves:
 \centering
 \includegraphics[width=\textwidth]{figures/panel_06_cross_species.png}
 \caption{Cross-species vs.\ within-family recovery accuracy.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{PharmVar Allele Capacity}
@@ -192,7 +192,7 @@ capacity to accommodate future allele discoveries.
 \centering
 \includegraphics[width=\textwidth]{figures/panel_07_pharmvar_capacity.png}
 \caption{PharmVar allele counts vs.\ ternary capacity at $k=9$.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Validation}
@@ -204,7 +204,7 @@ All 8 validation scripts pass (8/8 PASS).
 \centering
 \includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary for Paper~14.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Conclusion}

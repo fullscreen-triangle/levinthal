@@ -1,6 +1,6 @@
-﻿\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,twocolumn,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
-\geometry{margin=2.5cm}
+\geometry{margin=2.2cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
 \title{\textbf{Polymorphisms, Drug--Drug Interactions, and Inhibitors\\
@@ -83,7 +83,7 @@ Intermediate (IM)& \textit{*10/*17} & 0.75 & $4.7\times10^9$ & 0.82 \\
 Poor (PM)        & \textit{*4/*5}   & 2.50 & $8.2\times10^8$ & 0.14 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 The EM/PM rate ratio is $e^{2.50 - 0.55} = e^{1.95} \approx 7$-fold,
 matching clinical observations of 5--10-fold codeine exposure differences
@@ -106,7 +106,7 @@ activity, consistent with midazolam pharmacokinetic data~\cite{Werk2014}.
 \centering
 \includegraphics[width=\textwidth]{figures/panel_01_allele_dm_rates.png}
 \caption{CYP2D6 and CYP2C9 allele $\Delta M$ values and resulting rate constants.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Competitive Inhibition: The $\alpha$ Modulus}
@@ -137,7 +137,7 @@ Fluoxetine    & CYP2D6 & 0.24  & 0.5  & 3.1  & Moderate \\
 Fluconazole   & CYP2C9 & 7.0   & 10.0 & 2.4  & Moderate \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 Ketoconazole at 0.2\,$\mu$M gives $\alpha = 6.4$, reducing CYP3A4 to
 $1/6.4 \approx 16$\,\% of baseline ($< 20$\,\% criterion met).
@@ -149,7 +149,7 @@ the natural PM rate ($\Delta M_\text{EM+quin} = 3.52 > \Delta M_\text{PM} = 2.50
 \includegraphics[width=\textwidth]{figures/panel_02_alpha_ddi_surface.png}
 \caption{AUC ratio $\alpha = 1 + [I]/K_i$ as a function of concentration
 and $K_i$; contours at strong/moderate/weak DDI thresholds.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Mechanism-Based Inactivation}
@@ -178,7 +178,7 @@ Diltiazem      & 14.0 & 0.060 & 0.004 & $\gg60$\,min \\
 Erythromycin   & 72.0 & 0.025 & 0.0003 & hours \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 At clinical concentrations ($[I]_u \approx 4\,\mu$M for clarithromycin),
 $k_\text{obs} \approx 0.021$\,min$^{-1} \gg k_\text{deg} = 3.2\times10^{-4}$\,min$^{-1}$,
@@ -189,7 +189,7 @@ and CYP3A4 reaches $< 50$\,\% activity within 60\,min.
 \includegraphics[width=\textwidth]{figures/panel_03_mbi_kinetics.png}
 \caption{MBI enzyme activity $E(t)/E_0$ for clarithromycin, diltiazem, and
 erythromycin.  Right: Kitz--Wilson surface $k_\text{obs}([I], K_I)$.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{CYP Induction via PXR/CAR}
@@ -223,13 +223,13 @@ Phenobarbital & 10 & $-2.30$ & 0.10 & Cyclosporin \\
 Omeprazole   &  5 & $-1.61$ & 0.20 & Theophylline \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_04_induction_auc.png}
 \caption{AUC ratio vs.\ fold-induction; PXR $E_\text{max}$ model for rifampicin.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Inhibitor Class Atlas}
@@ -242,7 +242,7 @@ Major inhibitor classes are ranked by $K_i$:
 \includegraphics[width=\textwidth]{figures/panel_05_inhibitor_atlas.png}
 \caption{$K_i$ values and DDI risk tiers for key CYP inhibitor classes.
 Azoles (CYP3A4), quinolines (CYP2D6), SSRIs (CYP2D6), azoles (CYP2C9).}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Compound Phenotype--Inhibitor Effects}
@@ -270,7 +270,7 @@ Key clinical implications:
 \includegraphics[width=\textwidth]{figures/panel_06_compound_phenotype.png}
 \caption{Compound phenotype landscape: $\Delta M_\text{eff}$ for genotype--
 inhibitor combinations; rate heatmap across allele Ã— inhibitor space.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Time-Dependent Inhibition}
@@ -293,7 +293,7 @@ Erythromycin   & 144  & $\approx 105$ & $0.73$ \\
 Fluoxetine     & 0.48 & $\approx 0.48$ & 1.00 (reversible) \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 Clarithromycin shows the strongest TDI signal ($r = 0.28 < 0.5$), consistent
 with its position as the most potent MBI by $k_\text{inact}/K_I$ ratio.
@@ -303,7 +303,7 @@ with its position as the most potent MBI by $k_\text{inact}/K_I$ ratio.
 \includegraphics[width=\textwidth]{figures/panel_07_tdi_shift.png}
 \caption{TDI IC$_{50}$ shift assay: 60-min preincubation vs.\ dilution
 experiment; clarithromycin, diltiazem, erythromycin, fluoxetine.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Validation}
@@ -315,7 +315,7 @@ All 8 validation scripts pass (8/8 PASS).
 \centering
 \includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{Validation summary for Paper~15.}
-\end{figure}
+\end{figure*}
 
 %% ============================================================
 \section{Conclusion}
