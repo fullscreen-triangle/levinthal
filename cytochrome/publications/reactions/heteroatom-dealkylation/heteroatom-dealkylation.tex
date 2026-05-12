@@ -152,9 +152,12 @@ both smaller than the aliphatic reference ($\Delta\depth = 0.65$, Paper~6).
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/panel_01_alpha_carbon_bde}
-  \caption{Alpha-C--H BDE ordering and $\Delta\depth$ mapping. The 3D surface shows
-  $\Delta\depth(\mathrm{BDE}, T)$.}
-  \label{fig:bde}
+  \caption{Alpha-carbon C--H bond dissociation energies (BDE) for N-methyl (87\,kcal/mol),
+  O-methyl (92\,kcal/mol), and unactivated aliphatic (100\,kcal/mol) substrates. The
+  activation partition-depth $\Delta\mathcal{M}$ scales proportionally with BDE, establishing
+  the hierarchy N-dealkylation $<$ O-dealkylation $<$ aliphatic C--H abstraction.
+  The 3D surface shows $\Delta\mathcal{M}(\mathrm{BDE}, T)$.}
+  \label{fig:p7-bde}
 \end{figure}
 
 \subsection{N-Dealkylation Rate and Activation Energy}
@@ -171,8 +174,12 @@ values for CYP3A4 N-demethylation of lidocaine (6--10\,kcal/mol \citep{Guengeric
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/panel_02_n_dealkylation_mechanism}
-  \caption{N-dealkylation pathway and rate comparison.}
-  \label{fig:ndealk}
+  \caption{N-dealkylation mechanism as a categorical trajectory. The alpha-carbon
+  radical intermediate (after HAT, $\Delta\mathcal{M}=0.50$) undergoes rapid rebound
+  to form the carbinolamine ($\Delta\mathcal{M}_{\mathrm{rebound}}=0.30$), followed by
+  spontaneous C--N cleavage. KIE comparison between N-dealkylation (softer alpha-C--H
+  at $\tilde\nu=2800\,\mathrm{cm}^{-1}$) and aliphatic HAT (3000\,\mathrm{cm}^{-1}).}
+  \label{fig:p7-ndealk}
 \end{figure}
 
 \section{KIE for N-Dealkylation}
@@ -192,8 +199,13 @@ falsifiable prediction distinguishing this pathway from unactivated C--H abstrac
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/panel_03_kie_comparison}
-  \caption{KIE comparison across heteroatom pathways; temperature dependence.}
-  \label{fig:kie}
+  \caption{Kinetic isotope effects across heteroatom oxidation pathways. Direct
+  O-atom transfers (S-oxidation, N-oxide formation) show $\mathrm{KIE}=1$ (no H
+  motion). N-dealkylation ($\tilde\nu_\alpha=2800\,\mathrm{cm}^{-1}$) yields
+  $\mathrm{KIE}\approx 6.7$, lower than aliphatic HAT ($\approx 7.7$) due to the
+  softer alpha-C--H stretching frequency. Temperature dependence follows from
+  $\mathrm{KIE}(T)=\exp(\Delta\mathrm{ZPE}/k_BT)$.}
+  \label{fig:p7-kie}
 \end{figure}
 
 \section{Direct O-Atom Transfer: S-Oxidation and N-Oxide Formation}
@@ -213,8 +225,12 @@ consistent with the low barrier observed for thioether substrates \citep{Meunier
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/panel_04_s_oxidation}
-  \caption{S-oxidation: direct O-atom transfer, no KIE.}
-  \label{fig:sox}
+  \caption{S-oxidation mechanism: direct O-atom transfer from Compound~I to the
+  sulfur lone pair. The two-body aperture ($d_C=1$, $\Delta\mathcal{M}=0.28$) yields
+  $k_{\mathrm{S\text{-}ox}}\approx7.6\times10^9\,\mathrm{s}^{-1}$, faster than all
+  HAT-based pathways. No hydrogen motion -- hence no primary KIE. Rate surface as
+  function of $\Delta\mathcal{M}$ and temperature.}
+  \label{fig:p7-sox}
 \end{figure}
 
 \subsection{N-Oxide Formation}
@@ -229,8 +245,12 @@ nitrogen lone pair as donor. The slightly larger depth $\Delta\depth_{\mathrm{N\
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/panel_05_n_oxide}
-  \caption{N-oxide formation via direct lone-pair O-transfer.}
-  \label{fig:nox}
+  \caption{N-oxide formation: Compound~I oxygen transfer to the nitrogen lone pair
+  ($\Delta\mathcal{M}=0.32$, $k_{\mathrm{N\text{-}ox}}\approx7.3\times10^9\,\mathrm{s}^{-1}$).
+  N-oxide formation is kinetically preferred over N-dealkylation for tertiary amines
+  when the substrate is a poor HAT donor. The categorical aperture surface (3D) shows
+  the single-event orbit.}
+  \label{fig:p7-nox}
 \end{figure}
 
 \section{The Complete Rate Hierarchy}
@@ -246,6 +266,17 @@ The five heteroatom oxidation modes are fully ordered by $\Delta\depth$:
 \end{equation}
 (subscripts are $\Delta\depth$ values).
 
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/panel_06_rate_ordering}
+  \caption{Complete rate hierarchy for heteroatom oxidation. Monotonic ordering
+  $k_{\mathrm{S\text{-}ox}} > k_{\mathrm{N\text{-}ox}} > k_{\mathrm{N\text{-}dealk}} >
+  k_{\mathrm{O\text{-}dealk}} > k_{\mathrm{aliphatic}}$ mirrors the corresponding
+  $\Delta\mathcal{M}$ hierarchy. Direct O-atom transfers consistently outpace
+  HAT-mediated dealkylations due to lower activation depth.}
+  \label{fig:p7-rates}
+\end{figure}
+
 \subsection{Carbinolamine Intermediate Lability}
 
 After N-dealkylation HAT, the alpha-radical undergoes oxygen rebound to form a
@@ -255,16 +286,13 @@ The intermediate does not accumulate under physiological conditions.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/panel_06_rate_ordering}
-  \caption{Complete rate hierarchy for all five heteroatom oxidation modes.}
-  \label{fig:rates}
-\end{figure}
-
-\begin{figure}[!htbp]
-  \centering
   \includegraphics[width=\textwidth]{figures/panel_07_carbinolamine}
-  \caption{Carbinolamine cascade: labile C--N/C--O cleavage ($\Delta\depth < 0.15$).}
-  \label{fig:carb}
+  \caption{Carbinolamine (N-dealkylation) and hemiacetal (O-dealkylation) intermediate
+  cascade kinetics. C--N bond cleavage ($\Delta\mathcal{M}=0.12$) and C--O--C cleavage
+  ($\Delta\mathcal{M}=0.14$) are spontaneous, with rates $>8\times10^9\,\mathrm{s}^{-1}$
+  -- faster than the HAT step itself. The intermediates are kinetically labile and do not
+  accumulate under physiological conditions.}
+  \label{fig:p7-carb}
 \end{figure}
 
 \section{Validation}
@@ -293,8 +321,12 @@ $K_i$ ketoconazole & $<100\,\mathrm{nM}$ & 1--5 nM (lit.) & PASS \\
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/panel_08_validation}
-  \caption{Validation summary: 8/8 PASS.}
-  \label{fig:valid}
+  \caption{Validation summary for Paper~7. All 8 validation scripts PASS: BDE scaling,
+  N-dealkylation rate, KIE prediction, S-oxidation direct transfer, N-oxide formation,
+  rate hierarchy ordering, carbinolamine lability, and competitive inhibition by
+  ketoconazole ($K_i < 100\,\mathrm{nM}$). Predicted rates consistent with literature
+  ranges for CYP3A4 and CYP2D6 substrates.}
+  \label{fig:p7-valid}
 \end{figure}
 
 \section{Conclusion}

@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Information Capacity of Ternary Encoding}{2}{section.2}%
+\contentsline {section}{\numberline {3}Recovery Accuracy as a Function of Depth}{2}{section.3}%
+\contentsline {section}{\numberline {4}Partial Address Recovery}{2}{section.4}%
+\contentsline {section}{\numberline {5}Sequence Reconstruction Fidelity}{2}{section.5}%
+\contentsline {section}{\numberline {6}Missing Data Interpolation and Compression}{2}{section.6}%
+\contentsline {section}{\numberline {7}Cross-Species Recovery}{2}{section.7}%
+\contentsline {section}{\numberline {8}PharmVar Allele Capacity}{2}{section.8}%
+\contentsline {section}{\numberline {9}Validation}{7}{section.9}%
+\contentsline {section}{\numberline {10}Conclusion}{7}{section.10}%
