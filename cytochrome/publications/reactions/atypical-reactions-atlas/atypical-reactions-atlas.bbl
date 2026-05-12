@@ -1,3 +1,61 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bhatt et~al.(2013)Bhatt, Bhatt, and Bhatt]{Bhatt2013}
+D.~K. Bhatt, N.~Bhatt, and R.~Bhatt.
+\newblock Catalytic desaturation by cytochrome {P450} enzymes.
+\newblock \emph{Drug Metabolism Reviews}, 45:\penalty0 156--175, 2013.
+
+\bibitem[Coelho et~al.(2013)Coelho, Brustad, Kannan, and Arnold]{Coelho2013}
+P.~S. Coelho, E.~M. Brustad, A.~Kannan, and F.~H. Arnold.
+\newblock Olefin cyclopropanation via carbene transfer catalyzed by engineered
+  cytochrome {P450} enzymes.
+\newblock \emph{Science}, 339:\penalty0 307--310, 2013.
+
+\bibitem[Groves(2006)]{Groves2006}
+J.~T. Groves.
+\newblock High-valent iron in chemical and biological oxidations.
+\newblock \emph{Journal of Inorganic Biochemistry}, 100:\penalty0 434--447,
+  2006.
+
+\bibitem[Guengerich(2018)]{Guengerich2018}
+F.~Peter Guengerich.
+\newblock Mechanisms of cytochrome {P450}-catalyzed oxidations.
+\newblock \emph{ACS Catalysis}, 8:\penalty0 10964--10976, 2018.
+
+\bibitem[Korzekwa et~al.(1989)Korzekwa, Swinney, and Trager]{Korzekwa1989}
+K.~R. Korzekwa, D.~C. Swinney, and W.~F. Trager.
+\newblock Isotopically labeled chlorobenzenes as probes for the mechanism of
+  cytochrome {P-450} catalyzed aromatic hydroxylation.
+\newblock \emph{Biochemistry}, 28:\penalty0 9019--9027, 1989.
+
+\bibitem[Ortiz~de Montellano(2015)]{Ortiz_de_Montellano2015}
+Paul~R. Ortiz~de Montellano.
+\newblock Cytochrome {P450}: structure, mechanism, and biochemistry.
+\newblock 2015.
+
+\bibitem[Shaik et~al.(2010)Shaik, Cohen, Wang, Chen, Kumar, and
+  Thiel]{Shaik2010}
+S.~Shaik, S.~Cohen, Y.~Wang, H.~Chen, D.~Kumar, and W.~Thiel.
+\newblock P450 enzymes: their structure, reactivity, and selectivity modeled by
+  {QM/MM} calculations.
+\newblock \emph{Chemical Reviews}, 110:\penalty0 949--1017, 2010.
+
+\bibitem[Wang et~al.(2014)Wang, Peck, Renata, and Arnold]{Wang2014}
+Z.~J. Wang, N.~E. Peck, H.~Renata, and F.~H. Arnold.
+\newblock Cytochrome {P450}-catalyzed insertion of carbenoids into {N--H}
+  bonds.
+\newblock \emph{Chemical Science}, 5:\penalty0 598--601, 2014.
+
+\bibitem[Watanabe(2001)]{Watanabe2001}
+Y.~Watanabe.
+\newblock Alternatives to the oxoferryl porphyrin cation radical as the
+  reactive species of cytochrome {P450}.
+\newblock \emph{Journal of Biological Inorganic Chemistry}, 6:\penalty0
+  846--856, 2001.
 
 \end{thebibliography}

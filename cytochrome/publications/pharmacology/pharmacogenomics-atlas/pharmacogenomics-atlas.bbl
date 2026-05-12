@@ -1,3 +1,55 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Cascorbi(2003)]{Cascorbi2003}
+I.~Cascorbi.
+\newblock Pharmacogenetics of cytochrome {P4502D6}: genetic background and
+  clinical implication.
+\newblock \emph{European Journal of Clinical Investigation}, 33:\penalty0
+  17--22, 2003.
+
+\bibitem[Crews et~al.(2012)Crews, Gaedigk, Dunnenberger, et~al.]{Crews2014}
+K.~R. Crews, A.~Gaedigk, H.~M. Dunnenberger, et~al.
+\newblock {CPIC} guideline for codeine therapy in the context of cytochrome
+  {P450 2D6} genotype.
+\newblock \emph{Clinical Pharmacology and Therapeutics}, 91:\penalty0 321--326,
+  2012.
+
+\bibitem[Gaedigk et~al.(2018)Gaedigk, Ingelman-Sundberg, Miller,
+  et~al.]{PharmVar2020}
+A.~Gaedigk, M.~Ingelman-Sundberg, N.~A. Miller, et~al.
+\newblock The pharmacogene variation ({PharmVar}) consortium: incorporation of
+  the human cytochrome {P450} allele ({CYP} allele) nomenclature database.
+\newblock \emph{Clinical Pharmacology and Therapeutics}, 103:\penalty0
+  399--401, 2018.
+
+\bibitem[Hicks et~al.(2017)Hicks, Sangkuhl, Swen, et~al.]{Hicks2017}
+J.~K. Hicks, K.~Sangkuhl, J.~J. Swen, et~al.
+\newblock {CPIC} guideline for {CYP2D6} and codeine therapy.
+\newblock \emph{Clinical Pharmacology and Therapeutics}, 98:\penalty0 291--300,
+  2017.
+
+\bibitem[Ingelman-Sundberg(2004)]{Ingelman-Sundberg2004}
+M.~Ingelman-Sundberg.
+\newblock Human drug metabolising cytochrome {P450} enzymes: properties and
+  polymorphisms.
+\newblock \emph{Naunyn-Schmiedeberg's Archives of Pharmacology}, 369:\penalty0
+  89--104, 2004.
+
+\bibitem[Scott et~al.(2011)Scott, Sangkuhl, Stein, et~al.]{Scott2013}
+S.~A. Scott, K.~Sangkuhl, C.~M. Stein, et~al.
+\newblock {CPIC} guideline for {CYP2C9} and warfarin.
+\newblock \emph{Clinical Pharmacology and Therapeutics}, 89:\penalty0 911--924,
+  2011.
+
+\bibitem[Swen et~al.(2011)Swen, Nijenhuis, de~Boer, et~al.]{Swen2011}
+J.~J. Swen, M.~Nijenhuis, A.~de~Boer, et~al.
+\newblock Pharmacogenetics: from bench to byte --- an update of guidelines.
+\newblock \emph{Clinical Pharmacology and Therapeutics}, 89:\penalty0 662--673,
+  2011.
 
 \end{thebibliography}

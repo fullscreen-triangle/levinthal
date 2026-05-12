@@ -1,0 +1,85 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bren et~al.(2015)Bren, Eisenberg, and Gray]{bren2015}
+K.~L. Bren, R.~Eisenberg, and H.~B. Gray.
+\newblock Discovery of the magnetic behavior of hemoglobin: A beginning of
+  bioinorganic chemistry.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 112:\penalty0
+  13123--13127, 2015.
+
+\bibitem[Denisov et~al.(2005)Denisov, Makris, Sligar, and
+  Schlichting]{denisov2005}
+I.~G. Denisov, T.~M. Makris, S.~G. Sligar, and I.~Schlichting.
+\newblock Structure and chemistry of cytochrome {P450}.
+\newblock \emph{Chemical Reviews}, 105:\penalty0 2253--2277, 2005.
+
+\bibitem[Groves and McClusky(1985)]{groves1985}
+J.~T. Groves and G.~A. McClusky.
+\newblock Aliphatic hydroxylation via oxygen rebound. oxygen transfer catalyzed
+  by iron.
+\newblock \emph{Journal of the American Chemical Society}, 98:\penalty0
+  859--861, 1985.
+
+\bibitem[Guengerich(1990)]{guengerich1990}
+F.~P. Guengerich.
+\newblock Mechanism-based inactivation of human liver microsomal cytochrome
+  {P-450} {IIIA4} by gestodene.
+\newblock \emph{Chemical Research in Toxicology}, 3:\penalty0 363--371, 1990.
+
+\bibitem[Jung et~al.(2011)Jung, Lauchli, and Arnold]{jung2011}
+S.~T. Jung, R.~Lauchli, and F.~H. Arnold.
+\newblock Cytochrome {P450}: Taming a wild type enzyme.
+\newblock \emph{Current Opinion in Biotechnology}, 22:\penalty0 809--817, 2011.
+
+\bibitem[Mak et~al.(2007)Mak, Denisov, Victoria, Makris, Deng, Sligar, and
+  Kincaid]{mak2007}
+P.~J. Mak, I.~G. Denisov, D.~Victoria, T.~M. Makris, T.~Deng, S.~G. Sligar, and
+  J.~R. Kincaid.
+\newblock Resonance raman detection of the hydroperoxo intermediate in the
+  cytochrome {P450} reaction cycle.
+\newblock \emph{Journal of the American Chemical Society}, 129:\penalty0
+  6382--6383, 2007.
+
+\bibitem[Marcus and Sutin(1985)]{marcus1985}
+R.~A. Marcus and N.~Sutin.
+\newblock Electron transfers in chemistry and biology.
+\newblock \emph{Biochimica et Biophysica Acta}, 811:\penalty0 265--322, 1985.
+
+\bibitem[Poulos(2014)]{poulos2014}
+T.~L. Poulos.
+\newblock Heme enzyme structure and function.
+\newblock \emph{Chemical Reviews}, 114:\penalty0 3919--3962, 2014.
+
+\bibitem[Rittle and Green(2010)]{rittle2010}
+J.~Rittle and M.~T. Green.
+\newblock Cytochrome {P450} compound {I}: Capture, characterization, and {C-H}
+  bond activation kinetics.
+\newblock \emph{Science}, 330:\penalty0 933--937, 2010.
+
+\bibitem[Shahrokh et~al.(2012)Shahrokh, Orendt, Yost, and
+  Cheatham]{shahrokh2012}
+K.~Shahrokh, A.~Orendt, G.~S. Yost, and T.~E. Cheatham.
+\newblock Quantum mechanically derived {AMBER}-compatible heme parameters for
+  various states of the cytochrome {P450} catalytic cycle.
+\newblock \emph{Journal of Computational Chemistry}, 33:\penalty0 119--133,
+  2012.
+
+\bibitem[Sligar and Murray(1979)]{sligar1979}
+S.~G. Sligar and R.~I. Murray.
+\newblock Cytochrome {P-450cam}: {Oxidation-Reduction} thermodynamics of a
+  ferredoxin-coupled microsomal enzyme.
+\newblock \emph{Methods in Enzymology}, 63:\penalty0 255--287, 1979.
+
+\bibitem[Spolitak et~al.(2005)Spolitak, Dawson, and Ballou]{spolitak2005}
+T.~Spolitak, J.~H. Dawson, and D.~P. Ballou.
+\newblock Reaction of ferric cytochrome {P450cam} with peracids: Kinetic
+  characterization of intermediates on the reaction pathway.
+\newblock \emph{Journal of Biological Chemistry}, 280:\penalty0 20300--20309,
+  2005.
+
+\end{thebibliography}

@@ -1,8 +1,44 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Denisov et~al.(2005)Denisov, Makris, Sligar, and
+  Schlichting]{Denisov2005}
+I.~G. Denisov, T.~M. Makris, S.~G. Sligar, and I.~Schlichting.
+\newblock Structure and chemistry of cytochrome {P450}.
+\newblock \emph{Chemical Reviews}, 105:\penalty0 2253--2277, 2005.
+
+\bibitem[Gaedigk et~al.(2018)]{Gaedigk2018}
+A.~Gaedigk et~al.
+\newblock The {Pharmacogene} variation ({PharmVar}) consortium: incorporation
+  of the {Human Cytochrome P450} ({CYP}) allele nomenclature database.
+\newblock \emph{Clinical Pharmacology \& Therapeutics}, 103:\penalty0 399--401,
+  2018.
+
+\bibitem[Hamming(1950)]{Hamming1950}
+R.~W. Hamming.
+\newblock Error detecting and error correcting codes.
+\newblock \emph{Bell System Technical Journal}, 29:\penalty0 147--160, 1950.
+
+\bibitem[Nelson(2004)]{Nelson2004}
+D.~R. Nelson.
+\newblock Cytochrome {P450} nomenclature.
+\newblock \emph{Methods in Molecular Biology}, 320:\penalty0 1--10, 2004.
+
+\bibitem[Preissner et~al.(2010)Preissner, Kroll, Dunkel, Senger, Goldsobel,
+  Kuzman, Guenther, Winnenburg, Schroeder, and Preissner]{Preissner2010}
+S.~Preissner, K.~Kroll, M.~Dunkel, C.~Senger, G.~Goldsobel, D.~Kuzman,
+  S.~Guenther, R.~Winnenburg, M.~Schroeder, and R.~Preissner.
+\newblock {SuperCYP}: a comprehensive database on {Cytochrome P450} enzymes
+  including a tool for analysis of {CYP}-drug interactions.
+\newblock \emph{Nucleic Acids Research}, 38:\penalty0 D237--D243, 2010.
+
+\bibitem[Shannon(1948)]{Shannon1948}
+C.~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27:\penalty0 379--423, 1948.
 
 \end{thebibliography}

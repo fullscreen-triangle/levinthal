@@ -1,8 +1,43 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Guengerich(2008)]{Guengerich2008}
+F.~P. Guengerich.
+\newblock Cytochrome {P450} and chemical toxicology.
+\newblock \emph{Chemical Research in Toxicology}, 21:\penalty0 70--83, 2008.
+
+\bibitem[Nelson(2004)]{Nelson2004}
+D.~R. Nelson.
+\newblock Cytochrome {P450} nomenclature, 2004.
+\newblock \emph{Methods in Molecular Biology}, 320:\penalty0 1--10, 2004.
+
+\bibitem[Rendic(2002)]{Rendic2002}
+S.~Rendic.
+\newblock Summary of information on human {CYP} enzymes: human {P450}
+  metabolism data.
+\newblock \emph{Drug Metabolism Reviews}, 34:\penalty0 83--448, 2002.
+
+\bibitem[Sirim et~al.(2010)Sirim, Widmann, Wagner, and Pleiss]{Sirim2010}
+D.~Sirim, M.~Widmann, F.~Wagner, and J.~Pleiss.
+\newblock Prediction and analysis of the modular structure of cytochrome {P450}
+  monooxygenases.
+\newblock \emph{BMC Structural Biology}, 10:\penalty0 1--14, 2010.
+
+\bibitem[{UniProt Consortium}(2023)]{UniProtKB2023}
+{UniProt Consortium}.
+\newblock {UniProt}: the universal protein knowledgebase in 2023.
+\newblock \emph{Nucleic Acids Research}, 51:\penalty0 D523--D531, 2023.
+
+\bibitem[Zhao et~al.(2021)Zhao, Ma, Li, Zhang, Jiang, Zhao, Huai, Shen, Zhang,
+  He, and Qin]{Zhao2021}
+M.~Zhao, J.~Ma, M.~Li, Y.~Zhang, B.~Jiang, X.~Zhao, C.~Huai, L.~Shen, N.~Zhang,
+  L.~He, and S.~Qin.
+\newblock Cytochrome {P450} enzymes and drug metabolism in humans.
+\newblock \emph{International Journal of Molecular Sciences}, 22:\penalty0
+  12808, 2021.
 
 \end{thebibliography}
