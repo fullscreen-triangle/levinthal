@@ -1,0 +1,37 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Guengerich(1991)]{Guengerich1991}
+F.~P. Guengerich.
+\newblock Reactions and significance of cytochrome p-450 enzymes.
+\newblock \emph{J. Biol. Chem.}, 266:\penalty0 10019--10022, 1991.
+
+\bibitem[Guengerich(2001)]{Guengerich2001}
+F.~P. Guengerich.
+\newblock Common and uncommon cytochrome p450 reactions related to metabolism
+  and chemical toxicity.
+\newblock \emph{Chem. Res. Toxicol.}, 14:\penalty0 611--650, 2001.
+
+\bibitem[Meunier et~al.(2004)Meunier, de~Visser, and Shaik]{Meunier2004}
+B.~Meunier, S.~P. de~Visser, and S.~Shaik.
+\newblock Mechanism of oxidation reactions catalyzed by cytochrome p450
+  enzymes.
+\newblock \emph{Chem. Rev.}, 104:\penalty0 3947--3980, 2004.
+
+\bibitem[Rendic(2002)]{Rendic2002}
+S.~Rendic.
+\newblock Summary of information on human cyp enzymes: human p450 metabolism
+  data.
+\newblock \emph{Drug Metab. Rev.}, 34:\penalty0 83--448, 2002.
+
+\bibitem[Sachikonye(2024)]{Sachikonye2024chactivation}
+K.~F. Sachikonye.
+\newblock C--h activation by compound i: H-atom transfer and oxygen rebound.
+\newblock \emph{bioRxiv}, 2024.
+\newblock Paper 6 of the cytochrome P450 monograph.
+
+\end{thebibliography}

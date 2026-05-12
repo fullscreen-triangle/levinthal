@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}CYP2D6 Allele Î”M Parameters}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Phenotypic Classes}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Mechanistic Basis}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}CYP2C9 Warfarin Dosing}{2}{section.3}%
+\contentsline {section}{\numberline {4}Population-Weighted Metabolic Rate}{2}{section.4}%
+\contentsline {section}{\numberline {5}Codeine Toxicity in Ultrarapid Metabolizers}{2}{section.5}%
+\contentsline {section}{\numberline {6}Drug--Drug Interactions}{2}{section.6}%
+\contentsline {subsection}{\numberline {6.1}CYP3A4 Induction (Rifampicin)}{2}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}CYP2D6 Inhibition (Fluoxetine)}{2}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Ethnic Variation}{5}{section.7}%
+\contentsline {section}{\numberline {8}Validation}{5}{section.8}%
+\contentsline {section}{\numberline {9}Conclusion}{5}{section.9}%
