@@ -1,9 +1,28 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
 import AnimatedText from "@/components/AnimatedText";
 import TransitionEffect from "@/components/TransitionEffect";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
+
+const GLBViewer = dynamic(
+  () => import("@/components/GLBViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="w-full rounded-xl bg-dark/40 border border-dark/10
+          dark:border-light/10 flex items-center justify-center
+          text-[11px] uppercase tracking-widest text-light/25"
+        style={{ height: 320 }}
+      >
+        Loading structure…
+      </div>
+    ),
+  }
+);
 
 const LAYERS = [
   {
@@ -135,6 +154,26 @@ export default function Apparatus() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* GLB analyte structure */}
+        <div className="mb-12">
+          <h2 className="text-xs uppercase tracking-widest
+            text-dark/40 dark:text-light/40 mb-4">
+            The analyte
+          </h2>
+          <GLBViewer
+            height={320}
+            badge="instrument analyte · CYP3A4"
+            preset="chain"
+            markers={CHAIN_MARKERS}
+          />
+          <p className="mt-3 text-[11px] text-dark/55 dark:text-light/50">
+            The productive cytochrome P450 GLB. The four coloured markers
+            are the cofactor centres (NADPH, FAD, FMN, heme) that the five-layer
+            stack observes. The GLB is parsed by Paper&nbsp;2.5; the instrument
+            reads its own analyte.
+          </p>
         </div>
 
         {/* Apparatus stack visualisation */}

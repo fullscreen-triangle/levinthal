@@ -1,12 +1,30 @@
 import Head from "next/head";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Layout from "./Layout";
 import TransitionEffect from "./TransitionEffect";
 import PanelGrid from "./PanelGrid";
 import { PAPERS } from "@/data/papers";
 import AnimatedText from "./AnimatedText";
 
-const PaperPage = ({ paper, children }) => {
+const GLBViewer = dynamic(
+  () => import("@/components/GLBViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="w-full rounded-xl bg-dark/40 border border-dark/10
+          dark:border-light/10 flex items-center justify-center
+          text-[11px] uppercase tracking-widest text-light/25"
+        style={{ height: 320 }}
+      >
+        Loading structure…
+      </div>
+    ),
+  }
+);
+
+const PaperPage = ({ paper, children, glb }) => {
   const isHeadline = !!paper.headline_paper;
 
   // Find prev/next paper
@@ -79,6 +97,17 @@ const PaperPage = ({ paper, children }) => {
             {paper.status}
           </div>
         </div>
+
+        {/* GLB structure viewer */}
+        {glb && (
+          <div className="mb-12 not-prose">
+            <h2 className="text-xs uppercase tracking-widest
+              text-dark/40 dark:text-light/40 mb-4">
+              Structure
+            </h2>
+            <GLBViewer {...glb} />
+          </div>
+        )}
 
         {/* Page-specific body */}
         {children && (

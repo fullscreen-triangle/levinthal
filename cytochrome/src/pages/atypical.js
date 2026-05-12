@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { HEME_MARKER } from "@/data/glbMarkers";
 
 export default function Atypical() {
   const paper = PAPER_BY_SLUG["atypical"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "atypical reactions · Compound I", preset: "heme", markers: HEME_MARKER }}>
       <section>
         <h2>Beyond Canonical Hydroxylation</h2>
         <p>

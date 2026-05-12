@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { HEME_MARKER } from "@/data/glbMarkers";
 
 export default function Spectroscopy() {
   const paper = PAPER_BY_SLUG["spectroscopy"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "spectroscopy · Soret · heme", preset: "heme", markers: HEME_MARKER }}>
       <section>
         <h2>Soret Band and Spin-State Diagnostics</h2>
         <p>

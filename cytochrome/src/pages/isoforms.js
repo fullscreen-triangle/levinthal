@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function Isoforms() {
   const paper = PAPER_BY_SLUG["isoforms"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "57 human isoforms · CYP3A4", preset: "full", markers: CHAIN_MARKERS }}>
       <section>
         <h2>Ternary Taxonomy of 57 Human CYPs</h2>
         <p>

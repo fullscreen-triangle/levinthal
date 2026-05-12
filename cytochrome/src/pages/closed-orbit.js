@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function ClosedOrbit() {
   const paper = PAPER_BY_SLUG["closed-orbit"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "7-state closed orbit", preset: "chain", markers: CHAIN_MARKERS }}>
 
       <h2>The Orbit Concept</h2>
       <p>
