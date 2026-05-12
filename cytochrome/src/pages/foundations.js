@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function Foundations() {
   const paper = PAPER_BY_SLUG["foundations"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "R_bio · receiver", preset: "full", markers: CHAIN_MARKERS }}>
       <h2>What this paper does</h2>
       <p>
         Establishes the categorical mechanics machinery used by every

@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function Database() {
   const paper = PAPER_BY_SLUG["database"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "ternary DB recovery", preset: "full", markers: CHAIN_MARKERS }}>
       <section>
         <h2>Information Capacity of Ternary Encoding</h2>
         <p>

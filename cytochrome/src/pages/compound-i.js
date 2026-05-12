@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { HEME_MARKER } from "@/data/glbMarkers";
 
 export default function CompoundI() {
   const paper = PAPER_BY_SLUG["compound-i"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "Compound I · Fe⁴⁺=O", preset: "heme", markers: HEME_MARKER }}>
       <h2>What happens after the electrons arrive</h2>
       <p>
         Paper 4 (Transfer) is the headline: the apparatus stack observes

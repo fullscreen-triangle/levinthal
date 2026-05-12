@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function Manifold() {
   const paper = PAPER_BY_SLUG["manifold"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "address manifold · CYP3A4", preset: "full", markers: CHAIN_MARKERS }}>
       <h2>One evaluation, three depths</h2>
       <p>
         The four claims of this paper — family clustering at k=3, isoform

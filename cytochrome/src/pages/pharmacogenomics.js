@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function Pharmacogenomics() {
   const paper = PAPER_BY_SLUG["pharmacogenomics"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "CYP2D6 · CYP2C9 · ΔM", preset: "full", markers: CHAIN_MARKERS }}>
       <section>
         <h2>Allele-Specific ΔM Parameters</h2>
         <p>

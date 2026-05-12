@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { HEME_MARKER } from "@/data/glbMarkers";
 
 export default function Equilibrium() {
   const paper = PAPER_BY_SLUG["equilibrium"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "heme pocket · Fe³⁺", preset: "heme", markers: HEME_MARKER }}>
       <h2>State 1 → State 2 as one categorical aperture</h2>
       <p>
         Water displacement, substrate insertion, and spin-crossover are

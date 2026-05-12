@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { HEME_MARKER } from "@/data/glbMarkers";
 
 export default function CHActivation() {
   const paper = PAPER_BY_SLUG["ch-activation"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "C–H activation site", preset: "heme", markers: HEME_MARKER }}>
 
       <h2>The C–H Activation Problem</h2>
       <p>

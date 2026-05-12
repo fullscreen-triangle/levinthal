@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
 export default function Polymorphisms() {
   const paper = PAPER_BY_SLUG["polymorphisms"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "DDI · polymorphisms · ΔΔM", preset: "full", markers: CHAIN_MARKERS }}>
       <section>
         <h2>Allele ΔM Shifts: Genotype to Rate</h2>
         <p>

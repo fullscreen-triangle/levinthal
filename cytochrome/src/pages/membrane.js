@@ -1,10 +1,11 @@
 import PaperPage from "@/components/PaperPage";
 import { PAPER_BY_SLUG } from "@/data/papers";
+import { HEME_FMN_MARKERS } from "@/data/glbMarkers";
 
 export default function Membrane() {
   const paper = PAPER_BY_SLUG["membrane"];
   return (
-    <PaperPage paper={paper}>
+    <PaperPage paper={paper} glb={{ badge: "CPR · FMN→heme", preset: "chain", markers: HEME_FMN_MARKERS }}>
 
       <h2>Why Membrane Anchoring Matters</h2>
       <p>
