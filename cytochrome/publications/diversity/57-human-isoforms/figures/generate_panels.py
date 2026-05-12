@@ -270,7 +270,7 @@ for i in range(5):
     ax1.plot(0, i, 'k.', markersize=6)
 
 # ROC curve
-from numpy import trapz
+trapz = np.trapezoid if hasattr(np, 'trapezoid') else np.trapz
 thresholds = np.linspace(0, 1, 50)
 # substrates are rows 0-4 for CYP3A4 (col 0); non-substrates rows 5-9
 true_labels = np.array([1,1,1,1,1,0,0,0,0,0])
