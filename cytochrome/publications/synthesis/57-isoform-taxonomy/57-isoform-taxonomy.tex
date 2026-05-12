@@ -1,5 +1,6 @@
-﻿\documentclass[12pt,a4paper]{article}
+﻿\documentclass[11pt,twocolumn,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx,longtable}
+\usepackage{natbib}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
@@ -37,7 +38,7 @@ $\geq$80\,\% of FDA-approved drug metabolism.
 
 The 57 human P450 genes are numbered according to the Nelson nomenclature,
 which groups isoforms sharing $>40$\,\% sequence identity into families and
-$>55$\,\% identity into subfamilies.  This classification is not arbitrary:
+$>55$\,\% identity into subfamilies~\citep{Nelson2004}.  This classification is not arbitrary:
 it reflects deep evolutionary divergence encoded in the primary sequence.
 
 Within categorical mechanics, sequences are encoded as ternary (base-3) addresses.
@@ -81,11 +82,11 @@ Allelic variants & $>$1000 & 7 & 2187 & PharmVar ($k=9$, $19\,683$) \\
 \end{figure}
 
 %% ============================================================
-\section{Substrate Selectivity: Î”M Ranges per Family}
+\section{Substrate Selectivity: $\Delta M$ Ranges per Family}
 %% ============================================================
 
 Each CYP family has a characteristic range of substrate activation partition
-depths $[\Delta M_\text{lo}, \Delta M_\text{hi}]$.  The width of this range
+depths $[\Delta M_\text{lo}, \Delta M_\text{hi}]$~\citep{Rendic2002}.  The width of this range
 reflects the breadth of substrate scope:
 \begin{equation}
   W_\text{family} = \Delta M_\text{hi} - \Delta M_\text{lo}.
@@ -120,7 +121,7 @@ CYP2E1 is shifted to higher $\Delta M$ (smaller, more polar substrates).}
 \section{CYP3A4: Fold Depth from Sequence Length}
 %% ============================================================
 
-CYP3A4 has 503 amino-acid residues (UniProt P08684).  The number of
+CYP3A4 has 503 amino-acid residues (UniProt P08684~\citep{UniProtKB2023}).  The number of
 categorical steps required to enumerate this sequence is:
 \begin{equation}
   d_\text{fold}(\text{CYP3A4}) = \log_3 503 \approx 5.69.
@@ -137,7 +138,7 @@ At depth 6, $3^6 = 729 > 503$, providing full sequence coverage.
 \end{figure}
 
 %% ============================================================
-\section{Shell Capacity: C(n) = 2nÂ²}
+\section{Shell Capacity: $C(n) = 2n^2$}
 %% ============================================================
 
 The receiver $R_\text{bio}$ imposes the standard shell capacity formula
@@ -183,10 +184,10 @@ subfamilies, with individual polymorphisms shifting $\Delta M$ by
 \section{Drug Metabolism Fractions}
 %% ============================================================
 
-Empirical data from Guengerich (2008) show that CYP3A4 alone accounts for
+\citet{Guengerich2008} show that CYP3A4 alone accounts for
 $\approx 46$\,\% of drug metabolism, while CYP2D6 and CYP2C9 contribute
 19\,\% and 15\,\%, respectively.  Together, these three isoforms account for
-$\geq 80$\,\% of FDA-approved drugs.
+$\geq 80$\,\% of FDA-approved drugs~\citep{Zhao2021}.
 
 \begin{figure}[!htbp]
 \centering
@@ -199,13 +200,13 @@ confirms that CYP3A4 contributes the largest effective metabolic flux, consisten
 with its broad substrate scope and low $\Delta M$ lower bound.
 
 %% ============================================================
-\section{Substrate Volumeâ€“Î”M Correlation}
+\section{Substrate Volume--$\Delta M$ Correlation}
 %% ============================================================
 
 Across representative substrates spanning acetaminophen to testosterone,
 molecular volume ($V$, in~\AA$^3$) correlates negatively with $\Delta M$
 ($r \approx -0.6$): larger, lipophilic substrates fit tighter in the active
-site, lowering the activation depth.  This confirms that $\Delta M$ encodes
+site, lowering the activation depth~\citep{Sirim2010}.  This confirms that $\Delta M$ encodes
 a real physical quantity (steric and electrostatic complementarity) rather
 than a phenomenological parameter.
 
@@ -239,7 +240,7 @@ CYP3A4 has the widest window, consistent with its dominant role in drug
 metabolism.  The fold depth of CYP3A4 ($\log_3 503 \approx 5.69$ steps) matches
 the predicted depth for structural resolution at RMSD $<2.5$~\AA.
 
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 \bibliography{references}
 
 \end{document}
