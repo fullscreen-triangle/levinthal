@@ -1,5 +1,11 @@
 \documentclass[11pt,twocolumn,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
 \geometry{margin=2.2cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
@@ -40,11 +46,11 @@ Europeans showing the highest PM fraction and highest inter-individual variabili
 
 Single-nucleotide polymorphisms (SNPs) in cytochrome P450 genes alter the
 structure of the enzyme active site, changing the substrate-binding geometry
-and, in the categorical mechanics model, the activation partition depth $\Delta M$.
-Loss-of-function alleles (e.g., CYP2D6*4, *5) effectively raise $\Delta M$
+and, in the categorical mechanics model, the activation partition depth $\Delta M$~\citep{Ingelman-Sundberg2004}.
+Loss-of-function alleles (e.g., CYP2D6*4, *5~\citep{Cascorbi2003,PharmVar2020}) effectively raise $\Delta M$
 to $\sim 2.5$, reducing the rate to $\sim 8$\,\% of wild-type.  Gain-of-function
 gene duplications lower $\Delta M$ to $\sim 0.27$, increasing the rate by
-$\sim 30$\,\%.
+$\sim 30$\,\%~\citep{Cascorbi2003}.
 
 This paper derives quantitative predictions for:
 \begin{itemize}
@@ -61,7 +67,7 @@ This paper derives quantitative predictions for:
 
 \subsection{Phenotypic Classes}
 
-\begin{table}[h]
+\begin{table*}[!t]
 \centering
 \caption{CYP2D6 phenotype classification by $\Delta M$.}
 \begin{tabular}{lcccc}
@@ -76,7 +82,7 @@ Poor (PM)       & $*4$/$*5$    & 2.50 & $8.2\times10^8$ & 7\,\% \\
 \end{tabular}
 \end{table*}
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_01_cyp2d6_allele_rates.png}
 \caption{\textbf{CYP2D6 allele-specific rate constants and partition depths across all four metaboliser phenotypes.}
@@ -114,9 +120,9 @@ The predicted warfarin dose adjustment:
   \text{dose ratio} = \frac{k_\text{EM}}{k_{*3}} \approx \frac{6.2\times10^9}{2.7\times10^8} \approx 23.
 \end{equation}
 Clinical data show *3/*3 homozygotes require only 5--15\,\% of the standard dose
-to achieve therapeutic anticoagulation, consistent with our prediction.
+to achieve therapeutic anticoagulation, consistent with our prediction~\citep{Scott2013,Swen2011}.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_02_cyp2c9_warfarin_dosing.png}
 \caption{\textbf{CYP2C9 allele rate constants and predicted S-warfarin dose adjustments.}
@@ -144,7 +150,7 @@ In Europeans, $k_\text{pop} \approx k_\text{EM}$ since EM is the dominant
 phenotype.  The EM phenotype accounts for $>$60\,\% of the population
 metabolic rate flux.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_03_population_phenotype_frequencies.png}
 \caption{\textbf{CYP2D6 phenotype frequency distributions and population-weighted metabolic rates across ancestries.}
@@ -170,9 +176,9 @@ excess morphine exposure at standard doses:
   = \frac{k_\text{UM}}{k_\text{EM}} = e^{0.55-0.27} = e^{0.28} \approx 1.32.
 \end{equation}
 The FDA black-box warning on codeine for nursing mothers carrying UM genotype
-is consistent with this $>30$\,\% excess exposure prediction.
+is consistent with this $>30$\,\% excess exposure prediction~\citep{Hicks2017,Crews2014}.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_04_codeine_toxicity_model.png}
 \caption{\textbf{Codeine O-demethylation and excess morphine exposure in CYP2D6 ultrarapid metabolisers.}
@@ -193,14 +199,14 @@ warning on codeine use in nursing mothers with UM genotype.}
 
 \subsection{CYP3A4 Induction (Rifampicin)}
 
-Rifampicin activates PXR, inducing CYP3A4 protein expression $\sim 20\times$.
+Rifampicin activates PXR, inducing CYP3A4 protein expression $\sim 20\times$~\citep{Swen2011}.
 In the categorical mechanics model, this scales the effective rate by 20:
 \begin{equation}
   k_\text{induced} = 20 \times k_\text{baseline}, \quad
   \text{AUC ratio} = 1/20 = 0.05 < 0.1.
 \end{equation}
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_05_ddI_cyp3a4_induction.png}
 \caption{\textbf{CYP3A4 induction by rifampicin and midazolam AUC reduction.}
@@ -218,7 +224,7 @@ between rifampicin and most CYP3A4 substrates.}
 
 \subsection{CYP2D6 Inhibition (Fluoxetine)}
 
-Fluoxetine is a potent CYP2D6 inhibitor ($K_i \approx 0.24\,\mu$M).  At
+Fluoxetine is a potent CYP2D6 inhibitor ($K_i \approx 0.24\,\mu$M~\citep{Ingelman-Sundberg2004}).  At
 clinical concentrations $[I] \approx 0.5\,\mu$M:
 \begin{equation}
   \alpha = 1 + \frac{[I]}{K_i} \approx 3.08, \quad
@@ -228,7 +234,7 @@ The predicted AUC ratio for a CYP2D6 victim drug is $\sim 3.1\times$,
 corresponding to a strong DDI risk (FDA classification: $>5\times$ =
 contraindicated, $2$--$5\times$ = strong inhibitor).
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_06_inhibition_competitive.png}
 \caption{\textbf{Competitive inhibition of CYP2D6 and the $\alpha$ modulus.}
@@ -249,7 +255,7 @@ apparent partition-depth shifts.}
 
 PM and IM frequencies differ substantially across ancestries.  East Asians
 carry $\sim 50$\,\% CYP2D6*10 (IM) allele frequency vs.\ $\sim 15$\,\% in
-Europeans.  Despite lower PM frequency, East Asians have the highest IM
+Europeans~\citep{Ingelman-Sundberg2004}.  Despite lower PM frequency, East Asians have the highest IM
 burden, resulting in a lower population-weighted metabolic rate compared to
 Europeans:
 \begin{equation}
@@ -257,7 +263,7 @@ Europeans:
   \quad\text{(IM dominant in East Asian).}
 \end{equation}
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_07_ethnic_variation.png}
 \caption{\textbf{Ethnic variation in CYP2D6 phenotype frequencies and population-weighted metabolic rates.}
@@ -280,7 +286,7 @@ All 8 validation scripts pass (100\,\% PASS rate).  Six alleles across two
 genes (CYP2D6, CYP2C9) are parameterized; the model correctly predicts
 drug dose adjustments, toxicity risks, and population-level metabolic variation.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{\textbf{Validation summary for Paper~10: pharmacogenomics of cytochrome P450.}
@@ -307,7 +313,7 @@ Ethnic variation in allele frequencies is translated into population-weighted
 metabolic rates, enabling prospective predictions of population-level PK
 differences without empirical population PK studies.
 
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 \bibliography{references}
 
 \end{document}

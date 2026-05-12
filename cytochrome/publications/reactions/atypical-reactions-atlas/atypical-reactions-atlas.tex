@@ -1,6 +1,12 @@
 \documentclass[11pt,twocolumn,a4paper]{article}
 \usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,geometry,siunitx}
-\geometry{margin=2.2cm}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
 \title{\textbf{Atypical Reactions of Cytochrome P450:\\
@@ -41,24 +47,24 @@ checks with 100\,\% PASS rate.
 
 Cytochrome P450 enzymes are among the most versatile biocatalysts known,
 capable of inserting an oxygen atom into virtually any C--H, C=C, C--S, or
-C=O bond.  The canonical hydrogen-atom transfer (HAT) rebound mechanism
-accounts for aliphatic and benzylic hydroxylation.  However, the active
+C=O bond~\citep{Guengerich2018,Ortiz_de_Montellano2015}.  The canonical hydrogen-atom transfer (HAT) rebound mechanism
+accounts for aliphatic and benzylic hydroxylation~\citep{Groves2006,Shaik2010}.  However, the active
 Compound~I intermediate ($\text{Fe}^{IV}=\text{O}$) can also engage
 substrates through several non-HAT pathways.
 
 \begin{description}
 \item[Desaturation] Two sequential HAT steps convert a vicinal $\text{C}_\alpha$--H
-  and $\text{C}_\beta$--H into a double bond instead of a hydroxylated product.
+  and $\text{C}_\beta$--H into a double bond instead of a hydroxylated product~\citep{Bhatt2013}.
 \item[Epoxidation] Electrophilic addition of the Fe=O to an aromatic or
   olefinic $\pi$-system gives an arene or alkene oxide.
 \item[NIH shift] The arene oxide from epoxidation undergoes a spontaneous
   1,2-hydride migration, observed as a deuterium ``shift'' in labelling
-  experiments, yielding a phenolic product.
+  experiments, yielding a phenolic product~\citep{Korzekwa1989}.
 \item[Nucleophilic O-atom transfer] At aldehyde carbonyls, the iron-oxo
   acts as a nucleophile rather than an electrophile, inserting oxygen via a
-  Baeyer--Villiger-like mechanism.
+  Baeyer--Villiger-like mechanism~\citep{Watanabe2001}.
 \item[Carbene insertion] Engineered P450s (e.g.\ CYP119 variants) can accept
-  diazo compounds to form an iron-carbene that inserts into C--H or X--H bonds.
+  diazo compounds to form an iron-carbene that inserts into C--H or X--H bonds~\citep{Coelho2013,Wang2014}.
 \end{description}
 
 In this paper we derive all five reaction rates within the categorical
@@ -97,7 +103,7 @@ Nucleophilic O-xfer & 0.42 & $6.57\times10^9$ & 6.53 & 1.0 \\
 Desaturation (eff.) & --- & $1.3\times10^8$ & --- & 4--6 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 %% ============================================================
 \section{Desaturation: Two-Step HAT with Competing Rebound}
@@ -114,17 +120,7 @@ determine product distribution:
   \text{radical intermediate} \xrightarrow{k_\text{rebound}} \text{alcohol.}
 \end{equation}
 
-\subsection{Effective Rate}
-
-The effective desaturation rate constant is:
-\begin{equation}
-  k_\text{desat,eff} = \frac{k_1 k_2}{k_2 + k_\text{rebound}},
-\end{equation}
-where $k_1 = \nu_\text{floor}\,e^{-0.65}$, $k_2 = \nu_\text{floor}\,e^{-0.55}$,
-and $k_\text{rebound} = \SI{7.4e9}{\per\second}$ (from Paper~6).
-This gives $k_\text{desat,eff} \approx \SI{1.3e8}{\per\second}$.
-
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_01_desaturation_two_step.png}
 \caption{\textbf{Two-step hydrogen-atom transfer kinetics for P450-catalysed desaturation.}
@@ -142,6 +138,18 @@ $k_\text{rebound}$, confirming robustness to $\pm 50$\,\% parameter variation.}
 \label{fig:panel01_desat}
 \end{figure*}
 
+\subsection{Effective Rate}
+
+The effective desaturation rate constant is:
+\begin{equation}
+  k_\text{desat,eff} = \frac{k_1 k_2}{k_2 + k_\text{rebound}},
+\end{equation}
+where $k_1 = \nu_\text{floor}\,e^{-0.65}$, $k_2 = \nu_\text{floor}\,e^{-0.55}$,
+and $k_\text{rebound} = \SI{7.4e9}{\per\second}$ (from Paper~6).
+This gives $k_\text{desat,eff} \approx \SI{1.3e8}{\per\second}$.
+
+
+
 \subsection{Kinetic Isotope Effect}
 
 Because the first HAT involves C--H bond cleavage, the ZPE contribution
@@ -155,7 +163,7 @@ This yields $\text{KIE}\approx 5$--$9$ for the intrinsic step, attenuated
 to $\approx 4$--$6$ for the effective two-step process due to the commitment
 factor from the second HAT step.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_02_desaturation_kie.png}
 \caption{\textbf{Kinetic isotope effect analysis for P450 desaturation versus single-HAT hydroxylation.}
@@ -187,9 +195,9 @@ no primary isotope effect:
   k_\text{epox} = \nu_\text{floor}\,e^{-0.35} = \SI{7.05e9}{\per\second}.
 \end{equation}
 
-Because no hydrogen is transferred in the rate-limiting step, $\text{KIE} = 1.0$.
+Because no hydrogen is transferred in the rate-limiting step, $\text{KIE} = 1.0$~\citep{Korzekwa1989,Shaik2010}.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_03_arene_oxide.png}
 \caption{\textbf{Arene epoxidation by cytochrome P450 Compound\,I: rate, isotope effect, and comparison to HAT.}
@@ -221,19 +229,13 @@ This cationic rearrangement has a very low barrier:
 \end{equation}
 This is the fastest of all five atypical mechanisms.
 
-\subsection{Isotope Effect}
-
-In the NIH shift, a hydride migrates (1,2-shift) rather than breaking a
-C--H bond by radical abstraction.  No primary isotope effect is expected;
-only a secondary $\text{KIE} < 2$ from hyperconjugation in the transition state.
-
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_04_nih_shift.png}
 \caption{\textbf{NIH shift from arene oxide: 1,2-hydride migration rate and isotope effect.}
 (\textbf{A}) Rate constant $k_\text{NIH} = \nu_\text{floor}\,e^{-0.18} =
 8.35\times10^9$\,s$^{-1}$; the low barrier reflects a cationic 1,2-hydride
-migration from the keto to the phenol tautomer, without radical C--H cleavage,
+migration from the keto to the phenol tautomer without radical C--H cleavage,
 making this the fastest of all five atypical mechanisms.
 (\textbf{B}) Secondary KIE for 1,2-deuteride migration
 ($\text{KIE}_\text{secondary} \approx 1.1$--$1.3$) compared to the primary KIE
@@ -244,6 +246,14 @@ mechanisms, placing NIH shift at the top and effective desaturation at the botto
 spanning two orders of magnitude in apparent rate.}
 \label{fig:panel04_nih}
 \end{figure*}
+
+\subsection{Isotope Effect}
+
+In the NIH shift, a hydride migrates (1,2-shift) rather than breaking a
+C--H bond by radical abstraction.  No primary isotope effect is expected;
+only a secondary $\text{KIE} < 2$ from hyperconjugation in the transition state.
+
+
 
 \subsection{Product Partitioning: Phenol vs Dihydrodiol}
 
@@ -256,7 +266,7 @@ dominates:
   > 0.5.
 \end{equation}
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_07_product_partitioning.png}
 \caption{\textbf{Product partitioning after arene oxide formation: phenol versus trans-dihydrodiol.}
@@ -286,9 +296,9 @@ transition state:
   k_\text{nuc} = \nu_\text{floor}\,e^{-0.42} = \SI{6.57e9}{\per\second}.
 \end{equation}
 This mechanism is relevant for CYP11A1 (cholesterol side-chain cleavage)
-and steroidogenic P450s.  Since no C--H bond is broken, $\text{KIE} = 1.0$.
+and steroidogenic P450s~\citep{Watanabe2001}.  Since no C--H bond is broken, $\text{KIE} = 1.0$.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_05_nucleophilic_aldehyde.png}
 \caption{\textbf{Nucleophilic oxygen-atom transfer to aldehyde carbonyls by the iron-peroxo species.}
@@ -323,9 +333,9 @@ than bond-dissociation energy, and carries no primary isotope effect.
 \section{Rate Ordering and Unified Hierarchy}
 %% ============================================================
 
-Table~\ref{tab:delta_m} and Figure~\ref{fig:ordering} show that $\Delta M$
+Table~\ref{tab:delta_m} and Figure~\ref{fig:panel06_ordering} show that $\Delta M$
 values increase monotonically from NIH shift to desaturation, and rates
-decrease accordingly:
+decrease accordingly~\citep{Guengerich2018}:
 \begin{equation}
   k_\text{NIH} > k_\text{carbene} > k_\text{epox}
   > k_\text{nuc} > k_\text{desat,eff}.
@@ -337,7 +347,7 @@ reorganization; nucleophilic attack on a polarized C=O is slightly more
 demanding; and desaturation is rate-limited by two HAT steps competing with
 fast radical rebound.
 
-\begin{figure*}[!t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_06_rate_ordering.png}
 \caption{\textbf{Unified rate hierarchy for all five atypical P450 reaction mechanisms.}
@@ -348,10 +358,10 @@ $>$ arene epoxidation ($7.05\times10^9$\,s$^{-1}$) $>$ nucleophilic O-atom trans
 a 65-fold span.
 (\textbf{B}) Scatter plot of rate versus $\Delta M$; the exponential law
 $k = \nu_\text{floor}\,e^{-\Delta M}$ accounts for the full span with no additional
-parameters, confirming that a single depth scale characterises all five mechanistically
-distinct pathways.
-(\textbf{C}) Three-dimensional phase-space plot in $(\Delta M, k, \text{KIE})$ space,
-separating the four HAT-independent mechanisms ($\text{KIE} \approx 1$) from
+parameters, confirming that a single depth scale characterises all five
+mechanistically distinct pathways.
+(\textbf{C}) Three-dimensional phase-space plot in $(\Delta M, k, \text{KIE})$
+space, separating the four HAT-independent mechanisms ($\text{KIE} \approx 1$) from
 desaturation ($\text{KIE} \approx 4$--$6$), providing a kinetic fingerprint for
 mechanistic identification.}
 \label{fig:panel06_ordering}
@@ -365,7 +375,24 @@ Eight Python validation scripts (01--08) implement all quantitative
 predictions and compare them to literature ranges.  All 40 individual
 checks pass (PASS rate: 100\,\%).
 
-\begin{figure*}[!t]
+\begin{table}[h]
+\centering
+\caption{Literature comparison for all five atypical reaction types.}
+\label{tab:lit}
+\begin{tabular}{lccc}
+\toprule
+Reaction & Predicted (s$^{-1}$) & Literature range (s$^{-1}$) & Match \\
+\midrule
+Desaturation  & $1.3\times10^8$ & $10^8$--$5\times10^9$ & \checkmark \\
+Epoxidation   & $7.1\times10^9$ & $10^9$--$10^{10}$ & \checkmark \\
+NIH shift     & $8.4\times10^9$ & $5\times10^9$--$10^{10}$ & \checkmark \\
+Nucleophilic  & $6.6\times10^9$ & $10^9$--$10^{10}$ & \checkmark \\
+Carbene       & $8.2\times10^9$ & $5\times10^9$--$10^{10}$ & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_08_validation.png}
 \caption{\textbf{Validation summary for Paper~8: atypical P450 reaction mechanisms.}
@@ -383,23 +410,6 @@ the clustering of the four barrierless mechanisms.}
 \label{fig:panel08_val}
 \end{figure*}
 
-\begin{table}[h]
-\centering
-\caption{Literature comparison for all five atypical reaction types.}
-\label{tab:lit}
-\begin{tabular}{lccc}
-\toprule
-Reaction & Predicted (s$^{-1}$) & Literature range (s$^{-1}$) & Match \\
-\midrule
-Desaturation  & $1.3\times10^8$ & $10^8$--$5\times10^9$ & \checkmark \\
-Epoxidation   & $7.1\times10^9$ & $10^9$--$10^{10}$ & \checkmark \\
-NIH shift     & $8.4\times10^9$ & $5\times10^9$--$10^{10}$ & \checkmark \\
-Nucleophilic  & $6.6\times10^9$ & $10^9$--$10^{10}$ & \checkmark \\
-Carbene       & $8.2\times10^9$ & $5\times10^9$--$10^{10}$ & \checkmark \\
-\bottomrule
-\end{tabular}
-\end{table*}
-
 %% ============================================================
 \section{Conclusion}
 %% ============================================================
@@ -413,7 +423,7 @@ all five classes, and KIE predictions correctly identify desaturation as the
 only mechanism with a primary isotope effect.  This framework provides a
 predictive basis for engineering P450 selectivity toward unusual products.
 
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 \bibliography{references}
 
 \end{document}
