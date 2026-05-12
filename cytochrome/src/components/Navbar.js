@@ -1,13 +1,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  GithubIcon,
-  MoonIcon,
-  SunIcon,
-} from "./Icons";
+import { GithubIcon } from "./Icons";
 import { motion } from "framer-motion";
-import { useThemeSwitch } from "./Hooks/useThemeSwitch";
 
 const NavLink = ({ href, title, headline = false, className = "" }) => {
   const router = useRouter();
@@ -48,7 +43,6 @@ const MobileNavLink = ({ href, title, toggle }) => {
 };
 
 const Navbar = () => {
-  const [mode, setMode] = useThemeSwitch();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -95,20 +89,13 @@ const Navbar = () => {
           <NavLink href="/gallery" title="Gallery" />
         </nav>
 
-        {/* Right: GitHub + Theme */}
+        {/* Right: GitHub */}
         <nav className="flex items-center gap-3">
           <motion.a target="_blank" className="w-5"
             href="https://github.com/fullscreen-triangle/levinthal"
             whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }}>
             <GithubIcon />
           </motion.a>
-          <button
-            onClick={() => setMode(mode === "light" ? "dark" : "light")}
-            className={`w-6 h-6 flex items-center justify-center rounded-full p-1
-              ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}
-            aria-label="Toggle theme">
-            {mode === "light" ? <SunIcon className="fill-dark" /> : <MoonIcon className="fill-dark" />}
-          </button>
         </nav>
       </div>
 
@@ -141,12 +128,6 @@ const Navbar = () => {
               whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }}>
               <GithubIcon />
             </motion.a>
-            <button
-              onClick={() => setMode(mode === "light" ? "dark" : "light")}
-              className={`w-6 h-6 flex items-center justify-center rounded-full p-1
-                ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}>
-              {mode === "light" ? <SunIcon className="fill-dark" /> : <MoonIcon className="fill-dark" />}
-            </button>
           </div>
         </motion.div>
       )}

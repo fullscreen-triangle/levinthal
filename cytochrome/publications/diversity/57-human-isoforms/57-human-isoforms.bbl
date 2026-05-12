@@ -1,0 +1,58 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Guengerich(2008)]{guengerich2008}
+F.~Peter Guengerich.
+\newblock Cytochrome {P450} and chemical toxicology.
+\newblock \emph{Chemical Research in Toxicology}, 21:\penalty0 70--83, 2008.
+
+\bibitem[Maurel(1996)]{maurel1996}
+Patrick Maurel.
+\newblock The {CYP3A} family.
+\newblock \emph{Cytochrome P450}, pages 241--270, 1996.
+
+\bibitem[Nelson et~al.(2004)]{nelson2004}
+David~R. Nelson et~al.
+\newblock Comparison of cytochrome {P450} ({CYP}) genes from the mouse and
+  human genomes, including nomenclature recommendations for genes, pseudogenes
+  and alternative-splice variants.
+\newblock \emph{Pharmacogenetics}, 14:\penalty0 1--18, 2004.
+
+\bibitem[Rendic and Di~Carlo(2002)]{rendic2002}
+Slobodan Rendic and Francesco~J. Di~Carlo.
+\newblock Human cytochrome {P450} enzymes: a status report summarizing their
+  reactions, substrates, inducers, and inhibitors.
+\newblock \emph{Drug Metabolism Reviews}, 34:\penalty0 83--448, 2002.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2026manifold}
+Kundai~Farai Sachikonye.
+\newblock The {P450} address manifold: Ternary partition coordinates for
+  protein family classification and {CYP3A4} native fold recovery.
+\newblock Technical report, AIMe Registry, 2026{\natexlab{a}}.
+\newblock Cytochrome {P450} Monograph, Paper~2.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2026pgx}
+Kundai~Farai Sachikonye.
+\newblock Polymorphisms, drug--drug interactions, and inhibitor design from the
+  address manifold.
+\newblock Technical report, AIMe Registry, 2026{\natexlab{b}}.
+\newblock Cytochrome {P450} Monograph, Paper~10.
+
+\bibitem[Yano et~al.(2004)]{yano2004}
+Jeffrey~K. Yano et~al.
+\newblock The structure of human microsomal cytochrome {P450} 3{A4} determined
+  by x-ray crystallography to 2.05-\aa{} resolution.
+\newblock \emph{Journal of Biological Chemistry}, 279:\penalty0 38091--38094,
+  2004.
+
+\bibitem[Zanger and Schwab(2013)]{zanger2013}
+Ulrich~M. Zanger and Matthias Schwab.
+\newblock Cytochrome {P450} enzymes in drug metabolism: regulation of gene
+  expression, enzyme activities, and impact of genetic variation.
+\newblock \emph{Pharmacology \& Therapeutics}, 138:\penalty0 103--141, 2013.
+
+\end{thebibliography}

@@ -8,7 +8,7 @@ const ElectronTransferViewer = dynamic(
       <div className="w-full rounded-xl border border-dark/10
         dark:border-light/10 bg-dark text-light/50 flex items-center
         justify-center text-xs uppercase tracking-widest"
-        style={{ height: 440 }}>
+        style={{ height: 700 }}>
         Loading 3D structure…
       </div>
     ),
@@ -30,7 +30,7 @@ export default function GLBInput() {
       </p>
 
       <div className="not-prose my-6">
-        <ElectronTransferViewer height={440} autoplay />
+        <ElectronTransferViewer height={700} autoplay />
       </div>
 
       <h2>Why this paper exists</h2>
