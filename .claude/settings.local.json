@@ -69,7 +69,14 @@
       "Bash(git commit -m ' *)",
       "Bash(git -C \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\" status --short)",
       "Bash(npx next *)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\\" -Recurse -Force | Select-Object FullName, Extension | Sort-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\\" -Recurse -Force -ErrorAction SilentlyContinue | Select-Object -Property FullName, @{Name=\"Type\"; Expression={if\\($_.PSIsContainer\\){\"DIR\"}else{\"FILE\"}}}, @{Name=\"Ext\"; Expression={[System.IO.Path]::GetExtension\\($_.Name\\)}} | Sort-Object FullName | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\\" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\\" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Extension -eq \".sh\" -or $_.Extension -eq \".R\" -or $_.Extension -eq \".txt\" -or $_.Extension -eq \".tex\" -or $_.Extension -eq \".bib\" -or $_.Extension -eq \".md\" } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\figures\\\\\" -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName + \" \\(\" + $\\(if\\($_.PSIsContainer\\){\"DIR\"}else{\"FILE\"}\\) + \"\\)\" })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\validation\\\\results\\\\\" -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.Name })",
+      "Bash(Get-ChildItem \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\\\\diversity\\\\57-human-isoforms\\\\figures\\\\\" | Select-Object Name, Length)"
     ],
     "additionalDirectories": [
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures",
