@@ -96,7 +96,7 @@ $\geq 1$.  All 8 validation scripts pass.
 Cytochrome P450 catalysis proceeds through a sequence of chemically distinct
 intermediates that have been characterised by stopped-flow spectroscopy,
 cryo-electron microscopy, and computational chemistry over four decades
-\citep{denisov2005,rittle2010,jung2011}.  The accepted minimal mechanism
+\citep{denisov2005,rittle2010,jung2011,shahrokh2012}.  The accepted minimal mechanism
 involves seven distinct chemical states: resting ferric (Fe$^{3+}$), substrate-bound
 ferric, reduced ferrous (Fe$^{2+}$), oxy-ferrous (Fe$^{2+}$-O$_2$), peroxo-ferric,
 hydroperoxo (Compound~0), and the reactive Compound~I (Fe$^{4+}$=O porphyrin
@@ -165,7 +165,7 @@ State & Description & $n$ & $\ell$ & $m$ & $s$ \\
 The addresses are assigned by applying the receiver evaluation rules
 (Paper~1): $n$ tracks the iron oxidation shell, $\ell$ tracks the dominant
 orbital angular momentum character of the frontier orbital, $m$ tracks the
-axial ligand identity, and $s$ tracks net spin parity.
+axial ligand identity, and $s$ tracks net spin parity~\citep{bren2015}.
 
 \begin{theorem}[Newton's Cradle Non-Identity]
 \label{thm:nonidentity}
@@ -231,8 +231,8 @@ Product release & Return to State~1 & 0.30 & $7.4\times10^9$ \\
 \end{table}
 
 The values for substrate binding ($\Delta\depth = 0.92$, Paper~3),
-O--O heterolysis ($\Delta\depth = \ln 2$, Paper~5), and C--H activation
-($\Delta\depth = 0.65$, Paper~6) are taken directly from the earlier papers.
+O--O heterolysis ($\Delta\depth = \ln 2$, Paper~5~\citep{spolitak2005,mak2007}), and C--H activation
+($\Delta\depth = 0.65$, Paper~6~\citep{groves1985}) are taken directly from the earlier papers.
 The ET depths are the effective categorical depths for the full
 CPR$\to$P450 electron-delivery event at the cycle level.
 
@@ -321,7 +321,7 @@ offer no kinetic barrier to the observed turnover.
 
 The actual in-vivo rate-limiting event is the FMN$\to$heme electron tunneling
 step characterised in Paper~11, with $k_\mathrm{ET} = 5\times10^6$\,s$^{-1}$
-($\Delta\depth = 7.60$). This tunneling rate is separated from the intrinsic
+($\Delta\depth = 7.60$)~\citep{marcus1985}. This tunneling rate is separated from the intrinsic
 chemical rates by a ratio:
 \begin{equation}
   \frac{k_\mathrm{chem,min}}{k_\mathrm{ET}} = \frac{k_\mathrm{HAT}}{k_\mathrm{ET}}
@@ -333,7 +333,7 @@ result: \emph{chemistry is not rate-limiting in cytochrome P450 catalysis.}
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_07_poincare_return.png}
-\caption{\textbf{Poincare return time of the catalytic orbit.}
+\caption{\textbf{Poincar\'e return time of the catalytic orbit.}
 (\textbf{A}) Composition of $T_\mathrm{return}$ by step: ET steps (red) dominate
 in the Paper~11 picture (FMN tunneling), while intrinsic chemical steps contribute
 comparable timescales in the Paper~12 simplified model.
@@ -341,7 +341,7 @@ comparable timescales in the Paper~12 simplified model.
 (\textbf{C}) Monte Carlo ensemble of $k_\mathrm{cat,intrinsic}$ values obtained
 by perturbing each $\Delta\mathcal{M}_i$ by $\pm 10\%$; the distribution confirms
 robustness of the cycle period.
-(\textbf{D}) Three-dimensional PoincarÃ© return map in
+(\textbf{D}) Three-dimensional Poincar\'e return map in
 $(\Delta\mathcal{M}_i, \Delta\mathcal{M}_{i+1}, \log_{10}\tau_i)$ space.}
 \label{fig:panel07_poincare}
 \end{figure}
@@ -433,7 +433,7 @@ step by step. The closed-orbit picture of Paper~12 provides the unifying synthes
   \item \textbf{Paper 2.5}: GLB structural input — anchoring receiver
     coordinates to the PDB geometry.
   \item \textbf{Paper 3}: Resting and substrate-bound states — the 1$\to$2
-    transition with $\Delta\depth = 0.92$ and the $+120$\,mV redox shift.
+    transition with $\Delta\depth = 0.92$ and the $+120$\,mV redox shift~\citep{sligar1979}.
   \item \textbf{Paper 4}: Multi-hop ET chain — why the FMN$\to$heme step has
     $\Delta\depth = 7.60$ (Newton's Cradle, addressed further in Papers~11--12).
   \item \textbf{Paper 5}: Compound~I formation — the $\mathrm{Cpd0}\to\CmpdI$
@@ -486,7 +486,7 @@ a four-dimensional address space $(n, \ell, m, s)$ with integer coordinates
 bounded by the receiver capacity $C(n) = 2n^2$, the minimum number of states
 required to accommodate the chemical diversity of the Fe--O chemistry (Fe$^{2+}$
 vs Fe$^{3+}$ vs Fe$^{4+}$; O$_2$, OO$^{2-}$, OOH, O$^2$ ligands; spin-state
-changes; radical character) is precisely seven.  Fewer states would require
+changes; radical character~\citep{guengerich1990}) is precisely seven.  Fewer states would require
 at least one degenerate receiver address (violating Theorem~\ref{thm:nonidentity});
 more states would require either a repeated address or an orbit sum above the
 predicted $\approx 5$ range.
