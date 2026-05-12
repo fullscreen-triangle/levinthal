@@ -4,30 +4,30 @@
 \contentsline {chapter}{List of Figures}{xvii}{chapter*.3}%
 \contentsline {chapter}{List of Tables}{xix}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction and Framework}{1}{chapter.1}%
-\contentsline {part}{I\hspace {1em}Foundational Theory}{2}{part.1}%
-\contentsline {chapter}{\numberline {2}The Biological Partition Landscape}{3}{chapter.2}%
-\contentsline {part}{II\hspace {1em}Construction}{4}{part.2}%
-\contentsline {chapter}{\numberline {3}Paper 1: Expression Algebra}{5}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Paper 2: The P450 Address Manifold}{27}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Paper 2.5: GLB Structural Input}{40}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Paper 3: CYP3A4 Equilibrium States}{50}{chapter.6}%
-\contentsline {part}{III\hspace {1em}Observation}{65}{part.3}%
-\contentsline {chapter}{\numberline {7}Paper 4: Electron Transfer Chain (Headline)}{66}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Paper 5: Compound I Formation}{87}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Paper 6: C--H Activation and Rebound}{100}{chapter.9}%
-\contentsline {part}{IV\hspace {1em}Diversity and Reactions}{112}{part.4}%
-\contentsline {chapter}{\numberline {10}Paper 7: Heteroatom Oxidation and Dealkylation}{113}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Paper 8: Atypical Reactions Atlas}{114}{chapter.11}%
-\contentsline {chapter}{\numberline {12}Paper 9: 57-Isoform Taxonomy}{115}{chapter.12}%
-\contentsline {chapter}{\numberline {13}Paper 10: Pharmacogenomics Atlas}{116}{chapter.13}%
-\contentsline {part}{V\hspace {1em}Physical Machinery and Synthesis}{117}{part.5}%
-\contentsline {chapter}{\numberline {14}Paper 11: Membrane Anchoring and CPR Coupling}{118}{chapter.14}%
-\contentsline {chapter}{\numberline {15}Paper 12: Seven-State Closed Orbit}{119}{chapter.15}%
-\contentsline {part}{VI\hspace {1em}Spectroscopy and Informatics}{120}{part.6}%
-\contentsline {chapter}{\numberline {16}Paper 13: Spectroscopic Atlas}{121}{chapter.16}%
-\contentsline {chapter}{\numberline {17}Paper 14: Ternary Database Recovery}{122}{chapter.17}%
-\contentsline {part}{VII\hspace {1em}Pharmacology}{123}{part.7}%
-\contentsline {chapter}{\numberline {18}Paper 15: Polymorphisms, DDI, and Compound Phenotype}{124}{chapter.18}%
-\contentsline {chapter}{Validation Summary}{125}{chapter*.4}%
-\contentsline {chapter}{Notes on Compilation}{126}{chapter*.5}%
-\contentsline {chapter}{Bibliography}{127}{chapter*.6}%
+\contentsline {part}{I\hspace {1em}Foundational Theory}{12}{part.1}%
+\contentsline {chapter}{\numberline {2}The Biological Partition Landscape}{13}{chapter.2}%
+\contentsline {part}{II\hspace {1em}Construction}{30}{part.2}%
+\contentsline {chapter}{\numberline {3}Paper 1: Expression Algebra}{31}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Paper 2: The P450 Address Manifold}{53}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Paper 2.5: GLB Structural Input}{66}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Paper 3: CYP3A4 Equilibrium States}{76}{chapter.6}%
+\contentsline {part}{III\hspace {1em}Observation}{91}{part.3}%
+\contentsline {chapter}{\numberline {7}Paper 4: Electron Transfer Chain (Headline)}{92}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Paper 5: Compound I Formation}{113}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Paper 6: C--H Activation and Rebound}{126}{chapter.9}%
+\contentsline {part}{IV\hspace {1em}Diversity and Reactions}{138}{part.4}%
+\contentsline {chapter}{\numberline {10}Paper 7: Heteroatom Oxidation and Dealkylation}{139}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Paper 8: Atypical Reactions Atlas}{144}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Paper 9: 57-Isoform Taxonomy}{153}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Paper 10: Pharmacogenomics Atlas}{163}{chapter.13}%
+\contentsline {part}{V\hspace {1em}Physical Machinery and Synthesis}{170}{part.5}%
+\contentsline {chapter}{\numberline {14}Paper 11: Membrane Anchoring and CPR Coupling}{171}{chapter.14}%
+\contentsline {chapter}{\numberline {15}Paper 12: Seven-State Closed Orbit}{179}{chapter.15}%
+\contentsline {part}{VI\hspace {1em}Spectroscopy and Informatics}{187}{part.6}%
+\contentsline {chapter}{\numberline {16}Paper 13: Spectroscopic Atlas}{188}{chapter.16}%
+\contentsline {chapter}{\numberline {17}Paper 14: Ternary Database Recovery}{199}{chapter.17}%
+\contentsline {part}{VII\hspace {1em}Pharmacology}{210}{part.7}%
+\contentsline {chapter}{\numberline {18}Paper 15: Polymorphisms, DDI, and Compound Phenotype}{211}{chapter.18}%
+\contentsline {chapter}{Validation Summary}{223}{chapter*.4}%
+\contentsline {chapter}{Notes on Compilation}{224}{chapter*.5}%
+\contentsline {chapter}{Bibliography}{225}{chapter*.6}%

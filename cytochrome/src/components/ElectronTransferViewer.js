@@ -41,7 +41,7 @@ const COFACTORS = [
 
 const HOP_RATES_INV_S = [6e12, 4e12, 2e12];   // s^-1 — at the categorical clock floor
 const T_MAX_FS = 800;                          // animation horizon
-const T_LOOP_SECONDS = 8;                      // wall-time loop length
+const T_LOOP_SECONDS = 40;                     // wall-time loop length (5× slower)
 
 // =====================================================================
 // Pure JS port of hop_occupancies() from shader_pipeline.py
@@ -309,6 +309,8 @@ export default function ElectronTransferViewer({
           dampingFactor={0.08}
           maxDistance={120}
           minDistance={6}
+          autoRotate
+          autoRotateSpeed={0.4}
         />
         <AdaptiveDpr pixelated />
       </Canvas>
