@@ -80,7 +80,14 @@
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\" -Filter \"*.tex\" -File)",
       "Bash(Select-Object FullName)",
       "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\" -MaxDepth 1 -File | Where-Object { $_.Extension -eq '.tex' } | Select-Object FullName)",
-      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\" -File -Depth 0 | Where-Object { $_.Extension -eq '.tex' } | Select-Object FullName)"
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\levinthal\\\\cytochrome\\\\publications\" -File -Depth 0 | Where-Object { $_.Extension -eq '.tex' } | Select-Object FullName)",
+      "Bash(ls \"C:\\\\Strawberry\\\\perl\\\\bin\\\\perl.exe\" 2>/dev/null && echo \"found at C:\\\\Strawberry\" || echo \"not at default path\")",
+      "Read(//c/Strawberry/perl/bin/**)",
+      "PowerShell($env:PATH = \"C:\\\\Strawberry\\\\perl\\\\bin;C:\\\\Strawberry\\\\c\\\\bin;\" + $env:PATH; perl --version | Select-Object -First 2)",
+      "Bash(export PATH=\"/c/Strawberry/perl/bin:/c/Strawberry/c/bin:$PATH\")",
+      "Bash(latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error -g cytochrome-p450-monograph.tex)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(echo \"Done. Exit: $?\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures",

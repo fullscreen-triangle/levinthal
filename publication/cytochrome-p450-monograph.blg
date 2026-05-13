@@ -1,0 +1,127 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: cytochrome-p450-monograph.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apalike.bst
+Reallocating 'name_of_file' (item size: 1) to 51 items.
+Reallocating 'name_of_file' (item size: 1) to 42 items.
+Reallocating 'name_of_file' (item size: 1) to 86 items.
+Reallocating 'name_of_file' (item size: 1) to 70 items.
+Reallocating 'name_of_file' (item size: 1) to 71 items.
+Reallocating 'name_of_file' (item size: 1) to 81 items.
+Reallocating 'name_of_file' (item size: 1) to 88 items.
+Reallocating 'name_of_file' (item size: 1) to 73 items.
+Reallocating 'name_of_file' (item size: 1) to 75 items.
+Reallocating 'name_of_file' (item size: 1) to 76 items.
+Reallocating 'name_of_file' (item size: 1) to 72 items.
+Reallocating 'name_of_file' (item size: 1) to 73 items.
+Reallocating 'name_of_file' (item size: 1) to 66 items.
+Reallocating 'name_of_file' (item size: 1) to 74 items.
+Reallocating 'name_of_file' (item size: 1) to 73 items.
+Reallocating 'name_of_file' (item size: 1) to 73 items.
+Reallocating 'name_of_file' (item size: 1) to 71 items.
+Reallocating 'name_of_file' (item size: 1) to 68 items.
+Reallocating 'name_of_file' (item size: 1) to 77 items.
+Reallocating 'name_of_file' (item size: 1) to 68 items.
+Database file #1: ../cytochrome/publications/introduction/references.bib
+Database file #2: biological-partition-landscape/references.bib
+Database file #3: ../cytochrome/publications/foundations/expression-algebra-for-biomolecules/references.bib
+Repeated entry---line 593 of file ../cytochrome/publications/foundations/expression-algebra-for-biomolecules/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #4: ../cytochrome/publications/foundations/p450-sequence-space/references.bib
+Database file #5: ../cytochrome/publications/foundations/glb-structural-input/references.bib
+Repeated entry---line 88 of file ../cytochrome/publications/foundations/glb-structural-input/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #6: ../cytochrome/publications/manifold/p450-address-manifold-cyp3a4-fold/references.bib
+Repeated entry---line 360 of file ../cytochrome/publications/manifold/p450-address-manifold-cyp3a4-fold/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #7: ../cytochrome/publications/equilibrium-states/cyp3a4-resting-substrate-bound/references.bib
+Repeated entry---line 105 of file ../cytochrome/publications/equilibrium-states/cyp3a4-resting-substrate-bound/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #8: ../cytochrome/publications/catalytic-cycle/multi-hop-et-chain/references.bib
+Repeated entry---line 320 of file ../cytochrome/publications/catalytic-cycle/multi-hop-et-chain/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #9: ../cytochrome/publications/catalytic-cycle/compound-i-formation/references.bib
+Repeated entry---line 84 of file ../cytochrome/publications/catalytic-cycle/compound-i-formation/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #10: ../cytochrome/publications/catalytic-cycle/ch-activation-rebound/references.bib
+Repeated entry---line 88 of file ../cytochrome/publications/catalytic-cycle/ch-activation-rebound/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #11: ../cytochrome/publications/reactions/heteroatom-dealkylation/references.bib
+Database file #12: ../cytochrome/publications/reactions/atypical-reactions-atlas/references.bib
+Database file #13: ../cytochrome/publications/diversity/57-human-isoforms/references.bib
+Database file #14: ../cytochrome/publications/pharmacology/pharmacogenomics-atlas/references.bib
+Database file #15: ../cytochrome/publications/construction/membrane-cofactor-cpr/references.bib
+Database file #16: ../cytochrome/publications/synthesis/seven-state-closed-orbit/references.bib
+Repeated entry---line 1 of file ../cytochrome/publications/synthesis/seven-state-closed-orbit/references.bib
+ : @article{denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #17: ../cytochrome/publications/spectroscopy/spectroscopic-atlas/references.bib
+Repeated entry---line 47 of file ../cytochrome/publications/spectroscopy/spectroscopic-atlas/references.bib
+ : @article{Denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #18: ../cytochrome/publications/informatics/database-recovery/references.bib
+Repeated entry---line 67 of file ../cytochrome/publications/informatics/database-recovery/references.bib
+ : @article{Denisov2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #19: ../cytochrome/publications/diversity/polymorphisms-ddi-inhibitors/references.bib
+Database file #20: ../cytochrome/publications/synthesis/57-isoform-taxonomy/references.bib
+You've used 2 entries,
+            1935 wiz_defined-function locations,
+            503 strings with 5411 characters,
+and the built_in function-call counts, 944 in all, are:
+= -- 97
+> -- 30
+< -- 2
++ -- 10
+- -- 10
+* -- 72
+:= -- 157
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 15
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 37
+empty$ -- 67
+format.name$ -- 12
+if$ -- 191
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 6
+pop$ -- 12
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 34
+stack$ -- 0
+substring$ -- 87
+swap$ -- 11
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 12
+warning$ -- 0
+while$ -- 9
+width$ -- 0
+write$ -- 28
+(There were 10 error messages)
