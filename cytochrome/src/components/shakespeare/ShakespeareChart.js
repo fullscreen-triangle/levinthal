@@ -41,6 +41,8 @@ const TITLES = {
   "depth-ladder": "Categorical address by depth",
   "s-entropy": "S-entropy space [0,1]³",
   "et-trace": "Electron-transfer trace",
+  "spin-orbit": "Spin: s_orbital conserved · S_total varies",
+  rebound: "Bond-order coordinate (Fe=O → C–O)",
 };
 
 const DRAW = {
@@ -165,6 +167,39 @@ const DRAW = {
     svg.selectAll(".lb").data(pts).join("text").attr("class", "lb")
       .attr("x", (d) => x(d.x) + 8).attr("y", (d) => y(d.y) + 3).attr("fill", TEXT).attr("font-size", 8).text((d) => d.label);
     axisLabels(svg, W, H, "S_k (hydrophobicity)", "S_t (volume)");
+  },
+
+  // -------------------------------------------------- spin-orbit
+  "spin-orbit": (svg, { orbital, total }, W, H) => {
+    const m = { l: 40, r: 14, t: 14, b: 28 };
+    const x = d3.scalePoint(total.map((d) => d.state), [m.l, W - m.r]).padding(0.5);
+    const y = d3.scaleLinear([0, 2.6], [H - m.b, m.t]);
+    svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x)).call(styleAxis);
+    svg.append("g").attr("transform", `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5)).call(styleAxis);
+    const lineT = d3.line().x((d) => x(d.state)).y((d) => y(d.v));
+    const lineO = d3.line().x((d) => x(d.state)).y((d) => y(d.v));
+    svg.append("path").datum(total).attr("fill", "none").attr("stroke", ACCENT).attr("stroke-width", 2).attr("d", lineT);
+    svg.selectAll(".t").data(total).join("circle").attr("class", "t").attr("cx", (d) => x(d.state)).attr("cy", (d) => y(d.v)).attr("r", 4).attr("fill", ACCENT);
+    svg.append("path").datum(orbital).attr("fill", "none").attr("stroke", PRIMARY).attr("stroke-width", 2).attr("stroke-dasharray", "4 3").attr("d", lineO);
+    svg.append("text").attr("x", W - m.r).attr("y", y(2.5)).attr("text-anchor", "end").attr("fill", ACCENT).attr("font-size", 9).text("S_total");
+    svg.append("text").attr("x", W - m.r).attr("y", y(0.5) - 4).attr("text-anchor", "end").attr("fill", PRIMARY).attr("font-size", 9).text("s_orbital = ½ (conserved)");
+    svg.append("text").attr("x", W / 2).attr("y", H - 4).attr("text-anchor", "middle").attr("fill", DIM).attr("font-size", 9).text("catalytic state");
+  },
+
+  // -------------------------------------------------- rebound
+  rebound: (svg, { pts }, W, H) => {
+    const m = { l: 40, r: 14, t: 14, b: 28 };
+    const x = d3.scaleLinear([0, 1], [m.l, W - m.r]);
+    const y = d3.scaleLinear([0, 1], [H - m.b, m.t]);
+    svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(4)).call(styleAxis);
+    svg.append("g").attr("transform", `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4)).call(styleAxis);
+    const l1 = d3.line().x((d) => x(d.x)).y((d) => y(d.feO)).curve(d3.curveMonotoneX);
+    const l2 = d3.line().x((d) => x(d.x)).y((d) => y(d.cO)).curve(d3.curveMonotoneX);
+    svg.append("path").datum(pts).attr("fill", "none").attr("stroke", "#f59e0b").attr("stroke-width", 2).attr("d", l1);
+    svg.append("path").datum(pts).attr("fill", "none").attr("stroke", PRIMARY).attr("stroke-width", 2).attr("d", l2);
+    svg.append("text").attr("x", m.l + 6).attr("y", y(0.9)).attr("fill", "#f59e0b").attr("font-size", 9).text("Fe=O");
+    svg.append("text").attr("x", W - m.r - 4).attr("y", y(0.9)).attr("text-anchor", "end").attr("fill", PRIMARY).attr("font-size", 9).text("C–O");
+    svg.append("text").attr("x", W / 2).attr("y", H - 4).attr("text-anchor", "middle").attr("fill", DIM).attr("font-size", 9).text("reaction coordinate");
   },
 
   // -------------------------------------------------- et trace
