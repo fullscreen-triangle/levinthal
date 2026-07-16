@@ -10,6 +10,7 @@
 //
 //  Output: { console: [line...], charts: {name: data} }
 // =====================================================================
+import { CHAIN_MARKERS, HEME_MARKER, HEME_FMN_MARKERS } from "@/data/glbMarkers";
 
 // A fresh receiver state. The IDE holds ONE of these and mutates it
 // forward as lessons are performed; call resetReceiver() to start over.
@@ -121,6 +122,8 @@ export function performPlay(src, recv, lesson) {
       };
       say(`${id} := fold "${pdb}" : Fold @ ${fmtFloor(recv.floor)}`);
       say(`  helices ${helices}   sheets ${sheets}   coherence ${oracle.coherence ?? 0.83}   [M+${nEl * 10}]`, "ok");
+      say(`  ↳ structure emitted (the fold IS the output)`, "dim");
+      charts["structure"] = { kind: "fold", markers: HEME_MARKER };
       charts["contact-map"] = contactMapData(helices, sheets, oracle.loops ?? 8);
       charts["order-parameter"] = orderParameterData(oracle.coherence ?? 0.83);
       continue;
@@ -143,6 +146,8 @@ export function performPlay(src, recv, lesson) {
       };
       say(`${id} := complex ${name}(...) : Complex @ ${fmtFloor(recv.floor)}`);
       say(`  Fe${oracle.fe_oxidation ?? 3}+ ${oracle.spin_state ?? "low-spin"}  S=${oracle.S_total ?? 0.5}  proximal ${oracle.proximal ?? "CYS442"}   [M+3]`, "ok");
+      say(`  ↳ structure emitted (resting receiver tree)`, "dim");
+      charts["structure"] = { kind: "resting", markers: HEME_FMN_MARKERS };
       if (oracle.helices || recv.bindings.C?.meta?.helices) {
         const b = recv.bindings.C?.meta;
         if (b) charts["contact-map"] = contactMapData(b.helices, b.sheets, 8);
@@ -163,16 +168,23 @@ export function performPlay(src, recv, lesson) {
         say(`  states ${nStates}   transitions ${nTrans}   sum(dM) = ${oracle.DM_sum}`, "ok");
         say(`  orbit ${oracle.orbit_closed ? "closed (7 -> 1, product release)" : "open"}   [M+${nTrans}]`, "ok");
         say(`  ✓ matches ${lesson.paper}  [verdict ${oracle.verdict}]`, "pass");
+        say(`  ↳ structure emitted (catalytic complex)`, "dim");
+        charts["structure"] = { kind: "cycle", markers: HEME_MARKER };
         charts["seven-state-orbit"] = orbitData(oracle);
         charts["dm-bars"] = dmBarsData(oracle);
       } else if (oracle.hops) {
         say(`  hops ${oracle.hops.join(" -> ")}   ${oracle.timescale}`, "ok");
         say(`  ${oracle.selection_rule}`, "dim");
+        say(`  ↳ structure emitted (ET chain)`, "dim");
+        charts["structure"] = { kind: "chain", markers: CHAIN_MARKERS };
         charts["et-trace"] = etTraceData(oracle);
       } else if (oracle.fe_oxidation) {
         say(`  ${oracle.species ?? "Compound I"}  oxidation +${oracle.fe_oxidation}`, "ok");
         say(`  licensed by ${oracle.licensed_by ?? "cycle closure"}`, "dim");
+        say(`  ↳ structure emitted (Compound I excursion)`, "dim");
+        charts["structure"] = { kind: "cycle", markers: HEME_MARKER };
         charts["dm-bars"] = dmBarsData(recv.bindings.cycle?.meta ?? oracle);
+        charts["spin-orbit"] = spinOrbitData();
       }
       continue;
     }
@@ -186,7 +198,10 @@ export function performPlay(src, recv, lesson) {
       say(`${id} := catalyze ${sub} in ${e} yield product : Trajectory @ ${fmtFloor(recv.floor)}`);
       say(`  ${oracle.mechanism ?? "H-atom abstraction + rebound"}  ->  ${oracle.product ?? "R-OH"}   [M+2]`, "ok");
       say(`  ${oracle.reading ?? "reaction == measurement"}`, "dim");
+      say(`  ↳ structure emitted (enzyme + substrate)`, "dim");
+      charts["structure"] = { kind: "cycle", markers: HEME_MARKER };
       charts["dm-bars"] = dmBarsData(recv.bindings.cycle?.meta ?? oracle, "HAT_DM");
+      charts["rebound"] = reboundData();
       continue;
     }
 
@@ -391,4 +406,27 @@ function etTraceData(oracle) {
     y: hops.length - 1 - i,
   }));
   return { pts, timescale: oracle.timescale ?? "femtosecond" };
+}
+
+// spin-crossover across the 7 states: s_orbital conserved, S_total changes
+function spinOrbitData() {
+  const states = ["1", "2", "3", "4", "5", "6", "7"];
+  const Stot = [0.5, 2.5, 2.0, 0.0, 0.5, 0.5, 0.5];
+  return {
+    orbital: states.map((s, i) => ({ state: s, v: 0.5 })), // strictly conserved
+    total: states.map((s, i) => ({ state: s, v: Stot[i] })),
+  };
+}
+
+// rebound: bond-order coordinate along the C-H activation
+function reboundData() {
+  const pts = [];
+  for (let i = 0; i <= 40; i++) {
+    const x = i / 40;
+    // Fe=O bond weakens, C-O forms: two crossing sigmoids
+    const feO = 1 - 1 / (1 + Math.exp(-10 * (x - 0.55)));
+    const cO = 1 / (1 + Math.exp(-10 * (x - 0.55)));
+    pts.push({ x, feO, cO });
+  }
+  return { pts };
 }

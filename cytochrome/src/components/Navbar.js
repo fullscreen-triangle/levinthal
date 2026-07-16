@@ -122,6 +122,7 @@ const Navbar = () => {
             <MobileNavLink toggle={() => setIsOpen(false)} href="/database" title="Database · P14" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/apparatus" title="Apparatus" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/gallery" title="Gallery" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/ide" title="Sandbox ▸ Shakespeare IDE" />
           </nav>
           <div className="flex items-center gap-3 mt-4">
             <motion.a target="_blank" className="w-5 bg-light rounded-full dark:bg-dark"

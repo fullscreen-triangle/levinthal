@@ -9,8 +9,19 @@
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { LESSONS, RECEIVER_FLOOR } from "@/data/lessons";
+import dynamic from "next/dynamic";
 import { newReceiver, performPlay } from "@/helpers/shakespeare";
 import ShakespeareChart from "@/components/shakespeare/ShakespeareChart";
+
+// 3D structure output is client-only (react-three-fiber Canvas)
+const StructureOutput = dynamic(() => import("@/components/shakespeare/StructureOutput"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[320px] items-center justify-center rounded-md border border-neutral-700 bg-[#0c0c0c] text-xs text-neutral-600">
+      loading structure…
+    </div>
+  ),
+});
 
 // ---- syntax highlighting for the editor overlay ---------------------
 const KW1 = new Set([
@@ -219,9 +230,13 @@ export default function ShakespeareIDE() {
               {Object.keys(charts).length === 0 && (
                 <div className="text-neutral-600 text-xs">This play draws no charts. Perform a lesson with a fold, an address, or a cycle.</div>
               )}
-              {Object.entries(charts).map(([name, data]) => (
-                <ShakespeareChart key={name} name={name} data={data} />
-              ))}
+              {/* structure first — the folded protein IS the primary output */}
+              {charts.structure && <StructureOutput data={charts.structure} />}
+              {Object.entries(charts)
+                .filter(([name]) => name !== "structure")
+                .map(([name, data]) => (
+                  <ShakespeareChart key={name} name={name} data={data} />
+                ))}
             </div>
           )}
         </div>
