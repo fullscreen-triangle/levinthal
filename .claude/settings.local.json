@@ -93,5 +93,9 @@
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures",
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\reactions\\heteroatom-dealkylation\\figures"
     ]
+  },
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://compat.bitagent.dev",
+    "ANTHROPIC_CUSTOM_HEADERS": "x-gateway-credential:gw_7a55c4f7490d9ccea597cf3100a3d140951178e57e4f88ab3d99096b43951495"
   }
 }
