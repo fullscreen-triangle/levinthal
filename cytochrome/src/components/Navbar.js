@@ -87,6 +87,7 @@ const Navbar = () => {
           <NavLink href="/database" title="Database" />
           <NavLink href="/apparatus" title="Apparatus" />
           <NavLink href="/gallery" title="Gallery" />
+          <NavLink href="/ide" title="Sandbox" headline />
         </nav>
 
         {/* Right: GitHub */}
