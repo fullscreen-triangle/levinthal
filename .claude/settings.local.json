@@ -87,7 +87,11 @@
       "Bash(export PATH=\"/c/Strawberry/perl/bin:/c/Strawberry/c/bin:$PATH\")",
       "Bash(latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error -g cytochrome-p450-monograph.tex)",
       "Bash(echo \"Exit: $?\")",
-      "Bash(echo \"Done. Exit: $?\")"
+      "Bash(echo \"Done. Exit: $?\")",
+      "Bash(purpose index)",
+      "Bash(purpose index:*)",
+      "Bash(purpose ask:*)",
+      "Bash(purpose --version)"
     ],
     "additionalDirectories": [
       "c:\\Users\\kunda\\Documents\\bioinformatics\\levinthal\\cytochrome\\publications\\catalytic-cycle\\ch-activation-rebound\\figures",
@@ -96,6 +100,6 @@
   },
   "env": {
     "ANTHROPIC_BASE_URL": "https://compat.bitagent.dev",
-    "ANTHROPIC_CUSTOM_HEADERS": "x-gateway-credential:gw_7a55c4f7490d9ccea597cf3100a3d140951178e57e4f88ab3d99096b43951495"
+    "ANTHROPIC_CUSTOM_HEADERS": "x-gateway-credential:gw_c8ac3344654cefd1654160ce18aebf511d121c1b87ba56c9e8aaafb97191a9b4"
   }
 }

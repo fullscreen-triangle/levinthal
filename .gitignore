@@ -266,3 +266,6 @@ storybook-static
 # ============================================================================
 !dismutase/public/
 !dismutase/public/**
+
+# purpose local symbol index (regenerate with `purpose index`)
+.purpose/
