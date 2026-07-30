@@ -1,0 +1,167 @@
+\begin{thebibliography}{21}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baader et~al.(2003)Baader, Calvanese, McGuinness, Nardi, and
+  Patel-Schneider]{baader2003dlhandbook}
+Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
+  Peter~F. Patel-Schneider, editors.
+\newblock \emph{The Description Logic Handbook: Theory, Implementation and
+  Applications}.
+\newblock Cambridge University Press, 2003.
+
+\bibitem[Ball(2008)]{ball2008water}
+Philip Ball.
+\newblock Water as an active constituent in cell biology.
+\newblock \emph{Chemical Reviews}, 108\penalty0 (1):\penalty0 74--108, 2008.
+\newblock \doi{10.1021/cr068037a}.
+
+\bibitem[Bansal et~al.(2022)Bansal, Morgat, Axelsen, et~al.]{bansal2022rhea}
+Parit Bansal, Anne Morgat, Kristian~B. Axelsen, et~al.
+\newblock Rhea, the reaction knowledgebase in 2022.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D693--D700,
+  2022.
+\newblock \doi{10.1093/nar/gkab1016}.
+
+\bibitem[Beard and Qian(2007)]{beard2007thermo}
+Daniel~A. Beard and Hong Qian.
+\newblock Relationship between thermodynamic driving force and one-way fluxes
+  in reversible processes.
+\newblock \emph{PLoS ONE}, 2\penalty0 (1):\penalty0 e144, 2007.
+\newblock \doi{10.1371/journal.pone.0000144}.
+
+\bibitem[Cleland(1963)]{cleland1963kinetics}
+W.~Wallace Cleland.
+\newblock \emph{The Kinetics of Enzyme-Catalyzed Reactions with Two or More
+  Substrates or Products}.
+\newblock Biochimica et Biophysica Acta, 1963.
+\newblock The nomenclature and rate equations for ping-pong bi-bi.
+
+\bibitem[Demir et~al.(2010)Demir, Cary, Paley, et~al.]{demir2010biopax}
+Emek Demir, Michael~P. Cary, Suzanne Paley, et~al.
+\newblock The {BioPAX} community standard for pathway data sharing.
+\newblock \emph{Nature Biotechnology}, 28\penalty0 (9):\penalty0 935--942,
+  2010.
+\newblock \doi{10.1038/nbt.1666}.
+
+\bibitem[Doerr and Born(2025)]{doerr2025limits}
+Mark Doerr and Stefan Born.
+\newblock Limits and solutions for ontological representation of chemical
+  reactions: Reactions modelling with {LARAsuite}.
+\newblock Presentation, 4th Ontologies4Chem Workshop, Limburg an der Lahn,
+  Germany, 11--13 November 2025, November 2025.
+\newblock Source of the competency questions scored in
+  Section~\ref{sec:questions}; slides 5--8. Also the source of the ``linked
+  micro-ontologies'' recommendation (slide 19) this paper gives a mechanism
+  for.
+
+\bibitem[Eliot and Kirsch(2004)]{eliot2004transaminase}
+Andrew~C. Eliot and Jack~F. Kirsch.
+\newblock Pyridoxal phosphate enzymes: Mechanistic, structural, and
+  evolutionary considerations.
+\newblock \emph{Annual Review of Biochemistry}, 73:\penalty0 383--415, 2004.
+\newblock \doi{10.1146/annurev.biochem.73.011303.074021}.
+
+\bibitem[Glimm et~al.(2014)Glimm, Horrocks, Motik, Stoilos, and
+  Wang]{glimm2014hermit}
+Birte Glimm, Ian Horrocks, Boris Motik, Giorgos Stoilos, and Zhe Wang.
+\newblock {HermiT}: An {OWL 2} reasoner.
+\newblock \emph{Journal of Automated Reasoning}, 53\penalty0 (3):\penalty0
+  245--269, 2014.
+\newblock \doi{10.1007/s10817-014-9305-1}.
+
+\bibitem[Horrocks et~al.(2006)Horrocks, Kutz, and Sattler]{horrocks2006shoiq}
+Ian Horrocks, Oliver Kutz, and Ulrike Sattler.
+\newblock The even more irresistible {$\mathcal{SROIQ}$}.
+\newblock \emph{Proceedings of the 10th International Conference on Principles
+  of Knowledge Representation and Reasoning (KR)}, pages 57--67, 2006.
+
+\bibitem[Hucka et~al.(2003)Hucka, Finney, Sauro, et~al.]{hucka2003sbml}
+Michael Hucka, Andrew Finney, Herbert~M. Sauro, et~al.
+\newblock The systems biology markup language ({SBML}): A medium for
+  representation and exchange of biochemical network models.
+\newblock \emph{Bioinformatics}, 19\penalty0 (4):\penalty0 524--531, 2003.
+\newblock \doi{10.1093/bioinformatics/btg015}.
+
+\bibitem[Levy and Onuchic(2006)]{levy2006water}
+Yaakov Levy and Jos{\'e}~N. Onuchic.
+\newblock Water mediation in protein folding and molecular recognition.
+\newblock \emph{Annual Review of Biophysics and Biomolecular Structure},
+  35:\penalty0 389--415, 2006.
+\newblock \doi{10.1146/annurev.biophys.35.040405.102134}.
+
+\bibitem[Noor et~al.(2013)Noor, Haraldsd{\'o}ttir, Milo, and
+  Fleming]{noor2013thermodynamics}
+Elad Noor, Hulda~S. Haraldsd{\'o}ttir, Ron Milo, and Ronan M.~T. Fleming.
+\newblock Consistent estimation of {Gibbs} energy using component
+  contributions.
+\newblock \emph{PLoS Computational Biology}, 9\penalty0 (7):\penalty0 e1003098,
+  2013.
+\newblock \doi{10.1371/journal.pcbi.1003098}.
+\newblock Physiological direction as a consequence of ambient concentrations
+  rather than of the reaction itself.
+
+\bibitem[Noy and Rector(2006)]{w3c2006nary}
+Natasha Noy and Alan Rector.
+\newblock Defining n-ary relations on the {Semantic Web}.
+\newblock W3C Working Group Note, 2006.
+\newblock The bridge-node pattern, Use Case 1.
+
+\bibitem[Poornima and Dean(1995)]{poornima1995hydration}
+C.~S. Poornima and Philip~M. Dean.
+\newblock Hydration in drug design. 1. multiple hydrogen-bonding features of
+  water molecules in mediating protein-ligand interactions.
+\newblock \emph{Journal of Computer-Aided Molecular Design}, 9\penalty0
+  (6):\penalty0 500--512, 1995.
+\newblock \doi{10.1007/BF00124321}.
+\newblock Structural active-site waters as ligands rather than bulk.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2025causal}
+Kundai~Farai Sachikonye.
+\newblock The causal propagation table: Accountable propagation, convergence
+  admissibility and representation mobility.
+\newblock Supplies residue chaining, the admissibility criterion, and the
+  reaction-step/measurement-step identity., 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2025expralg}
+Kundai~Farai Sachikonye.
+\newblock An expression algebra for biomolecules: the biomolecular receiver
+  $\mathcal{R}_{\mathrm{bio}}$ and its floor.
+\newblock Paper 1 of the cytochrome monograph. Supplies the receiver, the
+  five-class leaf algebra, the morphism chain and the three-term floor
+  estimate., 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2025graphs}
+Kundai~Farai Sachikonye.
+\newblock Individuation in finite weighted graphs: the contact floor.
+\newblock Supplies the floor theorem $\beta > 0$ and the contact-graph
+  primitive., 2026{\natexlab{c}}.
+
+\bibitem[Sachikonye(2026{\natexlab{d}})]{sachikonye2026pingpong}
+Kundai~Farai Sachikonye.
+\newblock Ping-pong bi-bi and the conditioned floor.
+\newblock Supplies the carrier/participant distinction and the
+  condition-dependent floor $\beta(\mathrm{cond})$, including the depth-9
+  immateriality finding relied on in Section~\ref{sec:scope}.,
+  2026{\natexlab{d}}.
+
+\bibitem[Sachikonye(2026{\natexlab{e}})]{sachikonye2026shakespeare}
+Kundai~Farai Sachikonye.
+\newblock Shakespeare: A receiver language for protein processes.
+\newblock Language specification. Fixes the contact graph, the medium vertex,
+  the cut primitive and the accountability type system extended here.,
+  2026{\natexlab{e}}.
+
+\bibitem[Sachikonye(2026{\natexlab{f}})]{sachikonye2026tacat}
+Kundai~Farai Sachikonye.
+\newblock tacat: a transaminase catalysis knowledge graph.
+\newblock Software. OWL/SHACL knowledge graph of three PLP-dependent
+  transaminase reactions, reasoned with HermiT and served over SPARQL 1.1.,
+  2026{\natexlab{f}}.
+\newblock The signature-view artefact against which the representational
+  comparison of Section~\ref{sec:two-views} is drawn.
+
+\end{thebibliography}
