@@ -1,0 +1,223 @@
+{
+  "module": "pingpong-bibi-conditioned-floor",
+  "aggregate": {
+    "checks": 35,
+    "pass": 34,
+    "fail": 0,
+    "xfail": 1,
+    "xpass": 0,
+    "verdict": "PASS"
+  },
+  "reference_conditions": "T=298.15K pH=7.40 eta=0.890cP T_int=1.0e-03s",
+  "beta_reference": 0.00033030835254284563,
+  "beta_breakdown": {
+    "conditions": "T=298.15K pH=7.40 eta=0.890cP T_int=1.0e-03s",
+    "floor_disc": 2.540263171264543e-05,
+    "floor_Q": 7.414027845502908e-08,
+    "floor_conv": 0.00030483158055174517,
+    "beta": 0.00033030835254284563,
+    "per_oscillator": [
+      {
+        "oscillator": "amide-I (residue)",
+        "Q": 1000.0,
+        "sigma": 4.428074427700477e-09
+      },
+      {
+        "oscillator": "Fe-O (cofactor)",
+        "Q": 500.0,
+        "sigma": 1.2909944487358056e-08
+      },
+      {
+        "oscillator": "O-H libration (solvent)",
+        "Q": 100.0,
+        "sigma": 7.254762501100117e-08
+      },
+      {
+        "oscillator": "C-N stretch (substrate)",
+        "Q": 800.0,
+        "sigma": 6.881023532039754e-09
+      }
+    ],
+    "dominant_term": "conv"
+  },
+  "findings": [
+    "At categorical depth 9 the conversion floor (6/3^9 = 3.05e-4) dominates the oscillator floor by ~4100x, so beta is effectively condition-independent there. The conditioned floor only governs in the Q-dominated regime (short integration times)."
+  ],
+  "checks": [
+    {
+      "check": "floor at reference conditions reproduces the published order",
+      "verdict": "PASS",
+      "detail": "beta(ref) = 3.3031e-04 vs published 3.7000e-04; log10 ratio -0.049. dominant term: conv"
+    },
+    {
+      "check": "floor rises with temperature (sign)",
+      "verdict": "PASS",
+      "detail": "beta(4C) = 3.303031305209e-04 < beta(37C) = 3.303113365554e-04. Q falls as thermal occupation rises, so the coarsest resolvable boundary grows. Sign only -- magnitude is checked separately."
+    },
+    {
+      "check": "temperature dependence is material (>1%) at depth 9",
+      "verdict": "XFAIL",
+      "detail": "relative swing 4C->37C = 2.484e-05 (0.002484%). At d=9 floor_conv=3.048e-04 dominates floor_Q=7.414e-08 by 4112x, so beta barely moves. This is the finding: at the depth the address manifold uses, the floor is effectively condition-INDEPENDENT."
+    },
+    {
+      "check": "a depth exists where temperature dependence is material",
+      "verdict": "PASS",
+      "detail": "crossover depth = 15. Above it the combinatorial terms dominate and the floor is effectively condition-independent; below it, conditions govern."
+    },
+    {
+      "check": "floor falls with longer integration (sign)",
+      "verdict": "PASS",
+      "detail": "beta(T_int=1e-1) = 3.302416262922e-04 < beta(ref) = 3.303083525428e-04"
+    },
+    {
+      "check": "at short integration the Q term dominates and conditions govern",
+      "verdict": "PASS",
+      "detail": "T_int=1e-12s: floor_Q=2.345e-03 vs floor_conv=3.048e-04; dominant=Q. This is the regime the conditioned floor is about."
+    },
+    {
+      "check": "temperature dependence is material in the Q-dominated regime",
+      "verdict": "PASS",
+      "detail": "relative swing 4C->37C at T_int=1e-12s = 1.034e-01 (10.34%), vs 0.002484% at T_int=1e-3s. The conditioned floor is real, but only where Q dominates."
+    },
+    {
+      "check": "[2.6.1.2] cycle closes through a modified enzyme state",
+      "verdict": "PASS",
+      "detail": "alanine transaminase: states E -> E* -> E, closed=True"
+    },
+    {
+      "check": "[2.6.1.2] participants match RHEA:19453",
+      "verdict": "PASS",
+      "detail": "computed ['2-oxoglutarate', 'L-alanine', 'L-glutamate', 'pyruvate']; expected ['2-oxoglutarate', 'L-alanine', 'L-glutamate', 'pyruvate']"
+    },
+    {
+      "check": "[2.6.1.2] PLP is a carrier, never a participant",
+      "verdict": "PASS",
+      "detail": "carriers=[\"pyridoxal 5'-phosphate\"]; no PLP in participants (Rhea gives 4 participants, none of them PLP)"
+    },
+    {
+      "check": "[2.6.1.2] no ternary complex (product released before 2nd substrate)",
+      "verdict": "PASS",
+      "detail": "release of pyruvate at event 3, second binding at event 4"
+    },
+    {
+      "check": "[2.6.1.2] every cut residue >= floor",
+      "verdict": "PASS",
+      "detail": "min residue 3.303084e-04 vs floor 3.303084e-04; M=7 cuts committed"
+    },
+    {
+      "check": "[2.6.1.2] carrier committed once, not per turnover",
+      "verdict": "PASS",
+      "detail": "1 carrier binding cut(s) across 7 events"
+    },
+    {
+      "check": "[2.6.1.1] cycle closes through a modified enzyme state",
+      "verdict": "PASS",
+      "detail": "aspartate transaminase: states E -> E* -> E, closed=True"
+    },
+    {
+      "check": "[2.6.1.1] participants match RHEA:21824",
+      "verdict": "PASS",
+      "detail": "computed ['2-oxoglutarate', 'L-aspartate', 'L-glutamate', 'oxaloacetate']; expected ['2-oxoglutarate', 'L-aspartate', 'L-glutamate', 'oxaloacetate']"
+    },
+    {
+      "check": "[2.6.1.1] PLP is a carrier, never a participant",
+      "verdict": "PASS",
+      "detail": "carriers=[\"pyridoxal 5'-phosphate\"]; no PLP in participants (Rhea gives 4 participants, none of them PLP)"
+    },
+    {
+      "check": "[2.6.1.1] no ternary complex (product released before 2nd substrate)",
+      "verdict": "PASS",
+      "detail": "release of oxaloacetate at event 3, second binding at event 4"
+    },
+    {
+      "check": "[2.6.1.1] every cut residue >= floor",
+      "verdict": "PASS",
+      "detail": "min residue 3.303084e-04 vs floor 3.303084e-04; M=7 cuts committed"
+    },
+    {
+      "check": "[2.6.1.1] carrier committed once, not per turnover",
+      "verdict": "PASS",
+      "detail": "1 carrier binding cut(s) across 7 events"
+    },
+    {
+      "check": "[2.6.1.3] cycle closes through a modified enzyme state",
+      "verdict": "PASS",
+      "detail": "cysteine transaminase: states E -> E* -> E, closed=True"
+    },
+    {
+      "check": "[2.6.1.3] participants match RHEA:17441",
+      "verdict": "PASS",
+      "detail": "computed ['2-oxo-3-sulfanylpropanoate', '2-oxoglutarate', 'L-cysteine', 'L-glutamate']; expected ['2-oxo-3-sulfanylpropanoate', '2-oxoglutarate', 'L-cysteine', 'L-glutamate']"
+    },
+    {
+      "check": "[2.6.1.3] PLP is a carrier, never a participant",
+      "verdict": "PASS",
+      "detail": "carriers=[\"pyridoxal 5'-phosphate\"]; no PLP in participants (Rhea gives 4 participants, none of them PLP)"
+    },
+    {
+      "check": "[2.6.1.3] no ternary complex (product released before 2nd substrate)",
+      "verdict": "PASS",
+      "detail": "release of 2-oxo-3-sulfanylpropanoate at event 3, second binding at event 4"
+    },
+    {
+      "check": "[2.6.1.3] every cut residue >= floor",
+      "verdict": "PASS",
+      "detail": "min residue 3.303084e-04 vs floor 3.303084e-04; M=7 cuts committed"
+    },
+    {
+      "check": "[2.6.1.3] carrier committed once, not per turnover",
+      "verdict": "PASS",
+      "detail": "1 carrier binding cut(s) across 7 events"
+    },
+    {
+      "check": "sub-floor difference across conditions is not commensurable",
+      "verdict": "PASS",
+      "detail": "delta 1.321e-04 <= governing floor 3.303e-04 (set by condition 'b'): the two values are one measurement"
+    },
+    {
+      "check": "supra-floor difference across conditions is commensurable",
+      "verdict": "PASS",
+      "detail": "delta 1.000e-01 > governing floor 3.303e-04"
+    },
+    {
+      "check": "the two floors being compared are actually different",
+      "verdict": "PASS",
+      "detail": "beta(coarse, T_int=1e-15s) = 7.447e-02 vs beta(fine, T_int=1e-1s) = 3.302e-04; ratio 226x. Without this the governance check below would be vacuous -- an earlier version of this suite compared 4C to 37C, whose floors are equal to 11 decimal places, and passed on noise."
+    },
+    {
+      "check": "the coarser floor governs comparability",
+      "verdict": "PASS",
+      "detail": "governing floor 7.447e-02 = the COARSE one (7.447e-02), not the fine one (3.302e-04); limited_by='b'"
+    },
+    {
+      "check": "a fine-floor difference is erased by a coarse-floor comparator",
+      "verdict": "PASS",
+      "detail": "delta 6.605e-04 clears the fine floor (3.302e-04) but not the governing coarse floor (7.447e-02): pairing a precise measurement with a sloppy one destroys the precision. This is why conditions must be reported."
+    },
+    {
+      "check": "floor-indistinguishable variants are grouped, not ranked",
+      "verdict": "PASS",
+      "detail": "7 variants -> 3 distinguishable group(s), sizes [1, 1, 5]. The 5-member group differs by < beta=3.303e-04 and cannot be ranked."
+    },
+    {
+      "check": "genuinely separated variants stay separate",
+      "verdict": "PASS",
+      "detail": "groups: [[6], [0, 1, 2, 3, 4], [5]]"
+    },
+    {
+      "check": "a coarser floor still separates outliers but absorbs the cluster",
+      "verdict": "PASS",
+      "detail": "at beta=3.303e-04: 3 groups [1, 1, 5]; at beta=7.447e-02: 3 groups [1, 1, 5]. The 0.4/1.5 outliers survive a 225x coarser floor because they are ~0.5 apart; the cluster was never resolvable."
+    },
+    {
+      "check": "a sufficiently coarse floor erases all distinctions",
+      "verdict": "PASS",
+      "detail": "at beta=2.345e+00 (> the full 1.1 spread of the plate): 1 group of 7 variants. Every variant is the same measurement; the plate carries no information."
+    },
+    {
+      "check": "group count is monotone in the floor",
+      "verdict": "PASS",
+      "detail": "fine 3 >= ref 3 >= coarse 3"
+    }
+  ]
+}
