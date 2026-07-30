@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}An unused vertex}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}The questions come from outside}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}What we prove}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}The medium as a reservoir}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Definition}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The medium is not a leaf}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Solvent role is derivable}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The problem}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The result}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Syntax}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Direction is a property of the medium}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The problem}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The result}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Syntax}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}The first refusal}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}A framework that classifies everything}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}What the medium lets the framework refuse}{9}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The negative controls a suite must contain}{10}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Two representations, one system}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The competency questions partition}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Why the partition is forced}{11}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The medium is the seam}{12}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Scope, and what this does not do}{12}{section.7}%
+\contentsline {paragraph}{The medium weight is a modelling choice, not a derivation.}{12}{section*.2}%
+\contentsline {paragraph}{No kinetics, and this matters for group 3.}{12}{section*.3}%
+\contentsline {paragraph}{No thermodynamics.}{12}{section*.4}%
+\contentsline {paragraph}{No implementation.}{12}{section*.5}%
+\contentsline {paragraph}{No experimental validation.}{12}{section*.6}%
+\contentsline {paragraph}{One-author, unreviewed.}{13}{section*.7}%
+\contentsline {section}{\numberline {8}Conclusion}{13}{section.8}%
