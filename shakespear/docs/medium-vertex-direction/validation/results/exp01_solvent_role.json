@@ -1,0 +1,84 @@
+{
+  "experiment": "exp01_solvent_role",
+  "claim": "Theorem 3.2 --- solvent role is derivable from the contact graph and the medium alone",
+  "aggregate": {
+    "checks": 8,
+    "passed": 8,
+    "failed": 0,
+    "verdict": "PASS"
+  },
+  "beta": 0.00037,
+  "checks": [
+    {
+      "check": "axial water is structural",
+      "verdict": "PASS",
+      "detail": "structural residue 1.4800e-03 >= medium weight 3.7001e-04 -> structural",
+      "structural_residue": 0.00148,
+      "medium_weight": 0.0003700066666066073
+    },
+    {
+      "check": "NEGATIVE CONTROL: bulk water (no system contacts) is refused",
+      "verdict": "PASS",
+      "detail": "structural residue 0.0000e+00 < medium weight 3.7001e-04 -> bulk",
+      "structural_residue": 0,
+      "medium_weight": 0.0003700066666066073
+    },
+    {
+      "check": "NEGATIVE CONTROL: refusal commits no cut",
+      "verdict": "PASS",
+      "detail": "individuate_solvent raised Refusal and advanced no clock",
+      "refusal": {
+        "kind": "individuation",
+        "subject": "H2O_bulk",
+        "reason": "role is bulk (structural residue 0.0000e+00 < medium weight 3.7001e-04): a fluctuation of the medium, not a part of the system"
+      }
+    },
+    {
+      "check": "Thm 3.2(i): no system contacts => bulk, for all weight fns and mu",
+      "verdict": "PASS",
+      "detail": "20 combinations (4 weight fns x 5 occupancies); 0 violation(s)",
+      "violations": []
+    },
+    {
+      "check": "Thm 3.2(ii): ambient identity + contact >= 2*beta => structural",
+      "verdict": "PASS",
+      "detail": "contact weight 4.0*beta >= 2*beta; 0 violation(s) across 4 weight fns",
+      "violations": []
+    },
+    {
+      "check": "Thm 3.2(iii): role is monotone in ambient occupancy",
+      "verdict": "PASS",
+      "detail": "mu swept over 12 decades for 4 weight fns; 0 monotonicity violation(s)",
+      "violations": []
+    },
+    {
+      "check": "NEGATIVE CONTROL: role genuinely flips under medium perturbation",
+      "verdict": "PASS",
+      "detail": "weight fns exhibiting BOTH roles across the sweep: 4/4. A predicate that returns one value on every input tests nothing.",
+      "roles_seen": {
+        "log (eq. 1)": [
+          "bulk",
+          "structural"
+        ],
+        "sqrt": [
+          "bulk",
+          "structural"
+        ],
+        "rational": [
+          "bulk",
+          "structural"
+        ],
+        "linear-cap": [
+          "bulk",
+          "structural"
+        ]
+      }
+    },
+    {
+      "check": "only the ratio tau/mu is observable (scale invariance)",
+      "verdict": "PASS",
+      "detail": "4 joint rescalings of (mu, tau); 0 role change(s). Def. 2.1 requires none.",
+      "violations": []
+    }
+  ]
+}

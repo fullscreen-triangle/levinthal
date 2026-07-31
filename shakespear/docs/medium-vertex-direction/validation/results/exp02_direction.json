@@ -1,0 +1,251 @@
+{
+  "experiment": "exp02_direction",
+  "claim": "Lemma 4.1 / Theorem 4.4 --- cut structure cannot orient a process; the medium can",
+  "aggregate": {
+    "checks": 10,
+    "passed": 10,
+    "failed": 0,
+    "verdict": "PASS"
+  },
+  "beta": 0.00037,
+  "reactions": {
+    "2.6.1.2": "RHEA:19453",
+    "2.6.1.1": "RHEA:21824",
+    "2.6.1.3": "RHEA:17441"
+  },
+  "checks": [
+    {
+      "check": "Lemma 4.1: chain and reversal commit identical boundary",
+      "verdict": "PASS",
+      "detail": "3 chains; total boundary, cut count and residue multiset all invariant under reversal. 0 violation(s). => no intrinsic predicate can orient a process (Cor. 4.2)",
+      "violations": []
+    },
+    {
+      "check": "Cor. 4.2: no intrinsic residue statistic distinguishes C from C^R",
+      "verdict": "PASS",
+      "detail": "6 candidate statistics x 3 chains = 18 tests; 0 discriminated. Any non-zero count would refute Cor. 4.2.",
+      "discriminating": []
+    },
+    {
+      "check": "NEGATIVE CONTROL: unbiased medium refuses to orient",
+      "verdict": "PASS",
+      "detail": "uniform occupancy across all identities -> delta = 0 exactly for all 3 chains; every verdict UNDIRECTED. Without this, Thm 4.4(c) is an unreachable third case.",
+      "results": [
+        {
+          "ec": "2.6.1.2",
+          "delta": 0.0,
+          "direction": "undirected"
+        },
+        {
+          "ec": "2.6.1.1",
+          "delta": 0.0,
+          "direction": "undirected"
+        },
+        {
+          "ec": "2.6.1.3",
+          "delta": 0.0,
+          "direction": "undirected"
+        }
+      ]
+    },
+    {
+      "check": "NEGATIVE CONTROL: orient() raises Refusal on an unbiased medium",
+      "verdict": "PASS",
+      "detail": "3/3 chains refused orientation",
+      "refusals": [
+        {
+          "kind": "orientation",
+          "subject": "alanine transaminase",
+          "reason": "|delta| = 0.0000e+00 <= floor 3.7000e-04: the medium does not favour either direction by an amount the receiver can resolve"
+        }
+      ]
+    },
+    {
+      "check": "Thm 4.4(a): glutamate-depleted medium orients forward",
+      "verdict": "PASS",
+      "detail": "L-glutamate depleted (mu=1e-7), 2-oxoglutarate ambient (mu=1e-1); delta/floor = [9.2, 9.2, 9.2]",
+      "results": [
+        {
+          "ec": "2.6.1.2",
+          "delta_over_floor": 9.200490036123348,
+          "direction": "forward",
+          "case": "(a)"
+        },
+        {
+          "ec": "2.6.1.1",
+          "delta_over_floor": 9.200490036123348,
+          "direction": "forward",
+          "case": "(a)"
+        },
+        {
+          "ec": "2.6.1.3",
+          "delta_over_floor": 9.200490036123348,
+          "direction": "forward",
+          "case": "(a)"
+        }
+      ]
+    },
+    {
+      "check": "NEGATIVE CONTROL: bias exceeds the floor with a margin (>2x)",
+      "verdict": "PASS",
+      "detail": "min delta/floor = 9.20. Asserting merely delta != 0 would pass on noise; Sec. 5.3 item 3 requires a margin, after an earlier suite of ours passed on a self-comparison.",
+      "margins": [
+        9.200490036123348,
+        9.200490036123348,
+        9.200490036123348
+      ]
+    },
+    {
+      "check": "Cor. 4.5: the SAME chain runs opposite ways in two media",
+      "verdict": "PASS",
+      "detail": "identical chain and identical Rhea identifier; only the medium differs. This is the AlaA case (P0A959 vs human ALT1): the shared identifier is correct because reaction identity is a property of the chain and direction is not.",
+      "results": [
+        {
+          "ec": "2.6.1.2",
+          "rhea": "RHEA:19453",
+          "glutamate_depleted": "forward",
+          "oxoglutarate_depleted": "reverse",
+          "delta_fwd": 0.003404181313365639,
+          "delta_rev": -0.003404181313365639
+        },
+        {
+          "ec": "2.6.1.1",
+          "rhea": "RHEA:21824",
+          "glutamate_depleted": "forward",
+          "oxoglutarate_depleted": "reverse",
+          "delta_fwd": 0.003404181313365639,
+          "delta_rev": -0.003404181313365639
+        },
+        {
+          "ec": "2.6.1.3",
+          "rhea": "RHEA:17441",
+          "glutamate_depleted": "forward",
+          "oxoglutarate_depleted": "reverse",
+          "delta_fwd": 0.003404181313365639,
+          "delta_rev": -0.003404181313365639
+        }
+      ]
+    },
+    {
+      "check": "delta is antisymmetric under reversal, for all weight fns",
+      "verdict": "PASS",
+      "detail": "12 combinations; 0 violation(s). This is the asymmetry Lemma 4.1 showed the chain itself cannot supply.",
+      "violations": []
+    },
+    {
+      "check": "Thm 4.4: trichotomy is exhaustive and mutually exclusive",
+      "verdict": "PASS",
+      "detail": "19-point two-sided sweep (deplete product / deplete reactant); cases reached: {'forward': 9, 'reverse': 9, 'undirected': 1}; 0 point(s) where the three conditions were not exactly-one-true. All three cases must be REACHED or the trichotomy is a dichotomy.",
+      "cases_seen": {
+        "forward": 9,
+        "reverse": 9,
+        "undirected": 1
+      },
+      "violations": [],
+      "sweep": [
+        {
+          "exponent": -9,
+          "delta_over_floor": 20.03011865738646,
+          "direction": "forward"
+        },
+        {
+          "exponent": -8,
+          "delta_over_floor": 17.727533573392417,
+          "direction": "forward"
+        },
+        {
+          "exponent": -7,
+          "delta_over_floor": 15.424948570398367,
+          "direction": "forward"
+        },
+        {
+          "exponent": -6,
+          "delta_over_floor": 13.122364377403827,
+          "direction": "forward"
+        },
+        {
+          "exponent": -5,
+          "delta_over_floor": 10.819788284360282,
+          "direction": "forward"
+        },
+        {
+          "exponent": -4,
+          "delta_over_floor": 8.51729318641657,
+          "direction": "forward"
+        },
+        {
+          "exponent": -3,
+          "delta_over_floor": 6.215607598755276,
+          "direction": "forward"
+        },
+        {
+          "exponent": -2,
+          "delta_over_floor": 3.9219733362813147,
+          "direction": "forward"
+        },
+        {
+          "exponent": -1,
+          "delta_over_floor": 1.7047480922384257,
+          "direction": "forward"
+        },
+        {
+          "exponent": 0,
+          "delta_over_floor": 0.0,
+          "direction": "undirected"
+        },
+        {
+          "exponent": 1,
+          "delta_over_floor": -1.7047480922384257,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 2,
+          "delta_over_floor": -3.9219733362813147,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 3,
+          "delta_over_floor": -6.215607598755276,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 4,
+          "delta_over_floor": -8.51729318641657,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 5,
+          "delta_over_floor": -10.819788284360282,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 6,
+          "delta_over_floor": -13.122364377403827,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 7,
+          "delta_over_floor": -15.424948570398367,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 8,
+          "delta_over_floor": -17.727533573392417,
+          "direction": "reverse"
+        },
+        {
+          "exponent": 9,
+          "delta_over_floor": -20.03011865738646,
+          "direction": "reverse"
+        }
+      ]
+    },
+    {
+      "check": "saturating one product cannot reverse a chain (bounded by log 2)",
+      "verdict": "PASS",
+      "detail": "L-glutamate at mu=1e30: delta/floor -> -0.6931, bound = -log(2) = -0.6931; verdict undirected. Reversal requires depleting a reactant, not flooding a product --- an asymmetry of eq. (1) worth stating.",
+      "delta_over_floor": -0.6931471805599455,
+      "theoretical_bound": -0.6931471805599453
+    }
+  ]
+}
