@@ -1,0 +1,71 @@
+{
+  "paper": "The Medium Vertex and the Direction of a Protein Process",
+  "aggregate": {
+    "experiments": 3,
+    "checks": 25,
+    "passed": 25,
+    "failed": 0,
+    "not_tested": 1,
+    "verdict": "PASS"
+  },
+  "negative_controls": {
+    "count": 8,
+    "mandated_by": "paper Sec. 5.3",
+    "checks": [
+      "NEGATIVE CONTROL: bulk water (no system contacts) is refused",
+      "NEGATIVE CONTROL: refusal commits no cut",
+      "NEGATIVE CONTROL: role genuinely flips under medium perturbation",
+      "NEGATIVE CONTROL: unbiased medium refuses to orient",
+      "NEGATIVE CONTROL: orient() raises Refusal on an unbiased medium",
+      "NEGATIVE CONTROL: bias exceeds the floor with a margin (>2x)",
+      "NEGATIVE CONTROL: the medium leaves questions unanswered",
+      "NEGATIVE CONTROL: the views AGREE about a genuine participant"
+    ]
+  },
+  "scope": {
+    "cannot_establish": [
+      "eq. (1) itself --- the medium weight is a modelling choice, so checking it against the code that defines it would be circular",
+      "Prop. 6.1 --- an expressive-power claim about SROIQ, cited rather than re-derived",
+      "any correspondence between the medium bias and a free energy --- explicitly not claimed (paper Sec. 7)"
+    ],
+    "establishes": [
+      "the structural theorems hold under four distinct weight functions sharing only monotonicity and floor-boundedness",
+      "all four negative controls mandated by Sec. 5.3 fire",
+      "the trichotomy of Thm 4.4 reaches all three cases",
+      "the representational partition has measured block structure with zero overlap"
+    ]
+  },
+  "experiments": [
+    {
+      "name": "exp01_solvent_role",
+      "claim": "Theorem 3.2 --- solvent role is derivable from the contact graph and the medium alone",
+      "aggregate": {
+        "checks": 8,
+        "passed": 8,
+        "failed": 0,
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "exp02_direction",
+      "claim": "Lemma 4.1 / Theorem 4.4 --- cut structure cannot orient a process; the medium can",
+      "aggregate": {
+        "checks": 10,
+        "passed": 10,
+        "failed": 0,
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "exp03_partition",
+      "claim": "Sec. 6 --- the two representations partition the competency questions, and must disagree about the cofactor",
+      "aggregate": {
+        "checks": 7,
+        "passed": 7,
+        "failed": 0,
+        "not_tested": 1,
+        "verdict": "PASS"
+      }
+    }
+  ]
+}

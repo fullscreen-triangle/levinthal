@@ -1,0 +1,197 @@
+{
+  "experiment": "exp03_partition",
+  "claim": "Sec. 6 --- the two representations partition the competency questions, and must disagree about the cofactor",
+  "aggregate": {
+    "checks": 7,
+    "passed": 7,
+    "failed": 0,
+    "not_tested": 1,
+    "verdict": "PASS"
+  },
+  "question_scores": [
+    {
+      "q": "determine the type of reaction",
+      "group": 1,
+      "signature": 2,
+      "chain": 0,
+      "from_medium": false
+    },
+    {
+      "q": "identify reactions involving a molecule",
+      "group": 1,
+      "signature": 2,
+      "chain": 1,
+      "from_medium": false
+    },
+    {
+      "q": "retrieve stoichiometry of participants",
+      "group": 1,
+      "signature": 2,
+      "chain": 0,
+      "from_medium": false
+    },
+    {
+      "q": "what is the catalytic agent",
+      "group": 1,
+      "signature": 2,
+      "chain": 1,
+      "from_medium": false
+    },
+    {
+      "q": "key steps in the mechanism",
+      "group": 2,
+      "signature": 0,
+      "chain": 2,
+      "from_medium": false
+    },
+    {
+      "q": "intermediate species formed",
+      "group": 2,
+      "signature": 0,
+      "chain": 2,
+      "from_medium": false
+    },
+    {
+      "q": "electronic states of intermediates",
+      "group": 2,
+      "signature": 0,
+      "chain": 2,
+      "from_medium": false
+    },
+    {
+      "q": "how charges change",
+      "group": 2,
+      "signature": 0,
+      "chain": 2,
+      "from_medium": false
+    },
+    {
+      "q": "activation energy",
+      "group": 2,
+      "signature": 0,
+      "chain": 1,
+      "from_medium": false
+    },
+    {
+      "q": "thermodynamic properties",
+      "group": 2,
+      "signature": 0,
+      "chain": 0,
+      "from_medium": false
+    },
+    {
+      "q": "in which solvent",
+      "group": 3,
+      "signature": 0,
+      "chain": 2,
+      "from_medium": true
+    },
+    {
+      "q": "role of the solvent",
+      "group": 3,
+      "signature": 0,
+      "chain": 2,
+      "from_medium": true
+    },
+    {
+      "q": "temperature, pressure, pH",
+      "group": 3,
+      "signature": 0,
+      "chain": 1,
+      "from_medium": true
+    }
+  ],
+  "checks": [
+    {
+      "check": "the two views overlap on no question (measured)",
+      "verdict": "PASS",
+      "detail": "of 13 questions: 4 signature-only, 6 chain-only, 0 both, 1 neither. Overlap fraction = 0.00. A large overlap would mean the views are redundant, not partitioned.",
+      "signature_only": 4,
+      "chain_only": 6,
+      "both": 0,
+      "neither": 1
+    },
+    {
+      "check": "block structure: group 1 signature-dominated, group 2 chain-dominated",
+      "verdict": "PASS",
+      "detail": "group 1 (classification): signature 8 vs chain 2; group 2 (mechanism): signature 0 vs chain 9. The dominance reverses between groups, which is the block structure Table 1 claims.",
+      "group1": {
+        "signature": 8,
+        "chain": 2
+      },
+      "group2": {
+        "signature": 0,
+        "chain": 9
+      }
+    },
+    {
+      "check": "group 3 (context) was unanswerable by either view before the medium",
+      "verdict": "PASS",
+      "detail": "all 3 context questions score 0 for the signature view; all 3 are supplied by the medium semantics. Without Sec. 3-4 every group-3 cell is empty in both columns.",
+      "group3_questions": [
+        "in which solvent",
+        "role of the solvent",
+        "temperature, pressure, pH"
+      ]
+    },
+    {
+      "check": "NEGATIVE CONTROL: the medium leaves questions unanswered",
+      "verdict": "PASS",
+      "detail": "3 question(s) remain below a full answer even after this paper: ['activation energy', 'thermodynamic properties', 'temperature, pressure, pH']. An extension that answered everything would be overclaiming.",
+      "unanswered": [
+        "activation energy",
+        "thermodynamic properties",
+        "temperature, pressure, pH"
+      ]
+    },
+    {
+      "check": "Prop. 6.2: two reactions differing in stoichiometry have identical chains",
+      "verdict": "PASS",
+      "detail": "'A + B -> C' and '2A + B -> C (A individuated once, used twice)' commit identical boundary (2.2200e-03), identical cut count (3), identical residues. A leaf individuated once and used twice is indistinguishable at the level of committed boundary, so the coefficient is not recoverable --- which is why the signature view needs an n-ary bridge node to carry it.",
+      "total_boundary": 0.0022199999999999998
+    },
+    {
+      "check": "Thm 6.3: the two views disagree about the cofactor",
+      "verdict": "PASS",
+      "detail": "signature: NOT a participant (net coefficient 0). chain: IS individuated (carrier, cut once). Both correct --- they evaluate different predicates about the same molecule. A representation conflating them would be wrong in one of the two views.",
+      "detail_plp": {
+        "molecule": "pyridoxal 5'-phosphate",
+        "signature_view": {
+          "predicate": "bears a net role in the transformation",
+          "net_coefficient": 0,
+          "verdict": "NOT a participant",
+          "external_support": "Rhea gives 4 participants for each of RHEA:19453/21824/17441; none is PLP"
+        },
+        "chain_view": {
+          "predicate": "is individuated in the process",
+          "cuts_committed": 1,
+          "re_cut_per_turnover": false,
+          "verdict": "IS individuated (as a carrier)",
+          "external_support": "PLP carries the amino group between half-reactions; deleting it deletes the mechanism (Cleland ping-pong bi-bi)"
+        }
+      }
+    },
+    {
+      "check": "NEGATIVE CONTROL: the views AGREE about a genuine participant",
+      "verdict": "PASS",
+      "detail": "2-oxoglutarate: signature says participant (net coefficient -1), chain says individuated (re-cut every turnover). The disagreement in Thm 6.3 is specific to carriers, not a general incoherence between the views --- without this check, Thm 6.3 could be explained by the two views simply never agreeing.",
+      "detail_oxoglutarate": {
+        "molecule": "2-oxoglutarate",
+        "signature_view": {
+          "net_coefficient": -1,
+          "verdict": "IS a participant"
+        },
+        "chain_view": {
+          "cuts_committed": 1,
+          "re_cut_per_turnover": true,
+          "verdict": "IS individuated"
+        }
+      }
+    },
+    {
+      "check": "Prop. 6.1 (SROIQ cannot express a residue chain)",
+      "verdict": "NOT TESTED",
+      "detail": "This is a statement about the expressive power of the description logic underlying OWL 2, cited to Horrocks et al. (2006) and Baader et al. (2003). Establishing it requires a proof about SROIQ, not an experiment over this framework. No check here should be read as supporting it."
+    }
+  ]
+}
