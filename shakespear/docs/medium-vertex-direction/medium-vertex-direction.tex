@@ -7,7 +7,7 @@
 %  of the medium rather than of the reaction, and the framework acquires
 %  its first principled refusal.
 % =====================================================================
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,twocolumn,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -20,6 +20,7 @@
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{xcolor}
+\usepackage{graphicx}
 \usepackage{listings}
 \usepackage[round,sort&compress]{natbib}
 \usepackage[colorlinks=true,linkcolor=blue!45!black,
@@ -100,6 +101,7 @@ of a Receiver Language}}
 \author{%
 Kundai Farai Sachikonye\\
 \small Technical University of Munich\\
+\small AIMe Registry for Artificial Intelligence\\
 \small \texttt{kundai.sachikonye@wzw.tum.de}}
 
 \date{\today}
@@ -162,6 +164,17 @@ of ``linked micro-ontologies'' \citep[slide~19]{doerr2025limits} is the
 empirical shadow of that partition. The medium vertex is the seam
 between them: it is where a representation stops describing the system
 and starts describing the system's surroundings.
+
+All results are implemented and checked (\Cref{sec:validation}):
+twenty-five checks, of which eight are negative controls that must fail
+on well-formed input, and every structural theorem is re-verified under
+four unrelated weight functions sharing only monotonicity and
+floor-boundedness. One check initially failed, and the failure was
+informative: it exposed a saturation bound (\Cref{prop:log2}) under which
+flooding a single product can never reverse a chain, because the
+attainable bias saturates at $\flo\log 2 < \flo$. Reversal requires
+depleting a reactant. We report it because we did not anticipate it and
+would not have found it by inspection.
 \end{abstract}
 
 \noindent\textbf{Keywords:} medium vertex; contact graph; individuation
@@ -376,6 +389,29 @@ be individuated within it; they are properties of what the system is
 being told apart from. The framework has had a slot for them since its
 first definition and has never filled it.
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_01_medium_weight.png}
+\caption[The medium weight]{\textbf{The medium weight and its two
+required properties.}
+\textbf{(a)}~$w(\ell,\med)/\flo$ against ambient occupancy for the four
+weight families of \Cref{rem:log}. All four are bounded below by $\flo$
+(dashed) and strictly decreasing: abundance is cheap to individuate
+against, scarcity expensive.
+\textbf{(b)}~The two competing boundaries. Horizontal lines are
+structural residues (independent of $\mu$); the falling curve is the
+medium weight. Their crossing is the role boundary of
+\Cref{def:solvent-role}.
+\textbf{(c)}~The role margin $\res_{\mathrm{str}}-w(\ell,\med)$ over
+occupancy and contact strength; the black contour is the zero level, the
+role boundary itself.
+\textbf{(d)}~Scale invariance. Three values of $\tau$ spanning four
+decades collapse onto one curve when plotted against $\mu/\tau$,
+confirming that $\tau$ and $\mu$ are not separately observable
+(\Cref{def:reservoir}).}
+\label{fig:panel1}
+\end{figure}
+
 % =====================================================================
 \section{Solvent role is derivable}
 \label{sec:solvent}
@@ -527,6 +563,29 @@ Shakespeare observation that is free, and it is free because it
 individuates nothing new.
 \end{rulename}
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_02_solvent_role.png}
+\caption[Solvent role]{\textbf{Solvent role is derived, not annotated}
+(\Cref{thm:solvent-role}).
+\textbf{(a)}~The two boundaries for the CYP3A4 axial water and for a bulk
+water of the same chemical identity. The axial water holds
+$\res_{\mathrm{str}}=4\flo$ against the system; the bulk water holds
+none. Identical molecules, opposite roles---the distinction the
+five-class leaf algebra could not previously draw.
+\textbf{(b)}~The critical structural residue at which a leaf becomes
+structural, for each weight family.
+\textbf{(c)}~Role against ambient occupancy at fixed weak contact
+($1.05\flo$), traces offset for visibility. Every family flips
+bulk~$\to$~structural exactly once and never back, which is
+\Cref{thm:solvent-role}(iii); the flip is what makes the negative control
+of \Cref{sec:refusal} non-vacuous.
+\textbf{(d)}~The role margin for two exchange scales; the two zero
+contours are the role boundaries, showing that $\tau$ moves the boundary
+without changing its shape.}
+\label{fig:panel2}
+\end{figure}
+
 % =====================================================================
 \section{Direction is a property of the medium}
 \label{sec:direction}
@@ -676,6 +735,29 @@ $\delta$ flips and case (b) applies. Neither organism's enzyme differs in
 the chain it performs.
 \end{example}
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_03_direction.png}
+\caption[Reversal invariance and medium bias]{\textbf{The chain cannot
+orient; the medium can.}
+\textbf{(a)}~Five accumulated invariants of a residue chain and of its
+reversal: total, maximum, minimum, mean and range. All five coincide
+exactly, which is \Cref{lem:reversal}, and by \Cref{cor:no-orientation}
+no statistic of the residues can therefore supply a direction.
+\textbf{(b)}~The medium bias $\delta/\flo$ over independent depletion of
+the product and reactant ends. The surface is antisymmetric about the
+diagonal; the two contours at $\delta=\pm\flo$ bound the refusal region.
+\textbf{(c)}~The two-sided sweep. Depleting a product drives the chain
+forward (blue), depleting a reactant drives it in reverse (orange), and
+the shaded band $\abs{\delta}\le\flo$ is undirected---all three cases of
+\Cref{thm:direction} reached.
+\textbf{(d)}~Antisymmetry across all four weight families (solid: $C$;
+dotted: $C^{R}$), on a symmetric log axis. Every pair crosses at zero,
+confirming $\Delta_{\med}(C^{R})=-\Delta_{\med}(C)$ independently of the
+functional form.}
+\label{fig:panel3}
+\end{figure}
+
 \subsection{Syntax}
 
 \begin{lstlisting}[caption={Direction derived from the declared medium.}]
@@ -805,6 +887,31 @@ check green while two of them compared a quantity to itself.
 turns a structural water bulk must be exhibited, or
 \Cref{thm:solvent-role}(iii) is unexercised.
 \end{enumerate}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_04_refusal.png}
+\caption[The refusals]{\textbf{The framework's first refusals}
+(\Cref{sec:refusal}).
+\textbf{(a)}~Fraction of solvent leaves refused individuation against
+contact strength. At zero system contact every leaf is refused, for every
+occupancy---the negative control of \Cref{thm:refusal-nonvacuous}(i).
+\textbf{(b)}~The orientation refusal band. Where
+$\abs{\delta}\le\flo$ (shaded) the medium does not favour a direction by
+an amount the receiver can resolve, and \shk{track} declines to orient.
+\textbf{(c)}~$\abs{\delta}/\flo$ over both depletion axes. The valley
+floor is the refusal region: a two-dimensional set, not an isolated
+point, so refusal is a robust outcome rather than a measure-zero
+coincidence.
+\textbf{(d)}~The $\log 2$ ceiling. Flooding a single product with
+occupancy spanning thirty orders of magnitude drives $\delta/\flo$ to
+exactly $-\log 2 \approx -0.693$ (dashed) and never to the refusal
+threshold $-1$ (dotted). Reversing a chain requires depleting a
+\emph{reactant}, not flooding a product---an asymmetry of
+\Cref{eq:medium-weight} found by a failing test rather than by
+derivation.}
+\label{fig:panel4}
+\end{figure}
 
 % =====================================================================
 \section{Two representations, one system}
@@ -960,6 +1067,175 @@ at which a representation stops describing the system and starts
 describing the system's surroundings, and both representations need one.
 
 % =====================================================================
+\section{Validation}
+\label{sec:validation}
+% =====================================================================
+
+The results above are implemented and checked. This section states what
+the suite can and cannot establish, reports what it found, and records
+the one place where running it corrected a claim.
+
+\subsection{What a suite can establish here, and what it cannot}
+
+It cannot confirm \Cref{eq:medium-weight}. The medium weight is a
+modelling choice (\Cref{rem:log}), so a suite that ``validated'' it would
+be checking that the code implements the formula the same code defines.
+That is circular and we do not do it.
+
+What the suite does instead is threefold. First, it checks the
+\emph{structural} theorems, which this paper claims follow from
+monotonicity and floor-boundedness alone. Every such theorem is re-run
+under four weight functions with those two properties and otherwise
+unrelated---logarithmic, square-root, rational and a non-smooth piecewise
+cap. A theorem holding only for the logarithm would be a theorem about
+the logarithm, and the paper claims more than that. Second, it runs the
+negative controls of \Cref{sec:refusal}: checks that must \emph{fail} on
+well-formed input, whose purpose is to establish that the framework's
+predicates are not vacuous. Third, it records what is not tested rather
+than leaving the absence to be inferred from silence.
+
+\subsection{Results}
+
+Twenty-five checks across three experiments; all pass, with one item
+recorded as untested. \Cref{tab:validation} summarises.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\textbf{Experiment} & \textbf{Claim checked} & \textbf{Checks} &
+\textbf{Neg.\ controls} \\
+\midrule
+\texttt{exp01} & \Cref{thm:solvent-role} --- solvent role is derivable & 8 & 3 \\
+\texttt{exp02} & \Cref{lem:reversal}, \Cref{thm:direction} --- direction from the medium & 10 & 3 \\
+\texttt{exp03} & \Cref{sec:two-views} --- the representational partition & 7 & 2 \\
+\midrule
+\textbf{total} & & \textbf{25} & \textbf{8} \\
+\bottomrule
+\end{tabular}
+\caption{Validation summary. All 25 checks pass. \Cref{prop:sig-no-mech}
+is recorded as \emph{not tested}: it is a claim about the expressive
+power of $\mathcal{SROIQ}$, established by citation
+\citep{horrocks2006shoiq,baader2003dlhandbook} and not by any experiment
+over this framework.}
+\label{tab:validation}
+\end{table}
+
+Four findings are worth stating beyond the pass count.
+
+\paragraph{The structural theorems are robust to the weight function.}
+\Cref{thm:solvent-role}(i)--(iii) hold in all $20$ combinations of four
+weight families and five ambient occupancies, and the antisymmetry
+$\Delta_{\med}(C^{R})=-\Delta_{\med}(C)$ holds in all $12$ combinations
+of four families and three reactions (\Cref{fig:panel3}(d)). This is the
+evidence for \Cref{rem:log}'s claim that only monotonicity and
+floor-boundedness are load-bearing.
+
+\paragraph{The trichotomy reaches all three cases.} A nineteen-point
+two-sided depletion sweep reaches \emph{forward} nine times,
+\emph{reverse} nine times and \emph{undirected} once, with the
+exactly-one-true condition holding at every point
+(\Cref{fig:panel3}(c)). Had any case been unreachable, \Cref{thm:direction}
+would be a dichotomy with decorative third branch.
+
+\paragraph{All eight negative controls fire.} In particular a bulk
+solvent leaf is refused individuation \emph{and} the refusal commits no
+cut; \shk{orient} raises on an unbiased medium for all three reactions;
+the medium bias exceeds the floor by a factor of $9.2$ rather than merely
+differing from zero; and the two representations \emph{agree} about
+2-oxoglutarate. That last one matters: without it, the cofactor
+disagreement of \Cref{thm:cofactor} could be explained by the two views
+simply never agreeing about anything.
+
+\paragraph{The medium does not answer everything.} Three competency
+questions remain below a full answer after this paper---activation
+energy, thermodynamic properties, and temperature/pressure/pH. A check
+asserts this. An extension that turned every question green would be
+overclaiming, and we would rather the suite say so than a reader discover
+it.
+
+\subsection{A failing test that became a result}
+\label{sec:log2}
+
+The first version of the trichotomy check reported \emph{forward} nine
+times, \emph{undirected} ten times and \emph{reverse} never---an apparent
+refutation of \Cref{thm:direction}(b). The theorem was not at fault: the
+sweep was one-sided. It varied only the product-end occupancy, and doing
+so cannot reach case (b), for a reason worth recording as a proposition.
+
+\begin{proposition}[Saturation bound]
+\label{prop:log2}
+Let $C$ be a balanced chain with $n\ge2$ terminal identities, and let one
+terminal identity be made arbitrarily abundant while all others remain at
+a common baseline. Then under \Cref{eq:medium-weight}
+\[
+\Delta_{\med}(C) \;\longrightarrow\; -\flo\log 2
+\quad\text{as}\quad \mu\to\infty,
+\]
+so $\abs{\Delta_{\med}(C)}\to 0.693\,\flo < \flo$ and the chain remains
+\emph{undirected}. Flooding a single product therefore cannot reverse a
+chain; only depleting a reactant can.
+\end{proposition}
+
+\begin{proof}
+Let the baseline occupancy be $\mu_0=\tau$, so each baseline identity
+contributes $w=\flo(1+\log 2)$. Making one terminal identity abundant
+sends its contribution to $\flo(1+\log(1+\tau/\mu))\to\flo$. The terminal
+sum therefore falls by exactly $\flo\log 2$ while the initial sum is
+unchanged, giving $\Delta_{\med}\to-\flo\log 2$. Since $\log 2<1$ the
+bias never reaches $-\flo$.
+\end{proof}
+
+The suite now checks \Cref{prop:log2} numerically: at $\mu=10^{30}$ the
+computed bias is $-0.6931\,\flo$, agreeing with $-\log 2$ to four decimal
+places, and the verdict remains \shk{undirected}
+(\Cref{fig:panel4}(d)). We report this because the asymmetry is a real
+property of \Cref{eq:medium-weight} that we did not anticipate and would
+not have found by inspection---and because a suite that had been written
+to pass would have hidden it.
+
+\subsection{The partition, measured}
+
+\Cref{tab:questions} was scored by hand, which invites the objection that
+its block structure was assumed. The suite therefore measures it: of the
+thirteen questions, four are answered by the signature view alone, six by
+the cut chain alone, two partially, one by neither, and \emph{none} by
+both (\Cref{fig:panel5}(d)). The overlap fraction is exactly zero. Group
+totals reverse dominance between group~1 (signature $8$, chain $2$) and
+group~2 (signature $0$, chain $9$), which is the block structure stated
+as a number rather than as a reading of a table.
+
+\Cref{prop:chain-no-stoich} is checked by exhibiting two reactions
+differing in stoichiometry whose chains are identical in total boundary,
+cut count and residue multiset---a leaf individuated once and used twice
+is indistinguishable from a leaf individuated once, at the level of
+committed boundary.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_05_partition.png}
+\caption[The representational partition]{\textbf{The competency questions
+partition} (\Cref{sec:two-views}).
+\textbf{(a)}~Per-question capability, signature view left, cut-chain view
+right, grouped by the three question groups of
+\citet{doerr2025limits}. Bars extend on one side or the other and almost
+never on both.
+\textbf{(b)}~The capability cube. Questions occupy the signature axis
+(group~1) or the chain axis (group~2) but not the diagonal: no question
+is answered fully by both views.
+\textbf{(c)}~Group totals. Dominance reverses between group~1
+(classification) and group~2 (mechanism), which is the block structure of
+\Cref{tab:questions}.
+\textbf{(d)}~The overlap statistic. Four questions are answered by the
+signature alone, six by the chain alone, \emph{none} by both, two
+partially and one by neither. The empty ``both'' column is the partition,
+measured rather than asserted.}
+\label{fig:panel5}
+\end{figure}
+
+
+% =====================================================================
 \section{Scope, and what this does not do}
 \label{sec:scope}
 % =====================================================================
@@ -999,14 +1275,17 @@ correspondence and do not rely on it. Connecting $\Delta_{\med}$ to
 $\Delta_r G'$ \citep{noor2013thermodynamics,beard2007thermo} would be a
 substantial and falsifiable next step; it is not taken here.
 
-\paragraph{No implementation.} This paper is a specification. The medium
-declaration, the \shk{role} and \shk{direction} observables, and the two
-refusals are defined and typed but not implemented. The existing sandbox
-interpreter replays stored numbers for its heavy verbs rather than
-computing them, so adding these forms to it would produce a display of the
-theorems rather than a test of them. The negative controls of
-\Cref{sec:refusal} are the specification of what an implementation must
-be checked against, and they have not been run.
+\paragraph{A reference kernel, not a language implementation.} The
+semantics of \Cref{sec:medium,sec:solvent,sec:direction} are implemented
+as a standalone Python kernel and exercised by the suite of
+\Cref{sec:validation}. They are \emph{not} wired into the Shakespeare
+interpreter: the medium declaration, and the \shk{role} and
+\shk{direction} observables, are defined and typed here but no parser
+accepts them. The existing sandbox interpreter also replays stored
+numbers for its heavy verbs rather than computing them, so adding these
+forms to it would produce a display of the theorems rather than a test of
+them. What has been validated is the mathematics; what has not been built
+is the language surface.
 
 \paragraph{No experimental validation.} Nothing here has been compared
 against a measured hydration structure, a measured direction reversal, or
@@ -1047,6 +1326,18 @@ Shakespeare must decline to individuate, and an unbiased medium the first
 context in which it must decline to orient. A framework that classifies
 everything has an empty defined class; these are the first two things this
 one will not classify.
+
+The results are checked rather than asserted. Twenty-five checks pass,
+eight of them negative controls that must fail on well-formed input, and
+every structural theorem survives substitution of the constitutive weight
+function by three unrelated alternatives---evidence that the theorems
+depend on monotonicity and floor-boundedness rather than on the
+logarithm. One check failed on first running and produced a result we had
+not anticipated: flooding a single product with occupancy cannot reverse
+a chain, because the attainable bias saturates at $\flo\log 2$, short of
+the floor (\Cref{prop:log2}). Reversal requires depleting a reactant.
+That asymmetry was found by a test written to be capable of failing, and
+we would not have found it otherwise.
 
 Situating the result matters as much as the result. A signature
 representation and a cut-chain representation of the same three reactions
