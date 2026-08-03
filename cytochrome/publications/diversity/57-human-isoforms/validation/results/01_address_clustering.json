@@ -1,0 +1,12 @@
+{
+  "script": "01_address_clustering",
+  "verdict": "PASS",
+  "checks": {
+    "mean_distinctness_ge_0.95": true,
+    "all_pairs_ge_1": true
+  },
+  "n_isoforms": 57,
+  "n_pairs": 1596,
+  "n_distinct": 1596,
+  "distinctness": 1.0
+}

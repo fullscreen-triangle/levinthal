@@ -1,6 +1,6 @@
 {
   "monograph_paper": "Paper 4: Multi-Hop ET Chain through CPR",
-  "run_timestamp": "2026-05-06T04:58:41",
+  "run_timestamp": "2026-08-02T16:20:28",
   "validations": [
     {
       "script": "01_chain_topology.py",
@@ -9,7 +9,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.003,
+      "elapsed_s": 0.002,
       "output_file": "results\\01_chain_topology.json"
     },
     {
@@ -19,7 +19,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 0.002,
+      "elapsed_s": 0.001,
       "output_file": "results\\02_dc4_efficiency.json"
     },
     {
@@ -79,7 +79,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.012,
+      "elapsed_s": 0.004,
       "output_file": "results\\08_falsifiable_predictions.json"
     },
     {
@@ -99,7 +99,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.012,
+      "elapsed_s": 0.006,
       "output_file": "results\\10_cofactor_self_selection.json"
     },
     {
@@ -109,7 +109,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.0,
+      "elapsed_s": 0.001,
       "output_file": "results\\11_hologram_marcus_lambda.json"
     },
     {
@@ -119,7 +119,7 @@
       "verdict": "PASS",
       "checks_passed": 7,
       "checks_total": 7,
-      "elapsed_s": 3.097,
+      "elapsed_s": 2.331,
       "output_file": "results\\12_glb_shader_pipeline.json"
     }
   ],

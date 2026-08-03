@@ -1,0 +1,247 @@
+% =====================================================================
+%  References --- Attention-Allocated Retrieval
+% =====================================================================
+
+% ---------------------------------------------------------------------
+%  Framework
+% ---------------------------------------------------------------------
+
+@unpublished{sachikonye2026splitattention,
+  author = {Sachikonye, Kundai Farai},
+  title  = {Split-Attention Synchronised Agents},
+  year   = {2026},
+  note   = {Source of theorems T1--T7. T2 establishes optimality of
+            water-filling attention allocation under a diminishing-returns
+            assumption on the environment, and flags that assumption as
+            environmental rather than structural. This paper measures the
+            assumption in one environment and finds it false below a
+            computable threshold.}
+}
+
+@unpublished{sachikonye2026medium,
+  author = {Sachikonye, Kundai Farai},
+  title  = {The Medium Vertex and the Direction of a Protein Process:
+            Solvent Role, Physiological Irreversibility, and the First
+            Refusal of a Receiver Language},
+  year   = {2026},
+  note   = {Introduces the Refusal principle used here: a representation
+            earns a positive result only if some presentable object would
+            have received a negative one. Also the source of the
+            methodological standard --- negative controls, and the promotion
+            of a failing check to Proposition~7.1 rather than its repair.}
+}
+
+@unpublished{sachikonye2026shakespeare,
+  author = {Sachikonye, Kundai Farai},
+  title  = {Shakespeare: A Receiver Language for Protein Processes},
+  year   = {2026},
+  note   = {Language specification. Supplies the receiver semantics that
+            an allocation refusal must be expressible in.}
+}
+
+@misc{sachikonye2026tacat,
+  author       = {Sachikonye, Kundai Farai},
+  title        = {tacat: a transaminase catalysis knowledge graph},
+  year         = {2026},
+  howpublished = {Software. OWL/SHACL knowledge graph of three
+                  PLP-dependent transaminase reactions, reasoned with
+                  HermiT and served over SPARQL 1.1.},
+  note         = {The federated pipeline whose Rhea/UniProt and
+                  ChEBI/Rhea joins motivate the corpus sizes used
+                  throughout Section~\ref{sec:allocator}.}
+}
+
+% ---------------------------------------------------------------------
+%  Practitioner problem statement
+% ---------------------------------------------------------------------
+
+@misc{doerr2025limits,
+  author       = {Doerr, Mark and Born, Stefan},
+  title        = {Limits and Solutions for Ontological Representation of
+                  Chemical Reactions: Reactions Modelling with
+                  {LARAsuite}},
+  year         = {2025},
+  month        = nov,
+  howpublished = {Presentation, 4th Ontologies4Chem Workshop, Limburg an
+                  der Lahn, Germany, 11--13 November 2025},
+  doi          = {10.5281/zenodo.18022171},
+  note         = {Describes a pipeline in which a reasoner is invoked at
+                  run time over federated sources --- the setting in which
+                  a retrieval budget must be allocated before the reasoner
+                  can be called.}
+}
+
+% ---------------------------------------------------------------------
+%  Data sources whose corpus sizes set the thresholds
+% ---------------------------------------------------------------------
+
+@article{bansal2022rhea,
+  author  = {Bansal, Parit and Morgat, Anne and Axelsen, Kristian B.
+             and others},
+  title   = {Rhea, the Reaction Knowledgebase in 2022},
+  journal = {Nucleic Acids Research},
+  volume  = {50},
+  number  = {D1},
+  pages   = {D693--D700},
+  year    = {2022},
+  doi     = {10.1093/nar/gkab1016}
+}
+
+@article{hastings2016chebi,
+  author  = {Hastings, Janna and Owen, Gareth and Dekker, Adriano and
+             others},
+  title   = {{ChEBI} in 2016: Improved Services and an Expanding
+             Collection of Metabolites},
+  journal = {Nucleic Acids Research},
+  volume  = {44},
+  number  = {D1},
+  pages   = {D1214--D1219},
+  year    = {2016},
+  doi     = {10.1093/nar/gkv1031}
+}
+
+@article{uniprot2023,
+  author  = {{The UniProt Consortium}},
+  title   = {{UniProt}: the Universal Protein Knowledgebase in 2023},
+  journal = {Nucleic Acids Research},
+  volume  = {51},
+  number  = {D1},
+  pages   = {D523--D531},
+  year    = {2023},
+  doi     = {10.1093/nar/gkac1052}
+}
+
+@article{buil2013federated,
+  author  = {Buil-Aranda, Carlos and Arenas, Marcelo and Corcho, Oscar
+             and Polleres, Axel},
+  title   = {Federating Queries in {SPARQL} 1.1: Syntax, Semantics and
+             Evaluation},
+  journal = {Journal of Web Semantics},
+  volume  = {18},
+  number  = {1},
+  pages   = {1--17},
+  year    = {2013},
+  doi     = {10.1016/j.websem.2012.10.001}
+}
+
+% ---------------------------------------------------------------------
+%  Allocation, optimisation, and why a first-order condition is not enough
+% ---------------------------------------------------------------------
+
+@book{boyd2004convex,
+  author    = {Boyd, Stephen and Vandenberghe, Lieven},
+  title     = {Convex Optimization},
+  publisher = {Cambridge University Press},
+  year      = {2004},
+  note      = {Water-filling as the canonical solution of a concave
+               resource-allocation problem; also the statement that the
+               Karush--Kuhn--Tucker conditions are sufficient only under
+               concavity, which is the hypothesis this paper measures.}
+}
+
+@book{cover2006elements,
+  author    = {Cover, Thomas M. and Thomas, Joy A.},
+  title     = {Elements of Information Theory},
+  edition   = {2nd},
+  publisher = {Wiley},
+  year      = {2006},
+  note      = {Water-filling over parallel Gaussian channels --- the
+               setting in which the allocation rule is unconditionally
+               correct, because the per-channel return is concave by
+               construction rather than by assumption.}
+}
+
+@article{gale1989corner,
+  author  = {Horst, Reiner},
+  title   = {On the Global Minimization of Concave Functions:
+             Introduction and Survey},
+  journal = {OR Spektrum},
+  volume  = {6},
+  number  = {4},
+  pages   = {195--205},
+  year    = {1984},
+  doi     = {10.1007/BF01720068},
+  note    = {Minimising a concave function --- equivalently, maximising a
+             convex one --- attains its optimum at an extreme point of the
+             feasible set. This is why the sub-threshold optimum here is a
+             corner and not merely near one.}
+}
+
+@book{cormen2009,
+  author    = {Cormen, Thomas H. and Leiserson, Charles E. and Rivest,
+               Ronald L. and Stein, Clifford},
+  title     = {Introduction to Algorithms},
+  edition   = {3rd},
+  publisher = {MIT Press},
+  year      = {2009}
+}
+
+@article{kuramoto1975,
+  author  = {Kuramoto, Yoshiki},
+  title   = {Self-Entrainment of a Population of Coupled Non-Linear
+             Oscillators},
+  journal = {Lecture Notes in Physics},
+  volume  = {39},
+  pages   = {420--422},
+  year    = {1975},
+  doi     = {10.1007/BFb0013365}
+}
+
+% ---------------------------------------------------------------------
+%  Coupon collector --- the positive control
+% ---------------------------------------------------------------------
+
+@book{motwani1995randomized,
+  author    = {Motwani, Rajeev and Raghavan, Prabhakar},
+  title     = {Randomized Algorithms},
+  publisher = {Cambridge University Press},
+  year      = {1995},
+  note      = {Coupon-collector coverage $N(1-(1-1/N)^e)$, whose
+               analytic concavity makes it the positive control for the
+               diminishing-returns detector.}
+}
+
+@book{feller1968probability,
+  author    = {Feller, William},
+  title     = {An Introduction to Probability Theory and Its
+               Applications, Volume I},
+  edition   = {3rd},
+  publisher = {Wiley},
+  year      = {1968}
+}
+
+% ---------------------------------------------------------------------
+%  Methodology
+% ---------------------------------------------------------------------
+
+@article{glimm2014hermit,
+  author  = {Glimm, Birte and Horrocks, Ian and Motik, Boris and
+             Stoilos, Giorgos and Wang, Zhe},
+  title   = {{HermiT}: An {OWL} 2 Reasoner},
+  journal = {Journal of Automated Reasoning},
+  volume  = {53},
+  number  = {3},
+  pages   = {245--269},
+  year    = {2014},
+  doi     = {10.1007/s10817-014-9305-1}
+}
+
+@book{baader2003dlhandbook,
+  editor    = {Baader, Franz and Calvanese, Diego and McGuinness,
+               Deborah L. and Nardi, Daniele and Patel-Schneider,
+               Peter F.},
+  title     = {The Description Logic Handbook: Theory, Implementation
+               and Applications},
+  publisher = {Cambridge University Press},
+  year      = {2003}
+}
+
+@article{glass1979negative,
+  author  = {Glass, David J.},
+  title   = {Experimental Design for Biologists},
+  journal = {Cold Spring Harbor Laboratory Press},
+  year    = {2007},
+  note    = {On the necessity of a control that must fail: a suite in
+             which every check is positive cannot distinguish a correct
+             detector from one that always reports success.}
+}

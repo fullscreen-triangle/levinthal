@@ -1,0 +1,195 @@
+{
+  "experiment": "exp_b_corner_vs_spread",
+  "question": "Below the convexity threshold found in EXP-A, does water-filling actually pick the WORSE action, and does the ordering reverse above it?",
+  "answer": "YES to both. Below e* the optimum is at a corner and committing beats spreading by up to 97%; at a large enough budget the optimum moves to the interior and spreading wins. The threshold is a real switch in the optimal policy, not a bound on how much optimality is lost. The switch is NOT at the edge of the concave region: B.5c locates it at u = B/e* = 2 log2(1+sqrt2) = 2.543107, exact for every N, and at u=2 --- where both sources are already concave --- committing is still 12.5% ahead.",
+  "consequence": "The allocator works in NORMALISED effort e/e*, not raw effort. Each candidate join carries its own threshold computed from its corpus size; the optimum equalises normalised effort across joins (B.5b), and joins whose normalised effort would fall below 1 are not water-filled but committed to or declined. A single global threshold, or a rule stated in raw effort, gets the mixed-corpus case wrong in both directions.",
+  "aggregate": {
+    "checks": 8,
+    "passed": 8,
+    "failed": 0,
+    "verdict": "PASS"
+  },
+  "parameters": {
+    "corpus_size": 40,
+    "e_star": 54.755702467611044,
+    "method": "closed form; no sampling"
+  },
+  "checks": [
+    {
+      "check": "below e*, committing the whole budget strictly beats spreading it",
+      "verdict": "PASS",
+      "detail": "over shares 0.15-0.90 of e*, the corner solution beats the even split at every budget, by at least 17.9%. This is what makes the refusal load-bearing: an unguarded water-filling agent does not merely lose a little optimality below the threshold, it picks the worse of the two available actions.",
+      "rows": [
+        {
+          "budget": 16.426710740283312,
+          "share": 8.213355370141656,
+          "share_over_e_star": 0.15,
+          "spread": 0.7801176907659966,
+          "commit": 1.4099665069590324,
+          "commit_minus_spread": 0.6298488161930358,
+          "relative_gain": 0.8073766607889484
+        },
+        {
+          "budget": 32.853421480566624,
+          "share": 16.426710740283312,
+          "share_over_e_star": 0.3,
+          "spread": 2.8199330139180647,
+          "commit": 4.63069483500668,
+          "commit_minus_spread": 1.8107618210886152,
+          "relative_gain": 0.6421293740494604
+        },
+        {
+          "budget": 54.755702467611044,
+          "share": 27.377851233805522,
+          "share_over_e_star": 0.5,
+          "spread": 6.862915010152347,
+          "commit": 9.999999999999943,
+          "commit_minus_spread": 3.1370849898475965,
+          "relative_gain": 0.45710678118654974
+        },
+        {
+          "budget": 82.13355370141656,
+          "share": 41.06677685070828,
+          "share_over_e_star": 0.7499999999999999,
+          "spread": 13.147702047244131,
+          "commit": 16.71572875253802,
+          "commit_minus_spread": 3.5680267052938888,
+          "relative_gain": 0.27138025279799954
+        },
+        {
+          "budget": 98.56026444169989,
+          "share": 49.28013222084994,
+          "share_over_e_star": 0.9,
+          "spread": 17.232090097037148,
+          "commit": 20.324802676991453,
+          "commit_minus_spread": 3.0927125799543056,
+          "relative_gain": 0.17947402564277798
+        }
+      ]
+    },
+    {
+      "check": "negative control: above e* the ordering REVERSES and spreading wins",
+      "verdict": "PASS",
+      "detail": "at shares 1.5-6.0 of e* the even split beats the corner at every budget. The gate therefore changes the answer in both directions; a rule that always committed would be wrong above the threshold, and one that always spread is wrong below it.",
+      "rows": [
+        {
+          "budget": 164.26710740283312,
+          "share": 82.13355370141656,
+          "share_over_e_star": 1.4999999999999998,
+          "spread": 33.43145750507604,
+          "commit": 30.624999999999925,
+          "spread_minus_commit": 2.8064575050761142
+        },
+        {
+          "budget": 273.77851233805524,
+          "share": 136.88925616902762,
+          "share_over_e_star": 2.5,
+          "spread": 54.215728752537935,
+          "commit": 37.53906249999997,
+          "spread_minus_commit": 16.676666252537963
+        },
+        {
+          "budget": 438.04561974088836,
+          "share": 219.02280987044418,
+          "share_over_e_star": 4.0,
+          "spread": 70.3124999999999,
+          "commit": 39.688110351562486,
+          "spread_minus_commit": 30.624389648437415
+        },
+        {
+          "budget": 657.0684296113325,
+          "share": 328.53421480566624,
+          "share_over_e_star": 5.999999999999999,
+          "spread": 77.51953124999997,
+          "commit": 39.98047113418579,
+          "spread_minus_commit": 37.53906011581418
+        }
+      ]
+    },
+    {
+      "check": "below e* the unconstrained optimum sits AT a corner, not near one",
+      "verdict": "PASS",
+      "detail": "brute-force search over 2001 splits of a budget of 54.8 (share 0.50 e*) puts the optimum at x=0.00 of 54.8 --- a corner. B.1 compared two hand-picked policies; this rules out an interior optimum that both of them missed.",
+      "optimum_yield": 9.999999999999943,
+      "optimum_x": 0.0,
+      "budget": 54.755702467611044
+    },
+    {
+      "check": "above e* the optimum is interior and symmetric, as T2 predicts",
+      "verdict": "PASS",
+      "detail": "at a budget of 328.5 (share 3.00 e*) the optimum is x=164.27, i.e. 50.0% --- the even split, which is what water-filling returns for two identical joins. T2 is not merely valid above the threshold, it is exactly right there.",
+      "optimum_yield": 61.24999999999985,
+      "optimum_x": 164.26710740283312,
+      "budget": 328.53421480566624
+    },
+    {
+      "check": "with unequal corpora the optimum beats BOTH naive policies",
+      "verdict": "PASS",
+      "detail": "corpora 30 and 90 have thresholds e*=40.9 and 124.1. At a budget of 327.1 the optimum gives 25.0% to the small join, yielding 66.971 against 58.659 for an even split (+14.2%) and 63.383 for committing (+5.7%). Strictly interior and strictly better than both, so neither naive policy can imitate it and the allocation rule has to be genuinely per-join.",
+      "e_star_small": 40.89176726722867,
+      "e_star_large": 124.07205453261447,
+      "spread": 58.659198104097314,
+      "commit": 63.382857334589616,
+      "optimum": 66.97055176960217,
+      "optimum_fraction_to_small": 0.25025000000000003
+    },
+    {
+      "check": "the optimum equalises effort measured in units of each join's e*",
+      "verdict": "PASS",
+      "detail": "the optimum gives the small join 81.9 = 2.00 e* and the large join 245.3 = 1.98 e* --- equal to within 1.3%, despite the raw efforts differing threefold. The allocator's state variable is therefore e/e*, not e: a join is 'behind' or 'ahead' relative to its own corpus, and that normalisation is what makes a single shadow price meaningful across joins of different sizes.",
+      "share_small_in_e_star": 2.0020000000000002,
+      "share_large_in_e_star": 1.9768256517777292
+    },
+    {
+      "check": "the commit/spread crossover sits at u* = 2 log2(1+sqrt2), not at u = 2",
+      "verdict": "PASS",
+      "detail": "bisecting for the crossing over corpora [20, 40, 200, 2000] locates it at u=2.543106606327 for every one of them, matching 2 log2(1+sqrt2)=2.543106606327 to within 4.6e-13. The constant is exact for every N, not asymptotic. At u=2 exactly --- where both sources are already on their concave branches --- committing still beats the even split by 12.5%, so concavity of the interior region is not sufficient for the interior optimum. B.1-B.4 test u<=1.8 and u>=3.0 and would both pass with the boundary placed anywhere in between; this check is what pins it.",
+      "rows": [
+        {
+          "corpus_size": 20,
+          "crossover_found": 2.5431066063272194,
+          "crossover_theory": 2.543106606327224,
+          "abs_error": 4.440892098500626e-15,
+          "at_u_equals_2_commit": 11.250000000000021,
+          "at_u_equals_2_spread": 10.000000000000028,
+          "corner_advantage_at_u2": 0.12499999999999893
+        },
+        {
+          "corpus_size": 40,
+          "crossover_found": 2.5431066063272345,
+          "crossover_theory": 2.543106606327224,
+          "abs_error": 1.0658141036401503e-14,
+          "at_u_equals_2_commit": 22.499999999999922,
+          "at_u_equals_2_spread": 19.999999999999886,
+          "corner_advantage_at_u2": 0.1250000000000025
+        },
+        {
+          "corpus_size": 200,
+          "crossover_found": 2.5431066063271768,
+          "crossover_theory": 2.543106606327224,
+          "abs_error": 4.707345624410664e-14,
+          "at_u_equals_2_commit": 112.50000000000192,
+          "at_u_equals_2_spread": 100.00000000000259,
+          "corner_advantage_at_u2": 0.12499999999999009
+        },
+        {
+          "corpus_size": 2000,
+          "crossover_found": 2.5431066063267593,
+          "crossover_theory": 2.543106606327224,
+          "abs_error": 4.645173135031655e-13,
+          "at_u_equals_2_commit": 1125.0000000001899,
+          "at_u_equals_2_spread": 1000.0000000002531,
+          "corner_advantage_at_u2": 0.12499999999990516
+        }
+      ],
+      "u_crossover_theory": 2.543106606327224
+    },
+    {
+      "check": "the cost of not gating is large, not marginal",
+      "verdict": "PASS",
+      "detail": "the worst relative loss from spreading instead of committing is 97%, at a share of 0.02 e*. The loss grows as the budget shrinks, so the agents most likely to be budget-constrained --- the ones water-filling exists to help --- are exactly the ones it would hurt most.",
+      "worst_relative_loss": 0.9725601781994926,
+      "worst_at_share_of_e_star": 0.02
+    }
+  ]
+}

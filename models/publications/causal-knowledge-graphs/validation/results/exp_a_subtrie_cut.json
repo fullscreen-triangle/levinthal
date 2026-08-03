@@ -1,0 +1,3128 @@
+{
+  "experiment": "EXP-A",
+  "target": "thm:subtrie-cut / eq:str-over-depths",
+  "claim": "min v-med cut is attained on a subtrie block when the weighting factors through the trie",
+  "method": "exhaustive enumeration of all 2^(n-1) admissible cuts vs the k+1 nested subtrie blocks",
+  "summary": {
+    "cases": 75,
+    "cases_theorem_holds": 75,
+    "informative_cases": 7,
+    "informative_cases_theorem_holds": 7,
+    "worst_gap_over_all_cases": 0.0,
+    "monotonicity_assumed": false,
+    "control_gap_positive": true,
+    "passed": true
+  },
+  "cases": [
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nontrivial_fraction": 1.0,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nontrivial_fraction": 1.0,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.625,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nontrivial_fraction": 1.0,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nontrivial_fraction": 1.0,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "nonmonotone",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "constant",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "constant",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "constant",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "constant",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "constant",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "random_f",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "random_f",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "random_f",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "random_f",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 3,
+      "b": 2,
+      "n_items": 8,
+      "profile": "random_f",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimal_depths_excluding_whole_set": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "increasing_1+3l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nontrivial_fraction": 1.0,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nontrivial_fraction": 1.0,
+      "degenerate": false,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "nonmonotone",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "constant",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "constant",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "constant",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "constant",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "constant",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "random_f",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "random_f",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "random_f",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "random_f",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "n_items": 9,
+      "profile": "random_f",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "optimal_depths_excluding_whole_set": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "increasing_3^l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "decreasing_3^-l",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.005,
+        0.05
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.05,
+        0.4
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.2,
+        1.5
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "nonmonotone",
+      "medium_range": [
+        0.8,
+        4.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    },
+    {
+      "k": 4,
+      "b": 2,
+      "n_items": 16,
+      "profile": "nonmonotone",
+      "medium_range": [
+        3.0,
+        20.0
+      ],
+      "worst_gap": 0.0,
+      "worst_gap_excluding_whole_set": 0.0,
+      "theorem_holds": true,
+      "optimal_depths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "optimal_depths_excluding_whole_set": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "nontrivial_fraction": 0.0,
+      "degenerate": true,
+      "witness": null
+    }
+  ],
+  "controls": [
+    {
+      "k": 3,
+      "b": 2,
+      "trials": 25,
+      "whole_set_cut_excluded": true,
+      "worst_gap": 16.369989488249097,
+      "trials_with_positive_gap": 21,
+      "hypothesis_is_nonvacuous": true,
+      "witness": {
+        "trial": 9,
+        "item": [
+          1,
+          1,
+          0
+        ],
+        "optimal_S": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "exhaustive": 35.59579765715978,
+        "chain": 51.965787145408875
+      }
+    },
+    {
+      "k": 2,
+      "b": 3,
+      "trials": 25,
+      "whole_set_cut_excluded": true,
+      "worst_gap": 13.244616527080034,
+      "trials_with_positive_gap": 16,
+      "hypothesis_is_nonvacuous": true,
+      "witness": {
+        "trial": 24,
+        "item": [
+          0,
+          0
+        ],
+        "optimal_S": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "exhaustive": 48.08024002154474,
+        "chain": 61.32485654862477
+      }
+    }
+  ]
+}

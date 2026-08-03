@@ -1,0 +1,1004 @@
+% =====================================================================
+%  References --- Causal Knowledge Graphs for Proteins
+%
+%  External literature only. Every construction in the manuscript is
+%  derived in the manuscript; citations here are to the empirical
+%  record, to standard mathematics, and to the database and ontology
+%  systems the paper compares itself against.
+% =====================================================================
+
+% ---------------------------------------------------------------------
+%  Protein databases and repositories
+% ---------------------------------------------------------------------
+
+@article{berman2000,
+  author  = {Berman, Helen M. and Westbrook, John and Feng, Zukang and
+             Gilliland, Gary and Bhat, T. N. and Weissig, Helge and
+             Shindyalov, Ilya N. and Bourne, Philip E.},
+  title   = {The {Protein Data Bank}},
+  journal = {Nucleic Acids Research},
+  volume  = {28},
+  number  = {1},
+  pages   = {235--242},
+  year    = {2000},
+  doi     = {10.1093/nar/28.1.235}
+}
+
+@article{uniprot2023,
+  author  = {{The UniProt Consortium}},
+  title   = {{UniProt}: the universal protein knowledgebase in 2023},
+  journal = {Nucleic Acids Research},
+  volume  = {51},
+  number  = {D1},
+  pages   = {D523--D531},
+  year    = {2023},
+  doi     = {10.1093/nar/gkac1052}
+}
+
+@article{jumper2021,
+  author  = {Jumper, John and Evans, Richard and Pritzel, Alexander and
+             Green, Tim and Figurnov, Michael and Ronneberger, Olaf and
+             Tunyasuvunakool, Kathryn and Bates, Russ and
+             {\v{Z}}{\'\i}dek, Augustin and Potapenko, Anna and
+             Bridgland, Alex and Meyer, Clemens and Kohl, Simon A. A.
+             and Ballard, Andrew J. and Cowie, Andrew and
+             Romera-Paredes, Bernardino and Nikolov, Stanislav and
+             Jain, Rishub and Adler, Jonas and Back, Trevor and
+             Petersen, Stig and Reiman, David and Clancy, Ellen and
+             Zielinski, Michal and Steinegger, Martin and
+             Pacholska, Michalina and Berghammer, Tamas and
+             Bodenstein, Sebastian and Silver, David and
+             Vinyals, Oriol and Senior, Andrew W. and
+             Kavukcuoglu, Koray and Kohli, Pushmeet and
+             Hassabis, Demis},
+  title   = {Highly accurate protein structure prediction with {AlphaFold}},
+  journal = {Nature},
+  volume  = {596},
+  pages   = {583--589},
+  year    = {2021},
+  doi     = {10.1038/s41586-021-03819-2}
+}
+
+@article{varadi2022,
+  author  = {Varadi, Mihaly and Anyango, Stephen and Deshpande, Mandar
+             and Nair, Sreenath and Natassia, Cindy and Yordanova,
+             Galabina and Yuan, David and Stroe, Oana and Wood, Gemma
+             and Laydon, Agata and others},
+  title   = {{AlphaFold} {Protein} {Structure} {Database}: massively
+             expanding the structural coverage of protein-sequence
+             space with high-accuracy models},
+  journal = {Nucleic Acids Research},
+  volume  = {50},
+  number  = {D1},
+  pages   = {D439--D444},
+  year    = {2022},
+  doi     = {10.1093/nar/gkab1061}
+}
+
+@article{burley2023,
+  author  = {Burley, Stephen K. and Bhikadiya, Charmi and Bi, Chunxiao
+             and Bittrich, Sebastian and Chao, Henry and Chen, Li and
+             others},
+  title   = {{RCSB} {Protein} {Data} {Bank} (RCSB.org): delivery of
+             experimentally-determined {PDB} structures alongside one
+             million computed structure models},
+  journal = {Nucleic Acids Research},
+  volume  = {51},
+  number  = {D1},
+  pages   = {D488--D508},
+  year    = {2023},
+  doi     = {10.1093/nar/gkac1077}
+}
+
+% ---------------------------------------------------------------------
+%  Ontologies, knowledge graphs, and the semantic web
+% ---------------------------------------------------------------------
+
+@article{ashburner2000,
+  author  = {Ashburner, Michael and Ball, Catherine A. and Blake,
+             Judith A. and Botstein, David and Butler, Heather and
+             Cherry, J. Michael and Davis, Allan P. and Dolinski,
+             Kara and Dwight, Selina S. and Eppig, Janan T. and
+             Harris, Midori A. and Hill, David P. and
+             Issel-Tarver, Laurie and Kasarskis, Andrew and
+             Lewis, Suzanna and Matese, John C. and
+             Richardson, Joel E. and Ringwald, Martin and
+             Rubin, Gerald M. and Sherlock, Gavin},
+  title   = {Gene {Ontology}: tool for the unification of biology},
+  journal = {Nature Genetics},
+  volume  = {25},
+  pages   = {25--29},
+  year    = {2000},
+  doi     = {10.1038/75556}
+}
+
+@article{go2023,
+  author  = {{The Gene Ontology Consortium}},
+  title   = {The {Gene} {Ontology} knowledgebase in 2023},
+  journal = {Genetics},
+  volume  = {224},
+  number  = {1},
+  pages   = {iyad031},
+  year    = {2023},
+  doi     = {10.1093/genetics/iyad031}
+}
+
+@article{demir2010,
+  author  = {Demir, Emek and Cary, Michael P. and Paley, Suzanne and
+             Fukuda, Ken and Lemer, Christian and Vastrik, Imre and
+             Wu, Guanming and D'Eustachio, Peter and Schaefer, Carl
+             and Luciano, Joanne and others},
+  title   = {The {BioPAX} community standard for pathway data sharing},
+  journal = {Nature Biotechnology},
+  volume  = {28},
+  pages   = {935--942},
+  year    = {2010},
+  doi     = {10.1038/nbt.1666}
+}
+
+@article{milacic2024,
+  author  = {Milacic, Marija and Beavers, Deidre and Conley, Patrick
+             and Gong, Chuqiao and Gillespie, Marc and Griss, Johannes
+             and Haw, Robin and Jassal, Bijay and Matthews, Lisa and
+             May, Bruce and others},
+  title   = {The {Reactome} {Pathway} {Knowledgebase} 2024},
+  journal = {Nucleic Acids Research},
+  volume  = {52},
+  number  = {D1},
+  pages   = {D672--D678},
+  year    = {2024},
+  doi     = {10.1093/nar/gkad1025}
+}
+
+@article{hastings2016,
+  author  = {Hastings, Janna and Owen, Gareth and Dekker, Adriano and
+             Ennis, Marcus and Kale, Namrata and Muthukrishnan,
+             Venkatesh and Turner, Steve and Swainston, Neil and
+             Mendes, Pedro and Steinbeck, Christoph},
+  title   = {{ChEBI} in 2016: improved services and an expanding
+             collection of metabolites},
+  journal = {Nucleic Acids Research},
+  volume  = {44},
+  number  = {D1},
+  pages   = {D1214--D1219},
+  year    = {2016},
+  doi     = {10.1093/nar/gkv1031}
+}
+
+@article{bansal2022,
+  author  = {Bansal, Parit and Morgat, Anne and Axelsen, Kristian B.
+             and Muthukrishnan, Venkatesh and Coudert, Elisabeth and
+             Aimo, Lucila and Hyka-Nouspikel, Nevila and
+             Gasteiger, Elisabeth and Kerhornou, Arnaud and
+             Neto, Teresa Batista and others},
+  title   = {{Rhea}, the reaction knowledgebase in 2022},
+  journal = {Nucleic Acids Research},
+  volume  = {50},
+  number  = {D1},
+  pages   = {D693--D700},
+  year    = {2022},
+  doi     = {10.1093/nar/gkab1016}
+}
+
+@article{smith2007,
+  author  = {Smith, Barry and Ashburner, Michael and Rosse, Cornelius
+             and Bard, Jonathan and Bug, William and Ceusters, Werner
+             and Goldberg, Louis J. and Eilbeck, Karen and Ireland,
+             Amelia and Mungall, Christopher J. and others},
+  title   = {The {OBO} {Foundry}: coordinated evolution of ontologies
+             to support biomedical data integration},
+  journal = {Nature Biotechnology},
+  volume  = {25},
+  pages   = {1251--1255},
+  year    = {2007},
+  doi     = {10.1038/nbt1346}
+}
+
+@article{hogan2021,
+  author  = {Hogan, Aidan and Blomqvist, Eva and Cochez, Michael and
+             d'Amato, Claudia and de Melo, Gerard and Gutierrez,
+             Claudio and Kirrane, Sabrina and Labra Gayo, Jos{\'e}
+             Emilio and Navigli, Roberto and Neumaier, Sebastian and
+             others},
+  title   = {Knowledge graphs},
+  journal = {ACM Computing Surveys},
+  volume  = {54},
+  number  = {4},
+  pages   = {1--37},
+  year    = {2021},
+  doi     = {10.1145/3447772}
+}
+
+@article{wilkinson2016,
+  author  = {Wilkinson, Mark D. and Dumontier, Michel and Aalbersberg,
+             IJsbrand Jan and Appleton, Gabrielle and Axton, Myles and
+             Baak, Arie and Blomberg, Niklas and Boiten, Jan-Willem
+             and da Silva Santos, Luiz Bonino and Bourne, Philip E.
+             and others},
+  title   = {The {FAIR} {Guiding} {Principles} for scientific data
+             management and stewardship},
+  journal = {Scientific Data},
+  volume  = {3},
+  pages   = {160018},
+  year    = {2016},
+  doi     = {10.1038/sdata.2016.18}
+}
+
+@article{jupp2015,
+  author  = {Jupp, Simon and Malone, James and Bolleman, Jerven and
+             Brandizi, Marco and Davies, Mark and Garcia, Leyla and
+             Gaulton, Anna and Gehant, Sebastien and Laibe, Camille
+             and Redaschi, Nicole and others},
+  title   = {The {EBI} {RDF} platform: linked open data for the life
+             sciences},
+  journal = {Bioinformatics},
+  volume  = {30},
+  number  = {9},
+  pages   = {1338--1339},
+  year    = {2014},
+  doi     = {10.1093/bioinformatics/btt765}
+}
+
+@article{callahan2020,
+  author  = {Callahan, Tiffany J. and Tripodi, Ignacio J. and
+             Pielke-Lombardo, Harrison and Hunter, Lawrence E.},
+  title   = {Knowledge-based biomedical data science},
+  journal = {Annual Review of Biomedical Data Science},
+  volume  = {3},
+  pages   = {23--41},
+  year    = {2020},
+  doi     = {10.1146/annurev-biodatasci-010820-091627}
+}
+
+@article{unni2022,
+  author  = {Unni, Deepak R. and Moxon, Sierra A. T. and Bada, Michael
+             and Brush, Matthew and Bruskiewich, Richard and
+             Caufield, J. Harry and Clemons, Paul A. and
+             Dancik, Vlado and Dumontier, Michel and Fecho, Karamarie
+             and others},
+  title   = {{Biolink} {Model}: a universal schema for knowledge
+             graphs in clinical, biomedical, and translational
+             science},
+  journal = {Clinical and Translational Science},
+  volume  = {15},
+  number  = {8},
+  pages   = {1848--1855},
+  year    = {2022},
+  doi     = {10.1111/cts.13302}
+}
+
+% ---------------------------------------------------------------------
+%  Identifier instability and cross-reference decay
+% ---------------------------------------------------------------------
+
+@article{wren2008,
+  author  = {Wren, Jonathan D.},
+  title   = {{URL} decay in {MEDLINE}---a 4-year follow-up study},
+  journal = {Bioinformatics},
+  volume  = {24},
+  number  = {11},
+  pages   = {1381--1385},
+  year    = {2008},
+  doi     = {10.1093/bioinformatics/btn127}
+}
+
+@article{mcmurry2017,
+  author  = {McMurry, Julie A. and Juty, Nick and Blomberg, Niklas and
+             Burdett, Tony and Conlin, Tom and Conte, Nathalie and
+             Courtot, M{\'e}lanie and Deck, John and Dumontier,
+             Michel and Fellows, Donal K. and others},
+  title   = {Identifiers for the 21st century: how to design, provision,
+             and reuse persistent identifiers to maximize utility and
+             impact of life science data},
+  journal = {PLOS Biology},
+  volume  = {15},
+  number  = {6},
+  pages   = {e2001414},
+  year    = {2017},
+  doi     = {10.1371/journal.pbio.2001414}
+}
+
+@article{gaudet2017,
+  author  = {Gaudet, Pascale and Dessimoz, Christophe},
+  title   = {Gene {Ontology}: pitfalls, biases, and remedies},
+  journal = {Methods in Molecular Biology},
+  volume  = {1446},
+  pages   = {189--205},
+  year    = {2017},
+  doi     = {10.1007/978-1-4939-3743-1_14}
+}
+
+% ---------------------------------------------------------------------
+%  Graph theory: cuts, flows, connectivity
+% ---------------------------------------------------------------------
+
+@article{fordfulkerson1956,
+  author  = {Ford, L. R. and Fulkerson, D. R.},
+  title   = {Maximal flow through a network},
+  journal = {Canadian Journal of Mathematics},
+  volume  = {8},
+  pages   = {399--404},
+  year    = {1956},
+  doi     = {10.4153/CJM-1956-045-5}
+}
+
+@article{menger1927,
+  author  = {Menger, Karl},
+  title   = {Zur allgemeinen {Kurventheorie}},
+  journal = {Fundamenta Mathematicae},
+  volume  = {10},
+  pages   = {96--115},
+  year    = {1927}
+}
+
+@article{gomory1961,
+  author  = {Gomory, R. E. and Hu, T. C.},
+  title   = {Multi-terminal network flows},
+  journal = {Journal of the Society for Industrial and Applied
+             Mathematics},
+  volume  = {9},
+  number  = {4},
+  pages   = {551--570},
+  year    = {1961},
+  doi     = {10.1137/0109047}
+}
+
+@article{stoer1997,
+  author  = {Stoer, Mechthild and Wagner, Frank},
+  title   = {A simple min-cut algorithm},
+  journal = {Journal of the ACM},
+  volume  = {44},
+  number  = {4},
+  pages   = {585--591},
+  year    = {1997},
+  doi     = {10.1145/263867.263872}
+}
+
+@article{karger1996,
+  author  = {Karger, David R. and Stein, Clifford},
+  title   = {A new approach to the minimum cut problem},
+  journal = {Journal of the ACM},
+  volume  = {43},
+  number  = {4},
+  pages   = {601--640},
+  year    = {1996},
+  doi     = {10.1145/234533.234534}
+}
+
+@book{diestel2017,
+  author    = {Diestel, Reinhard},
+  title     = {Graph Theory},
+  edition   = {5},
+  publisher = {Springer},
+  year      = {2017},
+  doi       = {10.1007/978-3-662-53622-3}
+}
+
+@article{hu1974,
+  author  = {Hu, T. C.},
+  title   = {Optimum communication spanning trees},
+  journal = {SIAM Journal on Computing},
+  volume  = {3},
+  number  = {3},
+  pages   = {188--195},
+  year    = {1974},
+  doi     = {10.1137/0203015}
+}
+
+% ---------------------------------------------------------------------
+%  Ultrametrics, hierarchical clustering, tries
+% ---------------------------------------------------------------------
+
+@article{johnson1967,
+  author  = {Johnson, Stephen C.},
+  title   = {Hierarchical clustering schemes},
+  journal = {Psychometrika},
+  volume  = {32},
+  pages   = {241--254},
+  year    = {1967},
+  doi     = {10.1007/BF02289588}
+}
+
+@article{jardine1971,
+  author  = {Jardine, N. and Sibson, R.},
+  title   = {Mathematical Taxonomy},
+  journal = {Wiley Series in Probability and Mathematical Statistics},
+  year    = {1971},
+  publisher = {Wiley}
+}
+
+@article{carlsson2010,
+  author  = {Carlsson, Gunnar and M{\'e}moli, Facundo},
+  title   = {Characterization, stability and convergence of
+             hierarchical clustering methods},
+  journal = {Journal of Machine Learning Research},
+  volume  = {11},
+  pages   = {1425--1470},
+  year    = {2010}
+}
+
+@article{fredkin1960,
+  author  = {Fredkin, Edward},
+  title   = {Trie memory},
+  journal = {Communications of the ACM},
+  volume  = {3},
+  number  = {9},
+  pages   = {490--499},
+  year    = {1960},
+  doi     = {10.1145/367390.367400}
+}
+
+@book{knuth1998,
+  author    = {Knuth, Donald E.},
+  title     = {The Art of Computer Programming, Volume 3: Sorting and
+               Searching},
+  edition   = {2},
+  publisher = {Addison-Wesley},
+  year      = {1998}
+}
+
+@article{hartigan1967,
+  author  = {Hartigan, John A.},
+  title   = {Representation of similarity matrices by trees},
+  journal = {Journal of the American Statistical Association},
+  volume  = {62},
+  number  = {320},
+  pages   = {1140--1158},
+  year    = {1967},
+  doi     = {10.1080/01621459.1967.10500922}
+}
+
+% ---------------------------------------------------------------------
+%  Information theory
+% ---------------------------------------------------------------------
+
+@article{shannon1948,
+  author  = {Shannon, Claude E.},
+  title   = {A mathematical theory of communication},
+  journal = {Bell System Technical Journal},
+  volume  = {27},
+  number  = {3},
+  pages   = {379--423},
+  year    = {1948},
+  doi     = {10.1002/j.1538-7305.1948.tb01338.x}
+}
+
+@book{cover2006,
+  author    = {Cover, Thomas M. and Thomas, Joy A.},
+  title     = {Elements of Information Theory},
+  edition   = {2},
+  publisher = {Wiley-Interscience},
+  year      = {2006}
+}
+
+% ---------------------------------------------------------------------
+%  Protein folding, structure, thermodynamics
+% ---------------------------------------------------------------------
+
+@article{anfinsen1973,
+  author  = {Anfinsen, Christian B.},
+  title   = {Principles that govern the folding of protein chains},
+  journal = {Science},
+  volume  = {181},
+  number  = {4096},
+  pages   = {223--230},
+  year    = {1973},
+  doi     = {10.1126/science.181.4096.223}
+}
+
+@article{levinthal1969,
+  author  = {Levinthal, Cyrus},
+  title   = {How to fold graciously},
+  journal = {M{\"o}ssbauer Spectroscopy in Biological Systems:
+             Proceedings of a Meeting held at Allerton House},
+  pages   = {22--24},
+  year    = {1969}
+}
+
+@article{levinthal1968,
+  author  = {Levinthal, Cyrus},
+  title   = {Are there pathways for protein folding?},
+  journal = {Journal de Chimie Physique},
+  volume  = {65},
+  pages   = {44--45},
+  year    = {1968},
+  doi     = {10.1051/jcp/1968650044}
+}
+
+@article{dill2012,
+  author  = {Dill, Ken A. and MacCallum, Justin L.},
+  title   = {The protein-folding problem, 50 years on},
+  journal = {Science},
+  volume  = {338},
+  number  = {6110},
+  pages   = {1042--1046},
+  year    = {2012},
+  doi     = {10.1126/science.1219021}
+}
+
+@article{bryngelson1995,
+  author  = {Bryngelson, Joseph D. and Onuchic, Jos{\'e} Nelson and
+             Socci, Nicholas D. and Wolynes, Peter G.},
+  title   = {Funnels, pathways, and the energy landscape of protein
+             folding: a synthesis},
+  journal = {Proteins: Structure, Function, and Bioinformatics},
+  volume  = {21},
+  number  = {3},
+  pages   = {167--195},
+  year    = {1995},
+  doi     = {10.1002/prot.340210302}
+}
+
+@article{zwanzig1992,
+  author  = {Zwanzig, Robert and Szabo, Attila and Bagchi, Biman},
+  title   = {Levinthal's paradox},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {89},
+  number  = {1},
+  pages   = {20--22},
+  year    = {1992},
+  doi     = {10.1073/pnas.89.1.20}
+}
+
+@book{creighton1993,
+  author    = {Creighton, Thomas E.},
+  title     = {Proteins: Structures and Molecular Properties},
+  edition   = {2},
+  publisher = {W. H. Freeman},
+  year      = {1993}
+}
+
+@book{branden1999,
+  author    = {Branden, Carl-Ivar and Tooze, John},
+  title     = {Introduction to Protein Structure},
+  edition   = {2},
+  publisher = {Garland Science},
+  year      = {1999}
+}
+
+@article{kabsch1983,
+  author  = {Kabsch, Wolfgang and Sander, Christian},
+  title   = {Dictionary of protein secondary structure: pattern
+             recognition of hydrogen-bonded and geometrical features},
+  journal = {Biopolymers},
+  volume  = {22},
+  number  = {12},
+  pages   = {2577--2637},
+  year    = {1983},
+  doi     = {10.1002/bip.360221211}
+}
+
+@article{hartl2002,
+  author  = {Hartl, F. Ulrich and Hayer-Hartl, Manajit},
+  title   = {Molecular chaperones in the cytosol: from nascent chain
+             to folded protein},
+  journal = {Science},
+  volume  = {295},
+  number  = {5561},
+  pages   = {1852--1858},
+  year    = {2002},
+  doi     = {10.1126/science.1068408}
+}
+
+% ---------------------------------------------------------------------
+%  Amino acid property scales
+% ---------------------------------------------------------------------
+
+@article{kyte1982,
+  author  = {Kyte, Jack and Doolittle, Russell F.},
+  title   = {A simple method for displaying the hydropathic character
+             of a protein},
+  journal = {Journal of Molecular Biology},
+  volume  = {157},
+  number  = {1},
+  pages   = {105--132},
+  year    = {1982},
+  doi     = {10.1016/0022-2836(82)90515-0}
+}
+
+@article{zamyatnin1972,
+  author  = {Zamyatnin, A. A.},
+  title   = {Protein volume in solution},
+  journal = {Progress in Biophysics and Molecular Biology},
+  volume  = {24},
+  pages   = {107--123},
+  year    = {1972},
+  doi     = {10.1016/0079-6107(72)90005-3}
+}
+
+@article{grantham1974,
+  author  = {Grantham, R.},
+  title   = {Amino acid difference formula to help explain protein
+             evolution},
+  journal = {Science},
+  volume  = {185},
+  number  = {4154},
+  pages   = {862--864},
+  year    = {1974},
+  doi     = {10.1126/science.185.4154.862}
+}
+
+@article{kawashima2008,
+  author  = {Kawashima, Shuichi and Pokarowski, Piotr and
+             Pokarowska, Maria and Kolinski, Andrzej and
+             Katayama, Toshiaki and Kanehisa, Minoru},
+  title   = {{AAindex}: amino acid index database, progress report
+             2008},
+  journal = {Nucleic Acids Research},
+  volume  = {36},
+  number  = {suppl 1},
+  pages   = {D202--D205},
+  year    = {2008},
+  doi     = {10.1093/nar/gkm998}
+}
+
+@article{henikoff1992,
+  author  = {Henikoff, Steven and Henikoff, Jorja G.},
+  title   = {Amino acid substitution matrices from protein blocks},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {89},
+  number  = {22},
+  pages   = {10915--10919},
+  year    = {1992},
+  doi     = {10.1073/pnas.89.22.10915}
+}
+
+% ---------------------------------------------------------------------
+%  Vibrational spectroscopy and normal modes
+% ---------------------------------------------------------------------
+
+@article{barth2007,
+  author  = {Barth, Andreas},
+  title   = {Infrared spectroscopy of proteins},
+  journal = {Biochimica et Biophysica Acta (BBA) --- Bioenergetics},
+  volume  = {1767},
+  number  = {9},
+  pages   = {1073--1101},
+  year    = {2007},
+  doi     = {10.1016/j.bbabio.2007.06.004}
+}
+
+@article{barth2002,
+  author  = {Barth, Andreas and Zscherp, Christian},
+  title   = {What vibrations tell us about proteins},
+  journal = {Quarterly Reviews of Biophysics},
+  volume  = {35},
+  number  = {4},
+  pages   = {369--430},
+  year    = {2002},
+  doi     = {10.1017/S0033583502003815}
+}
+
+@article{krimm1986,
+  author  = {Krimm, Samuel and Bandekar, Jagdeesh},
+  title   = {Vibrational spectroscopy and conformation of peptides,
+             polypeptides, and proteins},
+  journal = {Advances in Protein Chemistry},
+  volume  = {38},
+  pages   = {181--364},
+  year    = {1986},
+  doi     = {10.1016/S0065-3233(08)60528-8}
+}
+
+@article{go1983,
+  author  = {G{\=o}, Nobuhiro and Noguti, Tosiyuki and Nishikawa,
+             Testuo},
+  title   = {Dynamics of a small globular protein in terms of
+             low-frequency vibrational modes},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {80},
+  number  = {12},
+  pages   = {3696--3700},
+  year    = {1983},
+  doi     = {10.1073/pnas.80.12.3696}
+}
+
+@article{bahar1997,
+  author  = {Bahar, Ivet and Atilgan, Ali Rana and Erman, Burak},
+  title   = {Direct evaluation of thermal fluctuations in proteins
+             using a single-parameter harmonic potential},
+  journal = {Folding and Design},
+  volume  = {2},
+  number  = {3},
+  pages   = {173--181},
+  year    = {1997},
+  doi     = {10.1016/S1359-0278(97)00024-2}
+}
+
+@article{tirion1996,
+  author  = {Tirion, Monique M.},
+  title   = {Large amplitude elastic motions in proteins from a
+             single-parameter, atomic analysis},
+  journal = {Physical Review Letters},
+  volume  = {77},
+  number  = {9},
+  pages   = {1905--1908},
+  year    = {1996},
+  doi     = {10.1103/PhysRevLett.77.1905}
+}
+
+@article{bahar2010,
+  author  = {Bahar, Ivet and Lezon, Timothy R. and Bakan, Ahmet and
+             Shrivastava, Indira H.},
+  title   = {Normal mode analysis of biomolecular structures:
+             functional mechanisms of membrane proteins},
+  journal = {Chemical Reviews},
+  volume  = {110},
+  number  = {3},
+  pages   = {1463--1497},
+  year    = {2010},
+  doi     = {10.1021/cr900095e}
+}
+
+% ---------------------------------------------------------------------
+%  Sequence and structure comparison
+% ---------------------------------------------------------------------
+
+@article{smith1981,
+  author  = {Smith, Temple F. and Waterman, Michael S.},
+  title   = {Identification of common molecular subsequences},
+  journal = {Journal of Molecular Biology},
+  volume  = {147},
+  number  = {1},
+  pages   = {195--197},
+  year    = {1981},
+  doi     = {10.1016/0022-2836(81)90087-5}
+}
+
+@article{altschul1990,
+  author  = {Altschul, Stephen F. and Gish, Warren and Miller, Webb
+             and Myers, Eugene W. and Lipman, David J.},
+  title   = {Basic local alignment search tool},
+  journal = {Journal of Molecular Biology},
+  volume  = {215},
+  number  = {3},
+  pages   = {403--410},
+  year    = {1990},
+  doi     = {10.1016/S0022-2836(05)80360-2}
+}
+
+@article{holm1993,
+  author  = {Holm, Liisa and Sander, Chris},
+  title   = {Protein structure comparison by alignment of distance
+             matrices},
+  journal = {Journal of Molecular Biology},
+  volume  = {233},
+  number  = {1},
+  pages   = {123--138},
+  year    = {1993},
+  doi     = {10.1006/jmbi.1993.1489}
+}
+
+@article{steinegger2017,
+  author  = {Steinegger, Martin and S{\"o}ding, Johannes},
+  title   = {{MMseqs2} enables sensitive protein sequence searching for
+             the analysis of massive data sets},
+  journal = {Nature Biotechnology},
+  volume  = {35},
+  pages   = {1026--1028},
+  year    = {2017},
+  doi     = {10.1038/nbt.3988}
+}
+
+@article{vankempen2024,
+  author  = {van Kempen, Michel and Kim, Stephanie S. and
+             Tumescheit, Charlotte and Mirdita, Milot and Lee, Jeongjae
+             and Gilchrist, Cameron L. M. and S{\"o}ding, Johannes and
+             Steinegger, Martin},
+  title   = {Fast and accurate protein structure search with
+             {Foldseek}},
+  journal = {Nature Biotechnology},
+  volume  = {42},
+  pages   = {243--246},
+  year    = {2024},
+  doi     = {10.1038/s41587-023-01773-0}
+}
+
+% ---------------------------------------------------------------------
+%  Disease, variants, and mechanism
+% ---------------------------------------------------------------------
+
+@article{rosen1993,
+  author  = {Rosen, Daniel R. and Siddique, Teepu and Patterson, David
+             and Figlewicz, Denise A. and Sapp, Peter and Hentati,
+             Afif and Donaldson, Deirdre and Goto, Jun and
+             O'Regan, Jonathan P. and Deng, Han-Xiang and others},
+  title   = {Mutations in {Cu/Zn} superoxide dismutase gene are
+             associated with familial amyotrophic lateral sclerosis},
+  journal = {Nature},
+  volume  = {362},
+  pages   = {59--62},
+  year    = {1993},
+  doi     = {10.1038/362059a0}
+}
+
+@article{valentine2005,
+  author  = {Valentine, Joan Selverstone and Doucette, Peter A. and
+             Zittin Potter, Soshanna},
+  title   = {Copper-zinc superoxide dismutase and amyotrophic lateral
+             sclerosis},
+  journal = {Annual Review of Biochemistry},
+  volume  = {74},
+  pages   = {563--593},
+  year    = {2005},
+  doi     = {10.1146/annurev.biochem.72.121801.161647}
+}
+
+@article{wang2008,
+  author  = {Wang, Qi and Johnson, Jeffrey L. and Agar, Nathalie Y. R.
+             and Agar, Jeffrey N.},
+  title   = {Protein aggregation and protein instability govern
+             familial amyotrophic lateral sclerosis patient survival},
+  journal = {PLOS Biology},
+  volume  = {6},
+  number  = {7},
+  pages   = {e170},
+  year    = {2008},
+  doi     = {10.1371/journal.pbio.0060170}
+}
+
+@article{prudencio2009,
+  author  = {Prudencio, Mercedes and Hart, P. John and
+             Borchelt, David R. and Andersen, Peter M.},
+  title   = {Variation in aggregation propensities among {ALS}-associated
+             variants of {SOD1}: correlation to human disease},
+  journal = {Human Molecular Genetics},
+  volume  = {18},
+  number  = {17},
+  pages   = {3217--3226},
+  year    = {2009},
+  doi     = {10.1093/hmg/ddp260}
+}
+
+@article{landrum2018,
+  author  = {Landrum, Melissa J. and Lee, Jennifer M. and Benson,
+             Mark and Brown, Garth R. and Chao, Chen and
+             Chitipiralla, Shanmuga and Gu, Baoshan and Hart, Jennifer
+             and Hoffman, Douglas and Jang, Wonhee and others},
+  title   = {{ClinVar}: improving access to variant interpretations
+             and supporting evidence},
+  journal = {Nucleic Acids Research},
+  volume  = {46},
+  number  = {D1},
+  pages   = {D1062--D1067},
+  year    = {2018},
+  doi     = {10.1093/nar/gkx1153}
+}
+
+% ---------------------------------------------------------------------
+%  Query languages and graph databases
+% ---------------------------------------------------------------------
+
+@article{perez2009,
+  author  = {P{\'e}rez, Jorge and Arenas, Marcelo and Gutierrez,
+             Claudio},
+  title   = {Semantics and complexity of {SPARQL}},
+  journal = {ACM Transactions on Database Systems},
+  volume  = {34},
+  number  = {3},
+  pages   = {1--45},
+  year    = {2009},
+  doi     = {10.1145/1567274.1567278}
+}
+
+@article{angles2017,
+  author  = {Angles, Renzo and Arenas, Marcelo and Barcel{\'o}, Pablo
+             and Hogan, Aidan and Reutter, Juan and Vrgo{\v{c}}, Domagoj},
+  title   = {Foundations of modern query languages for graph databases},
+  journal = {ACM Computing Surveys},
+  volume  = {50},
+  number  = {5},
+  pages   = {1--40},
+  year    = {2017},
+  doi     = {10.1145/3104031}
+}
+
+@article{barcelo2013,
+  author  = {Barcel{\'o} Baeza, Pablo},
+  title   = {Querying graph databases},
+  journal = {Proceedings of the 32nd ACM SIGMOD-SIGACT-SIGAI Symposium
+             on Principles of Database Systems},
+  pages   = {175--188},
+  year    = {2013},
+  doi     = {10.1145/2463664.2465216}
+}
+
+% ---------------------------------------------------------------------
+%  Reaction networks, mechanism, retrosynthesis
+% ---------------------------------------------------------------------
+
+@article{feinberg1987,
+  author  = {Feinberg, Martin},
+  title   = {Chemical reaction network structure and the stability of
+             complex isothermal reactors},
+  journal = {Chemical Engineering Science},
+  volume  = {42},
+  number  = {10},
+  pages   = {2229--2268},
+  year    = {1987},
+  doi     = {10.1016/0009-2509(87)80099-4}
+}
+
+@article{corey1969,
+  author  = {Corey, E. J. and Wipke, W. Todd},
+  title   = {Computer-assisted design of complex organic syntheses},
+  journal = {Science},
+  volume  = {166},
+  number  = {3902},
+  pages   = {178--192},
+  year    = {1969},
+  doi     = {10.1126/science.166.3902.178}
+}
+
+@article{segler2018,
+  author  = {Segler, Marwin H. S. and Preuss, Mike and Waller, Mark P.},
+  title   = {Planning chemical syntheses with deep neural networks and
+             symbolic {AI}},
+  journal = {Nature},
+  volume  = {555},
+  pages   = {604--610},
+  year    = {2018},
+  doi     = {10.1038/nature25978}
+}
+
+@book{mendeleev1869,
+  author    = {Mendeleev, Dmitri},
+  title     = {{\"U}ber die {Beziehungen} der {Eigenschaften} zu den
+               {Atomgewichten} der {Elemente}},
+  journal   = {Zeitschrift f{\"u}r Chemie},
+  volume    = {12},
+  pages     = {405--406},
+  year      = {1869},
+  publisher = {Zeitschrift f{\"u}r Chemie}
+}
+
+@book{scerri2007,
+  author    = {Scerri, Eric R.},
+  title     = {The Periodic Table: Its Story and Its Significance},
+  publisher = {Oxford University Press},
+  year      = {2007}
+}
+
+% ---------------------------------------------------------------------
+%  Classical mathematics used in proofs
+% ---------------------------------------------------------------------
+
+@article{poincare1890,
+  author  = {Poincar{\'e}, Henri},
+  title   = {Sur le probl{\`e}me des trois corps et les {\'e}quations
+             de la dynamique},
+  journal = {Acta Mathematica},
+  volume  = {13},
+  pages   = {1--270},
+  year    = {1890}
+}
+
+@article{kac1947,
+  author  = {Kac, Mark},
+  title   = {On the notion of recurrence in discrete stochastic
+             processes},
+  journal = {Bulletin of the American Mathematical Society},
+  volume  = {53},
+  number  = {10},
+  pages   = {1002--1010},
+  year    = {1947},
+  doi     = {10.1090/S0002-9904-1947-08927-8}
+}
+
+@book{rudin1976,
+  author    = {Rudin, Walter},
+  title     = {Principles of Mathematical Analysis},
+  edition   = {3},
+  publisher = {McGraw-Hill},
+  year      = {1976}
+}
+
+@article{lipschitz1876,
+  author  = {Lipschitz, Rudolf},
+  title   = {Sur la possibilit{\'e} d'int{\'e}grer compl{\`e}tement un
+             syst{\`e}me donn{\'e} d'{\'e}quations diff{\'e}rentielles},
+  journal = {Bulletin des Sciences Math{\'e}matiques et Astronomiques},
+  volume  = {10},
+  pages   = {149--159},
+  year    = {1876}
+}

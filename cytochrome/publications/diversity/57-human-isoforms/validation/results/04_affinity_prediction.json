@@ -1,0 +1,27 @@
+{
+  "script": "04_affinity_prediction",
+  "verdict": "PASS",
+  "checks": {
+    "mean_sub_gt_mean_non_x2": true,
+    "mean_sub_gt_0.5": true,
+    "mean_non_lt_0.3": true,
+    "ratio_gt_2": true
+  },
+  "substrate_dists": [
+    0,
+    1,
+    1,
+    0,
+    1
+  ],
+  "non_substrate_dists": [
+    4,
+    4,
+    5,
+    5,
+    3
+  ],
+  "mean_substrate_affinity": 0.6207,
+  "mean_non_substrate_affinity": 0.02,
+  "ratio": 31.069
+}

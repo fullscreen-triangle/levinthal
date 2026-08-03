@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}An assumption flagged and not tested}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Why joins are the case that matters}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}What we prove}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}What we do not claim}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}The join yield surface}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Model}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The threshold}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}The threshold reverses the optimal policy}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Corner versus interior}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Normalised effort}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}The allocator}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What the results dictate}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Interface}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}A necessary condition mistaken for a sufficient one}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Validation}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}What the suite can establish, and what it cannot}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Results}{11}{subsection.5.2}%
+\contentsline {paragraph}{The three retrieval regimes separate cleanly.}{11}{section*.3}%
+\contentsline {paragraph}{The convexity is structural, not statistical.}{11}{section*.4}%
+\contentsline {paragraph}{The quarter-corpus law holds across two decades of $N$.}{11}{section*.5}%
+\contentsline {paragraph}{The allocator matches brute force.}{11}{section*.6}%
+\contentsline {subsection}{\numberline {5.3}Two measurement errors and two real ones}{11}{subsection.5.3}%
+\contentsline {paragraph}{Monte Carlo noise five times the signal.}{11}{section*.7}%
+\contentsline {paragraph}{A parity artefact.}{11}{section*.8}%
+\contentsline {paragraph}{The allocator flaw.}{11}{section*.9}%
+\contentsline {paragraph}{A theorem with the wrong boundary, caught by its own figure.}{11}{section*.10}%
+\contentsline {section}{\numberline {6}Scope}{14}{section.6}%
+\contentsline {paragraph}{Uniform draws.}{14}{section*.11}%
+\contentsline {paragraph}{With replacement.}{14}{section*.12}%
+\contentsline {paragraph}{Independent sides.}{14}{section*.13}%
+\contentsline {paragraph}{Even split between sides.}{14}{section*.14}%
+\contentsline {section}{\numberline {7}Conclusion}{14}{section.7}%

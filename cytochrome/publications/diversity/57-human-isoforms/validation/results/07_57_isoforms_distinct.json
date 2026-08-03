@@ -1,0 +1,13 @@
+{
+  "script": "07_57_isoforms_distinct",
+  "verdict": "PASS",
+  "checks": {
+    "count_distinct_eq_57": true,
+    "all_pairwise_hamming_ge_1": true,
+    "min_hamming_ge_1": true
+  },
+  "n_isoforms": 57,
+  "count_distinct": 57,
+  "min_pairwise_hamming": 1,
+  "all_pairwise_positive": true
+}

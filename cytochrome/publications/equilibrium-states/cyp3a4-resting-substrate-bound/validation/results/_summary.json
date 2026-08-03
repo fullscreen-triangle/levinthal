@@ -1,6 +1,6 @@
 {
   "monograph_paper": "Paper 3: Resting and Substrate-Bound CYP3A4",
-  "run_timestamp": "2026-05-04T00:23:37",
+  "run_timestamp": "2026-08-02T16:20:35",
   "validations": [
     {
       "script": "01_closed_form_functors.py",
@@ -19,7 +19,7 @@
       "verdict": "PASS",
       "checks_passed": 4,
       "checks_total": 4,
-      "elapsed_s": 16.814,
+      "elapsed_s": 12.537,
       "output_file": "results\\02_resting_state_regime.json"
     },
     {
@@ -49,7 +49,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.005,
+      "elapsed_s": 0.001,
       "output_file": "results\\05_spin_crossover.json"
     },
     {
@@ -59,7 +59,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 27.949,
+      "elapsed_s": 16.846,
       "output_file": "results\\06_substrate_bound_regime.json"
     },
     {
@@ -79,7 +79,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 0.001,
+      "elapsed_s": 0.002,
       "output_file": "results\\08_redox_shift.json"
     }
   ],

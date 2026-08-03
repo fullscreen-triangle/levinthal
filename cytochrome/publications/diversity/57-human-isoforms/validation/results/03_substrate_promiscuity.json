@@ -1,0 +1,16 @@
+{
+  "script": "03_substrate_promiscuity",
+  "verdict": "PASS",
+  "checks": {
+    "sigma_3A4_gt_sigma_2D6": true,
+    "sigma_2D6_gt_sigma_2C9": true,
+    "sigma_3A4_gt_3.0": true,
+    "sigma_2C9_lt_2.0": true
+  },
+  "sigma_CYP3A4": 3.2,
+  "sigma_CYP2D6": 1.8,
+  "sigma_CYP2C9": 1.4,
+  "drug_fraction_CYP3A4": 0.5,
+  "drug_fraction_CYP2D6": 0.25,
+  "drug_fraction_CYP2C9": 0.16
+}

@@ -1,0 +1,19 @@
+{
+  "script": "08_validation_summary",
+  "verdict": "FAIL",
+  "checks": {
+    "all_7_prior_pass": false,
+    "n_pass_eq_7": false
+  },
+  "n_pass": 6,
+  "n_total": 7,
+  "verdicts": {
+    "01_address_clustering": "PASS",
+    "02_family_separation": "FAIL",
+    "03_substrate_promiscuity": "PASS",
+    "04_affinity_prediction": "PASS",
+    "05_delta_m_isoform_shift": "PASS",
+    "06_tissue_distribution": "PASS",
+    "07_57_isoforms_distinct": "PASS"
+  }
+}
