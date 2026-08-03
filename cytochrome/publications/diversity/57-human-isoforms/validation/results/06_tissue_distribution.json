@@ -1,0 +1,14 @@
+{
+  "script": "06_tissue_distribution",
+  "verdict": "PASS",
+  "checks": {
+    "CYP3A4_gt_CYP1A2_gut": true,
+    "CYP1A1_gt_CYP3A4_lung": true,
+    "CYP3A4_gut_gt_50": true,
+    "CYP1A1_lung_gt_50": true
+  },
+  "CYP3A4_gut_pct": 80,
+  "CYP1A2_gut_pct": 20,
+  "CYP1A1_lung_pct": 70,
+  "CYP3A4_lung_pct": 30
+}

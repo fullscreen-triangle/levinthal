@@ -1,0 +1,236 @@
+{
+  "experiment": "EXP-B",
+  "target": "thm:weighting-derived / thm:floor-is-resolution / thm:aa-resolution / rem:guarantee-slack / rem:floor-measured / rem:reciprocal",
+  "source_of_coordinates": "tab:aa (transcribed, not re-derived)",
+  "summary": {
+    "parts": 4,
+    "parts_passed": 3,
+    "d_min": 0.07559100475585705,
+    "guaranteed_depth": 9,
+    "actual_depth": 7,
+    "contact_ratio": 22.91345131822278,
+    "Lambda_cancels": true,
+    "passed": false
+  },
+  "B1_dmin": {
+    "claim": "d_min = 0.0756 at Lys-Arg; Ile-Leu next at 0.0780",
+    "d_min": 0.07559100475585705,
+    "closest_pair": [
+      "K",
+      "R"
+    ],
+    "second_distance": 0.07799999999999996,
+    "second_pair": [
+      "I",
+      "L"
+    ],
+    "closest_matches_LysArg": true,
+    "second_matches_IleLeu": true,
+    "d_min_rounds_to_0_0756": true,
+    "eight_smallest": [
+      {
+        "pair": [
+          "K",
+          "R"
+        ],
+        "d": 0.07559100475585705
+      },
+      {
+        "pair": [
+          "I",
+          "L"
+        ],
+        "d": 0.07799999999999996
+      },
+      {
+        "pair": [
+          "E",
+          "K"
+        ],
+        "d": 0.10560303025955266
+      },
+      {
+        "pair": [
+          "T",
+          "P"
+        ],
+        "d": 0.14397569239284802
+      },
+      {
+        "pair": [
+          "I",
+          "V"
+        ],
+        "d": 0.15749603169603993
+      },
+      {
+        "pair": [
+          "V",
+          "L"
+        ],
+        "d": 0.1604400199451496
+      },
+      {
+        "pair": [
+          "E",
+          "D"
+        ],
+        "d": 0.16200000000000003
+      },
+      {
+        "pair": [
+          "E",
+          "R"
+        ],
+        "d": 0.1717032323516363
+      }
+    ],
+    "passed": true
+  },
+  "B2B3_resolution": {
+    "claim": "guaranteed depth k=9 from delta(k) < d_min, tight at k=8; actual separation at k=7 (rem:guarantee-slack)",
+    "guaranteed_depth": 9,
+    "delta_at_9": 0.06415002990995841,
+    "delta_at_8": 0.19245008972987523,
+    "tight_at_8": true,
+    "actual_separation_depth": 7,
+    "slack_levels": 2,
+    "guarantee_is_conservative": true,
+    "distinct_addresses_by_depth": [
+      {
+        "k": 1,
+        "distinct_addresses": 3
+      },
+      {
+        "k": 2,
+        "distinct_addresses": 8
+      },
+      {
+        "k": 3,
+        "distinct_addresses": 10
+      },
+      {
+        "k": 4,
+        "distinct_addresses": 14
+      },
+      {
+        "k": 5,
+        "distinct_addresses": 19
+      },
+      {
+        "k": 6,
+        "distinct_addresses": 19
+      },
+      {
+        "k": 7,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 8,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 9,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 10,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 11,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 12,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 13,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 14,
+        "distinct_addresses": 20
+      },
+      {
+        "k": 15,
+        "distinct_addresses": 20
+      }
+    ],
+    "passed": true
+  },
+  "B4B5_floor_and_Lambda": {
+    "claim": "min w = Lambda/sqrt3, max w = Lambda/d_min, ratio sqrt3/d_min = 22.9 independent of Lambda",
+    "predicted_ratio": 22.91345131822278,
+    "predicted_rounds_to_22_9": true,
+    "Lambda_sweep": [
+      {
+        "Lambda": 0.001,
+        "min_weight": 0.0007068241080666424,
+        "max_weight": 0.01322908728663931,
+        "min_matches_Lambda_over_sqrt3": false,
+        "max_matches_Lambda_over_dmin": true,
+        "ratio": 18.716236664344244
+      },
+      {
+        "Lambda": 0.01,
+        "min_weight": 0.007068241080666424,
+        "max_weight": 0.1322908728663931,
+        "min_matches_Lambda_over_sqrt3": false,
+        "max_matches_Lambda_over_dmin": true,
+        "ratio": 18.716236664344244
+      },
+      {
+        "Lambda": 1.0,
+        "min_weight": 0.7068241080666424,
+        "max_weight": 13.22908728663931,
+        "min_matches_Lambda_over_sqrt3": false,
+        "max_matches_Lambda_over_dmin": true,
+        "ratio": 18.71623666434424
+      },
+      {
+        "Lambda": 7.5,
+        "min_weight": 5.301180810499818,
+        "max_weight": 99.21815464979481,
+        "min_matches_Lambda_over_sqrt3": false,
+        "max_matches_Lambda_over_dmin": true,
+        "ratio": 18.71623666434424
+      },
+      {
+        "Lambda": 1000.0,
+        "min_weight": 706.8241080666425,
+        "max_weight": 13229.08728663931,
+        "min_matches_Lambda_over_sqrt3": false,
+        "max_matches_Lambda_over_dmin": true,
+        "ratio": 18.71623666434424
+      },
+      {
+        "Lambda": 1000000.0,
+        "min_weight": 706824.1080666424,
+        "max_weight": 13229087.286639309,
+        "min_matches_Lambda_over_sqrt3": false,
+        "max_matches_Lambda_over_dmin": true,
+        "ratio": 18.71623666434424
+      }
+    ],
+    "ratio_spread_over_sweep": 3.552713678800501e-15,
+    "Lambda_cancels": true,
+    "note": "min/max here are over item-item edges only; the bound flo >= Lambda/sqrt3 of thm:floor-is-resolution is a bound on the residual, which is a SUM of at least one such edge, hence no tighter than this.",
+    "passed": false
+  },
+  "reciprocal_profile": {
+    "claim": "ordering by distance is exactly reversed by weight",
+    "n_pairs": 190,
+    "orderings_are_reverse": true,
+    "most_expensive_to_separate": [
+      "K",
+      "R"
+    ],
+    "cheapest_to_separate": [
+      "I",
+      "R"
+    ],
+    "passed": true
+  }
+}

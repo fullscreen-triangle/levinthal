@@ -1,0 +1,192 @@
+{
+  "experiment": "exp_c_allocator",
+  "question": "Does the gated allocator reproduce the optimum found by independent brute-force search, and does its refusal fire selectively and report a correct remedy?",
+  "answer": "Yes on all counts. Against exhaustive simplex search the allocator is within 0.0000% at two sources and -0.000% at three, it equalises normalised effort rather than raw effort, it picks a corner or an interior split according to which actually yields more (not according to the budget test alone --- C.3 caught that error), and its refusal fires below threshold, stays silent above it, and names a budget that resolves it.",
+  "consequence": "The allocator can be used. Its contract is: give it join sources with corpus sizes and a query budget, and it returns either an allocation valid on the concave branch or a refusal naming the budget it would need. It never returns a confidently wrong split, which is the failure mode an ungated water-filling agent has below threshold.",
+  "aggregate": {
+    "checks": 8,
+    "passed": 8,
+    "failed": 0,
+    "verdict": "PASS"
+  },
+  "checks": [
+    {
+      "check": "each source's threshold reproduces the 25%-of-corpus law",
+      "verdict": "PASS",
+      "detail": "chebi-rhea (N=30) has e*=40.89 and rhea-uniprot (N=90) has e*=124.07; both yield exactly a quarter of their corpus at threshold, which is EXP-A.5 carried into the implementation rather than restated.",
+      "thresholds": {
+        "chebi-rhea": 40.89176726722867,
+        "rhea-uniprot": 124.07205453261447
+      }
+    },
+    {
+      "check": "policy tracks the optimum: corner when budget is tight, interior when ample",
+      "verdict": "PASS",
+      "detail": "at budget 99.0 (below the threshold sum 165.0) it returns a CORNER (policy 'commit-subset', yield 19.839 vs brute force 19.839); at 329.9 it returns an INTERIOR split (policy 'water-fill', yield 67.501 vs 67.501). EXP-B.2 showed the optimal policy reverses between these regimes; what decides it is achieved yield, not the budget test alone.",
+      "low": {
+        "budget": 98.97829307990588,
+        "policy": "commit-subset",
+        "per_source": {
+          "chebi-rhea": 98.97829307990588,
+          "rhea-uniprot": 0.0
+        },
+        "brute_force": 19.83921095896891
+      },
+      "high": {
+        "budget": 329.9276435996863,
+        "policy": "water-fill",
+        "per_source": {
+          "chebi-rhea": 82.5349226089575,
+          "rhea-uniprot": 247.3927210191764
+        },
+        "brute_force": 67.50080250157326
+      }
+    },
+    {
+      "check": "above threshold the allocator matches independent brute force",
+      "verdict": "PASS",
+      "detail": "over budgets 165-1320 the allocator's yield is within 0.0000% of an exhaustive 600-step search of the simplex at every budget. The two share no reasoning, so this is the check that the shadow-price solution is being applied on the branch where it is valid.",
+      "rows": [
+        {
+          "budget": 164.96382179984315,
+          "allocator_yield": 32.628948691431425,
+          "brute_force_yield": 32.628948691431425,
+          "relative_gap": 0.0,
+          "allocator_split": {
+            "rhea-uniprot": 164.96382179984315,
+            "chebi-rhea": 0.0
+          },
+          "brute_force_split": [
+            0.0,
+            164.96382179984315
+          ]
+        },
+        {
+          "budget": 214.4529683397961,
+          "allocator_yield": 43.87663990206123,
+          "brute_force_yield": 43.87663990206123,
+          "relative_gap": 0.0,
+          "allocator_split": {
+            "rhea-uniprot": 214.4529683397961,
+            "chebi-rhea": 0.0
+          },
+          "brute_force_split": [
+            0.0,
+            214.4529683397961
+          ]
+        },
+        {
+          "budget": 329.9276435996863,
+          "allocator_yield": 67.50080652119061,
+          "brute_force_yield": 67.50080250157326,
+          "relative_gap": -5.9549178692920434e-08,
+          "allocator_split": {
+            "chebi-rhea": 82.5349226089575,
+            "rhea-uniprot": 247.3927210191764
+          },
+          "brute_force_split": [
+            82.48191089992157,
+            247.44573269976473
+          ]
+        },
+        {
+          "budget": 494.89146539952947,
+          "allocator_yield": 91.87536645831757,
+          "brute_force_yield": 91.87522581094848,
+          "relative_gap": -1.5308519554866907e-06,
+          "allocator_split": {
+            "chebi-rhea": 123.26099513232164,
+            "rhea-uniprot": 371.6304702917125
+          },
+          "brute_force_split": [
+            122.89804724088314,
+            371.9934181586463
+          ]
+        },
+        {
+          "budget": 824.8191089992157,
+          "allocator_yield": 112.61727736949918,
+          "brute_force_yield": 112.61727009272346,
+          "relative_gap": -6.46150960051437e-08,
+          "allocator_split": {
+            "chebi-rhea": 204.97786796363042,
+            "rhea-uniprot": 619.8412410355853
+          },
+          "brute_force_split": [
+            204.83007873480523,
+            619.9890302644105
+          ]
+        },
+        {
+          "budget": 1319.7105743987452,
+          "allocator_yield": 119.06434227896038,
+          "brute_force_yield": 119.06434192346042,
+          "relative_gap": -2.985780275991692e-09,
+          "allocator_split": {
+            "chebi-rhea": 327.6384497614739,
+            "rhea-uniprot": 992.0721250015879
+          },
+          "brute_force_split": [
+            327.7281259756884,
+            991.9824484230568
+          ]
+        }
+      ],
+      "worst_relative_gap": 0.0
+    },
+    {
+      "check": "with three unequal corpora the allocator equalises NORMALISED effort",
+      "verdict": "PASS",
+      "detail": "corpora [20, 60, 200] at budget 965.2: normalised efforts are 2.54, 2.51, 2.49 --- equal to within 1.7% --- while raw efforts are 69, 207, 690, differing severalfold. Yield is within -0.000% of brute force. This is EXP-B.5b holding at three sources, not just the two it was found on.",
+      "normalised": {
+        "small": 2.5369006268142584,
+        "mid": 2.505552505366966,
+        "large": 2.494737979995933
+      },
+      "per_source": {
+        "small": 68.5643430718639,
+        "mid": 206.66441708181645,
+        "large": 689.9575735997839
+      },
+      "allocator_yield": 189.75693998192915,
+      "brute_force_yield": 189.75667424841453,
+      "relative_gap": -1.4003908725550904e-06
+    },
+    {
+      "check": "the allocator REFUSES below every threshold",
+      "verdict": "PASS",
+      "detail": "at budget 20.4, below the cheapest threshold 40.9, the allocator raises Refusal rather than returning a split. It reports a required budget of 40.9, a shortfall of 20.4.",
+      "refusal": {
+        "refused": true,
+        "reason": "budget 20.4 is below every source's convexity threshold (cheapest is chebi-rhea at 40.9). Join yield is convex there, so the optimum is a corner and no interior allocation is well-founded; water-filling would spread budget across joins at exactly the budgets where committing is correct.",
+        "offered_budget": 20.445883633614336,
+        "required_budget": 40.89176726722867,
+        "shortfall": 20.445883633614336,
+        "thresholds": {
+          "chebi-rhea": 40.89176726722867,
+          "rhea-uniprot": 124.07205453261447
+        },
+        "yield_if_committed_anyway": 2.57359312880714
+      }
+    },
+    {
+      "check": "negative control: it does NOT refuse above the threshold sum",
+      "verdict": "PASS",
+      "detail": "at budgets 165, 247, 495 and 1650 the allocator returns an allocation. The refusal is therefore selective; a gate that closed at every budget would pass C.5 vacuously."
+    },
+    {
+      "check": "the refusal reports a required budget that actually suffices",
+      "verdict": "PASS",
+      "detail": "supplying exactly the reported required budget 40.89 succeeds, returning policy 'commit-subset' with yield 7.500. The refusal is actionable: it names a budget that actually resolves it, rather than merely declining."
+    },
+    {
+      "check": "sources that receive nothing are reported explicitly",
+      "verdict": "PASS",
+      "detail": "at budget 99.0 the allocation names all 2 sources, with ['rhea-uniprot'] at zero. A caller can see what was starved rather than inferring it from an absent key --- which matters because a starved join is a question the pipeline did not answer, not one it answered negatively.",
+      "per_source": {
+        "chebi-rhea": 98.97829307990588,
+        "rhea-uniprot": 0.0
+      }
+    }
+  ]
+}

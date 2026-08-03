@@ -1,0 +1,14 @@
+{
+  "script": "05_delta_m_isoform_shift",
+  "verdict": "PASS",
+  "checks": {
+    "k_2D6_k_3A4_in_0.85_0.97": true,
+    "k_2C9_k_3A4_in_0.85_0.99": true,
+    "k_2D6_lt_k_2C9": true,
+    "k_2D6_gt_0.90": true
+  },
+  "delta_m_2D6": 0.08,
+  "delta_m_2C9": 0.05,
+  "k_ratio_2D6_over_3A4": 0.9231,
+  "k_ratio_2C9_over_3A4": 0.9512
+}

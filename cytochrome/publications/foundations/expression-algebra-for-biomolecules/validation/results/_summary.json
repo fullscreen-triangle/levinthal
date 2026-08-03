@@ -1,6 +1,6 @@
 {
   "monograph_paper": "Paper 1: An Expression Algebra for Biomolecules",
-  "run_timestamp": "2026-05-02T02:58:43",
+  "run_timestamp": "2026-08-02T16:21:05",
   "validations": [
     {
       "script": "01_floor_theorem.py",
@@ -29,7 +29,7 @@
       "verdict": "PASS",
       "checks_passed": 3,
       "checks_total": 4,
-      "elapsed_s": 0.012,
+      "elapsed_s": 0.009,
       "output_file": "results\\03_cycle_closure.json"
     },
     {
@@ -39,7 +39,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.001,
+      "elapsed_s": 0.1,
       "output_file": "results\\04_amino_acid_coords.json"
     },
     {
@@ -49,7 +49,7 @@
       "verdict": "PASS",
       "checks_passed": 4,
       "checks_total": 4,
-      "elapsed_s": 0.317,
+      "elapsed_s": 0.708,
       "output_file": "results\\05_tau_assignment.json"
     },
     {
@@ -69,7 +69,7 @@
       "verdict": "PASS",
       "checks_passed": 4,
       "checks_total": 4,
-      "elapsed_s": 2.087,
+      "elapsed_s": 2.749,
       "output_file": "results\\07_kuramoto_sync.json"
     },
     {
@@ -79,7 +79,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.031,
+      "elapsed_s": 0.035,
       "output_file": "results\\08_morphism_chain.json"
     }
   ],

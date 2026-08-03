@@ -1,0 +1,40 @@
+{
+  "experiments": [
+    {
+      "script": "exp_a_diminishing_returns.py",
+      "question": "does retrieval have diminishing returns?",
+      "exit_code": 0,
+      "aggregate": {
+        "checks": 6,
+        "passed": 6,
+        "failed": 0,
+        "verdict": "PASS"
+      }
+    },
+    {
+      "script": "exp_b_corner_vs_spread.py",
+      "question": "below threshold, is spreading the wrong action?",
+      "exit_code": 0,
+      "aggregate": {
+        "checks": 8,
+        "passed": 8,
+        "failed": 0,
+        "verdict": "PASS"
+      }
+    },
+    {
+      "script": "exp_c_allocator.py",
+      "question": "does the gated allocator match brute force?",
+      "exit_code": 0,
+      "aggregate": {
+        "checks": 8,
+        "passed": 8,
+        "failed": 0,
+        "verdict": "PASS"
+      }
+    }
+  ],
+  "total_checks": 22,
+  "total_passed": 22,
+  "verdict": "PASS"
+}

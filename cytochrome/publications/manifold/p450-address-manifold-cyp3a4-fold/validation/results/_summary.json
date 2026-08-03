@@ -1,6 +1,6 @@
 {
   "monograph_paper": "Paper 2: P450 Address Manifold and CYP3A4 Worked Example",
-  "run_timestamp": "2026-05-03T16:46:43",
+  "run_timestamp": "2026-08-02T16:21:20",
   "validations": [
     {
       "script": "01_address_encoding.py",
@@ -9,7 +9,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 0.174,
+      "elapsed_s": 0.214,
       "output_file": "results\\01_address_encoding.json"
     },
     {
@@ -19,7 +19,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.407,
+      "elapsed_s": 0.524,
       "output_file": "results\\02_manifold_density.json"
     },
     {
@@ -29,7 +29,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.616,
+      "elapsed_s": 0.779,
       "output_file": "results\\03_family_clustering.json"
     },
     {
@@ -39,7 +39,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.049,
+      "elapsed_s": 0.073,
       "output_file": "results\\04_isoform_separation.json"
     },
     {
@@ -49,7 +49,7 @@
       "verdict": "PASS",
       "checks_passed": 5,
       "checks_total": 5,
-      "elapsed_s": 0.008,
+      "elapsed_s": 0.013,
       "output_file": "results\\05_allele_resolution.json"
     },
     {
@@ -59,7 +59,7 @@
       "verdict": "PASS",
       "checks_passed": 7,
       "checks_total": 7,
-      "elapsed_s": 0.003,
+      "elapsed_s": 0.004,
       "output_file": "results\\06_cyp3a4_address.json"
     },
     {
@@ -69,7 +69,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 13.556,
+      "elapsed_s": 13.383,
       "output_file": "results\\07_kuramoto_folding.json"
     },
     {
@@ -79,7 +79,7 @@
       "verdict": "PASS",
       "checks_passed": 6,
       "checks_total": 6,
-      "elapsed_s": 17.82,
+      "elapsed_s": 9.85,
       "output_file": "results\\08_contact_map_validation.json"
     }
   ],

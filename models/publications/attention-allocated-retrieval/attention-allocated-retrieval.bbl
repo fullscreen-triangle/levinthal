@@ -1,0 +1,129 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bansal et~al.(2022)Bansal, Morgat, Axelsen, et~al.]{bansal2022rhea}
+Parit Bansal, Anne Morgat, Kristian~B. Axelsen, et~al.
+\newblock Rhea, the reaction knowledgebase in 2022.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D693--D700,
+  2022.
+\newblock \doi{10.1093/nar/gkab1016}.
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004convex}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex Optimization}.
+\newblock Cambridge University Press, 2004.
+\newblock Water-filling as the canonical solution of a concave
+  resource-allocation problem; also the statement that the Karush--Kuhn--Tucker
+  conditions are sufficient only under concavity, which is the hypothesis this
+  paper measures.
+
+\bibitem[Buil-Aranda et~al.(2013)Buil-Aranda, Arenas, Corcho, and
+  Polleres]{buil2013federated}
+Carlos Buil-Aranda, Marcelo Arenas, Oscar Corcho, and Axel Polleres.
+\newblock Federating queries in {SPARQL} 1.1: Syntax, semantics and evaluation.
+\newblock \emph{Journal of Web Semantics}, 18\penalty0 (1):\penalty0 1--17,
+  2013.
+\newblock \doi{10.1016/j.websem.2012.10.001}.
+
+\bibitem[Cormen et~al.(2009)Cormen, Leiserson, Rivest, and Stein]{cormen2009}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock \emph{Introduction to Algorithms}.
+\newblock MIT Press, 3rd edition, 2009.
+
+\bibitem[Cover and Thomas(2006)]{cover2006elements}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley, 2nd edition, 2006.
+\newblock Water-filling over parallel Gaussian channels --- the setting in
+  which the allocation rule is unconditionally correct, because the per-channel
+  return is concave by construction rather than by assumption.
+
+\bibitem[Doerr and Born(2025)]{doerr2025limits}
+Mark Doerr and Stefan Born.
+\newblock Limits and solutions for ontological representation of chemical
+  reactions: Reactions modelling with {LARAsuite}.
+\newblock Presentation, 4th Ontologies4Chem Workshop, Limburg an der Lahn,
+  Germany, 11--13 November 2025, November 2025.
+\newblock Describes a pipeline in which a reasoner is invoked at run time over
+  federated sources --- the setting in which a retrieval budget must be
+  allocated before the reasoner can be called.
+
+\bibitem[Feller(1968)]{feller1968probability}
+William Feller.
+\newblock \emph{An Introduction to Probability Theory and Its Applications,
+  Volume I}.
+\newblock Wiley, 3rd edition, 1968.
+
+\bibitem[Hastings et~al.(2016)Hastings, Owen, Dekker,
+  et~al.]{hastings2016chebi}
+Janna Hastings, Gareth Owen, Adriano Dekker, et~al.
+\newblock {ChEBI} in 2016: Improved services and an expanding collection of
+  metabolites.
+\newblock \emph{Nucleic Acids Research}, 44\penalty0 (D1):\penalty0
+  D1214--D1219, 2016.
+\newblock \doi{10.1093/nar/gkv1031}.
+
+\bibitem[Horst(1984)]{gale1989corner}
+Reiner Horst.
+\newblock On the global minimization of concave functions: Introduction and
+  survey.
+\newblock \emph{OR Spektrum}, 6\penalty0 (4):\penalty0 195--205, 1984.
+\newblock \doi{10.1007/BF01720068}.
+\newblock Minimising a concave function --- equivalently, maximising a convex
+  one --- attains its optimum at an extreme point of the feasible set. This is
+  why the sub-threshold optimum here is a corner and not merely near one.
+
+\bibitem[Kuramoto(1975)]{kuramoto1975}
+Yoshiki Kuramoto.
+\newblock Self-entrainment of a population of coupled non-linear oscillators.
+\newblock \emph{Lecture Notes in Physics}, 39:\penalty0 420--422, 1975.
+\newblock \doi{10.1007/BFb0013365}.
+
+\bibitem[Motwani and Raghavan(1995)]{motwani1995randomized}
+Rajeev Motwani and Prabhakar Raghavan.
+\newblock \emph{Randomized Algorithms}.
+\newblock Cambridge University Press, 1995.
+\newblock Coupon-collector coverage $N(1-(1-1/N)^e)$, whose analytic concavity
+  makes it the positive control for the diminishing-returns detector.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2026medium}
+Kundai~Farai Sachikonye.
+\newblock The medium vertex and the direction of a protein process: Solvent
+  role, physiological irreversibility, and the first refusal of a receiver
+  language.
+\newblock Introduces the Refusal principle used here: a representation earns a
+  positive result only if some presentable object would have received a
+  negative one. Also the source of the methodological standard --- negative
+  controls, and the promotion of a failing check to Proposition~7.1 rather than
+  its repair., 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2026splitattention}
+Kundai~Farai Sachikonye.
+\newblock Split-attention synchronised agents.
+\newblock Source of theorems T1--T7. T2 establishes optimality of water-filling
+  attention allocation under a diminishing-returns assumption on the
+  environment, and flags that assumption as environmental rather than
+  structural. This paper measures the assumption in one environment and finds
+  it false below a computable threshold., 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2026tacat}
+Kundai~Farai Sachikonye.
+\newblock tacat: a transaminase catalysis knowledge graph.
+\newblock Software. OWL/SHACL knowledge graph of three PLP-dependent
+  transaminase reactions, reasoned with HermiT and served over SPARQL 1.1.,
+  2026{\natexlab{c}}.
+\newblock The federated pipeline whose Rhea/UniProt and ChEBI/Rhea joins
+  motivate the corpus sizes used throughout Section~\ref{sec:allocator}.
+
+\bibitem[{The UniProt Consortium}(2023)]{uniprot2023}
+{The UniProt Consortium}.
+\newblock {UniProt}: the universal protein knowledgebase in 2023.
+\newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D523--D531,
+  2023.
+\newblock \doi{10.1093/nar/gkac1052}.
+
+\end{thebibliography}

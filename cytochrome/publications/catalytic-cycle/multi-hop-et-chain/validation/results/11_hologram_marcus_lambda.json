@@ -8,34 +8,34 @@
   "test_recoveries": [
     {
       "lambda_target_eV": 0.7,
-      "sigma_observed_J": 3.0001687730020443e-20,
-      "lambda_recovered_eV": 0.6563054443525583,
-      "relative_error": 0.06242079378205947,
+      "sigma_observed_J": 3.041068000057878e-20,
+      "lambda_recovered_eV": 0.6743213289737963,
+      "relative_error": 0.03668381575171956,
       "within_20_percent": true
     },
     {
       "lambda_target_eV": 0.85,
-      "sigma_observed_J": 3.5439418362179486e-20,
-      "lambda_recovered_eV": 0.9157729372753284,
-      "relative_error": 0.07737992620626871,
+      "sigma_observed_J": 3.289870471005853e-20,
+      "lambda_recovered_eV": 0.7891730258334967,
+      "relative_error": 0.07156114607823917,
       "within_20_percent": true
     },
     {
       "lambda_target_eV": 1.0,
-      "sigma_observed_J": 3.6806649415618946e-20,
-      "lambda_recovered_eV": 0.9877958634549227,
-      "relative_error": 0.012204136545077349,
+      "sigma_observed_J": 3.6973423561571976e-20,
+      "lambda_recovered_eV": 0.9967677224588201,
+      "relative_error": 0.00323227754117994,
       "within_20_percent": true
     }
   ],
   "FMN_heme_recovery": {
     "lambda_target_eV": 0.85,
-    "sigma_observed_J": 3.5439418362179486e-20,
-    "lambda_recovered_eV": 0.9157729372753284,
-    "relative_error": 0.07737992620626871,
+    "sigma_observed_J": 3.289870471005853e-20,
+    "lambda_recovered_eV": 0.7891730258334967,
+    "relative_error": 0.07156114607823917,
     "within_20_percent": true
   },
-  "headline_lambda_FMN_heme_eV": 0.9157729372753284,
+  "headline_lambda_FMN_heme_eV": 0.7891730258334967,
   "framework_canonical_lambda_eV": 0.85,
   "checks": {
     "all_test_lambdas_within_20_percent": true,

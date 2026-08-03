@@ -1,0 +1,17 @@
+{
+  "paper": "Paper 9: The 57 Human CYP Isoforms as Address-Manifold Variants",
+  "total": 8,
+  "passed": 6,
+  "failed": 2,
+  "verdict": "FAIL",
+  "scripts": {
+    "01_address_clustering": "PASS",
+    "02_family_separation": "FAIL",
+    "03_substrate_promiscuity": "PASS",
+    "04_affinity_prediction": "PASS",
+    "05_delta_m_isoform_shift": "PASS",
+    "06_tissue_distribution": "PASS",
+    "07_57_isoforms_distinct": "PASS",
+    "08_validation_summary": "FAIL"
+  }
+}
