@@ -80,6 +80,7 @@
 \newcommand{\co}{\complement}
 \newcommand{\str}{\sigma}
 \newcommand{\res}{\rho}
+\newcommand{\gapv}{\mathrm{gap}}
 \newcommand{\rec}{M}
 \newcommand{\Walk}{W}
 \newcommand{\acc}{\mathcal{A}}
@@ -2142,9 +2143,12 @@ pairwise separation $d_{\min} > 0$, the contact floor of
   \max_{e} \wt(e) \;=\; \frac{\Lambda}{d_{\min}}.
   \label{eq:floor-value}
 \end{equation}
+Writing $d_{\max}$ for the largest realised pairwise separation, the
+ratio of strongest to weakest contact is exactly $d_{\max}/d_{\min}$,
+and is bounded above by $\sqrt3/d_{\min}$.
 In particular, for the twenty canonical residues of \Cref{tab:aa},
-$d_{\min} = 0.0756$ and the ratio of strongest to weakest contact is
-$\sqrt3/0.0756 = 22.9$.
+$d_{\min} = 0.0756$ and $d_{\max} = 1.415$ (Ile--Arg), so the realised
+ratio is $18.7$, against the bound $\sqrt3/0.0756 = 22.9$.
 \end{theorem}
 
 \begin{proof}
@@ -2154,9 +2158,24 @@ $\wt(e) = \Lambda/\norm{\cdot} \geq \Lambda/\sqrt3$ for every edge
 by \eqref{eq:wt-derived}. Since $\flo$ is a minimum over residuals and
 each residual is a sum of at least one edge weight
 (\Cref{thm:floor-derived}), $\flo \geq \Lambda/\sqrt3$. The maximum is
-attained at the closest pair, giving $\Lambda/d_{\min}$. The numerical
-value is \eqref{eq:dmin}.
+attained at the closest pair, giving $\Lambda/d_{\min}$; the minimum is
+attained at the farthest realised pair, giving $\Lambda/d_{\max}$, so
+their ratio is $d_{\max}/d_{\min}$ and $\Lambda$ cancels. The numerical
+values are \eqref{eq:dmin} and \Cref{tab:aa}.
 \end{proof}
+
+\begin{remark}[Bound versus realised value]
+\label{rem:ratio-bound}
+The distinction matters because $\sqrt3$ is the diameter of the
+\emph{cube} $\Sspace$, not of the residue set: no two residues sit at
+opposite corners, and the farthest realised pair, Ile--Arg, is at
+$1.415$. Substituting the cube diameter therefore gives a bound
+($22.9$), not the value ($18.7$). Both are parameter-free --- $\Lambda$
+cancels either way, which is the point of \Cref{rem:floor-measured} ---
+but only $d_{\max}/d_{\min}$ is a property of the twenty residues.
+The gap between them is a measure of how much of the S-entropy cube the
+proteinogenic alphabet actually occupies.
+\end{remark}
 
 \begin{remark}[The floor is measured, not fitted]
 \label{rem:floor-measured}
@@ -2590,3 +2609,154 @@ numbers --- and the coordinate map $\sse$, which is a measurement
 procedure rather than a record. A graph of $10^{9}$ proteins and
 $10^{18}$ potential relations is represented by
 \eqref{eq:f-value} and \Cref{def:s-coords}.
+
+% =====================================================================
+\section{Computational validation}
+\label{sec:validation}
+% =====================================================================
+
+The results of Part~III are proved, not fitted, so validation here
+serves a narrower purpose than in an empirical paper: it checks that
+the proofs say what they are believed to say, that the hypotheses are
+not vacuous, and that the numbers quoted from \Cref{tab:aa} are the
+numbers the table actually contains. Three experiments are reported.
+All are exhaustive rather than sampled wherever the state space
+permits, and each carries a control designed to fail if the
+corresponding claim were empty.
+
+\subsection{Minimum cuts land on trie boundaries}
+\label{sec:val-a}
+
+\Cref{thm:subtrie-cut} asserts that when the weighting factors through
+the trie, the minimum $v$--$\med$ cut is attained on a subtrie block,
+reducing \eqref{eq:sepcost} from a minimisation over $2^{\abs{\V}-1}$
+subsets to one over $k+1$ nested candidates. The test enumerates
+\emph{every} admissible $S$ --- every subset containing $v$ and omitting
+$\med$ --- and compares the true minimum against the chain minimum. The
+quantity reported is the gap
+\begin{equation}
+  \gapv(v) \;:=\; \min_{0\leq d\leq k}\wt(\cut(B_d(v)))
+              \;-\; \min_{S \ni v,\, \med \notin S}\wt(\cut(S))
+  \;\geq\; 0,
+  \label{eq:gap}
+\end{equation}
+which is non-negative by construction and vanishes identically exactly
+when the theorem holds on that instance. A single positive value
+falsifies it.
+
+Across $75$ instances --- tries of $8$, $9$ and $16$ items, with $f$
+increasing ($3^{\ell}$ and $1+3\ell$), decreasing ($3^{-\ell}$),
+non-monotone ($[1,9,1,4]$), constant, and randomly drawn, each at five
+magnitudes of medium coupling --- the gap was zero in every case to
+machine precision. That $f$ may be decreasing or non-monotone without
+affecting the result is the numerical counterpart of
+\Cref{rem:factoring-not-monotone}: monotonicity plays no role in the
+proof and none in practice.
+
+\begin{remark}[Two degenerate cuts, and why they had to be excluded]
+\label{rem:degenerate-cuts}
+The experiment is only informative once two trivial minimisers are
+removed. Both $S = \V \setminus \{\med\}$ and $S = \{v\}$ are subtrie
+blocks, at $d=0$ and $d=k$ respectively. If the medium coupling is weak
+the first is optimal for every item; if it is strong the second is. In
+either regime $\gapv \equiv 0$ for \emph{any} weighting whatsoever,
+including weightings that do not factor through the trie --- so a run
+dominated by them confirms nothing. The whole-set cut is therefore
+excluded from both sides of \eqref{eq:gap}, and we report the fraction
+of items whose optimal depth is strictly interior, $0 < d^{*} < k$. In
+the runs above that fraction is positive in seven instances, with
+$d^{*}=1$ --- a proper half of the trie, neither a singleton nor the
+whole set.
+\end{remark}
+
+The control is the claim's real test. Replacing $\wt$ by weights drawn
+independently per pair --- so that \eqref{eq:trie-factoring} fails while
+every other feature of the instance is preserved --- produces gaps of
+$16.37$ and $13.24$ on the two trie shapes, positive in $21/25$ and
+$16/25$ trials. \Cref{thm:subtrie-cut} therefore has content: it is the
+factoring hypothesis doing the work, not the geometry of nested blocks.
+
+\subsection{The derived weighting, and a bound distinguished from a value}
+\label{sec:val-b}
+
+The second experiment recomputes from the coordinates of \Cref{tab:aa}
+every quantity Part~III quotes, rather than carrying figures forward.
+Four are confirmed and one required correcting the manuscript.
+
+Confirmed: the closest pair is Lys--Arg at $d_{\min} = 0.0756$ with
+Ile--Leu next at $0.0780$; the guaranteed resolution depth is $k=9$ and
+is tight, since $\delta(8) = 0.1925 > d_{\min}$; the actual depth at
+which all twenty addresses become distinct is $k=7$, the two levels of
+slack recorded in \Cref{rem:guarantee-slack}; and the scale $\Lambda$
+cancels from every predicted ratio, verified over six orders of
+magnitude with a residual spread of $3.6\times10^{-15}$, which is
+\Cref{rem:floor-measured} made quantitative.
+
+The correction concerns the contact ratio. An earlier statement of
+\Cref{thm:floor-is-resolution} gave the ratio of strongest to weakest
+contact as $\sqrt3/d_{\min} = 22.9$. That is a bound rather than a
+value: $\sqrt3$ is the diameter of the cube $\Sspace$, but no two
+residues occupy opposite corners, and the farthest realised pair is
+Ile--Arg at $d_{\max} = 1.415$. The realised ratio is
+$d_{\max}/d_{\min} = 18.7$. The inequality $\flo \geq \Lambda/\sqrt3$ is
+unaffected and remains as proved; only the ratio clause was overstated,
+and \Cref{rem:ratio-bound} now separates the two. Both quantities are
+free of $\Lambda$, so the parameter-free character of the theory is
+untouched.
+
+\begin{remark}[Where the alphabet sits in the cube]
+\label{rem:alphabet-occupancy}
+The discrepancy is itself informative. That $d_{\max} = 1.415$ against a
+cube diameter of $1.732$ says the twenty proteinogenic residues occupy
+$82\%$ of the available diameter --- they are spread through
+$\Sspace$ rather than clustered in a corner, but they do not reach its
+extremes. The unoccupied margin is not wasted: it is the room into
+which non-canonical residues, ligands and cofactors encode, and
+\eqref{eq:wt-derived} assigns them contacts on the same scale without
+renormalisation.
+\end{remark}
+
+A further check records the inversion of \Cref{rem:reciprocal}. Ordering
+all $190$ residue pairs by S-entropy distance and by contact weight
+gives exactly reversed sequences: the closest pair, Lys--Arg, is the
+most expensive to separate, and the farthest, Ile--Arg, the cheapest.
+This is the sense in which $\wt$ is a separation cost rather than a
+distance, and it is what allows contact and similarity to be one
+measurement.
+
+\subsection{Degradation when the hypothesis fails}
+\label{sec:val-c}
+
+\Cref{rem:complexity-honest} concedes that real contact graphs do not
+factor exactly --- a disulfide couples residues that may be far apart in
+$\Sspace$ --- and claims the theorem then degrades gracefully. The claim
+has two falsifiable parts: the chain remains an \emph{upper} bound on
+$\str(v)$, and the gap is bounded by the total weight of the
+non-factoring edges. Both were tested by adding $m \in \{1,2,3,5\}$
+couplings of controlled total weight $P$ to an otherwise factoring
+graph.
+
+Over $144$ trials the chain was an upper bound without exception, and
+the gap never exceeded $P$. The bound is close to attained --- the ratio
+$\gapv/P$ reaches $0.938$ --- so it is not slack, and the perturbation
+changed the answer in $85$ of the $144$ trials, so the bound is being
+exercised rather than merely surviving an insensitive test. Degradation
+is monotone in both the number and the magnitude of the offending edges:
+the fraction of items whose separation cost is still computed exactly
+falls from $1.00$ under weak single couplings to $0.23$ under five
+strong ones. Cut evaluations fall from $127$ and $255$ exhaustively to
+$3$ and $2$ along the chain.
+
+\begin{remark}[What validation can and cannot settle here]
+\label{rem:validation-scope}
+None of this is evidence that real proteins satisfy
+\eqref{eq:trie-factoring}; that is an empirical question about
+S-entropy coordinates, and \Cref{rem:identity-honest} states it as such.
+What the experiments establish is narrower and worth separating: the
+theorem is not vacuous, since removing its hypothesis produces large
+positive gaps; it is not secretly about monotonicity; it fails
+gracefully rather than catastrophically off-hypothesis, with a computable
+error bound; and the numbers the manuscript quotes are the numbers its
+own table contains --- a check that caught one overstated ratio and one
+mislabelled pair.
+\end{remark}

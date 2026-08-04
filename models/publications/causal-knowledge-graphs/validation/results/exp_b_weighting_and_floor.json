@@ -4,13 +4,14 @@
   "source_of_coordinates": "tab:aa (transcribed, not re-derived)",
   "summary": {
     "parts": 4,
-    "parts_passed": 3,
+    "parts_passed": 4,
     "d_min": 0.07559100475585705,
     "guaranteed_depth": 9,
     "actual_depth": 7,
-    "contact_ratio": 22.91345131822278,
+    "contact_ratio_realised": 18.71623666434424,
+    "contact_ratio_bound": 22.91345131822278,
     "Lambda_cancels": true,
-    "passed": false
+    "passed": true
   },
   "B1_dmin": {
     "claim": "d_min = 0.0756 at Lys-Arg; Ile-Leu next at 0.0780",
@@ -161,15 +162,25 @@
     "passed": true
   },
   "B4B5_floor_and_Lambda": {
-    "claim": "min w = Lambda/sqrt3, max w = Lambda/d_min, ratio sqrt3/d_min = 22.9 independent of Lambda",
-    "predicted_ratio": 22.91345131822278,
-    "predicted_rounds_to_22_9": true,
+    "claim": "max w = Lambda/d_min, min w = Lambda/d_max; realised ratio d_max/d_min = 18.7, bounded by sqrt3/d_min = 22.9; both independent of Lambda",
+    "d_max": 1.4147791347061915,
+    "farthest_pair": [
+      "I",
+      "R"
+    ],
+    "cube_diameter": 1.7320508075688772,
+    "realised_ratio": 18.71623666434424,
+    "bound_ratio": 22.91345131822278,
+    "realised_rounds_to_18_7": true,
+    "bound_rounds_to_22_9": true,
+    "realised_below_bound": true,
     "Lambda_sweep": [
       {
         "Lambda": 0.001,
         "min_weight": 0.0007068241080666424,
         "max_weight": 0.01322908728663931,
-        "min_matches_Lambda_over_sqrt3": false,
+        "min_matches_Lambda_over_dmax": true,
+        "min_at_least_Lambda_over_sqrt3": true,
         "max_matches_Lambda_over_dmin": true,
         "ratio": 18.716236664344244
       },
@@ -177,7 +188,8 @@
         "Lambda": 0.01,
         "min_weight": 0.007068241080666424,
         "max_weight": 0.1322908728663931,
-        "min_matches_Lambda_over_sqrt3": false,
+        "min_matches_Lambda_over_dmax": true,
+        "min_at_least_Lambda_over_sqrt3": true,
         "max_matches_Lambda_over_dmin": true,
         "ratio": 18.716236664344244
       },
@@ -185,7 +197,8 @@
         "Lambda": 1.0,
         "min_weight": 0.7068241080666424,
         "max_weight": 13.22908728663931,
-        "min_matches_Lambda_over_sqrt3": false,
+        "min_matches_Lambda_over_dmax": true,
+        "min_at_least_Lambda_over_sqrt3": true,
         "max_matches_Lambda_over_dmin": true,
         "ratio": 18.71623666434424
       },
@@ -193,7 +206,8 @@
         "Lambda": 7.5,
         "min_weight": 5.301180810499818,
         "max_weight": 99.21815464979481,
-        "min_matches_Lambda_over_sqrt3": false,
+        "min_matches_Lambda_over_dmax": true,
+        "min_at_least_Lambda_over_sqrt3": true,
         "max_matches_Lambda_over_dmin": true,
         "ratio": 18.71623666434424
       },
@@ -201,7 +215,8 @@
         "Lambda": 1000.0,
         "min_weight": 706.8241080666425,
         "max_weight": 13229.08728663931,
-        "min_matches_Lambda_over_sqrt3": false,
+        "min_matches_Lambda_over_dmax": true,
+        "min_at_least_Lambda_over_sqrt3": true,
         "max_matches_Lambda_over_dmin": true,
         "ratio": 18.71623666434424
       },
@@ -209,15 +224,16 @@
         "Lambda": 1000000.0,
         "min_weight": 706824.1080666424,
         "max_weight": 13229087.286639309,
-        "min_matches_Lambda_over_sqrt3": false,
+        "min_matches_Lambda_over_dmax": true,
+        "min_at_least_Lambda_over_sqrt3": true,
         "max_matches_Lambda_over_dmin": true,
         "ratio": 18.71623666434424
       }
     ],
     "ratio_spread_over_sweep": 3.552713678800501e-15,
     "Lambda_cancels": true,
-    "note": "min/max here are over item-item edges only; the bound flo >= Lambda/sqrt3 of thm:floor-is-resolution is a bound on the residual, which is a SUM of at least one such edge, hence no tighter than this.",
-    "passed": false
+    "note": "min/max are over item-item edges; flo >= Lambda/sqrt3 in thm:floor-is-resolution bounds the RESIDUAL, a sum of at least one such edge, so it is implied a fortiori.",
+    "passed": true
   },
   "reciprocal_profile": {
     "claim": "ordering by distance is exactly reversed by weight",

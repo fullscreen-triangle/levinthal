@@ -160,6 +160,24 @@ def weights(lam: float):
 
 
 def b4_b5_floor(d_min: float):
+    """thm:floor-is-resolution as corrected by rem:ratio-bound.
+
+    An earlier reading of the theorem asserted min_e w = Lambda/sqrt3.
+    That is FALSE for the residue set and this experiment is what caught
+    it: sqrt3 is the diameter of the CUBE, but no two residues sit at
+    opposite corners, so the minimum weight is Lambda/d_max with
+    d_max = 1.415 (Ile-Arg) < sqrt3. The theorem's inequality
+    flo >= Lambda/sqrt3 is unaffected and still holds; only the ratio
+    is realised at 18.7 rather than the bound 22.9. Both are tested."""
+    d_max = max(
+        math.dist(a, b)
+        for (_, a), (_, b) in itertools.combinations(AA.items(), 2)
+    )
+    far = max(
+        ((math.dist(a, b), x, y)
+         for (x, a), (y, b) in itertools.combinations(AA.items(), 2))
+    )
+
     lambdas = [1e-3, 1e-2, 1.0, 7.5, 1e3, 1e6]
     rows, ratios = [], []
     for lam in lambdas:
@@ -171,31 +189,45 @@ def b4_b5_floor(d_min: float):
             "Lambda": lam,
             "min_weight": w_min,
             "max_weight": w_max,
-            "min_matches_Lambda_over_sqrt3":
-                abs(w_min - lam / SQRT3) / (lam / SQRT3) < 1e-12,
+            # the true identity for the minimum
+            "min_matches_Lambda_over_dmax":
+                abs(w_min - lam / d_max) / (lam / d_max) < 1e-12,
+            # the theorem's inequality, which is what it actually claims
+            "min_at_least_Lambda_over_sqrt3":
+                w_min >= lam / SQRT3 * (1 - 1e-12),
             "max_matches_Lambda_over_dmin":
                 abs(w_max - lam / d_min) / (lam / d_min) < 1e-12,
             "ratio": ratio,
         })
     spread = max(ratios) - min(ratios)
-    predicted = SQRT3 / d_min
+    realised = d_max / d_min
+    bound = SQRT3 / d_min
     return {
-        "claim": ("min w = Lambda/sqrt3, max w = Lambda/d_min, ratio "
-                  "sqrt3/d_min = 22.9 independent of Lambda"),
-        "predicted_ratio": predicted,
-        "predicted_rounds_to_22_9": abs(predicted - 22.9) < 0.05,
+        "claim": ("max w = Lambda/d_min, min w = Lambda/d_max; realised "
+                  "ratio d_max/d_min = 18.7, bounded by sqrt3/d_min = "
+                  "22.9; both independent of Lambda"),
+        "d_max": d_max,
+        "farthest_pair": [far[1], far[2]],
+        "cube_diameter": SQRT3,
+        "realised_ratio": realised,
+        "bound_ratio": bound,
+        "realised_rounds_to_18_7": abs(realised - 18.7) < 0.05,
+        "bound_rounds_to_22_9": abs(bound - 22.9) < 0.05,
+        "realised_below_bound": realised < bound,
         "Lambda_sweep": rows,
         "ratio_spread_over_sweep": spread,
         "Lambda_cancels": spread < 1e-9,
-        "note": ("min/max here are over item-item edges only; the "
-                 "bound flo >= Lambda/sqrt3 of thm:floor-is-resolution "
-                 "is a bound on the residual, which is a SUM of at "
-                 "least one such edge, hence no tighter than this."),
+        "note": ("min/max are over item-item edges; flo >= Lambda/sqrt3 "
+                 "in thm:floor-is-resolution bounds the RESIDUAL, a sum "
+                 "of at least one such edge, so it is implied a fortiori."),
         "passed": (
-            all(r["min_matches_Lambda_over_sqrt3"] for r in rows)
+            all(r["min_matches_Lambda_over_dmax"] for r in rows)
+            and all(r["min_at_least_Lambda_over_sqrt3"] for r in rows)
             and all(r["max_matches_Lambda_over_dmin"] for r in rows)
             and spread < 1e-9
-            and abs(predicted - 22.9) < 0.05
+            and abs(realised - 18.7) < 0.05
+            and abs(bound - 22.9) < 0.05
+            and realised < bound
         ),
     }
 
@@ -246,7 +278,8 @@ def main() -> int:
             "d_min": d_min,
             "guaranteed_depth": b23["guaranteed_depth"],
             "actual_depth": b23["actual_separation_depth"],
-            "contact_ratio": b45["predicted_ratio"],
+            "contact_ratio_realised": b45["realised_ratio"],
+            "contact_ratio_bound": b45["bound_ratio"],
             "Lambda_cancels": b45["Lambda_cancels"],
             "passed": passed,
         },
@@ -261,9 +294,11 @@ def main() -> int:
     print(f"[EXP-B] depth: guaranteed {b23['guaranteed_depth']}, "
           f"actual {b23['actual_separation_depth']}, "
           f"slack {b23['slack_levels']}; tight at k=8: {b23['tight_at_8']}")
-    print(f"[EXP-B] contact ratio sqrt3/d_min = "
-          f"{b45['predicted_ratio']:.2f}; Lambda cancels: "
-          f"{b45['Lambda_cancels']} "
+    print(f"[EXP-B] contact ratio: realised d_max/d_min = "
+          f"{b45['realised_ratio']:.2f} "
+          f"(d_max {b45['d_max']:.3f} at {'-'.join(b45['farthest_pair'])}), "
+          f"bound sqrt3/d_min = {b45['bound_ratio']:.2f}")
+    print(f"[EXP-B] Lambda cancels: {b45['Lambda_cancels']} "
           f"(spread {b45['ratio_spread_over_sweep']:.2e})")
     print(f"[EXP-B] distance/weight orderings reversed: "
           f"{rec['orderings_are_reverse']}")

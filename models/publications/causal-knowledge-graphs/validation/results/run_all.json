@@ -1,0 +1,69 @@
+{
+  "experiments": [
+    {
+      "script": "exp_a_subtrie_cut.py",
+      "question": "do minimum cuts land on subtrie blocks?",
+      "exit_code": 0,
+      "summary": {
+        "cases": 75,
+        "cases_theorem_holds": 75,
+        "informative_cases": 7,
+        "informative_cases_theorem_holds": 7,
+        "worst_gap_over_all_cases": 0.0,
+        "monotonicity_assumed": false,
+        "control_gap_positive": true,
+        "passed": true
+      }
+    },
+    {
+      "script": "exp_b_weighting_and_floor.py",
+      "question": "does the derived weighting give the claimed numbers?",
+      "exit_code": 0,
+      "summary": {
+        "parts": 4,
+        "parts_passed": 4,
+        "d_min": 0.07559100475585705,
+        "guaranteed_depth": 9,
+        "actual_depth": 7,
+        "contact_ratio_realised": 18.71623666434424,
+        "contact_ratio_bound": 22.91345131822278,
+        "Lambda_cancels": true,
+        "passed": true
+      }
+    },
+    {
+      "script": "exp_c_degradation.py",
+      "question": "does the theorem degrade gracefully off-hypothesis?",
+      "exit_code": 0,
+      "summary": {
+        "trials": 144,
+        "C1_chain_is_upper_bound": true,
+        "C2_gap_within_perturbation_bound": true,
+        "C3_exact_when_unperturbed": true,
+        "trials_where_perturbation_bit": 85,
+        "mean_tightness_gap_over_P": 0.29161499692676385,
+        "max_tightness_gap_over_P": 0.9380302476471788,
+        "cut_eval_counts": [
+          {
+            "k": 3,
+            "b": 2,
+            "n_items": 8,
+            "cut_evals_chain": 3,
+            "cut_evals_exhaustive": 127,
+            "ratio": 42.333333333333336
+          },
+          {
+            "k": 2,
+            "b": 3,
+            "n_items": 9,
+            "cut_evals_chain": 2,
+            "cut_evals_exhaustive": 255,
+            "ratio": 127.5
+          }
+        ],
+        "passed": true
+      }
+    }
+  ],
+  "verdict": "PASS"
+}
