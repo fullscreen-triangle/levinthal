@@ -125,11 +125,21 @@ test_data/
 data/
 output/
 
-# ...but cytochrome/src/data is application source, not test data.
-# The bare `data/` above matches at every level and was silently
-# excluding the Shakespeare lesson corpus from the deploy.
+# The bare `data/` above has no leading slash, so git applies it at
+# EVERY directory level. That silently swallows application source and
+# deployed assets. Each web app's data directory is re-included here.
+#
+# Add a negation pair below when a new app gains a data/ directory --
+# the failure is invisible: `git status` does not report ignored files.
+
+# cytochrome: lesson corpus + GLB markers, imported at build time.
 !cytochrome/src/data/
 !cytochrome/src/data/**
+
+# shakespear: chart JSON/CSV fetched at runtime by D3ChartHelpers.js.
+# Missing these does not fail the build -- the charts just 404 in prod.
+!shakespear/public/data/
+!shakespear/public/data/**
 
 # ============================================================================
 # OTHER

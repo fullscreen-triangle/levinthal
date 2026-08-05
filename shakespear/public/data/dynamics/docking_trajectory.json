@@ -1,0 +1,1502 @@
+[
+  {
+    "step": 0,
+    "ligand_distance": 20.0,
+    "ligand_position": [
+      31.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      380,
+      3848
+    ],
+    "trit": 2
+  },
+  {
+    "step": 1,
+    "ligand_distance": 19.5,
+    "ligand_position": [
+      31.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      731,
+      3497
+    ],
+    "trit": 2
+  },
+  {
+    "step": 2,
+    "ligand_distance": 19.0,
+    "ligand_position": [
+      30.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1034,
+      3194
+    ],
+    "trit": 2
+  },
+  {
+    "step": 3,
+    "ligand_distance": 18.5,
+    "ligand_position": [
+      30.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1282,
+      2946
+    ],
+    "trit": 2
+  },
+  {
+    "step": 4,
+    "ligand_distance": 18.0,
+    "ligand_position": [
+      29.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1473,
+      2755
+    ],
+    "trit": 2
+  },
+  {
+    "step": 5,
+    "ligand_distance": 17.5,
+    "ligand_position": [
+      29.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1596,
+      2632
+    ],
+    "trit": 2
+  },
+  {
+    "step": 6,
+    "ligand_distance": 17.0,
+    "ligand_position": [
+      28.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1720,
+      2508
+    ],
+    "trit": 2
+  },
+  {
+    "step": 7,
+    "ligand_distance": 16.5,
+    "ligand_position": [
+      28.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1796,
+      2432
+    ],
+    "trit": 2
+  },
+  {
+    "step": 8,
+    "ligand_distance": 16.0,
+    "ligand_position": [
+      27.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1826,
+      2402
+    ],
+    "trit": 2
+  },
+  {
+    "step": 9,
+    "ligand_distance": 15.500000000000002,
+    "ligand_position": [
+      27.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1865,
+      2363
+    ],
+    "trit": 2
+  },
+  {
+    "step": 10,
+    "ligand_distance": 15.000000000000002,
+    "ligand_position": [
+      26.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1938,
+      2290
+    ],
+    "trit": 2
+  },
+  {
+    "step": 11,
+    "ligand_distance": 14.500000000000002,
+    "ligand_position": [
+      26.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1979,
+      2249
+    ],
+    "trit": 2
+  },
+  {
+    "step": 12,
+    "ligand_distance": 14.000000000000002,
+    "ligand_position": [
+      25.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      1989,
+      2239
+    ],
+    "trit": 2
+  },
+  {
+    "step": 13,
+    "ligand_distance": 13.500000000000002,
+    "ligand_position": [
+      25.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2006,
+      2222
+    ],
+    "trit": 2
+  },
+  {
+    "step": 14,
+    "ligand_distance": 13.000000000000002,
+    "ligand_position": [
+      24.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2006,
+      2222
+    ],
+    "trit": 2
+  },
+  {
+    "step": 15,
+    "ligand_distance": 12.500000000000002,
+    "ligand_position": [
+      24.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2032,
+      2196
+    ],
+    "trit": 2
+  },
+  {
+    "step": 16,
+    "ligand_distance": 12.000000000000002,
+    "ligand_position": [
+      23.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2050,
+      2178
+    ],
+    "trit": 2
+  },
+  {
+    "step": 17,
+    "ligand_distance": 11.500000000000002,
+    "ligand_position": [
+      23.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2065,
+      2163
+    ],
+    "trit": 2
+  },
+  {
+    "step": 18,
+    "ligand_distance": 11.000000000000002,
+    "ligand_position": [
+      22.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2069,
+      2159
+    ],
+    "trit": 2
+  },
+  {
+    "step": 19,
+    "ligand_distance": 10.500000000000002,
+    "ligand_position": [
+      22.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2104,
+      2124
+    ],
+    "trit": 2
+  },
+  {
+    "step": 20,
+    "ligand_distance": 10.000000000000002,
+    "ligand_position": [
+      21.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2113,
+      2115
+    ],
+    "trit": 2
+  },
+  {
+    "step": 21,
+    "ligand_distance": 9.500000000000002,
+    "ligand_position": [
+      21.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2096,
+      2132
+    ],
+    "trit": 2
+  },
+  {
+    "step": 22,
+    "ligand_distance": 9.000000000000002,
+    "ligand_position": [
+      20.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2098,
+      2130
+    ],
+    "trit": 2
+  },
+  {
+    "step": 23,
+    "ligand_distance": 8.500000000000002,
+    "ligand_position": [
+      20.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2079,
+      2149
+    ],
+    "trit": 2
+  },
+  {
+    "step": 24,
+    "ligand_distance": 8.000000000000002,
+    "ligand_position": [
+      19.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2121,
+      2107
+    ],
+    "trit": 2
+  },
+  {
+    "step": 25,
+    "ligand_distance": 7.500000000000002,
+    "ligand_position": [
+      19.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2106,
+      2122
+    ],
+    "trit": 2
+  },
+  {
+    "step": 26,
+    "ligand_distance": 7.000000000000002,
+    "ligand_position": [
+      18.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2148,
+      2080
+    ],
+    "trit": 2
+  },
+  {
+    "step": 27,
+    "ligand_distance": 6.500000000000002,
+    "ligand_position": [
+      18.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2110,
+      2118
+    ],
+    "trit": 2
+  },
+  {
+    "step": 28,
+    "ligand_distance": 6.000000000000002,
+    "ligand_position": [
+      17.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2095,
+      2133
+    ],
+    "trit": 2
+  },
+  {
+    "step": 29,
+    "ligand_distance": 5.500000000000002,
+    "ligand_position": [
+      17.365000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2065,
+      2163
+    ],
+    "trit": 2
+  },
+  {
+    "step": 30,
+    "ligand_distance": 5.000000000000002,
+    "ligand_position": [
+      16.865000000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2079,
+      2149
+    ],
+    "trit": 2
+  },
+  {
+    "step": 31,
+    "ligand_distance": 4.500000000000002,
+    "ligand_position": [
+      16.415000000000003,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2076,
+      2152
+    ],
+    "trit": 2
+  },
+  {
+    "step": 32,
+    "ligand_distance": 4.0500000000000025,
+    "ligand_position": [
+      16.01,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2095,
+      2133
+    ],
+    "trit": 2
+  },
+  {
+    "step": 33,
+    "ligand_distance": 3.6450000000000014,
+    "ligand_position": [
+      15.645500000000002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2132,
+      2096
+    ],
+    "trit": 2
+  },
+  {
+    "step": 34,
+    "ligand_distance": 3.2805000000000017,
+    "ligand_position": [
+      15.317450000000001,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2140,
+      2088
+    ],
+    "trit": 2
+  },
+  {
+    "step": 35,
+    "ligand_distance": 2.9524500000000007,
+    "ligand_position": [
+      15.022205000000001,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2101,
+      2127
+    ],
+    "trit": 2
+  },
+  {
+    "step": 36,
+    "ligand_distance": 2.657205000000001,
+    "ligand_position": [
+      14.756484500000001,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2103,
+      2125
+    ],
+    "trit": 2
+  },
+  {
+    "step": 37,
+    "ligand_distance": 2.3914845000000007,
+    "ligand_position": [
+      14.51733605,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2088,
+      2140
+    ],
+    "trit": 2
+  },
+  {
+    "step": 38,
+    "ligand_distance": 2.1523360500000006,
+    "ligand_position": [
+      14.302102445000001,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2071,
+      2157
+    ],
+    "trit": 2
+  },
+  {
+    "step": 39,
+    "ligand_distance": 1.9371024450000007,
+    "ligand_position": [
+      14.1083922005,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2029,
+      2199
+    ],
+    "trit": 2
+  },
+  {
+    "step": 40,
+    "ligand_distance": 1.7433922005000007,
+    "ligand_position": [
+      13.934052980450002,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2059,
+      2169
+    ],
+    "trit": 2
+  },
+  {
+    "step": 41,
+    "ligand_distance": 1.5690529804500013,
+    "ligand_position": [
+      13.777147682405001,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2068,
+      2160
+    ],
+    "trit": 2
+  },
+  {
+    "step": 42,
+    "ligand_distance": 1.412147682405001,
+    "ligand_position": [
+      13.635932914164501,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2091,
+      2137
+    ],
+    "trit": 2
+  },
+  {
+    "step": 43,
+    "ligand_distance": 1.2709329141645007,
+    "ligand_position": [
+      13.50883962274805,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2067,
+      2161
+    ],
+    "trit": 2
+  },
+  {
+    "step": 44,
+    "ligand_distance": 1.1438396227480503,
+    "ligand_position": [
+      13.394455660473245,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2045,
+      2183
+    ],
+    "trit": 2
+  },
+  {
+    "step": 45,
+    "ligand_distance": 1.0294556604732445,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2043,
+      2185
+    ],
+    "trit": 2
+  },
+  {
+    "step": 46,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2061,
+      2167
+    ],
+    "trit": 2
+  },
+  {
+    "step": 47,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2083,
+      2145
+    ],
+    "trit": 2
+  },
+  {
+    "step": 48,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2098,
+      2130
+    ],
+    "trit": 2
+  },
+  {
+    "step": 49,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2099,
+      2129
+    ],
+    "trit": 2
+  },
+  {
+    "step": 50,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2129,
+      2099
+    ],
+    "trit": 2
+  },
+  {
+    "step": 51,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2155,
+      2073
+    ],
+    "trit": 2
+  },
+  {
+    "step": 52,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2170,
+      2058
+    ],
+    "trit": 2
+  },
+  {
+    "step": 53,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2154,
+      2074
+    ],
+    "trit": 2
+  },
+  {
+    "step": 54,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2164,
+      2064
+    ],
+    "trit": 2
+  },
+  {
+    "step": 55,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2142,
+      2086
+    ],
+    "trit": 2
+  },
+  {
+    "step": 56,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2101,
+      2127
+    ],
+    "trit": 2
+  },
+  {
+    "step": 57,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2107,
+      2121
+    ],
+    "trit": 2
+  },
+  {
+    "step": 58,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2109,
+      2119
+    ],
+    "trit": 2
+  },
+  {
+    "step": 59,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2121,
+      2107
+    ],
+    "trit": 2
+  },
+  {
+    "step": 60,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2124,
+      2104
+    ],
+    "trit": 2
+  },
+  {
+    "step": 61,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2126,
+      2102
+    ],
+    "trit": 2
+  },
+  {
+    "step": 62,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2124,
+      2104
+    ],
+    "trit": 2
+  },
+  {
+    "step": 63,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2151,
+      2077
+    ],
+    "trit": 2
+  },
+  {
+    "step": 64,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2154,
+      2074
+    ],
+    "trit": 2
+  },
+  {
+    "step": 65,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2148,
+      2080
+    ],
+    "trit": 2
+  },
+  {
+    "step": 66,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2136,
+      2092
+    ],
+    "trit": 2
+  },
+  {
+    "step": 67,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2128,
+      2100
+    ],
+    "trit": 2
+  },
+  {
+    "step": 68,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2115,
+      2113
+    ],
+    "trit": 2
+  },
+  {
+    "step": 69,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2137,
+      2091
+    ],
+    "trit": 2
+  },
+  {
+    "step": 70,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2110,
+      2118
+    ],
+    "trit": 2
+  },
+  {
+    "step": 71,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2121,
+      2107
+    ],
+    "trit": 2
+  },
+  {
+    "step": 72,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2125,
+      2103
+    ],
+    "trit": 2
+  },
+  {
+    "step": 73,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2115,
+      2113
+    ],
+    "trit": 2
+  },
+  {
+    "step": 74,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2105,
+      2123
+    ],
+    "trit": 2
+  },
+  {
+    "step": 75,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2103,
+      2125
+    ],
+    "trit": 2
+  },
+  {
+    "step": 76,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2124,
+      2104
+    ],
+    "trit": 2
+  },
+  {
+    "step": 77,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2076,
+      2152
+    ],
+    "trit": 2
+  },
+  {
+    "step": 78,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2088,
+      2140
+    ],
+    "trit": 2
+  },
+  {
+    "step": 79,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2069,
+      2159
+    ],
+    "trit": 2
+  },
+  {
+    "step": 80,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2065,
+      2163
+    ],
+    "trit": 2
+  },
+  {
+    "step": 81,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2052,
+      2176
+    ],
+    "trit": 2
+  },
+  {
+    "step": 82,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2057,
+      2171
+    ],
+    "trit": 2
+  },
+  {
+    "step": 83,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2098,
+      2130
+    ],
+    "trit": 2
+  },
+  {
+    "step": 84,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2112,
+      2116
+    ],
+    "trit": 2
+  },
+  {
+    "step": 85,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2098,
+      2130
+    ],
+    "trit": 2
+  },
+  {
+    "step": 86,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2103,
+      2125
+    ],
+    "trit": 2
+  },
+  {
+    "step": 87,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2171,
+      2057
+    ],
+    "trit": 2
+  },
+  {
+    "step": 88,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2162,
+      2066
+    ],
+    "trit": 2
+  },
+  {
+    "step": 89,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2136,
+      2092
+    ],
+    "trit": 2
+  },
+  {
+    "step": 90,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2124,
+      2104
+    ],
+    "trit": 2
+  },
+  {
+    "step": 91,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2110,
+      2118
+    ],
+    "trit": 2
+  },
+  {
+    "step": 92,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2146,
+      2082
+    ],
+    "trit": 2
+  },
+  {
+    "step": 93,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2142,
+      2086
+    ],
+    "trit": 2
+  },
+  {
+    "step": 94,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2138,
+      2090
+    ],
+    "trit": 2
+  },
+  {
+    "step": 95,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2160,
+      2068
+    ],
+    "trit": 2
+  },
+  {
+    "step": 96,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2145,
+      2083
+    ],
+    "trit": 2
+  },
+  {
+    "step": 97,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2150,
+      2078
+    ],
+    "trit": 2
+  },
+  {
+    "step": 98,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2133,
+      2095
+    ],
+    "trit": 2
+  },
+  {
+    "step": 99,
+    "ligand_distance": 0.9265100944259199,
+    "ligand_position": [
+      13.29151009442592,
+      52.23,
+      31.603
+    ],
+    "distribution": [
+      0,
+      2145,
+      2083
+    ],
+    "trit": 2
+  }
+]

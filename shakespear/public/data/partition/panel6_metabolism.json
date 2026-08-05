@@ -1,0 +1,116 @@
+{
+  "experiment": "Metabolic Pathway Validation",
+  "timestamp": "2026-02-23T00:36:39.900827",
+  "glycolysis": [
+    {
+      "step": 1,
+      "substrate": "Glucose",
+      "product": "G6P",
+      "delta_M": -2.1,
+      "cumulative_M": -2.1,
+      "enzyme": "Hexokinase"
+    },
+    {
+      "step": 2,
+      "substrate": "G6P",
+      "product": "F6P",
+      "delta_M": -0.3,
+      "cumulative_M": -2.4,
+      "enzyme": "PGI"
+    },
+    {
+      "step": 3,
+      "substrate": "F6P",
+      "product": "F1,6BP",
+      "delta_M": -2.5,
+      "cumulative_M": -4.9,
+      "enzyme": "PFK"
+    },
+    {
+      "step": 4,
+      "substrate": "F1,6BP",
+      "product": "DHAP+G3P",
+      "delta_M": -0.8,
+      "cumulative_M": -5.7,
+      "enzyme": "Aldolase"
+    },
+    {
+      "step": 5,
+      "substrate": "G3P",
+      "product": "1,3BPG",
+      "delta_M": 1.2,
+      "cumulative_M": -4.5,
+      "enzyme": "GAPDH"
+    },
+    {
+      "step": 6,
+      "substrate": "1,3BPG",
+      "product": "3PG",
+      "delta_M": -3.0,
+      "cumulative_M": -7.5,
+      "enzyme": "PGK"
+    },
+    {
+      "step": 7,
+      "substrate": "3PG",
+      "product": "2PG",
+      "delta_M": -0.1,
+      "cumulative_M": -7.6,
+      "enzyme": "PGM"
+    },
+    {
+      "step": 8,
+      "substrate": "2PG",
+      "product": "PEP",
+      "delta_M": -0.4,
+      "cumulative_M": -8.0,
+      "enzyme": "Enolase"
+    },
+    {
+      "step": 9,
+      "substrate": "PEP",
+      "product": "Pyruvate",
+      "delta_M": -3.8,
+      "cumulative_M": -11.8,
+      "enzyme": "PK"
+    }
+  ],
+  "flux_data": [],
+  "pathway_lengths": [
+    {
+      "pathway": "Glycolysis",
+      "observed_steps": 10,
+      "optimal_steps": 10,
+      "total_delta_M": -12,
+      "match": true
+    },
+    {
+      "pathway": "TCA cycle",
+      "observed_steps": 8,
+      "optimal_steps": 8,
+      "total_delta_M": -8,
+      "match": true
+    },
+    {
+      "pathway": "Pentose phosphate",
+      "observed_steps": 7,
+      "optimal_steps": 7,
+      "total_delta_M": -6,
+      "match": true
+    },
+    {
+      "pathway": "Fatty acid synthesis",
+      "observed_steps": 7,
+      "optimal_steps": 8,
+      "total_delta_M": -14,
+      "match": true
+    },
+    {
+      "pathway": "Gluconeogenesis",
+      "observed_steps": 11,
+      "optimal_steps": 10,
+      "total_delta_M": 12,
+      "match": true
+    }
+  ]
+}
