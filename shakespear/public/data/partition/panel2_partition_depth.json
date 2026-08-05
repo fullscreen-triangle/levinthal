@@ -1,0 +1,116 @@
+{
+  "experiment": "Partition Depth Validation",
+  "timestamp": "2026-02-23T00:36:33.145388",
+  "depth_entropy_relation": [
+    {
+      "n": 1,
+      "l": 0,
+      "depth": 1.0,
+      "entropy_normalized": 0.6931471805599453,
+      "state": "(1,0)"
+    },
+    {
+      "n": 2,
+      "l": 0,
+      "depth": 3.0,
+      "entropy_normalized": 2.0794415416798357,
+      "state": "(2,0)"
+    },
+    {
+      "n": 2,
+      "l": 1,
+      "depth": 4.584962500721156,
+      "entropy_normalized": 3.1780538303479453,
+      "state": "(2,1)"
+    },
+    {
+      "n": 3,
+      "l": 0,
+      "depth": 4.169925001442312,
+      "entropy_normalized": 2.8903717578961645,
+      "state": "(3,0)"
+    },
+    {
+      "n": 3,
+      "l": 1,
+      "depth": 5.754887502163468,
+      "entropy_normalized": 3.988984046564274,
+      "state": "(3,1)"
+    },
+    {
+      "n": 3,
+      "l": 2,
+      "depth": 6.491853096329674,
+      "entropy_normalized": 4.499809670330264,
+      "state": "(3,2)"
+    },
+    {
+      "n": 4,
+      "l": 0,
+      "depth": 5.0,
+      "entropy_normalized": 3.4657359027997265,
+      "state": "(4,0)"
+    },
+    {
+      "n": 4,
+      "l": 1,
+      "depth": 6.584962500721156,
+      "entropy_normalized": 4.564348191467836,
+      "state": "(4,1)"
+    },
+    {
+      "n": 4,
+      "l": 2,
+      "depth": 7.321928094887362,
+      "entropy_normalized": 5.075173815233827,
+      "state": "(4,2)"
+    },
+    {
+      "n": 4,
+      "l": 3,
+      "depth": 7.807354922057604,
+      "entropy_normalized": 5.4116460518550396,
+      "state": "(4,3)"
+    },
+    {
+      "n": 5,
+      "l": 0,
+      "depth": 5.643856189774724,
+      "entropy_normalized": 3.9120230054281455,
+      "state": "(5,0)"
+    },
+    {
+      "n": 5,
+      "l": 1,
+      "depth": 7.22881869049588,
+      "entropy_normalized": 5.0106352940962555,
+      "state": "(5,1)"
+    },
+    {
+      "n": 5,
+      "l": 2,
+      "depth": 7.965784284662087,
+      "entropy_normalized": 5.521460917862246,
+      "state": "(5,2)"
+    },
+    {
+      "n": 5,
+      "l": 3,
+      "depth": 8.451211111832329,
+      "entropy_normalized": 5.857933154483459,
+      "state": "(5,3)"
+    },
+    {
+      "n": 5,
+      "l": 4,
+      "depth": 8.813781191217036,
+      "entropy_normalized": 6.109247582764365,
+      "state": "(5,4)"
+    }
+  ],
+  "bounds": {
+    "M_min": 1.0,
+    "M_max": 99.65784284662087
+  },
+  "transitions": []
+}

@@ -1,0 +1,51 @@
+{
+  "experiment": "helix_motion",
+  "protein": "1LYZ",
+  "helix_id": "A",
+  "helix_residues": "5-15",
+  "displacement_target": [
+    2.0,
+    0.0,
+    0.0
+  ],
+  "n_iterations": 40,
+  "n_atoms": 1102,
+  "n_helix_atoms": 87,
+  "final_distribution": {
+    "ground": 0,
+    "natural": 561,
+    "excited": 541
+  },
+  "ternary_string": "2222222222222222222222222222222222222222",
+  "virtual_beams": {
+    "absorption_intensity": 0.0,
+    "emission_intensity": 0.49364791288566245,
+    "absorption_atoms": 0,
+    "emission_atoms": 544
+  },
+  "anomalous_atoms": 544,
+  "active_residues": [
+    "A:SER60",
+    "A:ASP101",
+    "A:ARG128",
+    "A:LEU129",
+    "A:HOH159",
+    "A:ILE98",
+    "A:PHE38",
+    "A:CYS115",
+    "A:GLN41",
+    "A:HOH228",
+    "A:PHE3",
+    "A:HOH191",
+    "A:HOH195",
+    "A:HOH221",
+    "A:ASN59",
+    "A:LYS1",
+    "A:SER91",
+    "A:ASN74",
+    "A:ALA42",
+    "A:TYR20"
+  ],
+  "chi_squared": 1910.8958711433756,
+  "timestamp": "2026-02-14T23:49:13.073507"
+}

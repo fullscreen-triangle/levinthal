@@ -1,0 +1,13 @@
+{
+  "protein": "4AZU",
+  "transfer_time_fs": 850.0,
+  "resolution_angstrom": 0.09999999999999999,
+  "iterations": 17,
+  "total_backaction": 2.9437900319018962e-05,
+  "mean_backaction": 1.7316411952364093e-06,
+  "max_backaction": 3.292747014161155e-06,
+  "threshold": 0.001,
+  "zero_backaction_verified": true,
+  "speedup_vs_binary": 0.6309297535714574,
+  "ternary_string": "11111111121121221"
+}
