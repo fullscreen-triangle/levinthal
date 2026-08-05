@@ -99,6 +99,10 @@
 \newcommand{\Nres}{N_{\mathrm{res}}}
 \newcommand{\Nvib}{N_{\mathrm{vib}}}
 \newcommand{\addr}{\mathsf{a}}
+% \addr is the address of a POINT of \Sspace; \Addr is the address of a
+% molecular OBJECT, pairing its species index with the address of its
+% S-entropy image.
+\newcommand{\Addr}{\mathsf{A}}
 \newcommand{\Alpha}{\mathcal{A}\!\mathit{a}}
 
 \newcommand{\abs}[1]{\lvert#1\rvert}
@@ -2609,6 +2613,7 @@ numbers --- and the coordinate map $\sse$, which is a measurement
 procedure rather than a record. A graph of $10^{9}$ proteins and
 $10^{18}$ potential relations is represented by
 \eqref{eq:f-value} and \Cref{def:s-coords}.
+\end{remark}
 
 % =====================================================================
 \section{Computational validation}
@@ -2760,3 +2765,796 @@ error bound; and the numbers the manuscript quotes are the numbers its
 own table contains --- a check that caught one overstated ratio and one
 mislabelled pair.
 \end{remark}
+
+
+% =====================================================================
+\part*{Part IV. What the construction is for}
+\addcontentsline{toc}{part}{Part IV. What the construction is for}
+% =====================================================================
+
+\noindent
+Parts I--III built an object. This part asks what can be asked of it,
+works one instance through, and states where it stops.
+\Cref{sec:queries} derives the query semantics and proves that a class
+of question the construction answers cannot be expressed over stored
+triples at all --- a theorem about the data model, not an observation
+about current software. \Cref{sec:sod1} instantiates the machinery on
+Cu/Zn superoxide dismutase, chosen because its curated record is
+unusually complete and the difference between recording an association
+and computing an account is therefore visible rather than
+hypothetical. \Cref{sec:limits} states what the construction cannot do.
+
+% =====================================================================
+\section{Query semantics: retrieval and admissibility}
+\label{sec:queries}
+% =====================================================================
+
+\subsection{Two kinds of question}
+
+A query language over a stored graph evaluates patterns against a set
+of triples. SPARQL and its relatives are, in their core fragments,
+conjunctive queries with regular path expressions
+\citep{perez2009,barcelo2013,angles2017}: evaluation means finding
+homomorphisms from a pattern into the stored data, so everything
+returned is a substructure of what was stored, possibly composed along
+paths. That is the correct semantics for a container, and
+\Cref{sec:container} argued the container is the assumption being
+dropped.
+
+\begin{definition}[Retrieval query]
+\label{def:retrieval}
+Let $G$ be a finite set of triples over a vocabulary. A
+\emph{retrieval query} is a map $q$ assigning to $G$ a set of tuples
+$q(G)$, computed by pattern matching and path composition on $G$
+alone.
+\end{definition}
+
+\begin{definition}[Admissibility query]
+\label{def:admissibility}
+Given a grounded contact graph $\Gph$, an item $v_0$, a target region
+$x^{*}$, a process $\Proc$ and a tolerance $\eps$, the
+\emph{admissibility query} returns the class
+$\acc(v_0, x^{*}, \Proc)$ of \Cref{def:accountable} --- equivalently
+the entry $\Tab(v_0,x^{*},\Proc)$ of \Cref{def:table} --- together
+with its alignment value.
+\end{definition}
+
+The difference is not one of expressive convenience. A retrieval query
+asks \emph{what is recorded}. An admissibility query asks
+\emph{whether a propagation from here to there can be accounted for},
+and it has an answer for pairs about which nothing was ever recorded.
+
+It is worth seeing first why the two cannot simply be reconciled by
+storing more. Unfolding \eqref{eq:accountable} through
+\eqref{eq:alignment}, a propagation is $\eps$-accountable exactly when
+\begin{equation}
+  \str(v_0, x^{*}) \;\leq\; \flo \;+\; \eps\,\Omega ,
+  \label{eq:acc-unfolded}
+\end{equation}
+so at $\eps = 0$ the total weight $\Omega$ cancels and the verdict is
+a comparison of two numbers: a single min-cut, and the floor
+\eqref{eq:floor}. The first is local to the queried pair. The second
+is a minimum over \emph{every} item in the system. The separation below
+is nothing more than the observation that these two can be moved
+independently, and that a triple can record neither.
+
+\begin{theorem}[Retrieval cannot express admissibility]
+\label{thm:query-separation}
+There are grounded contact graphs $\Gph_1, \Gph_2$ on the same item
+set, with the same contact relation, and a pair $(v_0, x^{*})$, such
+that
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $q(G_1) = q(G_2)$ for every retrieval query $q$, where $G_i$
+      records the contact relation of $\Gph_i$; while
+\item $\acc(v_0,x^{*},\Proc) \neq \emptyset$ in $\Gph_1$ and
+      $\acc(v_0,x^{*},\Proc) = \emptyset$ in $\Gph_2$ at $\eps = 0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Fix $n \geq 2$ and let
+$\V = \{v_0, x^{*}, y_1, \dots, y_n, \med\}$. In both graphs the edges
+are: $\{v_0, x^{*}\}$, and $\{u,\med\}$ for every
+$u \in \V\setminus\{\med\}$. Both graphs are grounded, since every item
+is joined to $\med$.
+
+Assign weights as follows. In both, $\wt(\{v_0,x^{*}\}) = 1$ and the
+medium edges at $v_0$ and at $x^{*}$ have weight $1$. The graphs differ
+only in the medium edges at the $y_i$: weight $1$ in $\Gph_1$, weight
+$2$ in $\Gph_2$.
+
+\emph{(i)} The edge sets are equal, $\E_1 = \E_2$, so the recorded
+contact relations coincide: $G_1 = G_2$ as sets of triples. Any $q$ in
+the sense of \Cref{def:retrieval} is a function of its argument alone,
+hence $q(G_1) = q(G_2)$. A triple asserts that a relation holds and
+carries no cost, so there is nothing here for retrieval to see.
+
+\emph{(ii)} Compute both sides of \eqref{eq:acc-unfolded}. The
+quantity $\str(v_0,x^{*})$ is the minimum weight of a cut separating
+$v_0$ from $x^{*}$. The $y_i$ are joined only to $\med$, so they lie on
+no $v_0$--$x^{*}$ path and no minimum such cut contains their edges;
+the cheapest separation is to place $v_0$ alone on one side, severing
+$\{v_0,x^{*}\}$ and the medium edge at $v_0$, at cost $2$. Hence
+\[
+  \str(v_0, x^{*}) \;=\; 2
+  \qquad\text{in both } \Gph_1 \text{ and } \Gph_2 ,
+\]
+since the weights involved are identical in the two graphs.
+
+The floor is a minimum over all items. By \Cref{def:residual},
+$\res(u) = \str(u)$ is the cost of separating $u$ from $\med$ alone.
+For $u = v_0$ or $x^{*}$ this is $\min(2, \ldots) = 2$ in both graphs:
+isolating $v_0$ severs its medium edge and $\{v_0,x^{*}\}$, total $2$.
+For $u = y_i$, isolating $y_i$ severs its single medium edge, so
+$\res(y_i) = 1$ in $\Gph_1$ and $\res(y_i) = 2$ in $\Gph_2$. Therefore
+\[
+  \flo_1 \;=\; \min(2, 2, 1, \dots, 1) \;=\; 1,
+  \qquad
+  \flo_2 \;=\; \min(2, 2, 2, \dots, 2) \;=\; 2 .
+\]
+Applying \eqref{eq:acc-unfolded} at $\eps = 0$: in $\Gph_2$ we have
+$\str(v_0,x^{*}) = 2 \leq 2 = \flo_2$, so the propagation is
+$0$-accountable and $\acc \neq \emptyset$; in $\Gph_1$ we have
+$\str(v_0,x^{*}) = 2 > 1 = \flo_1$, so no propagation from $v_0$ to
+$x^{*}$ satisfies \eqref{eq:accountable} and $\acc = \emptyset$. (The
+labelling is opposite to the statement; exchanging the names of
+$\Gph_1$ and $\Gph_2$ gives it as stated.)
+
+Both clauses hold, which proves the claim.
+\end{proof}
+
+\begin{remark}[What the separation is about]
+\label{rem:separation-meaning}
+The construction turns on a single asymmetry. The queried quantity
+$\str(v_0,x^{*})$ depends on the weights along $v_0$--$x^{*}$
+separations; the threshold $\flo$ depends on a minimum over every item
+in the system, including items that lie on no path between the two and
+are, from the point of view of the query, entirely irrelevant. Editing
+a weight out at the $y_i$ changes the verdict about $(v_0,x^{*})$
+without changing anything a pattern-matcher could match against.
+
+So \emph{accountability is a global property expressed in local terms},
+and a stored graph records only the local terms. This is sharper than
+saying weights are missing. One may store weights as triple attributes
+and still not recover $\flo$: by \eqref{eq:floor} it is a minimum over
+items of \eqref{eq:sepcost}, which is itself a minimum over cuts, and
+neither minimisation is a pattern.
+\end{remark}
+
+\begin{corollary}[Attributed triples do not close the gap]
+\label{cor:attributed}
+Extending \Cref{def:retrieval} to allow numeric attributes on triples
+and arithmetic comparison in patterns does not make admissibility
+expressible.
+\end{corollary}
+
+\begin{proof}
+By \Cref{thm:query-separation} and \Cref{rem:separation-meaning} the
+verdict depends on $\flo$, a minimum over items of a minimum over
+subsets. Conjunctive queries with regular path expressions have
+\textsc{ptime} data complexity and are evaluated by matching bounded
+patterns \citep{perez2009,angles2017}; the fragment contains no
+operator forming a minimum over subsets of the domain, and adding
+comparison of stored attributes does not introduce one. Note the
+obstruction is expressibility, not hardness: a minimum cut is
+computable in polynomial time \citep{fordfulkerson1956,stoer1997}, so
+the quantity is cheap to compute and impossible to phrase.
+\end{proof}
+
+\begin{remark}[The practical reading]
+\Cref{cor:attributed} is the formal version of a familiar frustration.
+One may ask a biological knowledge graph
+\citep{demir2010,callahan2020} which proteins are annotated as
+interacting with a given target, and get an answer exactly as good as
+the curation behind it. One cannot ask whether a variant \emph{could
+have} produced an observed phenotype by an accountable route, because
+that is not a question about what was recorded. Ontology engineering
+\citep{smith2007,jupp2015,hastings2016} improves the vocabulary in
+which assertions are made; it does not change what kind of question an
+assertion is able to answer.
+\end{remark}
+
+\subsection{The four operations are the query language}
+
+\begin{theorem}[Completeness of the operation set]
+\label{thm:query-complete}
+Under the hypotheses of \Cref{thm:identity}, every admissibility query
+of \Cref{def:admissibility} is computed by a finite composition of
+$\textsf{Identify}$, $\textsf{Similar}$, $\textsf{Predict}$ and
+$\textsf{React}$, and no fifth operation is required.
+\end{theorem}
+
+\begin{proof}
+An admissibility query fixes $(v_0, x^{*}, \Proc, \eps)$ and must
+decide \eqref{eq:acc-unfolded}, then return the class.
+
+Obtain $\addr_k(v_0)$ and $\addr_k(x^{*})$ by $\textsf{Identify}$, at
+cost $O(k)$ each (\Cref{thm:identify}). By
+\Cref{cor:identity-is-address} the cut realising a separation cost is a
+subtrie block, and the optimal depth is found by
+\eqref{eq:str-over-depths}, a scan of $k+1$ candidates; each candidate
+is a comparison of addresses to a common prefix length, which is a
+$\textsf{Similar}$ call at that resolution (\Cref{thm:similar}). This
+yields $\str(v_0,x^{*})$, and applied to each item in turn it yields
+$\flo$ by \eqref{eq:floor}. Whether a given step is permitted under
+$\Proc$ is a $\textsf{React}$ test (\Cref{def:react}); evaluating the
+alignment functional on cells is $\textsf{Predict}$
+(\Cref{def:predict}). Termination: block depths are bounded by $k$ and
+each step changes the depth by one, so a walk has at most $k$ steps.
+
+No fifth operation is needed because the only quantities appearing in
+\eqref{eq:acc-unfolded} are $\str$, $\flo$, $\Omega$ and $\eps$. The
+first two are computed as above via \Cref{cor:sepcost-cheap}; $\Omega$
+is a constant of the graph; $\eps$ is supplied with the query.
+\end{proof}
+
+\begin{corollary}[Query cost]
+\label{cor:query-cost}
+Deciding accountability for a single pair costs $O(k^2)$ trit
+operations with $k$ the address depth, and requires no index, no
+adjacency structure and no stored triples.
+\end{corollary}
+
+\begin{proof}
+At most $k$ steps by \Cref{thm:query-complete}, each an $O(k)$ address
+operation by \Cref{thm:identify,thm:similar}. Storage is $O(1)$ by
+\Cref{thm:empty-dictionary} and \Cref{cor:no-edges}.
+\end{proof}
+
+\begin{remark}[The comparison is unfair in both directions]
+\label{rem:query-cost-honest}
+With $k = O(\log_3 n)$, \Cref{cor:query-cost} compares favourably
+against graph-pattern evaluation, which is \textsc{np}-complete in
+combined complexity even for conjunctive patterns \citep{perez2009}.
+The comparison nevertheless flatters the present construction in one
+respect and undersells it in another, and both should be said.
+
+It flatters, because the cost of evaluating $\sse(X)$ --- a structure
+determination, a spectrum, or a prediction of comparable expense
+\citep{jumper2021,varadi2022} --- is excluded from the count, exactly
+as \Cref{rem:empty-honest} conceded. A stored graph pays that cost once
+at curation time and amortises it over every later query; the present
+construction pays it per object addressed.
+
+It undersells, because a stored graph answers only about the objects
+someone curated, whereas \Cref{cor:query-cost} holds uniformly over all
+$3^k$ addressable objects, almost none of which anyone has seen. The
+honest summary is that the two are not competing at the same task: one
+retrieves from a finite curated set, the other computes over an
+unbounded generated one.
+\end{remark}
+
+% =====================================================================
+\section{Contact as approach, and the closing of the circle}
+\label{sec:react-contact}
+% =====================================================================
+
+Part I took contact as given: a graph $\Gph$ with weights $\wt$ read as
+separation costs, the weighting left unspecified. Part III derived the
+weighting \eqref{eq:wt-derived} from S-entropy separation. What has not
+yet been said is that \Cref{def:react} lets contact itself be
+\emph{defined} rather than assumed, and that doing so closes the
+construction on itself.
+
+\begin{definition}[Contact by approach]
+\label{def:contact-approach}
+Fix $\eps > 0$. Items $X_1, X_2$ are \emph{in contact under $\Proc$} if
+$\textsf{React}(X_1,X_2,\eps)$ holds, i.e.\ if their trajectories
+under $\Proc$ approach within $\eps$ in $\Sspace$ by
+\eqref{eq:react}. The induced graph $\Gph_\Proc$ has item set the
+objects addressed and edge set the pairs in contact, weighted by
+\eqref{eq:wt-derived}.
+\end{definition}
+
+\begin{theorem}[The induced graph is a contact graph]
+\label{thm:induced-grounded}
+Let $\med$ be the medium, addressed like any other object. If every
+item's trajectory approaches the medium's within $\eps$ --- that is, if
+every object is in contact with its surroundings --- then
+$\Gph_\Proc$ is grounded in the sense of \Cref{def:medium}, its weights
+are positive and finite, and \Cref{ax:noncompletable} holds whenever
+two items have distinct addresses.
+\end{theorem}
+
+\begin{proof}
+Groundedness: by hypothesis each $v \neq \med$ has an edge to $\med$,
+so every item is joined to $\med$ by a path of length one.
+
+Positivity and finiteness: by \eqref{eq:wt-derived},
+$\wt(\{u,v\}) = \Lambda/\norm{\sse(u)-\sse(v)}$, which is positive for
+all $u \neq v$ and finite provided $\sse(u) \neq \sse(v)$. Distinct
+addresses at depth $k$ give $\norm{\sse(u)-\sse(v)} > 0$, and by
+\Cref{cor:cell-diag} the separation is at least the resolution
+attainable at that depth, so $\wt$ is bounded above by
+$\Lambda/\delta(k)$.
+
+\Cref{ax:noncompletable}: suppose the axiom failed, so that some family
+$\{S_v\}$ has $\wt(\cut(S_v)) = 0$ for every $v$. As $\wt > 0$ on every
+edge this forces $\cut(S_v) = \emptyset$, contradicting groundedness
+just established. Distinctness of two addresses guarantees $\E \neq
+\emptyset$, so the configuration is non-vacuous.
+\end{proof}
+
+\begin{corollary}[The construction is closed]
+\label{cor:closed}
+The contact graph of Part I, the addressing of Part II, and the
+weighting of Part III determine one another: addresses generate
+contacts by \Cref{def:contact-approach}, contacts carry weights by
+\eqref{eq:wt-derived}, weights determine separation costs by
+\eqref{eq:sepcost} and hence the table $\Tab$ by \Cref{def:table},
+whose entries are computed back out of the addresses by
+\Cref{thm:query-complete}. No stage requires data not produced by
+another stage.
+\end{corollary}
+
+\begin{proof}
+Immediate from \Cref{thm:induced-grounded} together with
+\Cref{thm:catalogue-table} and \Cref{thm:query-complete}: the first
+supplies a contact graph from addresses alone, the second identifies
+the catalogue with the table, the third computes table entries from
+addresses.
+\end{proof}
+
+\begin{remark}[What the one-sidedness means physically]
+\label{rem:onesided-physical}
+\Cref{rem:react-onesided} recorded that cell intersection is sufficient
+for approach and not necessary, and deferred its interpretation. Under
+\Cref{def:contact-approach} the interpretation is available, and it is
+favourable in a specific and checkable way.
+
+Reading \eqref{eq:react} as the definition of contact, a missed cell
+intersection is a \emph{missed contact}: the induced graph
+$\Gph_\Proc$ has an edge set contained in the true one. It is never a
+\emph{spurious} contact, because sharing a cell implies approach within
+$\delta(k_\eps) \leq \eps$ unconditionally (\Cref{thm:react}). The
+error is therefore one-signed, and its consequence propagates
+predictably. Deleting edges can only raise separation costs, since
+\eqref{eq:sepcost} minimises over cuts and removing edges removes
+weight from every cut containing them --- so both $\str(v_0,x^{*})$ and
+$\flo$ are computed on a subgraph, and the accountability test
+\eqref{eq:acc-unfolded} is evaluated against a conservative estimate on
+both sides rather than a biased one on one.
+
+This is the difference between a technical caveat and a physical
+reading. A curated interaction record has errors in both directions and
+no way to bound either \citep{landrum2018}; the present scheme has
+errors in one direction with the magnitude controlled by $\eps$, and
+the $27\times$ neighbour test of \Cref{rem:react-onesided} eliminates
+them entirely at known cost.
+\end{remark}
+
+\begin{remark}[Relation to reaction-network formalisms]
+\label{rem:reaction-networks}
+Defining contact as trajectory approach places the construction beside
+chemical reaction network theory, where species and reactions form a
+graph whose structure alone constrains the dynamics
+\citep{feinberg1987}, and beside retrosynthetic analysis, where a
+target is decomposed by searching a space of admissible transformations
+\citep{corey1969,segler2018}. Two differences are worth stating.
+
+First, in those formalisms the reaction set is given --- a curated list
+of transformations, or a model learned from one. Here it is generated:
+\Cref{def:contact-approach} decides contact for any pair of addressable
+objects, including pairs never observed. Second, and following from
+\Cref{cor:closed}, the network is not a separate artefact from the
+objects. In a reaction network the species are nodes and the reactions
+are stored edges; here both are computations over the same addresses,
+which is \Cref{cor:no-edges} applied to chemistry rather than to
+annotation.
+\end{remark}
+
+% =====================================================================
+\section{A worked instance: SOD1 and familial ALS}
+\label{sec:sod1}
+% =====================================================================
+
+The construction is now applied to one system in full. Cu/Zn
+superoxide dismutase is chosen deliberately: mutations in \emph{SOD1}
+were the first genetic cause identified for familial amyotrophic
+lateral sclerosis \citep{rosen1993}, over a hundred variants have since
+been catalogued, and the biochemistry has been studied for three
+decades \citep{valentine2005}. The curated record is about as good as
+curated records get. That is what makes it a fair test: any advantage
+here cannot be attributed to the baseline being poorly served.
+
+\subsection{What the curated record contains}
+
+A knowledge graph built over this system stores, for each variant, a
+set of assertions: the substitution, its clinical classification, the
+publications supporting it \citep{landrum2018}. Queried in the sense of
+\Cref{def:retrieval}, it returns those assertions and their
+compositions --- which variants are pathogenic, which lie in the
+metal-binding region, which co-occur with a reported survival figure.
+
+What it does not contain is a reason. The classification of a variant
+as pathogenic is an input to the graph, supplied by a curator reading
+the literature; it is not computed from anything the graph holds. For a
+variant not yet observed in a patient there is nothing to retrieve, and
+by \Cref{thm:query-separation} no elaboration of the query language
+changes this, because the question is not of retrieval type.
+
+\subsection{The same system as a propagation problem}
+
+Set up the instance. Items are the residues of the mature protein
+together with the metal cofactors and the solvent as medium $\med$.
+Each residue is addressed by \Cref{def:hier-address} from its S-entropy
+coordinates; by \Cref{thm:aa-resolution} depth $k=9$ suffices to
+separate all twenty residue types, and the validation of
+\Cref{sec:val-b} found the twenty in fact separate at $k=7$.
+
+Contacts are induced by \Cref{def:contact-approach} and weighted by
+\eqref{eq:wt-derived}, so no contact map is stored. By
+\Cref{rem:region-prefix} the burial depth of a residue is the length of
+the address prefix it shares with its neighbourhood: a residue in the
+$\beta$-barrel core has small optimal depth $d^{*}$, a
+solvent-exposed one has $d^{*} = k$. Nothing here is specific to
+\emph{SOD1}; it is the generic setup instantiated on this fold.
+
+A variant is then a change of address. Substituting residue $r$ at
+position $p$ by $r'$ replaces $\sse(r)$ by $\sse(r')$, which by
+\eqref{eq:wt-derived} rescales every contact weight at $p$ by the
+factor
+\begin{equation}
+  \frac{\wt'(\{p,u\})}{\wt(\{p,u\})}
+  \;=\;
+  \frac{\norm{\sse(r) - \sse(u)}}{\norm{\sse(r') - \sse(u)}} ,
+  \label{eq:variant-rescale}
+\end{equation}
+in which $\Lambda$ cancels --- so the perturbation is computed without
+any fitted parameter, exactly as \Cref{rem:floor-measured} requires.
+
+\subsection{What the construction computes that the record does not}
+
+\begin{proposition}[Variant effect is a floor computation]
+\label{prop:variant-floor}
+Let $\Gph$ be the wild-type contact graph and $\Gph'$ the graph after
+the substitution \eqref{eq:variant-rescale}. Then the variant changes
+the accountability verdict for a propagation $(v_0,x^{*})$ if and only
+if the substitution moves $\str(v_0,x^{*})$ and $\flo$ across each
+other in the sense of \eqref{eq:acc-unfolded}.
+\end{proposition}
+
+\begin{proof}
+Immediate from \eqref{eq:acc-unfolded}, whose two sides are the only
+quantities entering \Cref{def:accountable} once $\eps$ and $\Omega$ are
+fixed. Both are functions of $\wt$, and \eqref{eq:variant-rescale}
+specifies how $\wt$ changes.
+\end{proof}
+
+The content of \Cref{prop:variant-floor} is that a variant matters when
+it changes what the cheapest separation \emph{anywhere in the molecule}
+costs --- not when it changes a contact locally. This is the same
+global-versus-local asymmetry that drove \Cref{thm:query-separation},
+and here it has a biochemical reading.
+
+A substitution that lowers $\flo$ makes the whole structure easier to
+take apart somewhere, and by \eqref{eq:acc-unfolded} it does so
+whether or not the substituted position participates in the propagation
+being asked about. This is precisely the phenomenology reported for
+\emph{SOD1}: variants scattered across the sequence, many far from the
+active site and from the dimer interface, converge on a common
+consequence, and the quantity that tracks patient survival is
+aggregation propensity and protein instability rather than loss of
+dismutase activity \citep{wang2008,prudencio2009}. Instability is a
+statement about the cheapest way to come apart. In the present
+vocabulary it is $\flo$.
+
+\begin{remark}[What is and is not being claimed]
+\label{rem:sod1-honest}
+This section does not report a prediction of variant severity, and the
+distinction matters enough to state plainly. What has been shown is
+structural: the construction places instability --- the quantity
+empirically correlated with survival \citep{wang2008} --- at the centre
+of its accountability test as the floor $\flo$, and it computes the
+effect of a substitution on that quantity from addresses alone, by
+\eqref{eq:variant-rescale}, without a fitted parameter and without a
+curated interaction record.
+
+Whether the resulting numbers correlate with clinical outcome is an
+empirical question that this paper does not answer, and answering it
+requires S-entropy coordinates validated against measured stabilities
+--- the same open question \Cref{rem:identity-honest} raised about
+\eqref{eq:trie-factoring}. The claim here is that the question is now
+\emph{askable} in a form that a stored graph cannot express, which by
+\Cref{thm:query-separation} is a theorem rather than a hope.
+\end{remark}
+
+\begin{remark}[Why an equivalence class is the right answer]
+\label{rem:sod1-class}
+A clinician asking why a variant is deleterious wants a mechanism, and
+the construction returns $\acc$ --- an equivalence class of accountable
+propagations, not a single pathway. By \Cref{rem:snow} and
+\Cref{thm:path-opacity} this is not evasion: no invariant of the
+contact data distinguishes members of the class, so a system returning
+one designated pathway would be reporting a gauge choice
+(\Cref{cor:gauge}) as though it were a finding.
+
+This is worth weighing against the practice it replaces. A curated
+pathway database returns a specific route because a curator drew one,
+and the route's specificity reflects the drawing rather than the
+biology. Returning the class makes the underdetermination explicit and
+computable, which is a more honest answer to the same question.
+\end{remark}
+
+% =====================================================================
+\section{Limits of the construction}
+\label{sec:limits}
+% =====================================================================
+
+The results above are proved, so their limits are the limits of their
+hypotheses. Four are substantive and are collected here rather than
+left distributed across the remarks that introduced them.
+
+\subsection{The one empirical hypothesis}
+
+Everything joining the two halves of the paper rests on
+\eqref{eq:trie-factoring}: that the cost of separating two objects is a
+function of their S-entropy separation and nothing else. This is not a
+mathematical convenience but an empirical claim about biomolecules, and
+\Cref{rem:identity-honest} states it as such.
+
+Its leading exception is known. A disulfide bond couples two cysteines
+whose S-entropy coordinates may be far apart, contributing a separation
+cost that \eqref{eq:trie-factoring} cannot see; the same holds for any
+covalent constraint and for coordination to a metal centre. The
+experiments of \Cref{sec:val-c} quantify what follows: the chain
+remains an upper bound on $\str(v)$, the error is bounded by the total
+weight of the offending edges, and the fraction of items still computed
+exactly falls monotonically from $1.00$ to $0.23$ as such couplings are
+added. Degradation is graceful and has a computable error bound, which
+is the best that can be said without settling the empirical question.
+
+What would settle it is a measurement: S-entropy coordinates determined
+independently, and separation costs measured directly, on a system
+where both are accessible. This paper does not perform that
+measurement, and no result here should be read as evidence that real
+proteins satisfy \eqref{eq:trie-factoring}.
+
+\subsection{What is excluded from the cost accounting}
+
+\Cref{cor:query-cost} gives $O(k^2)$ per admissibility query with $O(1)$
+storage, and both figures exclude the cost of evaluating $\sse(X)$.
+\Cref{rem:empty-honest} conceded this at the point of the storage claim
+and \Cref{rem:query-cost-honest} restates it for queries; it is
+restated a third time here because it is the most likely
+misreading of the paper.
+
+Determining $(K,T,E)$ for an object requires a structure, a spectrum,
+or a prediction of comparable expense \citep{jumper2021,varadi2022}.
+The empty dictionary of \Cref{thm:empty-dictionary} does not make
+identification free --- it makes it \emph{unstored}, which is a
+different and weaker claim. A curated database pays the identification
+cost once and amortises it; the present construction pays per object
+addressed. Whether that trade is favourable depends on the ratio of
+queries to distinct objects, and for a small well-curated system it
+will often not be.
+
+\subsection{Two one-sided results}
+
+\Cref{thm:react} gives cell intersection as sufficient for approach and
+not necessary, so the induced contact relation of
+\Cref{def:contact-approach} may miss contacts. \Cref{rem:onesided-physical}
+argues this error is benign because it is one-signed and its magnitude
+is controlled by $\eps$; the $27\times$ neighbour test removes it at
+known cost. The limitation is real nonetheless: at any finite depth the
+induced graph is a subgraph of the true one, and results computed on it
+are conservative rather than exact.
+
+Similarly \Cref{thm:admissibility} characterises non-emptiness of
+$\acc$ but returns a class, not a route, and by \Cref{thm:path-opacity}
+no invariant of the contact data selects a member.
+\Cref{rem:sod1-class} argues this is the honest answer to an
+underdetermined question. It remains the case that an application
+requiring a specific mechanism --- a synthesis to execute, an
+intervention to attempt --- must break the tie on grounds outside the
+construction, and the construction offers no help in choosing.
+
+\subsection{What the paper does not attempt}
+
+Three exclusions should be stated so they are not mistaken for
+oversights.
+
+Dynamics are absent. Trajectories enter through \Cref{def:trajectory}
+as continuous paths in $\Sspace$, but nothing here derives them from a
+force field or predicts a rate. Accountability is a statement about
+cost, not about time, and the arrow supplied by the record
+$\rec(\Walk)$ orders propagations without measuring their duration.
+
+Quantitative severity prediction is absent, as \Cref{rem:sod1-honest}
+states for the \emph{SOD1} instance specifically.
+
+Finally, the construction is not a replacement for curation of the
+empirical record. Measurements must still be made, deposited and
+described, and \Cref{thm:invariant} does not say that labels are
+useless --- only that they carry no \emph{invariant} content and hence
+that cross-resource mappings cannot be computed from them
+(\Cref{cor:crossref}). What the construction replaces is the assumption
+that a knowledge graph must \emph{store} the relations among curated
+records in order to answer questions about them.
+
+% =====================================================================
+\section{Discussion}
+\label{sec:discussion}
+% =====================================================================
+
+\subsection{Relation to stored knowledge resources}
+
+The biological knowledge resources this paper contrasts itself against
+are substantial achievements, and the contrast is structural rather
+than evaluative. BioPAX \citep{demir2010} standardises the exchange of
+pathway data; ChEBI \citep{hastings2016} and Rhea \citep{bansal2022}
+provide curated vocabularies for chemical entities and reactions; the
+OBO Foundry \citep{smith2007} and the Ontology Lookup Service
+\citep{jupp2015} coordinate ontology development across communities;
+integrative frameworks assemble these into queryable graphs
+\citep{callahan2020}. Each solves a real problem, and none is
+superseded by anything here.
+
+What they share is the container assumption of \Cref{sec:container}:
+that a knowledge graph holds records and asserted relations among them,
+and that answering questions means retrieving from that hold. The
+consequences are visible in the engineering. Cross-resource mapping
+requires curated alignment tables, because by \Cref{cor:crossref} it
+cannot be computed --- labels carry no invariant content
+(\Cref{thm:invariant}), so no algorithm decides whether two accessions
+denote the same object. Coverage is bounded by curation effort. And by
+\Cref{thm:query-separation} a whole class of question is not merely
+unanswered but inexpressible, regardless of how much is stored or how
+rich the query language becomes.
+
+The present construction drops the container assumption and pays for it
+in a specific currency, set out in \Cref{sec:limits}: an empirical
+hypothesis \eqref{eq:trie-factoring} that may fail, an identification
+cost excluded from the accounting, and answers that are classes rather
+than routes. The trade is not universally favourable. It is favourable
+exactly when the questions of interest concern objects nobody has
+curated, which in a space of $20^{n}$ possible sequences and an
+unbounded space of variants is a large fraction of the questions worth
+asking.
+
+\subsection{Relation to hierarchical clustering and ultrametrics}
+
+\Cref{thm:subtrie-cut} states that minimum cuts land on subtrie
+boundaries when the weighting factors through the trie, and this places
+the construction near a classical literature. Hierarchical clustering
+produces nested partitions from a dissimilarity
+\citep{johnson1967,hartigan1967}, the resulting structures are
+ultrametric \citep{jardine1971}, and the correspondence between
+clustering methods and ultrametrics can be characterised axiomatically
+\citep{carlsson2010}. Optimum communication spanning trees
+\citep{hu1974} likewise realise cut structure on a tree. That cuts
+behave well on tree-structured weightings is not, in itself, new; the
+general theory of cuts and connectivity is standard
+\citep{diestel2017}.
+
+Three differences are worth stating precisely, because the resemblance
+could otherwise be mistaken for containment.
+
+First, the hierarchy is not fitted. Classical hierarchical clustering
+constructs a tree from a dissimilarity matrix by a linkage rule chosen
+by the analyst; here the trie is fixed in advance by the positional
+encoding of \Cref{def:positional} and the addresses are computed
+per object by \Cref{def:hier-address}. No linkage rule is chosen and no
+matrix is assembled, which is what makes the storage bound of
+\Cref{thm:empty-dictionary} available at all.
+
+Second, and following from \Cref{rem:factoring-not-monotone}, the
+hypothesis of \Cref{thm:subtrie-cut} is prefix-factoring, not
+monotonicity. The function $f$ in \eqref{eq:trie-factoring} may
+increase, decrease, oscillate, or be constant; the validation of
+\Cref{sec:val-a} confirms all four behave identically. Ultrametric
+constructions typically require a monotone linkage, and the present
+result is therefore weaker in hypothesis and correspondingly wider in
+scope.
+
+Third, the weighting is a separation cost, not a distance, and by
+\eqref{eq:wt-derived} it is reciprocal in the S-entropy separation.
+\Cref{rem:reciprocal} draws the consequence and the validation of
+\Cref{sec:val-b} confirms it numerically: ranking pairs by distance and
+by contact weight gives exactly reversed orders. Similar objects are
+\emph{expensive} to separate. A clustering method reading
+\eqref{eq:wt-derived} as a similarity would invert every conclusion.
+
+\subsection{Query semantics as the practical consequence}
+
+The separation of \Cref{thm:query-separation} is, in the end, the
+paper's practical claim, and it is worth stating in the vocabulary of
+the query-language literature. Conjunctive queries with regular path
+expressions have been characterised precisely
+\citep{perez2009,barcelo2013,angles2017}; their expressive power is
+well understood, and the present result does not contest any of it.
+What it observes is that admissibility lies outside that power for a
+structural reason: the verdict depends on a minimum over the entire
+item set (\Cref{rem:separation-meaning}), and pattern matching with
+path composition forms no such minimum. Adding attributes and
+comparison does not help (\Cref{cor:attributed}). The quantity is
+polynomial-time computable and inexpressible, which is an unusual
+combination and the reason the gap has persisted.
+
+The remedy is not a richer query language over the same data model. It
+is a different data model, in which the four operations of
+\Cref{sec:operations} \emph{are} the query language
+(\Cref{thm:query-complete}) and no data model sits underneath them to
+be queried.
+
+% =====================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% =====================================================================
+
+A protein knowledge graph, on the construction given here, stores
+neither nodes nor edges.
+
+Nodes are not stored because identity is a computation. The positional
+addressing of \Cref{sec:hierarchy} derives an address from measurable
+quantities, so that two objects share an address exactly when they are
+indistinguishable at that resolution; \Cref{thm:empty-dictionary} shows
+the scheme requires $O(1)$ storage in the number of addressable
+objects, and \Cref{thm:identify} recomputes any address on demand in
+$O(k)$. The labels this replaces were shown to carry no invariant
+content (\Cref{thm:invariant}), which is why mappings between resources
+must be curated rather than computed (\Cref{cor:crossref}).
+
+Edges are not stored because relations are derived. The propagation
+framework of Part I builds a contact floor $\flo > 0$ from a single
+ordering axiom (\Cref{thm:floor}), an alignment functional bounded
+below by that floor (\Cref{lem:align-floor}), and an accountability
+criterion (\Cref{def:accountable}) whose verdicts constitute the
+propagation table (\Cref{def:table}). An edge is not an assertion by a
+curator but the statement that a propagation is accountable, and
+\Cref{cor:no-edges} shows no adjacency structure is required to
+determine one.
+
+The two constructions are the same object. \Cref{thm:identity} proves
+the address catalogue and the propagation table identical --- the first
+at rest, the second in motion --- and the identification is not
+imposed: the entropic separation derived for addressing supplies
+exactly the contact weighting \eqref{eq:wt-derived} that the
+propagation framework requires and cannot produce for itself, while the
+propagation framework supplies exactly the notion of relation that
+addressing lacks. \Cref{thm:subtrie-cut} is the technical bridge,
+locating minimum cuts on subtrie boundaries under a prefix-factoring
+hypothesis that requires no monotonicity, and
+\Cref{cor:closed} closes the circle by deriving the contact relation
+itself from \eqref{eq:react}.
+
+The consequence for practice is a query semantics that a stored graph
+cannot express. \Cref{thm:query-separation} exhibits two contact graphs
+with identical contact relations --- hence identical under every
+retrieval query --- that differ in whether a given propagation is
+accountable, and \Cref{cor:attributed} shows attributes and arithmetic
+do not close the gap. The obstruction is that accountability is a
+global property expressed in local terms, and a triple records only the
+local terms.
+
+What remains open is empirical and was stated as such throughout. The
+factoring hypothesis \eqref{eq:trie-factoring} is a claim about real
+biomolecules that this paper does not establish; the validation of
+\Cref{sec:validation} shows only that the theorem depending on it is
+not vacuous, is not secretly about monotonicity, and degrades
+gracefully with a computable error bound when the hypothesis fails. The
+identification cost is excluded from every complexity figure quoted.
+And the worked instance of \Cref{sec:sod1} demonstrates that variant
+effects become computable as changes to the contact floor --- placing
+protein instability, the quantity empirically correlated with survival
+in familial ALS \citep{wang2008,prudencio2009}, at the centre of the
+accountability test --- without claiming that the resulting numbers
+have been checked against outcome.
+
+The position this leaves is a structural one, and it is the position
+the paper set out to reach. A knowledge graph over biomolecules need
+not choose between hierarchical identification and causal propagation,
+storing one and asserting the other. Under a weighting that is derived
+rather than fitted, and carrying no free parameter, the two compute
+each other.
+
+% Panels illustrating Parts II-III and the validation section.
+\input{figures/ckg-captions}
+
+% =====================================================================
+% Bibliography
+% =====================================================================
+ibliographystyle{plainnat}
+ibliography{references}
+
+\end{document}
