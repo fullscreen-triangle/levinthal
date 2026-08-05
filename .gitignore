@@ -125,6 +125,12 @@ test_data/
 data/
 output/
 
+# ...but cytochrome/src/data is application source, not test data.
+# The bare `data/` above matches at every level and was silently
+# excluding the Shakespeare lesson corpus from the deploy.
+!cytochrome/src/data/
+!cytochrome/src/data/**
+
 # ============================================================================
 # OTHER
 # ============================================================================
