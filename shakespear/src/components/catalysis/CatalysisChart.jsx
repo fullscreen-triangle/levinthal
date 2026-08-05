@@ -110,13 +110,19 @@ export default function CatalysisChart({ activeStep }) {
 
     } else if (activeStep === 1 && partition) {
       // STAIRCASE: partition coordinate capacities
-      const data = partition.data.n.map((n, i) => ({
-        n, shell: partition.data.shell_names[i],
-        capacity: partition.data.predicted_capacity[i]
+      // panel1_partition_coordinates.json is row-oriented: shells is an
+      // array of {n, predicted, observed, match, elements}. Guard the shape
+      // so a regenerated payload degrades to an empty plot, not a crash that
+      // unmounts the whole chart and takes the sibling tabs with it.
+      const shells = Array.isArray(partition.shells) ? partition.shells : []
+      const data = shells.map(s => ({
+        n: s.n, shell: s.elements, capacity: s.predicted
       }))
 
       const xScale = d3.scaleLinear().domain([0.5, 7.5]).range([0, w])
-      const yScale = d3.scaleLinear().domain([0, 100]).range([h, 0]).nice()
+      const yScale = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.capacity) ?? 100])
+        .range([h, 0]).nice()
 
       // Staircase area
       const stepData = []
@@ -238,15 +244,18 @@ export default function CatalysisChart({ activeStep }) {
 
     } else if (activeStep >= 3 && validation) {
       // GRAND VALIDATION: domain pass rates
-      const domains = validation.domains || []
-      // Parse from the validation structure
-      const data = domains.length > 0 ? domains : [
-        { name: 'Atomic Structure', passed: 7, total: 7 },
-        { name: 'Electron Transfer', passed: 5, total: 5 },
-        { name: 'Enzyme Catalysis', passed: 11, total: 12 },
-        { name: 'Protein Folding', passed: 5, total: 5 },
-        { name: 'Disease (ALS)', passed: 6, total: 7 },
-      ]
+      // grand_validation.json keys domains by name:
+      //   { "Atomic structure": { passed, total }, ... }
+      // An object has no .length, so the previous `domains.length > 0` test
+      // was always false and the chart silently drew hardcoded placeholders.
+      // They happened to match the file, so stale numbers would have gone
+      // unnoticed after any regeneration. Read the real values instead.
+      const raw = validation.domains
+      const data = Array.isArray(raw)
+        ? raw
+        : Object.entries(raw || {}).map(([name, v]) => ({
+            name, passed: v.passed, total: v.total
+          }))
 
       const xScale = d3.scaleBand().domain(data.map(d => d.name)).range([0, w]).padding(0.3)
       const yScale = d3.scaleLinear().domain([0, 100]).range([h, 0])
