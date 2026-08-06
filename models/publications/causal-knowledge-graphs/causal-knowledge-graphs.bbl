@@ -1,0 +1,611 @@
+\begin{thebibliography}{79}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215\penalty0 (3):\penalty0
+  403--410, 1990.
+\newblock \doi{10.1016/S0022-2836(05)80360-2}.
+
+\bibitem[Anfinsen(1973)]{anfinsen1973}
+Christian~B. Anfinsen.
+\newblock Principles that govern the folding of protein chains.
+\newblock \emph{Science}, 181\penalty0 (4096):\penalty0 223--230, 1973.
+\newblock \doi{10.1126/science.181.4096.223}.
+
+\bibitem[Angles et~al.(2017)Angles, Arenas, Barcel{\'o}, Hogan, Reutter, and
+  Vrgo{\v{c}}]{angles2017}
+Renzo Angles, Marcelo Arenas, Pablo Barcel{\'o}, Aidan Hogan, Juan Reutter, and
+  Domagoj Vrgo{\v{c}}.
+\newblock Foundations of modern query languages for graph databases.
+\newblock \emph{ACM Computing Surveys}, 50\penalty0 (5):\penalty0 1--40, 2017.
+\newblock \doi{10.1145/3104031}.
+
+\bibitem[Ashburner et~al.(2000)Ashburner, Ball, Blake, Botstein, Butler,
+  Cherry, Davis, Dolinski, Dwight, Eppig, Harris, Hill, Issel-Tarver,
+  Kasarskis, Lewis, Matese, Richardson, Ringwald, Rubin, and
+  Sherlock]{ashburner2000}
+Michael Ashburner, Catherine~A. Ball, Judith~A. Blake, David Botstein, Heather
+  Butler, J.~Michael Cherry, Allan~P. Davis, Kara Dolinski, Selina~S. Dwight,
+  Janan~T. Eppig, Midori~A. Harris, David~P. Hill, Laurie Issel-Tarver, Andrew
+  Kasarskis, Suzanna Lewis, John~C. Matese, Joel~E. Richardson, Martin
+  Ringwald, Gerald~M. Rubin, and Gavin Sherlock.
+\newblock Gene {Ontology}: tool for the unification of biology.
+\newblock \emph{Nature Genetics}, 25:\penalty0 25--29, 2000.
+\newblock \doi{10.1038/75556}.
+
+\bibitem[Bahar et~al.(1997)Bahar, Atilgan, and Erman]{bahar1997}
+Ivet Bahar, Ali~Rana Atilgan, and Burak Erman.
+\newblock Direct evaluation of thermal fluctuations in proteins using a
+  single-parameter harmonic potential.
+\newblock \emph{Folding and Design}, 2\penalty0 (3):\penalty0 173--181, 1997.
+\newblock \doi{10.1016/S1359-0278(97)00024-2}.
+
+\bibitem[Bahar et~al.(2010)Bahar, Lezon, Bakan, and Shrivastava]{bahar2010}
+Ivet Bahar, Timothy~R. Lezon, Ahmet Bakan, and Indira~H. Shrivastava.
+\newblock Normal mode analysis of biomolecular structures: functional
+  mechanisms of membrane proteins.
+\newblock \emph{Chemical Reviews}, 110\penalty0 (3):\penalty0 1463--1497, 2010.
+\newblock \doi{10.1021/cr900095e}.
+
+\bibitem[Bansal et~al.(2022)Bansal, Morgat, Axelsen, Muthukrishnan, Coudert,
+  Aimo, Hyka-Nouspikel, Gasteiger, Kerhornou, Neto, et~al.]{bansal2022}
+Parit Bansal, Anne Morgat, Kristian~B. Axelsen, Venkatesh Muthukrishnan,
+  Elisabeth Coudert, Lucila Aimo, Nevila Hyka-Nouspikel, Elisabeth Gasteiger,
+  Arnaud Kerhornou, Teresa~Batista Neto, et~al.
+\newblock {Rhea}, the reaction knowledgebase in 2022.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D693--D700,
+  2022.
+\newblock \doi{10.1093/nar/gkab1016}.
+
+\bibitem[Barcel{\'o}~Baeza(2013)]{barcelo2013}
+Pablo Barcel{\'o}~Baeza.
+\newblock Querying graph databases.
+\newblock \emph{Proceedings of the 32nd ACM SIGMOD-SIGACT-SIGAI Symposium on
+  Principles of Database Systems}, pages 175--188, 2013.
+\newblock \doi{10.1145/2463664.2465216}.
+
+\bibitem[Barth(2007)]{barth2007}
+Andreas Barth.
+\newblock Infrared spectroscopy of proteins.
+\newblock \emph{Biochimica et Biophysica Acta (BBA) --- Bioenergetics},
+  1767\penalty0 (9):\penalty0 1073--1101, 2007.
+\newblock \doi{10.1016/j.bbabio.2007.06.004}.
+
+\bibitem[Barth and Zscherp(2002)]{barth2002}
+Andreas Barth and Christian Zscherp.
+\newblock What vibrations tell us about proteins.
+\newblock \emph{Quarterly Reviews of Biophysics}, 35\penalty0 (4):\penalty0
+  369--430, 2002.
+\newblock \doi{10.1017/S0033583502003815}.
+
+\bibitem[Berman et~al.(2000)Berman, Westbrook, Feng, Gilliland, Bhat, Weissig,
+  Shindyalov, and Bourne]{berman2000}
+Helen~M. Berman, John Westbrook, Zukang Feng, Gary Gilliland, T.~N. Bhat, Helge
+  Weissig, Ilya~N. Shindyalov, and Philip~E. Bourne.
+\newblock The {Protein Data Bank}.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 235--242,
+  2000.
+\newblock \doi{10.1093/nar/28.1.235}.
+
+\bibitem[Branden and Tooze(1999)]{branden1999}
+Carl-Ivar Branden and John Tooze.
+\newblock \emph{Introduction to Protein Structure}.
+\newblock Garland Science, 2 edition, 1999.
+
+\bibitem[Bryngelson et~al.(1995)Bryngelson, Onuchic, Socci, and
+  Wolynes]{bryngelson1995}
+Joseph~D. Bryngelson, Jos{\'e}~Nelson Onuchic, Nicholas~D. Socci, and Peter~G.
+  Wolynes.
+\newblock Funnels, pathways, and the energy landscape of protein folding: a
+  synthesis.
+\newblock \emph{Proteins: Structure, Function, and Bioinformatics}, 21\penalty0
+  (3):\penalty0 167--195, 1995.
+\newblock \doi{10.1002/prot.340210302}.
+
+\bibitem[Burley et~al.(2023)Burley, Bhikadiya, Bi, Bittrich, Chao, Chen,
+  et~al.]{burley2023}
+Stephen~K. Burley, Charmi Bhikadiya, Chunxiao Bi, Sebastian Bittrich, Henry
+  Chao, Li~Chen, et~al.
+\newblock {RCSB} {Protein} {Data} {Bank} (rcsb.org): delivery of
+  experimentally-determined {PDB} structures alongside one million computed
+  structure models.
+\newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D488--D508,
+  2023.
+\newblock \doi{10.1093/nar/gkac1077}.
+
+\bibitem[Callahan et~al.(2020)Callahan, Tripodi, Pielke-Lombardo, and
+  Hunter]{callahan2020}
+Tiffany~J. Callahan, Ignacio~J. Tripodi, Harrison Pielke-Lombardo, and
+  Lawrence~E. Hunter.
+\newblock Knowledge-based biomedical data science.
+\newblock \emph{Annual Review of Biomedical Data Science}, 3:\penalty0 23--41,
+  2020.
+\newblock \doi{10.1146/annurev-biodatasci-010820-091627}.
+
+\bibitem[Carlsson and M{\'e}moli(2010)]{carlsson2010}
+Gunnar Carlsson and Facundo M{\'e}moli.
+\newblock Characterization, stability and convergence of hierarchical
+  clustering methods.
+\newblock \emph{Journal of Machine Learning Research}, 11:\penalty0 1425--1470,
+  2010.
+
+\bibitem[Corey and Wipke(1969)]{corey1969}
+E.~J. Corey and W.~Todd Wipke.
+\newblock Computer-assisted design of complex organic syntheses.
+\newblock \emph{Science}, 166\penalty0 (3902):\penalty0 178--192, 1969.
+\newblock \doi{10.1126/science.166.3902.178}.
+
+\bibitem[Cover and Thomas(2006)]{cover2006}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley-Interscience, 2 edition, 2006.
+
+\bibitem[Creighton(1993)]{creighton1993}
+Thomas~E. Creighton.
+\newblock \emph{Proteins: Structures and Molecular Properties}.
+\newblock W. H. Freeman, 2 edition, 1993.
+
+\bibitem[Demir et~al.(2010)Demir, Cary, Paley, Fukuda, Lemer, Vastrik, Wu,
+  D'Eustachio, Schaefer, Luciano, et~al.]{demir2010}
+Emek Demir, Michael~P. Cary, Suzanne Paley, Ken Fukuda, Christian Lemer, Imre
+  Vastrik, Guanming Wu, Peter D'Eustachio, Carl Schaefer, Joanne Luciano,
+  et~al.
+\newblock The {BioPAX} community standard for pathway data sharing.
+\newblock \emph{Nature Biotechnology}, 28:\penalty0 935--942, 2010.
+\newblock \doi{10.1038/nbt.1666}.
+
+\bibitem[Diestel(2017)]{diestel2017}
+Reinhard Diestel.
+\newblock \emph{Graph Theory}.
+\newblock Springer, 5 edition, 2017.
+\newblock \doi{10.1007/978-3-662-53622-3}.
+
+\bibitem[Dill and MacCallum(2012)]{dill2012}
+Ken~A. Dill and Justin~L. MacCallum.
+\newblock The protein-folding problem, 50 years on.
+\newblock \emph{Science}, 338\penalty0 (6110):\penalty0 1042--1046, 2012.
+\newblock \doi{10.1126/science.1219021}.
+
+\bibitem[Feinberg(1987)]{feinberg1987}
+Martin Feinberg.
+\newblock Chemical reaction network structure and the stability of complex
+  isothermal reactors.
+\newblock \emph{Chemical Engineering Science}, 42\penalty0 (10):\penalty0
+  2229--2268, 1987.
+\newblock \doi{10.1016/0009-2509(87)80099-4}.
+
+\bibitem[Ford and Fulkerson(1956)]{fordfulkerson1956}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock \emph{Canadian Journal of Mathematics}, 8:\penalty0 399--404, 1956.
+\newblock \doi{10.4153/CJM-1956-045-5}.
+
+\bibitem[Fredkin(1960)]{fredkin1960}
+Edward Fredkin.
+\newblock Trie memory.
+\newblock \emph{Communications of the ACM}, 3\penalty0 (9):\penalty0 490--499,
+  1960.
+\newblock \doi{10.1145/367390.367400}.
+
+\bibitem[Gaudet and Dessimoz(2017)]{gaudet2017}
+Pascale Gaudet and Christophe Dessimoz.
+\newblock Gene {Ontology}: pitfalls, biases, and remedies.
+\newblock \emph{Methods in Molecular Biology}, 1446:\penalty0 189--205, 2017.
+\newblock \doi{10.1007/978-1-4939-3743-1_14}.
+
+\bibitem[G{\=o} et~al.(1983)G{\=o}, Noguti, and Nishikawa]{go1983}
+Nobuhiro G{\=o}, Tosiyuki Noguti, and Testuo Nishikawa.
+\newblock Dynamics of a small globular protein in terms of low-frequency
+  vibrational modes.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 80\penalty0
+  (12):\penalty0 3696--3700, 1983.
+\newblock \doi{10.1073/pnas.80.12.3696}.
+
+\bibitem[Gomory and Hu(1961)]{gomory1961}
+R.~E. Gomory and T.~C. Hu.
+\newblock Multi-terminal network flows.
+\newblock \emph{Journal of the Society for Industrial and Applied Mathematics},
+  9\penalty0 (4):\penalty0 551--570, 1961.
+\newblock \doi{10.1137/0109047}.
+
+\bibitem[Grantham(1974)]{grantham1974}
+R.~Grantham.
+\newblock Amino acid difference formula to help explain protein evolution.
+\newblock \emph{Science}, 185\penalty0 (4154):\penalty0 862--864, 1974.
+\newblock \doi{10.1126/science.185.4154.862}.
+
+\bibitem[Hartigan(1967)]{hartigan1967}
+John~A. Hartigan.
+\newblock Representation of similarity matrices by trees.
+\newblock \emph{Journal of the American Statistical Association}, 62\penalty0
+  (320):\penalty0 1140--1158, 1967.
+\newblock \doi{10.1080/01621459.1967.10500922}.
+
+\bibitem[Hartl and Hayer-Hartl(2002)]{hartl2002}
+F.~Ulrich Hartl and Manajit Hayer-Hartl.
+\newblock Molecular chaperones in the cytosol: from nascent chain to folded
+  protein.
+\newblock \emph{Science}, 295\penalty0 (5561):\penalty0 1852--1858, 2002.
+\newblock \doi{10.1126/science.1068408}.
+
+\bibitem[Hastings et~al.(2016)Hastings, Owen, Dekker, Ennis, Kale,
+  Muthukrishnan, Turner, Swainston, Mendes, and Steinbeck]{hastings2016}
+Janna Hastings, Gareth Owen, Adriano Dekker, Marcus Ennis, Namrata Kale,
+  Venkatesh Muthukrishnan, Steve Turner, Neil Swainston, Pedro Mendes, and
+  Christoph Steinbeck.
+\newblock {ChEBI} in 2016: improved services and an expanding collection of
+  metabolites.
+\newblock \emph{Nucleic Acids Research}, 44\penalty0 (D1):\penalty0
+  D1214--D1219, 2016.
+\newblock \doi{10.1093/nar/gkv1031}.
+
+\bibitem[Henikoff and Henikoff(1992)]{henikoff1992}
+Steven Henikoff and Jorja~G. Henikoff.
+\newblock Amino acid substitution matrices from protein blocks.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 89\penalty0
+  (22):\penalty0 10915--10919, 1992.
+\newblock \doi{10.1073/pnas.89.22.10915}.
+
+\bibitem[Hogan et~al.(2021)Hogan, Blomqvist, Cochez, d'Amato, de~Melo,
+  Gutierrez, Kirrane, Labra~Gayo, Navigli, Neumaier, et~al.]{hogan2021}
+Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de~Melo,
+  Claudio Gutierrez, Sabrina Kirrane, Jos{\'e}~Emilio Labra~Gayo, Roberto
+  Navigli, Sebastian Neumaier, et~al.
+\newblock Knowledge graphs.
+\newblock \emph{ACM Computing Surveys}, 54\penalty0 (4):\penalty0 1--37, 2021.
+\newblock \doi{10.1145/3447772}.
+
+\bibitem[Holm and Sander(1993)]{holm1993}
+Liisa Holm and Chris Sander.
+\newblock Protein structure comparison by alignment of distance matrices.
+\newblock \emph{Journal of Molecular Biology}, 233\penalty0 (1):\penalty0
+  123--138, 1993.
+\newblock \doi{10.1006/jmbi.1993.1489}.
+
+\bibitem[Hu(1974)]{hu1974}
+T.~C. Hu.
+\newblock Optimum communication spanning trees.
+\newblock \emph{SIAM Journal on Computing}, 3\penalty0 (3):\penalty0 188--195,
+  1974.
+\newblock \doi{10.1137/0203015}.
+
+\bibitem[Jardine and Sibson(1971)]{jardine1971}
+N.~Jardine and R.~Sibson.
+\newblock Mathematical taxonomy.
+\newblock \emph{Wiley Series in Probability and Mathematical Statistics}, 1971.
+
+\bibitem[Johnson(1967)]{johnson1967}
+Stephen~C. Johnson.
+\newblock Hierarchical clustering schemes.
+\newblock \emph{Psychometrika}, 32:\penalty0 241--254, 1967.
+\newblock \doi{10.1007/BF02289588}.
+
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
+  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'\i}dek, Potapenko, Bridgland,
+  Meyer, Kohl, Ballard, Cowie, Romera-Paredes, Nikolov, Jain, Adler, Back,
+  Petersen, Reiman, Clancy, Zielinski, Steinegger, Pacholska, Berghammer,
+  Bodenstein, Silver, Vinyals, Senior, Kavukcuoglu, Kohli, and
+  Hassabis]{jumper2021}
+John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
+  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
+  {\v{Z}}{\'\i}dek, Anna Potapenko, Alex Bridgland, Clemens Meyer, Simon A.~A.
+  Kohl, Andrew~J. Ballard, Andrew Cowie, Bernardino Romera-Paredes, Stanislav
+  Nikolov, Rishub Jain, Jonas Adler, Trevor Back, Stig Petersen, David Reiman,
+  Ellen Clancy, Michal Zielinski, Martin Steinegger, Michalina Pacholska, Tamas
+  Berghammer, Sebastian Bodenstein, David Silver, Oriol Vinyals, Andrew~W.
+  Senior, Koray Kavukcuoglu, Pushmeet Kohli, and Demis Hassabis.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596:\penalty0 583--589, 2021.
+\newblock \doi{10.1038/s41586-021-03819-2}.
+
+\bibitem[Jupp et~al.(2014)Jupp, Malone, Bolleman, Brandizi, Davies, Garcia,
+  Gaulton, Gehant, Laibe, Redaschi, et~al.]{jupp2015}
+Simon Jupp, James Malone, Jerven Bolleman, Marco Brandizi, Mark Davies, Leyla
+  Garcia, Anna Gaulton, Sebastien Gehant, Camille Laibe, Nicole Redaschi,
+  et~al.
+\newblock The {EBI} {RDF} platform: linked open data for the life sciences.
+\newblock \emph{Bioinformatics}, 30\penalty0 (9):\penalty0 1338--1339, 2014.
+\newblock \doi{10.1093/bioinformatics/btt765}.
+
+\bibitem[Kabsch and Sander(1983)]{kabsch1983}
+Wolfgang Kabsch and Christian Sander.
+\newblock Dictionary of protein secondary structure: pattern recognition of
+  hydrogen-bonded and geometrical features.
+\newblock \emph{Biopolymers}, 22\penalty0 (12):\penalty0 2577--2637, 1983.
+\newblock \doi{10.1002/bip.360221211}.
+
+\bibitem[Kac(1947)]{kac1947}
+Mark Kac.
+\newblock On the notion of recurrence in discrete stochastic processes.
+\newblock \emph{Bulletin of the American Mathematical Society}, 53\penalty0
+  (10):\penalty0 1002--1010, 1947.
+\newblock \doi{10.1090/S0002-9904-1947-08927-8}.
+
+\bibitem[Karger and Stein(1996)]{karger1996}
+David~R. Karger and Clifford Stein.
+\newblock A new approach to the minimum cut problem.
+\newblock \emph{Journal of the ACM}, 43\penalty0 (4):\penalty0 601--640, 1996.
+\newblock \doi{10.1145/234533.234534}.
+
+\bibitem[Kawashima et~al.(2008)Kawashima, Pokarowski, Pokarowska, Kolinski,
+  Katayama, and Kanehisa]{kawashima2008}
+Shuichi Kawashima, Piotr Pokarowski, Maria Pokarowska, Andrzej Kolinski,
+  Toshiaki Katayama, and Minoru Kanehisa.
+\newblock {AAindex}: amino acid index database, progress report 2008.
+\newblock \emph{Nucleic Acids Research}, 36\penalty0 (suppl 1):\penalty0
+  D202--D205, 2008.
+\newblock \doi{10.1093/nar/gkm998}.
+
+\bibitem[Knuth(1998)]{knuth1998}
+Donald~E. Knuth.
+\newblock \emph{The Art of Computer Programming, Volume 3: Sorting and
+  Searching}.
+\newblock Addison-Wesley, 2 edition, 1998.
+
+\bibitem[Krimm and Bandekar(1986)]{krimm1986}
+Samuel Krimm and Jagdeesh Bandekar.
+\newblock Vibrational spectroscopy and conformation of peptides, polypeptides,
+  and proteins.
+\newblock \emph{Advances in Protein Chemistry}, 38:\penalty0 181--364, 1986.
+\newblock \doi{10.1016/S0065-3233(08)60528-8}.
+
+\bibitem[Kyte and Doolittle(1982)]{kyte1982}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157\penalty0 (1):\penalty0
+  105--132, 1982.
+\newblock \doi{10.1016/0022-2836(82)90515-0}.
+
+\bibitem[Landrum et~al.(2018)Landrum, Lee, Benson, Brown, Chao, Chitipiralla,
+  Gu, Hart, Hoffman, Jang, et~al.]{landrum2018}
+Melissa~J. Landrum, Jennifer~M. Lee, Mark Benson, Garth~R. Brown, Chen Chao,
+  Shanmuga Chitipiralla, Baoshan Gu, Jennifer Hart, Douglas Hoffman, Wonhee
+  Jang, et~al.
+\newblock {ClinVar}: improving access to variant interpretations and supporting
+  evidence.
+\newblock \emph{Nucleic Acids Research}, 46\penalty0 (D1):\penalty0
+  D1062--D1067, 2018.
+\newblock \doi{10.1093/nar/gkx1153}.
+
+\bibitem[Levinthal(1968)]{levinthal1968}
+Cyrus Levinthal.
+\newblock Are there pathways for protein folding?
+\newblock \emph{Journal de Chimie Physique}, 65:\penalty0 44--45, 1968.
+\newblock \doi{10.1051/jcp/1968650044}.
+
+\bibitem[Levinthal(1969)]{levinthal1969}
+Cyrus Levinthal.
+\newblock How to fold graciously.
+\newblock \emph{M{\"o}ssbauer Spectroscopy in Biological Systems: Proceedings
+  of a Meeting held at Allerton House}, pages 22--24, 1969.
+
+\bibitem[Lipschitz(1876)]{lipschitz1876}
+Rudolf Lipschitz.
+\newblock Sur la possibilit{\'e} d'int{\'e}grer compl{\`e}tement un syst{\`e}me
+  donn{\'e} d'{\'e}quations diff{\'e}rentielles.
+\newblock \emph{Bulletin des Sciences Math{\'e}matiques et Astronomiques},
+  10:\penalty0 149--159, 1876.
+
+\bibitem[McMurry et~al.(2017)McMurry, Juty, Blomberg, Burdett, Conlin, Conte,
+  Courtot, Deck, Dumontier, Fellows, et~al.]{mcmurry2017}
+Julie~A. McMurry, Nick Juty, Niklas Blomberg, Tony Burdett, Tom Conlin,
+  Nathalie Conte, M{\'e}lanie Courtot, John Deck, Michel Dumontier, Donal~K.
+  Fellows, et~al.
+\newblock Identifiers for the 21st century: how to design, provision, and reuse
+  persistent identifiers to maximize utility and impact of life science data.
+\newblock \emph{PLOS Biology}, 15\penalty0 (6):\penalty0 e2001414, 2017.
+\newblock \doi{10.1371/journal.pbio.2001414}.
+
+\bibitem[Mendeleev(1869)]{mendeleev1869}
+Dmitri Mendeleev.
+\newblock \emph{{\"U}ber die {Beziehungen} der {Eigenschaften} zu den
+  {Atomgewichten} der {Elemente}}, volume~12.
+\newblock Zeitschrift f{\"u}r Chemie, 1869.
+
+\bibitem[Menger(1927)]{menger1927}
+Karl Menger.
+\newblock Zur allgemeinen {Kurventheorie}.
+\newblock \emph{Fundamenta Mathematicae}, 10:\penalty0 96--115, 1927.
+
+\bibitem[Milacic et~al.(2024)Milacic, Beavers, Conley, Gong, Gillespie, Griss,
+  Haw, Jassal, Matthews, May, et~al.]{milacic2024}
+Marija Milacic, Deidre Beavers, Patrick Conley, Chuqiao Gong, Marc Gillespie,
+  Johannes Griss, Robin Haw, Bijay Jassal, Lisa Matthews, Bruce May, et~al.
+\newblock The {Reactome} {Pathway} {Knowledgebase} 2024.
+\newblock \emph{Nucleic Acids Research}, 52\penalty0 (D1):\penalty0 D672--D678,
+  2024.
+\newblock \doi{10.1093/nar/gkad1025}.
+
+\bibitem[P{\'e}rez et~al.(2009)P{\'e}rez, Arenas, and Gutierrez]{perez2009}
+Jorge P{\'e}rez, Marcelo Arenas, and Claudio Gutierrez.
+\newblock Semantics and complexity of {SPARQL}.
+\newblock \emph{ACM Transactions on Database Systems}, 34\penalty0
+  (3):\penalty0 1--45, 2009.
+\newblock \doi{10.1145/1567274.1567278}.
+
+\bibitem[Poincar{\'e}(1890)]{poincare1890}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+
+\bibitem[Prudencio et~al.(2009)Prudencio, Hart, Borchelt, and
+  Andersen]{prudencio2009}
+Mercedes Prudencio, P.~John Hart, David~R. Borchelt, and Peter~M. Andersen.
+\newblock Variation in aggregation propensities among {ALS}-associated variants
+  of {SOD1}: correlation to human disease.
+\newblock \emph{Human Molecular Genetics}, 18\penalty0 (17):\penalty0
+  3217--3226, 2009.
+\newblock \doi{10.1093/hmg/ddp260}.
+
+\bibitem[Rosen et~al.(1993)Rosen, Siddique, Patterson, Figlewicz, Sapp,
+  Hentati, Donaldson, Goto, O'Regan, Deng, et~al.]{rosen1993}
+Daniel~R. Rosen, Teepu Siddique, David Patterson, Denise~A. Figlewicz, Peter
+  Sapp, Afif Hentati, Deirdre Donaldson, Jun Goto, Jonathan~P. O'Regan,
+  Han-Xiang Deng, et~al.
+\newblock Mutations in {Cu/Zn} superoxide dismutase gene are associated with
+  familial amyotrophic lateral sclerosis.
+\newblock \emph{Nature}, 362:\penalty0 59--62, 1993.
+\newblock \doi{10.1038/362059a0}.
+
+\bibitem[Rudin(1976)]{rudin1976}
+Walter Rudin.
+\newblock \emph{Principles of Mathematical Analysis}.
+\newblock McGraw-Hill, 3 edition, 1976.
+
+\bibitem[Scerri(2007)]{scerri2007}
+Eric~R. Scerri.
+\newblock \emph{The Periodic Table: Its Story and Its Significance}.
+\newblock Oxford University Press, 2007.
+
+\bibitem[Segler et~al.(2018)Segler, Preuss, and Waller]{segler2018}
+Marwin H.~S. Segler, Mike Preuss, and Mark~P. Waller.
+\newblock Planning chemical syntheses with deep neural networks and symbolic
+  {AI}.
+\newblock \emph{Nature}, 555:\penalty0 604--610, 2018.
+\newblock \doi{10.1038/nature25978}.
+
+\bibitem[Shannon(1948)]{shannon1948}
+Claude~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27\penalty0 (3):\penalty0
+  379--423, 1948.
+\newblock \doi{10.1002/j.1538-7305.1948.tb01338.x}.
+
+\bibitem[Smith et~al.(2007)Smith, Ashburner, Rosse, Bard, Bug, Ceusters,
+  Goldberg, Eilbeck, Ireland, Mungall, et~al.]{smith2007}
+Barry Smith, Michael Ashburner, Cornelius Rosse, Jonathan Bard, William Bug,
+  Werner Ceusters, Louis~J. Goldberg, Karen Eilbeck, Amelia Ireland,
+  Christopher~J. Mungall, et~al.
+\newblock The {OBO} {Foundry}: coordinated evolution of ontologies to support
+  biomedical data integration.
+\newblock \emph{Nature Biotechnology}, 25:\penalty0 1251--1255, 2007.
+\newblock \doi{10.1038/nbt1346}.
+
+\bibitem[Smith and Waterman(1981)]{smith1981}
+Temple~F. Smith and Michael~S. Waterman.
+\newblock Identification of common molecular subsequences.
+\newblock \emph{Journal of Molecular Biology}, 147\penalty0 (1):\penalty0
+  195--197, 1981.
+\newblock \doi{10.1016/0022-2836(81)90087-5}.
+
+\bibitem[Steinegger and S{\"o}ding(2017)]{steinegger2017}
+Martin Steinegger and Johannes S{\"o}ding.
+\newblock {MMseqs2} enables sensitive protein sequence searching for the
+  analysis of massive data sets.
+\newblock \emph{Nature Biotechnology}, 35:\penalty0 1026--1028, 2017.
+\newblock \doi{10.1038/nbt.3988}.
+
+\bibitem[Stoer and Wagner(1997)]{stoer1997}
+Mechthild Stoer and Frank Wagner.
+\newblock A simple min-cut algorithm.
+\newblock \emph{Journal of the ACM}, 44\penalty0 (4):\penalty0 585--591, 1997.
+\newblock \doi{10.1145/263867.263872}.
+
+\bibitem[{The Gene Ontology Consortium}(2023)]{go2023}
+{The Gene Ontology Consortium}.
+\newblock The {Gene} {Ontology} knowledgebase in 2023.
+\newblock \emph{Genetics}, 224\penalty0 (1):\penalty0 iyad031, 2023.
+\newblock \doi{10.1093/genetics/iyad031}.
+
+\bibitem[{The UniProt Consortium}(2023)]{uniprot2023}
+{The UniProt Consortium}.
+\newblock {UniProt}: the universal protein knowledgebase in 2023.
+\newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D523--D531,
+  2023.
+\newblock \doi{10.1093/nar/gkac1052}.
+
+\bibitem[Tirion(1996)]{tirion1996}
+Monique~M. Tirion.
+\newblock Large amplitude elastic motions in proteins from a single-parameter,
+  atomic analysis.
+\newblock \emph{Physical Review Letters}, 77\penalty0 (9):\penalty0 1905--1908,
+  1996.
+\newblock \doi{10.1103/PhysRevLett.77.1905}.
+
+\bibitem[Unni et~al.(2022)Unni, Moxon, Bada, Brush, Bruskiewich, Caufield,
+  Clemons, Dancik, Dumontier, Fecho, et~al.]{unni2022}
+Deepak~R. Unni, Sierra A.~T. Moxon, Michael Bada, Matthew Brush, Richard
+  Bruskiewich, J.~Harry Caufield, Paul~A. Clemons, Vlado Dancik, Michel
+  Dumontier, Karamarie Fecho, et~al.
+\newblock {Biolink} {Model}: a universal schema for knowledge graphs in
+  clinical, biomedical, and translational science.
+\newblock \emph{Clinical and Translational Science}, 15\penalty0 (8):\penalty0
+  1848--1855, 2022.
+\newblock \doi{10.1111/cts.13302}.
+
+\bibitem[Valentine et~al.(2005)Valentine, Doucette, and
+  Zittin~Potter]{valentine2005}
+Joan~Selverstone Valentine, Peter~A. Doucette, and Soshanna Zittin~Potter.
+\newblock Copper-zinc superoxide dismutase and amyotrophic lateral sclerosis.
+\newblock \emph{Annual Review of Biochemistry}, 74:\penalty0 563--593, 2005.
+\newblock \doi{10.1146/annurev.biochem.72.121801.161647}.
+
+\bibitem[van Kempen et~al.(2024)van Kempen, Kim, Tumescheit, Mirdita, Lee,
+  Gilchrist, S{\"o}ding, and Steinegger]{vankempen2024}
+Michel van Kempen, Stephanie~S. Kim, Charlotte Tumescheit, Milot Mirdita,
+  Jeongjae Lee, Cameron L.~M. Gilchrist, Johannes S{\"o}ding, and Martin
+  Steinegger.
+\newblock Fast and accurate protein structure search with {Foldseek}.
+\newblock \emph{Nature Biotechnology}, 42:\penalty0 243--246, 2024.
+\newblock \doi{10.1038/s41587-023-01773-0}.
+
+\bibitem[Varadi et~al.(2022)Varadi, Anyango, Deshpande, Nair, Natassia,
+  Yordanova, Yuan, Stroe, Wood, Laydon, et~al.]{varadi2022}
+Mihaly Varadi, Stephen Anyango, Mandar Deshpande, Sreenath Nair, Cindy
+  Natassia, Galabina Yordanova, David Yuan, Oana Stroe, Gemma Wood, Agata
+  Laydon, et~al.
+\newblock {AlphaFold} {Protein} {Structure} {Database}: massively expanding the
+  structural coverage of protein-sequence space with high-accuracy models.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D439--D444,
+  2022.
+\newblock \doi{10.1093/nar/gkab1061}.
+
+\bibitem[Wang et~al.(2008)Wang, Johnson, Agar, and Agar]{wang2008}
+Qi~Wang, Jeffrey~L. Johnson, Nathalie Y.~R. Agar, and Jeffrey~N. Agar.
+\newblock Protein aggregation and protein instability govern familial
+  amyotrophic lateral sclerosis patient survival.
+\newblock \emph{PLOS Biology}, 6\penalty0 (7):\penalty0 e170, 2008.
+\newblock \doi{10.1371/journal.pbio.0060170}.
+
+\bibitem[Wilkinson et~al.(2016)Wilkinson, Dumontier, Aalbersberg, Appleton,
+  Axton, Baak, Blomberg, Boiten, da~Silva~Santos, Bourne,
+  et~al.]{wilkinson2016}
+Mark~D. Wilkinson, Michel Dumontier, IJsbrand~Jan Aalbersberg, Gabrielle
+  Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten,
+  Luiz~Bonino da~Silva~Santos, Philip~E. Bourne, et~al.
+\newblock The {FAIR} {Guiding} {Principles} for scientific data management and
+  stewardship.
+\newblock \emph{Scientific Data}, 3:\penalty0 160018, 2016.
+\newblock \doi{10.1038/sdata.2016.18}.
+
+\bibitem[Wren(2008)]{wren2008}
+Jonathan~D. Wren.
+\newblock {URL} decay in {MEDLINE}---a 4-year follow-up study.
+\newblock \emph{Bioinformatics}, 24\penalty0 (11):\penalty0 1381--1385, 2008.
+\newblock \doi{10.1093/bioinformatics/btn127}.
+
+\bibitem[Zamyatnin(1972)]{zamyatnin1972}
+A.~A. Zamyatnin.
+\newblock Protein volume in solution.
+\newblock \emph{Progress in Biophysics and Molecular Biology}, 24:\penalty0
+  107--123, 1972.
+\newblock \doi{10.1016/0079-6107(72)90005-3}.
+
+\bibitem[Zwanzig et~al.(1992)Zwanzig, Szabo, and Bagchi]{zwanzig1992}
+Robert Zwanzig, Attila Szabo, and Biman Bagchi.
+\newblock Levinthal's paradox.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 89\penalty0
+  (1):\penalty0 20--22, 1992.
+\newblock \doi{10.1073/pnas.89.1.20}.
+
+\end{thebibliography}

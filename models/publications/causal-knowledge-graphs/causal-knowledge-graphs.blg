@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: causal-knowledge-graphs.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 79 entries,
+            2773 wiz_defined-function locations,
+            1126 strings with 20846 characters,
+and the built_in function-call counts, 45054 in all, are:
+= -- 4006
+> -- 3239
+< -- 50
++ -- 1102
+- -- 1023
+* -- 4082
+:= -- 7174
+add.period$ -- 303
+call.type$ -- 79
+change.case$ -- 563
+chr.to.int$ -- 79
+cite$ -- 158
+duplicate$ -- 1627
+empty$ -- 3138
+format.name$ -- 1142
+if$ -- 9148
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 87
+newline$ -- 469
+num.names$ -- 316
+pop$ -- 972
+preamble$ -- 1
+purify$ -- 486
+quote$ -- 0
+skip$ -- 1344
+stack$ -- 0
+substring$ -- 1997
+swap$ -- 96
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 829
+warning$ -- 0
+while$ -- 375
+width$ -- 0
+write$ -- 1164
