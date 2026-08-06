@@ -1,65 +1,65 @@
-\contentsline {section}{\numberline {1}The container assumption}{1}{section.1}%
-\contentsline {paragraph}{Nodes without records.}{2}{section*.3}%
-\contentsline {paragraph}{Edges without assertions.}{2}{section*.4}%
-\contentsline {paragraph}{The claim.}{2}{section*.5}%
-\contentsline {paragraph}{What is derived here.}{2}{section*.6}%
-\contentsline {paragraph}{Road map.}{2}{section*.7}%
-\contentsline {part}{Part I. Propagation without assertions}{2}{part*.8}%
-\contentsline {section}{\numberline {2}Contact, medium, and the floor}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}The contact structure}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}The order condition}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Intrinsic floors and refinement}{4}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Individuation: cutting, not labelling}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Why individuation must be negative}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Identity is a region, not a point}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Records and the arrow of tracking}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Measurement and reaction are the same operation}{6}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Alignment, accountability, and freedom}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}The alignment functional}{7}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Accountability}{7}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Representation mobility}{8}{subsection.4.3}%
-\contentsline {section}{\numberline {5}The propagation table}{8}{section.5}%
-\contentsline {paragraph}{What Part I has, and what it lacks.}{9}{section*.9}%
-\contentsline {part}{Part II. Addressing without records}{9}{part*.10}%
-\contentsline {section}{\numberline {6}Entropy coordinates for biomolecular objects}{9}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Why three coordinates}{9}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Base three is the natural encoding}{10}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Amino acids: the base case}{12}{subsection.6.3}%
-\contentsline {section}{\numberline {7}The hierarchy of addresses}{13}{section.7}%
-\contentsline {section}{\numberline {8}Four operations, and the empty dictionary}{14}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Identify}{14}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Similar}{14}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Predict}{15}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}React}{15}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Storage, and the empty dictionary}{16}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}A consequence for folding}{16}{subsection.8.6}%
-\contentsline {subsection}{\numberline {8.7}What Part II has, and what it lacks}{17}{subsection.8.7}%
-\contentsline {section}{\numberline {9}The weighting is the separation}{17}{section.9}%
-\contentsline {subsection}{\numberline {9.1}What has to be derived}{17}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Fixing the profile}{18}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}The floor and the medium, identified}{19}{subsection.9.3}%
-\contentsline {section}{\numberline {10}Cuts fall on trie boundaries}{19}{section.10}%
-\contentsline {section}{\numberline {11}The catalogue and the table are one object}{22}{section.11}%
-\contentsline {section}{\numberline {12}Computational validation}{23}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Minimum cuts land on trie boundaries}{23}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}The derived weighting, and a bound distinguished from a value}{24}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Degradation when the hypothesis fails}{24}{subsection.12.3}%
-\contentsline {part}{Part IV. What the construction is for}{25}{part*.17}%
-\contentsline {section}{\numberline {13}Query semantics: retrieval and admissibility}{25}{section.13}%
-\contentsline {subsection}{\numberline {13.1}Two kinds of question}{25}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}The four operations are the query language}{27}{subsection.13.2}%
-\contentsline {section}{\numberline {14}Contact as approach, and the closing of the circle}{28}{section.14}%
-\contentsline {section}{\numberline {15}A worked instance: SOD1 and familial ALS}{29}{section.15}%
-\contentsline {subsection}{\numberline {15.1}What the curated record contains}{29}{subsection.15.1}%
-\contentsline {subsection}{\numberline {15.2}The same system as a propagation problem}{29}{subsection.15.2}%
-\contentsline {subsection}{\numberline {15.3}What the construction computes that the record does not}{29}{subsection.15.3}%
-\contentsline {section}{\numberline {16}Limits of the construction}{30}{section.16}%
-\contentsline {subsection}{\numberline {16.1}The one empirical hypothesis}{30}{subsection.16.1}%
-\contentsline {subsection}{\numberline {16.2}What is excluded from the cost accounting}{30}{subsection.16.2}%
-\contentsline {subsection}{\numberline {16.3}Two one-sided results}{31}{subsection.16.3}%
-\contentsline {subsection}{\numberline {16.4}What the paper does not attempt}{31}{subsection.16.4}%
-\contentsline {section}{\numberline {17}Discussion}{31}{section.17}%
-\contentsline {subsection}{\numberline {17.1}Relation to stored knowledge resources}{31}{subsection.17.1}%
-\contentsline {subsection}{\numberline {17.2}Relation to hierarchical clustering and ultrametrics}{32}{subsection.17.2}%
-\contentsline {subsection}{\numberline {17.3}Query semantics as the practical consequence}{32}{subsection.17.3}%
-\contentsline {section}{\numberline {18}Conclusion}{32}{section.18}%
+\contentsline {section}{\numberline {1}The container assumption}{2}{section.1}%
+\contentsline {paragraph}{Nodes without records.}{3}{section*.3}%
+\contentsline {paragraph}{Edges without assertions.}{3}{section*.4}%
+\contentsline {paragraph}{The claim.}{3}{section*.5}%
+\contentsline {paragraph}{What is derived here.}{3}{section*.6}%
+\contentsline {paragraph}{Road map.}{3}{section*.7}%
+\contentsline {part}{Part I. Propagation without assertions}{4}{part*.8}%
+\contentsline {section}{\numberline {2}Contact, medium, and the floor}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The contact structure}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The order condition}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Intrinsic floors and refinement}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Individuation: cutting, not labelling}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Why individuation must be negative}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Identity is a region, not a point}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Records and the arrow of tracking}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Measurement and reaction are the same operation}{7}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Alignment, accountability, and freedom}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The alignment functional}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Accountability}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Representation mobility}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}The propagation table}{9}{section.5}%
+\contentsline {paragraph}{What Part I has, and what it lacks.}{10}{section*.9}%
+\contentsline {part}{Part II. Addressing without records}{10}{part*.10}%
+\contentsline {section}{\numberline {6}Entropy coordinates for biomolecular objects}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Why three coordinates}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Base three is the natural encoding}{11}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Amino acids: the base case}{13}{subsection.6.3}%
+\contentsline {section}{\numberline {7}The hierarchy of addresses}{14}{section.7}%
+\contentsline {section}{\numberline {8}Four operations, and the empty dictionary}{15}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Identify}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Similar}{16}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Predict}{16}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}React}{17}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Storage, and the empty dictionary}{17}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}A consequence for folding}{18}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}What Part II has, and what it lacks}{18}{subsection.8.7}%
+\contentsline {section}{\numberline {9}The weighting is the separation}{19}{section.9}%
+\contentsline {subsection}{\numberline {9.1}What has to be derived}{19}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Fixing the profile}{19}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}The floor and the medium, identified}{20}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Cuts fall on trie boundaries}{21}{section.10}%
+\contentsline {section}{\numberline {11}The catalogue and the table are one object}{24}{section.11}%
+\contentsline {section}{\numberline {12}Computational validation}{25}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Minimum cuts land on trie boundaries}{25}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}The derived weighting, and a bound distinguished from a value}{26}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Degradation when the hypothesis fails}{26}{subsection.12.3}%
+\contentsline {part}{Part IV. What the construction is for}{27}{part*.17}%
+\contentsline {section}{\numberline {13}Query semantics: retrieval and admissibility}{27}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Two kinds of question}{27}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}The four operations are the query language}{29}{subsection.13.2}%
+\contentsline {section}{\numberline {14}Contact as approach, and the closing of the circle}{29}{section.14}%
+\contentsline {section}{\numberline {15}A worked instance: SOD1 and familial ALS}{30}{section.15}%
+\contentsline {subsection}{\numberline {15.1}What the curated record contains}{31}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}The same system as a propagation problem}{31}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}What the construction computes that the record does not}{31}{subsection.15.3}%
+\contentsline {section}{\numberline {16}Limits of the construction}{32}{section.16}%
+\contentsline {subsection}{\numberline {16.1}The one empirical hypothesis}{32}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}What is excluded from the cost accounting}{32}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}Two one-sided results}{32}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}What the paper does not attempt}{33}{subsection.16.4}%
+\contentsline {section}{\numberline {17}Discussion}{33}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Relation to stored knowledge resources}{33}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}Relation to hierarchical clustering and ultrametrics}{34}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}Query semantics as the practical consequence}{34}{subsection.17.3}%
+\contentsline {section}{\numberline {18}Conclusion}{35}{section.18}%
