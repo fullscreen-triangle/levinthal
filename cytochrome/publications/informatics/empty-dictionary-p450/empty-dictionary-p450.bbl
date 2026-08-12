@@ -1,0 +1,56 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Berman et~al.(2000)Berman, Westbrook, Feng, et~al.]{Berman2000}
+H.~M. Berman, J.~Westbrook, Z.~Feng, et~al.
+\newblock The {Protein Data Bank}.
+\newblock \emph{Nucleic Acids Research}, 28:\penalty0 235--242, 2000.
+
+\bibitem[Gaedigk et~al.(2018)]{Gaedigk2018}
+A.~Gaedigk et~al.
+\newblock The {Pharmacogene} variation ({PharmVar}) consortium: incorporation
+  of the {Human Cytochrome P450} ({CYP}) allele nomenclature database.
+\newblock \emph{Clinical Pharmacology \& Therapeutics}, 103:\penalty0 399--401,
+  2018.
+
+\bibitem[Gotoh(1992)]{Gotoh1992}
+O.~Gotoh.
+\newblock Substrate recognition sites in cytochrome {P450} family 2 proteins
+  inferred from comparative analyses of amino acid and coding nucleotide
+  sequences.
+\newblock \emph{Journal of Biological Chemistry}, 267:\penalty0 83--90, 1992.
+
+\bibitem[Kyte and Doolittle(1982)]{KyteDoolittle1982}
+J.~Kyte and R.~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157:\penalty0 105--132, 1982.
+
+\bibitem[Sachikonye(2025)]{sachikonye2025c}
+K.~F. Sachikonye.
+\newblock Causal knowledge graphs without stored edges: Derived weighting,
+  subtrie cuts, and the empty dictionary, 2025.
+\newblock Levinthal working paper.
+
+\bibitem[Spearman(1904)]{Spearman1904}
+C.~Spearman.
+\newblock The proof and measurement of association between two things.
+\newblock \emph{American Journal of Psychology}, 15:\penalty0 72--101, 1904.
+
+\bibitem[Varadi et~al.(2022)Varadi, Anyango, Deshpande, et~al.]{Varadi2022}
+M.~Varadi, S.~Anyango, M.~Deshpande, et~al.
+\newblock {AlphaFold} protein structure database: massively expanding the
+  structural coverage of protein-sequence space with high-accuracy models.
+\newblock \emph{Nucleic Acids Research}, 50:\penalty0 D439--D444, 2022.
+
+\bibitem[Zamyatnin(1972)]{Zamyatnin1972}
+A.~A. Zamyatnin.
+\newblock Protein volume in solution.
+\newblock \emph{Progress in Biophysics and Molecular Biology}, 24:\penalty0
+  107--123, 1972.
+
+\end{thebibliography}

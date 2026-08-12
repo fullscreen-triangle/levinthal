@@ -1,0 +1,115 @@
+{
+  "experiment": "02_query_without_entries",
+  "claim": "queries are answered for objects with no stored entry, by evaluation rather than retrieval, and the answers carry physicochemical content",
+  "n_train": 4,
+  "n_query": 6,
+  "resident_state_hash_before": "c7c6a8209f67d8fb5b8f4a2e047312639c1241e08a4a07391892330eccaae24d",
+  "resident_state_hash_after": "c7c6a8209f67d8fb5b8f4a2e047312639c1241e08a4a07391892330eccaae24d",
+  "resident_state_unchanged_by_queries": true,
+  "answerability": {
+    "empty_scheme_answered": 6,
+    "of": 6,
+    "control_a_dictionary_answered": 0,
+    "of_": 6,
+    "answers": [
+      {
+        "query": "CYP3A5_SRS1",
+        "answered": true,
+        "nearest": "CYP3A4_SRS1",
+        "score": 0.9444444444444444,
+        "truth": "CYP3A4_SRS1",
+        "correct": true
+      },
+      {
+        "query": "CYP2D7_SRS1",
+        "answered": true,
+        "nearest": "CYP2D6_SRS1",
+        "score": 0.9506172839506173,
+        "truth": "CYP2D6_SRS1",
+        "correct": true
+      },
+      {
+        "query": "CYP1A1_SRS4",
+        "answered": true,
+        "nearest": "CYP1A2_SRS4",
+        "score": 0.9814814814814815,
+        "truth": "CYP1A2_SRS4",
+        "correct": true
+      },
+      {
+        "query": "CYP2C19_SRS1",
+        "answered": true,
+        "nearest": "CYP2C9_SRS1",
+        "score": 0.9506172839506173,
+        "truth": "CYP2C9_SRS1",
+        "correct": true
+      },
+      {
+        "query": "CYP17A1_frag",
+        "answered": true,
+        "nearest": "CYP3A4_SRS1",
+        "score": 0.1728395061728395,
+        "truth": null,
+        "correct": null
+      },
+      {
+        "query": "CYP51A1_frag",
+        "answered": true,
+        "nearest": "CYP1A2_SRS4",
+        "score": 0.16049382716049382,
+        "truth": null,
+        "correct": null
+      }
+    ],
+    "control_a": [
+      {
+        "query": "CYP3A5_SRS1",
+        "answered": false,
+        "hit": null
+      },
+      {
+        "query": "CYP2D7_SRS1",
+        "answered": false,
+        "hit": null
+      },
+      {
+        "query": "CYP1A1_SRS4",
+        "answered": false,
+        "hit": null
+      },
+      {
+        "query": "CYP2C19_SRS1",
+        "answered": false,
+        "hit": null
+      },
+      {
+        "query": "CYP17A1_frag",
+        "answered": false,
+        "hit": null
+      },
+      {
+        "query": "CYP51A1_frag",
+        "answered": false,
+        "hit": null
+      }
+    ]
+  },
+  "task_identity_NON_DISCRIMINATING": {
+    "note": "nearest-neighbour at ~94% identity is decided by string identity; a shuffled table scores the same. Reported to document that this task does not test the claim.",
+    "real_table_accuracy": 1.0,
+    "shuffled_mean_accuracy": 1.0,
+    "empirical_p": 1.0,
+    "discriminates": false
+  },
+  "task_graded_DISCRIMINATING": {
+    "note": "Spearman rho between address distance and independent physicochemical distance over all residue pairs",
+    "n_pairs": 190,
+    "real_table_rho": 0.3823575623761997,
+    "shuffled_mean_rho": -0.003509044577878906,
+    "shuffled_max_rho": 0.2516248367064734,
+    "n_shuffles": 200,
+    "empirical_p": 0.0,
+    "discriminates": true
+  },
+  "verdict": "PASS"
+}
