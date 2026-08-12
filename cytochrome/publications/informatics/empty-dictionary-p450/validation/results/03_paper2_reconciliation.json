@@ -1,0 +1,21 @@
+{
+  "experiment": "03_paper2_reconciliation",
+  "claim": "Paper 2's O(N*k) figure measures an optional materialised cache, not the resident state; the resident state is O(1) and the cache is not load-bearing",
+  "paper2_quoted": {
+    "per_sequence_trits": 4500,
+    "per_sequence_kbits_recomputed": 7.132331253245203,
+    "per_sequence_kbits_as_stated": 7,
+    "corpus_MB_recomputed": 356.6165626622601,
+    "corpus_MB_as_stated": 350,
+    "n_sequences": 400000
+  },
+  "resident_state_bytes": 561,
+  "materialised_cache_bytes_for_test_corpus": 320.9549063960341,
+  "cache_dropped_answers_identical": true,
+  "resident_state_unaffected_by_cache": true,
+  "attribution": {
+    "'stores nothing'": "resident state (SCHEME) -- O(1)",
+    "'~350 MB for 4x10^5 sequences'": "materialised address cache (CORPUS) -- O(n), optional"
+  },
+  "verdict": "PASS"
+}

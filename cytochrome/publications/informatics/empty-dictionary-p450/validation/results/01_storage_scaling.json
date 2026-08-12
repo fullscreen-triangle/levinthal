@@ -1,0 +1,61 @@
+{
+  "experiment": "01_storage_scaling",
+  "claim": "resident state is O(1) in the number of addressable objects",
+  "resident_state_bytes": 561,
+  "resident_table_rows": 20,
+  "rows": [
+    {
+      "corpus": "single CYP3A4",
+      "n_sequences": 1,
+      "compressed_dictionary_bytes": 891.5414066556503,
+      "compressed_dictionary_MB": 0.0008915414066556504,
+      "resident_state_bytes": 561,
+      "ratio_compressed_over_resident": 1.5892003683701432
+    },
+    {
+      "corpus": "57 human isoforms",
+      "n_sequences": 57,
+      "compressed_dictionary_bytes": 50817.860179372066,
+      "compressed_dictionary_MB": 0.050817860179372065,
+      "resident_state_bytes": 561,
+      "ratio_compressed_over_resident": 90.58442099709816
+    },
+    {
+      "corpus": "PharmVar alleles",
+      "n_sequences": 300,
+      "compressed_dictionary_bytes": 267462.4219966951,
+      "compressed_dictionary_MB": 0.2674624219966951,
+      "resident_state_bytes": 561,
+      "ratio_compressed_over_resident": 476.76011051104297
+    },
+    {
+      "corpus": "UniProt P450 set",
+      "n_sequences": 400000,
+      "compressed_dictionary_bytes": 356616562.6622601,
+      "compressed_dictionary_MB": 356.6165626622601,
+      "resident_state_bytes": 561,
+      "ratio_compressed_over_resident": 635680.1473480572
+    },
+    {
+      "corpus": "hypothetical 10^7",
+      "n_sequences": 10000000,
+      "compressed_dictionary_bytes": 8915414066.556503,
+      "compressed_dictionary_MB": 8915.414066556503,
+      "resident_state_bytes": 561,
+      "ratio_compressed_over_resident": 15892003.683701431
+    },
+    {
+      "corpus": "hypothetical 10^9",
+      "n_sequences": 1000000000,
+      "compressed_dictionary_bytes": 891541406655.6504,
+      "compressed_dictionary_MB": 891541.4066556504,
+      "resident_state_bytes": 561,
+      "ratio_compressed_over_resident": 1589200368.3701434
+    }
+  ],
+  "resident_is_constant_across_corpora": true,
+  "control_compressed_is_constant": false,
+  "paper2_uniprot_MB_recomputed": 356.6165626622601,
+  "paper2_uniprot_MB_as_stated": 350,
+  "verdict": "PASS"
+}

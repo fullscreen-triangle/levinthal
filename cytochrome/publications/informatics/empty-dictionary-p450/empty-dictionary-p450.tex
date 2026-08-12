@@ -1,0 +1,628 @@
+\documentclass[11pt,twocolumn,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,hyperref,geometry,siunitx}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[version=4]{mhchem}
+\geometry{margin=2.2cm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+%% --- Shared monograph notation (Papers 1--2) -------------------------
+\newcommand{\Sk}{S_{k}}
+\newcommand{\St}{S_{t}}
+\newcommand{\Se}{S_{e}}
+\newcommand{\Sspace}{\mathcal{S}}
+\newcommand{\Scoord}{s}
+\newcommand{\Sexp}{\xi}
+\newcommand{\addr}{\mathrm{addr}}
+\newcommand{\trit}{\mathrm{trit}}
+\newcommand{\eval}{\mathrm{eval}}
+\newcommand{\Recv}{\mathcal{R}}
+\newcommand{\Tree}{\mathcal{T}}
+\newcommand{\Leaf}{\Lambda}
+\newcommand{\dcat}{d_{\mathrm{cat}}}
+\newcommand{\Depth}{\mathcal{M}}
+\newcommand{\Part}{\mathcal{P}}
+\newcommand{\dC}{d_{\mathcal{C}}}
+\newcommand{\nufloor}{\nu_{\mathrm{floor}}}
+\newcommand{\Res}{\mathcal{A}}
+\newcommand{\Sch}{\Sigma}
+\newcommand{\Cache}{\mathcal{K}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{construction}[definition]{Construction}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{example}[remark]{Example}
+
+\title{\textbf{The Empty Dictionary for Cytochrome P450:\\
+Constant Resident State, Query Without Entries,\\
+and a Correction to the Storage Claim of Paper~2}}
+
+\author{Levinthal Monograph Series --- Paper 16}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Every preceding paper of this monograph computes \emph{within} a cytochrome
+P450 evaluation: the sequence manifold, the fold, the catalytic cycle, the
+isoform taxonomy, the spectra, the pharmacogenomics. None asks whether P450
+knowledge must be \emph{stored} at all. This paper answers that question.
+We instantiate the Empty Dictionary result of \citet{sachikonye2025c}---whose
+worked case is SOD1---on cytochrome P450, in the monograph's own notation,
+and we establish two things by measurement rather than assertion. First, the
+\emph{resident state} of the P450 addressing scheme is $O(1)$ in the number
+of addressable objects: it is exactly the twenty rows of the residue
+coordinate table plus an encoding rule, and it is measured at \textbf{561
+bytes}, invariant across corpora from a single sequence to $10^{9}$. Second,
+queries---Identify, Similar, Predict---are answered for sequences that were
+never stored, by evaluating a coordinate map, with the resident state
+provably unmodified by the query batch. Two controls make these claims
+non-vacuous: a conventional exact-match dictionary answers $0/6$ of the same
+queries, and $200$ shuffled coordinate tables (same size, same address
+algebra, wrong assignment) collapse the graded physicochemical correlation
+from $\rho = 0.382$ to a mean of $-0.004$ (empirical $p < 0.005$ over $190$
+residue pairs). We then correct Paper~2 of this monograph, which invokes the
+Empty Dictionary Principle by name and, three paragraphs later, reports
+storage of $O(N \cdot k)$ trits per sequence---${\sim}350$~MB for
+$4 \times 10^{5}$ sequences. Both of Paper~2's arithmetic figures reproduce
+($7.13$ vs.\ ${\sim}7$~kbits; $356.6$ vs.\ ${\sim}350$~MB), so the
+disagreement is not arithmetical but categorial: that figure measures an
+optional materialised cache, not the resident state. We show the cache is not
+load-bearing---answers are byte-for-byte identical with it present and
+deleted---and conclude that Paper~2 describes a \emph{compressed} dictionary
+while calling it an empty one.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%% ============================================================
+\section{Introduction}
+%% ============================================================
+
+\subsection{The question the monograph has not asked}
+
+The sixteen papers preceding this one share a presupposition so uniform that
+it has never been stated. Each takes some cytochrome P450 object---a
+sequence, a fold, a catalytic intermediate, an allele---and computes a
+property of it. The presupposition is that the object is \emph{available}:
+that it has been read from somewhere, that a representation of it exists
+prior to the computation.
+
+Paper~14 comes closest to examining this. It asks whether a corrupted P450
+database can be recovered from partial ternary addresses, and answers
+quantitatively: a $70\,\%$-complete $k=6$ address carries ${\approx}6.7$
+bits against the $5.8$ needed for unique isoform identification. But the
+question is posed \emph{inside} the presupposition. A database exists; is it
+recoverable? The prior question---must there be a database?---is not asked.
+
+This paper asks it, and the answer is no.
+
+\subsection{What is being claimed, and what is not}
+
+The claim is easy to overstate, so it is worth fixing its shape before any
+machinery appears.
+
+We do \emph{not} claim that P450 sequences carry no information, that
+experimental data is dispensable, or that a laboratory can be replaced by a
+coordinate table. The sequences are real, and someone must measure them.
+
+What we claim is narrower and, we think, more interesting: the
+\emph{persistent state} required to make P450 queries answerable does not
+grow with the number of P450 objects that can be queried. A conventional
+database answers $n$ questions by holding $n$ entries. The scheme developed
+across Papers~1--2 answers them by holding a fixed table of twenty rows and
+recomputing. In the phrasing of \citet{sachikonye2025c}: the dictionary is
+empty; the laboratory is not.
+
+\subsection{A live inconsistency in the corpus}
+
+There is a second reason this paper is necessary, and it is not
+architectural but corrective.
+
+Paper~2 of this monograph---the CYP3A4 address manifold---invokes the Empty
+Dictionary Principle by name, citing \citet{sachikonye2025c}, and describes
+its own construction as ``the operational form'' of that principle. It then
+writes, three paragraphs later:
+
+\begin{quote}
+\small
+``The Empty Dictionary stores nothing; the entire content of
+$\Sexp_{\mathrm{P450}}^{\mathrm{family}}$ is the syntactic concatenation of
+addresses. Storage cost is $O(N \cdot k)$ trits per sequence. For $N = 500$
+residues and $k = 9$ trits per residue, this is $4500$ trits ${\approx}7$
+kbits per sequence; for $4 \times 10^{5}$ sequences, ${\sim}350$~MB.''
+\end{quote}
+
+``Stores nothing'' is $O(1)$. ``${\sim}350$~MB for $4 \times 10^{5}$
+sequences'' is $O(n)$. These are not the same claim, and the passage asserts
+both in five lines. Section~\ref{sec:reconcile} resolves this. The
+resolution is not that Paper~2 miscalculated---we reproduce both its figures
+to within its own stated precision---but that it attributes to the
+\emph{scheme} a cost belonging to an optional \emph{cache}.
+
+\subsection{Organisation}
+
+Part~I fixes the resident state and proves it constant. Part~II shows that
+queries are answered without entries, and---this is the part that requires
+care---that the answers carry physical content rather than arithmetic
+ceremony. Part~III reconciles Paper~2. Part~IV reports the validation, which
+is exhaustive rather than sampled, and each of whose experiments carries a
+control designed to fail if the corresponding claim were empty.
+
+%% ============================================================
+\part{The Resident State}
+%% ============================================================
+\section{What must be kept}
+\label{sec:resident}
+
+\begin{definition}[Residue coordinate table]
+\label{def:table}
+Let $\Res$ be the twenty canonical amino acids. The coordinate table is the
+map
+\[
+  \Scoord : \Res \longrightarrow [0,1]^{3},
+  \qquad
+  \Scoord(a) = (\Sk(a), \St(a), \Se(a)),
+\]
+assigning to each residue its kinetic, thermal, and electronic S-entropy
+coordinates as fixed in Paper~1.
+\end{definition}
+
+\begin{definition}[Encoding rule]
+\label{def:encoding}
+For $x \in [0,1]$ let $\trit_{j}(x)$ denote the $j$-th digit of the base-$3$
+expansion of $x$. The address of a residue at resolution $k = 3m$ is the
+interleaving
+\[
+  \addr_{k}(a) \;=\;
+  \bigl(\trit_{1}\Sk,\, \trit_{1}\St,\, \trit_{1}\Se,\;
+        \trit_{2}\Sk,\, \dots,\, \trit_{m}\Se\bigr),
+\]
+evaluated at $\Scoord(a)$. The encoding rule is the triple (base $b=3$,
+interleave order $(\Sk,\St,\Se)$, domain $[0,1]$).
+\end{definition}
+
+\begin{definition}[Scheme and cache]
+\label{def:scheme-cache}
+The \emph{scheme} $\Sch$ is the pair (coordinate table, encoding rule). A
+\emph{cache} $\Cache$ is any set of materialised addresses of specific
+objects. We say a query procedure is \emph{cache-free} if its output is a
+function of $\Sch$ and the query alone.
+\end{definition}
+
+The distinction in Definition~\ref{def:scheme-cache} is the one Paper~2
+elides, and everything in Part~III turns on it.
+
+\begin{proposition}[Resident state]
+\label{prop:resident}
+$|\Sch|$ is independent of the number of addressable objects. It is
+$20$ coordinate rows plus a fixed encoding rule.
+\end{proposition}
+
+\begin{proof}
+By Definition~\ref{def:table}, $\Scoord$ has domain $\Res$ with
+$|\Res| = 20$, a constant fixed by the genetic code and not by any corpus.
+By Definition~\ref{def:encoding}, $\addr_{k}$ is determined by $\Scoord$
+together with the encoding rule, which is three constants. No object
+outside $\Res$ appears in either definition. Hence $\Sch$ is fixed before
+any corpus is named, and $|\Sch| = O(1)$ in the number of addressable
+objects.
+\end{proof}
+
+\begin{remark}[The constant is small, but that is not the point]
+\label{rem:small}
+Serialised, $\Sch$ measures \SI{561}{\byte}
+(Table~\ref{tab:scaling}). The number is unremarkable; what matters is its
+\emph{invariance}. A scheme occupying a gigabyte but not growing with the
+corpus would make the same claim. Experiment~01 therefore tests constancy
+across six corpora spanning nine orders of magnitude, not smallness.
+\end{remark}
+
+\begin{corollary}[Addressability without enumeration]
+\label{cor:addressable}
+Every sequence over $\Res$ is addressable under $\Sch$, including sequences
+that have never been observed. The set of addressable objects is
+$\Res^{*}$, which is countably infinite, while $|\Sch|$ is finite.
+\end{corollary}
+
+\begin{proof}
+Immediate from Definition~\ref{def:encoding}: $\addr_{k}$ is total on
+$\Res$, and its extension to sequences is positionwise. Nothing in the
+construction consults a list of known sequences.
+\end{proof}
+
+Corollary~\ref{cor:addressable} is where the departure from a database
+becomes sharp. A database's addressable set is its key set, and grows only
+by insertion. Here the addressable set is fixed at $\Res^{*}$ from the
+outset and cannot be grown, because it is already everything.
+
+\paragraph{What Part~I has, and what it lacks.}
+Part~I establishes that the resident state is constant, and that the
+addressable set is unbounded. It establishes nothing whatever about whether
+the addresses are \emph{useful}. A scheme mapping every residue to the same
+constant would satisfy Proposition~\ref{prop:resident} and
+Corollary~\ref{cor:addressable} exactly, while answering no question at all.
+Part~II supplies what is missing.
+
+%% ============================================================
+\part{Query Without Entries}
+%% ============================================================
+\section{Answering unstored questions}
+\label{sec:query}
+
+\begin{definition}[The three queries]
+\label{def:queries}
+For sequences $u, v \in \Res^{*}$:
+\begin{itemize}
+  \item \textsc{Identify}$(u)$: return $\addr_{k}(u)$.
+  \item \textsc{Similar}$(u,v)$: return
+    $\sigma(u,v) = \frac{1}{nk}\sum_{i=1}^{n} \ell\bigl(\addr_{k}(u_{i}),
+    \addr_{k}(v_{i})\bigr)$, where $\ell$ is longest common prefix length
+    and $n = \min(|u|,|v|)$.
+  \item \textsc{Predict}$(u; \mathcal{C})$: return
+    $\arg\max_{c \in \mathcal{C}} \sigma(u,c)$ for a reference set
+    $\mathcal{C}$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Empty dictionary, P450 instance]
+\label{thm:empty}
+Each query of Definition~\ref{def:queries} is cache-free in the sense of
+Definition~\ref{def:scheme-cache}, and its evaluation leaves $\Sch$
+unmodified.
+\end{theorem}
+
+\begin{proof}
+\textsc{Identify} is the positionwise application of $\addr_{k}$, which by
+Definition~\ref{def:encoding} reads only $\Scoord$ and the encoding rule.
+\textsc{Similar} is a function of two \textsc{Identify} outputs and $\ell$,
+a pure function on trit strings. \textsc{Predict} is an $\arg\max$ over
+finitely many \textsc{Similar} evaluations. Hence all three are functions of
+$\Sch$ and their arguments alone. None contains a write to $\Scoord$ or to
+the encoding rule, so $\Sch$ is unmodified.
+\end{proof}
+
+\begin{corollary}[No entry required]
+\label{cor:no-entry}
+The queries are answerable for $u$ never previously observed.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:empty} the output depends on $u$ only through
+$\addr_{k}(u)$, which is total on $\Res^{*}$ by
+Corollary~\ref{cor:addressable}.
+\end{proof}
+
+\subsection{Content, not ceremony}
+\label{sec:content}
+
+Theorem~\ref{thm:empty} is a statement about \emph{plumbing}. It says the
+queries do not read a cache. It does not say the answers mean anything, and
+here we must be careful, because a scheme can satisfy
+Theorem~\ref{thm:empty} perfectly while computing nothing of interest---the
+constant map again.
+
+The substantive claim is that address proximity tracks physicochemical
+proximity. Testing it requires a task that a \emph{wrong} table would fail.
+Our first attempt used one that would not, and the failure is instructive
+enough to record in the manuscript rather than the appendix.
+
+\begin{remark}[A control that refused to fail]
+\label{rem:control-refused}
+Experiment~02 originally posed \textsc{Predict} over closely related P450
+substrate-recognition-site fragments~\citep{Gotoh1992}: given a CYP3A5
+fragment, find its nearest CYP3A4 relative. The real table scored $1.00$.
+So did a \emph{shuffled} table---same twenty rows, permuted assignment,
+wrong physics---also $1.00$, with empirical $p = 1.000$.
+
+The claim was not thereby refuted; the task was defective. The fragments sit
+at ${\approx}94\,\%$ identity, so the nearest neighbour is determined by
+string identity alone. \emph{Any} injective residue$\to$address map ranks the
+near-identical pair first, whether its coordinates encode hydrophobicity or
+a telephone directory. A task decided by identity cannot discriminate
+physics from bookkeeping.
+
+We report this because a control that cannot fail is not a control, and a
+reader has no way to tell the two apart from a table of successes. The
+non-discriminating task is retained in the output under
+\texttt{task\_identity\_NON\_DISCRIMINATING}, carrying its own $p = 1.000$.
+\end{remark}
+
+The replacement task is graded rather than categorical. Let $\pi(a,b)$ be a
+reference physicochemical distance built from Kyte--Doolittle
+hydropathy~\citep{KyteDoolittle1982}, side-chain
+volume~\citep{Zamyatnin1972}, and formal charge---three scales external to
+the scheme and used nowhere in it---and let
+\[
+  \delta(a,b) \;=\; 1 - \tfrac{1}{k}\,\ell\bigl(\addr_{k}(a), \addr_{k}(b)\bigr)
+\]
+be address separation.
+
+\begin{proposition}[Graded correlation]
+\label{prop:graded}
+Over all $\binom{20}{2} = 190$ residue pairs, $\delta$ and $\pi$ are rank
+correlated~\citep{Spearman1904} at $\rho = 0.382$. Under $200$ random
+permutations of the coordinate table, mean $\rho = -0.004$ with maximum
+$0.252$; no permutation attains the observed value, giving empirical
+$p < 0.005$.
+\end{proposition}
+
+\begin{proof}[Measurement]
+Experiment~02, exhaustive over pairs rather than sampled. See
+Table~\ref{tab:query}.
+\end{proof}
+
+\begin{remark}[On the size of $\rho$]
+\label{rem:rho-honest}
+$\rho = 0.382$ is a moderate correlation, and we decline to describe it as
+more. Two things bound it from above. The interleaved address is a
+\emph{lexicographic} object: a residue pair differing in the first trit of
+$\Sk$ shares no prefix at all, however close in volume, so $\delta$ is a
+coarsened and discontinuous function of coordinate distance by construction.
+And $\pi$ weights three scales equally, which no physical argument compels.
+The claim supported is that the coordinate assignment carries
+physicochemical information no permutation of it reproduces---the separation
+from the null is unambiguous---not that $\delta$ is a good metric for
+physicochemical distance. It is not.
+\end{remark}
+
+\paragraph{What Part~II has, and what it lacks.}
+Part~II establishes that queries are answered without entries
+(Theorem~\ref{thm:empty}), and that the answers depend on the specific
+coordinate assignment rather than on any injective relabelling
+(Proposition~\ref{prop:graded}). It does not establish that the scheme
+answers \emph{as well as} a database would. On tasks where a database holds
+the exact answer, retrieval wins whenever the object was stored;
+Corollary~\ref{cor:no-entry} concerns the complementary case, and the
+comparison in Table~\ref{tab:query} is confined to it.
+
+%% ============================================================
+\part{Reconciliation with Paper~2}
+%% ============================================================
+\section{Which quantity is \texorpdfstring{$350$}{350}~MB?}
+\label{sec:reconcile}
+
+We first confirm that no arithmetic is in dispute.
+
+\begin{proposition}[Paper~2's figures reproduce]
+\label{prop:p2-arith}
+With $N = 500$, $k = 9$, and $4 \times 10^{5}$ sequences, packing trits at
+the information-theoretic limit $\log_{2} 3$ bits each gives $7.13$~kbits
+per sequence and $356.6$~MB for the corpus, against Paper~2's stated
+${\approx}7$~kbits and ${\sim}350$~MB.
+\end{proposition}
+
+\begin{proof}[Measurement]
+Experiment~03. Both agree to within Paper~2's stated precision, so the
+disagreement below is not arithmetical.
+\end{proof}
+
+\begin{theorem}[Attribution]
+\label{thm:attribution}
+Paper~2's $O(N \cdot k)$ figure measures $|\Cache|$ for a corpus cache, not
+$|\Sch|$. Under Definition~\ref{def:scheme-cache} these are different
+objects, and only the latter is the resident state.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:resident}, $|\Sch| = O(1)$ and is fixed before any
+corpus is named; the quantity $4500$ trits is indexed by a \emph{sequence},
+hence cannot be a measurement of $\Sch$. It is by construction the size of
+the materialised address of one object, i.e.\ a cache entry. Summing over
+$4 \times 10^{5}$ objects yields $|\Cache|$, which is $O(n)$.
+\end{proof}
+
+\begin{proposition}[The cache is not load-bearing]
+\label{prop:cache-optional}
+Let $A_{\Cache}$ and $A_{\emptyset}$ be the answers to the full query set
+with the cache materialised and deleted respectively. Then
+$A_{\Cache} = A_{\emptyset}$ byte for byte, and $|\Sch|$ is unchanged by
+either.
+\end{proposition}
+
+\begin{proof}[Measurement]
+Experiment~03, which runs both and compares serialisations. The equality is
+forced by Theorem~\ref{thm:empty}---no query reads $\Cache$---but is
+measured rather than assumed, because the theorem constrains the
+\emph{definition} of the queries and not their implementation.
+\end{proof}
+
+\begin{remark}[What Paper~2 should say]
+\label{rem:p2-fix}
+Paper~2's sentence ``The Empty Dictionary stores nothing $\dots$ storage cost
+is $O(N \cdot k)$ trits per sequence'' conflates the two. The corrected
+statement separates them:
+
+\begin{quote}
+\small
+The scheme stores nothing about any sequence: its resident state is the
+twenty-row coordinate table and the encoding rule, \SI{561}{\byte},
+independent of corpus size. \emph{Should one choose} to materialise
+addresses for a fixed corpus---an optional cache, not a precondition for
+querying---that cache costs $O(N \cdot k)$ trits per sequence,
+${\sim}350$~MB for $4 \times 10^{5}$ sequences, five orders of magnitude
+below the corresponding structural
+representation~\citep{Berman2000,Varadi2022}.
+\end{quote}
+
+The compression claim against PDB and AlphaFold-DB survives intact; it was
+always a claim about the cache, and it is a good one. What does not survive
+is calling that cache an empty dictionary. A $350$~MB artefact whose size is
+proportional to the corpus is a \emph{compressed} dictionary. The
+distinction is not pedantic: a compressed dictionary cannot answer for an
+object outside it, and Corollary~\ref{cor:no-entry} can.
+\end{remark}
+
+\begin{remark}[The honest form of the claim]
+\label{rem:empty-honest}
+Stated without inflation: storage is $O(1)$ where a database is $O(n)$, and
+this is bought by recomputation, not by cleverness about compression. Every
+query pays $O(Nk)$ arithmetic it would not pay against an index. For a
+corpus that is fixed, small, and queried often, the database is simply
+better, and nothing here argues otherwise. The regime where the empty scheme
+wins is the one where the query set is not known in advance---which, for the
+$>300$ PharmVar alleles~\citep{Gaedigk2018} and the open-ended space of
+engineered P450 variants, is the usual regime.
+
+And the coordinates themselves came from measurement. Twenty rows had to be
+determined experimentally before any of this could run. The dictionary is
+empty; the laboratory is not.
+\end{remark}
+
+\paragraph{What Part~III has, and what it lacks.}
+Part~III attributes each of Paper~2's two sentences to a distinct quantity
+and shows by measurement that the larger one is optional. It does not
+propose an erratum procedure for the monograph, and it does not re-derive
+Paper~2's compression comparison against PDB, which we accept as stated.
+
+%% ============================================================
+\part{Validation}
+%% ============================================================
+\section{Design}
+\label{sec:validation}
+
+Three experiments. Each is exhaustive over its domain rather than sampled,
+and each carries a control constructed so that it would \emph{fail} if the
+claim under test were empty. Controls that cannot fail are worth nothing,
+which is the lesson of Remark~\ref{rem:control-refused}.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Experiment 01 --- resident state against corpus size. The resident
+column is the claim; the cache column is the control, which must grow.}
+\label{tab:scaling}
+\begin{tabular}{lrrr}
+\toprule
+Corpus & $n$ & Cache (MB) & $\Sch$ (B) \\
+\midrule
+Single CYP3A4      & $1$                & $0.001$      & $561$ \\
+Human isoforms     & $57$               & $0.051$      & $561$ \\
+PharmVar alleles   & $300$              & $0.267$      & $561$ \\
+UniProt P450 set   & $4\times10^{5}$    & $356.6$      & $561$ \\
+Hypothetical       & $10^{7}$           & $8915.4$     & $561$ \\
+Hypothetical       & $10^{9}$           & $891541.4$   & $561$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The resident column is constant across nine orders of magnitude; the control
+column spans six. Had both been constant, the comparison would have been
+empty.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Experiment 02 --- query without entries, with two controls.}
+\label{tab:query}
+\begin{tabular}{lr}
+\toprule
+Measurement & Value \\
+\midrule
+Queries answered, empty scheme        & $6/6$ \\
+Queries answered, control A (index)   & $0/6$ \\
+$\Sch$ unchanged by query batch       & yes \\
+\midrule
+Graded task, real table $\rho$        & $0.382$ \\
+Control B, mean $\rho$ ($200$ shuffles) & $-0.004$ \\
+Control B, max $\rho$                 & $0.252$ \\
+Empirical $p$                         & $<0.005$ \\
+Residue pairs                         & $190$ \\
+\midrule
+Identity task, real table             & $1.00$ \\
+Identity task, shuffled mean          & $1.00$ \\
+Identity task, empirical $p$          & $1.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The last three rows are the non-discriminating task of
+Remark~\ref{rem:control-refused}, reported rather than discarded. Their
+$p = 1.000$ is the signature of a task that tests nothing, and it is worth
+having on the page next to the $p < 0.005$ of one that does.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Experiment 03 --- reconciliation with Paper~2.}
+\label{tab:reconcile}
+\begin{tabular}{lr}
+\toprule
+Measurement & Value \\
+\midrule
+Paper~2 per sequence, recomputed  & $7.13$ kbits \\
+Paper~2 per sequence, as stated   & ${\approx}7$ kbits \\
+Paper~2 corpus, recomputed        & $356.6$ MB \\
+Paper~2 corpus, as stated         & ${\sim}350$ MB \\
+Resident state $|\Sch|$           & \SI{561}{\byte} \\
+Answers with vs.\ without cache   & identical \\
+$|\Sch|$ affected by cache        & no \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Scope of the validation]
+\label{rem:validation-scope}
+Three limits, stated plainly. The query corpus is ten P450 fragments, not a
+proteome: it is large enough to separate the empty scheme from an index
+($6/6$ against $0/6$) and no larger, and the answerability claim is
+structural rather than statistical. The graded task uses three
+physicochemical scales chosen before the correlation was computed but not
+pre-registered. And every experiment tests the scheme against \emph{itself}
+under permutation, not against an external method; nothing here shows the
+addressing is better than BLAST at anything, and no such claim is made.
+\end{remark}
+
+\paragraph{What Part~IV has, and what it lacks.}
+Part~IV supplies measured values for every number asserted in Parts~I--III,
+with controls that failed informatively in one case and were replaced. It
+supplies no comparison against established sequence-analysis tooling, and
+its corpus is small.
+
+%% ============================================================
+\section{Conclusion}
+%% ============================================================
+
+The seventeenth paper of this monograph asks the question the other sixteen
+presuppose away: whether P450 knowledge must be stored. It need not. The
+resident state of the addressing scheme is twenty rows and an encoding rule,
+\SI{561}{\byte}, constant from one sequence to $10^{9}$, and the three
+queries of Definition~\ref{def:queries} are answered for objects that were
+never entered---$6/6$ where an exact-match index answers $0/6$---with the
+resident state provably and measurably unmodified.
+
+The answers carry physical content, and we established this only after a
+first control refused to fail. That episode is left in the manuscript
+deliberately. The graded correlation $\rho = 0.382$, which no permutation out
+of $200$ reproduces, is a modest number honestly obtained; the perfect $1.00$
+it replaced was a strong number that meant nothing.
+
+Finally, Paper~2's storage passage is corrected. Its arithmetic is right and
+reproduces to its stated precision; its attribution is wrong. The
+${\sim}350$~MB it reports is an optional cache, demonstrably not
+load-bearing, and not the resident state. Paper~2 describes a compressed
+dictionary and calls it an empty one. The compression claim against
+structural databases stands; the identification with the Empty Dictionary
+Principle does not, because a compressed dictionary cannot answer for what
+it does not contain, and this scheme can.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
