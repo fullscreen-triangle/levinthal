@@ -1,0 +1,114 @@
+{
+  "paper": "Why Enzymes Exist: Catalysis as Categorical Provision Upon Contact",
+  "run_utc": "2026-08-29T00:23:22Z",
+  "offline": true,
+  "modules": [
+    {
+      "module": "v1_abstract_system",
+      "description": "Abstract system: category/residue independence",
+      "status": "ok",
+      "counts": {
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v2_floor_and_orthogonality",
+      "description": "Floor positivity/uniformity; configurational-kinetic orthogonality",
+      "status": "ok",
+      "counts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v3_haldane_closure",
+      "description": "Haldane closure; equilibrium invariance (P1)",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v4_specificity_window",
+      "description": "Bounded specificity window (P2)",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 1
+      }
+    },
+    {
+      "module": "v5_aperture_counting",
+      "description": "Aperture counting and efficiency law (P3, P4)",
+      "status": "ok",
+      "counts": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v9_inhibition_taxonomy",
+      "description": "Inhibition dichotomy (P5)",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v8_database_scale_analysis",
+      "description": "Scale analysis over KEGG/Reactome (P7 context)",
+      "status": "ok",
+      "counts": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "non_discriminating": 1,
+        "descriptive": 1
+      }
+    }
+  ],
+  "tally": {
+    "passed": 28,
+    "failed": 1,
+    "skipped": 0,
+    "non_discriminating": 1,
+    "descriptive": 2
+  },
+  "scored_tests": 29,
+  "pass_rate_of_scored": 0.9655172413793104,
+  "failures": [
+    {
+      "module": "v8_database_scale_analysis",
+      "test": "V8.4 CONTROL: common metabolites vs delocalised motifs"
+    }
+  ],
+  "non_discriminating": [
+    {
+      "module": "v8_database_scale_analysis",
+      "test": "V8.3 delocalised motifs recur across enzymes (KEGG)",
+      "reason": "control shows no separation"
+    }
+  ],
+  "elapsed_seconds": 3.3
+}

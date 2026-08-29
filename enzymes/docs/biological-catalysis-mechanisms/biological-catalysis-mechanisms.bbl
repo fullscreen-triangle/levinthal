@@ -1,0 +1,214 @@
+\begin{thebibliography}{34}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abeles and Maycock(1976)]{abeles1976}
+Robert~H. Abeles and Alan~L. Maycock.
+\newblock Suicide enzyme inactivators.
+\newblock \emph{Accounts of Chemical Research}, 9\penalty0 (8):\penalty0
+  313--319, 1976.
+
+\bibitem[Alberty(1953)]{alberty1953}
+Robert~A. Alberty.
+\newblock The relationship between michaelis constants, maximum velocities and
+  the equilibrium constant for an enzyme-catalyzed reaction.
+\newblock \emph{Journal of the American Chemical Society}, 75\penalty0
+  (8):\penalty0 1928--1932, 1953.
+
+\bibitem[Albery and Knowles(1976)]{albery1976}
+W.~John Albery and Jeremy~R. Knowles.
+\newblock Evolution of enzyme function and the development of catalytic
+  efficiency.
+\newblock \emph{Biochemistry}, 15\penalty0 (25):\penalty0 5631--5640, 1976.
+
+\bibitem[Bar-Even et~al.(2011)Bar-Even, Noor, Savir, Liebermeister, Davidi,
+  Tawfik, and Milo]{barevenn2011}
+Arren Bar-Even, Elad Noor, Yonatan Savir, Wolfram Liebermeister, Dan Davidi,
+  Dan~S. Tawfik, and Ron Milo.
+\newblock The moderately efficient enzyme: Evolutionary and physicochemical
+  trends shaping enzyme parameters.
+\newblock \emph{Biochemistry}, 50\penalty0 (21):\penalty0 4402--4410, 2011.
+
+\bibitem[Bennett(1982)]{bennett1982}
+Charles~H. Bennett.
+\newblock The thermodynamics of computation---a review.
+\newblock \emph{International Journal of Theoretical Physics}, 21\penalty0
+  (12):\penalty0 905--940, 1982.
+
+\bibitem[Boltzmann(1877)]{boltzmann1877}
+Ludwig Boltzmann.
+\newblock Uber die beziehung zwischen dem zweiten hauptsatze der mechanischen
+  warmetheorie und der wahrscheinlichkeitsrechnung.
+\newblock \emph{Wiener Berichte}, 76:\penalty0 373--435, 1877.
+
+\bibitem[Cornish-Bowden(1979)]{cornish1979}
+Athel Cornish-Bowden.
+\newblock \emph{Fundamentals of Enzyme Kinetics}.
+\newblock Butterworths, London, 1979.
+
+\bibitem[Deamer(2017)]{deamer2017}
+David Deamer.
+\newblock The role of lipid membranes in life's origin.
+\newblock \emph{Life}, 7\penalty0 (1):\penalty0 5, 2017.
+
+\bibitem[Eigen(1971)]{eigen1971}
+Manfred Eigen.
+\newblock Selforganization of matter and the evolution of biological
+  macromolecules.
+\newblock \emph{Naturwissenschaften}, 58\penalty0 (10):\penalty0 465--523,
+  1971.
+
+\bibitem[Eyring(1935)]{eyring1935}
+Henry Eyring.
+\newblock The activated complex in chemical reactions.
+\newblock \emph{Journal of Chemical Physics}, 3\penalty0 (2):\penalty0
+  107--115, 1935.
+
+\bibitem[Fischer(1894)]{fischer1894}
+Emil Fischer.
+\newblock Einfluss der configuration auf die wirkung der enzyme.
+\newblock \emph{Berichte der deutschen chemischen Gesellschaft}, 27\penalty0
+  (3):\penalty0 2985--2993, 1894.
+
+\bibitem[Gibbs(1902)]{gibbs1902}
+Josiah~Willard Gibbs.
+\newblock \emph{Elementary Principles in Statistical Mechanics}.
+\newblock Charles Scribner's Sons, New York, 1902.
+
+\bibitem[Gilbert(1986)]{gilbert1986}
+Walter Gilbert.
+\newblock The {RNA} world.
+\newblock \emph{Nature}, 319:\penalty0 618, 1986.
+
+\bibitem[Guerrier-Takada et~al.(1983)Guerrier-Takada, Gardiner, Marsh, Pace,
+  and Altman]{guerrier1983}
+Cecilia Guerrier-Takada, Katheleen Gardiner, Terry Marsh, Norman Pace, and
+  Sidney Altman.
+\newblock The {RNA} moiety of ribonuclease {P} is the catalytic subunit of the
+  enzyme.
+\newblock \emph{Cell}, 35\penalty0 (3):\penalty0 849--857, 1983.
+
+\bibitem[Haldane(1930)]{haldane1930}
+John B.~S. Haldane.
+\newblock \emph{Enzymes}.
+\newblock Longmans, Green and Co., London, 1930.
+
+\bibitem[Jencks(1975)]{jencks1975}
+William~P. Jencks.
+\newblock Binding energy, specificity, and enzymic catalysis: The circe effect.
+\newblock \emph{Advances in Enzymology}, 43:\penalty0 219--410, 1975.
+
+\bibitem[Kauffman(1986)]{kauffman1986}
+Stuart~A. Kauffman.
+\newblock Autocatalytic sets of proteins.
+\newblock \emph{Journal of Theoretical Biology}, 119\penalty0 (1):\penalty0
+  1--24, 1986.
+
+\bibitem[Knowles and Albery(1977)]{knowles1977}
+Jeremy~R. Knowles and W.~John Albery.
+\newblock Perfection in enzyme catalysis: The energetics of triosephosphate
+  isomerase.
+\newblock \emph{Accounts of Chemical Research}, 10\penalty0 (4):\penalty0
+  105--111, 1977.
+
+\bibitem[Koshland(1958)]{koshland1958}
+Daniel~E. Koshland.
+\newblock Application of a theory of enzyme specificity to protein synthesis.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 44\penalty0
+  (2):\penalty0 98--104, 1958.
+
+\bibitem[Kruger et~al.(1982)Kruger, Grabowski, Zaug, Sands, Gottschling, and
+  Cech]{kruger1982}
+Kelly Kruger, Paula~J. Grabowski, Arthur~J. Zaug, Julie Sands, Daniel~E.
+  Gottschling, and Thomas~R. Cech.
+\newblock Self-splicing {RNA}: Autoexcision and autocyclization of the
+  ribosomal {RNA} intervening sequence of {Tetrahymena}.
+\newblock \emph{Cell}, 31\penalty0 (1):\penalty0 147--157, 1982.
+
+\bibitem[Landauer(1961)]{landauer1961}
+Rolf Landauer.
+\newblock Irreversibility and heat generation in the computing process.
+\newblock \emph{IBM Journal of Research and Development}, 5\penalty0
+  (3):\penalty0 183--191, 1961.
+
+\bibitem[Martin et~al.(2008)Martin, Baross, Kelley, and Russell]{martin2008}
+William Martin, John Baross, Deborah Kelley, and Michael~J. Russell.
+\newblock Hydrothermal vents and the origin of life.
+\newblock \emph{Nature Reviews Microbiology}, 6\penalty0 (11):\penalty0
+  805--814, 2008.
+
+\bibitem[Maxwell(1871)]{maxwell1871}
+James~Clerk Maxwell.
+\newblock \emph{Theory of Heat}.
+\newblock Longmans, Green, and Co., London, 1871.
+
+\bibitem[Mitchell(1961)]{mitchell1961}
+Peter Mitchell.
+\newblock Coupling of phosphorylation to electron and hydrogen transfer by a
+  chemi-osmotic type of mechanism.
+\newblock \emph{Nature}, 191:\penalty0 144--148, 1961.
+
+\bibitem[Monod et~al.(1965)Monod, Wyman, and Changeux]{monod1965}
+Jacques Monod, Jeffries Wyman, and Jean-Pierre Changeux.
+\newblock On the nature of allosteric transitions: A plausible model.
+\newblock \emph{Journal of Molecular Biology}, 12\penalty0 (1):\penalty0
+  88--118, 1965.
+
+\bibitem[Orgel(2004)]{orgel2004}
+Leslie~E. Orgel.
+\newblock Prebiotic chemistry and the origin of the {RNA} world.
+\newblock \emph{Critical Reviews in Biochemistry and Molecular Biology},
+  39\penalty0 (2):\penalty0 99--123, 2004.
+
+\bibitem[Pauling(1946)]{pauling1946}
+Linus Pauling.
+\newblock Molecular architecture and biological reactions.
+\newblock \emph{Chemical and Engineering News}, 24\penalty0 (10):\penalty0
+  1375--1377, 1946.
+
+\bibitem[Radzicka and Wolfenden(1995)]{radzicka1995}
+Anna Radzicka and Richard Wolfenden.
+\newblock A proficient enzyme.
+\newblock \emph{Science}, 267\penalty0 (5194):\penalty0 90--93, 1995.
+
+\bibitem[Schramm(2011)]{schramm2011}
+Vern~L. Schramm.
+\newblock Enzymatic transition states, transition-state analogs, dynamics,
+  thermodynamics, and lifetimes.
+\newblock \emph{Annual Review of Biochemistry}, 80:\penalty0 703--732, 2011.
+
+\bibitem[Silverman(1995)]{silverman1995}
+Richard~B. Silverman.
+\newblock Mechanism-based enzyme inactivators.
+\newblock \emph{Methods in Enzymology}, 249:\penalty0 240--283, 1995.
+
+\bibitem[Szilard(1929)]{szilard1929}
+Leo Szilard.
+\newblock On the decrease of entropy in a thermodynamic system by the
+  intervention of intelligent beings.
+\newblock \emph{Zeitschrift fur Physik}, 53\penalty0 (11--12):\penalty0
+  840--856, 1929.
+
+\bibitem[Wachtershauser(1988)]{wachtershauser1988}
+Gunter Wachtershauser.
+\newblock Before enzymes and templates: Theory of surface metabolism.
+\newblock \emph{Microbiological Reviews}, 52\penalty0 (4):\penalty0 452--484,
+  1988.
+
+\bibitem[Warshel et~al.(2006)Warshel, Sharma, Kato, Xiang, Liu, and
+  Olsson]{warshel2006}
+Arieh Warshel, Pankaz~K. Sharma, Mitsunori Kato, Yun Xiang, Hanbin Liu, and
+  Mats H.~M. Olsson.
+\newblock Electrostatic basis for enzyme catalysis.
+\newblock \emph{Chemical Reviews}, 106\penalty0 (8):\penalty0 3210--3235, 2006.
+
+\bibitem[Wolfenden and Snider(2001)]{wolfenden2001}
+Richard Wolfenden and Mark~J. Snider.
+\newblock The depth of chemical time and the power of enzymes as catalysts.
+\newblock \emph{Accounts of Chemical Research}, 34\penalty0 (12):\penalty0
+  938--945, 2001.
+
+\end{thebibliography}

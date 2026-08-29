@@ -1,0 +1,94 @@
+{
+  "script": "v4_specificity_window.py",
+  "prediction": "P2 bounded specificity",
+  "n_enzymes_in_table": 30,
+  "tests": [
+    {
+      "test": "V4.1 efficiency bounded above",
+      "n_enzymes": 30,
+      "diffusion_limit_log10": 9.0,
+      "max_log10_efficiency_observed": 9.443697499232712,
+      "n_below_diffusion_limit": 29,
+      "fraction_below_diffusion_limit": 0.9666666666666667,
+      "median_log10_efficiency": 6.088045629527841,
+      "mean_log10_efficiency": 6.1663871393003555,
+      "passed": true,
+      "interpretation": "Most enzymes sit well below the physical ceiling. The framework predicts this: efficiency is bounded by release, not only by diffusion."
+    },
+    {
+      "test": "V4.2 affinity bounded (release requirement)",
+      "n_enzymes": 30,
+      "min_log10_KM": -5.301029995663981,
+      "max_log10_KM": 0.04139268515822508,
+      "median_log10_KM": -4.0,
+      "trap_threshold_log10_KM": -9.0,
+      "n_enzymes_below_trap_threshold": 0,
+      "passed": true,
+      "interpretation": "No catalytically competent enzyme in the sample binds so tightly that release would be compromised.  A population of active enzymes with sub-nanomolar KM would falsify the release bound."
+    },
+    {
+      "test": "V4.3 DISCRIMINATION: window vs unbounded surrogate",
+      "observed_window_fraction": 0.9666666666666667,
+      "observed_bootstrap_CI95": [
+        0.9,
+        1.0
+      ],
+      "surrogate_window_fraction": 0.6194,
+      "n_surrogate": 5000,
+      "statistic_separates": true,
+      "passed": true,
+      "interpretation": "The surrogate is the world in which the window claim is false. If the observed fraction were indistinguishable from it, the claim would be untestable on this data.  It is distinguishable."
+    },
+    {
+      "test": "V4.4 efficiency distribution (reported, not scored)",
+      "n": 30,
+      "log10_efficiency_sorted": [
+        3.222,
+        3.826,
+        4.222,
+        4.301,
+        4.699,
+        4.921,
+        5.0,
+        5.0,
+        5.18,
+        5.23,
+        5.398,
+        5.477,
+        5.602,
+        5.903,
+        6.0,
+        6.176,
+        6.222,
+        6.477,
+        6.495,
+        6.778,
+        6.824,
+        6.961,
+        7.301,
+        7.561,
+        7.921,
+        8.0,
+        8.192,
+        8.204,
+        8.455,
+        9.444
+      ],
+      "percentiles": {
+        "p05": 4.00389868249884,
+        "p25": 5.045114016114533,
+        "p50": 6.088045629527841,
+        "p75": 7.216115146158954,
+        "p95": 8.342018665199847
+      },
+      "range_decades": 6.221848749616356,
+      "passed": true,
+      "note": "descriptive only; carries no pass/fail weight"
+    }
+  ],
+  "summary": {
+    "n_scored": 3,
+    "n_passed": 3,
+    "all_passed": true
+  }
+}

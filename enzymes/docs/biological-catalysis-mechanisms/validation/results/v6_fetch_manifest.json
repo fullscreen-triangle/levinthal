@@ -1,0 +1,27 @@
+{
+  "script": "v6_fetch_reaction_data.py",
+  "retrieved_utc": "2026-08-29T00:13:33Z",
+  "sources": {
+    "kegg": {
+      "endpoint": "https://rest.kegg.jp",
+      "n_reactions_total": 12478,
+      "n_ec_parsed": 399,
+      "from_cache": true,
+      "cache_files": [
+        "cache/kegg_enzymes.json",
+        "cache/kegg_reactions.json"
+      ]
+    },
+    "reactome": {
+      "endpoint": "https://reactome.org/ContentService",
+      "database_version": "97",
+      "n_top_pathways": 29,
+      "n_pathways_traversed": 25,
+      "n_reactions_retrieved": 990,
+      "cache_files": [
+        "cache/reactome_pathways.json",
+        "cache/reactome_reactions.json"
+      ]
+    }
+  }
+}

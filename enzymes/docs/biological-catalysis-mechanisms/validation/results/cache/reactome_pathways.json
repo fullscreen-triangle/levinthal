@@ -1,0 +1,147 @@
+[
+  {
+    "stId": "R-HSA-9612973",
+    "displayName": "Autophagy",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1640170",
+    "displayName": "Cell Cycle",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1500931",
+    "displayName": "Cell-Cell communication",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-8953897",
+    "displayName": "Cellular responses to stimuli",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-4839726",
+    "displayName": "Chromatin organization",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-9909396",
+    "displayName": "Circadian clock",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1266738",
+    "displayName": "Developmental Biology",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-8963743",
+    "displayName": "Digestion and absorption",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1643685",
+    "displayName": "Disease",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-73894",
+    "displayName": "DNA Repair",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-69306",
+    "displayName": "DNA Replication",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-9748784",
+    "displayName": "Drug ADME",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1474244",
+    "displayName": "Extracellular matrix organization",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-74160",
+    "displayName": "Gene expression (Transcription)",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-109582",
+    "displayName": "Hemostasis",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-168256",
+    "displayName": "Immune System",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1430728",
+    "displayName": "Metabolism",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-392499",
+    "displayName": "Metabolism of proteins",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-8953854",
+    "displayName": "Metabolism of RNA",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-397014",
+    "displayName": "Muscle contraction",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-112316",
+    "displayName": "Neuronal System",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1852241",
+    "displayName": "Organelle biogenesis and maintenance",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-5357801",
+    "displayName": "Programmed Cell Death",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-9609507",
+    "displayName": "Protein localization",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-1474165",
+    "displayName": "Reproduction",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-9709957",
+    "displayName": "Sensory Perception",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-162582",
+    "displayName": "Signal Transduction",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-382551",
+    "displayName": "Transport of small molecules",
+    "speciesName": "Homo sapiens"
+  },
+  {
+    "stId": "R-HSA-5653656",
+    "displayName": "Vesicle-mediated transport",
+    "speciesName": "Homo sapiens"
+  }
+]
