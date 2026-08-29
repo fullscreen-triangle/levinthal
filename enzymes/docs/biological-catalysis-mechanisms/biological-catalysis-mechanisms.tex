@@ -5,6 +5,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{bm}
 \usepackage{graphicx}
+\graphicspath{{figures/}}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{enumitem}
 \usepackage{booktabs}
@@ -62,6 +63,8 @@ Catalysis as Categorical Provision Upon Contact}}
 \small \texttt{kundai.sachikonye@wzw.tum.de}}
 
 \date{\today}
+
+\input{figures/captions}
 
 \begin{document}
 \maketitle
@@ -332,6 +335,14 @@ resolution-bounded, because the number of distinguishable cells in a bounded
 region of phase space is finite. We flag the dependence because results
 downstream inherit it.
 \end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_01.png}
+  \captionPanelOne
+  \label{fig:panel1}
+\end{figure*}
 
 \subsection{Contact}
 
@@ -637,6 +648,14 @@ categorical structure is fully engaged, and it is that engagement, not the
 absence of it, which constitutes the item's continuing to be there.
 \end{remark}
 
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_02.png}
+  \captionPanelTwo
+  \label{fig:panel2}
+\end{figure*}
+
 \subsection{Independence of the two primitives}
 \label{sec:independence-statement}
 
@@ -856,6 +875,14 @@ the uncatalysed $\Keq$. This is the relation of \citet{haldane1930}; see also
 independently of the framework and is known to hold. We use it in
 \cref{sec:predictions} as a validation target.
 
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_04.png}
+  \captionPanelFour
+  \label{fig:panel4}
+\end{figure*}
+
 \subsection{Rate}
 
 \begin{definition}[Aperture and categorical distance]
@@ -988,6 +1015,14 @@ cluster well away from the physical limits \citep{barevenn2011}. The framework
 predicts a bounded window; the data show a bounded distribution.
 \end{remark}
 
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_05.png}
+  \captionPanelFive
+  \label{fig:panel5}
+\end{figure*}
+
 \section{Inhibition Is the Failure of the Two Requirements}
 \label{sec:inhibition}
 
@@ -1052,6 +1087,14 @@ configuration, and can be modulated remotely. This is the structure described by
 \citet{monod1965}.
 \end{proof}
 
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_03.png}
+  \captionPanelThree
+  \label{fig:panel3}
+\end{figure*}
+
 \section{Catalysis Is Not a Demon}
 \label{sec:demon}
 
@@ -1105,6 +1148,14 @@ the demon is impossible.
 \part{Predictions and Validation}
 \label{part:predictions}
 %==============================================================================
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_06.png}
+  \captionPanelSix
+  \label{fig:panel6}
+\end{figure*}
 
 \section{Falsifiable Predictions}
 \label{sec:predictions}
@@ -1515,6 +1566,87 @@ that test is excluded from the score rather than counted. Two further outputs
 are descriptive and carry no weight. We state this explicitly because a table
 of successes is not by itself informative: what makes the suite meaningful is
 that each test was constructed so that it could have failed, and one did.
+
+\section{What the Results Establish}
+\label{sec:what-results-establish}
+
+Three of the outcomes in \cref{sec:results} carry more weight than their
+pass/fail status suggests, and one changes how a claim in this paper should be
+read. We set them out here rather than leaving them to be inferred.
+
+\subsection{Non-consumption is independently encoded}
+
+The Reactome result is the strongest external check in the suite, and it is
+not a check we designed. Of $990$ human reactions retrieved, $363$ carry an
+annotated catalytic activity, and in none of them does any species appear on
+both the input and the output side. The curators placed catalysis in a slot
+disjoint from stoichiometry.
+
+What makes this evidential rather than circular is that the annotation
+predates the framework and was made on mechanistic grounds by people with no
+stake in \cref{thm:not-consumed}. A catalyst that were a reactant regenerated
+downstream would appear identically on both sides and would be recorded that
+way; the schema permits it, and it does not occur. The database is therefore an
+independent witness to the structural claim that the catalyst is not
+stoichiometric---which on the present account is not a convention but a
+consequence of \cref{cor:provision-free}.
+
+\subsection{The reciprocal law is excluded without reference to fit}
+
+Discriminating between rate laws usually means comparing residuals, which
+invites the objection that the comparison was tuned. The dynamic-range
+argument avoids this entirely. Observed catalytic efficiencies span $5.62$
+decades. A law of the form $k \propto 1/(\dC\tau)$, with $\dC$ ranging over the
+$1$--$6$ apertures documented for these mechanisms, can span at most
+$\log_{10} 6 = 0.78$ decades whatever $\tau$ is chosen, because $\tau$ enters
+as a common factor and cancels from the ratio. The observed range exceeds the
+representable range by a factor of seven in the exponent.
+
+This is a structural exclusion. It does not depend on the values in
+\cref{eq:rate}, on $\nufloor$, on $\delta$, or on the quality of any fit; it
+depends only on the arithmetic of what a reciprocal law can represent. The
+exponential form is required by the magnitude of the phenomenon, as
+\cref{rem:not-reciprocal} argues on physical grounds and the data confirm on
+arithmetic ones.
+
+\subsection{The inhibition dichotomy is a joint constraint, not a definition}
+
+\Cref{thm:inhibition} could be dismissed as terminological: one might suspect
+that ``competitive'' and ``mechanism-based'' are simply the names given to the
+two cells, so that finding only two occupied is guaranteed. The permutation
+control settles this. The two axes---whether inactivation requires turnover,
+and whether activity is recovered on dilution---are established by different
+experiments and neither is defined in terms of the other. Both take both
+values across the sample. Shuffling the reversibility labels fills, on
+average, $3.999$ of the four cells; the observed restriction to two arises
+with $p = 4\times10^{-5}$.
+
+The forbidden cells are the informative part. A turnover-dependent yet fully
+reversible inhibitor, or a turnover-independent yet irreversible one acting at
+the catalytic contact, would each occupy a cell the conjunction
+$\prov>0 \wedge \text{release}$ has no room for. Neither is observed among the
+nineteen documented cases examined.
+
+\subsection{One claim is weaker than we first stated it}
+
+The cofactor-persistence prediction of \cref{part:origins} is not supported by
+the evidence we were able to bring to it, and we prefer to say so plainly. Our
+test found the predicted delocalised motifs in $36.6\%$ of KEGG enzyme entries,
+which in isolation looks like confirmation. The matched control---a list of
+common metabolites of equal length, searched in the same fields---returned
+$30.3\%$. A ratio of $1.21$ is not a separation.
+
+The reason is a property of the data rather than of the prediction: KEGG
+enzyme entries carry no cofactor field, so the search necessarily ran over
+substrate, product and comment text, where every participant appears and
+where frequency of mention reflects corpus composition. The prediction may
+well be correct; this test cannot tell us. It is reported as
+non-discriminating and excluded from the score, and the corresponding
+limitation is recorded in \cref{sec:limitations}.
+
+We draw attention to it because the alternative---reporting the $36.6\%$ and
+omitting the control---would have produced a table in which every entry
+passed, and a reader could not have told the difference.
 
 \section{Conclusion}
 \label{sec:conclusion}
