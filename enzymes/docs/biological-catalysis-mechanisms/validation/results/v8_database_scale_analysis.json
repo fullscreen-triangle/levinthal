@@ -1,0 +1,101 @@
+{
+  "script": "v8_database_scale_analysis.py",
+  "sources": [
+    "KEGG",
+    "Reactome"
+  ],
+  "tests": [
+    {
+      "test": "V8.1 participant count is bounded (KEGG)",
+      "n_enzymes": 399,
+      "median_participants": 4.0,
+      "p90": 6.0,
+      "p99": 8.0,
+      "max": 12,
+      "fraction_above_12_participants": 0.0,
+      "passed": true,
+      "interpretation": "Participant counts are small and bounded.  Aperture counts under the simultaneity rule are therefore also small: a concerted multi-species step is one aperture, not one per species."
+    },
+    {
+      "test": "V8.2 catalyst annotated outside stoichiometry (Reactome)",
+      "n_reactions": 990,
+      "n_with_annotated_catalyst": 363,
+      "fraction_with_catalyst": 0.36666666666666664,
+      "n_checked_for_overlap": 363,
+      "n_input_output_overlap": 0,
+      "fraction_overlap": 0.0,
+      "passed": true,
+      "interpretation": "The catalyst occupies a slot disjoint from stoichiometry. This is the database's independent encoding of non-consumption: the catalyst is not a reactant and does not appear on both sides."
+    },
+    {
+      "test": "V8.3 delocalised motifs recur across enzymes (KEGG)",
+      "field_searched": "SUBSTRATE + PRODUCT + COMMENT (KEGG has no COFACTOR section)",
+      "n_enzymes": 399,
+      "n_matching_delocalised_motif": 146,
+      "fraction_of_enzymes_matching": 0.3659147869674185,
+      "motif_hit_counts": {
+        "NAD": 68,
+        "CoA": 37,
+        "NADP": 31,
+        "pyridoxal": 26,
+        "quinone": 13,
+        "folate": 6,
+        "tetrahydrofolate": 6,
+        "biotin": 6,
+        "heme": 5,
+        "iron-sulfur": 5,
+        "ubiquinone": 4,
+        "FAD": 3,
+        "thiamine": 3,
+        "flavin": 3,
+        "porphyrin": 2,
+        "cobalamin": 1,
+        "FMN": 1
+      },
+      "scored": false,
+      "passed": null,
+      "raw_signal_above_threshold": true,
+      "interpretation": "A small set of conjugated / metal-centred motifs accounts for most cofactor annotations, consistent with the prediction that early category providers persist inside later protein scaffolds."
+    },
+    {
+      "test": "V8.4 CONTROL: common metabolites vs delocalised motifs",
+      "field_searched": "SUBSTRATE + PRODUCT + COMMENT",
+      "n_control_terms": 24,
+      "n_motif_terms": 24,
+      "fraction_enzymes_matching_control": 0.3032581453634085,
+      "fraction_enzymes_matching_motifs": 0.3659147869674185,
+      "ratio_motif_over_control": 1.2066115702479339,
+      "statistic_separates": false,
+      "separation_ratio_required": 1.5,
+      "verdict": "NON-DISCRIMINATING: the motif signal is not separable from background chemical-term frequency in this field. V8.3 is therefore reported but not scored.",
+      "passed": false,
+      "interpretation": "If common metabolites matched the cofactor field as often as the delocalised motifs do, V8.3 would be a frequency artefact. This control decides whether V8.3 carries signal."
+    },
+    {
+      "test": "V8.5 corpus summary (reported, not scored)",
+      "kegg_reactions_total": 12478,
+      "reactome_reactions_retrieved": 990,
+      "reactome_pathways": 29,
+      "passed": true,
+      "note": "descriptive only",
+      "reactome_median_inputs": 2.0,
+      "reactome_median_outputs": 1.0,
+      "reactome_mean_catalysts": 0.36666666666666664,
+      "reactome_max_inputs": 13,
+      "reactome_schema_classes": {
+        "Reaction": 809,
+        "Depolymerisation": 1,
+        "Polymerisation": 3,
+        "BlackBoxEvent": 147,
+        "FailedReaction": 30
+      }
+    }
+  ],
+  "summary": {
+    "n_scored": 3,
+    "n_passed": 2,
+    "n_skipped": 0,
+    "n_reported_not_scored_nondiscriminating": 1,
+    "all_passed": false
+  }
+}

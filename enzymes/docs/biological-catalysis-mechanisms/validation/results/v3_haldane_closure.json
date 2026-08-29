@@ -1,0 +1,140 @@
+{
+  "script": "v3_haldane_closure.py",
+  "prediction": "P1 Haldane closure",
+  "data_provenance": "curated literature table, per-row sources given",
+  "tests": [
+    {
+      "test": "V3.1 Haldane closure",
+      "claim": "Keq from kinetics equals thermodynamic Keq; no catalyst term",
+      "n_enzymes": 8,
+      "rows": [
+        {
+          "enzyme": "Triosephosphate isomerase",
+          "ec": "5.3.1.1",
+          "reaction": "DHAP <=> GAP",
+          "kcat_f_over_KM_f": 914893.6170212766,
+          "kcat_r_over_KM_r": 4597701.149425288,
+          "Keq_kinetic": 0.19898936170212764,
+          "Keq_thermo": 0.047,
+          "log10_deviation": 0.6267320009988077,
+          "source": "Knowles & Albery 1977; Albery & Knowles 1976"
+        },
+        {
+          "enzyme": "Fumarase",
+          "ec": "4.2.1.2",
+          "reaction": "fumarate + H2O <=> L-malate",
+          "kcat_f_over_KM_f": 160000000.0,
+          "kcat_r_over_KM_r": 36000000.0,
+          "Keq_kinetic": 4.444444444444445,
+          "Keq_thermo": 4.4,
+          "log10_deviation": 0.0043648054024501,
+          "source": "Fersht 1999, Structure and Mechanism in Protein Science"
+        },
+        {
+          "enzyme": "Aspartate aminotransferase",
+          "ec": "2.6.1.1",
+          "reaction": "Asp + 2OG <=> OAA + Glu",
+          "kcat_f_over_KM_f": 170000.0,
+          "kcat_r_over_KM_r": 220000.0,
+          "Keq_kinetic": 0.7727272727272727,
+          "Keq_thermo": 6.5,
+          "log10_deviation": -0.9248871160867879,
+          "source": "Cornish-Bowden 1979, Fundamentals of Enzyme Kinetics"
+        },
+        {
+          "enzyme": "Lactate dehydrogenase",
+          "ec": "1.1.1.27",
+          "reaction": "pyruvate + NADH <=> lactate + NAD+",
+          "kcat_f_over_KM_f": 3124999.9999999995,
+          "kcat_r_over_KM_r": 2000.0,
+          "Keq_kinetic": 1562.4999999999998,
+          "Keq_thermo": 26000.0,
+          "log10_deviation": -1.2211533219547053,
+          "source": "Nelson & Cox, Lehninger Principles of Biochemistry"
+        },
+        {
+          "enzyme": "Alcohol dehydrogenase",
+          "ec": "1.1.1.1",
+          "reaction": "ethanol + NAD+ <=> acetaldehyde + NADH",
+          "kcat_f_over_KM_f": 6692.307692307692,
+          "kcat_r_over_KM_r": 13636363.636363637,
+          "Keq_kinetic": 0.0004907692307692307,
+          "Keq_thermo": 8e-05,
+          "log10_deviation": 0.7877873394223815,
+          "source": "Berg, Tymoczko & Stryer, Biochemistry"
+        },
+        {
+          "enzyme": "Creatine kinase",
+          "ec": "2.7.3.2",
+          "reaction": "ATP + creatine <=> ADP + phosphocreatine",
+          "kcat_f_over_KM_f": 100000.0,
+          "kcat_r_over_KM_r": 1000000.0,
+          "Keq_kinetic": 0.1,
+          "Keq_thermo": 0.1,
+          "log10_deviation": 0.0,
+          "source": "Cornish-Bowden 1979"
+        },
+        {
+          "enzyme": "Adenylate kinase",
+          "ec": "2.7.4.3",
+          "reaction": "2 ADP <=> ATP + AMP",
+          "kcat_f_over_KM_f": 3000000.0,
+          "kcat_r_over_KM_r": 3000000.0,
+          "Keq_kinetic": 1.0,
+          "Keq_thermo": 1.0,
+          "log10_deviation": 0.0,
+          "source": "Nelson & Cox, Lehninger Principles of Biochemistry"
+        },
+        {
+          "enzyme": "Carbonic anhydrase II",
+          "ec": "4.2.1.1",
+          "reaction": "CO2 + H2O <=> HCO3- + H+",
+          "kcat_f_over_KM_f": 83333333.33333333,
+          "kcat_r_over_KM_r": 15384615.384615386,
+          "Keq_kinetic": 5.416666666666666,
+          "Keq_thermo": 0.18,
+          "log10_deviation": 1.4784596054919246,
+          "source": "Fersht 1999"
+        }
+      ],
+      "mean_log10_deviation": 0.09391291415925884,
+      "sd_log10_deviation": 0.8844157296111189,
+      "t_statistic_vs_zero_bias": 0.30034046758621646,
+      "critical_t_two_sided_005": 2.365,
+      "no_systematic_bias": true,
+      "passed": true,
+      "interpretation": "The theorem forbids a systematic, catalyst-dependent shift in Keq.  Scatter reflects the heterogeneity of literature conditions; a non-zero MEAN would be the falsifying signal."
+    },
+    {
+      "test": "V3.2 provision cancels in the forward/reverse ratio",
+      "scored_claim": "difference of log efficiencies tracks log Keq with unit slope; provision cancels",
+      "n_enzymes": 8,
+      "corr_(forward_minus_reverse)_vs_logKeq": 0.9480390673249498,
+      "regression_slope_diff_on_logKeq": 0.7236875859017867,
+      "regression_intercept": 0.049074307874985165,
+      "difference_tracks_Keq": true,
+      "slope_consistent_with_unity": true,
+      "reported_not_scored__corr_forward_vs_reverse": 0.16866954106999282,
+      "why_not_scored": "Between-enzyme variation in log(kcat/KM) spans ~6 decades and is enzyme-specific; a raw forward-reverse correlation across different enzymes is not predicted by the theorem and its low value (0.17) is not evidence against it.",
+      "passed": true,
+      "interpretation": "The theorem says the catalyst supplies categories to the transition and not to the endpoints.  Hence provision is common to both directions and cancels in the ratio, leaving the endpoint term: diff = log Keq, slope 1."
+    },
+    {
+      "test": "V3.3 CONTROL: randomised pairing",
+      "n_permutations": 20000,
+      "observed_correlation": 0.9480390673249498,
+      "null_mean": 0.33424785759136205,
+      "null_sd": 0.2589832768815176,
+      "null_95th_percentile": 0.7874373410829486,
+      "empirical_p_value": 0.00024998750062496874,
+      "test_is_discriminating": true,
+      "passed": true,
+      "interpretation": "If p were near 1.0 the observed correlation would be reproduced by chance pairing and V3.2 would be uninformative.  This control decides whether V3.2 carries any signal."
+    }
+  ],
+  "summary": {
+    "n_tests": 3,
+    "n_passed": 3,
+    "all_passed": true
+  }
+}

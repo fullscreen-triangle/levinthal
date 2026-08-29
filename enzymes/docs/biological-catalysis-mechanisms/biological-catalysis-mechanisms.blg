@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: biological-catalysis-mechanisms.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 34 entries,
+            2773 wiz_defined-function locations,
+            815 strings with 9547 characters,
+and the built_in function-call counts, 14502 in all, are:
+= -- 1335
+> -- 632
+< -- 28
++ -- 226
+- -- 192
+* -- 1142
+:= -- 2238
+add.period$ -- 102
+call.type$ -- 34
+change.case$ -- 162
+chr.to.int$ -- 34
+cite$ -- 68
+duplicate$ -- 686
+empty$ -- 1323
+format.name$ -- 236
+if$ -- 3006
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 38
+newline$ -- 178
+num.names$ -- 136
+pop$ -- 303
+preamble$ -- 1
+purify$ -- 132
+quote$ -- 0
+skip$ -- 479
+stack$ -- 0
+substring$ -- 792
+swap$ -- 34
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 354
+warning$ -- 0
+while$ -- 160
+width$ -- 0
+write$ -- 449

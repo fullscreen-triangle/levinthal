@@ -1,0 +1,150 @@
+{
+  "script": "v1_abstract_system.py",
+  "section": "An Abstract System With the Same Mechanics",
+  "tests": [
+    {
+      "test": "V1.1 key reuse",
+      "claim": "key invariant across completions; completions distinct",
+      "n_trials": 200,
+      "key_identical_after_use": true,
+      "successive_configs_pairwise_distinct": true,
+      "mean_reuses_per_trial": 8.0,
+      "passed": true
+    },
+    {
+      "test": "V1.2 residue monotonicity",
+      "claim": "marked-set count never decreases",
+      "n_trajectories": 500,
+      "violations": 0,
+      "example_sequence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "passed": true
+    },
+    {
+      "test": "V1.3 non-identifiability",
+      "claim": "different categorical structure, identical terminal residue",
+      "keys_joint": [
+        [
+          [
+            0,
+            "a"
+          ],
+          [
+            1,
+            "a"
+          ]
+        ]
+      ],
+      "keys_split": [
+        [
+          [
+            0,
+            "a"
+          ]
+        ],
+        [
+          [
+            1,
+            "a"
+          ]
+        ]
+      ],
+      "terminal_joint": [
+        "('a', 'a')"
+      ],
+      "terminal_split": [
+        "('a', 'a')"
+      ],
+      "reachable_joint_size": 2,
+      "reachable_split_size": 4,
+      "keys_differ": true,
+      "terminal_sets_identical": true,
+      "reachable_sets_identical": false,
+      "passed": true,
+      "note": "Reachable sets differ by the intermediate (a,*): this is the signal V1.5 uses.  Terminal residue alone cannot distinguish the two categorical structures."
+    },
+    {
+      "test": "V1.4 provision",
+      "claim": "provider strictly enlarges the applicable-key set",
+      "applicable_without_provider": 1,
+      "applicable_with_provider": 3,
+      "provision_P": 2,
+      "strict_superset": true,
+      "terminal_configs_without": 1,
+      "terminal_configs_with": 1,
+      "passed": true
+    },
+    {
+      "test": "V1.5 control: is the discriminator discriminating?",
+      "terminal_residue_separates_systems": false,
+      "full_reachable_set_separates_systems": true,
+      "self_vs_self_false_separations_out_of_200": 0,
+      "discriminator_is_informative": true,
+      "passed": true,
+      "interpretation": "Terminal residue does NOT separate (that is the point of V1.3). The reachable set DOES separate, so the systems are genuinely different and V1.3 is not an artefact of a blind statistic. Self-vs-self never separates, so the statistic has no false positive rate here."
+    },
+    {
+      "test": "V1.6 exhaustive non-identifiability",
+      "claim": "many distinct key sets share a terminal residue signature",
+      "rows": [
+        {
+          "n_sites": 2,
+          "n_keysets_enumerated": 7,
+          "n_distinct_terminal_signatures": 5,
+          "signatures_with_collisions": 1,
+          "keysets_involved_in_collisions": 3,
+          "collision_fraction": 0.42857142857142855
+        },
+        {
+          "n_sites": 3,
+          "n_keysets_enumerated": 63,
+          "n_distinct_terminal_signatures": 35,
+          "signatures_with_collisions": 7,
+          "keysets_involved_in_collisions": 35,
+          "collision_fraction": 0.5555555555555556
+        },
+        {
+          "n_sites": 4,
+          "n_keysets_enumerated": 575,
+          "n_distinct_terminal_signatures": 317,
+          "signatures_with_collisions": 39,
+          "keysets_involved_in_collisions": 297,
+          "collision_fraction": 0.5165217391304348
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V1.7 rest: identity at zero residue",
+      "claim": "a configuration generating no residue retains a category: invariant across occasions, uniquely instantiated at each",
+      "n_sites": 6,
+      "applicable_keys_at_rest": 0,
+      "residue_generated": 0,
+      "is_at_rest": true,
+      "invariant_across_100_observations": true,
+      "uniquely_distinguishable": true,
+      "n_alternative_configurations": 63,
+      "residue_count_identical_to_decoy": true,
+      "identity_nonetheless_distinct": true,
+      "residue_underdetermines_identity": true,
+      "passed": true,
+      "interpretation": "Residue is identically zero here, yet identity is fully determined.  Two configurations with the SAME residue count have DIFFERENT identities, so identity is not constituted by residue. This is the separation of the two primitives at the limit."
+    }
+  ],
+  "summary": {
+    "n_tests": 7,
+    "n_passed": 7,
+    "all_passed": true
+  }
+}

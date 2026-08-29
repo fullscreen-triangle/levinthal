@@ -1,0 +1,173 @@
+{
+  "script": "v2_floor_and_orthogonality.py",
+  "sections": [
+    "Individuation Is Not Free",
+    "Catalysis Is Not a Demon"
+  ],
+  "tests": [
+    {
+      "test": "V2.1 floor positivity (resolution-bounded)",
+      "claim": "min of finitely many strictly positive weights is positive",
+      "instances": [
+        {
+          "instance": "uniform",
+          "n_edges": 20,
+          "beta_min_computed": 1.0,
+          "is_positive": true
+        },
+        {
+          "instance": "graded",
+          "n_edges": 20,
+          "beta_min_computed": 0.1,
+          "is_positive": true
+        },
+        {
+          "instance": "adversarial_tiny",
+          "n_edges": 20,
+          "beta_min_computed": 1e-12,
+          "is_positive": true
+        },
+        {
+          "instance": "wide_range",
+          "n_edges": 12,
+          "beta_min_computed": 1e-11,
+          "is_positive": true
+        },
+        {
+          "instance": "random",
+          "n_edges": 50,
+          "beta_min_computed": 0.01590414987085521,
+          "is_positive": true
+        }
+      ],
+      "all_positive": true,
+      "passed": true
+    },
+    {
+      "test": "V2.2 unbounded refinement: no uniform floor",
+      "claim": "each thickness positive, infimum zero --- so the uniform floor theorem requires resolution-boundedness",
+      "n_stages": 60,
+      "all_thicknesses_individually_positive": true,
+      "smallest_thickness_reached_in_n_stages": 0.016666666666666666,
+      "strictly_decreasing": true,
+      "stages_required_per_epsilon": {
+        "stages_to_fall_below_1e-1": 11,
+        "stages_to_fall_below_1e-2": 101,
+        "stages_to_fall_below_1e-3": 1001,
+        "stages_to_fall_below_1e-6": 1000001,
+        "stages_to_fall_below_1e-9": 1000000001
+      },
+      "every_epsilon_eventually_cleared": true,
+      "no_positive_lower_bound_exists": true,
+      "truncated_bounded_system_floor": 0.1,
+      "truncated_floor_is_positive": true,
+      "passed": true,
+      "interpretation": "This is a confirmation of the paper's stated limitation, not a defect.  Unbounded refinement -> infimum 0.  Bounded refinement -> positive floor.  The hypothesis does real work."
+    },
+    {
+      "test": "V2.3 local distinction cheaper than global",
+      "n_trials": 2000,
+      "violations": 0,
+      "mean_ratio_local_over_global": 0.5312680279275082,
+      "max_ratio": 1.0,
+      "passed": true
+    },
+    {
+      "test": "V7.1 Omega is velocity-independent",
+      "claim": "d(Omega)/d(v) = 0 at fixed configuration",
+      "n_particles": 1000,
+      "configuration": {
+        "N_A": 500,
+        "N_B": 500
+      },
+      "temperatures_sampled": [
+        50.0,
+        100.0,
+        150.0,
+        200.0,
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        450.0,
+        500.0,
+        550.0,
+        600.0,
+        650.0,
+        700.0,
+        750.0,
+        800.0,
+        850.0,
+        900.0,
+        950.0,
+        1000.0,
+        1050.0,
+        1100.0,
+        1150.0,
+        1200.0,
+        1250.0,
+        1300.0,
+        1350.0,
+        1400.0,
+        1450.0,
+        1500.0
+      ],
+      "n_velocity_resamples": 510,
+      "log_Omega_reference": 689.467261567851,
+      "log_Omega_max_minus_min": 0.0,
+      "dS_dv_numerical": 0.0,
+      "passed": true
+    },
+    {
+      "test": "V7.2 CONTROL: configurational change moves Omega",
+      "claim": "the statistic is not blind --- config changes DO register",
+      "log_Omega_base": 689.467261567851,
+      "perturbations": [
+        {
+          "shift": 1,
+          "log_Omega": 689.4652635651883,
+          "delta_from_base": -0.001998002662730869
+        },
+        {
+          "shift": 5,
+          "log_Omega": 689.4173107036477,
+          "delta_from_base": -0.04995086420331063
+        },
+        {
+          "shift": 25,
+          "log_Omega": 688.2179909426732,
+          "delta_from_base": -1.2492706251778145
+        },
+        {
+          "shift": 100,
+          "log_Omega": 669.3521451255451,
+          "delta_from_base": -20.11511644230586
+        },
+        {
+          "shift": 250,
+          "log_Omega": 558.798955551968,
+          "delta_from_base": -130.668306015883
+        }
+      ],
+      "every_config_change_registered": true,
+      "passed": true,
+      "interpretation": "V7.1 shows velocity does not move Omega.  This control shows that is informative: configuration does move it.  Without this control V7.1 could pass with a constant statistic."
+    },
+    {
+      "test": "V7.3 velocity-temperature non-correspondence",
+      "T_cold": 300.0,
+      "T_hot": 400.0,
+      "overlap_integral": 0.8678408601716068,
+      "threshold_used": 20.206442438166413,
+      "sorting_accuracy": 0.56306,
+      "excess_over_chance": 0.06306,
+      "passed": true,
+      "interpretation": "Large distribution overlap means a single velocity does not identify the source ensemble; threshold sorting is only marginally better than chance."
+    }
+  ],
+  "summary": {
+    "n_tests": 6,
+    "n_passed": 6,
+    "all_passed": true
+  }
+}

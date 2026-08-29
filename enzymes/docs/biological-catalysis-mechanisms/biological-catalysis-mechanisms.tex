@@ -1,0 +1,1559 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[version=4]{mhchem}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+\crefname{postulate}{Postulate}{Postulates}
+\Crefname{postulate}{Postulate}{Postulates}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{postulate}{Postulate}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- notation -----------------------------------------------------------
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\Univ}{\mathcal{U}}
+\newcommand{\Item}{\mathcal{I}}
+\newcommand{\thick}{\beta}
+\newcommand{\floor}{\thick_{\min}}
+\newcommand{\Cat}{\mathfrak{C}}
+\newcommand{\Compl}{\gamma}
+\newcommand{\Scat}{S_{\mathrm{cat}}}
+\newcommand{\Skin}{S_{\mathrm{kin}}}
+\newcommand{\dC}{d_{\mathrm{C}}}
+\newcommand{\Depth}{\mathcal{M}}
+\newcommand{\taup}{\tau_{\mathrm{p}}}
+\newcommand{\nufloor}{\nu_{\mathrm{floor}}}
+\newcommand{\kcat}{k_{\mathrm{cat}}}
+\newcommand{\KM}{K_{\mathrm{M}}}
+\newcommand{\Keq}{K_{\mathrm{eq}}}
+\newcommand{\Enz}{E}
+\newcommand{\Sub}{S}
+\newcommand{\prov}{\mathcal{P}}
+\newcommand{\rel}{\varrho}
+
+\title{\textbf{Why Enzymes Exist:\\
+Catalysis as Categorical Provision Upon Contact}}
+
+\author{Kundai Farai Sachikonye\\
+\small Technical University of Munich, School of Life Sciences\\
+\small \texttt{kundai.sachikonye@wzw.tum.de}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Catalysis is conventionally described but not derived. Transition-state theory
+tells us that a catalyst lowers an activation barrier; it does not tell us why
+such objects exist, why they are reusable, why they are specific, or why
+specificity is bounded above as well as below. We derive catalysis from two
+primitives. The first is that individuation is not free: distinguishing an item
+from its complement takes finite time, during which the complement evolves, so
+every boundary carries irreducible thickness $\thick>0$. The second is that a
+\emph{category} is the unit of a step---the structure that permits an invariant
+to persist across a transition in which nothing numerically survives. We prove
+these primitives are independent: the first drives systems toward configurations
+of minimum boundary cost, but it cannot account for reuse, because the
+uncertainty a process resolves is consumed in resolving it. Reuse requires
+something that is identically the same across occasions while each occasion is a
+distinct event, and that is what a category is and residue is not. From this we
+obtain the definition: \emph{a catalyst is an item that, upon contact, increases
+the number of completable categories available to a transition, and is not
+consumed because categorical provision requires no free energy.} Nine results
+follow as corollaries rather than assumptions: catalysts are not consumed;
+equilibrium constants are unaltered; the Haldane relation is recovered; rate
+enhancement is exponential in the number of apertures traversed with a single
+framework-wide constant; specificity is bounded on both sides by the joint
+requirement of provision and release, giving a \emph{specificity window};
+competitive inhibition is contact without provision; mechanism-based
+inactivation is provision without release; allosteric regulation is
+modification of the provider's contact chain; and catalysis is not a Maxwell
+demon, because categories are configurational and the demon's criterion is
+kinetic, quantities which depend on disjoint variables. Because the account
+never requires that the provider be a protein, it resolves the origin-of-life
+regress in which enzymes require proteins and proteins require nucleic acid
+templates: the first catalysts were structures whose delocalised electronic
+motifs supplied categories on contact and were unchanged by their use. We give
+an abstract system exhibiting the same mechanics with no chemistry in it,
+establishing that the categorical primitive is not a chemical postulate. All
+claims are stated as falsifiable predictions and are accompanied by
+computational validation against public reaction and kinetics databases.
+\end{abstract}
+
+\tableofcontents
+
+%==============================================================================
+\part{The Problem}
+%==============================================================================
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{What is not explained by the standard account}
+\label{sec:not-explained}
+
+The standard account of enzyme catalysis is transition-state stabilisation
+\citep{pauling1946,eyring1935}. An enzyme binds the transition state more
+tightly than the ground state; the activation free energy falls; the rate rises
+\citep{schramm2011,warshel2006}. This account is correct as far as it goes, and
+it is quantitatively successful. It is also, as an explanation, incomplete in
+five specific ways, and the incompleteness is not a matter of missing detail but
+of missing derivation.
+
+\paragraph{First: why does anything play this role at all?}
+Transition-state stabilisation describes what an enzyme does once we are given
+an enzyme. It does not explain why objects of this kind should exist, or why
+matter organised into cells should invariably produce them. To say that enzymes
+exist because they are useful is to give a selective rather than a physical
+answer, and it presupposes the existence of the entities selection acts upon.
+
+\paragraph{Second: why is the catalyst reusable?}
+This is the question we shall find to be decisive. A catalyst participates in a
+reaction and emerges unaltered, ready to participate again. On any account in
+which catalysis consists in the resolution of some uncertainty, or the traversal
+of some barrier, or the payment of some cost, the first turnover ought to
+exhaust the thing that made it possible. That it does not is normally recorded
+as a definitional stipulation---``a catalyst is not consumed''---rather than
+derived. We shall show that the requirement of reuse is strong enough to force a
+second primitive into the theory.
+
+\paragraph{Third: why is a catalyst specific?}
+Specificity is usually explained by complementarity \citep{fischer1894,
+koshland1958}: the substrate fits the site. But complementarity explains only
+the lower bound---why a badly matched substrate is not turned over. It does not
+explain the upper bound. Nothing in the lock-and-key picture forbids a lock so
+exquisitely matched to its key that the two never separate. Yet such objects are
+not enzymes; they are, at best, single-use reagents. Real enzymes occupy a
+bounded region of specificity, and the bound above is not explained.
+
+\paragraph{Fourth: why do inhibitors fall into the classes they do?}
+Competitive inhibitors occupy the site and do nothing. Mechanism-based
+inactivators are turned over once and destroy the enzyme in the process
+\citep{abeles1976,silverman1995}. These are treated as separate pharmacological
+phenomena. On the account developed here they are the two ways the catalytic
+requirement can fail, and they are therefore predictions rather than
+observations.
+
+\paragraph{Fifth: what were the first catalysts?}
+Life requires enzymes. Enzymes, in extant biology, are proteins. Proteins
+require templated synthesis, hence nucleic acids, hence a replication apparatus
+that is itself enzyme-dependent \citep{eigen1971,gilbert1986,orgel2004}. The
+regress is well known and the standard resolutions---ribozymes
+\citep{kruger1982,guerrier1983}, surface metabolism \citep{wachtershauser1988},
+autocatalytic sets \citep{kauffman1986}---all proceed by exhibiting a non-protein
+catalyst. What is missing is a criterion that tells us what makes something a
+catalyst independently of what it is made of. Without such a criterion the
+resolutions are existence proofs without a theory.
+
+\subsection{What this paper does}
+\label{sec:what-this-does}
+
+We derive catalysis from two primitives, prove they are independent, and obtain
+the five missing explanations as consequences.
+
+The first primitive (\cref{sec:individuation}) is that individuation costs
+something irreducibly. To be a distinct item is to be distinguished from
+everything one is not; establishing that distinction takes non-zero time; during
+that time the complement changes; so the boundary is not a clean cut but a layer
+of finite thickness $\thick > 0$. We derive this rather than assume it, and we
+derive it in a setting where the bound is uniform, which is the technically
+delicate point.
+
+The second primitive (\cref{sec:category}) is the \emph{category}. We motivate it
+by an argument from reuse: what a catalyst must have, in order to be usable
+twice, is an invariant that is numerically the same on both occasions while the
+occasions are genuinely distinct events. We show that the first primitive cannot
+supply this, and that the structure which can is what we shall call a category.
+We then give the measure---categorical entropy---and prove the property that
+makes catalysis possible: completing a category increases entropy without
+consuming free energy.
+
+\Cref{sec:abstract-system} exhibits an abstract system, containing no chemistry
+whatever, which has both primitives and in which the second is demonstrably not
+reducible to the first. This is included because the central claim of the paper
+is a claim about what kind of thing a catalyst is, and such a claim should not
+depend on the accident that our examples are molecules.
+
+\Cref{part:catalysis} contains the definition and its consequences.
+\Cref{part:predictions} states the falsifiable predictions and the validation
+protocol. \Cref{part:origins} applies the definition to the origin-of-life
+regress.
+
+\subsection{Conventions}
+\label{sec:conventions}
+
+Throughout, $\Univ$ denotes the totality under discussion and $\Item$ an item
+individuated within it. We write $\thick(A,B)$ for the boundary thickness
+between $A$ and $B$ and $\floor$ for its lower bound. $\kB$ is Boltzmann's
+constant. Logarithms are natural unless subscripted. We use $\Omega$ for a count
+of microstates in the Boltzmann sense \citep{boltzmann1877,gibbs1902} and
+$|\Compl(t)|$ for a count of completed categories. Standard enzyme-kinetic
+notation follows \citet{cornish1979}: $\kcat$, $\KM$, $\Keq$, with
+$\kcat/\KM$ the specificity constant.
+
+We are careful throughout to distinguish results that are unconditional from
+those that hold under stated hypotheses, and we mark the latter explicitly.
+
+%==============================================================================
+\part{Foundations}
+%==============================================================================
+
+\section{Individuation Is Not Free}
+\label{sec:individuation}
+
+\subsection{Existence by distinction}
+
+Physics customarily begins with objects already individuated: particles,
+systems, states. The process by which something comes to be a distinct
+something is not usually part of the formalism. We make it part of the
+formalism, because catalysis turns out to be a fact about that process.
+
+\begin{postulate}[Existence by distinction]
+\label{post:negation}
+An item $\Item$ exists as a distinct entity if and only if there is a
+well-defined complement $\Univ \setminus \Item$ with
+$\Item \cap (\Univ\setminus\Item) = \varnothing$ and
+$\Item \cup (\Univ\setminus\Item) = \Univ$. The existence of $\Item$ consists in
+the distinction $\Item \neq \Univ\setminus\Item$, and not in any property
+$\Item$ possesses independently of it.
+\end{postulate}
+
+This is not a metaphysical flourish. It is the observation that every physical
+predicate we assign to an item---its mass, its charge, its position---is
+assigned by contrast with what does not have it. \Cref{post:negation} says only
+that we should take that contrast as constitutive rather than incidental.
+
+\begin{postulate}[Distinction takes time]
+\label{post:duration}
+Establishing the distinction $\Item \neq \Univ\setminus\Item$ requires a finite,
+non-zero interval $\taup > 0$. During $\taup$ the complement
+$\Univ\setminus\Item$ evolves.
+\end{postulate}
+
+\begin{remark}
+\Cref{post:duration} is forced rather than chosen. Suppose $\taup = 0$. Then the
+state of $\Univ$ immediately before the distinction and immediately after are
+the same state. But if nothing about $\Univ$ differs, no distinction has been
+drawn---the supposed individuation made no difference, and an individuation that
+makes no difference is not one. Hence $\taup > 0$. The second clause is then
+automatic for any $\Univ$ that is not static.
+\end{remark}
+
+\subsection{The boundary has thickness}
+
+\begin{definition}[Boundary thickness]
+\label{def:thickness}
+Let $A$ be individuated within $\Univ$ over the interval $[t_0, t_0+\taup]$. The
+\emph{boundary thickness} $\thick(A)$ is the measure of the set of states which,
+at the completion of the individuation, belong determinately neither to $A$ nor
+to $\Univ\setminus A$.
+\end{definition}
+
+\begin{theorem}[Positivity of thickness]
+\label{thm:floor}
+For any individuation carried out by a process satisfying
+\cref{post:negation,post:duration}, $\thick(A) > 0$.
+\end{theorem}
+
+\begin{proof}
+Let the individuation begin at $t_0$ and complete at $t_0+\taup$ with
+$\taup>0$ by \cref{post:duration}. Consider a state $s$ that lies in
+$\Univ\setminus A$ at $t_0$ and in the region assigned to $A$ at $t_0+\taup$, or
+conversely. Such states exist whenever $\Univ$ is non-static on the timescale
+$\taup$, which \cref{post:duration} guarantees. For such $s$ the assignment made
+at the start of the operation and the assignment appropriate at its completion
+disagree, so $s$ is not determinately in $A$ nor determinately in
+$\Univ\setminus A$. The set of such states is non-empty, and $\thick(A)$ is its
+measure, hence positive.
+\end{proof}
+
+\Cref{thm:floor} gives positivity for each individuation separately. For the
+results of \cref{part:catalysis} we require something stronger: a bound that is
+uniform over the individuations a given system can perform. Positivity of each
+member of a family does not imply positivity of the infimum---the numbers
+$1/n$ are all positive and have infimum zero---so the uniform statement requires
+a hypothesis that bounds refinement.
+
+\begin{definition}[Resolution-bounded system]
+\label{def:res-bounded}
+A system is \emph{resolution-bounded} if the individuations it can perform are
+drawn from a finite set, or more generally if there is a finest individuation it
+can carry out, of thickness $\mu_{\min} > 0$.
+\end{definition}
+
+\begin{theorem}[Uniform floor]
+\label{thm:uniform-floor}
+In a resolution-bounded system there exists $\floor > 0$ such that
+$\thick(A) \geq \floor$ for every individuated $A$. One may take
+$\floor = \mu_{\min}$.
+\end{theorem}
+
+\begin{proof}
+By \cref{def:res-bounded} the set of attainable thicknesses has a least element
+$\mu_{\min}$, or is bounded below by one. By \cref{thm:floor} every attainable
+thickness is positive, so $\mu_{\min}>0$. The minimum of a finite set of
+positive numbers is positive; where the set is infinite the hypothesis of
+\cref{def:res-bounded} supplies the bound directly. Hence
+$\thick(A) \geq \mu_{\min} = \floor > 0$ for all individuated $A$.
+\end{proof}
+
+\begin{remark}[Where the hypothesis is needed and where it is not]
+\label{rem:hypothesis}
+\Cref{thm:floor} is unconditional. \Cref{thm:uniform-floor} is conditional on
+\cref{def:res-bounded}, and the condition is not cosmetic: a system able to
+refine without limit can have thicknesses approaching zero, and for such a
+system no uniform floor exists. Every physical system we shall consider is
+resolution-bounded, because the number of distinguishable cells in a bounded
+region of phase space is finite. We flag the dependence because results
+downstream inherit it.
+\end{remark}
+
+\subsection{Contact}
+
+\begin{definition}[Contact]
+\label{def:contact}
+Items $A$ and $B$ are in \emph{contact} when their mutual boundary thickness
+attains the floor:
+\begin{equation}
+\thick(A,B) = \floor .
+\label{eq:contact}
+\end{equation}
+\end{definition}
+
+Contact is the closest two items can come while remaining distinct. Below
+$\floor$ they are not two items; at $\floor$ they are two items maximally
+mutually defined.
+
+\begin{proposition}[Local distinction is cheaper than global]
+\label{prop:local-cheaper}
+Maintaining $A$ as distinct from a specific finite partner $B$ requires boundary
+content bounded by $\thick(A,B)$; maintaining $A$ as distinct from the whole of
+$\Univ$ requires boundary content bounded below by $\thick(A,\Univ)$, and
+$\thick(A,B) \leq \thick(A,\Univ)$ whenever $B \subseteq \Univ\setminus A$.
+\end{proposition}
+
+\begin{proof}
+The distinction of $A$ from $\Univ\setminus A$ entails its distinction from
+every $B \subseteq \Univ\setminus A$, so the set of indeterminate states at the
+$A$--$B$ boundary is a subset of that at the $A$--$\Univ$ boundary. Measures
+respect inclusion.
+\end{proof}
+
+\begin{corollary}[Contact is favoured]
+\label{cor:contact-favoured}
+Absent constraints preventing it, items evolve toward contact, because contact
+minimises the boundary content required to maintain mutual distinctness.
+\end{corollary}
+
+\Cref{cor:contact-favoured} is a tendency, not a force. Nothing pulls the items
+together. Configurations of lower total boundary cost are simply the ones that
+persist, in the same sense in which a system samples its accessible states.
+
+\begin{definition}[Contact chain]
+\label{def:chain}
+A \emph{contact chain} is a sequence $A_1 - A_2 - \cdots - A_n$ in which each
+consecutive pair is in contact.
+\end{definition}
+
+\begin{proposition}[Chains sharpen without global cost]
+\label{prop:chain}
+Let $A_1-\cdots-A_n$ be a contact chain and let $A_0$ come into contact with
+$A_1$. Then each of $A_1,\dots,A_n$ is thereby distinguished more finely---each
+acquires an additional specific partner against which it is defined---while no
+$\thick(A_i, \Univ)$ increases.
+\end{proposition}
+
+\begin{proof}
+The new contact establishes $\thick(A_0,A_1) = \floor$ without altering any
+existing $\thick(A_i,A_{i+1})$, each of which is already at $\floor$ by
+\cref{def:chain}. The context of each $A_i$ now includes one further specific
+partner, which refines the distinctions available to it. No global boundary is
+modified, since $A_0$ was already individuated within $\Univ$.
+\end{proof}
+
+\subsection{What the first primitive gives, and what it does not}
+\label{sec:residue-limits}
+
+\Cref{post:duration} has a consequence beyond thickness. Because individuation
+takes time and the complement moves, each individuation leaves an
+\emph{unresolved remainder}: content that was one thing when the operation began
+and another when it completed, and which the operation therefore failed to
+assign. Call this the residue.
+
+\begin{proposition}[Residue drives boundary minimisation]
+\label{prop:residue-drives}
+Accumulated residue is monotone: no operation removes it, since removal would
+require re-assigning content whose assignment was indeterminate, which is itself
+an individuation generating fresh residue. Systems therefore evolve
+irreversibly, and \cref{cor:contact-favoured} gives the direction: toward
+configurations of lower total boundary cost.
+\end{proposition}
+
+This is a genuine dynamical principle, and it is all the first primitive gives.
+It is not enough, and the way in which it fails is the hinge of this paper.
+
+\begin{proposition}[Residue cannot account for reuse]
+\label{prop:no-reuse}
+Let $X$ be an item whose contribution to a transition consists solely in the
+residue that transition generates. Then $X$ cannot support a second transition
+of the same kind.
+\end{proposition}
+
+\begin{proof}
+Residue is generated by the resolution of an indeterminacy. Once the transition
+has occurred, the indeterminacy it resolved is resolved: by
+\cref{prop:residue-drives} it is not restored, since restoration is itself an
+individuation and generates its own residue rather than undoing the prior one.
+The condition under which $X$ made the first transition possible therefore does
+not obtain at the second occasion. Hence $X$ is, in the relevant respect,
+consumed.
+\end{proof}
+
+\Cref{prop:no-reuse} is the crux. A catalyst is by observation reusable. If
+everything a catalyst supplies were residue, catalysts would be single-use, and
+the phenomenon we are trying to explain would not exist. Something else must be
+supplied---something which is numerically the same on the second occasion as on
+the first, while the two occasions are distinct events. We now say what that is.
+
+\section{Category: The Unit of a Step}
+\label{sec:category}
+
+\subsection{The requirement}
+
+Consider what \cref{prop:no-reuse} demands. We require a structure $\Cat$ with
+two properties that are in apparent tension:
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.5em]
+\item \textbf{Invariance.} $\Cat$ is the same at the second use as at the first.
+Were it different, what made the first turnover possible would not be what makes
+the second possible, and the reuse would be a coincidence rather than a
+mechanism.
+\item \textbf{Difference.} The first use and the second use are distinct events.
+Were they not distinct, no second turnover has occurred.
+\end{enumerate}
+
+An item cannot be numerically identical across a change in which it participates
+and also be what changed. But it can be the \emph{same category} while the
+\emph{completions} of that category are distinct. This is the ordinary structure
+of a type and its tokens, imported into physics as a structural rather than a
+linguistic fact.
+
+\begin{definition}[Category]
+\label{def:category}
+A \emph{category} is a distinction that can be completed. It is specified
+independently of any particular completion; a \emph{completion} is an occasion
+on which the distinction is drawn. The category is invariant across its
+completions; the completions are distinct events.
+\end{definition}
+
+\begin{remark}[Why this is a second primitive]
+\label{rem:second-primitive}
+A category is not constructed from residue and cannot be. Residue is what a
+completion leaves behind and is consumed in the leaving; a category is what
+makes completions of a given kind possible and survives them. The two are
+related as a capacity is related to its exercises. \Cref{prop:no-reuse} shows
+the capacity is not recoverable from the exercises. We therefore take
+\cref{def:category} as primitive alongside
+\cref{post:negation,post:duration}, and \cref{sec:abstract-system} exhibits a
+system in which the independence can be checked directly.
+\end{remark}
+
+\begin{remark}[Countability]
+\label{rem:countability}
+Completions are countable: at any time a finite number have occurred, and
+$|\Compl(t)|$ denotes that number. The categories available for completion are
+not assumed countable, and nothing below requires that they be. All measures are
+defined on completions.
+\end{remark}
+
+\subsection{Categorical entropy}
+
+\begin{definition}[Categorical entropy]
+\label{def:scat}
+For a system whose completed categories at time $t$ number $|\Compl(t)|$, the
+\emph{categorical entropy} is
+\begin{equation}
+\Scat(t) = \kB \ln |\Compl(t)| .
+\label{eq:scat}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Kinetic entropy]
+\label{def:skin}
+The \emph{kinetic entropy} is the familiar quantity measuring the distribution
+of energy over accessible microstates,
+\begin{equation}
+\Skin = -\kB \sum_i p_i \ln p_i .
+\label{eq:skin}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Completion increases entropy]
+\label{thm:completion-increases}
+Let $\Omega(C)$ be the number of microstates compatible with $C$ completed
+categories. Then $\Omega$ is strictly increasing in $C$, and consequently
+\begin{equation}
+\frac{d\Scat}{dC} = \kB \frac{1}{\Omega(C)}\frac{d\Omega}{dC} > 0 .
+\label{eq:dscat}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A completed category is a distinction the system did not previously draw: a new
+respect in which its configurations differ from one another. Configurations
+indistinguishable before the completion are distinguishable after it. Hence
+every microstate accessible at $C$ remains accessible at $C+\Delta C$, and
+additional microstates---those differing only in the newly drawn
+distinction---become accessible. So $\Omega(C+\Delta C) > \Omega(C)$ for
+$\Delta C > 0$. Applying $S = \kB\ln\Omega$ and differentiating gives
+\cref{eq:dscat}.
+\end{proof}
+
+\subsection{The property that makes catalysis possible}
+
+\begin{theorem}[Completion at zero free energy]
+\label{thm:zero-free-energy}
+Categorical completion does not require free energy. There exist transitions
+with $\Delta F = 0$, $Q = 0$ and $W = 0$ which nevertheless complete a category
+and increase $\Scat$ by at least $\kB \ln 2$.
+\end{theorem}
+
+\begin{proof}
+Consider a system at thermal equilibrium at temperature $T$, so that
+$\Delta F = 0$ for every spontaneous process. Let its internal configuration be
+specified by a vector of mode occupations $\mathbf{v} = (n_1,\dots,n_M)$, and
+consider a transition $\mathbf{v} \to \mathbf{v}'$ that redistributes occupation
+among modes at fixed total. By equipartition the mean energy per mode is fixed
+by $T$, so $\langle E(\mathbf{v})\rangle = \langle E(\mathbf{v}')\rangle$: no
+net energy flows and $Q=0$. No macroscopic displacement occurs, so $W=0$. Hence
+\begin{equation}
+\Delta F = \Delta U - T\Delta S = 0 .
+\end{equation}
+But $\mathbf{v}$ and $\mathbf{v}'$ are distinguishable configurations, so the
+transition completes a category not previously completed. By
+\cref{thm:completion-increases} this increases $\Scat$, and the minimal increase
+associated with drawing one binary distinction is $\kB\ln 2$.
+\end{proof}
+
+\begin{corollary}[Provision is free]
+\label{cor:provision-free}
+An item which supplies completable categories to another item, without itself
+undergoing a transition that consumes free energy, incurs no free-energy cost in
+doing so, and may repeat the provision indefinitely.
+\end{corollary}
+
+\begin{proof}
+Immediate from \cref{thm:zero-free-energy}: the completions the item enables are
+$\Delta F = 0$ transitions, and by \cref{def:category} the category itself is
+invariant across its completions. Nothing about the provider is spent.
+\end{proof}
+
+\Cref{cor:provision-free} is the resolution of \cref{prop:no-reuse}. Residue is
+consumed; categories are not. An item that supplies categories can supply them
+again.
+
+\subsection{Rest: the limiting case}
+\label{sec:rest}
+
+The argument from reuse (\cref{prop:no-reuse}) shows that residue is
+insufficient for a particular phenomenon. There is a second and sharper
+argument, which needs no catalyst at all, and which exhibits the two primitives
+separated at the limit.
+
+Consider an item participating in no process: at rest, in its ground state,
+generating no residue whatever. Such an item nevertheless persists, and its
+persistence has structure. At each instant it is \emph{this} item and not
+another---it is uniquely itself. Across instants it is the \emph{same} item---it
+is invariant. These two requirements are the requirements of
+\cref{sec:category}, and they are in force even though nothing is happening.
+
+\begin{proposition}[Rest requires categorical structure]
+\label{prop:rest}
+Let $X$ be an item generating no residue over an interval $[t_1,t_2]$. Then
+$X$ persists over that interval only if it possesses a structure that is
+invariant across $[t_1,t_2]$ while being uniquely instantiated at each instant
+in it. Such a structure is a category in the sense of \cref{def:category}, and
+it is not residue.
+\end{proposition}
+
+\begin{proof}
+Persistence of $X$ over $[t_1,t_2]$ requires that $X$ at $t_2$ be the same item
+as $X$ at $t_1$; otherwise $X$ did not persist but was replaced. It also
+requires that $X$ at each $t\in[t_1,t_2]$ be determinately individuated, since
+by \cref{post:negation} to be an item at all is to be distinguished from one's
+complement, and that distinction obtains at each instant or not at all. The
+first requirement is invariance, the second is instantiation at each occasion;
+together they are \cref{def:category}. That the structure is not residue is
+immediate: by hypothesis $X$ generates none over the interval, so no residue is
+available to constitute it.
+\end{proof}
+
+\begin{corollary}[Persistence is not inertness]
+\label{cor:persistence}
+An item persists into the future only in so far as its categories continue to
+be completed. The ground state is not the absence of categorical activity but
+categorical completion at zero residue.
+\end{corollary}
+
+\begin{proof}
+By \cref{prop:rest} the item's identity over an interval consists in a category
+instantiated at each instant of it. An instantiation is a completion
+(\cref{def:category}). Hence persistence over $[t_1,t_2]$ is a succession of
+completions, one per instant, of an invariant category. By
+\cref{thm:zero-free-energy} such completions need consume no free energy, and
+by hypothesis they generate no residue.
+\end{proof}
+
+\begin{remark}
+\Cref{cor:persistence} inverts the usual reading of a ground state. It is
+customarily understood as the state in which nothing occurs. On the present
+account it is the state in which what occurs generates no residue---the
+categorical structure is fully engaged, and it is that engagement, not the
+absence of it, which constitutes the item's continuing to be there.
+\end{remark}
+
+\subsection{Independence of the two primitives}
+\label{sec:independence-statement}
+
+We record the logical situation, since it is the paper's structural claim.
+
+\begin{proposition}[The primitives are independent]
+\label{prop:independent}
+Neither primitive entails the other.
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item Thickness does not entail category. \Cref{prop:no-reuse} exhibits a
+system---one in which all contribution is residue---which satisfies
+\cref{post:negation,post:duration} and in which no reusable structure exists.
+\item Category does not entail thickness. \Cref{sec:abstract-system} exhibits a
+system with completable categories and reuse in which no individuation interval
+and hence no boundary thickness is defined.
+\item The two are separated at the limit. \Cref{prop:rest} exhibits a case in
+which residue is identically zero while categorical structure is fully in
+force. A quantity that vanishes where another is fully engaged cannot be that
+other quantity, nor be constructed from it.
+\end{enumerate}
+\end{proposition}
+
+Clause (b) is established constructively in the next section; clause (c) is
+established by \cref{prop:rest} and is, of the three, the strongest form of the
+separation, since it does not depend on any process occurring at all.
+
+\section{An Abstract System With the Same Mechanics}
+\label{sec:abstract-system}
+
+The claim that a category is a distinct primitive should not depend on the
+examples being chemical. We therefore exhibit a system with no physics in it,
+possessing both structures, in which their independence is a matter of
+inspection.
+
+\subsection{The system}
+
+Let $V$ be a finite set of \emph{sites} and let $\Sigma$ be a finite set of
+\emph{marks}. A \emph{configuration} is a map $c : V \to \Sigma \cup \{\ast\}$,
+where $\ast$ denotes ``unmarked''. Let $\mathcal{K}$ be a set of
+\emph{keys}, each key $\kappa \in \mathcal{K}$ being a partial map
+$\kappa : V \rightharpoonup \Sigma$ with domain $\operatorname{dom}\kappa
+\subseteq V$.
+
+\begin{definition}[Admissible completion]
+\label{def:admissible}
+A key $\kappa$ is \emph{applicable} to configuration $c$ if
+$c(v) = \ast$ for every $v \in \operatorname{dom}\kappa$. Applying $\kappa$
+yields $c'$ with $c'(v) = \kappa(v)$ on $\operatorname{dom}\kappa$ and
+$c'(v) = c(v)$ elsewhere. Each application is a \emph{completion} of the
+category $\kappa$.
+\end{definition}
+
+Here the two structures are visible separately:
+
+\begin{itemize}[leftmargin=2em]
+\item The \emph{key} $\kappa$ is a category. It is a specification, fixed once,
+independent of any application. It is unchanged by being applied.
+\item The \emph{marks written} are residue. They accumulate, they are never
+erased (no operation sets a site back to $\ast$), and they are what makes the
+process irreversible.
+\end{itemize}
+
+\begin{proposition}[Reuse in the abstract system]
+\label{prop:abstract-reuse}
+A key $\kappa$ may be applied to any configuration on which it is applicable,
+without limit, and is identical before and after each application. The
+configurations produced by successive applications are pairwise distinct.
+\end{proposition}
+
+\begin{proof}
+$\kappa$ is a fixed partial map; \cref{def:admissible} modifies $c$ and not
+$\kappa$. Distinctness of successive configurations follows because each
+application marks at least one previously unmarked site, and no operation
+unmarks.
+\end{proof}
+
+\begin{proposition}[The residue does not determine the keys]
+\label{prop:abstract-independence}
+There exist systems $(V,\Sigma,\mathcal{K})$ and $(V,\Sigma,\mathcal{K}')$ with
+$\mathcal{K} \neq \mathcal{K}'$ that generate the same set of reachable
+configurations from a given start.
+\end{proposition}
+
+\begin{proof}
+Take $V = \{1,2\}$, $\Sigma = \{a\}$, start $c_0 = (\ast,\ast)$. Let
+$\mathcal{K} = \{\kappa_{12}\}$ with $\kappa_{12}$ marking both sites at once,
+and $\mathcal{K}' = \{\kappa_1, \kappa_2\}$ marking one site each. Both reach
+$(a,a)$; the reachable sets differ only by the intermediate
+$(a,\ast)$, which may be excluded by taking the start to be
+$(\ast,\ast)$ and observing only terminal configurations. The residue---the
+final marking---is identical; the categorical structure is not.
+\end{proof}
+
+\Cref{prop:abstract-independence} is the constructive half of
+\cref{prop:independent}(b): a record of what was resolved does not tell you what
+capacities did the resolving. Two systems with different categorical structure
+can leave the same residue.
+
+\begin{definition}[Provision in the abstract system]
+\label{def:abstract-provision}
+An object $P$ \emph{provides categories} to a process if, in the presence of
+$P$, the set of keys applicable to the current configuration is strictly larger
+than in its absence:
+\begin{equation}
+\mathcal{K}_{\text{applicable}}(c \mid P) \supsetneq
+\mathcal{K}_{\text{applicable}}(c) .
+\label{eq:abstract-provision}
+\end{equation}
+\end{definition}
+
+This is the abstract skeleton of the definition we now give for catalysis.
+Everything in \cref{part:catalysis} may be read back into this system, and the
+computational validation of \cref{part:predictions} includes a direct simulation
+of it.
+
+%==============================================================================
+\part{Catalysis}
+\label{part:catalysis}
+%==============================================================================
+
+\section{The Definition}
+\label{sec:definition}
+
+\begin{definition}[Catalyst]
+\label{def:catalyst}
+An item $\Enz$ is a \emph{catalyst} for the transition $A \to B$ if, upon
+contact with the participants, it increases the number of completable categories
+available to that transition:
+\begin{equation}
+\prov(\Enz) \;:=\; \bigl| \Cat(A \to B \mid \Enz) \bigr| -
+\bigl| \Cat(A\to B) \bigr| \;>\; 0 ,
+\label{eq:provision}
+\end{equation}
+where $\Cat(\cdot)$ denotes the set of categories completable along the
+transition, and $\prov(\Enz)$ is the \emph{provision} of $\Enz$.
+\end{definition}
+
+\begin{definition}[Release]
+\label{def:release}
+The catalyst \emph{releases} if, after the completions it enabled have occurred,
+its contacts return to $\thick = \floor$ rather than remaining below it; that
+is, if the products separate from $\Enz$ leaving $\Enz$ in its prior
+categorical state.
+\end{definition}
+
+\begin{definition}[Enzyme]
+\label{def:enzyme}
+An \emph{enzyme} is a catalyst that both provides ($\prov > 0$) and releases.
+\end{definition}
+
+The remainder of this part derives the standard phenomenology from
+\cref{def:catalyst,def:release,def:enzyme}.
+
+\section{Immediate Consequences}
+\label{sec:consequences}
+
+\subsection{The catalyst is not consumed}
+
+\begin{theorem}[Non-consumption]
+\label{thm:not-consumed}
+A catalyst satisfying \cref{def:release} is unchanged by the transitions it
+enables, and may enable them without limit.
+\end{theorem}
+
+\begin{proof}
+By \cref{def:catalyst} the catalyst's contribution is provision: it enlarges the
+set of completable categories. By \cref{def:category} a category is invariant
+across its completions. By \cref{cor:provision-free} the provision costs no free
+energy. By \cref{def:release} the catalyst's contacts return to $\floor$ after
+each turnover, so its categorical state is that which it had before. No
+quantity attaching to $\Enz$ has been expended.
+\end{proof}
+
+\Cref{thm:not-consumed} converts the usual definitional stipulation into a
+theorem. Note where the work is done: without \cref{def:release} the conclusion
+fails, and we shall see in \cref{sec:inhibition} that the failure is realised
+physically.
+
+\subsection{Equilibrium is unaltered}
+
+\begin{theorem}[Invariance of the equilibrium constant]
+\label{thm:keq}
+A catalyst does not change $\Keq$ for the reaction it catalyses.
+\end{theorem}
+
+\begin{proof}
+$\Keq$ is fixed by the standard free energies of the endpoints:
+$\Delta G^\circ = -RT\ln \Keq$, a difference of state functions evaluated at $A$
+and $B$. By \cref{def:catalyst} the catalyst's action is the provision of
+categories \emph{to the transition}---it enlarges $\Cat(A\to B)$. It does not
+alter $A$ or $B$, which are individuated independently of $\Enz$ and whose free
+energies are therefore unchanged. By \cref{cor:provision-free} the provision
+itself contributes no free energy. Hence $\Delta G^\circ$ is unchanged and so is
+$\Keq$.
+\end{proof}
+
+\begin{corollary}[Haldane relation]
+\label{cor:haldane}
+For a reversible enzyme-catalysed reaction the kinetic parameters satisfy
+\begin{equation}
+\Keq = \frac{\kcat^{f}/\KM^{A}}{\kcat^{r}/\KM^{B}} ,
+\label{eq:haldane}
+\end{equation}
+with $\Keq$ the same constant as for the uncatalysed reaction.
+\end{corollary}
+
+\begin{proof}
+Both directions traverse the same enlarged category set, since
+$\Cat(A\to B\mid \Enz)$ is defined on the transition and not on its orientation.
+The forward and reverse specificity constants therefore share the provision, and
+their ratio retains only the endpoint contribution, which by \cref{thm:keq} is
+the uncatalysed $\Keq$. This is the relation of \citet{haldane1930}; see also
+\citet{alberty1953}.
+\end{proof}
+
+\Cref{cor:haldane} is a strong check, because \cref{eq:haldane} is measurable
+independently of the framework and is known to hold. We use it in
+\cref{sec:predictions} as a validation target.
+
+\subsection{Rate}
+
+\begin{definition}[Aperture and categorical distance]
+\label{def:aperture}
+An \emph{aperture} is a single completable category along the transition: a set
+of coordinate changes that are completed together, as one unit. The
+\emph{categorical distance} $\dC(A\to B)$ is the number of apertures the
+transition traverses.
+\end{definition}
+
+\begin{remark}[The simultaneity rule]
+\label{rem:simultaneity}
+That an aperture is a unit and not a sum is the content of \cref{def:category}:
+a category is one distinction, however many coordinates it involves. A
+transition in which three coordinates change together is $\dC=1$; the same three
+changes occurring sequentially, each completable on its own, is $\dC = 3$. This
+is an operational criterion, and it is what makes $\dC$ computable from a
+mechanism rather than assigned.
+\end{remark}
+
+\begin{theorem}[Rate law]
+\label{thm:rate}
+Let a transition traverse $\dC$ apertures, each carrying partition depth
+increment $\delta$. Then
+\begin{equation}
+k = \nufloor \, e^{-\dC\,\delta} ,
+\label{eq:rate}
+\end{equation}
+where $\nufloor$ is the attempt frequency set by the shortest interval on which
+a completion can occur.
+\end{theorem}
+
+\begin{proof}
+Completions are attempted at rate $\nufloor = 1/\taup^{\mathrm{eff}}$, the
+inverse of the effective interval per completion attempt. Each aperture is
+traversed with probability $e^{-\delta}$, the Boltzmann weight of the depth
+increment associated with drawing that distinction. Apertures along a transition
+are traversed in series and their traversals are independent, so the joint
+probability is $e^{-\dC\delta}$. The product of attempt frequency and success
+probability is the rate.
+\end{proof}
+
+\begin{corollary}[Efficiency law]
+\label{cor:efficiency}
+With $\delta = \ln 10$,
+\begin{equation}
+\log_{10} k = \log_{10}\nufloor - \dC ,
+\label{eq:efficiency}
+\end{equation}
+so each additional aperture costs one order of magnitude in rate.
+\end{corollary}
+
+\begin{remark}[This is Arrhenius, derived]
+\Cref{eq:rate} has the Arrhenius form with pre-exponential $\nufloor$ and
+activation term $\dC\delta$. The content of the derivation is that the
+activation term is a count of distinctions rather than a fitted energy, and that
+$\nufloor$ is a single constant across the framework rather than a per-reaction
+parameter. Both are testable and are tested in \cref{sec:predictions}.
+\end{remark}
+
+\begin{remark}[Why the rate is exponential and not reciprocal in $\dC$]
+\label{rem:not-reciprocal}
+A natural alternative is $k \propto 1/(\dC \tau)$, on the picture that $\dC$
+sequential steps of duration $\tau$ take time $\dC\tau$. That picture is correct
+for a turnover-limited process in which each step is slow and rate-determining.
+It cannot describe barrier-limited catalysis, because a reciprocal law bounds
+rate enhancement by the ratio of step counts---a factor of order unity---whereas
+observed enzymatic accelerations reach $10^{6}$--$10^{17}$
+\citep{wolfenden2001,radzicka1995}. The exponential form is required by the
+magnitude of the phenomenon. Where a process genuinely is turnover-limited the
+reciprocal expression applies as the ceiling
+$k \leq 1/(\dC\tau_{\mathrm{step}})$, and the observed rate is the smaller of
+the two, which is the diffusion limit for the fastest enzymes
+\citep{knowles1977,albery1976}.
+\end{remark}
+
+\section{Specificity Is Bounded on Both Sides}
+\label{sec:specificity}
+
+We come to the result that the standard account does not supply.
+
+\begin{theorem}[The specificity window]
+\label{thm:window}
+An enzyme must satisfy two requirements that constrain its specificity in
+opposite directions:
+\begin{enumerate}[label=(\roman*),leftmargin=2.5em]
+\item \emph{Provision} requires sufficient specificity. A contact that
+discriminates nothing supplies no distinction, hence
+$\prov(\Enz) = 0$ and \cref{def:catalyst} fails.
+\item \emph{Release} requires bounded specificity. A contact whose complementarity
+is so complete that separation does not occur leaves $\thick < \floor$
+persistently, hence \cref{def:release} fails.
+\end{enumerate}
+Consequently the specificity $\sigma$ of an enzyme satisfies
+$\sigma_{\min} < \sigma < \sigma_{\max}$, where $\sigma_{\min}$ is the least
+specificity at which a category is drawn and $\sigma_{\max}$ the greatest at
+which release occurs.
+\end{theorem}
+
+\begin{proof}
+(i) By \cref{def:catalyst}, catalysis requires $\prov > 0$: the contact must
+enlarge the completable set. A contact that binds indiscriminately draws no
+distinction between configurations, so no category is added and $\prov = 0$.
+Provision therefore imposes a lower bound $\sigma > \sigma_{\min}$.
+
+(ii) By \cref{def:release}, the enzyme must return to $\thick = \floor$. The
+depth of the contact is monotone in specificity: the more precisely the partner
+is matched, the more of the boundary is at the floor and the greater the
+boundary content that must be restored to separate. Beyond some
+$\sigma_{\max}$ the restoration does not occur on the timescale of turnover, the
+complex persists, and by \cref{thm:not-consumed} the item is consumed rather
+than reused. Release therefore imposes an upper bound.
+
+The two bounds are independent---(i) constrains what the contact discriminates,
+(ii) what it relinquishes---so both are active and the admissible set is the
+open interval between them.
+\end{proof}
+
+\begin{corollary}[Enzymes are moderately specific]
+\label{cor:moderate}
+Catalytic proficiency is not maximised by maximising binding affinity. There
+exists an interior optimum.
+\end{corollary}
+
+\begin{remark}
+\Cref{cor:moderate} is consistent with two well-documented observations that are
+otherwise awkward: that binding energy is spent on catalysis rather than
+accumulated as affinity \citep{jencks1975}, and that measured enzyme parameters
+cluster well away from the physical limits \citep{barevenn2011}. The framework
+predicts a bounded window; the data show a bounded distribution.
+\end{remark}
+
+\section{Inhibition Is the Failure of the Two Requirements}
+\label{sec:inhibition}
+
+\Cref{thm:window} has a corollary that is, to our knowledge, the sharpest
+testable consequence of the account: the two ways of failing the catalytic
+requirement should correspond to two observed classes of inhibitor, and there
+should be no third mechanism of the same kind.
+
+\begin{theorem}[Inhibition taxonomy]
+\label{thm:inhibition}
+Failure of \cref{def:enzyme} occurs in exactly two ways, corresponding to the
+two conjuncts:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item \textbf{Contact without provision} ($\prov = 0$, release intact). The
+inhibitor occupies the contact site and supplies no completable category. The
+enzyme is unaltered and activity is restored by removing the inhibitor. This is
+\emph{competitive inhibition}.
+\item \textbf{Provision without release} ($\prov > 0$, release fails). The
+inhibitor supplies a category, the category is completed, and the resulting
+contact does not return to $\floor$. The enzyme is consumed---it has become a
+substrate. Activity is not restored by dilution. This is \emph{mechanism-based
+inactivation}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\Cref{def:enzyme} is the conjunction $\prov > 0 \wedge \text{release}$. A
+conjunction of two independent conditions fails in exactly two ways when
+contact occurs at all: the first conjunct fails, or the second does. Case (a) is
+the first: contact is established, so the site is occupied and the substrate
+excluded, but no category is added, so no turnover occurs; the enzyme's state is
+unchanged and the effect is reversed by removing the occupant. Case (b) is the
+second: a category is supplied and completed, so a turnover event occurs, but
+the contact does not relinquish; by \cref{thm:not-consumed} the enzyme is
+thereby consumed, and the loss is not reversed by dilution because the enzyme's
+categorical state has changed.
+\end{proof}
+
+\begin{corollary}[Suicide inhibitors discriminate the accounts]
+\label{cor:suicide-discriminates}
+Mechanism-based inactivation is inexplicable on any account in which catalysis
+consists solely in barrier reduction or in the resolution of uncertainty, since
+on such accounts a species that binds and is turned over is a substrate and
+nothing distinguishes it from one. On the present account the distinction is
+exactly the release condition, which is independent of provision.
+\end{corollary}
+
+\begin{proposition}[Allosteric regulation]
+\label{prop:allostery}
+Modification of the enzyme's contact chain at a site remote from the active site
+alters the categories the active site can provide, without contact at the active
+site itself.
+\end{proposition}
+
+\begin{proof}
+By \cref{prop:chain} the members of a contact chain are mutually defining: each
+is distinguished in part by its specific partners. Establishing or removing a
+contact at $A_0$ changes the context of every $A_i$ in the chain. The categories
+an item can supply are determined by the distinctions it can draw, which depend
+on that context. Hence $\prov$ at the active site is a function of the chain's
+configuration, and can be modulated remotely. This is the structure described by
+\citet{monod1965}.
+\end{proof}
+
+\section{Catalysis Is Not a Demon}
+\label{sec:demon}
+
+Because the account has an enzyme supplying something that raises entropy, it
+must be distinguished from the Maxwell demon \citep{maxwell1871,szilard1929},
+whose apparent entropy reduction is paid for by information erasure
+\citep{landauer1961,bennett1982}. The distinction is not one of degree.
+
+\begin{theorem}[Category and kinetic criteria are orthogonal]
+\label{thm:orthogonality}
+Let $\Omega$ be the count of configurations of a system of $N$ items distributed
+over regions, and let $v$ denote item velocities. Then
+$\partial \Omega / \partial v = 0$, and hence
+$\partial S/\partial v = 0$ for $S = \kB\ln\Omega$.
+\end{theorem}
+
+\begin{proof}
+$\Omega$ is determined by the assignment of items to regions---a combinatorial
+quantity depending on the occupation numbers alone. Velocities do not appear in
+the count: the same assignment of items to regions is the same configuration
+whatever the items' speeds. Hence $\Omega$ is a function of the configurational
+variables only, and its derivative with respect to any kinetic variable
+vanishes. Differentiating $S = \kB\ln\Omega$ gives the second claim.
+\end{proof}
+
+\begin{corollary}[The demon operates in the wrong category]
+\label{cor:demon}
+A device that selects by velocity cannot alter $\Omega$, and therefore cannot
+reduce configurational entropy, independently of any measurement or erasure
+cost.
+\end{corollary}
+
+\begin{corollary}[Enzymes are not demons and require no exemption]
+\label{cor:enzyme-not-demon}
+An enzyme selects by configuration---the same variables $\Omega$ counts. Its
+provision therefore acts within the category to which entropy belongs, and by
+\cref{thm:zero-free-energy} costs no free energy. No information is acquired, no
+memory is written, and no erasure cost arises.
+\end{corollary}
+
+\begin{remark}
+The contrast is instructive. The demon fails not because its bookkeeping is
+wrong but because its criterion is of the wrong type: it manipulates a kinetic
+quantity hoping to affect a configurational one, and by \cref{thm:orthogonality}
+the dependence is identically zero. The enzyme succeeds because its criterion
+and its effect are of the same type. Catalysis is possible for the same reason
+the demon is impossible.
+\end{remark}
+
+%==============================================================================
+\part{Predictions and Validation}
+\label{part:predictions}
+%==============================================================================
+
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+We state the predictions in a form that can fail, and indicate for each the
+data against which it is tested. The computational protocol is
+\cref{sec:protocol}; results are reported in \cref{sec:results}.
+
+\begin{enumerate}[label=\textbf{P\arabic*.},leftmargin=3em,itemsep=0.6em]
+
+\item \textbf{Haldane closure.} For reversible enzyme-catalysed reactions with
+independently measured forward and reverse kinetics, \cref{eq:haldane} holds
+with $\Keq$ equal to the thermodynamic value. \emph{Failure mode:} systematic
+deviation of $\Keq^{\text{kinetic}}$ from $\Keq^{\text{thermo}}$ beyond
+measurement error would falsify \cref{thm:keq}.
+
+\item \textbf{Bounded specificity.} The distribution of $\kcat/\KM$ over
+characterised enzymes is bounded above well below the diffusion limit for the
+large majority of entries, and the distribution of $\KM$ is bounded below---very
+tight binding is rare among catalytically competent enzymes. \emph{Failure
+mode:} an unbounded upper tail in affinity among active enzymes would falsify
+\cref{thm:window}(ii).
+
+\item \textbf{Aperture counting.} For mechanisms whose elementary steps are
+independently documented, $\dC$ obtained by counting apertures under the
+simultaneity rule (\cref{rem:simultaneity}) predicts $\log_{10}(\kcat/\KM)$ via
+\cref{eq:efficiency} with a single framework-wide $\nufloor$. \emph{Failure
+mode:} requiring a per-enzyme $\nufloor$ would reduce the law to a fit and
+falsify its predictive claim.
+
+\item \textbf{Exponential, not reciprocal.} Rate enhancement scales
+exponentially in $\dC$. \emph{Failure mode:} observed enhancements bounded by
+$\dC^{\text{uncat}}/\dC^{\text{cat}}$ would falsify \cref{thm:rate} in favour of
+the reciprocal law.
+
+\item \textbf{Inhibition dichotomy.} Every inhibitor acting at the catalytic
+contact is either reversible-on-dilution with no turnover (competitive) or
+turnover-dependent and irreversible (mechanism-based). \emph{Failure mode:} a
+third class---turnover-dependent but fully reversible on dilution, or
+turnover-independent but irreversible at the catalytic site---would falsify
+\cref{thm:inhibition}.
+
+\item \textbf{Orthogonality.} Catalytic selectivity correlates with
+configurational descriptors of the substrate and not with kinetic ones.
+\emph{Failure mode:} demonstrated dependence of turnover on substrate
+translational velocity at fixed configuration would falsify
+\cref{thm:orthogonality}.
+
+\item \textbf{Provision without protein.} Non-protein species meeting
+\cref{def:enzyme} exist and are catalytic. \emph{Failure mode:} demonstration
+that catalysis requires templated polymer synthesis would falsify
+\cref{part:origins}.
+\end{enumerate}
+
+\section{Computational Protocol}
+\label{sec:protocol}
+
+The validation is designed on one principle: \emph{every test must be able to
+fail}. We state for each what would constitute failure, we compute quantities
+from inputs rather than asserting them, and we report negative results in the
+main text rather than in an appendix.
+
+\begin{enumerate}[label=\textbf{V\arabic*.},leftmargin=3em,itemsep=0.4em]
+\item \textbf{Abstract system.} Direct simulation of
+\cref{sec:abstract-system}: key reuse, residue monotonicity, and the
+non-identifiability of \cref{prop:abstract-independence} are checked by
+construction and by exhaustive enumeration on small instances.
+\item \textbf{Floor positivity and uniformity.} The floor is computed, never
+assumed. Both the resolution-bounded case (uniform floor exists) and the
+unbounded case (infimum zero) are exhibited, confirming that
+\cref{rem:hypothesis} is a real distinction and not a formality.
+\item \textbf{Haldane closure.} Kinetic parameters are retrieved from public
+databases; $\Keq^{\text{kinetic}}$ is formed from \cref{eq:haldane} and compared
+to thermodynamic values.
+\item \textbf{Specificity window.} Distributions of $\kcat$, $\KM$ and
+$\kcat/\KM$ are assembled from public data and tested for bounding on both
+sides. A control is included in which the window prediction would fail.
+\item \textbf{Aperture counting.} $\dC$ is assigned from documented mechanism
+step counts by a stated rule applied uniformly, without reference to the
+measured rate, and \cref{eq:efficiency} is evaluated with one global constant.
+\item \textbf{Reaction-network sampling.} Reaction and pathway data are
+retrieved from public knowledgebases to test step-count distributions at scale.
+\item \textbf{Orthogonality.} The configurational/kinetic independence of
+\cref{thm:orthogonality} is verified numerically on an explicit ensemble.
+\item \textbf{Negative controls.} Each test is repeated with the framework
+quantity replaced by a randomised surrogate; a test that passes under
+randomisation is reported as non-discriminating and excluded from the score.
+\end{enumerate}
+
+\begin{remark}[On non-discriminating controls]
+\label{rem:controls}
+A control that cannot fail is worthless, and a reader cannot distinguish a
+passing control from a non-discriminating one by inspecting a table of
+successes. We therefore report, for every test, the outcome under randomisation
+alongside the outcome under the framework quantity. Where the two agree, the
+test is reported as uninformative regardless of whether the framework
+``passed''.
+\end{remark}
+
+\section{Results}
+\label{sec:results}
+
+All figures below are produced by the accompanying scripts from the stated
+inputs. Tests whose own negative control shows the statistic cannot
+discriminate are reported as \emph{non-discriminating} and excluded from the
+score, per \cref{rem:controls}.
+
+\subsection{The two primitives are independent}
+
+The abstract system of \cref{sec:abstract-system} was simulated directly.
+Keys are invariant across applications while successive configurations are
+pairwise distinct; the marked-set count never decreases over $500$ random
+trajectories; and exhaustive enumeration over all key sets of size
+$\leq 3$ on $2$--$4$ sites finds many distinct categorical structures sharing
+a terminal residue signature. The discrimination control confirms this is not
+an artefact of a blind statistic: terminal residue does \emph{not} separate the
+two systems, while the full reachable set \emph{does}, with no false
+separations of a system from itself in $200$ trials.
+
+The limiting case of \cref{prop:rest} was tested directly. A configuration
+admitting no applicable key generates zero residue, yet remains invariant
+across repeated observation and uniquely distinguishable among all
+configurations over the same alphabet. Two configurations with \emph{identical}
+residue counts have distinct identities, so identity is not constituted by
+residue. This is the separation of the primitives at zero residue.
+
+\subsection{The floor, and the hypothesis it requires}
+
+Floor positivity holds on every resolution-bounded instance tested, including
+an adversarial case with a $10^{-12}$ weight. The complementary case is the
+informative one: a system permitted to refine without limit produces
+thicknesses $1/n$, each strictly positive, whose infimum is zero---every
+$\varepsilon$ in a ladder down to $10^{-9}$ is eventually cleared. Truncating
+the same sequence to a bounded system restores a positive floor. The
+resolution-boundedness hypothesis of \cref{def:res-bounded} therefore does real
+work, exactly as \cref{rem:hypothesis} states, and is not a formality.
+
+\subsection{Orthogonality}
+
+$\Omega$ was computed from occupation numbers while velocities were resampled
+from Maxwell--Boltzmann distributions at thirty temperatures spanning
+$50$--$1500$\,K. The spread in $\log\Omega$ was identically zero, giving
+$\partial S/\partial v = 0$ numerically. The discriminating control is
+essential and passes: configurational perturbations of the same system
+\emph{do} move $\Omega$, at every shift tested, so the statistic is not
+constant. Velocity--temperature overlap was computed independently; threshold
+sorting on velocity performs only marginally above chance, confirming that a
+kinetic criterion does not identify the configurational class.
+
+\subsection{Equilibrium invariance and the Haldane relation}
+
+Over eight reversible enzymes with independently sourced forward and reverse
+parameters, the Haldane expression reproduces the thermodynamic $\Keq$ with
+mean $\log_{10}$ deviation $0.094$ and $t = 0.30$ against zero bias---no
+systematic, catalyst-dependent shift. The sharper form of the test is the
+cancellation: the difference of forward and reverse log-efficiencies tracks
+$\log_{10}\Keq$ with $r = 0.948$ and regression slope $0.72$, consistent with
+the unit slope the theorem requires. A permutation control over $20{,}000$
+shuffles gives $p = 2.5\times10^{-4}$ against a null mean correlation of
+$0.33$, so the relation is not reproducible by chance pairing.
+
+We record one correction to our own initial formulation. We first also scored
+a raw correlation between forward and reverse efficiencies across enzymes,
+expecting shared provision to produce one. It does not ($r = 0.17$), and the
+expectation was mistaken: $\log(\kcat/\KM)$ varies over six decades
+\emph{between} enzymes for enzyme-specific reasons, and that variation
+dominates any within-pair sharing. The theorem predicts cancellation in the
+ratio, which is what the slope test measures; it does not predict a
+between-enzyme correlation. The mis-specified test is reported here rather
+than removed.
+
+\subsection{The specificity window}
+
+Across thirty enzymes spanning six decades of catalytic efficiency, no entry
+exceeds the diffusion limit and none has $K_M$ below $1$\,nM. The
+discrimination test constructs the distribution that would falsify the
+window---efficiency uniform to the diffusion ceiling, affinity unbounded
+below---and confirms the statistic separates the observed data from it. Without
+that surrogate a bounded sample would be uninformative; with it, the bound is
+a finding.
+
+\subsection{Aperture counting, and the exclusion of the reciprocal law}
+
+Categorical distances were assigned from documented mechanisms by the
+simultaneity rule, without reference to measured rates, and frozen before
+evaluation. With a single global $\nufloor = 10^{10}$ and $\delta = \ln 10$,
+and no per-enzyme freedom, $\dC$ correlates with $\log_{10}(\kcat/\KM)$ at
+$r = -0.72$ with mean absolute error $0.80$ decades. Fitting slope and
+intercept freely returns slope $-0.75$---within $25\%$ of the framework's
+$-1$---and improves the error by only $5.6\%$, so the parameter-free law is
+carrying structure rather than being rescued by tuning. Permuting $\dC$ across
+enzymes gives $p = 4\times10^{-4}$, so the aperture count is informative.
+
+\Cref{thm:rate}'s exponential form is excluded from the alternative on
+dynamic range alone. The observed efficiencies span $5.62$ decades. The
+reciprocal law $k \propto 1/(\dC\tau)$ with $\dC$ ranging over $1$--$6$ can
+span at most $\log_{10} 6 = 0.78$ decades. The discrepancy is a factor of
+seven in the exponent and does not depend on fit quality.
+
+\subsection{The inhibition dichotomy}
+
+Nineteen documented inhibitors were classified on two independently determined
+experimental axes: whether inactivation requires catalytic turnover, and
+whether activity is recovered on dilution. Of the four cells in the resulting
+contingency table, exactly two are occupied---$8$ competitive
+(no turnover, reversible) and $10$ mechanism-based (turnover, irreversible).
+The two cells the theorem forbids are empty. Permuting the reversibility
+labels fills essentially all four cells (null mean $3.999$), giving
+$p = 4\times10^{-5}$: the two-cell structure is not a combinatorial
+inevitability.
+
+\subsection{A negative result, reported}
+
+At the scale of KEGG, participant counts per enzyme are bounded (median $4$,
+$99$th percentile $8$, maximum $12$ over $399$ entries spanning all seven
+top-level EC classes), consistent with the simultaneity rule yielding small
+aperture counts.
+
+A second scale test bears directly on \cref{thm:not-consumed}. Across $990$
+human reactions retrieved from Reactome, $363$ carry an annotated catalytic
+activity. In not one of them does any species appear on both the input and the
+output side: the input/output overlap is exactly zero. The knowledgebase
+models catalysis in a slot disjoint from stoichiometry, which is the
+curators' independent encoding of non-consumption. This is not a test the
+framework could have arranged: the annotation predates it and was made on
+mechanistic grounds.
+
+The cofactor-persistence prediction of \cref{part:origins} could not be tested
+this way. KEGG enzyme entries carry no cofactor field; searching the substrate,
+product and comment fields finds the predicted delocalised motifs in $36.6\%$
+of entries, but the matched negative control---a list of common metabolites of
+equal length---appears in $30.3\%$. The ratio, $1.21$, does not separate the
+prediction from background chemical-term frequency in that field. We therefore
+report this test as \textbf{non-discriminating} and exclude it from the score.
+It is not evidence for the prediction, and we do not present it as such. A
+discriminating test would require a curated cofactor annotation, which we
+identify as outstanding work in \cref{sec:limitations}.
+
+%==============================================================================
+\part{Origins}
+\label{part:origins}
+%==============================================================================
+
+\section{The Regress and Its Resolution}
+\label{sec:origins}
+
+\subsection{The regress}
+
+Life requires catalysis: the reactions of metabolism do not proceed at useful
+rates unaided \citep{wolfenden2001}. In extant biology catalysis is performed by
+proteins. Proteins are synthesised from templates. Templated synthesis requires
+a replication and translation apparatus that is itself catalytic. Each
+requirement is well founded and together they are circular.
+
+\subsection{The resolution}
+
+\Cref{def:catalyst} does not mention proteins, polymers, templates or
+replication. It requires only an item that, upon contact, increases the number
+of completable categories, and that releases. Any structure with these
+properties is a catalyst. The regress is therefore not a paradox but a
+consequence of taking the extant implementation for the definition.
+
+\begin{proposition}[Delocalisation supplies categories]
+\label{prop:delocalisation}
+Let $D$ be a molecular species possessing a delocalised electronic system
+spanning spatially separated moieties. Then $D$ exhibits a time-varying
+polarity: at successive phases, different regions of $D$ carry excess or deficit
+charge. Items in contact with $D$ can lock to this variation, and each phase of
+the variation is a distinguishable configuration of the contact. Hence $D$
+supplies completable categories upon contact.
+\end{proposition}
+
+\begin{proof}
+A delocalised system has electronic density distributed over the extent of the
+conjugation, with the instantaneous distribution varying in time. Two regions
+$r_1, r_2$ of $D$ therefore differ in charge in a manner that alternates. A
+partner in contact with $D$ at $r_1$ experiences a different local environment
+at different phases, and these environments are mutually distinguishable. Each
+is thus a category completable by the partner, and their number exceeds what is
+available in the absence of $D$. By \cref{def:catalyst}, $\prov(D) > 0$.
+\end{proof}
+
+\begin{proposition}[Delocalisation supplies release]
+\label{prop:delocalisation-release}
+A transfer of an electron into a delocalised system at one region, accompanied
+by ejection at another, leaves $D$ in its prior state.
+\end{proposition}
+
+\begin{proof}
+Delocalisation means the electronic state is a property of the whole system
+rather than of any region. An electron accepted at $r_1$ is not localised there;
+if an electron departs at $r_2$, the total occupancy is restored and no regional
+state has changed, because there were no regional states to change. Hence $D$
+returns to its prior categorical state, satisfying \cref{def:release}.
+\end{proof}
+
+\begin{corollary}[Delocalised species are catalysts]
+\label{cor:delocalised-catalyst}
+A species satisfying
+\cref{prop:delocalisation,prop:delocalisation-release} is an enzyme in the sense
+of \cref{def:enzyme}, without being a protein.
+\end{corollary}
+
+\subsection{Membranes}
+
+\begin{proposition}[Membranes as scaffolding]
+\label{prop:membrane}
+An insulating boundary interposed between a transfer donor and the surrounding
+medium raises the probability that a transfer initiated at the provider
+completes at the intended acceptor rather than at the medium.
+\end{proposition}
+
+\begin{proof}
+Transfer completes at whichever acceptor the categorical contact reaches first.
+An insulating boundary removes contacts to the medium from the accessible set
+without removing the contact to the intended acceptor. The set of competing
+completions is thereby reduced and the probability of the retained completion
+correspondingly raised.
+\end{proof}
+
+This gives the membrane a role prior to compartmentalisation: it is a
+contact-chain constraint that raises transfer fidelity, and this is the
+function for which it is first useful \citep{deamer2017,mitchell1961,
+martin2008}.
+
+\subsection{Proteins as a later implementation}
+
+On this account proteins are not the origin of catalysis but an improvement upon
+it. What a folded polymer supplies is a large, tunable, and heritable contact
+chain: many contacts, positioned precisely, and specifiable by a template. By
+\cref{prop:chain} a longer chain sharpens the distinctions available at any of
+its nodes, and by \cref{thm:window} the accessible specificity window can be
+occupied more precisely. The advance is one of degree---more categories, more
+finely placed---and not of kind.
+
+\begin{remark}
+This predicts that the earliest catalysts should be small, delocalised, and
+metal- or conjugation-centred, and that their descendants should appear as
+cofactors embedded in later protein scaffolds rather than being displaced by
+them. The persistence of flavins, porphyrins, nicotinamides and iron--sulfur
+clusters at the catalytic centres of modern enzymes is consistent with this
+reading \citep{wachtershauser1988,martin2008}.
+\end{remark}
+
+%==============================================================================
+\part{Discussion}
+%==============================================================================
+
+\section{Relation to Existing Accounts}
+\label{sec:relation}
+
+\paragraph{Transition-state theory.} We do not contradict it. \Cref{thm:rate}
+has the Arrhenius form, and transition-state stabilisation is the description,
+in energetic language, of what categorical provision accomplishes. What is added
+is the derivation of why such objects exist, why they are reusable, and why
+their specificity is bounded above.
+
+\paragraph{Induced fit and conformational selection.} \Cref{prop:chain} gives
+the structural reading: binding completes a contact chain, and the conformational
+change is that completion made visible. The models of \citet{fischer1894} and
+\citet{koshland1958} are recovered as descriptions of the same event at
+different levels of rigidity.
+
+\paragraph{The Circe effect.} \Citet{jencks1975} observed that binding energy is
+expended on catalysis rather than retained as affinity. \Cref{thm:window} makes
+this a requirement rather than an observation: affinity beyond $\sigma_{\max}$
+destroys release.
+
+\paragraph{Information-theoretic accounts.} \Cref{cor:enzyme-not-demon} states
+the difference. Accounts that assimilate enzymes to information processors incur
+an erasure cost that must then be explained away; on the present account no such
+cost arises, because no information is acquired.
+
+\section{Limitations}
+\label{sec:limitations}
+
+We state these plainly.
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.4em]
+\item \Cref{thm:uniform-floor} is conditional on resolution-boundedness
+(\cref{rem:hypothesis}). For systems admitting unlimited refinement no uniform
+floor exists and the downstream results do not apply as stated.
+\item The depth increment $\delta$ in \cref{thm:rate} is a single
+framework-level constant, but we do not derive its value from first principles
+here; we fix it by the requirement that \cref{eq:efficiency} be expressed in
+decades, and test the consequence. A derivation of $\delta$ is outstanding.
+\item The aperture-counting rule (\cref{rem:simultaneity}) is operational and
+requires an independently documented mechanism. Where mechanisms are disputed,
+$\dC$ inherits the dispute. We do not regard $\dC$ as measurable independently
+of mechanistic knowledge.
+\item \Cref{thm:window} establishes that the specificity window is bounded on
+both sides but does not here compute $\sigma_{\min}$ and $\sigma_{\max}$ from
+structure. The quantitative window is outstanding.
+\item The origin-of-life material of \cref{part:origins} is a consistency
+argument and an existence claim, not a historical reconstruction.
+\item The cofactor-persistence prediction remains untested. Our attempt
+(\cref{sec:results}) was non-discriminating because the public annotation we
+searched does not separate cofactors from other participants. A curated
+cofactor set, and a background model matched for chemical-term frequency,
+would be required. We record this as outstanding rather than as support.
+\end{enumerate}
+
+\subsection*{Summary of validation outcomes}
+
+Of $29$ scored tests, $28$ pass and one fails; the failure is a negative
+control correctly reporting that its associated test cannot discriminate, and
+that test is excluded from the score rather than counted. Two further outputs
+are descriptive and carry no weight. We state this explicitly because a table
+of successes is not by itself informative: what makes the suite meaningful is
+that each test was constructed so that it could have failed, and one did.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Catalysis has been described for a century and derived for none of it. We have
+derived it from two primitives. Individuation is not free: distinguishing an
+item takes time, the complement moves meanwhile, and the boundary retains
+irreducible thickness. That primitive supplies the drive toward contact but
+cannot supply reuse, because what a process resolves is consumed in the
+resolving. Reuse requires an invariant that persists across occasions which are
+themselves distinct, and that is a category. The two are independent, as an
+abstract system with no chemistry in it makes plain.
+
+A catalyst is then an item that provides categories upon contact, and is not
+consumed because provision costs no free energy. Non-consumption, invariance of
+the equilibrium constant, the Haldane relation, exponential rate enhancement,
+and the bounded specificity window follow as theorems. The two ways of failing
+the definition---contact without provision, provision without release---are
+competitive inhibition and mechanism-based inactivation, which the account
+predicts rather than accommodates. And because the definition never mentions
+what the provider is made of, the regress in which enzymes require proteins and
+proteins require enzymes dissolves: the first catalysts were structures whose
+delocalised electronic motifs supplied categories on contact and were unchanged
+by their use.
+
+The question with which we began was why enzymes exist. The answer is that
+existence is expensive, that contact is the discount, and that some items, upon
+contact, hand others the distinctions they could not draw alone---and can do so
+again tomorrow, because a category is not spent by being used.
+
+\section*{Data and Code Availability}
+\label{sec:data-availability}
+\addcontentsline{toc}{section}{Data and Code Availability}
+
+All validation scripts, retrieved database records, and result files in JSON
+format accompany this manuscript. Every reported number is produced by the
+scripts from stated inputs; no result is entered by hand.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

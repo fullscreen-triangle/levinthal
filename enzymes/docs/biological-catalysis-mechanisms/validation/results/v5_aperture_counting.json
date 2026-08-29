@@ -1,0 +1,249 @@
+{
+  "script": "v5_aperture_counting.py",
+  "predictions": [
+    "P3 aperture counting",
+    "P4 exponential not reciprocal"
+  ],
+  "aperture_rule": "dC = number of elementary categorical transitions; concerted coordinate changes count as ONE aperture; sequential steps count separately. Assigned from mechanism WITHOUT reference to rate.",
+  "tests": [
+    {
+      "test": "V5.1 parameter-free efficiency law",
+      "law": "log10(kcat/KM) = log10(nu_floor) - delta * dC",
+      "nu_floor_log10_GLOBAL": 10.0,
+      "delta_decades_GLOBAL": 1.0,
+      "n_free_parameters": 0,
+      "n_enzymes": 20,
+      "rows": [
+        {
+          "enzyme": "Superoxide dismutase",
+          "ec": "1.15.1.1",
+          "dC": 1,
+          "mechanism": "single electron transfer Cu(II)->Cu(I) (one aperture)",
+          "log10_obs": 9.447,
+          "log10_pred": 9.0,
+          "error_decades": -0.447
+        },
+        {
+          "enzyme": "Catalase",
+          "ec": "1.11.1.6",
+          "dC": 1,
+          "mechanism": "two-electron transfer to Cpd I, concerted",
+          "log10_obs": 7.556,
+          "log10_pred": 9.0,
+          "error_decades": 1.444
+        },
+        {
+          "enzyme": "Carbonic anhydrase II",
+          "ec": "4.2.1.1",
+          "dC": 1,
+          "mechanism": "Zn-OH nucleophilic attack, concerted",
+          "log10_obs": 7.919,
+          "log10_pred": 9.0,
+          "error_decades": 1.081
+        },
+        {
+          "enzyme": "Acetylcholinesterase",
+          "ec": "3.1.1.7",
+          "dC": 2,
+          "mechanism": "acylation + deacylation",
+          "log10_obs": 8.204,
+          "log10_pred": 8.0,
+          "error_decades": -0.204
+        },
+        {
+          "enzyme": "Triosephosphate isomerase",
+          "ec": "5.3.1.1",
+          "dC": 2,
+          "mechanism": "proton abstraction + reprotonation via enediolate",
+          "log10_obs": 6.959,
+          "log10_pred": 8.0,
+          "error_decades": 1.041
+        },
+        {
+          "enzyme": "Fumarase",
+          "ec": "4.2.1.2",
+          "dC": 2,
+          "mechanism": "water addition + proton transfer",
+          "log10_obs": 8.204,
+          "log10_pred": 8.0,
+          "error_decades": -0.204
+        },
+        {
+          "enzyme": "Crotonase",
+          "ec": "4.2.1.17",
+          "dC": 2,
+          "mechanism": "water addition + enolate protonation",
+          "log10_obs": 8.447,
+          "log10_pred": 8.0,
+          "error_decades": -0.447
+        },
+        {
+          "enzyme": "Beta-lactamase",
+          "ec": "3.5.2.6",
+          "dC": 2,
+          "mechanism": "acyl-enzyme formation + hydrolysis",
+          "log10_obs": 8.0,
+          "log10_pred": 8.0,
+          "error_decades": 0.0
+        },
+        {
+          "enzyme": "Adenylate kinase",
+          "ec": "2.7.4.3",
+          "dC": 3,
+          "mechanism": "domain closure + phosphoryl transfer + opening",
+          "log10_obs": 6.477,
+          "log10_pred": 7.0,
+          "error_decades": 0.523
+        },
+        {
+          "enzyme": "Lactate dehydrogenase",
+          "ec": "1.1.1.27",
+          "dC": 3,
+          "mechanism": "loop closure + hydride transfer + proton transfer",
+          "log10_obs": 6.491,
+          "log10_pred": 7.0,
+          "error_decades": 0.509
+        },
+        {
+          "enzyme": "Alcohol dehydrogenase",
+          "ec": "1.1.1.1",
+          "dC": 3,
+          "mechanism": "Zn coordination + hydride transfer + proton relay",
+          "log10_obs": 3.826,
+          "log10_pred": 7.0,
+          "error_decades": 3.174
+        },
+        {
+          "enzyme": "Hexokinase",
+          "ec": "2.7.1.1",
+          "dC": 3,
+          "mechanism": "induced fit closure + phosphoryl transfer + release",
+          "log10_obs": 6.826,
+          "log10_pred": 7.0,
+          "error_decades": 0.174
+        },
+        {
+          "enzyme": "Chymotrypsin",
+          "ec": "3.4.21.1",
+          "dC": 4,
+          "mechanism": "tetrahedral int. 1 + acyl-enzyme + tetrahedral int. 2 + release",
+          "log10_obs": 5.176,
+          "log10_pred": 6.0,
+          "error_decades": 0.824
+        },
+        {
+          "enzyme": "Trypsin",
+          "ec": "3.4.21.4",
+          "dC": 4,
+          "mechanism": "same serine-protease four-step mechanism",
+          "log10_obs": 5.398,
+          "log10_pred": 6.0,
+          "error_decades": 0.602
+        },
+        {
+          "enzyme": "Thrombin",
+          "ec": "3.4.21.5",
+          "dC": 4,
+          "mechanism": "serine-protease four-step mechanism",
+          "log10_obs": 6.778,
+          "log10_pred": 6.0,
+          "error_decades": -0.778
+        },
+        {
+          "enzyme": "Aldolase",
+          "ec": "4.1.2.13",
+          "dC": 4,
+          "mechanism": "Schiff base + C-C cleavage + enamine + hydrolysis",
+          "log10_obs": 6.23,
+          "log10_pred": 6.0,
+          "error_decades": -0.23
+        },
+        {
+          "enzyme": "Aspartate aminotransferase",
+          "ec": "2.6.1.1",
+          "dC": 4,
+          "mechanism": "transaldimination + quinonoid + reprotonation + hydrolysis",
+          "log10_obs": 5.23,
+          "log10_pred": 6.0,
+          "error_decades": 0.77
+        },
+        {
+          "enzyme": "Lysozyme",
+          "ec": "3.2.1.17",
+          "dC": 4,
+          "mechanism": "substrate distortion + oxocarbenium + covalent int. + hydrolysis",
+          "log10_obs": 4.919,
+          "log10_pred": 6.0,
+          "error_decades": 1.081
+        },
+        {
+          "enzyme": "Rubisco",
+          "ec": "4.1.1.39",
+          "dC": 5,
+          "mechanism": "enolisation + carboxylation + hydration + C-C cleavage + protonation",
+          "log10_obs": 5.477,
+          "log10_pred": 5.0,
+          "error_decades": -0.477
+        },
+        {
+          "enzyme": "Cytochrome P450 3A4",
+          "ec": "1.14.14.1",
+          "dC": 6,
+          "mechanism": "substrate binding + e- + O2 + e- + Cpd I + HAT/rebound",
+          "log10_obs": 6.0,
+          "log10_pred": 4.0,
+          "error_decades": -2.0
+        }
+      ],
+      "MAE_decades": 0.800483231678788,
+      "RMSE_decades": 1.0757281230256457,
+      "n_within_1_decade": 14,
+      "n_within_2_decades": 19,
+      "corr_dC_vs_log10_obs": -0.7196672596295558,
+      "passed": true,
+      "interpretation": "The scored claim is the NEGATIVE correlation between dC and efficiency with a single global constant. A strong negative correlation with modest MAE supports the law; MAE alone would not, since a constant predictor can have small MAE on a narrow range."
+    },
+    {
+      "test": "V5.2 free fit vs parameter-free",
+      "free_fit_slope": -0.7492532132017501,
+      "free_fit_intercept": 8.926104153374245,
+      "framework_slope": -1.0,
+      "framework_intercept": 10.0,
+      "MAE_free_fit": 0.7580160332690455,
+      "MAE_parameter_free": 0.800483231678788,
+      "improvement_decades": 0.042467198409742446,
+      "MAE_ratio_fixed_over_free": 1.0560241426907515,
+      "slope_within_50pct_of_framework": true,
+      "passed": true,
+      "interpretation": "If the freely fitted slope lands near -1 and the free fit is not dramatically better, the parameter-free law is carrying real structure rather than being rescued by tuning."
+    },
+    {
+      "test": "V5.3 exponential vs reciprocal (P4)",
+      "observed_dynamic_range_decades": 5.6210832286413925,
+      "dC_ratio_max_over_min": 6.0,
+      "max_range_reciprocal_law_can_produce_decades": 0.7781512503836436,
+      "reciprocal_law_can_span_observed_range": false,
+      "MAE_reciprocal_best_case": 0.9890532053279759,
+      "MAE_exponential": 0.800483231678788,
+      "exponential_better": true,
+      "passed": true,
+      "interpretation": "The reciprocal law is bounded: with dC from 1 to 6 it can span at most log10(6) ~ 0.78 decades. The data span far more. The reciprocal law is therefore excluded by the dynamic range alone, independently of any fit quality."
+    },
+    {
+      "test": "V5.4 CONTROL: shuffled dC",
+      "observed_corr": -0.7196672596295558,
+      "n_permutations": 20000,
+      "null_mean_corr": 0.001522816150590657,
+      "null_5th_percentile": -0.3718360780396672,
+      "empirical_p_value_one_sided": 0.00044997750112494374,
+      "dC_carries_information": true,
+      "passed": true,
+      "interpretation": "If p were large, the observed dC-efficiency relation would be reproducible by random assignment and the aperture count would be doing no work."
+    }
+  ],
+  "summary": {
+    "n_tests": 4,
+    "n_passed": 4,
+    "all_passed": true
+  }
+}

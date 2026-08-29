@@ -1,0 +1,52 @@
+{
+  "script": "v9_inhibition_taxonomy.py",
+  "prediction": "P5 inhibition dichotomy",
+  "data_provenance": "documented inhibitor mechanisms; the two axes are independently determined experimental properties",
+  "tests": [
+    {
+      "test": "V9.1 inhibition dichotomy (2x2 contingency)",
+      "n_inhibitors": 18,
+      "cell_counts": {
+        "no_turnover|reversible": 8,
+        "turnover|irreversible": 10,
+        "turnover|reversible": 0,
+        "no_turnover|irreversible": 0
+      },
+      "n_cells_occupied": 2,
+      "n_in_forbidden_cells": 0,
+      "forbidden_cell_members": {
+        "turnover_but_reversible": [],
+        "no_turnover_but_irreversible": []
+      },
+      "passed": true,
+      "interpretation": "Exactly two of four cells are populated.  The two empty cells are the ones the theorem forbids: turnover-dependent yet reversible, and turnover-independent yet irreversible."
+    },
+    {
+      "test": "V9.2 both axes vary (claim is substantive)",
+      "n_turnover_required": 10,
+      "n_not_turnover_required": 8,
+      "n_reversible": 8,
+      "n_irreversible": 10,
+      "both_axes_vary": true,
+      "phi_coefficient": 1.0,
+      "passed": true,
+      "interpretation": "Both experimental properties take both values across the sample, so the restriction to two joint cells is a real constraint and not an artefact of a constant variable.  phi = 1 records that the two axes are perfectly associated -- which is the predicted result, not an assumption."
+    },
+    {
+      "test": "V9.3 CONTROL: shuffled reversibility labels",
+      "observed_cells_occupied": 2,
+      "n_permutations": 50000,
+      "mean_cells_occupied_under_null": 3.99908,
+      "fraction_null_with_2_or_fewer_cells": 2e-05,
+      "empirical_p_value": 3.999920001599968e-05,
+      "test_is_discriminating": true,
+      "passed": true,
+      "interpretation": "Random pairing of the two properties almost always fills three or four cells.  The observed two-cell structure is therefore not a combinatorial inevitability."
+    }
+  ],
+  "summary": {
+    "n_tests": 3,
+    "n_passed": 3,
+    "all_passed": true
+  }
+}
