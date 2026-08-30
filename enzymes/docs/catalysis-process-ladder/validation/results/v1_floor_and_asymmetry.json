@@ -1,0 +1,200 @@
+{
+  "script": "v1_floor_and_asymmetry.py",
+  "covers": [
+    "floor",
+    "probe-commit asymmetry",
+    "reuse"
+  ],
+  "tests": [
+    {
+      "test": "V1.1 floor positive on finite graphs",
+      "instances": [
+        {
+          "instance": "uniform",
+          "n_edges": 10,
+          "floor_computed": 1.0,
+          "total": 10.0,
+          "positive": true
+        },
+        {
+          "instance": "graded",
+          "n_edges": 10,
+          "floor_computed": 0.05,
+          "total": 2.75,
+          "positive": true
+        },
+        {
+          "instance": "adversarial_tiny",
+          "n_edges": 10,
+          "floor_computed": 1e-12,
+          "total": 9.000000000001,
+          "positive": true
+        },
+        {
+          "instance": "wide_range",
+          "n_edges": 10,
+          "floor_computed": 1e-09,
+          "total": 1.111111111,
+          "positive": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V1.2 unbounded refinement: no uniform floor",
+      "all_terms_positive": true,
+      "strictly_decreasing": true,
+      "stages_required_per_epsilon": {
+        "stages_to_fall_below_1/10": 11,
+        "stages_to_fall_below_1/100": 101,
+        "stages_to_fall_below_1/1000": 1001,
+        "stages_to_fall_below_1/1000000": 1000001,
+        "stages_to_fall_below_1/1000000000": 1000000001
+      },
+      "every_epsilon_cleared": true,
+      "truncated_bounded_floor": 0.1,
+      "truncated_floor_positive": true,
+      "passed": true,
+      "interpretation": "Each thickness is positive; the infimum is zero.  The uniform floor therefore requires finiteness, exactly as the paper's Remark states.  This test confirms a limitation rather than a claim."
+    },
+    {
+      "test": "V1.3 alignment equals minimum cut",
+      "n_trials": 40,
+      "sample_rows": [
+        {
+          "n_items": 4,
+          "alpha": 9.881548557875552,
+          "bruteforce": 9.881548557875552,
+          "agree": true
+        },
+        {
+          "n_items": 3,
+          "alpha": 4.174119626302547,
+          "bruteforce": 4.174119626302547,
+          "agree": true
+        },
+        {
+          "n_items": 4,
+          "alpha": 5.1004492103828625,
+          "bruteforce": 5.1004492103828625,
+          "agree": true
+        },
+        {
+          "n_items": 5,
+          "alpha": 8.788418034634375,
+          "bruteforce": 8.788418034634375,
+          "agree": true
+        },
+        {
+          "n_items": 3,
+          "alpha": 3.440941499865143,
+          "bruteforce": 3.440941499865143,
+          "agree": true
+        }
+      ],
+      "all_agree": true,
+      "passed": true
+    },
+    {
+      "test": "V2.1 commitment cost independent of rarity",
+      "floor": 0.5,
+      "rows": [
+        {
+          "region_measure": 0.5,
+          "residue_deposited": 0.5,
+          "at_or_above_floor": true
+        },
+        {
+          "region_measure": 0.1,
+          "residue_deposited": 0.5,
+          "at_or_above_floor": true
+        },
+        {
+          "region_measure": 0.001,
+          "residue_deposited": 0.5,
+          "at_or_above_floor": true
+        },
+        {
+          "region_measure": 1e-06,
+          "residue_deposited": 0.5,
+          "at_or_above_floor": true
+        },
+        {
+          "region_measure": 1e-09,
+          "residue_deposited": 0.5,
+          "at_or_above_floor": true
+        },
+        {
+          "region_measure": 1e-12,
+          "residue_deposited": 0.5,
+          "at_or_above_floor": true
+        }
+      ],
+      "residue_spread_across_measures": 0.0,
+      "cost_independent_of_measure": true,
+      "all_at_or_above_floor": true,
+      "passed": true
+    },
+    {
+      "test": "V2.2 probing deposits nothing",
+      "n_probes": 5000,
+      "M_after": 0,
+      "M_unchanged": true,
+      "graph_unchanged": true,
+      "residues_recorded": 0,
+      "passed": true
+    },
+    {
+      "test": "V2.3 committed structure is reusable at no cost",
+      "M_after_single_commit": 1,
+      "n_subsequent_traversals": 10000,
+      "M_after_traversals": 1,
+      "residue_deposited_total": 0.5,
+      "residue_per_traversal": 0.0,
+      "passed": true,
+      "interpretation": "One commitment, ten thousand traversals, M still 1.  This is non-consumption obtained from the asymmetry, with no energetic argument anywhere in the computation."
+    },
+    {
+      "test": "V2.4 rarity affects frequency, not cost",
+      "n_steps": 400000,
+      "rows": [
+        {
+          "measure": 0.5,
+          "observed_frequency": 0.4999975,
+          "abs_error": 2.500000000016378e-06,
+          "commit_cost": 0.5,
+          "within_tolerance": true
+        },
+        {
+          "measure": 0.1,
+          "observed_frequency": 0.1,
+          "abs_error": 0.0,
+          "commit_cost": 0.5,
+          "within_tolerance": true
+        },
+        {
+          "measure": 0.01,
+          "observed_frequency": 0.01,
+          "abs_error": 0.0,
+          "commit_cost": 0.5,
+          "within_tolerance": true
+        },
+        {
+          "measure": 0.001,
+          "observed_frequency": 0.001,
+          "abs_error": 0.0,
+          "commit_cost": 0.5,
+          "within_tolerance": true
+        }
+      ],
+      "frequency_tracks_measure": true,
+      "commit_cost_constant_across_measures": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "n": 7,
+    "passed": 7,
+    "all_passed": true
+  }
+}

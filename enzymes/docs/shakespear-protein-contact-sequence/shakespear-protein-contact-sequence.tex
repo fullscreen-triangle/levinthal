@@ -1,0 +1,1661 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{rulename}[theorem]{Rule}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{principle}[theorem]{Principle}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\crefname{rulename}{Rule}{Rules}
+\Crefname{rulename}{Rule}{Rules}
+\crefname{principle}{Principle}{Principles}
+\Crefname{principle}{Principle}{Principles}
+
+% --- notation -----------------------------------------------------------
+\newcommand{\Rpos}{\mathbb{R}_{>0}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Gph}{\Gamma}
+\newcommand{\med}{\mathfrak{m}}
+\newcommand{\cut}{\operatorname{cut}}
+\newcommand{\res}{\rho}
+\newcommand{\wt}{w}
+\newcommand{\flo}{\beta}
+\newcommand{\sepc}{\sigma}
+\newcommand{\pow}{\pi}
+\newcommand{\gap}{r}
+\newcommand{\Tot}{\Omega}
+\newcommand{\Lad}{L}
+\newcommand{\Rung}{\gamma}
+\newcommand{\rad}{\varrho}
+\newcommand{\Str}{\textsf{structural}}
+\newcommand{\Blk}{\textsf{bulk}}
+\newcommand{\shk}[1]{\texttt{#1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape\color{gray!70!black},
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  columns=fullflexible,
+  showstringspaces=false,
+  breaklines=true,
+  xleftmargin=0.5em,
+  morekeywords={receiver,floor,medium,ambient,depleted,exchange,cut,contact,
+    close,complex,fold,track,until,yield,when,observe,catalyze,mutate,
+    complete,in,as,let,converge,diverge,with,by,reps,import,module,export,
+    assert,scene,perform,residue,cofactor,electronic,solvent,substrate,
+    ladder,rung,power,at,radius,emit,role,direction,climb,reach},
+}
+
+\title{\textbf{Shakespeare with Ladders:\
+Composition, Derived Power, and the Second Refusal\
+of a Receiver Language}}
+
+\author{Kundai Farai Sachikonye\
+\small Technical University of Munich, School of Life Sciences\
+\small \texttt{kundai.sachikonye@wzw.tum.de}}
+
+\date{\today}
+
+\input{figures/captions}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Shakespeare is a receiver language whose single primitive is the cut: a
+commitment that fixes boundary in a finite weighted contact graph, deposits
+residue at least the floor $\flo>0$, and advances a monotone clock. The
+language has one composition rule---residue chaining---which sums the boundary
+a process commits. Summation is order-insensitive, and the language's own
+reversal lemma turns that into a limitation: no predicate definable from
+chained residue can orient a process, and none can say how much of a process a
+given step accomplishes.
+
+We add a second composition rule. A \emph{rung} carries one number, its
+\emph{power} $\pow\in[0,1]$: the fraction of the remaining above-floor gap it
+closes. A \emph{ladder} composes rungs multiplicatively,
+$1-\prod_i(1-\pow_i)$. Where residue chaining is extensive and additive, power
+is intensive and multiplicative, and the two answer different questions about
+the same chain.
+
+Three results are new. First, power need not be declared: we derive it from
+the separation cost against the medium, computed on a ball of declared radius,
+and we show that \emph{radius is a resolution parameter, not a threshold}.
+Second, intensivity is a condition rather than a consequence---and it is
+delicate. Deriving power from a local cut key is not sufficient; the
+normaliser must be local too. Using the global floor breaks intensivity, and
+we found this because the test was built to fail. We report the resulting
+order-dependence as \emph{graded}: intensivity reduces it by an order of
+magnitude and monotonically in locality, but does not abolish it under
+mutation. Third, the ladder supplies the language's second refusal, discharging
+the standing requirement that a construct which never refuses classifies
+nothing.
+
+We give the grammar, four typing rules, four reduction rules, and proofs of
+progress, preservation, and clock monotonicity for the extended language. A
+free operation is admitted only under the argument the language already uses
+for its one free observation---that it individuates nothing new---and we amend
+the two uniqueness claims that the extension falsifies rather than leaving
+them to be discovered. Twenty-three checks run, of which
+twenty-one are scored and all twenty-one pass; four are negative controls, one
+is reported non-discriminating with its reason, and one records a claim the
+suite cannot test.
+\end{abstract}
+
+\tableofcontents
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================================
+
+\subsection{What the language already does, and the one thing it cannot say}
+
+Shakespeare is a language in which evaluation is measurement
+\citep{sachikonye2026shakespeare}. Its state is a finite weighted contact graph
+$\Gph=(V,E,\wt)$ with a distinguished medium vertex $\med$ adjacent to every
+other vertex. Its single primitive is the \emph{cut}: a commitment that fixes a
+set of edges as realised separations, deposits residue
+$\res=\wt(\cut(S))\ge\flo$, and advances a monotone counter $M$. Every surface
+verb---\shk{fold}, \shk{$\sim$}, \shk{close}, \shk{track}, \shk{catalyze},
+\shk{mutate}, \shk{complete}---is the cut at some arity.
+
+Composition is residue chaining: a chain $C=(S_1,\dots,S_k)$ commits total
+boundary $\sum_i\res_i$ and $k$ cut events. This is the language's one
+composition rule, and it is \emph{extensive}: it adds, it grows with the length
+of the chain, and it is invariant under reordering. That last property is not
+an accident but a theorem---the reversal lemma
+\citep{sachikonye2026medium}---and the language draws a sharp negative
+consequence from it: no predicate definable from the residues, the cut count,
+or the committed boundary of a chain distinguishes a chain from its reversal.
+The medium paper answers that limitation for \emph{orientation} by going
+outside the chain, to the medium.
+
+There is a second question the chain cannot answer, and it is not about
+direction. Given a process that reaches its target, which step accomplished
+most of the reaching? Total committed boundary does not say: a step may commit
+a large boundary and move the process barely at all, and the sum records only
+that the boundary was committed. Sensitivity, control, and the notion of a
+rate-limiting step are all outside what an extensive aggregate can express.
+
+\subsection{What this paper adds}
+
+We add a second composition rule, and we are explicit that it is a second one,
+because the specification claims there is exactly one
+(\cref{rem:amend-composition}).
+
+A \emph{rung} carries exactly one datum: its \emph{power} $\pow\in[0,1]$, the
+fraction of the remaining above-floor gap that it closes. A \emph{ladder} is a
+finite sequence of rungs, and its composite power is
+\begin{equation}
+\pow(\Rung_1\cdots\Rung_n) \;=\; 1-\prod_{i=1}^{n}(1-\pow_i).
+\label{eq:compose-intro}
+\end{equation}
+This is \emph{intensive} where residue chaining is extensive: it is a fraction
+rather than a total, it is bounded by $1$ however long the ladder, and adding a
+rung of power $0$ changes nothing. The two rules coexist because they answer
+different questions about the same chain---how much boundary was committed,
+and how much of the distance was closed---and \cref{sec:twoRules} shows that
+neither determines the other.
+
+Three contributions are specific to this paper.
+
+\paragraph{Power is derived, not declared.} The prior formulation took powers
+as measured inputs and said so as a limitation. Here a rung's power is computed
+from the \emph{separation cost} $\sepc(v)$---the minimum weight of a cut
+placing $v$ on one side and the medium on the other---evaluated on a ball of
+declared radius $\rad$ around $v$. The radius is a \emph{resolution parameter,
+not a threshold on a score}: raising it admits more of the graph into the
+computation, so a coarse ladder matches more permissively and a fine one
+discriminates more. \Cref{sec:derived} gives the construction and
+\cref{sec:results} the measured radius sweep.
+
+\paragraph{Intensivity is a condition, and it is delicate.} If power depended
+on what else was in the graph, composition would depend on the order in which
+rungs were derived and \cref{eq:compose-intro} would be the wrong law. We
+state intensivity as a requirement and test it. It fails for the obvious
+construction: a local cut key normalised by the \emph{global} floor is not
+intensive, because $\flo$ is a minimum over every edge and one distant small
+edge moves it everywhere. Both the cut key and its normaliser must be local
+(\cref{thm:intensive}). We report this rather than presenting only the
+construction that works, because the near-miss is what localises the failure,
+and because the test was built so that it could fail.
+
+The honest form of the consequence is graded. Under sequential derivation---in
+which each rung sees the graph its predecessors have modified---intensivity
+reduces order-dependence by an order of magnitude and monotonically in
+locality, but does not abolish it (\cref{prop:graded}). We state the graded
+result rather than the clean one because the clean one is false.
+
+\paragraph{The ladder refuses.} The language holds that a representation earns
+a positive result only if some presentable object would have received a
+negative one \citep{sachikonye2026medium}. A construct that always succeeds
+classifies nothing. The ladder refuses a declared target its declared rungs
+cannot reach, and the refusal is \emph{tight}: it rejects no ladder that could
+have succeeded (\cref{thm:tight}). \Cref{sec:refusal} shows the refusal is
+non-vacuous by exhibiting presentable ladders that trigger it.
+
+\subsection{What we do not claim}
+
+We do not claim the ladder is better than residue chaining; it answers a
+different question, and \cref{sec:twoRules} is careful that neither aggregate
+determines the other. We do not derive powers from chemical structure---the
+derivation is from the contact graph, which is itself a model. We do not claim
+exact order-independence, and \cref{prop:graded} says what we measured instead.
+We do not claim the extension is conservative in the strong sense that no
+existing program changes meaning; it is conservative in the weaker and checkable
+sense that no existing rule is modified and the added rules apply only to added
+syntax (\cref{prop:conservative}).
+
+\subsection{The two claims this paper falsifies}
+
+An extension that quietly contradicts its host is worse than one that does so
+openly. Two published claims are falsified by what follows, and we amend both
+in place rather than leaving a reader to find them.
+
+\begin{remark}[Amendment: one composition rule becomes two]
+\label{rem:amend-composition}
+The specification states that Shakespeare has ``one verb (the cut) and one
+composition rule (residue chaining)''
+\citep{sachikonye2026shakespeare}. With the ladder this is false as written.
+The verb claim survives---a rung commits a cut and nothing else---but the
+composition claim must read: \emph{one verb, and two composition rules over its
+chains, one extensive and one intensive}. \Cref{sec:twoRules} shows the two are
+independent, so the amendment is not a restatement.
+\end{remark}
+
+\begin{remark}[Amendment: the free observation is a class, not an instance]
+\label{rem:amend-free}
+The medium paper states of role observation that ``this is the one Shakespeare
+observation that is free, and it is free because it individuates nothing new''
+\citep{sachikonye2026medium}. The reason is correct and we adopt it verbatim;
+the uniqueness is not. Reading a ladder's composite power is free for exactly
+the same reason. The claim should read: \emph{an observation is free precisely
+when it individuates nothing new, and role observation was the first such}.
+\Cref{thm:free} makes the criterion a theorem rather than a case-by-case
+licence, which is what turns the amendment into a strengthening.
+\end{remark}
+
+%==============================================================================
+\part{The Substrate}
+\label{part:substrate}
+%==============================================================================
+
+\section{Graph, Floor, Separation Cost}
+\label{sec:substrate}
+
+We restate what the extension builds on. Nothing in this section is new; it is
+here so that the paper is self-contained and so that the exact form of each
+quantity is fixed before it is used.
+
+\begin{definition}[Contact graph]
+\label{def:graph}
+A \emph{contact graph} is a finite weighted graph $\Gph=(V,E,\wt)$ with a
+distinguished \emph{medium} vertex $\med\in V$ adjacent to every other vertex,
+and $\wt:E\to\Rpos$ strictly positive. Vertices $v\neq\med$ are \emph{items};
+an edge between two items is a \emph{contact}; $\wt(e)$ is the cost of the
+separation it maintains. We write $\Tot=\sum_{e\in E}\wt(e)$.
+\end{definition}
+
+\begin{definition}[Cut, residue, floor]
+\label{def:cut}
+For $S\subseteq V$ the \emph{cut} is
+$\cut(S)=\{\,\{u,v\}\in E : \abs{\{u,v\}\cap S}=1\,\}$ with weight
+$\wt(\cut(S))=\sum_{e\in\cut(S)}\wt(e)$. A set $S$ is \emph{admissible} if it
+contains at least one item and omits $\med$. The \emph{floor} is
+$\flo=\min_{e\in E}\wt(e)$.
+\end{definition}
+
+\begin{lemma}[Positive floor]
+\label{lem:floor}
+$\flo>0$, and $\wt(\cut(S))\ge\flo$ for every admissible $S$.
+\end{lemma}
+
+\begin{proof}
+$E$ is finite and non-empty and every weight is strictly positive, so the
+minimum is attained at a strictly positive value. An admissible $S$ contains
+some item $v$ and omits $\med$, so $\{v,\med\}\in\cut(S)$ and the cut weight is
+at least $\wt(\{v,\med\})\ge\flo$.
+\end{proof}
+
+\begin{remark}[Finiteness does the work]
+\label{rem:finiteness}
+\Cref{lem:floor} uses finiteness twice and cannot be repaired without it. An
+infinite edge set of strictly positive weights may have infimum zero: the
+weights $1/n$ are each positive and admit no positive lower bound. The floor is
+a property of a finite system, and every result below inherits that hypothesis.
+\end{remark}
+
+\begin{definition}[Separation cost]
+\label{def:sepcost}
+For an item $v$ the \emph{separation cost} is
+\begin{equation}
+\sepc(v)\;=\;\min_{S\ni v,\ \med\notin S}\wt(\cut(S)),
+\label{eq:sepcost}
+\end{equation}
+the minimum weight of a cut placing $v$ on one side and the medium on the
+other. The minimum is over a finite non-empty family, hence attained, and
+equals a maximum flow \citep{fordfulkerson1956}.
+\end{definition}
+
+By \cref{lem:floor}, $\sepc(v)\ge\flo>0$ for every item.
+
+\begin{remark}[Why the medium is the reference]
+\label{rem:medium-ref}
+\Cref{eq:sepcost} measures $v$ against the medium and not against another item.
+This is forced: the medium is by construction what has no surroundings within
+$\Gph$, so it is the only vertex against which a separation cost is well posed
+without a further choice. Measuring $v$ against an arbitrary item $u$ would
+make the quantity depend on $u$, and a power so defined would not be a property
+of $v$.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_01.png}
+  \captionPanelOne
+  \label{fig:panel1}
+\end{figure*}
+
+%==============================================================================
+\section{Resolution: the Ball and the Local Floor}
+\label{sec:resolution}
+
+The separation cost of \cref{eq:sepcost} ranges over every subset of the graph.
+We want a quantity that can be computed from a bounded neighbourhood, both
+because that is what makes it intensive (\cref{sec:derived}) and because the
+bound is itself a meaningful parameter.
+
+\begin{definition}[Ball]
+\label{def:ball}
+The \emph{ball} of radius $\rad\in\N$ about an item $v$ is the set
+$B_\rad(v)$ of items reachable from $v$ by at most $\rad$ contacts, where the
+medium is not traversed. Thus $B_0(v)=\{v\}$, and $B_{\rad+1}(v)$ adds the item
+neighbours of $B_\rad(v)$.
+\end{definition}
+
+\begin{remark}[The medium is not traversed, and why]
+\label{rem:no-traverse}
+Excluding $\med$ from traversal is not a convenience. The medium is adjacent to
+every item, so a path through it joins any two items in two steps and every
+ball of radius $2$ would be the entire graph. The resolution parameter would
+then have exactly two settings and would not be a resolution parameter. Items
+are near each other when they share contacts, not when they share the medium.
+\end{remark}
+
+\begin{definition}[Local separation cost and local floor]
+\label{def:local}
+The \emph{local separation cost} at radius $\rad$ is
+\begin{equation}
+\sepc_\rad(v)\;=\;\min_{v\in S\subseteq B_\rad(v)}\wt(\cut(S)),
+\label{eq:local-sepcost}
+\end{equation}
+the minimum taken over subsets of the ball, with the cut still evaluated in the
+whole graph. The \emph{local floor} is
+$\flo_\rad(v)=\min\{\wt(e) : e\subseteq B_\rad(v)\cup\{\med\}\}$, the least
+edge weight among edges internal to the ball together with its medium edges.
+\end{definition}
+
+\begin{lemma}[The local floor is a floor]
+\label{lem:localfloor}
+$0<\flo\le\flo_\rad(v)\le\sepc_\rad(v)$ for every item $v$ and radius $\rad$.
+\end{lemma}
+
+\begin{proof}
+$\flo_\rad(v)$ is a minimum over a non-empty subfamily of $E$---non-empty
+because $\{v,\med\}$ is always in it---so it is attained, is at least the
+minimum over all of $E$, which is $\flo>0$, and the first two inequalities
+follow. For the third, the minimising $S$ in \cref{eq:local-sepcost} contains
+$v$ and omits $\med$, so $\{v,\med\}\in\cut(S)$ and
+$\sepc_\rad(v)\ge\wt(\{v,\med\})\ge\flo_\rad(v)$, the last step because
+$\{v,\med\}$ is one of the edges over which $\flo_\rad(v)$ minimises.
+\end{proof}
+
+\begin{principle}[Resolution, not threshold]
+\label{prin:resolution}
+The radius is a \emph{resolution parameter}, not a threshold on a score. It
+does not set a level above which a quantity counts; it sets how much of the
+graph enters the computation at all. Its effect is therefore monotone and
+stateable in advance, and there is no setting at which it is uniformly
+best---only settings appropriate to a question.
+\end{principle}
+
+\begin{proposition}[The direction of the sweep, and its mechanism]
+\label{prop:sweep}
+Raising the radius makes the derived power identify \emph{more} pairs of items,
+not fewer. The mechanism is ball overlap: at radius $0$ the balls are disjoint
+singletons and each item minimises over its own incident edges, so distinct
+items generically receive distinct powers; as the radius grows the balls
+overlap and eventually coincide, so distinct items minimise over nearly the
+same edge set and their powers converge.
+\end{proposition}
+
+\begin{proof}
+Ball overlap is non-decreasing in the radius, since $B_\rad(v)\subseteq
+B_{\rad+1}(v)$ for every $v$, and on a connected item graph of diameter $d$
+every ball of radius at least $d$ is the whole item set, at which point
+$\sepc_\rad$ and $\flo_\rad$ are the same function for every item and all
+powers coincide. At radius $0$, $B_0(v)=\{v\}$ and the minimisation in
+\cref{eq:local-sepcost} ranges over the single set $\{v\}$, giving
+$\sepc_0(v)=\wt(\cut(\{v\}))$, the weighted degree, which separates items with
+distinct neighbourhoods. The identification count is therefore non-decreasing
+in the radius and strictly increasing wherever the overlap strictly increases.
+\Cref{sec:results} reports both quantities.
+\end{proof}
+
+\begin{remark}[We predicted the opposite, and the sweep corrected us]
+\label{rem:res-inverted}
+Our stated expectation was that a coarse radius would identify more, by analogy
+with a matcher in which a wider neighbourhood discriminates more finely. The
+measurement is the reverse, and \cref{prop:sweep} says why: in that setting the
+radius enlarges the \emph{description} of each item, whereas here it enlarges
+the \emph{domain of a minimisation} that different items come to share.
+Enlarging a description separates; enlarging a shared minimisation merges. We
+record the correction, and we report the mean ball overlap beside the
+identification count, because a count without its mechanism would leave the
+direction unexplained and would invite the same mistake again.
+\end{remark}
+
+\begin{remark}[What \cref{prin:resolution} rules out]
+\label{rem:res-rules-out}
+A threshold can be tuned to a desired outcome, and its value is a free
+parameter a reader must take on trust. A resolution cannot be tuned in the same
+way, because its effect is monotone and its direction is a stated consequence
+rather than a fitted one. \Cref{sec:results} reports the whole sweep rather
+than a chosen value, and a reader may read off the setting their question
+requires: a fine radius to tell items apart, a coarse one to group them.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_02.png}
+  \captionPanelTwo
+  \label{fig:panel2}
+\end{figure*}
+
+%==============================================================================
+\part{Rungs and Ladders}
+\label{part:ladder}
+%==============================================================================
+
+\section{Derived Power}
+\label{sec:derived}
+
+\begin{definition}[Rung and power]
+\label{def:rung}
+A \emph{rung} carries exactly one datum, its \emph{power} $\pow\in[0,1]$. A
+rung of power $0$ is \emph{inert}; a rung of power $1$ is \emph{absolute}.
+\end{definition}
+
+\begin{remark}[A rung has no identity field]
+\label{rem:noidentity}
+\Cref{def:rung} is complete as stated: a rung is a number. It records nothing
+about what performs the step, how long it takes, or what passes through it.
+This is not brevity. A formalism in which rungs carried names would permit an
+observable that read the names, and the claim that identities do not enter
+would then be a claim about which observables one had chosen to write down
+rather than about the formalism. The implementation enforces the same
+discipline---the rung type has one field---so that a test of
+label-independence is not testing the labels.
+\end{remark}
+
+\begin{definition}[Derived power]
+\label{def:derived}
+Let $\Gph$ be a contact graph, $v$ an item and $\rad$ a radius. The
+\emph{derived power} of $v$ at radius $\rad$ is
+\begin{equation}
+\pow_\rad(v)\;=\;1-\frac{\flo_\rad(v)}{\sepc_\rad(v)}.
+\label{eq:derived}
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Derived power is a power]
+\label{lem:derived-bounded}
+$\pow_\rad(v)\in[0,1)$ for every item and radius.
+\end{lemma}
+
+\begin{proof}
+By \cref{lem:localfloor}, $0<\flo_\rad(v)\le\sepc_\rad(v)$, so the ratio lies
+in $(0,1]$ and $\pow_\rad(v)\in[0,1)$. The value $1$ is not attained, which is
+the floor asserting itself: no single rung closes the whole gap, because
+closing it entirely would require separating $v$ at zero cost.
+\end{proof}
+
+\begin{remark}[Reading \cref{eq:derived}]
+\label{rem:reading-derived}
+The quantity compares what it costs to separate $v$ from the medium against the
+cheapest separation available anywhere in its neighbourhood. An item that is
+expensive to separate relative to its surroundings has high power: committing
+it closes much of the remaining distance. An item whose separation cost is
+already at the local floor has power near zero: there is nothing left to close.
+The floor appears in the numerator and not as a subtracted constant because
+what a rung closes is a \emph{fraction} of the above-floor gap, and the floor
+is the part of the gap that cannot be closed.
+\end{remark}
+
+\subsection{Intensivity}
+
+\begin{definition}[Intensive and extensive]
+\label{def:intext}
+Let $f$ assign a real number to an item of a contact graph. Call $f$
+\emph{intensive at radius $\rad$} if $f(v)$ is unchanged by any modification of
+the graph outside $B_\rad(v)$ that leaves the edges of $B_\rad(v)$ and their
+medium edges intact, and \emph{extensive} otherwise.
+\end{definition}
+
+\begin{theorem}[Derived power is intensive]
+\label{thm:intensive}
+$\pow_\rad$ is intensive at radius $\rad$. Moreover both factors are required:
+the quantity $1-\flo/\sepc_\rad(v)$, in which the cut key is local but the
+normaliser is the global floor, is \emph{not} intensive at any radius.
+\end{theorem}
+
+\begin{proof}
+For the first claim, $\sepc_\rad(v)$ minimises over subsets of $B_\rad(v)$, and
+for such an $S$ the cut $\cut(S)$ consists of edges with exactly one endpoint
+in $S\subseteq B_\rad(v)$. Every such edge is either internal to $B_\rad(v)$,
+or joins $B_\rad(v)$ to the medium, or joins $B_\rad(v)$ to an item outside it;
+in the last case the outside endpoint is a neighbour of a ball member, hence
+lies in $B_{\rad+1}(v)$, and the edge is determined by the ball's own incident
+edge set. A modification outside $B_\rad(v)$ preserving those edges therefore
+preserves every term of the minimisation, hence preserves $\sepc_\rad(v)$. The
+same argument applies to $\flo_\rad(v)$, which minimises over a subset of the
+same edges. The ratio is therefore unchanged.
+
+For the second claim it suffices to exhibit a modification that changes $\flo$
+without touching $B_\rad(v)$. Adjoin to $\Gph$ a fresh item $u$ outside
+$B_\rad(v)$, joined to the medium by an edge of weight $\flo/2$. The new graph
+is a contact graph, $B_\rad(v)$ is untouched, so $\sepc_\rad(v)$ is unchanged;
+but the global floor is now $\flo/2$, so $1-\flo/\sepc_\rad(v)$ strictly
+increases. Hence the quantity is not intensive.
+\end{proof}
+
+\begin{remark}[We got this wrong first, and the near-miss is the informative
+control]
+\label{rem:nearmiss}
+The construction we tried first was $1-\flo/\sepc_\rad(v)$: a local cut key
+normalised by the ambient floor, which is the floor the language already
+declares and therefore the one nearest to hand. It fails, and
+\cref{thm:intensive} says why. We keep it as a control rather than deleting it,
+for a reason worth stating. A control that differs from the candidate in every
+respect shows only that \emph{some} difference matters. This one differs in a
+single component and therefore localises the failure to the normaliser. In the
+measurements of \cref{sec:results} the three quantities drift by exactly $0$,
+by $1.6\times10^{-2}$ and by $9.4\times10^{-2}$ respectively, and the ordering
+of the middle term is the whole content of the diagnosis.
+\end{remark}
+
+\begin{corollary}[The floor is load-bearing only through positivity]
+\label{cor:positivity-only}
+Every result in this section uses $\flo_\rad(v)$ only through the facts that it
+is strictly positive and is attained on a finite set. Any other rule assigning
+a strictly positive local normaliser to each ball yields the same theorems with
+different constants. In particular no result determines the value $\flo$, and
+none is disturbed by rescaling every weight by a positive constant.
+\end{corollary}
+
+\begin{proof}
+\Cref{lem:localfloor} and \cref{lem:derived-bounded} use only positivity and
+attainment. \Cref{thm:intensive} uses only that the normaliser is computed from
+the ball. Under $\wt\mapsto c\wt$ with $c>0$ both $\flo_\rad$ and $\sepc_\rad$
+scale by $c$ and \cref{eq:derived} is unchanged.
+\end{proof}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_03.png}
+  \captionPanelThree
+  \label{fig:panel3}
+\end{figure*}
+
+%==============================================================================
+\section{Composition}
+\label{sec:composition}
+
+\begin{definition}[Ladder]
+\label{def:ladder}
+A \emph{ladder} is a finite sequence of rungs $\Rung_1,\dots,\Rung_n$ with
+power sequence $(\pow_1,\dots,\pow_n)$, applied in order, each to the state its
+predecessor produced.
+\end{definition}
+
+\begin{theorem}[Multiplicative composition]
+\label{thm:multiplicative}
+Write $\gap_i$ for the above-floor gap remaining after $i$ rungs, with
+$\gap_0>0$ the initial gap. If each rung closes the fraction $\pow_i$ of the
+gap it is presented with, then $\gap_i=(1-\pow_i)\gap_{i-1}$, hence
+\begin{equation}
+\gap_n=\gap_0\prod_{i=1}^{n}(1-\pow_i),
+\qquad
+\pow(\Lad)=1-\frac{\gap_n}{\gap_0}=1-\prod_{i=1}^{n}(1-\pow_i).
+\label{eq:compose}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The recurrence is \cref{def:rung} rearranged. Induction on $n$ gives the
+product. The composite power is the fraction of the initial gap closed, which
+is $1-\gap_n/\gap_0$.
+\end{proof}
+
+\begin{corollary}[Bounded, monotone, and never complete]
+\label{cor:bounded}
+$\pow(\Lad)\in[0,1)$ whenever every $\pow_i<1$; it is non-decreasing under
+appending a rung; and appending a rung of power $0$ leaves it unchanged.
+Repeating a rung of power $\pow\in(0,1)$ $n$ times gives $1-(1-\pow)^n$, which
+tends to $1$ and equals it at no finite $n$.
+\end{corollary}
+
+\begin{proof}
+Each factor $(1-\pow_i)\in(0,1]$, so the product lies in $(0,1]$ and the
+composite in $[0,1)$. Appending multiplies the product by a factor at most $1$,
+so the composite does not decrease; a factor of exactly $1$ leaves it fixed.
+The repetition formula is \cref{eq:compose} with all powers equal, and
+$(1-\pow)^n>0$ for all finite $n$.
+\end{proof}
+
+\begin{proposition}[Sensitivity is transmission]
+\label{prop:sensitivity}
+$\dfrac{\partial\pow(\Lad)}{\partial\pow_j}=\prod_{i\neq j}(1-\pow_i)
+ =\dfrac{P}{1-\pow_j}$, where $P=\prod_i(1-\pow_i)$ is the residual fraction.
+Within a ladder this is strictly increasing in $\pow_j$: control lies at the
+\emph{highest}-power rung.
+\end{proposition}
+
+\begin{proof}
+Differentiate \cref{eq:compose}: only the $j$-th factor depends on $\pow_j$ and
+it does so with derivative $-1$, so the derivative of the product is
+$-\prod_{i\neq j}(1-\pow_i)$ and the composite's derivative is its negation.
+Dividing and multiplying by $(1-\pow_j)$ gives the second form, which is
+increasing in $\pow_j$ at fixed $P$.
+\end{proof}
+
+\begin{remark}[The direction is the opposite of the naive expectation]
+\label{rem:direction}
+The expectation is that the weakest rung is the bottleneck and therefore the
+place where improvement pays. \Cref{prop:sensitivity} says the opposite, and
+the reason is that the quantity being maximised is \emph{transmission} rather
+than slack: a marginal gain at rung $j$ reaches the output only through the
+remaining rungs, and the product $\prod_{i\neq j}(1-\pow_i)$ is what survives
+that passage. Improving a weak rung buys a large local change that the rest of
+the ladder then discards. This is a prediction and it is sharp enough to fail;
+\cref{sec:results} reports it measured.
+\end{remark}
+
+\subsection{Order dependence, stated as measured}
+\label{sec:order}
+
+\Cref{eq:compose} is symmetric in its arguments, so permuting a \emph{fixed}
+power sequence cannot change the composite. That fact is a property of the
+formula and carries no information about the derivation, and a test built on it
+cannot fail. We say so explicitly because such a test is easy to write and
+easy to mistake for evidence.
+
+\begin{remark}[A test that cannot fail is not evidence]
+\label{rem:nondisc}
+Permuting a fixed multiset of powers and observing that the composite is
+unchanged verifies the commutativity of multiplication. Every candidate
+definition of power passes it, including deliberately extensive ones. Our suite
+runs this comparison and reports it as \textsc{non-discriminating}, excluded
+from the score, with this reason recorded (\cref{sec:results}). It is retained
+because a reader cannot distinguish a passing control from a vacuous one by
+inspecting a table of successes.
+\end{remark}
+
+The test that can fail derives the powers \emph{sequentially}: each rung's power
+is computed on the graph as its predecessors left it, so a different order
+presents each rung with a different graph.
+
+\begin{definition}[Sequential derivation]
+\label{def:seqderiv}
+Given an ordering $v_1,\dots,v_n$ of items, the \emph{sequentially derived}
+power sequence is obtained by setting $\pow_i=\pow_\rad(v_i)$ evaluated in
+$\Gph_{i-1}$, where $\Gph_0=\Gph$ and $\Gph_i$ is $\Gph_{i-1}$ with the
+weakest item--item contact incident to $v_i$ removed.
+\end{definition}
+
+\begin{proposition}[Order dependence is graded, not abolished]
+\label{prop:graded}
+Under sequential derivation the composite power is in general
+order-dependent, for intensive and extensive candidates alike. Intensivity
+reduces the dependence but does not remove it, and the reduction is monotone in
+locality.
+\end{proposition}
+
+\begin{proof}[Proof and measurement]
+That some dependence survives is immediate: \cref{def:seqderiv} modifies the
+graph between derivations, and \cref{thm:intensive} guarantees invariance only
+against modifications \emph{outside} the ball. A removal incident to $v_i$ lies
+inside the balls of $v_i$'s neighbours, so it is exactly the case the theorem
+does not cover.
+
+The size of the residual dependence is a measurement, not a theorem. Over all
+$720$ orderings of a six-item chain, the number of distinct composite values
+was $47$ for the intensive candidate, $118$ for the near-miss and $421$ for the
+extensive control, with spreads $1.07\times10^{-2}$, $1.09\times10^{-2}$ and
+$1.04\times10^{-1}$. At radius $0$ the intensive count falls to $11$. The
+ordering of these numbers is the content of the proposition; their values are
+properties of the instance and we do not generalise them.
+\end{proof}
+
+\begin{remark}[Why we state the graded result]
+\label{rem:graded-honest}
+We set out to prove that intensivity buys exact order-independence. It does
+not, and the measurement above is what showed it. Reporting the clean claim
+would have required either restricting to ladders whose balls never overlap---a
+condition satisfied by few interesting processes---or declining to mutate the
+graph, which would have made the test unable to fail. The graded statement is
+weaker and true, and it comes with a mechanism: dependence enters exactly where
+commitment reaches inside a neighbouring ball.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_04.png}
+  \captionPanelFour
+  \label{fig:panel4}
+\end{figure*}
+
+%==============================================================================
+\section{Two Composition Rules, Neither Determining the Other}
+\label{sec:twoRules}
+
+Residue chaining and ladder composition are both defined on a chain of cuts.
+This section shows they are independent, which is what justifies keeping both
+and what makes \cref{rem:amend-composition} an amendment rather than a
+restatement.
+
+\begin{definition}[The two aggregates]
+\label{def:aggregates}
+For a chain $C=(S_1,\dots,S_n)$ with residues $\res_i=\wt(\cut(S_i))$ and
+powers $\pow_i$, the \emph{extensive aggregate} is $R(C)=\sum_i\res_i$ and the
+\emph{intensive aggregate} is $\pow(C)=1-\prod_i(1-\pow_i)$.
+\end{definition}
+
+\begin{proposition}[Independence]
+\label{prop:independent}
+Neither aggregate determines the other. There exist chains with equal $R$ and
+different $\pow$, and chains with equal $\pow$ and different $R$.
+\end{proposition}
+
+\begin{proof}
+For the first, take two chains of two cuts each, with residues $(2\flo,2\flo)$
+in both cases, so $R=4\flo$ for each. Let the first close gap fractions
+$(0.5,0.5)$ and the second $(0.9,0.1)$; the composites are $0.75$ and $0.91$.
+Residue is the boundary committed and power is the distance closed, and nothing
+ties them: a cut may commit much boundary while closing little gap.
+
+For the second, take chains with powers $(0.5,0.5)$ and $(0.75)$, both of
+composite $0.75$, whose residues are $2\flo$ and $\flo$ respectively; the
+extensive aggregates differ because the chains have different lengths.
+\end{proof}
+
+\begin{corollary}[The reversal lemma does not transfer]
+\label{cor:reversal-transfer}
+The reversal lemma establishes that $R$ is invariant under reversing a chain.
+The same holds for $\pow$ by symmetry of \cref{eq:compose}. Consequently the
+ladder inherits the limitation the medium paper draws from that lemma: no
+predicate definable from a ladder's powers alone orients a process, and
+orientation must still be sought in the medium.
+\end{corollary}
+
+\begin{proof}
+Symmetry of the product under permutation gives the invariance. The negative
+consequence is then the same argument as for $R$: a quantity invariant under
+reversal cannot distinguish a chain from its reversal.
+\end{proof}
+
+\begin{remark}[We record the limitation rather than leaving it to be found]
+\label{rem:limitation-inherited}
+\Cref{cor:reversal-transfer} is a limitation of the construct introduced in
+this paper, and a reader who noticed the symmetry of \cref{eq:compose} would
+reach it unaided. The ladder answers ``how much of the distance did this step
+close'' and does not answer ``which way does the process run''; the second
+question was answered elsewhere and the ladder does not reopen it.
+\end{remark}
+
+%==============================================================================
+\part{The Language}
+\label{part:language}
+%==============================================================================
+
+\section{Syntax}
+\label{sec:syntax}
+
+We add four productions. The remainder of the grammar is unchanged, and we
+reproduce only what the additions touch.
+
+\begin{definition}[Added grammar]
+\label{def:grammar}
+\begin{lstlisting}
+ladderExpr   ::= ladder [ rungList ] [ at radius number ]
+rungList     ::= rungItem { , rungItem }
+rungItem     ::= power number | rung ident | derived ident
+climbExpr    ::= climb expr with ladderExpr [ reach number ]
+observeLad   ::= observe expr as power
+\end{lstlisting}
+The keyword set gains \shk{ladder}, \shk{rung}, \shk{power}, \shk{derived},
+\shk{radius}, \shk{climb} and \shk{reach}. The nonterminal \textit{expr} and
+all existing productions are untouched.
+\end{definition}
+
+\begin{remark}[Filling a gap rather than widening one]
+\label{rem:gap}
+The host specification declares a \shk{medium} block by example and gives it no
+production, and its type grammar omits \textsf{Role} although a rule concludes
+at that type. We do not repair those omissions here---they belong to the papers
+that introduced them---but we avoid adding to them: every construct below has a
+production in \cref{def:grammar}, a type in \cref{def:types}, a typing rule in
+\cref{sec:typing} and a reduction rule in \cref{sec:opsem}.
+\end{remark}
+
+\begin{example}[A ladder over a folded receiver]
+\label{ex:program}
+\begin{lstlisting}
+receiver bio
+floor 3.7e-4
+
+medium cytosol {
+  ambient  "H2O" = 55.5
+  exchange 1.0e-3
+}
+
+P := fold "1CRN"
+
+-- powers declared explicitly
+L1 := ladder [ power 0.45, power 0.30, power 0.55, power 0.20 ]
+
+-- powers derived from the receiver at a declared resolution
+L2 := ladder [ derived P ] at radius 1
+
+observe L1 as power            -- free: reads committed boundary
+climb P with L1 reach 0.80     -- commits; M advances by four
+\end{lstlisting}
+The first \shk{observe} is free. The \shk{climb} is not: it performs four
+commitments and advances the clock by four.
+\end{example}
+
+%==============================================================================
+\section{Types}
+\label{sec:typing}
+
+\begin{definition}[Added types]
+\label{def:types}
+The type grammar gains two constructors:
+\[
+\tau ::= \cdots \mid \mathsf{Rung} \mid \mathsf{Ladder}.
+\]
+A value of type $\mathsf{Rung}$ carries a power in $[0,1]$; a value of type
+$\mathsf{Ladder}$ carries a finite sequence of such. Both are values in the
+sense of the host judgement and carry a floor annotation.
+\end{definition}
+
+The judgement is the host's, $\Gph\vdash e:\tau\,@\,\flo$, read: in context
+$\Gph$ fixing the ambient floor and receiver, $e$ has type $\tau$ and is
+individuated at floor $\flo>0$.
+
+\begin{rulename}[Rung introduction]
+\label{rule:rung}
+\[
+\frac{\Gph\vdash p:\mathsf{Scalar}\,@\,\flo \qquad 0\le p\le 1}
+     {\Gph\vdash \shk{power}\ p:\mathsf{Rung}\,@\,\flo}
+\]
+A power outside $[0,1]$ is ill-typed. The bound is not a runtime check: by
+\cref{lem:derived-bounded} a derived power satisfies it by construction, and a
+declared one is checked where it is written.
+\end{rulename}
+
+\begin{rulename}[Derived rung]
+\label{rule:derived}
+\[
+\frac{\Gph\vdash v:\mathsf{Leaf}_\kappa\,@\,\flo \qquad
+      \rad\in\N \qquad \med \text{ declared}}
+     {\Gph\vdash \shk{derived}\ v\ \shk{at radius}\ \rad
+      :\mathsf{Rung}\,@\,\flo}
+\]
+The premise $\med$ \emph{declared} is the same side condition the host requires
+for role observation, and for the same reason: \cref{eq:sepcost} measures
+against the medium, so without a medium the power is undefined rather than
+zero.
+\end{rulename}
+
+\begin{rulename}[Ladder formation]
+\label{rule:ladder}
+\[
+\frac{\Gph\vdash \Rung_i:\mathsf{Rung}\,@\,\flo \quad (1\le i\le n)}
+     {\Gph\vdash \shk{ladder}\ [\Rung_1,\dots,\Rung_n]
+      :\mathsf{Ladder}\,@\,\flo}
+\]
+A ladder is well-typed at the floor its rungs share. Rungs derived at different
+radii may be combined; the radius is a property of a derivation, not of a rung.
+\end{rulename}
+
+\begin{rulename}[Power observation]
+\label{rule:obspower}
+\[
+\frac{\Gph\vdash \Lad:\mathsf{Ladder}\,@\,\flo}
+     {\Gph\vdash \shk{observe}\ \Lad\ \shk{as}\ \shk{power}
+      :\mathsf{Scalar}\,@\,\flo}
+\]
+Observing a composite power commits no new cut: the computation reads powers
+already carried by rungs already formed, so the clock $M$ does not advance.
+This is free for exactly the reason role observation is free---it individuates
+nothing new---and \cref{thm:free} states that reason as a criterion.
+\end{rulename}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_05.png}
+  \captionPanelFive
+  \label{fig:panel5}
+\end{figure*}
+
+%==============================================================================
+\section{Operational Semantics}
+\label{sec:opsem}
+
+Configurations are those of the host: $\langle\Gph_G,M,e\rangle$, the contact
+graph, the committed-cut count, and the expression under evaluation.
+
+\begin{rulename}[E-Power: forming a rung is free]
+\label{rule:e-power}
+\[
+\frac{0\le p\le 1}
+     {\langle\Gph_G,M,\shk{power}\ p\rangle \to
+      \langle\Gph_G,\,M,\,v_{\mathsf{Rung}}(p)\rangle}
+\]
+No boundary is committed and $M$ does not advance: declaring a number
+individuates nothing.
+\end{rulename}
+
+\begin{rulename}[E-Derive: deriving a rung is free]
+\label{rule:e-derive}
+\[
+\frac{\pow_\rad(v)=1-\flo_\rad(v)/\sepc_\rad(v)}
+     {\langle\Gph_G,M,\shk{derived}\ v\ \shk{at radius}\ \rad\rangle \to
+      \langle\Gph_G,\,M,\,v_{\mathsf{Rung}}(\pow_\rad(v))\rangle}
+\]
+The derivation reads edge weights already present in $\Gph_G$ and computes a
+minimum over them. It commits no cut, so $M$ does not advance. The graph is
+read and not written.
+\end{rulename}
+
+\begin{rulename}[E-Observe-Power: reading a composite is free]
+\label{rule:e-obspower}
+\[
+\frac{\Lad=[\Rung_1,\dots,\Rung_n]}
+     {\langle\Gph_G,M,\shk{observe}\ \Lad\ \shk{as}\ \shk{power}\rangle \to
+      \langle\Gph_G,\,M,\,v_{\mathsf{Scalar}}
+        (1-\textstyle\prod_i(1-\pow_i))\rangle}
+\]
+\end{rulename}
+
+\begin{rulename}[E-Climb: climbing commits, once per rung]
+\label{rule:e-climb}
+\[
+\frac{\begin{array}{c}
+ \Lad=[\Rung_1,\dots,\Rung_n] \qquad
+ S_i \text{ admissible} \qquad \wt(\cut(S_i))\ge\flo\\
+ \gap_n=\gap_0\prod_i(1-\pow_i)
+\end{array}}
+     {\langle\Gph_G,M,\shk{climb}\ x\ \shk{with}\ \Lad\rangle \to
+      \langle\Gph_G\oplus\textstyle\bigcup_i\cut(S_i),\,M+n,\,
+       v_{\mathsf{Result}}(\gap_n)\rangle}
+\]
+Climbing performs one commitment per rung: the clock advances by $n$, and each
+commitment deposits residue at least the floor. This is the sole rule of the
+extension that is not free.
+\end{rulename}
+
+\begin{theorem}[A criterion for freeness]
+\label{thm:free}
+A reduction rule may leave $M$ unchanged if and only if it commits no cut,
+that is, if it neither adds edges to the committed boundary nor requires a
+boundary not already committed. Under this criterion \cref{rule:e-power},
+\cref{rule:e-derive} and \cref{rule:e-obspower} are free and
+\cref{rule:e-climb} is not, and the role observation of the host is free.
+\end{theorem}
+
+\begin{proof}
+($\Leftarrow$) If a rule commits no cut then the committed boundary and the cut
+count are both unchanged, by the definition of the counter as a count of cut
+events. Leaving $M$ fixed is therefore consistent with clock monotonicity,
+which forbids only \emph{decrease} and requires increase only \emph{at a cut
+event}.
+
+($\Rightarrow$) If a rule committed a cut and left $M$ unchanged, two
+configurations with the same graph and the same counter would differ in the
+boundary committed, contradicting that the counter records cut events.
+
+The classification is then immediate. \Cref{rule:e-power} constructs a value
+from a literal; \cref{rule:e-derive} computes minima over existing weights;
+\cref{rule:e-obspower} multiplies numbers carried by values already formed.
+None writes to $\Gph_G$. \Cref{rule:e-climb} writes
+$\Gph_G\oplus\bigcup_i\cut(S_i)$ and advances by $n$.
+\end{proof}
+
+\begin{remark}[The criterion is the argument of the host, generalised]
+\label{rem:free-general}
+The host licenses one free observation with a one-sentence reason: the
+comparison reads boundary that is already committed, so it individuates nothing
+new. \Cref{thm:free} does not weaken that reason, it promotes it. What was a
+licence granted to one rule becomes a criterion that any rule may be tested
+against. This is the sense in which \cref{rem:amend-free} is a strengthening
+rather than a concession: a uniqueness claim is replaced by a decidable test,
+and role observation passes it.
+\end{remark}
+
+\begin{theorem}[Progress]
+\label{thm:progress}
+If $\Gph\vdash e:\tau\,@\,\flo$ and $e$ is not a value, some reduction applies.
+\end{theorem}
+
+\begin{proof}
+By cases on the added forms. \shk{power}~$p$ is well-typed only with
+$0\le p\le1$, which is the premise of \cref{rule:e-power}. \shk{derived}~$v$ is
+well-typed only with $\med$ declared, and then $\sepc_\rad(v)$ is a minimum
+over a finite non-empty family, hence defined, and by \cref{lem:localfloor}
+strictly positive, so \cref{rule:e-derive} applies. A ladder of well-typed
+rungs is a value. The form \shk{observe}~$\Lad$~\shk{as}~\shk{power} applies
+\cref{rule:e-obspower} unconditionally. For \shk{climb}, admissibility of each
+$S_i$ follows from the typing of the rungs, and the residue side condition
+holds by \cref{lem:floor}, so \cref{rule:e-climb} applies. Existing forms are
+covered by the cases of the host, which the extension does not modify.
+\end{proof}
+
+\begin{theorem}[Preservation]
+\label{thm:preservation}
+If $\Gph\vdash e:\tau\,@\,\flo$ and $\langle\Gph_G,M,e\rangle\to
+\langle\Gph_G',M',v\rangle$, then $v$ has type $\tau$ and floor $\flo$, with
+$\flo$ unchanged and $M'\ge M$.
+\end{theorem}
+
+\begin{proof}
+Each added rule produces a value of the type its typing rule assigns:
+\cref{rule:e-power} and \cref{rule:e-derive} produce $\mathsf{Rung}$,
+\cref{rule:e-obspower} a $\mathsf{Scalar}$, \cref{rule:e-climb} a
+$\mathsf{Result}$. The floor is a component of the context and no added rule
+modifies it. Three rules leave $M$ fixed and one increments it by $n\ge0$, so
+$M'\ge M$. \Cref{rule:e-climb} mutates $\Gph_G$; the mutation retains the
+medium and every weight remains strictly positive, so \cref{lem:floor}
+continues to apply to the mutated graph and the floor annotation remains valid.
+\end{proof}
+
+\begin{corollary}[Soundness]
+\label{cor:soundness}
+A well-typed program in the extended language does not get stuck, and every
+commitment it performs deposits residue at least $\flo>0$.
+\end{corollary}
+
+\begin{theorem}[Clock monotonicity is preserved]
+\label{thm:monotone}
+$M$ is non-decreasing along every evaluation of the extended language, and
+increases strictly at every cut event. Re-evaluating a \shk{climb} is a new
+sequence of commitments at strictly higher $M$, never a cached retrieval;
+re-evaluating a free form is not.
+\end{theorem}
+
+\begin{proof}
+No added rule decrements $M$. \Cref{rule:e-climb} increments by the number of
+cut events it performs, and the three free rules perform none, so by
+\cref{thm:free} their leaving $M$ fixed is consistent with the requirement that
+increase occur at every cut event. A cache returning a previous \shk{climb}
+result without incrementing would contradict \cref{rule:e-climb}, which
+increments unconditionally.
+\end{proof}
+
+\begin{remark}[A repair to a proof of the host, not to its theorem]
+\label{rem:monotone-repair}
+The proof of clock monotonicity in the host asserts in passing that every
+value-producing rule increments $M$. That parenthetical is already false in the
+host, since role observation produces a value of type $\mathsf{Role}$ without
+incrementing, and it is false three more times here. The theorem itself is
+unaffected: what it requires is that no rule decrements and that every
+\emph{cut event} increments. We state the repaired form, and observe that
+\cref{thm:free} supplies exactly the side condition the original proof left
+implicit.
+\end{remark}
+
+\begin{proposition}[The extension is conservative on existing programs]
+\label{prop:conservative}
+Let $p$ be a program containing none of the added keywords. Then $p$ has the
+same typing derivations and the same reductions in the extended language as in
+the host, and yields the same value at the same final $M$.
+\end{proposition}
+
+\begin{proof}
+The added typing rules have conclusions whose subjects are \shk{power},
+\shk{derived}, \shk{ladder}, \shk{climb}, or \shk{observe} $\cdots$
+\shk{as power}; the added reduction rules likewise. None of these forms occurs
+in $p$, so no added rule is applicable at any point in a derivation or
+reduction of $p$. No existing rule is modified. Hence the derivations and
+reduction sequences are literally the same objects, and the final value and
+counter agree.
+\end{proof}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_06.png}
+  \captionPanelSix
+  \label{fig:panel6}
+\end{figure*}
+
+%==============================================================================
+\section{Static Analysis and the Second Refusal}
+\label{sec:refusal}
+
+\subsection{Deciding reachability before execution}
+
+\begin{proposition}[Reachability is decidable statically]
+\label{prop:static}
+Whether a ladder with declared powers $(\pow_1,\dots,\pow_n)$ attains a
+declared target $\pow^\star$ is decidable in $O(n)$ arithmetic operations
+without evaluating any \shk{climb}, and therefore without committing any cut or
+advancing $M$.
+\end{proposition}
+
+\begin{proof}
+Compute $\prod_i(1-\pow_i)$ in $n$ multiplications and compare $1$ minus it
+against $\pow^\star$. By \cref{thm:multiplicative} this is exactly the value a
+\shk{climb} would reach. The computation reads declared numbers and touches no
+graph.
+\end{proof}
+
+\begin{corollary}[Cost of a target]
+\label{cor:cost}
+Reaching $\pow^\star<1$ with copies of a rung of power $\pow\in(0,1)$ requires
+exactly $n=\lceil \log(1-\pow^\star)/\log(1-\pow)\rceil$ rungs, and no finite
+number suffices for $\pow^\star=1$.
+\end{corollary}
+
+\begin{proof}
+Solve $1-(1-\pow)^n\ge\pow^\star$ for $n$; both logarithms are negative so the
+inequality direction is preserved on dividing. Minimality is the ceiling.
+For $\pow^\star=1$ we would need $(1-\pow)^n\le0$, impossible for finite $n$.
+\end{proof}
+
+\subsection{The refusal}
+
+The host holds that a representation earns a positive result only if some
+presentable object would have received a negative one, and that a framework
+with no refusals has an empty defined class. The medium paper discharged this
+with two refusals, to individuate and to orient. The ladder supplies a third,
+which is the second refusal of a \emph{construct} rather than of an
+observation.
+
+\begin{definition}[Refusal to climb]
+\label{def:refuse-climb}
+A ladder $\Lad$ with declared target $\pow^\star$ for which
+$1-\prod_i(1-\pow_i)<\pow^\star$ is \emph{refused}: the program does not
+evaluate, the verdict is $\textsf{subfloor}$ naming the shortfall
+$\pow^\star-\pow(\Lad)$, and no cut is committed. A ladder with no rungs is
+refused with verdict $\textsf{empty}$.
+\end{definition}
+
+\begin{remark}[The verdict name is taken, not coined]
+\label{rem:subfloor}
+$\textsf{subfloor}$ is an existing verdict label in the reference
+implementation of the surrounding framework, where it already means that a
+quantity fell below a declared floor. We reuse it rather than introduce a
+synonym. Similarly we do not reuse the label $\textsf{inert}$, which is bound
+in that implementation to a different meaning, and we say
+\emph{label-independent} where an unqualified reading of ``inert'' might
+collide.
+\end{remark}
+
+\begin{theorem}[The refusal is tight]
+\label{thm:tight}
+No ladder refused by \cref{def:refuse-climb} could have reached its declared
+target. The refusal therefore excludes no program that would have succeeded,
+and every refused program would have failed at run time.
+\end{theorem}
+
+\begin{proof}
+Suppose $\Lad$ is refused, so $1-\prod_i(1-\pow_i)<\pow^\star$. By
+\cref{thm:multiplicative} the gap after all $n$ rungs is
+$\gap_0\prod_i(1-\pow_i)$, so the fraction of the initial gap closed by
+executing $\Lad$ in full is exactly $1-\prod_i(1-\pow_i)$, which is below
+$\pow^\star$ by hypothesis. Executing the ladder therefore terminates short of
+the target. Conversely a ladder not refused has composite at least
+$\pow^\star$ and reaches it. The static verdict and the executed outcome
+therefore agree on every ladder, which is the content of tightness.
+\end{proof}
+
+\begin{theorem}[The refusal is non-vacuous]
+\label{thm:nonvacuous}
+Both refusals of \cref{def:refuse-climb} are attainable by ladders the language
+can construct.
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=2pt]
+\item The ladder $\shk{ladder}\,[\,\shk{power}\ 0.1,\ \shk{power}\ 0.1\,]$ with
+target $0.9$ has composite $0.19<0.9$ and is refused with
+$\textsf{subfloor}$.
+\item The ladder $\shk{ladder}\,[\;]$ is refused with $\textsf{empty}$.
+\end{enumerate}
+Moreover refusal is not universal: the ladder
+$\shk{ladder}\,[\,\shk{power}\ 0.5,\ \shk{power}\ 0.6\,]$ with target $0.7$ has
+composite $0.8\ge0.7$ and is accepted. Hence the predicate separates
+presentable ladders in both directions.
+\end{theorem}
+
+\begin{proof}
+Direct computation of \cref{eq:compose} in each case: $1-(0.9)(0.9)=0.19$;
+the empty product is $1$ so the composite is $0$; and
+$1-(0.5)(0.4)=0.8$. Each ladder is well-typed by \cref{rule:rung} and
+\cref{rule:ladder}, hence presentable.
+\end{proof}
+
+\begin{remark}[Why the third clause is part of the theorem]
+\label{rem:both-directions}
+A refusal that fired on every input would classify nothing, exactly as a
+refusal that never fired classifies nothing. \Cref{thm:nonvacuous} therefore
+exhibits an accepted ladder alongside the refused ones. The corresponding
+requirement on the validation suite is that both verdicts occur in quantity,
+and \cref{sec:results} reports the counts rather than only the agreement rate.
+\end{remark}
+
+\begin{proposition}[Saturation diagnostic]
+\label{prop:saturation}
+If every rung of a ladder of length $n$ has power at most $\pow_{\max}$, and
+$1-(1-\pow_{\max})^n<\pow^\star$, then the ladder is refused whatever its
+actual powers. The diagnostic is sound and is computed from $n$ and
+$\pow_{\max}$ alone.
+\end{proposition}
+
+\begin{proof}
+The composite is monotone non-decreasing in each power by
+\cref{cor:bounded}, so it is maximised at $\pow_i=\pow_{\max}$ for all $i$,
+giving $1-(1-\pow_{\max})^n$. If even that is below the target, no assignment
+of powers within the bound reaches it.
+\end{proof}
+
+%==============================================================================
+\part{Measurement}
+\label{part:measurement}
+%==============================================================================
+
+\section{Protocol}
+\label{sec:protocol}
+
+The suite is three modules and a runner, at
+\texttt{validation/} beside this paper. Every number quoted below is read from
+the JSON the runner writes; none is entered by hand.
+
+\paragraph{Scoring policy.} A check contributes to the score only if it could
+have failed. A check whose own construction shows the statistic cannot
+discriminate is marked \textsc{non-discriminating}, excluded from the score,
+and its reason recorded. A claim the suite cannot bear on is marked
+\textsc{not tested} and excluded. Both categories are reported rather than
+omitted, because a reader cannot distinguish a passing control from a vacuous
+one by inspecting a table of successes.
+
+\paragraph{Negative controls.} Four checks are named with the prefix
+\textsc{negative control} so that they can be harvested by name, following the
+convention of the host suite. Each pairs with a positive claim and would
+falsify it if it behaved differently.
+
+\paragraph{Totals.} Twenty-three checks run. Twenty-one are scored and all
+twenty-one pass; one is non-discriminating; one is not tested. Four of the
+scored checks are negative controls.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{The substrate}
+
+The floor is computed rather than assumed on four instances, including an
+adversarial one whose smallest weight is $10^{-12}$; every instance returns a
+strictly positive floor. The failure branch is exhibited separately: the
+sequence $1/n$ clears every $\varepsilon$ down to $10^{-9}$, so its infimum is
+zero, and truncating the same sequence to ten stages restores a floor at
+$0.1$. This is the content of \cref{rem:finiteness} made visible rather than
+left tacit.
+
+The local separation cost of \cref{eq:local-sepcost} is checked against
+exhaustive enumeration of every bipartition on forty graphs: at a radius
+covering the graph the two agree to within $10^{-12}$, which is a check of the
+implementation against ground truth rather than a restatement of the
+definition.
+
+\subsection{The radius sweep, and the direction we predicted wrongly}
+
+\begin{table}[!htbp]
+\centering
+\caption{The radius sweep. Identification rises with the radius, and the mean
+pairwise ball overlap rises with it too. The overlap is the mechanism:
+\cref{prop:sweep}.}
+\label{tab:sweep}
+\begin{tabular}{lrrrr}
+\toprule
+Radius $\rad$ & 0 & 1 & 2 & 3 \\
+\midrule
+Pairs identified            & $0$   & $5$   & $21$  & $26$ \\
+Mean ball overlap           & $0.000$ & $0.276$ & $0.530$ & $0.763$ \\
+Distinct powers             & $138$ & $130$ & $116$ & $114$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:sweep} is the measurement behind \cref{prop:sweep}. Three things are
+worth reading off it. First the radius is not inert: the counts move. Second
+the direction is the opposite of what we predicted, and \cref{rem:res-inverted}
+records that we predicted wrongly. Third the overlap column is reported beside
+the identification column because it is the mechanism; a count without its
+mechanism would leave the direction unexplained and would invite the same
+mistake again.
+
+\subsection{Intensivity, and the near-miss}
+
+\begin{table}[!htbp]
+\centering
+\caption{Drift of three candidate powers when the graph is extended far from
+the item measured, over $120$ graphs. The intensive candidate does not move at
+all; both controls move on every graph.}
+\label{tab:intensivity}
+\begin{tabular}{lrrr}
+\toprule
+Candidate & Max drift & Mean drift & Graphs moved \\
+\midrule
+$1-\flo_\rad(v)/\sepc_\rad(v)$ \ (intensive)      & $0$ & $0$ & $0/120$ \\
+$1-\flo/\sepc_\rad(v)$ \ (near-miss)              & $2.50\times10^{-1}$ & $1.64\times10^{-1}$ & $120/120$ \\
+$\sepc_\rad(v)/\Tot$ \ (extensive)                & $1.78\times10^{-1}$ & $6.93\times10^{-2}$ & $120/120$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:intensivity} is the measurement behind \cref{thm:intensive}. The
+intensive candidate is invariant \emph{exactly}---not to within a tolerance,
+but at zero drift on every one of the $120$ graphs---which is what an
+invariance proof predicts and what a numerical coincidence would not deliver.
+Both controls move on every graph, so the test discriminates; had neither
+moved it would have been measuring something other than intensivity and we
+would have reported it as non-discriminating.
+
+The near-miss is the informative control. It differs from the candidate in one
+component---the normaliser---and its drift is the largest of the three. That
+localises the failure: the cut key was already local, and locality of the cut
+key alone buys nothing.
+
+\subsection{Order dependence}
+
+\begin{table}[!htbp]
+\centering
+\caption{Distinct composite powers over all $720$ orderings of a six-item
+chain under sequential derivation (\cref{def:seqderiv}), with the spread of
+those composites.}
+\label{tab:order}
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{Radius $0$} & \multicolumn{2}{c}{Radius $1$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Candidate & Distinct & Spread & Distinct & Spread \\
+\midrule
+intensive   & $11$  & $3.67\times10^{-3}$ & $38$  & $1.08\times10^{-2}$ \\
+near-miss   & $41$  & $2.00\times10^{-3}$ & $80$  & $8.04\times10^{-3}$ \\
+extensive   & $392$ & $9.22\times10^{-2}$ & $432$ & $1.46\times10^{-1}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:order} is the measurement behind \cref{prop:graded}. The ordering of
+the distinct counts is the result: $38<80<432$ at radius $1$, and
+$11<41<392$ at radius $0$, so intensivity reduces order dependence by an order
+of magnitude relative to the extensive control, and finer locality reduces it
+further. Exact independence would be a count of $1$ and is not attained by any
+candidate.
+
+One column runs against the pattern and we report it rather than omit it: the
+\emph{spread} of the near-miss is smaller than that of the intensive candidate
+at both radii, although its distinct count is twice as large. The two
+statistics measure different things---how many values occur, and how far apart
+the extremes lie---and only the count separates the candidates consistently.
+We therefore rest \cref{prop:graded} on the count and record the spread beside
+it, rather than quoting whichever statistic favours the conclusion.
+
+\subsection{The language}
+
+\begin{table}[!htbp]
+\centering
+\caption{Composition against three alternative laws, over $4000$ generated
+ladders, each scored against a rung-by-rung simulation.}
+\label{tab:laws}
+\begin{tabular}{lr}
+\toprule
+Law & Mean absolute error \\
+\midrule
+$1-\prod_i(1-\pow_i)$ \ (multiplicative) & $0$ \\
+$\min(1,\sum_i\pow_i)$ \ (additive)      & $5.94\times10^{-2}$ \\
+$\max_i\pow_i$                           & $2.07\times10^{-1}$ \\
+$\frac1n\sum_i\pow_i$ \ (mean)           & $4.57\times10^{-1}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four laws are scored. Scoring only the favoured one would not have
+distinguished it from the others, and the comparison is the test.
+
+Sensitivity is checked two ways over $3000$ ladders: the closed form
+$P/(1-\pow_j)$ matches the derivative on every ladder, and a finite-difference
+experiment that does not use the closed form identifies the same rung as
+returning most for a fixed improvement on every ladder. The second check is
+independent of the first, so the counter-intuitive direction of
+\cref{rem:direction} is established without assuming the formula that predicts
+it.
+
+Freeness and the clock behave as \cref{thm:free} requires: five thousand free
+operations leave $M$ at zero, a climb of three rungs advances it to exactly
+three and records three residues each at least the floor, and five hundred
+identical commitments increment $M$ by exactly one apiece with no caching. The
+paired negative control confirms that a commitment does register, so the first
+result is about freeness and not about a counter that never moves.
+
+\subsection{The refusal}
+
+Over $5000$ generated programs the static verdict and the executed outcome
+agree in every case, with $4032$ accepted and $968$ rejected. Both verdicts
+occur in quantity, so the test could have failed in either direction; a suite
+in which every program was accepted would not have tested rejection. This is
+\cref{thm:tight} measured.
+
+Three negative controls attend the refusal. It fires on a presentable ladder
+that cannot reach its target and on an empty ladder, and declines to fire on a
+ladder that can---so the predicate separates in both directions. A refused
+ladder commits nothing: no residue is recorded and the graph is unchanged,
+which is the operational content of a refusal that declines to individuate.
+And the verdict type rejects a payload that does not match its label, so a
+refusal cannot smuggle out a result.
+
+\subsection{What the suite does not establish}
+
+One check is recorded \textsc{not tested}: whether a derived power corresponds
+to any rate measured in a laboratory. The powers here are derived from a
+contact graph, which is itself a model, and no check in this suite bears on the
+empirical question. We record it rather than leave the omission to be noticed.
+
+One check is recorded \textsc{non-discriminating}: permuting a fixed multiset
+of powers. Every candidate returns exactly one distinct composite, because the
+composition law is symmetric in its arguments. The check cannot fail and is
+excluded from the score, with that reason stored in the results file.
+
+%==============================================================================
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+Each prediction is stated with the observation that would refute it.
+
+\begin{enumerate}[label=\textbf{P\arabic*.},leftmargin=3em,itemsep=0.6em]
+
+\item \textbf{Multiplicative composition.} Composite power follows
+\cref{eq:compose} and not an additive, maximum or averaging law.
+\emph{Failure mode:} measured composite tracking $\sum_i\pow_i$ or
+$\max_i\pow_i$ across synthesised ladders.
+
+\item \textbf{Intensivity requires a local normaliser.} A power built from a
+local cut key and the global floor is not intensive.
+\emph{Failure mode:} the near-miss candidate showing zero drift under
+extension, which would mean the global floor is not doing the damage we
+attribute to it.
+
+\item \textbf{Order dependence is graded.} Under sequential derivation the
+intensive candidate admits strictly fewer distinct composites than the
+extensive one, and strictly more than one.
+\emph{Failure mode:} either exactly one---which would make the graded claim
+too weak---or no separation between candidates, which would make it empty.
+
+\item \textbf{Radius is a resolution.} Identification is monotone in the
+radius and tracks ball overlap.
+\emph{Failure mode:} a flat sweep, showing the parameter is inert; or
+identification moving opposite to overlap, showing the mechanism is not the one
+we give.
+
+\item \textbf{Control at the strongest rung.} Sensitivity is
+$P/(1-\pow_j)$, maximised at the highest-power rung.
+\emph{Failure mode:} a finite-difference experiment ranking the weakest rung
+first. This prediction is deliberately counter-intuitive and is the sharpest
+in the set.
+
+\item \textbf{Freeness.} A rule leaves $M$ unchanged exactly when it commits
+no cut.
+\emph{Failure mode:} a rule that commits a cut while leaving $M$ fixed, or a
+free rule that advances it.
+
+\item \textbf{Tightness.} The static refusal agrees with execution on every
+ladder, and both verdicts occur.
+\emph{Failure mode:} any disagreement, or a suite in which nothing is refused.
+
+\end{enumerate}
+
+%==============================================================================
+\section{Relation to Existing Accounts}
+\label{sec:relation}
+
+\paragraph{Metabolic control analysis.} Control coefficients summing to unity
+are the closest existing account of where control sits in a chain. The
+sensitivity of \cref{prop:sensitivity} is not a control coefficient: it is a
+derivative of a composite \emph{fraction} rather than of a flux, and it is not
+normalised to sum to one. The two therefore need not agree, and
+\cref{rem:direction} is a prediction that can be tested against a measured
+control distribution rather than a restatement of one.
+
+\paragraph{Rate-limiting steps.} The notion that one step limits a process is
+recovered here as the rung of highest power, and \cref{prop:sensitivity} says
+that this is also where improvement pays. This inverts the usual advice to
+improve the slowest step, and the inversion is a consequence of measuring
+fractions of a gap rather than rates.
+
+\paragraph{Reliability and series systems.} The law $1-\prod(1-\pow_i)$ is
+formally the probability that at least one of $n$ independent events occurs,
+and appears in reliability theory. We do not claim the powers are
+probabilities; they are fractions of a gap, and the law is derived in
+\cref{thm:multiplicative} from the recurrence rather than assumed from an
+independence hypothesis.
+
+\paragraph{Provenance monoids.} The composition of provenance tags under
+$\max$ over an ordered three-element set is an idempotent commutative monoid
+with an absorbing element. Ladder composition is the same shape without
+idempotence: identity $0$, absorbing element $1$, commutative, associative.
+The parallel is worth stating because the accompanying results---composition
+is a fold, a chain cannot regress, and the aggregate inherits monotonicity only
+under a stated hypothesis---transfer directly, and because it locates what is
+distinctive here as the loss of idempotence rather than the algebra.
+
+\paragraph{Screens versus identity tests.} A construct that assigns each item
+an invariant, and identifies items whose invariants agree, is a screen and not
+an identity test: agreement is necessary for sameness and not sufficient.
+\Cref{prop:converse-note} states this for ladders explicitly.
+
+\begin{proposition}[A ladder is a screen, not an identity test]
+\label{prop:converse-note}
+Equality of composite power does not entail equality of power sequences.
+Ladders with different power sequences may share a composite.
+\end{proposition}
+
+\begin{proof}
+$(0.5,0.5)$ and $(0.75)$ both give composite $0.75$ by \cref{eq:compose}. The
+full power sequences differ, and the intermediate gaps differ, so an observer
+recording the whole trajectory distinguishes them; an observer recording only
+the composite does not.
+\end{proof}
+
+\begin{remark}[Why the limitation is stated rather than buried]
+\label{rem:screen}
+\Cref{prop:converse-note} is the natural objection to any claim that a ladder
+characterises a process, and it is correct. An experiment resolving only
+end-to-end efficiency underdetermines the ladder. What the ladder determines is
+what an observer of the whole trajectory sees, and \cref{sec:results} reports
+the trajectory rather than the summary wherever both are available.
+\end{remark}
+
+%==============================================================================
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.4em]
+
+\item Everything downstream of \cref{lem:floor} requires the contact graph to
+be finite (\cref{rem:finiteness}). For systems admitting unlimited refinement
+no uniform floor exists and the results do not apply as stated.
+
+\item Order independence is graded, not exact (\cref{prop:graded}). We measured
+the reduction on one family of instances---chains of six items---and the
+numbers in \cref{tab:order} are properties of that family. We claim the
+ordering of the counts, not their values.
+
+\item \Cref{thm:intensive} guarantees invariance only against modifications
+outside the ball. Commitment reaches inside neighbouring balls, which is
+exactly why \cref{prop:graded} is graded, and we have not characterised which
+mutation disciplines would restore exactness.
+
+\item Powers are derived from a contact graph, not from chemical structure. The
+graph is itself a model, and the suite records as \textsc{not tested} the
+question of whether a derived power matches any measured rate.
+
+\item The ladder inherits the reversal limitation
+(\cref{cor:reversal-transfer}): it cannot orient a process, and orientation
+remains a question for the medium.
+
+\item \Cref{prop:conservative} establishes conservativity syntactically---no
+existing rule is modified and added rules apply only to added syntax. It does
+not establish that no existing program's \emph{meaning} changes under a reading
+that mixes the two composition rules, and we have not investigated such
+readings.
+
+\item The exhaustive minimisation in \cref{eq:local-sepcost} is exponential in
+the ball size. This bounds the radius at which the construction is practical
+and is why the measurements use small graphs. A maximum-flow implementation
+would remove the limit and we have not written one.
+
+\end{enumerate}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+Shakespeare had one composition rule, and it was extensive: residue chaining
+adds the boundary a process commits, is invariant under reordering, and cannot
+say how much of a process any step accomplishes. We added a second rule that is
+intensive, and the two are independent: neither aggregate determines the other,
+so keeping both is not redundancy.
+
+Three things were harder than expected and are reported as they came out.
+Intensivity is not delivered by a local cut key alone---the normaliser must be
+local too, and the near-miss control is what localised the failure. Order
+independence is graded rather than exact, because commitment reaches inside
+neighbouring balls, which is precisely the case the invariance theorem does not
+cover. And the radius sweep runs in the direction opposite to the one we
+predicted, for a reason---ball overlap---that we report beside the counts so
+the direction is explained rather than merely recorded.
+
+The construct earns its place by refusing. A ladder whose declared rungs cannot
+reach its declared target is rejected before evaluation, the rejection is tight
+in the sense that it excludes nothing that could have succeeded, and it is
+non-vacuous in the sense that presentable ladders fall on both sides of it. A
+construct that always succeeded would classify nothing, and the framework says
+so.
+
+Two published claims are falsified by this extension and both are amended in
+place: there are now two composition rules rather than one, and freeness is a
+criterion rather than a property of a single privileged rule. The second
+amendment is the more useful, because \cref{thm:free} replaces a licence
+granted case by case with a test any rule may be put to.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

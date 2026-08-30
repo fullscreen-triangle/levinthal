@@ -1,0 +1,146 @@
+{
+  "experiment": "NEGATIVE CONTROL: plans without a ladder still run",
+  "claim": "Every shipped plan that contains no ladder still parses and executes, in the fixture world the host selects for it. If the extension had changed their meaning this control would show it.",
+  "n_plans": 11,
+  "rows": [
+    {
+      "plan": "budget_trap.hfq",
+      "world": "tiny",
+      "unknown_sources": [],
+      "verdicts": {
+        "roots": "answer",
+        "rxns": "refused"
+      },
+      "requests": 1,
+      "parsed": true
+    },
+    {
+      "plan": "empty_answer.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "seeds": "answer",
+        "kegg": "answer",
+        "none": "empty"
+      },
+      "requests": 2,
+      "parsed": true
+    },
+    {
+      "plan": "enzymes_in_shared_pathways.hfq",
+      "world": "paper",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer",
+        "rxns": "answer",
+        "ecs": "answer",
+        "kids": "answer",
+        "paths": "answer"
+      },
+      "requests": 4,
+      "parsed": true
+    },
+    {
+      "plan": "healthy_chain.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer",
+        "kegg": "answer",
+        "rxns": "answer"
+      },
+      "requests": 2,
+      "parsed": true
+    },
+    {
+      "plan": "ill_capability.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "bad": "surface"
+      },
+      "requests": 0,
+      "parsed": true
+    },
+    {
+      "plan": "order_a.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer",
+        "kegg": "answer",
+        "narrow": "answer",
+        "rxns": "answer"
+      },
+      "requests": 2,
+      "parsed": true
+    },
+    {
+      "plan": "order_b.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer",
+        "kegg": "answer",
+        "rxns": "answer",
+        "narrow": "answer"
+      },
+      "requests": 2,
+      "parsed": true
+    },
+    {
+      "plan": "routes.hfq",
+      "world": "paper",
+      "unknown_sources": [],
+      "verdicts": {
+        "compounds": "answer",
+        "direct": "answer",
+        "indirect": "answer",
+        "both": "answer"
+      },
+      "requests": 1,
+      "parsed": true
+    },
+    {
+      "plan": "single_step.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer"
+      },
+      "requests": 1,
+      "parsed": true
+    },
+    {
+      "plan": "starved_chain.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer",
+        "kegg": "starved",
+        "rxns": "starved"
+      },
+      "requests": 1,
+      "parsed": true
+    },
+    {
+      "plan": "step_timeout.hfq",
+      "world": "main",
+      "unknown_sources": [],
+      "verdicts": {
+        "acids": "answer",
+        "kegg": "answer",
+        "rxns": "timeout"
+      },
+      "requests": 1,
+      "parsed": true
+    }
+  ],
+  "all_parsed": true,
+  "worlds_exercised": [
+    "main",
+    "paper",
+    "tiny"
+  ],
+  "holds": true
+}

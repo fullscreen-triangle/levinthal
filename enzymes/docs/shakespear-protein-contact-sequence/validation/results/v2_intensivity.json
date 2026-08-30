@@ -1,0 +1,119 @@
+{
+  "script": "v2_intensivity.py",
+  "tests": [
+    {
+      "test": "V2.1 derived power is intensive; both controls drift",
+      "n_graphs": 120,
+      "by_candidate": {
+        "intensive": {
+          "max_drift": 0.0,
+          "mean_drift": 0.0,
+          "n_moved": 0
+        },
+        "globalfloor": {
+          "max_drift": 0.24996281988886293,
+          "mean_drift": 0.16401183029461203,
+          "n_moved": 120
+        },
+        "extensive": {
+          "max_drift": 0.17750165185354766,
+          "mean_drift": 0.0692573430732545,
+          "n_moved": 120
+        }
+      },
+      "intensive_exactly_invariant": true,
+      "controls_move": true,
+      "scored": true,
+      "passed": true,
+      "interpretation": "The near-miss (globalfloor) differs from the candidate only in the normaliser, so its drift attributes the failure to the normaliser rather than to locality in general. Had no control drifted, the test would not have been measuring intensivity and would be reported non-discriminating."
+    },
+    {
+      "test": "V2.2 permuting a fixed power multiset (NON-DISCRIMINATING)",
+      "n_graphs": 12,
+      "distinct_composites_per_graph": {
+        "intensive": [
+          1
+        ],
+        "globalfloor": [
+          1
+        ],
+        "extensive": [
+          1
+        ]
+      },
+      "every_candidate_gives_one": true,
+      "scored": false,
+      "passed": null,
+      "verdict": "NON-DISCRIMINATING: the composition law is symmetric in its arguments, so permuting a fixed multiset of powers cannot change the composite for ANY candidate definition. Every candidate returns exactly one distinct composite. The test cannot fail and is therefore excluded from the score; V2.3 is the test that can."
+    },
+    {
+      "test": "V2.3 sequential derivation: order dependence is graded",
+      "n_items": 6,
+      "n_orderings": 720,
+      "by_radius": {
+        "0": {
+          "intensive": {
+            "distinct": 11,
+            "spread": 0.0036741390000000207
+          },
+          "globalfloor": {
+            "distinct": 41,
+            "spread": 0.002000297100000048
+          },
+          "extensive": {
+            "distinct": 392,
+            "spread": 0.09218361649999995
+          }
+        },
+        "1": {
+          "intensive": {
+            "distinct": 38,
+            "spread": 0.010802369400000011
+          },
+          "globalfloor": {
+            "distinct": 80,
+            "spread": 0.008044111199999926
+          },
+          "extensive": {
+            "distinct": 432,
+            "spread": 0.14568694269999993
+          }
+        }
+      },
+      "rows": [
+        {
+          "radius": 0,
+          "intensive": 11,
+          "globalfloor": 41,
+          "extensive": 392
+        },
+        {
+          "radius": 1,
+          "intensive": 38,
+          "globalfloor": 80,
+          "extensive": 432
+        }
+      ],
+      "intensive_beats_both_controls": true,
+      "intensive_spread_smaller": true,
+      "tightens_at_finer_radius": true,
+      "exact_order_independence": false,
+      "passed": true,
+      "interpretation": "The claim under test is the GRADED one: intensivity reduces order dependence and does not abolish it. Exact independence (distinct == 1) is recorded and is FALSE, which is the honest result; had we tested only the clean claim the test would have failed and we would have had nothing to report. Dependence survives because commitment mutates edges inside the balls of neighbouring items, which is exactly the case the intensivity theorem does not cover."
+    },
+    {
+      "test": "V2.4 derived power is invariant under rescaling of weights",
+      "n_graphs": 60,
+      "max_dev_intensive": 2.220446049250313e-16,
+      "max_dev_extensive": 5.551115123125783e-17,
+      "passed": true,
+      "note": "The extensive candidate is also scale-invariant, being a ratio of two quantities that scale together. This test therefore separates the candidates on intensivity (V2.1) and not on scale, and we record the extensive deviation so the reader can see that no separation is being claimed here."
+    }
+  ],
+  "summary": {
+    "n": 4,
+    "scored": 3,
+    "passed": 3,
+    "all_scored_passed": true
+  }
+}

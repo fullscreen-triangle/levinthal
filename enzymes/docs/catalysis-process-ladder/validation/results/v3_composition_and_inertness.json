@@ -1,0 +1,218 @@
+{
+  "script": "v3_composition_and_inertness.py",
+  "predictions": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "tests": [
+    {
+      "test": "V3.1 composition: model comparison (P1)",
+      "n_trials": 4000,
+      "candidate_laws": {
+        "multiplicative": {
+          "MAE": 7.91033905045424e-18,
+          "max_err": 2.220446049250313e-16
+        },
+        "additive": {
+          "MAE": 0.04693336758416897,
+          "max_err": 0.32474849762491775
+        },
+        "max": {
+          "MAE": 0.17912062868242112,
+          "max_err": 0.5178456238596048
+        },
+        "mean": {
+          "MAE": 0.4629252171928538,
+          "max_err": 0.7228698456864164
+        }
+      },
+      "best_model": "multiplicative",
+      "multiplicative_exact": true,
+      "passed": true,
+      "interpretation": "The multiplicative law reproduces the simulated composite to machine precision; the alternatives do not.  Scoring only the favoured law would not have distinguished them."
+    },
+    {
+      "test": "V3.2 diminishing returns (P2)",
+      "rows": [
+        {
+          "power": 0.1,
+          "max_marginal_error": 9.367506770274758e-17,
+          "marginal_strictly_decreasing": true,
+          "never_reaches_one": true,
+          "composite_at_n25": 0.9282102012308147
+        },
+        {
+          "power": 0.3,
+          "max_marginal_error": 9.256376047594994e-17,
+          "marginal_strictly_decreasing": true,
+          "never_reaches_one": true,
+          "composite_at_n25": 0.9998658931380336
+        },
+        {
+          "power": 0.5,
+          "max_marginal_error": 0.0,
+          "marginal_strictly_decreasing": true,
+          "never_reaches_one": true,
+          "composite_at_n25": 0.9999999701976776
+        },
+        {
+          "power": 0.7,
+          "max_marginal_error": 1.0435009219070952e-16,
+          "marginal_strictly_decreasing": true,
+          "never_reaches_one": true,
+          "composite_at_n25": 0.9999999999999153
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V3.3 saturation dichotomy (P3)",
+      "n_rungs": 400,
+      "indexed_from": 2,
+      "rows": [
+        {
+          "series": "harmonic_divergent_1_over_i",
+          "sum_of_powers": 5.572423456762542,
+          "residual_gap_after_n": 0.0024937655860349183,
+          "sum_diverges": true,
+          "gap_driven_to_zero": true,
+          "dichotomy_holds": true
+        },
+        {
+          "series": "convergent_1_over_i_squared",
+          "sum_of_powers": 0.6424434081108611,
+          "residual_gap_after_n": 0.5012468827930177,
+          "sum_diverges": false,
+          "gap_driven_to_zero": false,
+          "dichotomy_holds": true
+        },
+        {
+          "series": "convergent_geometric_2^-i",
+          "sum_of_powers": 0.5,
+          "residual_gap_after_n": 0.5775761901732048,
+          "sum_diverges": false,
+          "gap_driven_to_zero": false,
+          "dichotomy_holds": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V4.1 sensitivity direction (P4)",
+      "n_trials": 5000,
+      "analytic_matches_numerical": 1.0,
+      "argmax_sensitivity_is_highest_power": 1.0,
+      "argmax_sensitivity_is_lowest_power": 0.0,
+      "naive_hypothesis_rejected": true,
+      "passed": true,
+      "interpretation": "Sensitivity is maximised at the highest-power rung in every trial, and at the lowest-power rung in none.  The intuitive expectation that the bottleneck carries the control is wrong for this quantity."
+    },
+    {
+      "test": "V4.2 marginal value of improvement",
+      "powers": [
+        0.45,
+        0.3,
+        0.55,
+        0.2
+      ],
+      "composite": 0.8613999999999999,
+      "sensitivities": [
+        0.25199999999999995,
+        0.198,
+        0.30800000000000005,
+        0.17325
+      ],
+      "rows_at_delta_0.10": [
+        {
+          "rung": 1,
+          "power": 0.45,
+          "sensitivity": 0.25199999999999995,
+          "delta": 0.1,
+          "predicted_gain": 0.025199999999999997,
+          "actual_gain": 0.02520000000000011,
+          "exact": true
+        },
+        {
+          "rung": 2,
+          "power": 0.3,
+          "sensitivity": 0.198,
+          "delta": 0.1,
+          "predicted_gain": 0.0198,
+          "actual_gain": 0.01980000000000004,
+          "exact": true
+        },
+        {
+          "rung": 3,
+          "power": 0.55,
+          "sensitivity": 0.30800000000000005,
+          "delta": 0.1,
+          "predicted_gain": 0.030800000000000008,
+          "actual_gain": 0.03080000000000005,
+          "exact": true
+        },
+        {
+          "rung": 4,
+          "power": 0.2,
+          "sensitivity": 0.17325,
+          "delta": 0.1,
+          "predicted_gain": 0.017325,
+          "actual_gain": 0.017325000000000035,
+          "exact": true
+        }
+      ],
+      "linear_prediction_exact": true,
+      "passed": true,
+      "note": "The gain is exactly linear in delta because composite power is affine in each pi_j individually."
+    },
+    {
+      "test": "V5.1 inertness under relabelling (P5)",
+      "n_trials": 3000,
+      "n_identical_on_all_observables": 3000,
+      "fraction": 1.0,
+      "passed": true
+    },
+    {
+      "test": "V5.2 CONTROL: perturbing a power does change observables",
+      "n_trials": 3000,
+      "n_changed": 3000,
+      "fraction": 1.0,
+      "passed": true,
+      "interpretation": "V5.1 shows labels do not move the observables.  This control shows powers do.  Without it, V5.1 would be consistent with a constant observable set and would carry no information."
+    },
+    {
+      "test": "V5.3 converse fails: composite alone underdetermines",
+      "ladder_A_powers": [
+        0.5,
+        0.5
+      ],
+      "ladder_B_powers": [
+        0.75,
+        0.0
+      ],
+      "composite_A": 0.75,
+      "composite_B": 0.75,
+      "same_composite": true,
+      "gap_trajectory_A": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "gap_trajectory_B": [
+        1.0,
+        0.25,
+        0.25
+      ],
+      "intermediates_separate_them": true,
+      "passed": true,
+      "interpretation": "An end-to-end assay cannot distinguish these ladders; an assay resolving intermediates can.  The framework states the limit of what composite power determines rather than concealing it."
+    }
+  ],
+  "summary": {
+    "n": 8,
+    "passed": 8,
+    "all_passed": true
+  }
+}

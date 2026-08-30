@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: catalytic-ladders-federated-querying.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 7 entries,
+            2773 wiz_defined-function locations,
+            626 strings with 5765 characters,
+and the built_in function-call counts, 2690 in all, are:
+= -- 244
+> -- 140
+< -- 6
++ -- 51
+- -- 42
+* -- 201
+:= -- 439
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 33
+chr.to.int$ -- 5
+cite$ -- 14
+duplicate$ -- 126
+empty$ -- 212
+format.name$ -- 53
+if$ -- 545
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 5
+newline$ -- 43
+num.names$ -- 28
+pop$ -- 55
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 98
+stack$ -- 0
+substring$ -- 83
+swap$ -- 12
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 72
+warning$ -- 0
+while$ -- 28
+width$ -- 0
+write$ -- 94

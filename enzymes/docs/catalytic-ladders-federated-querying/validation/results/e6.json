@@ -1,0 +1,37 @@
+{
+  "experiment": "E6 the frozen corpus",
+  "claim": "The plans run against real data from two heterogeneous public sources, fetched once and frozen.",
+  "snapshot": "live-20260830",
+  "fetched_utc": "2026-08-30T00:55:58Z",
+  "sources": {
+    "kegg": {
+      "endpoint": "https://rest.kegg.jp",
+      "n": 400,
+      "schema": "EC -> reactions, substrates, products"
+    },
+    "reactome": {
+      "endpoint": "https://reactome.org/ContentService",
+      "n": 904,
+      "schema": "stId -> inputs, outputs, catalysts"
+    }
+  },
+  "kegg_records": 400,
+  "kegg_with_reactions": 372,
+  "kegg_with_substrates": 374,
+  "reactome_reactions": 904,
+  "reactome_with_inputs": 903,
+  "reactome_with_catalysts": 353,
+  "n_pathways": 19,
+  "longest_pathways": [
+    58,
+    56,
+    55,
+    55,
+    54,
+    52,
+    52,
+    51
+  ],
+  "holds": true,
+  "note": "Counts are reported whatever they are. A field that came back empty is recorded as empty rather than dropped."
+}

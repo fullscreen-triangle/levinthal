@@ -1,0 +1,229 @@
+{
+  "script": "v3_semantics_and_refusal.py",
+  "tests": [
+    {
+      "test": "V3.1 composition is multiplicative, against three alternatives",
+      "n_ladders": 4000,
+      "MAE_by_law": {
+        "multiplicative": 7.854827899222982e-18,
+        "additive": 0.059391037603032236,
+        "max": 0.2074071291042149,
+        "mean": 0.45708524347141055
+      },
+      "best_law": "multiplicative",
+      "multiplicative_exact": true,
+      "alternatives_all_worse": true,
+      "passed": true
+    },
+    {
+      "test": "V3.2 sensitivity is P/(1-pi_j), maximised at the strongest rung",
+      "n_ladders": 3000,
+      "closed_form_matches": 3000,
+      "argmax_sensitivity_is_argmax_power": 3000,
+      "finite_difference_agrees": 3000,
+      "passed": true,
+      "interpretation": "The finite-difference check does not use the closed form, so it is an independent test of the direction rather than a restatement of the derivative."
+    },
+    {
+      "test": "V3.3 free rules leave M untouched; climb advances once per rung",
+      "n_free_operations": 5000,
+      "M_after_free_operations": 0,
+      "M_after_climb_of_3_rungs": 3,
+      "residues_recorded": 3,
+      "every_residue_at_least_floor": true,
+      "passed": true
+    },
+    {
+      "test": "V3.4 re-evaluating a commitment is never cached",
+      "n_identical_commits": 500,
+      "M_final": 500,
+      "strictly_increments_by_one": true,
+      "passed": true
+    },
+    {
+      "test": "NEGATIVE CONTROL: free operations inert, commitment registers",
+      "M_after_1000_free": 0,
+      "M_after_one_commit": 1,
+      "free_are_inert": true,
+      "commit_registers": true,
+      "passed": true
+    },
+    {
+      "test": "V3.6 the refusal is tight: static verdict agrees with execution",
+      "n_programs": 5000,
+      "n_accepted": 4032,
+      "n_rejected": 968,
+      "n_agree": 5000,
+      "n_disagree": 0,
+      "disagreement_examples": [],
+      "both_verdicts_occur": true,
+      "passed": true
+    },
+    {
+      "test": "NEGATIVE CONTROL: refusal fires and also declines to fire",
+      "refused_verdict": "subfloor",
+      "refused_shortfall": 0.7100000000000001,
+      "empty_verdict": "empty",
+      "accepted_verdict": "reached",
+      "separates_both_ways": true,
+      "passed": true
+    },
+    {
+      "test": "NEGATIVE CONTROL: a refusal commits no cut",
+      "verdict": "subfloor",
+      "residues_recorded": 0,
+      "edges_unchanged": true,
+      "passed": true
+    },
+    {
+      "test": "NEGATIVE CONTROL: verdict payload discipline is enforced",
+      "malformed_rejected": 4,
+      "malformed_attempted": 4,
+      "wellformed_accepted": 2,
+      "passed": true
+    },
+    {
+      "test": "V3.10 saturation diagnostic is sound",
+      "n_cases": 3000,
+      "n_correct": 3000,
+      "n_flagged": 1133,
+      "both_outcomes_occur": true,
+      "passed": true
+    },
+    {
+      "test": "V3.11 minimum rung count is exact",
+      "rows": [
+        {
+          "target": 0.5,
+          "power": 0.2,
+          "n": 4,
+          "composite_at_n": 0.5903999999999999,
+          "composite_at_n_minus_1": 0.4879999999999999,
+          "tight": true
+        },
+        {
+          "target": 0.5,
+          "power": 0.35,
+          "n": 2,
+          "composite_at_n": 0.5774999999999999,
+          "composite_at_n_minus_1": 0.35,
+          "tight": true
+        },
+        {
+          "target": 0.5,
+          "power": 0.55,
+          "n": 1,
+          "composite_at_n": 0.55,
+          "composite_at_n_minus_1": 0.0,
+          "tight": true
+        },
+        {
+          "target": 0.8,
+          "power": 0.2,
+          "n": 8,
+          "composite_at_n": 0.8322278399999999,
+          "composite_at_n_minus_1": 0.7902847999999999,
+          "tight": true
+        },
+        {
+          "target": 0.8,
+          "power": 0.35,
+          "n": 4,
+          "composite_at_n": 0.8214937499999999,
+          "composite_at_n_minus_1": 0.725375,
+          "tight": true
+        },
+        {
+          "target": 0.8,
+          "power": 0.55,
+          "n": 3,
+          "composite_at_n": 0.908875,
+          "composite_at_n_minus_1": 0.7975000000000001,
+          "tight": true
+        },
+        {
+          "target": 0.9,
+          "power": 0.2,
+          "n": 11,
+          "composite_at_n": 0.91410065408,
+          "composite_at_n_minus_1": 0.8926258175999999,
+          "tight": true
+        },
+        {
+          "target": 0.9,
+          "power": 0.35,
+          "n": 6,
+          "composite_at_n": 0.924581109375,
+          "composite_at_n_minus_1": 0.8839709375,
+          "tight": true
+        },
+        {
+          "target": 0.9,
+          "power": 0.55,
+          "n": 3,
+          "composite_at_n": 0.908875,
+          "composite_at_n_minus_1": 0.7975000000000001,
+          "tight": true
+        },
+        {
+          "target": 0.99,
+          "power": 0.2,
+          "n": 21,
+          "composite_at_n": 0.9907766279631453,
+          "composite_at_n_minus_1": 0.9884707849539315,
+          "tight": true
+        },
+        {
+          "target": 0.99,
+          "power": 0.35,
+          "n": 11,
+          "composite_at_n": 0.9912492168259912,
+          "composite_at_n_minus_1": 0.9865372566553711,
+          "tight": true
+        },
+        {
+          "target": 0.99,
+          "power": 0.55,
+          "n": 6,
+          "composite_at_n": 0.991696234375,
+          "composite_at_n_minus_1": 0.9815471875,
+          "tight": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V3.12 climbing agrees with the equivalent commitment sequence",
+      "n_programs": 2000,
+      "mismatches": 0,
+      "passed": true
+    },
+    {
+      "test": "V3.13 labels move nothing; powers move everything (with control)",
+      "n_ladders": 2000,
+      "unchanged_under_relabelling": 2000,
+      "control_moved_under_power_perturbation": 2000,
+      "passed": true,
+      "interpretation": "Without the control, the first count would be consistent with a constant observable and would carry no information."
+    },
+    {
+      "test": "Correspondence of derived power to measured rates",
+      "verdict": "NOT TESTED",
+      "scored": false,
+      "passed": null,
+      "detail": "The powers here are derived from a contact graph, which is itself a model. Whether they match rate constants measured in a laboratory is an empirical question requiring data this suite does not have. No check here should be read as supporting it."
+    }
+  ],
+  "negative_controls": [
+    "NEGATIVE CONTROL: free operations inert, commitment registers",
+    "NEGATIVE CONTROL: refusal fires and also declines to fire",
+    "NEGATIVE CONTROL: a refusal commits no cut",
+    "NEGATIVE CONTROL: verdict payload discipline is enforced"
+  ],
+  "summary": {
+    "n": 14,
+    "scored": 13,
+    "passed": 13,
+    "all_scored_passed": true
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "script": "v6_semantics_and_static.py",
+  "predictions": [
+    "P6",
+    "P7"
+  ],
+  "tests": [
+    {
+      "test": "V6.1 progress: no program gets stuck (P6)",
+      "n_programs": 2000,
+      "n_terminated": 2000,
+      "n_stuck": 0,
+      "passed": true
+    },
+    {
+      "test": "V6.2 preservation: floor invariant, M non-decreasing (P6)",
+      "n_programs": 2000,
+      "floor_violations": 0,
+      "M_decrease_violations": 0,
+      "passed": true
+    },
+    {
+      "test": "V6.3 monotone commitment: no caching of commits (P6)",
+      "n_identical_commits": 500,
+      "M_final": 500,
+      "M_equals_commit_count": true,
+      "strictly_increments_by_one": true,
+      "residues_recorded": 500,
+      "passed": true
+    },
+    {
+      "test": "V6.4 CONTROL: probes leave M untouched, commits move it",
+      "n_probes": 5000,
+      "M_after_probes": 0,
+      "M_after_one_commit": 1,
+      "probes_inert": true,
+      "commit_registers": true,
+      "passed": true
+    },
+    {
+      "test": "V7.1 static verdict agrees with execution (P7)",
+      "n_programs": 5000,
+      "n_accepted_statically": 4017,
+      "n_rejected_statically": 983,
+      "n_agree": 5000,
+      "n_disagree": 0,
+      "disagreement_examples": [],
+      "both_verdicts_occur": true,
+      "passed": true,
+      "interpretation": "Both verdicts occur in quantity, so the test could have failed in either direction.  A suite in which every program was accepted would not have tested rejection."
+    },
+    {
+      "test": "V7.2 saturation diagnostic is sound",
+      "n_cases": 3000,
+      "n_correct": 3000,
+      "n_flagged_unreachable": 1097,
+      "both_outcomes_occur": true,
+      "passed": true
+    },
+    {
+      "test": "V7.3 minimum rung count is exact",
+      "rows": [
+        {
+          "target": 0.5,
+          "rung_power": 0.2,
+          "n_required": 4,
+          "composite_at_n": 0.5903999999999999,
+          "composite_at_n_minus_1": 0.4879999999999999,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.5,
+          "rung_power": 0.35,
+          "n_required": 2,
+          "composite_at_n": 0.5774999999999999,
+          "composite_at_n_minus_1": 0.35,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.5,
+          "rung_power": 0.55,
+          "n_required": 1,
+          "composite_at_n": 0.55,
+          "composite_at_n_minus_1": 0.0,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.8,
+          "rung_power": 0.2,
+          "n_required": 8,
+          "composite_at_n": 0.8322278399999999,
+          "composite_at_n_minus_1": 0.7902847999999999,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.8,
+          "rung_power": 0.35,
+          "n_required": 4,
+          "composite_at_n": 0.8214937499999999,
+          "composite_at_n_minus_1": 0.725375,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.8,
+          "rung_power": 0.55,
+          "n_required": 3,
+          "composite_at_n": 0.908875,
+          "composite_at_n_minus_1": 0.7975000000000001,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.9,
+          "rung_power": 0.2,
+          "n_required": 11,
+          "composite_at_n": 0.91410065408,
+          "composite_at_n_minus_1": 0.8926258175999999,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.9,
+          "rung_power": 0.35,
+          "n_required": 6,
+          "composite_at_n": 0.924581109375,
+          "composite_at_n_minus_1": 0.8839709375,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.9,
+          "rung_power": 0.55,
+          "n_required": 3,
+          "composite_at_n": 0.908875,
+          "composite_at_n_minus_1": 0.7975000000000001,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.99,
+          "rung_power": 0.2,
+          "n_required": 21,
+          "composite_at_n": 0.9907766279631453,
+          "composite_at_n_minus_1": 0.9884707849539315,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.99,
+          "rung_power": 0.35,
+          "n_required": 11,
+          "composite_at_n": 0.9912492168259912,
+          "composite_at_n_minus_1": 0.9865372566553711,
+          "bound_is_tight": true
+        },
+        {
+          "target": 0.99,
+          "rung_power": 0.55,
+          "n_required": 6,
+          "composite_at_n": 0.991696234375,
+          "composite_at_n_minus_1": 0.9815471875,
+          "bound_is_tight": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V8.1 worked demonstration recomputed",
+      "declared_powers": [
+        0.45,
+        0.3,
+        0.55,
+        0.2
+      ],
+      "declared_target": 0.8,
+      "composite_power": 0.8613999999999999,
+      "residual_fraction": 0.13860000000000006,
+      "compiles": true,
+      "sensitivities": [
+        0.25199999999999995,
+        0.198,
+        0.30800000000000005,
+        0.17325
+      ],
+      "control_at_rung": 3,
+      "control_rung_is_highest_power": true,
+      "marginal_gains": {
+        "rung4_plus_0.1": 0.017325000000000035,
+        "rung3_plus_0.1": 0.03080000000000005
+      },
+      "deletion_analysis": {
+        "drop_rung1": {
+          "composite": 0.748,
+          "still_compiles": false
+        },
+        "drop_rung2": {
+          "composite": 0.802,
+          "still_compiles": true
+        },
+        "drop_rung3": {
+          "composite": 0.692,
+          "still_compiles": false
+        },
+        "drop_rung4": {
+          "composite": 0.82675,
+          "still_compiles": true
+        }
+      },
+      "min_rungs_for_target": 3,
+      "rungs_used": 4,
+      "two_rung_alternative_composite": 0.84,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "n": 8,
+    "passed": 8,
+    "all_passed": true
+  }
+}

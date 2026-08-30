@@ -1,0 +1,36 @@
+{
+  "experiment": "NEGATIVE CONTROL: malformed ladders are refused",
+  "claim": "Malformed declarations are parse errors, and the declared target is not read as an extra rung.",
+  "cases": [
+    {
+      "case": "no rungs declared",
+      "refused": true,
+      "message": "line 4: ladder declares no rungs"
+    },
+    {
+      "case": "power above one",
+      "refused": true,
+      "message": "line 4: rung power 1.5 outside [0,1]"
+    },
+    {
+      "case": "negative power",
+      "refused": true,
+      "message": "line 4: ladder declares no rungs"
+    },
+    {
+      "case": "no operand",
+      "refused": true,
+      "message": "line 4: unknown right-hand side 'ladder'"
+    }
+  ],
+  "n_refused": 4,
+  "n_cases": 4,
+  "declared_rungs": [
+    0.5,
+    0.6
+  ],
+  "declared_target": 0.7,
+  "target_not_read_as_rung": true,
+  "holds": true,
+  "note": "The last check is here because the first parser failed it: the token 'power' occurs inside 'expect power', so the target was appended as a fourth rung and the plan composed a ladder nobody wrote. It is the class of silent failure the verdict rules exist to prevent."
+}

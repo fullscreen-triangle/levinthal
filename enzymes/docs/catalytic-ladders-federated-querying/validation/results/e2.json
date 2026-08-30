@@ -1,0 +1,15 @@
+{
+  "experiment": "E2 a ladder plan end to end",
+  "claim": "The construct parses, checks and executes through the host's own machinery, not a harness of ours.",
+  "well_capability": true,
+  "capability_operations": 1,
+  "verdicts": {
+    "acids": "answer",
+    "L": "answer"
+  },
+  "composite_power": 0.82675,
+  "composite_expected": 0.82675,
+  "composite_matches": true,
+  "requests_issued": 1,
+  "holds": true
+}

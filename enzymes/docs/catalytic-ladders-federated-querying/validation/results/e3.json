@@ -1,0 +1,43 @@
+{
+  "experiment": "E3 the refusal and the blame walk",
+  "claim": "A refused ladder reports starved with no named predecessor, so blame terminates at the ladder and does not accuse an input that answered correctly.",
+  "cases": {
+    "accepted": {
+      "verdict": "answer",
+      "input_verdict": "answer",
+      "composite": 0.82675,
+      "diagnosis": null,
+      "blame_chain": [
+        "L"
+      ],
+      "requests_issued": 1
+    },
+    "refused": {
+      "verdict": "starved",
+      "input_verdict": "answer",
+      "composite": 0.82675,
+      "diagnosis": {
+        "named_predecessor": null,
+        "declared_rungs": [
+          0.45,
+          0.3,
+          0.55
+        ],
+        "input_from": "acids",
+        "reason": "composite power 0.8267 below declared expectation 0.95",
+        "expectation": 0.95,
+        "observed": 0.82675,
+        "shortfall": 0.12324999999999997
+      },
+      "blame_chain": [
+        "L"
+      ],
+      "requests_issued": 1
+    }
+  },
+  "both_verdicts_occur": true,
+  "blame_stops_at_ladder": true,
+  "predecessor_unblamed": true,
+  "input_answered_in_both": true,
+  "holds": true
+}
