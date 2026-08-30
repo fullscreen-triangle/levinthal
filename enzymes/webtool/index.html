@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalytic Ladders — a runnable notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/notebook.css">
+</head>
+<body>
+
+<nav class="toc" id="toc"><div class="lbl">CONTENTS</div></nav>
+
+<div class="wrap">
+
+<header class="masthead">
+  <h1>Catalytic Ladders</h1>
+  <p class="sub">
+    A runnable notebook. Every number below is computed in your browser by a
+    port of the validation kernel — nothing is a stored result. The
+    construct is a <em>ladder</em>: a sequence of steps, each carrying one
+    number, composing multiplicatively. We build one, derive its rungs from a
+    contact graph, run it through an operational semantics with a floor and a
+    clock, and then put it inside a federated query plan.
+  </p>
+  <div class="kernel-bar">
+    <span><span class="dot" id="kdot"></span><b>kernel</b> <span id="kstate">ready</span></span>
+    <span><b>engine</b> engine.js (port of shk_core.py)</span>
+    <span><b>corpus</b> <span id="kcorpus">loading…</span></span>
+    <span><b>charts</b> d3 v7</span>
+    <span><a href="#" id="runall">run all cells</a></span>
+  </div>
+</header>
+
+<!-- ================================================================ -->
+<section class="md" id="s-intro">
+  <h2>What a ladder is, and what it is not</h2>
+  <p>
+    A process is usually described by naming its participants and putting them
+    in order: these species, transformed by these agents, through these
+    intermediates. A ladder describes the same process without any of that.
+    Each step carries exactly one number — its <strong>power</strong>
+    <code>π ∈ [0,1]</code>, the fraction of the remaining distance it closes —
+    and a ladder is a finite sequence of such steps.
+  </p>
+  <p>
+    Because each rung closes a fraction of the gap that <em>remains</em>, the
+    residuals multiply and the composite power of a ladder is
+  </p>
+  <p style="font-family:var(--mono);font-size:14px;color:#e6e6e6;margin:14px 0 14px 8px;">
+    π(L) = 1 − ∏<sub>i</sub>(1 − π<sub>i</sub>)
+  </p>
+  <p>
+    That is the whole construct. A rung has no identity field, and this is the
+    formalism rather than an omission: a demonstration that identities do not
+    matter, run on objects that carry names, would be a demonstration about the
+    names. The implementation below enforces the same discipline — its rung
+    type has one field.
+  </p>
+  <div class="note">
+    <b>What this notebook does not claim.</b> The powers derived here come from
+    a contact graph, which is itself a model. Whether they match rate constants
+    measured in a laboratory is an empirical question no cell here bears on. The
+    corpus is real data used so the plans have something real to run on, not
+    evidence about metabolism.
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<section class="md" id="s-substrate">
+  <h2>1 · The substrate</h2>
+  <p>
+    Everything rests on a finite weighted graph with a distinguished
+    <strong>medium</strong> vertex adjacent to every item. The
+    <strong>floor</strong> <code>β</code> is the least edge weight. It is
+    strictly positive for one reason only — a finite set of strictly positive
+    numbers has a positive minimum — and that hypothesis is load-bearing: the
+    weights <code>1/n</code> are each positive and admit no positive lower
+    bound, so an unbounded system has no floor.
+  </p>
+  <p>
+    The <strong>separation cost</strong> <code>σ(v)</code> is the minimum weight
+    of a cut placing <code>v</code> on one side and the medium on the other. We
+    compute it on a <em>ball</em> of declared radius around <code>v</code>, and
+    a rung's power is derived from it:
+    <code>π = 1 − β<sub>r</sub>(v) / σ<sub>r</sub>(v)</code>.
+  </p>
+</section>
+
+<div class="ctrls" id="ctl-substrate">
+  <div class="ctrl"><label>items</label>
+    <input type="range" id="c-items" min="4" max="8" step="1" value="6">
+    <span class="v" id="v-items">6</span></div>
+  <div class="ctrl"><label>radius ϱ</label>
+    <input type="range" id="c-radius" min="0" max="3" step="1" value="1">
+    <span class="v" id="v-radius">1</span></div>
+  <div class="ctrl"><label>seed</label>
+    <input type="range" id="c-seed" min="1" max="40" step="1" value="7">
+    <span class="v" id="v-seed">7</span></div>
+</div>
+<div class="cell" data-cell="substrate"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-resolution">
+  <h2>2 · Radius is a resolution, not a threshold</h2>
+  <p>
+    A threshold can be tuned to a desired outcome, and its value is a free
+    parameter a reader has to take on trust. A resolution cannot: its effect is
+    monotone and its direction is a stated consequence. Raising the radius
+    admits more of the graph into the computation, so the derived quantity
+    identifies more items — and the mechanism is <em>ball overlap</em>.
+  </p>
+  <div class="note">
+    <b>We predicted this backwards.</b> The expectation was that a coarse radius
+    would identify more, by analogy with a matcher where a wider neighbourhood
+    discriminates more finely. The measurement is the reverse. In that setting
+    the radius enlarges the <em>description</em> of each item; here it enlarges
+    the <em>domain of a minimisation</em> that different items come to share.
+    Enlarging a description separates; enlarging a shared minimisation merges.
+  </div>
+</section>
+<div class="cell" data-cell="resolution"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-intensivity">
+  <h2>3 · Intensivity, and the control that localises the failure</h2>
+  <p>
+    The multiplicative law presupposes that a rung's power does not depend on
+    what else is in the graph. If it did, composition would depend on the order
+    the rungs were derived in. So intensivity is a <em>requirement</em>, and it
+    is tested rather than assumed.
+  </p>
+  <p>
+    It fails for the obvious construction. A local cut key normalised by the
+    <strong>global</strong> floor is not intensive, because <code>β</code> is a
+    minimum over every edge and one distant small edge lowers it everywhere.
+    Both the cut key and its normaliser must be local.
+  </p>
+  <div class="note">
+    <b>Why keep the near-miss.</b> A control that differs from the candidate in
+    every respect shows only that <em>some</em> difference matters. This one
+    differs in a single component and therefore localises the failure to the
+    normaliser. We got it wrong first, and the control is what showed where.
+  </div>
+</section>
+<div class="cell" data-cell="intensivity"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-order">
+  <h2>4 · Order dependence is graded, not abolished</h2>
+  <p>
+    There is an easy test here that cannot fail, and it is worth naming.
+    Permuting a <em>fixed</em> multiset of powers cannot change
+    <code>1 − ∏(1−π)</code>, because the law is symmetric in its arguments.
+    Every candidate passes, including deliberately extensive ones. The cell
+    below runs that comparison and reports it as
+    <strong>non-discriminating</strong>.
+  </p>
+  <p>
+    The test that can fail derives the powers <em>sequentially</em>, so each rung
+    sees the graph its predecessors mutated. There, intensivity buys a large
+    reduction in order dependence — but not exact independence, because
+    commitment reaches inside neighbouring balls, which is exactly the case the
+    invariance theorem does not cover.
+  </p>
+</section>
+<div class="cell" data-cell="order"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-ladder">
+  <h2>5 · Constructing a catalytic ladder</h2>
+  <p>
+    Now the construct itself. Set the powers and watch the gap close. Two
+    quantities are worth attention: the <strong>composite</strong>, which is
+    what the ladder achieves end to end, and the <strong>sensitivity</strong>
+    <code>∂π(L)/∂π<sub>j</sub> = P/(1−π<sub>j</sub>)</code>, which says where a
+    marginal improvement pays.
+  </p>
+  <div class="note">
+    <b>The counter-intuitive part.</b> Sensitivity is maximised at the
+    <em>highest</em>-power rung, not the weakest. The quantity being maximised
+    is transmission, not slack: a gain at rung <code>j</code> reaches the output
+    only through <code>∏<sub>i≠j</sub>(1−π<sub>i</sub>)</code>, so improving a
+    weak rung buys a large local change that the rest of the ladder discards.
+    Drag the sliders and watch the marked rung move.
+  </div>
+</section>
+
+<div class="ctrls" id="ctl-ladder">
+  <div class="ctrl"><label>π₁</label>
+    <input type="range" id="c-p0" min="0" max="0.95" step="0.01" value="0.45">
+    <span class="v" id="v-p0">0.45</span></div>
+  <div class="ctrl"><label>π₂</label>
+    <input type="range" id="c-p1" min="0" max="0.95" step="0.01" value="0.30">
+    <span class="v" id="v-p1">0.30</span></div>
+  <div class="ctrl"><label>π₃</label>
+    <input type="range" id="c-p2" min="0" max="0.95" step="0.01" value="0.55">
+    <span class="v" id="v-p2">0.55</span></div>
+  <div class="ctrl"><label>π₄</label>
+    <input type="range" id="c-p3" min="0" max="0.95" step="0.01" value="0.20">
+    <span class="v" id="v-p3">0.20</span></div>
+  <div class="ctrl"><label>target</label>
+    <input type="range" id="c-target" min="0.1" max="0.99" step="0.01" value="0.80">
+    <span class="v" id="v-target">0.80</span></div>
+</div>
+<div class="cell" data-cell="ladder"></div>
+
+<section class="md">
+  <h3>Is the law right?</h3>
+  <p>
+    The multiplicative law is scored against three alternatives — additive,
+    maximum and mean — on the same generated ladders. Scoring only the favoured
+    law would not distinguish it from the others, so all four are scored and the
+    comparison <em>is</em> the test.
+  </p>
+</section>
+<div class="cell" data-cell="laws"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-semantics">
+  <h2>6 · The machine: free rules, a clock, and a refusal</h2>
+  <p>
+    Shakespeare is a language in which evaluation is measurement. Its state is
+    the contact graph, and a monotone counter <code>M</code> records commitments.
+    A rule may leave <code>M</code> unchanged exactly when it commits no
+    cut — forming a rung, deriving one, and reading a composite all read
+    boundary that is already committed, so they are <strong>free</strong>.
+    Climbing is not: it commits once per rung.
+  </p>
+  <p>
+    And the construct <strong>refuses</strong>. A ladder whose declared rungs
+    cannot reach its declared target is rejected before evaluation, commits
+    nothing, and names its shortfall. The refusal is <em>tight</em> — it
+    excludes no ladder that could have succeeded — and non-vacuous, since
+    presentable ladders fall on both sides of it. A construct that always
+    succeeded would classify nothing.
+  </p>
+</section>
+<div class="cell" data-cell="semantics"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-sequence">
+  <h2>7 · Computing sequences over a real pathway</h2>
+  <p>
+    A <em>computing sequence</em> is a ladder read along a process: one rung per
+    step, composed in order. Below, the steps come from a real Reactome pathway
+    in the frozen corpus, and each rung's power is derived from that step's own
+    participant counts.
+  </p>
+  <p>
+    Note what the table does <em>not</em> use. The reaction names are printed
+    for orientation only; nothing about what a reaction <em>is</em> enters the
+    composition, and nothing about it could be recovered from the result. Two
+    steps with the same power are the same rung.
+  </p>
+</section>
+
+<div class="ctrls" id="ctl-sequence">
+  <div class="ctrl"><label>pathway</label>
+    <select id="c-pathway"></select></div>
+</div>
+<div class="cell" data-cell="sequence"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-federated">
+  <h2>8 · Federated querying</h2>
+  <p>
+    The last question is whether the construct <em>fits</em> — whether it can be
+    added to a query language built by other hands without breaking what is
+    already there. HFQ is a federated plan language with six verdicts applied in
+    a fixed order, a capability check that runs before any request is issued, and
+    a water-filling allocator that distributes a request budget.
+  </p>
+  <p>
+    A ladder step is local: it reaches no source, issues no request, and demands
+    no capability. It needed no change to the capability checker or the
+    allocator, because both guard on <em>is this a source access</em> rather than
+    enumerating the local kinds they knew about. The host's own suite of sixteen
+    checks reads <strong>16/16</strong> before the change and 16/16 after.
+  </p>
+  <div class="note">
+    <b>The refusal reuses the host's blame discipline.</b> A ladder that cannot
+    reach its target reports <code>starved</code> with the predecessor field
+    <em>empty</em>. That is not an omission: the input arrived intact and
+    answered correctly, so naming it would accuse a step that did nothing wrong
+    and send the blame walk one hop too far. Raise the target below and watch
+    the verdict flip.
+  </div>
+</section>
+
+<div class="ctrls" id="ctl-hfq">
+  <div class="ctrl"><label>expect power</label>
+    <input type="range" id="c-hfq" min="0.1" max="0.99" step="0.01" value="0.70">
+    <span class="v" id="v-hfq">0.70</span></div>
+  <div class="ctrl"><span class="dim" style="font-family:var(--mono);font-size:11px;">
+    composite is 0.82675 — cross it and the plan refuses</span></div>
+</div>
+<div class="cell" data-cell="federated"></div>
+
+<section class="md">
+  <h3>A bound the host already had</h3>
+  <p>
+    HFQ bounds translation retention below by the union bound
+    <code>ρ ≥ 1 − Σ(1−rᵢ)</code>. That is the additive relaxation of the
+    ladder's law. Measured on the same numbers, the additive form goes
+    <em>vacuous</em> — negative, hence trivially true — on most chains of four
+    stages or more, while the multiplicative form stays informative. The two
+    lines of work were not written with each other in view and they meet at
+    <code>1 − ∏(1−xᵢ)</code>.
+  </p>
+</section>
+<div class="cell" data-cell="bound"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-corpus">
+  <h2>9 · The corpus</h2>
+  <p>
+    Two public services with different schemas and different identifier spaces,
+    fetched once and then frozen. The host forbids network access in its
+    adapters by construction — its claims are properties of the compiler, and a
+    live service can neither confirm nor refute them — so the data is real but
+    the experiment does not depend on a service being up.
+  </p>
+</section>
+<div class="cell" data-cell="corpus"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-close">
+  <h2>What went wrong, and stayed in the record</h2>
+  <p>
+    Three findings in this notebook came out against expectation, and each is
+    reported as it came out rather than smoothed over.
+  </p>
+  <ul>
+    <li><strong>Intensivity needed a local normaliser</strong>, not just a local
+    cut key. The first construction used the global floor and failed.</li>
+    <li><strong>Order independence is graded, not exact.</strong> We set out to
+    prove exactness; the measurement says otherwise, and the reason is that
+    commitment reaches inside neighbouring balls.</li>
+    <li><strong>The radius sweep runs backwards</strong> from the predicted
+    direction, for a reason — ball overlap — reported beside the counts.</li>
+  </ul>
+  <p>
+    Two defects surfaced while building the integration. A regular expression
+    read a declared target as an extra rung, because the token
+    <code>power</code> occurs inside <code>expect power</code> — a plan would
+    have composed a ladder nobody wrote, which is the class of silent failure
+    the verdict rules exist to prevent. And a corpus field came back empty on
+    first extraction; querying the live service rather than recording a
+    plausible zero is what caught it.
+  </p>
+</section>
+
+<footer class="foot">
+  <div><b>engine</b> js/engine.js — a port of
+    <span class="dim">docs/shakespear-protein-contact-sequence/validation/shk_core.py</span></div>
+  <div><b>papers</b> Shakespeare with Ladders · Catalytic Ladders in a Federated Query Language</div>
+  <div><b>corpus</b> KEGG (rest.kegg.jp) and Reactome (reactome.org/ContentService), fetched once and frozen</div>
+  <div><b>note</b> every figure is computed at run time; none is an image of a stored result</div>
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/cells.js"></script>
+<script src="js/notebook.js"></script>
+</body>
+</html>
