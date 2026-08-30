@@ -1,0 +1,202 @@
+% ==========================================================================
+% Figure blocks for
+%   Shakespeare with Ladders: Composition, Derived Power, and the Second Refusal of a Receiver Language
+%
+% Each block below is self-contained. Paste one straight into
+% the manuscript at the point its panel belongs; no \input and
+% no \captionPanel* macro is required.
+%
+% Preamble requirements:
+%   \usepackage{graphicx}
+%   \usepackage{amsmath,amssymb}
+%   \graphicspath{{figures/}}      % if the paths below are bare
+%   \usepackage{cleveref}          % for the \cref calls below
+%
+% These captions cross-reference the manuscript. The following
+% labels must exist, or LaTeX will report an undefined control
+% sequence (missing cleveref) or an undefined reference:
+%   eq:local-sepcost
+%   rem:res-inverted
+% Replace the \cref calls with plain text if you are pasting
+% these panels into a document that lacks those labels.
+% ==========================================================================
+
+
+% --------------------------------------------------------------------------
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_01.png}
+    \caption{\textbf{The substrate: a floor that is computed, the hypothesis it
+    requires, and the cut key against ground truth.}
+    \textbf{(A)}~Floor computed---not assumed---as the minimum edge weight over
+    four finite contact graphs, including an adversarial instance whose smallest
+    weight is $10^{-12}$. Every instance returns a strictly positive floor, because
+    positivity follows from finiteness together with strict positivity of the
+    weights and not from their scale.
+    \textbf{(B)}~The failure branch. A system permitted to refine without limit
+    generates thicknesses $1/n$ (orange): each is strictly positive and the infimum
+    is zero, with every $\varepsilon$ down to $10^{-9}$ eventually cleared.
+    Truncating the same sequence to a finite system (blue, first ten stages)
+    restores a positive floor at $0.1$ (dashed). The uniform floor therefore
+    requires finiteness, and the chart is included so that the requirement is
+    visible rather than tacit.
+    \textbf{(C)}~The local separation cost of \cref{eq:local-sepcost}, evaluated at
+    a radius covering the graph, against an independent exhaustive enumeration of
+    every bipartition, on $160$ graphs. Points lie on the identity to machine
+    precision. This checks the implementation against ground truth rather than
+    restating the definition.
+    \textbf{(D)}~Floor surface over edge count and weight scale. The surface is
+    positive everywhere on the domain and descends toward zero only as the scale
+    does; increasing the edge count at fixed scale lowers the floor without
+    abolishing it, which is the content of a minimum over a finite set.}
+    \label{fig:panel1}
+\end{figure*}
+
+
+% --------------------------------------------------------------------------
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_02.png}
+    \caption{\textbf{Radius is a resolution parameter, and it runs in the direction
+    opposite to the one we predicted.}
+    \textbf{(A)}~Pairs of items whose derived powers agree to $10^{-9}$, against
+    radius. Identification rises from zero at radius $0$ to $26$ at radius $3$. Our
+    stated prediction was that a coarse radius would identify more; the measurement
+    is the reverse and \cref{rem:res-inverted} records the correction.
+    \textbf{(B)}~The mechanism, which is why the direction is what it is. Mean
+    pairwise ball overlap (solid) rises monotonically from $0.000$ to $0.763$,
+    while the number of distinct powers (dashed, right axis) falls from $138$ to
+    $114$. Balls of radius $0$ are disjoint singletons and each item minimises over
+    its own edges; balls of large radius coincide, so distinct items minimise over
+    the same edge set and their powers converge. The overlap is plotted beside the
+    count because a count without its mechanism would leave the direction
+    unexplained.
+    \textbf{(C)}~Six individual power trajectories on one chain as the radius
+    grows. Traces that begin apart come together and then flatten, which is the
+    per-item form of the aggregate in~(B).
+    \textbf{(D)}~The resolution surface: derived power over item and radius. The
+    surface is ridged at small radius, where items differ, and flattens along the
+    radius axis as the balls merge.}
+    \label{fig:panel2}
+\end{figure*}
+
+
+% --------------------------------------------------------------------------
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_03.png}
+    \caption{\textbf{Intensivity requires a local normaliser, and the near-miss
+    control is what shows it.}
+    \textbf{(A)}~Maximum drift in derived power when the graph is extended far from
+    the item measured, over $120$ graphs, on a logarithmic axis. The intensive
+    candidate does not move at all---the bar is at the floor of the axis because
+    the value is exactly zero, not merely small. Both controls move by more than
+    $10^{-1}$.
+    \textbf{(B)}~The control, and the reason panel~A carries information. Fraction
+    of graphs on which each candidate moved: $0/120$ for the intensive candidate
+    and $120/120$ for both controls. Had no control moved, the test would have been
+    measuring something other than intensivity and would be reported as
+    non-discriminating.
+    \textbf{(C)}~Power before against power after extension, for all three
+    candidates. The intensive points lie on the identity exactly; the near-miss
+    lies visibly above it, because the global floor fell and every power rose with
+    it; the extensive points scatter below. The near-miss differs from the
+    candidate in one component only---the normaliser---so its displacement
+    localises the failure rather than merely exhibiting one.
+    \textbf{(D)}~Near-miss drift over the weight of the added edge and the number
+    of items added. Drift is governed by the added \emph{weight} and is nearly flat
+    in the \emph{count}, which is the signature of the global floor: one small
+    distant edge is enough, and further additions change little.}
+    \label{fig:panel3}
+\end{figure*}
+
+
+% --------------------------------------------------------------------------
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_04.png}
+    \caption{\textbf{Order dependence under sequential derivation is graded, not
+    abolished.}
+    \textbf{(A)}~Distinct composite powers over all $720$ orderings of a six-item
+    chain at radius $1$, on a logarithmic axis, with the line at $1$ marking exact
+    order independence. The counts are $38$, $80$ and $432$; intensivity reduces
+    dependence by an order of magnitude relative to the extensive control and no
+    candidate attains $1$. The dashed line is drawn because the claim we set out to
+    prove was that the intensive bar would sit on it.
+    \textbf{(B)}~The same counts at radius $0$ and radius $1$. Finer locality
+    tightens the intensive count from $38$ to $11$ without reaching $1$: dependence
+    survives because commitment mutates edges inside the balls of neighbouring
+    items, which is exactly the case the intensivity theorem does not cover.
+    \textbf{(C)}~The distributions behind the counts: composite power over all
+    $720$ orderings for the intensive candidate and the extensive control. The
+    intensive distribution is narrow and the extensive one broad, and neither is a
+    single spike.
+    \textbf{(D)}~Composite power over sampled orderings and radius for the
+    intensive candidate. The surface is corrugated along the ordering axis at every
+    radius---that corrugation is the residual order dependence---and its amplitude
+    falls as the radius falls.}
+    \label{fig:panel4}
+\end{figure*}
+
+
+% --------------------------------------------------------------------------
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_05.png}
+    \caption{\textbf{Composition is multiplicative, and control lies at the
+    strongest rung.}
+    \textbf{(A)}~Mean absolute error of four candidate composition laws against a
+    rung-by-rung simulation, over $4000$ ladders, on a logarithmic axis. The
+    multiplicative law is exact to machine precision; the additive, maximum and
+    mean laws err by $5.9\times10^{-2}$, $2.1\times10^{-1}$ and $4.6\times10^{-1}$.
+    All four are scored: scoring only the favoured law would not have distinguished
+    it from the others.
+    \textbf{(B)}~Sensitivity normalised by the ladder's residual fraction, against
+    rung power, over $700$ random ladders. Every point lies on $1/(1-\pi_j)$, which
+    is exact, since sensitivity is $P/(1-\pi_j)$. The normalisation is necessary
+    because raw sensitivity also depends on the other rungs, which obscures the
+    relationship across ladders of differing composition.
+    \textbf{(C)}~Gain in composite power from a fixed improvement applied to each
+    rung in turn, at three improvement sizes, for the four-rung ladder
+    $(0.45,0.30,0.55,0.20)$. Rung~3, of highest power, returns most at every size
+    and rung~4, the weakest, returns least. Improving the bottleneck is the worse
+    investment, by roughly a factor of two at $\delta=0.1$.
+    \textbf{(D)}~Sensitivity to the third rung of a three-rung ladder, over the
+    powers of the other two. The surface is $(1-\pi_1)(1-\pi_2)$: what a marginal
+    gain buys is set by transmission through the remaining rungs, which is why the
+    quantity being maximised is transmission and not slack.}
+    \label{fig:panel5}
+\end{figure*}
+
+
+% --------------------------------------------------------------------------
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_06.png}
+    \caption{\textbf{The clock, the refusal, and label independence with its
+    control.}
+    \textbf{(A)}~The clock $M$ under the two regimes. Free rules---forming a rung,
+    deriving a rung, reading a composite---leave $M$ flat at zero however many are
+    performed; a climb advances it once per rung. This is the operational content
+    of the freeness criterion, which licenses a free rule exactly when it commits
+    no cut.
+    \textbf{(B)}~The static verdict against execution on $5000$ generated
+    programs: $4032$ accepted, $968$ refused, and zero disagreements, marked by the
+    cross at zero. Both verdicts occur in quantity, so the test could have failed
+    in either direction; a suite in which every program was accepted would not have
+    tested rejection.
+    \textbf{(C)}~Label independence and the control that gives it content. The
+    vertical line at zero is the distribution of changes under relabelling: every
+    one is exactly zero, since a rung has no identity field and the relabelling
+    acts on annotations external to the formalism. The histogram is the control,
+    in which a rung \emph{power} is perturbed instead; those changes are entirely
+    positive and well away from zero. Without the control the first result would be
+    consistent with a constant observable and would carry no information.
+    \textbf{(D)}~Rungs required to reach a target, over target and rung power. The
+    surface diverges as the target approaches unity and as the rung power
+    approaches zero, and is low only where strong rungs meet modest targets. This
+    is the cost model behind the refusal: what a target costs is set jointly by how
+    demanding it is and by how much each step accomplishes.}
+    \label{fig:panel6}
+\end{figure*}
+
