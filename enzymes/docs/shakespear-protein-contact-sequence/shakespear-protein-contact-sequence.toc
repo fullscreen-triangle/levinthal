@@ -1,46 +1,46 @@
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}What the language already does, and the one thing it cannot say}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}What this paper adds}{3}{subsection.1.2}%
-\contentsline {paragraph}{Power is derived, not declared.}{3}{section*.2}%
-\contentsline {paragraph}{Intensivity is a condition, and it is delicate.}{3}{section*.3}%
-\contentsline {paragraph}{The ladder refuses.}{4}{section*.4}%
-\contentsline {subsection}{\numberline {1.3}What we do not claim}{4}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}The two claims this paper falsifies}{4}{subsection.1.4}%
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}What the language already does, and the one thing it cannot say}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}What this paper adds}{2}{subsection.1.2}%
+\contentsline {paragraph}{Power is derived, not declared.}{3}{section*.3}%
+\contentsline {paragraph}{Intensivity is a condition, and it is delicate.}{3}{section*.4}%
+\contentsline {paragraph}{The ladder refuses.}{3}{section*.5}%
+\contentsline {subsection}{\numberline {1.3}What we do not claim}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}The two claims this paper falsifies}{3}{subsection.1.4}%
 \contentsline {part}{I\hspace {1em}The Substrate}{4}{part.1}%
-\contentsline {section}{\numberline {2}Graph, Floor, Separation Cost}{5}{section.2}%
+\contentsline {section}{\numberline {2}Graph, Floor, Separation Cost}{4}{section.2}%
 \contentsline {section}{\numberline {3}Resolution: the Ball and the Local Floor}{5}{section.3}%
-\contentsline {part}{II\hspace {1em}Rungs and Ladders}{7}{part.2}%
-\contentsline {section}{\numberline {4}Derived Power}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Intensivity}{8}{subsection.4.1}%
-\contentsline {section}{\numberline {5}Composition}{9}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Order dependence, stated as measured}{10}{subsection.5.1}%
-\contentsline {section}{\numberline {6}Two Composition Rules, Neither Determining the Other}{11}{section.6}%
-\contentsline {part}{III\hspace {1em}The Language}{12}{part.3}%
-\contentsline {section}{\numberline {7}Syntax}{13}{section.7}%
-\contentsline {section}{\numberline {8}Types}{13}{section.8}%
-\contentsline {section}{\numberline {9}Operational Semantics}{14}{section.9}%
-\contentsline {section}{\numberline {10}Static Analysis and the Second Refusal}{17}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Deciding reachability before execution}{17}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}The refusal}{18}{subsection.10.2}%
-\contentsline {part}{IV\hspace {1em}Measurement}{19}{part.4}%
-\contentsline {section}{\numberline {11}Protocol}{19}{section.11}%
-\contentsline {paragraph}{Scoring policy.}{19}{section*.5}%
-\contentsline {paragraph}{Negative controls.}{19}{section*.6}%
-\contentsline {paragraph}{Totals.}{19}{section*.7}%
-\contentsline {section}{\numberline {12}Results}{19}{section.12}%
-\contentsline {subsection}{\numberline {12.1}The substrate}{19}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}The radius sweep, and the direction we predicted wrongly}{19}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Intensivity, and the near-miss}{20}{subsection.12.3}%
-\contentsline {subsection}{\numberline {12.4}Order dependence}{20}{subsection.12.4}%
-\contentsline {subsection}{\numberline {12.5}The language}{21}{subsection.12.5}%
-\contentsline {subsection}{\numberline {12.6}The refusal}{21}{subsection.12.6}%
-\contentsline {subsection}{\numberline {12.7}What the suite does not establish}{21}{subsection.12.7}%
-\contentsline {section}{\numberline {13}Falsifiable Predictions}{22}{section.13}%
-\contentsline {section}{\numberline {14}Relation to Existing Accounts}{22}{section.14}%
-\contentsline {paragraph}{Metabolic control analysis.}{22}{section*.8}%
-\contentsline {paragraph}{Rate-limiting steps.}{22}{section*.9}%
-\contentsline {paragraph}{Reliability and series systems.}{23}{section*.10}%
-\contentsline {paragraph}{Provenance monoids.}{23}{section*.11}%
-\contentsline {paragraph}{Screens versus identity tests.}{23}{section*.12}%
-\contentsline {section}{\numberline {15}Limitations}{23}{section.15}%
-\contentsline {section}{\numberline {16}Conclusion}{24}{section.16}%
+\contentsline {part}{II\hspace {1em}Rungs and Ladders}{6}{part.2}%
+\contentsline {section}{\numberline {4}Derived Power}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Intensivity}{7}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Composition}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Order dependence, stated as measured}{9}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Two Composition Rules, Neither Determining the Other}{10}{section.6}%
+\contentsline {part}{III\hspace {1em}The Language}{11}{part.3}%
+\contentsline {section}{\numberline {7}Syntax}{11}{section.7}%
+\contentsline {section}{\numberline {8}Types}{12}{section.8}%
+\contentsline {section}{\numberline {9}Operational Semantics}{12}{section.9}%
+\contentsline {section}{\numberline {10}Static Analysis and the Second Refusal}{14}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Deciding reachability before execution}{14}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The refusal}{16}{subsection.10.2}%
+\contentsline {part}{IV\hspace {1em}Measurement}{17}{part.4}%
+\contentsline {section}{\numberline {11}Protocol}{17}{section.11}%
+\contentsline {paragraph}{Scoring policy.}{17}{section*.6}%
+\contentsline {paragraph}{Negative controls.}{17}{section*.7}%
+\contentsline {paragraph}{Totals.}{17}{section*.8}%
+\contentsline {section}{\numberline {12}Results}{17}{section.12}%
+\contentsline {subsection}{\numberline {12.1}The substrate}{17}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}The radius sweep, and the direction we predicted wrongly}{17}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Intensivity, and the near-miss}{17}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Order dependence}{18}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}The language}{18}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}The refusal}{18}{subsection.12.6}%
+\contentsline {subsection}{\numberline {12.7}What the suite does not establish}{19}{subsection.12.7}%
+\contentsline {section}{\numberline {13}Falsifiable Predictions}{19}{section.13}%
+\contentsline {section}{\numberline {14}Relation to Existing Accounts}{19}{section.14}%
+\contentsline {paragraph}{Metabolic control analysis.}{19}{section*.9}%
+\contentsline {paragraph}{Rate-limiting steps.}{20}{section*.10}%
+\contentsline {paragraph}{Reliability and series systems.}{20}{section*.11}%
+\contentsline {paragraph}{Provenance monoids.}{20}{section*.12}%
+\contentsline {paragraph}{Screens versus identity tests.}{20}{section*.13}%
+\contentsline {section}{\numberline {15}Limitations}{20}{section.15}%
+\contentsline {section}{\numberline {16}Conclusion}{21}{section.16}%
