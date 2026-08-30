@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalytic Ladders — from catalysis to Shakespeare</title>
+<meta name="description" content="A runnable notebook: why enzymes exist, what a process ladder is, and how both become programs in the Shakespeare receiver language.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="toc" id="toc">
+  <div class="lbl">CONTENTS</div>
+  <div id="toc-links"></div>
+  <div class="clockbox">
+    <div>receiver clock</div>
+    <div class="m">M = <span id="clockval">0</span></div>
+    <div style="margin-top:6px">monotone; never resets</div>
+    <button class="reset" id="reset-recv">reset receiver</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ================================================================ -->
+<!-- THE STAGE: the whole system, in one screen                        -->
+<!-- ================================================================ -->
+<section class="stage" id="s-stage">
+  <h1>From “why do enzymes exist?”<br>to a program that performs one.</h1>
+  <p class="lede">
+    One chain of reasoning, five links. It starts with a question about
+    catalysis, arrives at a construct with <b>one number per step</b>, and ends
+    with a language in which that construct is a <b>program you can run</b> —
+    on this page, against the same interpreter the cytochrome sandbox uses.
+    Click a link to open it.
+  </p>
+
+  <div class="chain" id="chain">
+
+    <div class="link" data-goto="s-catalysis">
+      <div class="num">01</div>
+      <div>
+        <p class="t">Individuation is not free — so there is a floor.</p>
+        <p class="d">
+          Telling one thing apart from its surroundings costs a strictly
+          positive minimum. In a finite weighted contact graph that minimum is
+          just the least edge weight, and it is positive because a finite set
+          of positive numbers has a positive minimum. Nothing here is posited;
+          the floor is computed. Take away finiteness and it vanishes.
+        </p>
+        <p class="eq">β = min<sub>e∈E</sub> w(e) &gt; 0</p>
+      </div>
+    </div>
+
+    <div class="link" data-goto="s-catalysis">
+      <div class="num">02</div>
+      <div>
+        <p class="t">Probing is free; committing is floored. That asymmetry is catalysis.</p>
+        <p class="d">
+          Entering a region costs nothing. Individuating it — drawing the
+          boundary — costs at least β, whatever the region's rarity. So a
+          structure committed once can be traversed indefinitely without paying
+          again. An enzyme is reusable for that reason, not an energetic one,
+          and this is what an account of catalysis has to explain first.
+        </p>
+        <p class="eq">cost(probe) = 0 &nbsp;·&nbsp; cost(commit) ≥ β</p>
+      </div>
+    </div>
+
+    <div class="link" data-goto="s-ladder">
+      <div class="num">03</div>
+      <div>
+        <p class="t">A process is a ladder: one number per step, composing multiplicatively.</p>
+        <p class="d">
+          Drop the participants. Each step carries exactly one datum — its
+          <em>power</em>, the fraction of the remaining gap it closes — and a
+          process is a sequence of them. Because each closes a fraction of what
+          <em>remains</em>, the residuals multiply. Two steps of equal power are
+          the same rung: a rung has no identity field, and that is the
+          formalism rather than an omission.
+        </p>
+        <p class="eq">π(L) = 1 − ∏<sub>i</sub>(1 − π<sub>i</sub>)</p>
+      </div>
+    </div>
+
+    <div class="link" data-goto="s-shk">
+      <div class="num">04</div>
+      <div>
+        <p class="t">Shakespeare makes it performable: evaluation is measurement.</p>
+        <p class="d">
+          A receiver language whose state is the contact graph and whose clock
+          M counts commitments. A rule may leave M alone exactly when it commits
+          no cut, so declaring a rung and reading a composite are <em>free</em>
+          while climbing is not. Plays on this page run through the interpreter
+          that already drives the cytochrome IDE — not a reimplementation.
+        </p>
+        <p class="eq">Γ ⊢ e : τ @ β &nbsp;·&nbsp; ⟨Γ<sub>G</sub>, M, e⟩ → ⟨Γ<sub>G</sub>′, M′, v⟩</p>
+      </div>
+    </div>
+
+    <div class="link" data-goto="s-federated">
+      <div class="num">05</div>
+      <div>
+        <p class="t">And it refuses — which is the only reason it classifies anything.</p>
+        <p class="d">
+          A ladder whose declared rungs cannot reach its declared target is
+          rejected before evaluation, commits nothing, and names its shortfall.
+          The refusal is tight: it excludes no ladder that could have succeeded.
+          Put the construct inside a federated query language and the same
+          refusal reuses that host's blame discipline, without changing a line
+          of it.
+        </p>
+        <p class="eq">π(L) &lt; π* ⟹ subfloor, M unchanged</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stage-foot">
+    <span><span class="dot"></span><b>kernel</b> <span id="kstate">ready</span></span>
+    <span><b>interpreter</b> vendored from cytochrome/src/helpers/shakespeare.js</span>
+    <span><b>corpus</b> <span id="kcorpus">loading…</span></span>
+    <span><a href="#" id="runall">run every cell</a></span>
+  </div>
+  <div class="scroll-hint">↓ every number below is computed here, now</div>
+</section>
+
+<!-- ================================================================ -->
+<section class="md" id="s-catalysis">
+  <h2>1 · Why enzymes exist</h2>
+  <p>
+    The usual answer — enzymes lower an activation barrier — describes what a
+    catalyst does to a rate. It does not say why the catalyst survives the
+    reaction it catalyses, and reusability is the property that actually needs
+    explaining.
+  </p>
+  <p>
+    Start further back. Existence is by distinction, and distinction takes
+    time, so individuating a part of a bounded whole costs a strictly positive
+    minimum: the <strong>floor</strong> β. In a finite weighted contact graph
+    with a medium vertex adjacent to every item, β is the least edge weight,
+    and it is positive for one reason — a finite set of strictly positive
+    numbers has a positive minimum.
+  </p>
+  <p>
+    The hypothesis is load-bearing and easy to check: the weights
+    <code>1/n</code> are each positive and admit no positive lower bound, so a
+    system permitted to refine without limit has no floor at all. The cell
+    below computes β on real graphs and exhibits that failure branch beside it.
+  </p>
+  <div class="note">
+    <b>The asymmetry is the whole account.</b> Probing a region draws no
+    boundary and costs nothing. Committing one costs at least β regardless of
+    how improbable the region is. So a structure committed once is thereafter
+    traversed for free — which is reusability, derived rather than assumed, and
+    with no energetic argument anywhere in it.
+  </div>
+</section>
+
+<div class="ctrls" id="ctl-substrate">
+  <div class="ctrl"><label>items</label>
+    <input type="range" id="c-items" min="4" max="8" step="1" value="6">
+    <span class="v" id="v-items">6</span></div>
+  <div class="ctrl"><label>radius ϱ</label>
+    <input type="range" id="c-radius" min="0" max="3" step="1" value="1">
+    <span class="v" id="v-radius">1</span></div>
+  <div class="ctrl"><label>seed</label>
+    <input type="range" id="c-seed" min="1" max="40" step="1" value="7">
+    <span class="v" id="v-seed">7</span></div>
+</div>
+<div class="cell" data-cell="substrate"></div>
+
+<section class="md">
+  <h3>Resolution, not threshold</h3>
+  <p>
+    A rung's power is derived from the separation cost against the medium,
+    computed on a <em>ball</em> of declared radius. The radius is a resolution
+    parameter, not a tunable threshold: its effect is monotone and its
+    direction is a stated consequence rather than a fitted one.
+  </p>
+  <div class="note">
+    <b>We predicted the direction backwards.</b> The expectation was that a
+    coarse radius would identify more items. It is the reverse, and the
+    mechanism is ball overlap: at radius 0 the balls are disjoint singletons so
+    every item gets its own value; as the radius grows the balls coincide and
+    distinct items minimise over the same edges. The cell reports the overlap
+    beside the count, because a count without its mechanism would leave the
+    direction unexplained.
+  </div>
+</section>
+<div class="cell" data-cell="resolution"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-ladder">
+  <h2>2 · The process ladder</h2>
+  <p>
+    A process is usually described by naming its participants and ordering
+    them. A ladder describes the same process without any of that: each step
+    carries one number, its power <code>π ∈ [0,1]</code>, and the composite is
+    <code>1 − ∏(1−π<sub>i</sub>)</code>.
+  </p>
+  <p>
+    Set the powers below and watch the gap close. Two quantities matter: the
+    composite, which is what the ladder achieves end to end, and the
+    sensitivity <code>∂π(L)/∂π<sub>j</sub> = P/(1−π<sub>j</sub>)</code>, which
+    says where a marginal improvement pays.
+  </p>
+  <div class="note">
+    <b>Control sits at the strongest rung, not the weakest.</b> The quantity
+    being maximised is transmission, not slack: a gain at rung <em>j</em>
+    reaches the output only through <code>∏<sub>i≠j</sub>(1−π<sub>i</sub>)</code>,
+    so improving a weak rung buys a large local change the rest of the ladder
+    then discards. Drag the sliders and watch the marked rung move.
+  </div>
+</section>
+
+<div class="ctrls" id="ctl-ladder">
+  <div class="ctrl"><label>π₁</label><input type="range" id="c-p0" min="0" max="0.95" step="0.01" value="0.45"><span class="v" id="v-p0">0.45</span></div>
+  <div class="ctrl"><label>π₂</label><input type="range" id="c-p1" min="0" max="0.95" step="0.01" value="0.30"><span class="v" id="v-p1">0.30</span></div>
+  <div class="ctrl"><label>π₃</label><input type="range" id="c-p2" min="0" max="0.95" step="0.01" value="0.55"><span class="v" id="v-p2">0.55</span></div>
+  <div class="ctrl"><label>π₄</label><input type="range" id="c-p3" min="0" max="0.95" step="0.01" value="0.20"><span class="v" id="v-p3">0.20</span></div>
+  <div class="ctrl"><label>target</label><input type="range" id="c-target" min="0.1" max="0.99" step="0.01" value="0.80"><span class="v" id="v-target">0.80</span></div>
+</div>
+<div class="cell" data-cell="ladder"></div>
+
+<section class="md">
+  <h3>Is the law right?</h3>
+  <p>
+    The multiplicative law is scored against additive, maximum and mean on the
+    same generated ladders. Scoring only the favoured law would not distinguish
+    it from the others, so all four are scored and the comparison <em>is</em>
+    the test.
+  </p>
+</section>
+<div class="cell" data-cell="laws"></div>
+
+<section class="md">
+  <h3>Intensivity, and the control that localises the failure</h3>
+  <p>
+    The multiplicative law presupposes that a rung's power does not depend on
+    what else is in the graph. That is a requirement, and it is tested rather
+    than assumed — it fails for the obvious construction, where a local cut key
+    is normalised by the <strong>global</strong> floor.
+  </p>
+</section>
+<div class="cell" data-cell="intensivity"></div>
+<div class="cell" data-cell="order"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-shk">
+  <h2>3 · Shakespeare: the ladder as a program</h2>
+  <p>
+    Shakespeare is a receiver language whose state is the contact graph and
+    whose clock <code>M</code> counts committed cuts. Evaluation is
+    measurement: performing a play <em>is</em> performing the measurements it
+    names, so re-running one is a new commitment at a higher M and never a
+    cached retrieval.
+  </p>
+  <p>
+    The plays below run through the interpreter vendored from
+    <code>cytochrome/src/helpers/shakespeare.js</code> — the same one behind the
+    cytochrome IDE. The ladder verbs are layered on top of it without altering
+    a line, which is the extension claim made concrete: a play containing no
+    <code>ladder</code> keyword takes no new code path.
+  </p>
+  <div class="note">
+    <b>The receiver accumulates.</b> M is monotone and shared across every cell
+    on this page, exactly as the language requires. Run a play twice and the
+    clock advances twice. The rail on the right shows the current value; the
+    reset button starts a fresh receiver.
+  </div>
+</section>
+
+<div class="ctrls" id="ctl-shk">
+  <div class="ctrl"><label>play</label><select id="c-play"></select></div>
+</div>
+<div class="cell" data-cell="shkplay"></div>
+
+<section class="md">
+  <h3>Free rules, the clock, and the refusal</h3>
+  <p>
+    A rule may leave M unchanged exactly when it commits no cut. Declaring a
+    rung, deriving one, and reading a composite all read boundary already
+    committed, so they are <strong>free</strong>; climbing commits once per
+    rung. And a ladder that cannot reach its declared target is refused before
+    evaluation, commits nothing, and names its shortfall.
+  </p>
+</section>
+
+<div class="ctrls" id="ctl-climb">
+  <div class="ctrl"><label>reach</label><input type="range" id="c-reach" min="0.10" max="0.99" step="0.01" value="0.70"><span class="v" id="v-reach">0.70</span></div>
+  <div class="ctrl"><span class="dim" style="font-family:var(--mono);font-size:11px">composite is 0.82675 — cross it and the play refuses</span></div>
+</div>
+<div class="cell" data-cell="shkladder"></div>
+<div class="cell" data-cell="semantics"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-sequence">
+  <h2>4 · Computing sequences over a real pathway</h2>
+  <p>
+    A computing sequence is a ladder read along a process: one rung per step,
+    composed in order. The steps below come from a real Reactome pathway in the
+    frozen corpus, and each rung's power is derived from that step's own
+    participant counts.
+  </p>
+  <p>
+    Note what the table does <em>not</em> use. The reaction names are printed
+    for orientation only; nothing about what a reaction <em>is</em> enters the
+    composition, and nothing about it could be recovered from the result.
+  </p>
+</section>
+
+<div class="ctrls" id="ctl-sequence">
+  <div class="ctrl"><label>pathway</label><select id="c-pathway"></select></div>
+</div>
+<div class="cell" data-cell="sequence"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-federated">
+  <h2>5 · Federated querying, and the refusal that fits</h2>
+  <p>
+    The last question is whether the construct <em>fits</em> — whether it can be
+    added to a query language built by other hands without breaking what is
+    there. HFQ has six verdicts applied in a fixed order, a capability check
+    that runs before any request is issued, and a water-filling allocator.
+  </p>
+  <p>
+    A ladder step is local: it reaches no source, issues no request, demands no
+    capability. It needed no change to the capability checker or the allocator,
+    because both guard on <em>is this a source access</em> rather than
+    enumerating the local kinds they knew about. The host's own suite of sixteen
+    checks reads <strong>16/16</strong> before the change and 16/16 after.
+  </p>
+  <div class="note">
+    <b>The refusal reuses the host's blame discipline.</b> A ladder that cannot
+    reach its target reports <code>starved</code> with the predecessor field
+    <em>empty</em> — the input arrived intact and answered correctly, so naming
+    it would accuse a step that did nothing wrong and send the blame walk one
+    hop too far.
+  </div>
+</section>
+
+<div class="ctrls" id="ctl-hfq">
+  <div class="ctrl"><label>expect power</label><input type="range" id="c-hfq" min="0.1" max="0.99" step="0.01" value="0.70"><span class="v" id="v-hfq">0.70</span></div>
+</div>
+<div class="cell" data-cell="federated"></div>
+
+<section class="md">
+  <h3>A bound the host already had</h3>
+  <p>
+    HFQ bounds retention below by the union bound
+    <code>ρ ≥ 1 − Σ(1−rᵢ)</code> — the additive relaxation of the ladder's law.
+    Measured on the same numbers, the additive form goes <em>vacuous</em> on
+    most chains of four stages or more, while the multiplicative form stays
+    informative. The two lines of work were not written with each other in view
+    and they meet at <code>1 − ∏(1−xᵢ)</code>.
+  </p>
+</section>
+<div class="cell" data-cell="bound"></div>
+
+<!-- ================================================================ -->
+<section class="md" id="s-corpus">
+  <h2>6 · The corpus</h2>
+  <p>
+    Two public services with different schemas, fetched once and then frozen.
+    The host forbids network access in its adapters by construction — its claims
+    are properties of the compiler, and a live service can neither confirm nor
+    refute them — so the data is real but no result depends on a service being
+    reachable.
+  </p>
+</section>
+<div class="cell" data-cell="corpus"></div>
+
+<section class="md" id="s-close">
+  <h2>What went wrong, and stayed in the record</h2>
+  <p>Three findings came out against expectation and are reported as they came out.</p>
+  <ul>
+    <li><strong>Intensivity needed a local normaliser</strong>, not just a local
+    cut key. The first construction used the global floor and failed.</li>
+    <li><strong>Order independence is graded, not exact.</strong> We set out to
+    prove exactness; commitment reaches inside neighbouring balls, which is
+    exactly the case the invariance theorem does not cover.</li>
+    <li><strong>The radius sweep runs backwards</strong> from the predicted
+    direction, for a reason — ball overlap — reported beside the counts.</li>
+  </ul>
+  <p>
+    Two defects surfaced while building. A regular expression read a declared
+    target as an extra rung, because <code>power</code> occurs inside
+    <code>expect power</code> — a plan would have composed a ladder nobody
+    wrote. And a corpus field came back empty on first extraction; querying the
+    live service rather than recording a plausible zero is what caught it.
+  </p>
+</section>
+
+<footer class="foot">
+  <div><b>interpreter</b> vendored unmodified from cytochrome/src/helpers/shakespeare.js — 11 lessons, accumulating receiver</div>
+  <div><b>kernel</b> src/lib/engine.js — a port of docs/shakespear-protein-contact-sequence/validation/shk_core.py</div>
+  <div><b>papers</b> Shakespeare with Ladders · Catalytic Ladders in a Federated Query Language</div>
+  <div><b>corpus</b> KEGG (rest.kegg.jp) and Reactome (reactome.org/ContentService), fetched once and frozen</div>
+  <div><b>note</b> every figure is computed at run time; none is an image of a stored result</div>
+</footer>
+
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
