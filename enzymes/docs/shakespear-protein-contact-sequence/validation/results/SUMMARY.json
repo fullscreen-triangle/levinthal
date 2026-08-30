@@ -1,0 +1,65 @@
+{
+  "paper": "Shakespeare with Ladders",
+  "run_utc": "2026-08-30T01:02:47Z",
+  "modules": [
+    {
+      "module": "v1_substrate_and_resolution",
+      "description": "Floor, finiteness, local separation cost, the radius sweep",
+      "status": "ok",
+      "counts": {
+        "passed": 5,
+        "failed": 0,
+        "non_discriminating": 0,
+        "not_tested": 0
+      }
+    },
+    {
+      "module": "v2_intensivity",
+      "description": "Intensivity, the near-miss control, graded order dependence",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "non_discriminating": 1,
+        "not_tested": 0
+      }
+    },
+    {
+      "module": "v3_semantics_and_refusal",
+      "description": "Composition, sensitivity, freeness, the clock, the refusal",
+      "status": "ok",
+      "counts": {
+        "passed": 13,
+        "failed": 0,
+        "non_discriminating": 0,
+        "not_tested": 1
+      }
+    }
+  ],
+  "tally": {
+    "passed": 21,
+    "failed": 0,
+    "non_discriminating": 1,
+    "not_tested": 1
+  },
+  "scored_tests": 21,
+  "pass_rate_of_scored": 1.0,
+  "failures": [],
+  "non_discriminating": [
+    {
+      "module": "v2_intensivity",
+      "test": "V2.2 permuting a fixed power multiset (NON-DISCRIMINATING)",
+      "reason": "NON-DISCRIMINATING: the composition law is symmetric in its arguments, so permuting a fixed multiset of powers cannot change the composite for ANY candidate definition. Every candidate returns exactly one distinct composite. The test cannot fail and is therefore excluded from the score; V2.3 is the test that can."
+    }
+  ],
+  "negative_controls": {
+    "count": 4,
+    "checks": [
+      "NEGATIVE CONTROL: free operations inert, commitment registers",
+      "NEGATIVE CONTROL: refusal fires and also declines to fire",
+      "NEGATIVE CONTROL: a refusal commits no cut",
+      "NEGATIVE CONTROL: verdict payload discipline is enforced"
+    ]
+  },
+  "elapsed_seconds": 159.05
+}

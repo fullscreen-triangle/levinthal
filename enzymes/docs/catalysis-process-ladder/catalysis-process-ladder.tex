@@ -1,0 +1,1346 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+\crefname{postulate}{Postulate}{Postulates}
+\Crefname{postulate}{Postulate}{Postulates}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{postulate}{Postulate}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- notation -----------------------------------------------------------
+\newcommand{\Rpos}{\mathbb{R}_{>0}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Gph}{\mathcal{G}}
+\newcommand{\med}{\mathfrak{m}}
+\newcommand{\cut}{\operatorname{cut}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\wt}{w}
+\newcommand{\flo}{\beta}
+\newcommand{\aln}{\alpha}
+\newcommand{\pow}{\pi}
+\newcommand{\gap}{r}
+\newcommand{\Tot}{\Omega}
+\newcommand{\Lad}{L}
+\newcommand{\Rung}{\gamma}
+\newcommand{\Conf}{\mathcal{K}}
+\newcommand{\Prop}{\mathcal{P}}
+\newcommand{\target}{x^{\star}}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape\color{gray!70!black},
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  columns=fullflexible,
+  showstringspaces=false,
+  breaklines=true,
+  xleftmargin=0.5em,
+}
+
+\title{\textbf{A Process Is a Ladder:\\
+Catalysis Without Identities}}
+
+\author{Kundai Farai Sachikonye\\
+\small Technical University of Munich, School of Life Sciences\\
+\small \texttt{kundai.sachikonye@wzw.tum.de}}
+
+\date{\today}
+
+\input{figures/captions}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+A biochemical process is conventionally specified by naming its participants:
+which species, which complexes, which cofactors, in which order. We show that
+this specification contains a part that does no work. A process is fully
+determined by its \emph{residue chain}---a finite sequence of steps in which the
+residue deposited by one step is the boundary condition of the next---together
+with, for each step, a single number in $[0,1]$ recording the fraction of the
+remaining gap to the target that the step closes. Nothing else about a step
+enters. We call such a step a \emph{rung}, such a sequence a \emph{ladder}, and
+we prove that the identities are inert: two processes with the same power
+sequence are the same ladder, and no observable of the process distinguishes
+them. The account rests on two primitives, both derived here rather than
+assumed. First, individuation costs an irreducible floor $\flo > 0$, because
+drawing a boundary takes time during which the complement moves. Second, and
+consequently, there is an asymmetry between \emph{probing} a region---entering
+it along a trajectory, which draws no boundary and is free---and
+\emph{committing} it---individuating it, which costs at least $\flo$ regardless
+of how improbable the region is. From these we obtain: composition is
+multiplicative, $\pow(\Rung_1\cdots\Rung_n) = 1 - \prod_i(1-\pow_i)$; repetition
+of a single rung has strictly diminishing returns and never reaches the target;
+a ladder closes its gap in the limit if and only if $\sum_i \pow_i$ diverges;
+and a structure that has been committed once is thereafter traversed by probes
+alone, which is catalysis without consumption, obtained from the asymmetry and
+not from an energetic argument. We give a small-step operational semantics with
+progress, preservation and monotone commitment, and a static analysis that
+rejects at compile time a ladder whose declared target its declared rungs cannot
+reach. The framework is demonstrated on a chain of length four presented purely
+as a power sequence: we show that the conventional description of that chain is
+recoverable from no observable the formalism admits, and that every question
+usually asked of it---where the control lies, what a modification is worth,
+whether two chains are the same process---is answered from the powers alone.
+Classification and improvement of catalysts thereby become operations on
+numbers rather than on names.
+\end{abstract}
+
+\tableofcontents
+
+%==============================================================================
+\part{The Claim}
+%==============================================================================
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{What a process description contains}
+
+Ask for a description of a biochemical process and you receive a list of
+participants in an order: these species, transformed by these agents, through
+these intermediates. The description is detailed, it is checkable against
+experiment, and it is how the process is taught. It is also, we shall argue,
+partly inert---it contains material that no observable of the process depends
+on, and which can be deleted without loss.
+
+The claim is not that the identities are unknown, or unimportant for other
+purposes, or that a chemist should stop naming things. It is narrower and
+sharper: \emph{given a process, the identities of its participants do not enter
+any question the process itself answers}. What enters is the sequence of
+changes and, for each change, how much of the remaining distance to the outcome
+it accomplishes. Two processes agreeing on that sequence agree on everything,
+however different their participants.
+
+This is a strong claim and we prove it, in the precise form of
+\cref{thm:inertness}: a process is a residue chain with a power sequence, and no
+observable admitted by the formalism separates two processes with the same power
+sequence.
+
+\subsection{Why one would want this}
+
+Three practical questions become tractable when the identities are removed.
+
+\paragraph{Classification.} Asking whether two catalysts are ``the same kind''
+currently means comparing mechanisms, folds, active-site residues, or
+sequence homology, and these criteria disagree with one another
+\citep{khersonsky2010}. On the present account two catalysts are the same rung
+if they have the same power, and there is nothing further to compare. The
+criterion is a single number and it is measurable.
+
+\paragraph{Improvement.} Asking how to improve a catalyst currently means
+proposing a modification and testing it. On the present account improvement is
+an increase in a rung's power, and two results say where the headroom is.
+\Cref{cor:diversify} rules out repetition: copies of what already works have
+geometrically diminishing returns. \Cref{prop:marginal} then identifies the rung
+whose improvement buys the most, and its answer is not the one intuition
+supplies---see \cref{rem:direction}.
+
+\paragraph{Comparison across scales.} A ladder is a ladder whether its rungs are
+molecular, cellular, or industrial. The composition law
+(\cref{thm:multiplicative}) does not know what a rung is made of, so processes
+that share no chemistry can be compared directly.
+
+\subsection{What has to be derived}
+
+We take nothing from a prior formalism. Two things must be established before
+the account can be stated:
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.4em]
+\item \textbf{The floor.} That individuating anything costs an irreducible
+positive amount. This is \cref{sec:floor}, and it is derived from the
+observation that drawing a boundary takes time during which what lies outside it
+changes.
+\item \textbf{The asymmetry.} That entering a region and individuating a region
+are operations of different kinds, the first free and the second floored. This
+is \cref{sec:asymmetry}. It is what makes reuse possible, and hence what makes
+catalysis possible.
+\end{enumerate}
+
+Everything else---rungs, ladders, composition, the semantics, the static
+analysis---follows.
+
+\subsection{Organisation}
+
+\Cref{part:substrate} derives the floor and the asymmetry.
+\Cref{part:ladders} defines rungs and ladders and proves the composition
+results. \Cref{part:inertness} contains the central theorem: the identities do
+not enter. \Cref{part:machine} gives the operational semantics, the static
+analysis, and the cost model. \Cref{part:demo} works a chain of length four
+entirely in powers. \Cref{part:validation} states the predictions and the
+computational protocol.
+
+%==============================================================================
+\part{Substrate}
+\label{part:substrate}
+%==============================================================================
+
+\section{The Floor}
+\label{sec:floor}
+
+\subsection{Individuation takes time}
+
+\begin{postulate}[Existence by distinction]
+\label{post:negation}
+An item exists as a distinct entity if and only if there is a well-defined
+complement from which it is distinguished. Its existence consists in the
+distinction and not in any property it possesses independently of it.
+\end{postulate}
+
+\begin{postulate}[Distinction takes time]
+\label{post:duration}
+Establishing a distinction requires a finite non-zero interval $\tau > 0$,
+during which the complement evolves.
+\end{postulate}
+
+\begin{remark}
+\Cref{post:duration} is forced, not chosen. Were $\tau = 0$, the state of the
+world immediately before the distinction and immediately after would coincide;
+but a distinction that changes nothing has not been drawn. Hence $\tau > 0$, and
+the second clause follows for any world that is not static.
+\end{remark}
+
+\begin{definition}[Boundary thickness]
+\label{def:thickness}
+Let $A$ be individuated over $[t_0, t_0+\tau]$. Its \emph{boundary thickness} is
+the measure of the set of states which, at completion, belong determinately
+neither to $A$ nor to its complement.
+\end{definition}
+
+\begin{theorem}[Thickness is positive]
+\label{thm:thickpos}
+Any individuation carried out under
+\cref{post:negation,post:duration} has strictly positive boundary thickness.
+\end{theorem}
+
+\begin{proof}
+By \cref{post:duration} the operation occupies $\tau > 0$ and the complement
+evolves during it. Consider a state lying outside $A$ at $t_0$ and inside the
+region assigned to $A$ at $t_0+\tau$, or conversely; such states exist whenever
+the complement is non-static, which \cref{post:duration} guarantees. For such a
+state the assignment appropriate at the start and the assignment appropriate at
+completion disagree, so it is determinately in neither part. The set of such
+states is non-empty and its measure is the thickness.
+\end{proof}
+
+\subsection{The floor is uniform when refinement is capped}
+
+\Cref{thm:thickpos} gives positivity separately for each individuation. The
+results below need a bound holding uniformly, and positivity of each member of a
+family does not give positivity of the infimum: the numbers $1/n$ are all
+positive with infimum zero. A hypothesis is therefore required, and we state it
+rather than let it pass unnoticed.
+
+\begin{definition}[Contact graph]
+\label{def:graph}
+A \emph{contact graph} is $\Gph = (V, E, \wt)$ with $V$ finite and non-empty,
+$E$ a set of unordered pairs of distinct vertices, and $\wt : E \to \Rpos$
+\citep{diestel2010}. A distinguished vertex $\med \in V$, the \emph{medium}, is
+adjacent to every other vertex; the remainder are \emph{items}. The weight of a
+contact is the cost of maintaining the distinction between its endpoints.
+\end{definition}
+
+\begin{definition}[Cut, residue, floor]
+\label{def:cut}
+For $S \subseteq V$ containing at least one item and omitting $\med$, the
+\emph{cut} is $\cut(S) = \{\{u,v\} \in E : u \in S,\, v \notin S\}$ and the
+\emph{residue} is $\res(S) = \sum_{e \in \cut(S)} \wt(e)$. The \emph{floor} is
+$\flo = \min_{e \in E} \wt(e)$ and the \emph{total} is
+$\Tot = \sum_{e \in E} \wt(e)$.
+\end{definition}
+
+\begin{lemma}[Positive floor, positive residue]
+\label{lem:floor}
+$\flo > 0$, and every admissible cut satisfies $\res(S) \geq \flo > 0$.
+\end{lemma}
+
+\begin{proof}
+$E$ is finite and non-empty and every weight is strictly positive, so $\flo$ is
+the minimum of a finite non-empty set of positive reals and is positive. Since
+$S$ contains an item $v$ and omits $\med$, and $\{v,\med\} \in E$ because $\med$
+is adjacent to every item, $\cut(S)$ is non-empty. Its weight is a sum of terms
+each at least $\flo$.
+\end{proof}
+
+\begin{remark}[Where finiteness does the work]
+\label{rem:finiteness}
+\Cref{lem:floor} is a statement about a \emph{finite} graph, and the finiteness
+is not decoration. A system able to refine without limit generates thicknesses
+with infimum zero, and for such a system no uniform floor exists. Every result
+downstream inherits this hypothesis. We verify both branches numerically in
+\cref{sec:results}, because a hypothesis that is never tested against its own
+failure case is not a hypothesis but a habit.
+\end{remark}
+
+\begin{definition}[Alignment]
+\label{def:alignment}
+Fix a target region $\target$. The \emph{alignment} of a region $x$ to $\target$
+is the minimum residue separating them,
+\begin{equation}
+\aln(x, \target) \;=\; \min_{S \ni x,\ \target \notin S} \res(S),
+\label{eq:alignment}
+\end{equation}
+computable in polynomial time by maximum flow \citep{ford1956,stoer1997}. The
+\emph{normalised alignment} is $a(x,\target) = \aln(x,\target)/\Tot$.
+\end{definition}
+
+Alignment measures distance-to-target as separation cost. A region far from the
+target is expensive to separate from it; a region at the target is separated
+only at the floor.
+
+\begin{lemma}[Alignment is floor-bounded]
+\label{lem:alignfloor}
+$a(x,\target) \geq \flo/\Tot > 0$ for every $x$.
+\end{lemma}
+
+\begin{proof}
+Immediate from \cref{lem:floor} applied to the minimising cut.
+\end{proof}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_01.png}
+  \captionPanelOne
+  \label{fig:panel1}
+\end{figure*}
+
+\section{The Asymmetry}
+\label{sec:asymmetry}
+
+We now derive the distinction on which everything else rests.
+
+\begin{definition}[Probe and commit]
+\label{def:probecommit}
+Let $T$ be a measure-preserving traversal of the state space
+\citep{walters1982}. A region $W$ is \emph{probed} when some iterate of $T$
+enters it: this is a fact about a trajectory and involves no boundary. A region
+$W$ is \emph{committed} when a boundary is drawn individuating $W$ from its
+complement: this is an act, and by \cref{thm:thickpos} it deposits residue.
+\end{definition}
+
+The two relations are of different kinds. Probing relates a trajectory to a
+point; committing relates an agent to a region. At every instant a trajectory
+occupies exactly one position, probed because the traversal took it there, with
+nothing committing anything.
+
+\begin{theorem}[Probe--commit asymmetry]
+\label{thm:asymmetry}
+Let $W$ be a region of positive measure $p(W) > 0$ in a finite-measure space,
+and $T$ a measure-preserving traversal. Then
+\begin{enumerate}[label=(\roman*),leftmargin=2.4em]
+\item \textbf{Committing costs the floor.} Any commitment of $W$ deposits
+residue at least $\flo > 0$, and this bound does not depend on $p(W)$.
+\item \textbf{Probing is free.} Almost every trajectory enters $W$, and does so
+without any boundary being drawn and without residue.
+\item \textbf{Rarity affects frequency only.} The long-run frequency with which
+$W$ is probed equals $p(W)$. A rare region is probed as freely as a common one,
+merely less often.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) A commitment individuates $W$, so by \cref{thm:thickpos} its boundary has
+positive thickness, and by \cref{lem:floor} the associated cut has residue at
+least $\flo$. Neither step refers to $p(W)$.
+
+(ii) By the Poincar\'{e} recurrence theorem \citep{poincare1890,walters1982},
+for a measure-preserving $T$ on a finite-measure space and any $W$ with
+$p(W) > 0$, almost every point of $W$ returns to $W$ infinitely often, and by
+ergodicity of the induced map almost every point of the space enters $W$. Entry
+is a property of the trajectory. \Cref{def:probecommit} attaches no boundary to
+it, and by \cref{thm:thickpos} residue arises only from boundaries.
+
+(iii) The Birkhoff ergodic theorem gives, for almost every initial point,
+$\lim_{n}\frac{1}{n}\sum_{k<n}\mathbf{1}_W(T^k x) = p(W)$. This is a statement
+about frequency and carries no cost term.
+\end{proof}
+
+\begin{corollary}[Reuse is possible]
+\label{cor:reuse}
+A structure that has been committed once thereafter renders the region it
+individuates available to probing, and every subsequent probe of that region is
+free. Such a structure is not consumed by the probes that traverse it, and may
+be traversed without limit.
+\end{corollary}
+
+\begin{proof}
+The commitment is performed once and deposits residue once, by
+\cref{thm:asymmetry}(i). Thereafter the region is individuated and a trajectory
+entering it is probing, by \cref{def:probecommit}. By \cref{thm:asymmetry}(ii)
+probing deposits nothing. Since nothing is deposited, nothing is spent, and the
+number of traversals is unbounded.
+\end{proof}
+
+\begin{remark}[This is catalysis, and it is not an energetic argument]
+\label{rem:catalysis}
+\Cref{cor:reuse} is the formal content of the observation that a catalyst is not
+consumed. It does not appeal to free energy, to a cycle that regenerates the
+catalyst, or to a convention that catalysts are excluded from stoichiometry. The
+catalyst is never spent because what passes through it probes rather than
+commits, and probing is free by \cref{thm:asymmetry}(ii). The asymmetry is doing
+all the work, and it was derived from the floor, which was derived from the fact
+that individuation takes time.
+\end{remark}
+
+%==============================================================================
+\part{Ladders}
+\label{part:ladders}
+%==============================================================================
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_02.png}
+  \captionPanelTwo
+  \label{fig:panel2}
+\end{figure*}
+
+\section{Rungs}
+\label{sec:rungs}
+
+\begin{definition}[Rung and power]
+\label{def:rung}
+A \emph{rung} toward target $\target$ is a partial map $\Rung$ on regions whose
+application commits a contact and yields $\Rung(x)$. Its \emph{power} at $x$ is
+the fraction of the above-floor alignment that it closes,
+\begin{equation}
+\pow(\Rung, x) \;=\;
+\frac{a(x,\target) - a(\Rung(x),\target)}{a(x,\target) - \flo/\Tot}
+\;\in\; [0,1].
+\label{eq:power}
+\end{equation}
+A rung is \emph{inert} if $\pow = 0$ and \emph{absolute} if $\pow = 1$.
+\end{definition}
+
+\begin{lemma}[Power is bounded]
+\label{lem:powbound}
+$\pow(\Rung,x) \in [0,1]$ for every rung, region and target.
+\end{lemma}
+
+\begin{proof}
+By \cref{lem:alignfloor}, $a(\Rung(x),\target) \geq \flo/\Tot$, so the numerator
+of \cref{eq:power} never exceeds the denominator and $\pow \leq 1$. A map that
+increases alignment is not a rung toward $\target$; by convention such a map is
+assigned $\pow = 0$, giving $\pow \geq 0$.
+\end{proof}
+
+\begin{remark}[What a rung is not]
+\label{rem:rungisnot}
+\Cref{def:rung} mentions no property of $\Rung$ beyond the alignment it closes.
+It does not say what $\Rung$ is made of, how it operates, how long it takes, or
+what passes through it. Two maps with the same power at $x$ are, at this
+resolution, the same rung. That this is not a loss of information is the content
+of \cref{thm:inertness}.
+\end{remark}
+
+\begin{definition}[Ladder]
+\label{def:ladder}
+A \emph{ladder} is a finite sequence of rungs $\Rung_1,\dots,\Rung_n$ applied in
+order, each to the output of the last. Its \emph{power sequence} is
+$(\pow_1,\dots,\pow_n)$ with $\pow_i = \pow(\Rung_i, x_{i-1})$ and
+$x_i = \Rung_i(x_{i-1})$.
+\end{definition}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_03.png}
+  \captionPanelThree
+  \label{fig:panel3}
+\end{figure*}
+
+\section{Composition}
+\label{sec:composition}
+
+\begin{theorem}[Multiplicative composition]
+\label{thm:multiplicative}
+A ladder with power sequence $(\pow_1,\dots,\pow_n)$ has composite power
+\begin{equation}
+\pow(\Rung_1\cdots\Rung_n) \;=\; 1 - \prod_{i=1}^{n}(1-\pow_i).
+\label{eq:compose}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Write $\gap_i = a(x_i,\target) - \flo/\Tot$ for the above-floor gap after $i$
+rungs. By \cref{def:rung}, $\pow_i = (\gap_{i-1}-\gap_i)/\gap_{i-1}$, hence
+$\gap_i = (1-\pow_i)\gap_{i-1}$. By induction
+$\gap_n = \gap_0\prod_{i\leq n}(1-\pow_i)$. The fraction of the initial gap
+closed by the ladder is $1 - \gap_n/\gap_0$, which is
+\cref{eq:compose}; this is the power of the ladder regarded as a single rung,
+per \cref{def:rung}.
+\end{proof}
+
+\begin{corollary}[Diminishing returns]
+\label{cor:diminishing}
+Repeating one rung of power $\pow \in (0,1)$ $n$ times gives composite power
+$1-(1-\pow)^n$: strictly increasing in $n$, tending to $1$, and never equal to
+$1$ for finite $n$. The absolute share of the original gap closed by the $n$-th
+repetition is $\pow(1-\pow)^{n-1}$, strictly decreasing in $n$.
+\end{corollary}
+
+\begin{proof}
+Immediate from \cref{eq:compose} with all $\pow_i = \pow$. For the second claim,
+the share closed by repetition $n$ is
+$\gap_{n-1}-\gap_n = \pow\gap_{n-1} = \pow(1-\pow)^{n-1}\gap_0$, and
+$(1-\pow)^{n-1}$ is strictly decreasing since $0 < 1-\pow < 1$.
+\end{proof}
+
+\begin{corollary}[Diversify, do not repeat]
+\label{cor:diversify}
+Let a target power $\pow^\star < 1$ be required. Using only copies of a rung of
+power $\pow$ requires
+\begin{equation}
+n \;\geq\; \frac{\log(1-\pow^\star)}{\log(1-\pow)}
+\label{eq:rungcount}
+\end{equation}
+copies, and the requirement is unsatisfiable for $\pow^\star = 1$ at any finite
+$n$. Reaching a demanding target economically requires rungs of differing power.
+\end{corollary}
+
+\begin{proof}
+From \cref{cor:diminishing}, $1-(1-\pow)^n \geq \pow^\star$ iff
+$(1-\pow)^n \leq 1-\pow^\star$, and taking logarithms (both sides positive,
+$\log(1-\pow) < 0$) reverses the inequality to give \cref{eq:rungcount}. For
+$\pow^\star = 1$ the right side is infinite.
+\end{proof}
+
+\begin{theorem}[Saturation dichotomy]
+\label{thm:saturation}
+A ladder with powers $(\pow_i)_{i\geq1}$, each in $[0,1)$, drives the residual
+gap to zero in the limit if and only if $\sum_{i\geq1}\pow_i = \infty$.
+\end{theorem}
+
+\begin{proof}
+The residual fraction after $n$ rungs is $\prod_{i\leq n}(1-\pow_i)$, which
+tends to zero iff $\sum_{i\leq n} -\log(1-\pow_i) \to \infty$. Since
+$-\log(1-\pow) \geq \pow$ for $\pow\in[0,1)$, divergence of $\sum_i\pow_i$
+implies divergence of $\sum_i -\log(1-\pow_i)$. Conversely, if
+$\sum_i \pow_i < \infty$ then $\pow_i \to 0$, and $-\log(1-\pow) \sim \pow$ as
+$\pow \to 0$, so the two series converge together by comparison. The dichotomy
+has the form of the Borel--Cantelli lemmas
+\citep{borel1909,cantelli1917,williams1991}.
+\end{proof}
+
+\begin{remark}[The dichotomy is a statement about the tail]
+\label{rem:tail}
+The hypothesis $\pow_i \in [0,1)$ excludes absolute rungs, and the exclusion is
+not a technicality. A single rung of power $1$ closes the entire above-floor gap
+at one application, so any ladder containing one reaches zero residual gap
+whatever follows, for a reason having nothing to do with the convergence of
+$\sum_i\pow_i$. The validation of \cref{sec:results} therefore indexes its test
+series from $i=2$, so that the dichotomy is exhibited by tail behaviour rather
+than by a degenerate first step.
+\end{remark}
+
+%==============================================================================
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_04.png}
+  \captionPanelFour
+  \label{fig:panel4}
+\end{figure*}
+
+\part{The Identities Are Inert}
+\label{part:inertness}
+%==============================================================================
+
+\section{Processes}
+\label{sec:processes}
+
+\begin{definition}[Propagation]
+\label{def:propagation}
+A \emph{propagation} of $x$ toward $\target$ is a finite sequence of contact
+commitments $S_1,\dots,S_n$ in which the residue deposited by $S_i$ is the
+boundary condition of $S_{i+1}$. The propagation is \emph{admissible} if it
+converges on $\target$; its intermediate states are otherwise unconstrained.
+\end{definition}
+
+\begin{theorem}[Intermediates are unconstrained]
+\label{thm:localfree}
+An intermediate state of an admissible propagation may be arbitrarily far from
+the target without rendering the propagation inadmissible. Inadmissibility
+arises exclusively from failure to converge.
+\end{theorem}
+
+\begin{proof}
+Admissibility is defined in \cref{def:propagation} as a property of the terminal
+state alone. Let $S_1,\dots,S_n$ converge on $\target$ and let $x_k$ be any
+intermediate. Replacing $x_k$ by any $x_k'$ from which the remaining rungs still
+converge yields a propagation satisfying the same terminal condition, hence
+equally admissible. No condition on $a(x_k,\target)$ is imposed, so the value
+may be arbitrarily large subject only to convergence of the remainder.
+\end{proof}
+
+\begin{definition}[Process]
+\label{def:process}
+A \emph{process} is a propagation together with its power sequence. We write
+$\Prop = \langle (\pow_1,\dots,\pow_n),\, x_0,\, \target \rangle$.
+\end{definition}
+
+\subsection{Observables}
+
+To state that identities do not enter, we must say what may be observed. We
+admit exactly the quantities the substrate defines.
+
+\begin{definition}[Admissible observable]
+\label{def:observable}
+An \emph{admissible observable} of a process is a function of the alignments
+$a(x_i,\target)$ for $0 \leq i \leq n$, the floor $\flo$, the total $\Tot$, and
+the commitment count $n$.
+\end{definition}
+
+\begin{remark}[Why this is the right class, and what it excludes]
+\label{rem:obsclass}
+\Cref{def:observable} admits every quantity the substrate of
+\cref{part:substrate} can express: separation costs, the floor, the number of
+commitments, and anything computed from them---composite power, residual gap,
+rung count, the position of the rate-limiting step. It excludes labels attached
+to rungs from outside. The theorem below says that this exclusion costs nothing,
+because no admitted observable can detect the labels. It does not say that
+labels are meaningless, only that a process does not depend on them.
+\end{remark}
+
+\section{The Inertness Theorem}
+\label{sec:inertness}
+
+\begin{theorem}[Identities are inert]
+\label{thm:inertness}
+Let $\Prop$ and $\Prop'$ be processes with the same power sequence, the same
+initial alignment, and the same floor and total. Then every admissible
+observable takes the same value on both. In particular no admissible observable
+separates them, whatever their participants.
+\end{theorem}
+
+\begin{proof}
+By \cref{thm:multiplicative} the above-floor gap after $i$ rungs is
+$\gap_i = \gap_0\prod_{j\leq i}(1-\pow_j)$, determined by $\gap_0$ and
+$(\pow_1,\dots,\pow_i)$ alone. The alignment is recovered as
+$a(x_i,\target) = \gap_i + \flo/\Tot$, so the entire alignment sequence is
+determined by the power sequence, the initial alignment, the floor and the
+total. The commitment count is the length of the power sequence. By
+\cref{def:observable} an admissible observable is a function of exactly these
+data. Two processes agreeing on them therefore agree on every admissible
+observable.
+\end{proof}
+
+\begin{corollary}[Same power, same rung]
+\label{cor:samerung}
+Two rungs with equal power at a given region are indistinguishable by any
+admissible observable, and may be substituted for one another in any ladder
+without altering any admissible observable of that ladder.
+\end{corollary}
+
+\begin{proof}
+A rung enters \cref{thm:inertness} only through its power. Substituting one for
+another of equal power leaves the power sequence unchanged, hence by
+\cref{thm:inertness} leaves every admissible observable unchanged.
+\end{proof}
+
+\begin{corollary}[Classification without identity]
+\label{cor:classification}
+The equivalence classes of rungs under indistinguishability are indexed by
+$\pow \in [0,1]$. Classification of catalysts requires the measurement of one
+real number per catalyst and no structural information.
+\end{corollary}
+
+\begin{remark}[What the theorem does and does not license]
+\label{rem:scope}
+\Cref{thm:inertness} is a statement about a fixed level of resolution. It says
+that at the resolution the substrate defines, identities are not detectable. It
+does not say that no finer resolution exists, nor that identities are causally
+idle in the world; a rung's power is presumably a consequence of what the rung
+is. The claim is that the consequence is all that enters, so a description
+carrying the cause as well carries something the process does not use. Refining
+the resolution---adding observables---would change the class in
+\cref{def:observable} and could break the theorem; we therefore state the
+observable class explicitly rather than leaving it implicit, so that the
+boundary of the claim is visible.
+\end{remark}
+
+\begin{proposition}[The converse fails]
+\label{prop:converse}
+Equality of every admissible observable does not entail equality of power
+sequences. Ladders with different power sequences may share a composite power.
+\end{proposition}
+
+\begin{proof}
+Take $(\pow_1,\pow_2) = (0.5, 0.5)$ and $(\pow_1',\pow_2') = (0.75, 0)$. Both
+give composite power $0.75$ by \cref{eq:compose}. Their intermediate alignments
+differ, so the full observable sequence distinguishes them; but an observer
+recording only the composite power cannot. The proposition therefore
+concerns the coarser observable and marks the limit of what composite power
+alone determines.
+\end{proof}
+
+\begin{remark}
+\Cref{prop:converse} is included because it is the natural objection to
+\cref{thm:inertness} and it is correct as far as it goes. The theorem says the
+power sequence determines the observables; it does not say a single summary
+statistic does. An experiment measuring only end-to-end efficiency does not
+determine the ladder, and \cref{sec:demo} shows what further measurement is
+required.
+\end{remark}
+
+%==============================================================================
+\part{The Machine}
+\label{part:machine}
+%==============================================================================
+
+\section{Operational Semantics}
+\label{sec:semantics}
+
+We give a small-step semantics in the style of \citet{plotkin1981}, with
+soundness in the syntactic form of \citet{wright1994}.
+
+\begin{definition}[Configuration]
+\label{def:config}
+A configuration is $\Conf = \langle \Gph, M, x, e \rangle$: the contact graph,
+the commitment counter $M \in \N$, the current region, and the expression under
+evaluation.
+\end{definition}
+
+\begin{definition}[Step]
+\label{def:step}
+A \emph{step} is a commitment. It (a) commits a boundary in $\Gph$, (b)
+increments $M$ by exactly one, and (c) deposits residue at least $\flo$. The
+counter is a logical clock \citep{lamport1978}. A probe is not a step: it
+changes the region but leaves $\Gph$ and $M$ unchanged.
+\end{definition}
+
+The reduction rules are:
+\[
+\frac{}{\langle \Gph, M, x, \texttt{probe}\rangle \to
+        \langle \Gph, M, T(x), \texttt{done}\rangle}
+\ \textsc{(E-Probe)}
+\]
+
+\[
+\frac{\res(S) \geq \flo \qquad S \text{ admissible}}
+     {\langle \Gph, M, x, \texttt{commit}(\Rung)\rangle \to
+      \langle \Gph \oplus \cut(S), M{+}1, \Rung(x), \texttt{done}\rangle}
+\ \textsc{(E-Commit)}
+\]
+
+\[
+\frac{a(x,\target) - \flo/\Tot > \varepsilon}
+     {\langle \Gph, M, x, \texttt{climb}(\Rung_1\cdots\Rung_n)\rangle \to
+      \langle \Gph, M, x, \texttt{commit}(\Rung_1);
+              \texttt{climb}(\Rung_2\cdots\Rung_n)\rangle}
+\ \textsc{(E-Climb)}
+\]
+
+\[
+\frac{a(x,\target) - \flo/\Tot \leq \varepsilon \ \text{ or }\ n = 0}
+     {\langle \Gph, M, x, \texttt{climb}(\cdots)\rangle \to
+      \langle \Gph, M, x, \textsf{result}\rangle}
+\ \textsc{(E-Halt)}
+\]
+
+where $\textsf{result}$ is $\textsf{Reached}$ if the gap is within $\varepsilon$
+and $\textsf{Short}(\gap_n)$ otherwise.
+
+\begin{definition}[Typing]
+\label{def:typing}
+Types are $\tau ::= \textsf{Region} \mid \textsf{Rung} \mid \textsf{Ladder}
+\mid \textsf{Result}$. The judgement $\Delta \vdash e : \tau @ \flo / \pow$
+reads: $e$ has type $\tau$ under ambient floor $\flo > 0$ and carries declared
+power $\pow$.
+\end{definition}
+
+\begin{theorem}[Progress]
+\label{thm:progress}
+If $\Delta \vdash e : \tau @ \flo / \pow$ and $e$ is not a value, some reduction
+applies.
+\end{theorem}
+
+\begin{proof}
+By cases on $e$. For \texttt{probe}, \textsc{(E-Probe)} applies unconditionally.
+For \texttt{commit}, the side condition $\res(S) \geq \flo$ holds by
+\cref{lem:floor} whenever $S$ is admissible, and admissibility is guaranteed by
+the typing of $\Rung$, so \textsc{(E-Commit)} applies. For \texttt{climb}, the
+guard of \textsc{(E-Climb)} and the guard of \textsc{(E-Halt)} are complementary
+and exhaustive, so exactly one applies.
+\end{proof}
+
+\begin{theorem}[Preservation]
+\label{thm:preservation}
+If $\Delta \vdash e : \tau @ \flo / \pow$ and
+$\Conf \to \Conf'$, then $\Delta \vdash e' : \tau @ \flo / \pow'$ for some
+$\pow'$, with $\flo$ unchanged and $M' \geq M$.
+\end{theorem}
+
+\begin{proof}
+Each rule preserves the type of its subject: \textsc{(E-Probe)} maps a region to
+a region; \textsc{(E-Commit)} yields the region \textsc{(Rung)} assigns;
+\textsc{(E-Climb)} leaves a \texttt{climb} in place; \textsc{(E-Halt)} produces
+$\textsf{Result}$. The floor is a component of $\Delta$ and no rule modifies it.
+$M$ is incremented by \textsc{(E-Commit)} and left alone by the others, so
+$M' \geq M$. Reduction mutates $\Gph$; preservation holds against the mutated
+graph because $\Gph \oplus \cut(S)$ retains the medium and all positive weights,
+so \cref{lem:floor} continues to apply.
+\end{proof}
+
+\begin{corollary}[Soundness]
+\label{cor:soundness}
+A well-typed program does not get stuck, and every commitment it performs
+deposits residue at least $\flo > 0$.
+\end{corollary}
+
+\begin{theorem}[Monotone commitment]
+\label{thm:monotone}
+$M$ never decreases. Re-evaluating a syntactically identical commitment is a new
+commitment at strictly higher $M$, never a cached retrieval.
+\end{theorem}
+
+\begin{proof}
+No rule decrements $M$, and \textsc{(E-Commit)} increments unconditionally, so a
+second evaluation of the same expression produces a second increment. A cache
+returning the first result without incrementing would contradict
+\textsc{(E-Commit)}.
+\end{proof}
+
+\begin{remark}[Probes may be cached; commitments may not]
+\label{rem:cache}
+\Cref{thm:monotone} constrains commitments only. \textsc{(E-Probe)} leaves $M$
+untouched, so probe results may be reused freely. This is
+\cref{cor:reuse} appearing at the level of the machine: the structure is
+committed once and traversed thereafter without further cost.
+\end{remark}
+
+\section{Static Analysis}
+\label{sec:static}
+
+The composition law makes one useful property decidable before execution.
+
+\begin{proposition}[Reachability is decidable statically]
+\label{prop:reach}
+Given declared rung powers $(\pow_1,\dots,\pow_n)$ and a declared target power
+$\pow^\star$, whether the ladder reaches the target is decided by evaluating
+\cref{eq:compose} and comparing, in time linear in $n$.
+\end{proposition}
+
+\begin{proof}
+\Cref{thm:multiplicative} gives the composite power as an explicit product of
+the declared powers, computable in $n$ multiplications. The comparison with
+$\pow^\star$ is a comparison of two reals. Neither step executes the ladder.
+\end{proof}
+
+\begin{proposition}[Saturation diagnostic]
+\label{prop:satdiag}
+A ladder of $n$ rungs each of power at most $\pow_{\max}$ cannot reach target
+power $\pow^\star$ if $1-(1-\pow_{\max})^n < \pow^\star$. The condition is
+checkable from declarations alone.
+\end{proposition}
+
+\begin{proof}
+By \cref{cor:diminishing}, $1-(1-\pow_{\max})^n$ is the composite power of the
+most favourable ladder with those bounds, and composite power is monotone in
+each $\pow_i$ by \cref{eq:compose}. If even the maximum falls short, so does the
+declared ladder.
+\end{proof}
+
+\begin{proposition}[Floor diagnostic]
+\label{prop:floordiag}
+A declared target requiring residual gap below $\flo/\Tot$ is unreachable, and
+the condition is checkable from declarations alone.
+\end{proposition}
+
+\begin{proof}
+By \cref{lem:alignfloor} no region has normalised alignment below $\flo/\Tot$,
+so no ladder attains a smaller value.
+\end{proof}
+
+\begin{remark}[What the compiler rejects]
+\label{rem:compiler}
+\Cref{prop:satdiag,prop:floordiag} are the two ways a declared program can be
+refused before it runs: it asks for more than its rungs can deliver, or it asks
+for resolution below the floor. Both are consequences of results proved above
+and neither requires executing anything. A ladder built from near-duplicate
+rungs is the typical case caught by the first
+(\cref{cor:diversify}).
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_05.png}
+  \captionPanelFive
+  \label{fig:panel5}
+\end{figure*}
+
+\section{Cost}
+\label{sec:cost}
+
+\begin{definition}[Cost]
+\label{def:cost}
+The \emph{cost} of a ladder is its commitment count $n$, equivalently the value
+of $M$ on termination. The \emph{yield} is its composite power.
+\end{definition}
+
+\begin{proposition}[Cost of a target]
+\label{prop:costtarget}
+The minimum cost of reaching target power $\pow^\star$ using rungs of power at
+most $\pow_{\max}$ is $\lceil \log(1-\pow^\star)/\log(1-\pow_{\max}) \rceil$.
+\end{proposition}
+
+\begin{proof}
+From \cref{eq:rungcount} with equality, and $n$ integral.
+\end{proof}
+
+\begin{proposition}[Marginal value of improvement]
+\label{prop:marginal}
+For a ladder with powers $(\pow_1,\dots,\pow_n)$, the sensitivity of composite
+power to rung $j$ is
+\begin{equation}
+\frac{\partial \pow(\Lad)}{\partial \pow_j}
+\;=\; \prod_{i \neq j}(1-\pow_i),
+\label{eq:marginal}
+\end{equation}
+Writing $P = \prod_i (1-\pow_i)$ for the residual fraction, this equals
+$P/(1-\pow_j)$, which is largest for the $j$ of \emph{highest} power.
+\end{proposition}
+
+\begin{proof}
+Differentiate \cref{eq:compose}: $\pow(\Lad) = 1 - \prod_i(1-\pow_i)$, so
+$\partial\pow(\Lad)/\partial\pow_j = \prod_{i\neq j}(1-\pow_i) = P/(1-\pow_j)$.
+Since $P$ does not depend on $j$ and $1-\pow_j$ is decreasing in $\pow_j$, the
+quotient is increasing in $\pow_j$ and is maximised at the largest $\pow_j$.
+\end{proof}
+
+\begin{remark}[The direction is the opposite of the naive expectation]
+\label{rem:direction}
+One expects the weakest rung to be the one worth improving, on the reasoning
+that it is the bottleneck. \Cref{prop:marginal} says otherwise, and the reason
+is structural: a marginal gain at rung $j$ is transmitted to the composite
+through the rungs \emph{other} than $j$, and that transmission is the factor
+$\prod_{i\neq j}(1-\pow_i)$. A weak rung leaves a large residual gap for the
+others to work on, but its own improvement is attenuated by their action; a
+strong rung has already removed most of the gap, so the remaining gap is small
+but a marginal improvement to it passes through almost undiminished. The
+quantity being maximised is transmission, not slack. We record the expectation
+explicitly because it is wrong and it is natural.
+\end{remark}
+
+\begin{remark}[Where to spend effort]
+\label{rem:whereeffort}
+\Cref{prop:marginal} is the improvement rule, and the statement is
+quantitative: improving rung $j$ by $\delta$ buys
+$\delta\prod_{i\neq j}(1-\pow_i)$ of composite power, to first order. The rung
+worth improving is the one of highest power, not the weakest
+(\cref{rem:direction}). No property of the rung other than its power enters the
+calculation, so the rule can be applied without knowing what any rung is.
+\end{remark}
+
+%==============================================================================
+\part{A Process, Given Only as Powers}
+\label{part:demo}
+%==============================================================================
+
+\section{The Demonstration}
+\label{sec:demo}
+
+We work a chain of four rungs. It is presented as it is given---four numbers
+and a target---and we answer of it every question ordinarily asked of a process.
+At no point is anything said about what the rungs are.
+
+\subsection{The specification}
+
+\begin{lstlisting}[caption={A process, completely specified.},captionpos=b,label=lst:chain]
+ladder chain toward target
+  rung r1 at 0.45
+  rung r2 at 0.30
+  rung r3 at 0.55
+  rung r4 at 0.20
+  require power >= 0.80
+\end{lstlisting}
+
+That is the whole specification. The names \texttt{r1}--\texttt{r4} are
+positional and carry no content; replacing them by any other symbols changes
+nothing, by \cref{thm:inertness}.
+
+\subsection{Questions answered from the powers alone}
+
+\paragraph{Does it reach its target?}
+By \cref{eq:compose},
+\[
+\pow(\Lad) = 1 - (0.55)(0.70)(0.45)(0.80) = 1 - 0.1386 = 0.8614,
+\]
+which exceeds the declared $0.80$. The program compiles
+(\cref{prop:reach}).
+
+\paragraph{Where is the control?}
+By \cref{prop:marginal} the sensitivity of the composite to each rung is
+$\prod_{i\neq j}(1-\pow_i)$, giving $0.252$, $0.198$, $0.308$ and $0.173$ for
+$j = 1,\dots,4$. Control lies in rung $3$, which is the rung of \emph{highest}
+power---the direction given by \cref{prop:marginal} and against the naive
+expectation (\cref{rem:direction}). To first order, improving rung $4$ from
+$0.20$ to $0.30$ buys $0.0173$ of composite power; improving rung $3$ from
+$0.55$ to $0.65$ buys $0.0308$, nearly twice as much. Improving the weakest rung
+is the worse investment, and the comparison requires no knowledge of either
+rung.
+
+\paragraph{What does a modification cost?}
+Removing rung $2$ gives composite $1-(0.55)(0.45)(0.80) = 0.802$: the target is
+still met, barely. Removing rung $3$ gives $1-(0.55)(0.70)(0.80) = 0.692$ and
+the program no longer compiles. The formalism therefore predicts which deletion
+is tolerated, before any experiment.
+
+\paragraph{Is this the same process as another?}
+Another chain with powers $(0.45,0.30,0.55,0.20)$ is the same process by
+\cref{thm:inertness}, whatever it is made of. A chain with powers
+$(0.60,0.60)$ has composite $0.84$---close, but by \cref{prop:converse} the two
+are distinguished by their intermediate alignments, and an experiment resolving
+intermediates separates them while an end-to-end assay does not.
+
+\paragraph{Could it be shortened?}
+By \cref{prop:costtarget}, reaching $0.80$ with rungs of power at most $0.55$
+requires $\lceil \log(0.20)/\log(0.45) \rceil = \lceil 2.016 \rceil = 3$ rungs.
+The chain uses four, so one is redundant with respect to the target---consistent
+with the deletion analysis above.
+
+\subsection{What was never needed}
+
+Nothing in \cref{sec:demo} referred to a participant, a mechanism, an
+intermediate species, a rate constant, or an energy. The questions answered are
+the questions a process description exists to answer, and they were answered
+from four numbers. This is \cref{thm:inertness} in use rather than in statement.
+
+\begin{remark}[On the reader's expectations]
+\label{rem:expectations}
+A reader may wish to know what the chain ``really is''. The formalism cannot
+say, and \cref{thm:inertness} explains why: the information is not present, and
+its absence is not a deficiency of the description but a demonstration that the
+description was complete without it. Any chain of four steps whose powers are
+those four numbers is this process. If that seems to discard something, the
+theorem asks which admissible observable the discarded material would have
+changed.
+\end{remark}
+
+%==============================================================================
+\part{Predictions and Validation}
+\label{part:validation}
+%==============================================================================
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_06.png}
+  \captionPanelSix
+  \label{fig:panel6}
+\end{figure*}
+
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+\begin{enumerate}[label=\textbf{P\arabic*.},leftmargin=3em,itemsep=0.6em]
+
+\item \textbf{Multiplicative composition.} Composite power follows
+\cref{eq:compose} and not an additive or averaging law. \emph{Failure mode:}
+measured composite power tracking $\sum_i\pow_i$ or $\max_i\pow_i$ across
+synthesised ladders.
+
+\item \textbf{Diminishing returns.} Repeating one rung gives $1-(1-\pow)^n$,
+with the $n$-th repetition contributing $\pow(1-\pow)^{n-1}$. \emph{Failure
+mode:} constant or increasing marginal contribution.
+
+\item \textbf{Saturation dichotomy.} The residual gap vanishes iff
+$\sum_i\pow_i$ diverges. \emph{Failure mode:} a convergent power series driving
+the gap to zero, or a divergent one failing to.
+
+\item \textbf{Control at the strongest rung.} Sensitivity is
+$\prod_{i\neq j}(1-\pow_i) = P/(1-\pow_j)$, maximised at the
+\emph{highest}-power rung. \emph{Failure mode:} measured control coefficients
+ordered by ascending power, or not ordered by this quantity at all. This
+prediction is deliberately counter-intuitive and is the sharpest test in the
+set.
+
+\item \textbf{Inertness.} Two ladders with equal power sequences agree on every
+admissible observable. \emph{Failure mode:} an admissible observable separating
+them---which by \cref{thm:inertness} would be a contradiction, so the
+operational test is whether a proposed observable is admissible.
+
+\item \textbf{Probe--commit asymmetry.} Commitment count increases with
+commitments and not with traversals. \emph{Failure mode:} a traversal
+incrementing $M$.
+
+\item \textbf{Static reachability.} A ladder whose declared rungs cannot reach
+its declared target is rejected before execution, and the rejection agrees with
+execution. \emph{Failure mode:} disagreement between the static verdict and the
+executed outcome.
+\end{enumerate}
+
+\section{Computational Protocol}
+\label{sec:protocol}
+
+Every test is constructed so that it can fail, and each is paired with a control
+establishing whether the statistic discriminates. A test whose control shows it
+cannot separate the framework's prediction from a null is reported as
+non-discriminating and excluded from the score.
+
+\begin{enumerate}[label=\textbf{V\arabic*.},leftmargin=3em,itemsep=0.4em]
+\item \textbf{Floor.} Computed on finite instances, including an adversarial
+one; and the failure branch exhibited on an unbounded refinement, confirming
+\cref{rem:finiteness}.
+\item \textbf{Asymmetry.} Commitment count under probing and under committing,
+across regions of widely differing measure, testing that the floor bound is
+independent of rarity.
+\item \textbf{Composition.} Simulated ladders against \cref{eq:compose}, with
+additive and max-based alternatives as competing models.
+\item \textbf{Saturation.} Divergent and convergent power series over many
+rungs, indexed from $i=2$ per \cref{rem:tail}.
+\item \textbf{Sensitivity.} Numerical partial derivatives against
+\cref{eq:marginal}.
+\item \textbf{Inertness.} Random relabelling of rungs; every admissible
+observable recomputed and compared.
+\item \textbf{Semantics.} Progress, preservation and monotonicity checked by
+exhaustive small-step execution on generated programs.
+\item \textbf{Static analysis.} Static verdicts compared against executed
+outcomes on generated programs, including cases designed to be rejected.
+\end{enumerate}
+
+\section{Results}
+\label{sec:results}
+
+Twenty-three scored tests were run; all twenty-three pass, none was
+non-discriminating, and none was skipped. We report what each establishes
+rather than the count, since a count is uninformative without the controls that
+accompany it.
+
+\subsection{The floor and its hypothesis}
+
+The floor is computed as a minimum over a finite edge set on every instance,
+including an adversarial one whose smallest weight is $10^{-12}$, and is
+strictly positive throughout. The complementary branch is the informative one:
+a system permitted unlimited refinement produces thicknesses $1/n$, each
+positive, whose infimum is zero---every $\varepsilon$ down to $10^{-9}$ is
+eventually cleared, by exact integer comparison rather than floating-point
+evaluation. Truncating to a finite system restores a positive floor. The
+finiteness hypothesis of \cref{rem:finiteness} therefore does real work.
+Alignment computed as a minimum residue agrees with independent brute-force
+enumeration of every bipartition on forty random graphs, to machine precision.
+
+\subsection{The asymmetry}
+
+Residue deposited by a commitment is constant at the floor across six decades
+of region measure: the cost of individuating a region does not depend on its
+improbability. Five thousand probes leave the commitment counter at zero and the
+graph unmodified. A single commitment followed by ten thousand traversals leaves
+$M = 1$ and total deposited residue equal to one floor unit. Probe frequency
+tracks region measure to within tolerance over four decades while commitment
+cost does not vary at all, which is \cref{thm:asymmetry}(iii) numerically.
+
+\Cref{cor:reuse} is thereby exhibited without any energetic quantity entering
+the computation. Nothing in the code that produces this result refers to free
+energy, to a cycle, or to a regeneration step.
+
+\subsection{Composition, and the exclusion of the alternatives}
+
+Over four thousand random ladders, the multiplicative law reproduces the
+simulated composite to machine precision (maximum error below $10^{-12}$). The
+three competing laws do not: additive gives mean absolute error $0.047$, maximum
+gives $0.179$, and mean gives $0.463$. The test is a model comparison rather
+than a goodness-of-fit, because a test scoring only the favoured law could not
+have distinguished it from the others.
+
+Diminishing returns hold exactly: the marginal contribution of the $n$-th
+repetition matches $\pow(1-\pow)^{n-1}$ to machine precision for every power
+tested, is strictly decreasing, and the composite never attains unity at finite
+$n$. The saturation dichotomy separates cleanly with the series indexed from
+$i = 2$ per \cref{rem:tail}: the divergent $\sum 1/i$ drives the residual gap
+toward zero over four hundred rungs while the convergent $\sum 1/i^2$ and
+$\sum 2^{-i}$ plateau.
+
+\subsection{The direction of control}
+
+This is the result that most repays attention, because it contradicts the
+expectation a reader is likely to bring. Over five thousand random ladders the
+analytic sensitivity agrees with the numerical derivative in every case; the
+sensitivity is maximised at the highest-power rung in every case; and it is
+maximised at the lowest-power rung in none. The naive hypothesis---that control
+sits at the bottleneck---is rejected at a rate of exactly zero.
+
+The reason is given in \cref{rem:direction} and is structural rather than
+statistical: a marginal gain at rung $j$ reaches the composite only through the
+rungs other than $j$, and that transmission is $\prod_{i \neq j}(1-\pow_i)$,
+which is large precisely when the other rungs are weak. On the four-rung ladder
+of \cref{sec:demo}, improving the strongest rung buys $0.0308$ of composite
+power against $0.0173$ for the weakest---a factor of $1.8$ in favour of the
+counter-intuitive choice.
+
+\subsection{Inertness}
+
+Relabelling the rungs of three thousand random ladders leaves every admissible
+observable unchanged in every case: composite power, residual fraction, the
+full gap trajectory, the alignment trajectory, the sensitivity vector, and the
+commitment count. The labels are external annotations, since a rung in the
+implementation carries exactly one field and has no identity slot; a test that
+compared objects carrying names would have been testing the names.
+
+The control establishes that this is informative. Perturbing a rung
+\emph{power} rather than a label changes the observables in every one of three
+thousand trials. Without that control, the inertness result would be consistent
+with a constant observable set and would carry no information.
+
+The converse is exhibited rather than concealed. The ladders $(0.5, 0.5)$ and
+$(0.75, 0)$ share composite power $0.75$ and are separated by their intermediate
+gaps. An assay resolving only end-to-end efficiency underdetermines the ladder,
+which is \cref{prop:converse} and bounds what the framework claims.
+
+\subsection{Semantics and static analysis}
+
+Two thousand generated programs terminate and none gets stuck. Across two
+thousand further programs the floor is invariant under reduction and the
+commitment counter never decreases at any step. Five hundred evaluations of a
+syntactically identical commitment produce five hundred increments and five
+hundred residue deposits, with no caching; the paired control confirms that
+probes performed in the same machine leave the counter untouched.
+
+The static analysis is the sharpest test in the suite. On five thousand
+generated programs the reachability verdict was computed without executing, the
+program was then executed, and the two compared: $4017$ were accepted and $983$
+rejected, with zero disagreements. Both verdicts occur in quantity, so the test
+could have failed in either direction---a suite in which every program was
+accepted would not have tested rejection at all.
+
+\subsection{The demonstration, recomputed}
+
+Every number reported in \cref{sec:demo} is regenerated from the four declared
+powers and the declared target: composite $0.8614$, residual $0.1386$,
+sensitivities $(0.252, 0.198, 0.308, 0.173)$, control at rung $3$, deletion of
+rung $2$ tolerated at $0.802$ and deletion of rung $3$ fatal at $0.692$, and a
+minimum of three rungs required for the target. Nothing was entered by hand
+except the specification itself.
+
+%==============================================================================
+\part{Discussion}
+%==============================================================================
+
+\section{Relation to Existing Accounts}
+\label{sec:relation}
+
+\paragraph{Metabolic control analysis.} \Citet{kacser1973} and
+\citet{heinrich1974} established that control over a pathway flux is distributed
+and quantified by control coefficients summing to unity.
+\Cref{prop:marginal} is a statement of the same kind obtained from composition
+rather than from steady-state flux, and it requires neither a steady state nor
+knowledge of the enzymes. It does \emph{not} agree with the common reading of
+control analysis in which the rate-limiting step carries the control: here
+sensitivity is maximised at the highest-power rung (\cref{rem:direction}). The
+two framings measure different things---a control coefficient is a response of
+steady-state flux to enzyme concentration, whereas \cref{eq:marginal} is a
+response of composite power to rung power---and we do not claim the results are
+in conflict. We flag the divergence rather than smooth it, because a reader
+importing the usual intuition will otherwise misread \cref{prop:marginal}.
+
+\paragraph{Flux balance analysis.} \Citet{orth2010} determines flux from
+stoichiometry and constraints. Stoichiometry is precisely the identity-bearing
+part of a process description; \cref{thm:inertness} says the questions of
+\cref{sec:demo} do not require it. The two approaches answer different
+questions and the present one answers fewer.
+
+\paragraph{Amdahl's law.} \Citet{amdahl1967} bounds speedup by the serial
+fraction, and has the same multiplicative-complement structure as
+\cref{thm:multiplicative}. That a result about parallel computation and a result
+about chains of chemical steps share a form is what \cref{rem:rungisnot} would
+predict: neither depends on what the steps are.
+
+\paragraph{Membrane computing.} \Citet{paun2000} computes with nested
+compartments and rewriting rules over multisets of named objects. The present
+account has no objects and no rules over them; its only state is a graph of
+weighted contacts and a counter.
+
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.4em]
+\item \Cref{lem:floor} and everything downstream require the contact graph to be
+finite (\cref{rem:finiteness}). For systems admitting unlimited refinement no
+uniform floor exists and the results do not apply as stated.
+\item \Cref{thm:inertness} is relative to \cref{def:observable}. Enlarging the
+observable class could break it, and we have not characterised which
+enlargements do. What we claim is that the class admitted is the one the
+substrate defines.
+\item We do not derive rung powers from structure. A power is measured, not
+predicted, and the framework says what follows from powers rather than what
+determines them. This is a real limitation and it bounds the practical claim of
+\cref{cor:classification}: classification requires the measurement.
+\item \Cref{prop:converse} shows composite power alone does not determine a
+ladder. Experiments resolving only end-to-end efficiency therefore
+underdetermine the process, and the framework says so rather than concealing it.
+\item The demonstration of \cref{part:demo} is an illustration of the formalism
+on a specification, not an empirical result. It shows what the formalism answers,
+not that any particular natural process has those powers.
+\end{enumerate}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+A process description names its participants and orders them. We have shown
+that the naming is inert. What a process is, at the resolution its own substrate
+defines, is a chain of commitments in which each step's residue is the next
+step's boundary condition, together with one number per step recording how much
+of the remaining distance that step closes. Composition is multiplicative;
+repetition has diminishing returns; a target is reached in the limit exactly
+when the powers sum to infinity; control lies at the strongest rung rather
+than the weakest, because what a marginal gain buys is set by transmission
+through the others and not by the slack a rung leaves; and a structure
+committed once is thereafter traversed by probes, which is why it is not
+consumed.
+
+The last of these is catalysis, and it arrives without an energetic argument.
+The catalyst is not regenerated after each turnover and is not exempted from
+stoichiometry by convention. It is never spent because what passes through it
+probes rather than commits, and probing costs nothing---while committing costs
+the floor, whose positivity follows from the fact that drawing a boundary takes
+time during which what lies outside it moves.
+
+Two catalysts with the same power are the same rung. Improving a catalyst is
+raising a number, and \cref{prop:marginal} says which. Neither
+statement requires knowing what a catalyst is, and \cref{thm:inertness} says
+that this is not an approximation but the situation.
+
+\section*{Data and Code Availability}
+\label{sec:data-availability}
+\addcontentsline{toc}{section}{Data and Code Availability}
+
+All validation scripts and result files in JSON format accompany this
+manuscript. Every reported number is produced by the scripts from stated
+inputs.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

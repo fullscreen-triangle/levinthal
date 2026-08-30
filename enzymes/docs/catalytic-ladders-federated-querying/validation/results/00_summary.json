@@ -1,0 +1,49 @@
+{
+  "paper": "Catalytic Ladders in a Federated Query Language",
+  "run_utc": "2026-08-30T00:56:28Z",
+  "total": 8,
+  "passing": 8,
+  "failing": 0,
+  "negative_controls": {
+    "count": 2,
+    "checks": [
+      "NEGATIVE CONTROL: plans without a ladder still run",
+      "NEGATIVE CONTROL: malformed ladders are refused"
+    ]
+  },
+  "elapsed_seconds": 0.7,
+  "checks": [
+    {
+      "experiment": "E1 host suite after the ladder is added",
+      "holds": true
+    },
+    {
+      "experiment": "E2 a ladder plan end to end",
+      "holds": true
+    },
+    {
+      "experiment": "E3 the refusal and the blame walk",
+      "holds": true
+    },
+    {
+      "experiment": "E4 the ladder occupies the existing zero-cost tier",
+      "holds": true
+    },
+    {
+      "experiment": "E5 the union bound against the multiplicative law",
+      "holds": true
+    },
+    {
+      "experiment": "E6 the frozen corpus",
+      "holds": true
+    },
+    {
+      "experiment": "NEGATIVE CONTROL: plans without a ladder still run",
+      "holds": true
+    },
+    {
+      "experiment": "NEGATIVE CONTROL: malformed ladders are refused",
+      "holds": true
+    }
+  ]
+}

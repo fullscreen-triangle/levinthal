@@ -1,0 +1,949 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{rulename}[theorem]{Rule}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{principle}[theorem]{Principle}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\crefname{rulename}{Rule}{Rules}
+\Crefname{rulename}{Rule}{Rules}
+\crefname{principle}{Principle}{Principles}
+\Crefname{principle}{Principle}{Principles}
+
+% --- notation -----------------------------------------------------------
+\newcommand{\Rpos}{\mathbb{R}_{>0}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\pow}{\pi}
+\newcommand{\Lad}{L}
+\newcommand{\Rung}{\gamma}
+\newcommand{\Src}{\mathrm{Src}}
+\newcommand{\Capset}{\mathrm{Cap}}
+\newcommand{\Req}{\mathrm{Req}}
+\newcommand{\cost}{\mathrm{cost}}
+\newcommand{\vans}{\textsf{answer}}
+\newcommand{\vempty}{\textsf{empty}}
+\newcommand{\vsurf}{\textsf{unsupported}}
+\newcommand{\vtime}{\textsf{exhausted}}
+\newcommand{\vref}{\textsf{refused}}
+\newcommand{\vstarve}{\textsf{starved}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\hfq}[1]{\texttt{#1}}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape\color{gray!70!black},
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  columns=fullflexible,
+  showstringspaces=false,
+  breaklines=true,
+  xleftmargin=0.5em,
+  morekeywords={plan,budget,requests,let,from,ask,with,within,else,fail,
+    unresolved,when,starved,emit,partial,map,via,then,expect,union,intersect,
+    join,on,filter,where,provenance,divergence,as,ladder,over,power,assert},
+}
+
+\title{\textbf{Catalytic Ladders in a Federated Query Language:\\
+An Integration Report}}
+
+\author{Kundai Farai Sachikonye\\
+\small Technical University of Munich, School of Life Sciences\\
+\small \texttt{kundai.sachikonye@wzw.tum.de}}
+
+\date{\today}
+
+\input{figures/captions}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A ladder composes process steps multiplicatively: each rung carries a power
+$\pow\in[0,1]$, the fraction of the remaining gap it closes, and a sequence of
+rungs closes $1-\prod_i(1-\pow_i)$. This paper asks a question about that
+construct which is not whether it is correct but whether it \emph{fits}: can it
+be added to a query language built by other hands, for other purposes, without
+breaking what is already there?
+
+We add a \hfq{ladder} step to HFQ, a federated query language with a six-verdict
+plan semantics, a capability-containment check that runs before any request is
+issued, and a water-filling allocator that distributes a request budget across
+steps. The integration is reported as an experiment with a pre-registered
+falsification condition: the host ships a suite of sixteen checks, and any
+regression in that suite counts against the integration. There is none. The
+suite reads $16/16$ before the change and $16/16$ after.
+
+Three findings are worth more than the pass count. First, the ladder needed no
+change to the capability checker or the allocator, because both already
+dispatch on a guard---is this step a source access?---that a local construct
+satisfies by not being one. The host had a zero-cost tier and we did not have to
+build it. Second, the ladder's refusal reuses the host's existing blame
+discipline: a ladder that cannot reach its declared target reports
+\vstarve{} with the predecessor field \emph{empty}, so blame terminates at the
+ladder rather than falsely accusing a step that answered correctly. Third, the
+host already carries a union bound on translation retention,
+$\rho\ge1-\sum_i(1-r_i)$, which is the additive relaxation of the ladder's
+multiplicative law. Measuring the two on the same numbers shows the additive
+form going \emph{vacuous}---falling below zero, hence holding trivially---on
+$51.5\%$ of four-stage chains and $99.6\%$ of eight-stage chains, while the
+multiplicative form stays informative throughout. The ladder is therefore not
+foreign to the host's theory; it is the tight form of a bound the host already
+states loosely, and the looseness is quantified here rather than asserted.
+
+We also report a defect the integration produced and the discipline that caught
+it. The first parser read the declared target as an extra rung, because the
+token \hfq{power} occurs inside \hfq{expect power}: a plan would then compose a
+ladder it did not write. The corpus is real---$400$ enzyme records and $944$
+reactions fetched from two public services with different schemas---and then
+frozen, because the host forbids network access in adapters by construction and
+we did not weaken that rule to run our experiment.
+\end{abstract}
+
+\tableofcontents
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The question}
+
+Federating heterogeneous sources is an old problem with a long literature
+\citep{halevy2006pdms}; this paper is not about that problem but about a
+smaller one. A construct can be correct and still not fit. A formalism proved sound in
+isolation may, on contact with a working system, demand a new cost model, a new
+failure mode, a change to an existing check, or an exception to a rule the
+system relies on. Each of those is a real cost, and none of them shows up in a
+proof.
+
+This paper asks whether the ladder fits. The construct is simple: a
+\emph{rung} carries a power $\pow\in[0,1]$, the fraction of a remaining gap it
+closes; a \emph{ladder} is a sequence of rungs; and the composite power of a
+ladder is
+\begin{equation}
+\pow(\Lad)\;=\;1-\prod_{i=1}^{n}(1-\pow_i).
+\label{eq:compose}
+\end{equation}
+We add it to HFQ \citep{sachikonye2026hfq}, a federated query language we did
+not write, and report what happened. The construct is developed in
+\citet{sachikonye2026ladder} and given a typed operational semantics in
+\citet{sachikonye2026shkladder}; neither is presupposed here beyond
+\cref{eq:compose}.
+
+\subsection{Why this host}
+
+HFQ \citep{sachikonye2026hfq} is a good test because it is opinionated. It has
+commitments a careless extension would violate:
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.35em]
+\item \textbf{Six verdicts, applied in a fixed order.} A step reports
+\vans, \vempty, \vsurf, \vtime, \vref{} or \vstarve, and the order of the rules
+that assign them is normative rather than an implementation convenience: each
+fires only when every earlier cause has been excluded, which is what makes a
+verdict \emph{attributive}.
+\item \textbf{One payload rule.} Only \vans{} carries a result. A verdict that
+carried a partial payload alongside a failure would reintroduce precisely the
+ambiguity the verdict set exists to remove.
+\item \textbf{A static capability check.} Whether a step's requirements are
+contained in its source's declared capabilities is decided before any request
+is issued, and the check is counted, because a bound on its cost is a theorem
+of the system.
+\item \textbf{No network access, by construction.} Every adapter resolves
+against a local fixture. This is stated as a deliberate constraint and not a
+temporary limitation: the claims are properties of the compiler, and a live
+service can neither confirm nor refute them.
+\item \textbf{A blame discipline.} A starved step names the predecessor that
+starved it, and a walk up those names terminates. A step that blamed a
+predecessor which had in fact answered correctly would corrupt the walk.
+\end{enumerate}
+
+Any of these could have been the point at which the ladder did not fit.
+
+\subsection{The falsification condition, fixed in advance}
+
+The host ships a validation suite of sixteen checks. We fixed the following
+condition before making any change:
+
+\begin{quote}
+\emph{If the suite reports fewer than $16/16$ after the ladder is added, the
+integration has failed, and the failure is reported as the result.}
+\end{quote}
+
+This is worth stating because the alternative---adding a construct, observing
+that one's own new tests pass, and reporting success---would not have tested
+integration at all. The host's suite was written without knowledge of the
+ladder and has no reason to accommodate it.
+
+The suite reads $16/16$ before the change and $16/16$ after
+(\cref{sec:results}). We also record what the change touched, because a
+non-regressive change that rewrote half the system would be a different result
+from one that did not.
+
+\subsection{What we found}
+
+\paragraph{The zero-cost tier already existed.} The ladder is local: it reaches
+no source, issues no request, and demands no capability. We expected to have to
+teach the host that such a step exists. We did not. The capability checker
+guards on \emph{is this a source access}, not on a list of known local kinds,
+so a new local kind is exempted without being mentioned; the allocator does the
+same. The host had already been forced to distinguish costed from free steps by
+its own set operations, and the ladder inherited that distinction
+(\cref{sec:cost}).
+
+\paragraph{The refusal reuses the host's blame discipline.} A ladder whose
+declared rungs cannot reach its declared target reports \vstarve{} with the
+predecessor field \emph{empty}. That is not an omission: it is the host's
+existing idiom for a step whose input arrived intact and whose own declaration
+was at fault, and it makes the blame walk terminate at the ladder rather than
+accuse a step that answered correctly (\cref{sec:refusal}).
+
+\paragraph{The host already had the additive form of our law.} HFQ bounds
+translation retention below by $\rho\ge1-\sum_i(1-r_i)$, the union bound.
+\Cref{eq:compose} is its multiplicative counterpart. Measuring both on the same
+numbers shows the additive form going vacuous---negative, hence trivially
+true---on most chains of four stages or more (\cref{sec:bound}). This is a fact
+about the host's own theory that the ladder made visible, and we report it as
+such rather than as a criticism.
+
+\subsection{What we do not claim}
+
+We do not claim the ladder makes HFQ better at answering queries; it answers a
+different question about a plan than the plan's verdicts do. We do not claim
+performance results: the ladder is arithmetic on declared numbers and its cost
+is not interesting. We do not claim the integration is complete---
+\cref{sec:limitations} lists what a full one would require. And we do not claim
+the corpus supports any biological conclusion: it is real data used to give the
+plans something real to run on, not evidence about metabolism.
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_01.png}
+  \captionPanelOne
+  \label{fig:panel1}
+\end{figure*}
+
+%==============================================================================
+\section{The Host}
+\label{sec:host}
+
+We restate only what the extension touches.
+
+\subsection{Plans and steps}
+
+A plan declares a request budget and a sequence of \hfq{let} bindings
+terminated by an \hfq{emit}. A step binds a variable to the result of one
+operation: a source access (\hfq{from}), a translation (\hfq{map}), or a set
+operation (\hfq{union}, \hfq{intersect}, \hfq{join}, \hfq{filter}). Each step
+carries the tuple of variables whose values it consumes.
+
+\subsection{The verdicts}
+
+\begin{definition}[Verdict assignment]
+\label{def:verdicts}
+A step is assigned a verdict by the following rules, applied in order.
+\begin{enumerate}[label=(R\arabic*),leftmargin=3.2em,itemsep=0.2em]
+\item If some input has a verdict other than \vans, or has \vans{} with a
+payload whose retention fell below the step's declared expectation, then
+\vstarve; the diagnosis names the offending predecessor.
+\item Else if the step's requirements are not contained in its source's
+capabilities, then \vsurf; the diagnosis names the difference.
+\item Else if the remaining budget is below the source's cost at the input
+cardinality, then \vref; the diagnosis names the shortfall.
+\item Else issue the request; if it does not complete within the step budget,
+then \vtime.
+\item Else if the extracted result set is empty, then \vempty.
+\item Else \vans, with the result set as payload.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[The order is normative]
+\label{rem:order}
+Each rule fires only when every earlier cause has been excluded. A step
+reporting \vempty{} has therefore established that its inputs were adequate,
+its capabilities sufficient, its budget available and its request completed---
+and hence that the emptiness is a fact about the data rather than about the
+machinery. No rule below (R6) can say that. An extension that inserted a new
+rule in the middle of this order would change the meaning of every verdict
+below it; \cref{sec:where} explains why the ladder does not.
+\end{remark}
+
+\subsection{Capability containment}
+
+\begin{definition}[Containment]
+\label{def:containment}
+A step against source $\Src$ with requirements $\Req$ is \emph{well-capability}
+when $\Req\subseteq\Capset(\Src)$. The check is decided from the declarations
+alone, in one membership test per required feature, and issues no request under
+any outcome.
+\end{definition}
+
+\subsection{Effort and the allocator}
+
+The plan budget is measured in \emph{requests}. Each step is assigned an effort
+$e_i$, and the allocator maximises total yield subject to
+$\sum_i e_i\le B$; the solution is the standard water-filling characterisation
+of a concave programme \citep{boyd2004convex}. Steps whose yield is concave are optimised against a shadow
+price; steps that are all-or-nothing are charged first at a fixed cost and
+removed from the optimisation, since a step function has no interior optimum.
+
+\begin{remark}[The two-tier regime is prior to this paper]
+\label{rem:twotier}
+That second clause is the host's own, forced by sources that answer a lookup in
+one request and answer nothing more thereafter. It has the side effect that the
+host already distinguishes steps that consume requests from steps that do not,
+and already charges the latter nothing. The ladder occupies that tier without
+enlarging it.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_02.png}
+  \captionPanelTwo
+  \label{fig:panel2}
+\end{figure*}
+
+%==============================================================================
+\section{The Ladder Step}
+\label{sec:where}
+
+\subsection{Syntax}
+
+One production is added.
+
+\begin{definition}[Added grammar]
+\label{def:grammar}
+\begin{lstlisting}
+let x = ladder over Y
+        power P [, power P ...]
+        [expect power E]
+\end{lstlisting}
+The step binds \hfq{x}, consumes the value bound to \hfq{Y}, declares a finite
+sequence of rung powers each in $[0,1]$, and optionally declares a target the
+composite must attain.
+\end{definition}
+
+\begin{example}[A plan with a ladder]
+\label{ex:plan}
+\begin{lstlisting}
+plan ladder_demo {
+  budget 50 requests
+
+  let acids = from chebi
+      ask descendants_of("CHEBI:1")
+      within 10
+
+  let L = ladder over acids
+      power 0.45, power 0.30, power 0.55
+      expect power 0.70
+
+  emit L
+}
+\end{lstlisting}
+The ladder composes to $1-(0.55)(0.70)(0.45)=0.826\,75$, which clears the
+declared target, so the step reports \vans. Raising the target to $0.95$ makes
+the same plan report \vstarve{} with the shortfall named.
+\end{example}
+
+\subsection{Where it goes, and what it does not touch}
+
+\begin{table}[!htbp]
+\centering
+\caption{The edit. Two files are modified and two that a reader would expect to
+need modification do not.}
+\label{tab:edit}
+\begin{tabular}{llp{6.4cm}}
+\toprule
+Component & Change & Why \\
+\midrule
+Parser & added & One dispatcher branch and one parse function; the step
+record gains two fields, both defaulted. \\
+Executor & added & One dispatch branch and one handler. \\
+Capability checker & \textbf{none} & It guards on \emph{is this a source
+access}, so a local step is skipped without being named. \\
+Allocator & \textbf{none} & Same guard; a ladder is charged the nominal fixed
+cost the host already gives its set operations. \\
+Verdict set & \textbf{none} & The refusal reuses \vstarve{} and \vempty. \\
+Rule order (R1)--(R6) & \textbf{none} & See \cref{prop:noorder}. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proposition}[The ladder does not disturb the rule order]
+\label{prop:noorder}
+Adding the ladder step leaves the verdict of every step of every plan that
+contains no ladder unchanged, and leaves rules (R1)--(R6) unmodified. A ladder
+step is assigned a verdict by (R1), (R5) and (R6) only; rules (R2), (R3) and
+(R4) cannot fire on it.
+\end{proposition}
+
+\begin{proof}
+(R1) is applied by the driver to every step before dispatch, so a ladder whose
+input starved is starved by the existing rule and the handler is not reached.
+(R2) tests $\Req\subseteq\Capset(\Src)$; a ladder has no source and no
+requirements, so the test is vacuous and the checker skips it by its existing
+guard. (R3) compares the remaining budget against a source cost; there is no
+source, and the step spends nothing. (R4) concerns a request that might not
+complete; none is issued. (R5) and (R6) apply as usual to the result set the
+step passes through. For a plan containing no ladder, no added code is reached
+at all: the parser branch is guarded on a keyword the plan does not contain and
+the executor branch on a step kind it does not have.
+\end{proof}
+
+\begin{remark}[The guard is what made this cheap]
+\label{rem:guard}
+Both untouched components test whether a step is a source access, and take the
+negative branch for everything else. Had either enumerated the local kinds
+instead---set operations and translations, say---a new local kind would have
+fallen through to the source path and crashed. The distinction between
+``anything that is not a source access'' and ``these particular things that are
+not source accesses'' is invisible until someone adds a kind, and it is the
+whole reason the integration touched two files rather than four.
+\end{remark}
+
+\begin{remark}[Where a fallthrough did bite]
+\label{rem:fallthrough}
+The executor's dispatch is not written that way. Its final line is an
+unguarded fallthrough to the source handler, so an unrecognised step kind is
+routed to code that immediately asks a registry for a source named
+\hfq{None}. Adding an explicit branch is therefore mandatory rather than
+stylistic, and omitting it produces a crash rather than a wrong answer---which
+is the better failure, and worth recording as the reason we mention it.
+\end{remark}
+
+\subsection{Cost}
+\label{sec:cost}
+
+\begin{definition}[The ladder is charged nothing]
+\label{def:cost}
+A ladder step spends zero budget. It is nonetheless \emph{allocated} the
+nominal unit that the allocator assigns to every all-or-nothing step.
+\end{definition}
+
+\begin{remark}[A reservation that is never drawn]
+\label{rem:reserve}
+The asymmetry between an allocation of one and a spend of zero is the host's
+existing behaviour for set operations, not something the ladder introduces. It
+is conservative: the plan reserves slightly more than it needs, so no plan
+overruns its budget because of a ladder. We adopt the existing convention
+rather than add a third cost regime, on the principle that an extension should
+not multiply the categories its host maintains.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_03.png}
+  \captionPanelThree
+  \label{fig:panel3}
+\end{figure*}
+
+%==============================================================================
+\section{The Refusal}
+\label{sec:refusal}
+
+\begin{definition}[Refusal to climb]
+\label{def:refuse}
+A ladder step declaring target $E$ whose rungs compose to $\pow(\Lad)<E$
+reports \vstarve. The diagnosis names the declared rungs, the observed
+composite, the target and the shortfall $E-\pow(\Lad)$, and sets the named
+predecessor to \emph{nothing}.
+\end{definition}
+
+\begin{remark}[Why the predecessor field is empty]
+\label{rem:blame}
+The host's blame walk follows named predecessors from a failed step to the step
+that caused it, and terminates when a step names none. A ladder that failed its
+target was not starved by its input: the input arrived intact and answered
+correctly, and the shortfall is in the declaration. Naming the predecessor
+would therefore accuse a step that did nothing wrong and would send the walk
+one hop too far. The host already faced this exact situation---a translation
+that loses too much of an intact input---and answers it the same way. The
+ladder reuses the idiom rather than inventing one.
+\end{remark}
+
+\begin{theorem}[The refusal is tight]
+\label{thm:tight}
+A ladder step is refused if and only if executing its declared rungs would fail
+to attain the declared target. No ladder that could have reached its target is
+refused, and every refused ladder would have fallen short.
+\end{theorem}
+
+\begin{proof}
+By \cref{eq:compose} the composite $1-\prod_i(1-\pow_i)$ is exactly the
+fraction of the initial gap that applying all $n$ rungs closes. The refusal
+tests that quantity against the target. The two verdicts therefore coincide by
+construction, and the test is decided from the declared numbers without
+executing anything.
+\end{proof}
+
+\begin{theorem}[The refusal is non-vacuous]
+\label{thm:nonvacuous}
+There are plans the language admits on which the refusal fires, and plans on
+which it declines to fire.
+\end{theorem}
+
+\begin{proof}
+The plan of \cref{ex:plan} composes to $0.826\,75$; with target $0.70$ it is
+answered and with target $0.95$ it is refused. A ladder declaring no rungs is
+rejected at parse time. Each is a plan the grammar admits.
+\end{proof}
+
+\begin{remark}[Both directions are required]
+\label{rem:bothways}
+A predicate that refused every plan would classify as little as one that
+refused none. \Cref{thm:nonvacuous} therefore exhibits both, and the
+measurements of \cref{sec:results} report the counts of each rather than an
+agreement rate alone.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_04.png}
+  \captionPanelFour
+  \label{fig:panel4}
+\end{figure*}
+
+%==============================================================================
+\section{The Bound the Host Already Had}
+\label{sec:bound}
+
+HFQ states a lower bound on the retention of a chain of translations,
+\begin{equation}
+\rho \;\ge\; 1-\sum_{i=1}^{k}\bigl(1-r_i\bigr),
+\label{eq:union}
+\end{equation}
+where $r_i$ is the retention of stage $i$. This is the union bound. Its
+multiplicative counterpart is
+\begin{equation}
+\rho_{\times} \;=\; 1-\prod_{i=1}^{k}\bigl(1-r_i\bigr),
+\label{eq:mult}
+\end{equation}
+which is \cref{eq:compose} with retentions in place of powers.
+
+\begin{proposition}[The additive form is the relaxation]
+\label{prop:relax}
+For $r_i\in[0,1]$, $1-\sum_i(1-r_i)\le 1-\prod_i(1-r_i)$, with equality only
+when at most one $r_i$ differs from $1$.
+\end{proposition}
+
+\begin{proof}
+Write $q_i=1-r_i\in[0,1]$. The claim is $\prod_i q_i\le\sum_i q_i$, which holds
+because each $q_i\le1$ implies $\prod_i q_i\le q_j$ for any $j$, and
+$q_j\le\sum_i q_i$ since the terms are non-negative. Equality forces all but
+one $q_i$ to vanish.
+\end{proof}
+
+\begin{remark}[Where the relaxation becomes vacuous]
+\label{rem:vacuous}
+\Cref{eq:union} can be negative, and a negative lower bound on a quantity known
+to lie in $[0,1]$ says nothing. \Cref{sec:results} measures how often this
+happens as a function of chain length; the answer is that it is the common case
+by four stages. We report this because it is a property of a bound the host
+states and relies on, and because the ladder is the form that does not have it.
+\end{remark}
+
+\begin{remark}[What this is not]
+\label{rem:notcriticism}
+\Cref{eq:union} carries an injectivity hypothesis and is stated by its authors
+as a bound, not as an estimate; a bound that is loose is not a bound that is
+wrong. The observation here is that the tight form was available and is the
+same object as the ladder's composition law, so the two lines of work meet at a
+formula neither was written to share.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_05.png}
+  \captionPanelFive
+  \label{fig:panel5}
+\end{figure*}
+
+%==============================================================================
+\section{The Corpus}
+\label{sec:corpus}
+
+The plans need something real to run on. We fetched two public services with
+different schemas and different identifier spaces---KEGG
+\citep{kanehisa2000kegg} and Reactome \citep{milacic2024reactome}---and then
+froze the result.
+
+\begin{table}[!htbp]
+\centering
+\caption{The frozen corpus. Two services, fetched once, different schemas.}
+\label{tab:corpus}
+\begin{tabular}{lrl}
+\toprule
+Source & Records & Schema \\
+\midrule
+KEGG enzymes    & $400$ & EC number $\to$ reactions, substrates, products \\
+Reactome        & $904$ & stable id $\to$ inputs, outputs, catalysts \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Of the $400$ enzyme records, $372$ carry at least one reaction. Of the $904$
+reactions, $353$ carry at least one catalyst and they fall in $19$ pathways,
+the longest containing $58$ reactions.
+
+\begin{remark}[Why the corpus is frozen, and why that is not a compromise]
+\label{rem:frozen}
+The host forbids network access in its adapters by construction, stating that
+its claims are properties of the compiler and that a live service can neither
+confirm nor refute them. We agree with the reasoning and did not weaken the
+rule to run an experiment. The data is real and was fetched once; every
+measurement then runs against the frozen snapshot, so the results are
+reproducible and no claim depends on a service being reachable.
+\end{remark}
+
+\begin{remark}[A field that came back empty, and what we did about it]
+\label{rem:emptyfield}
+The first extraction returned catalysts for \emph{zero} of the $904$
+reactions. Rather than record a zero, we queried the live service directly and
+found catalyst records present on reactions our extractor had reported as
+having none. The cause was in the extractor: the summary response carries the
+catalyst name on the activity entry itself and omits the nested entity our
+code required. After the fix the count is $353$. We report this because a
+plausible zero is the easiest kind of error to keep---it looks like a finding
+about the data---and the only thing that caught it was checking an empty result
+against its source instead of accepting it.
+\end{remark}
+
+
+\begin{figure*}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_06.png}
+  \captionPanelSix
+  \label{fig:panel6}
+\end{figure*}
+
+%==============================================================================
+\section{Protocol}
+\label{sec:protocol}
+
+Eight experiments run, in \texttt{validation/exp\_integration.py}. Every number
+below is read from the JSON they write.
+
+The falsification condition for E1 was fixed before any edit was made to the
+host. Two of the eight are negative controls, named with the prefix
+\textsc{negative control}, following the host's own convention so they can be
+harvested by name. A crash is recorded as a failed experiment rather than
+aborting the run.
+
+%==============================================================================
+\section{Results}
+\label{sec:results}
+
+\subsection{The host suite}
+
+\begin{table}[!htbp]
+\centering
+\caption{The pre-registered falsification condition.}
+\label{tab:hostsuite}
+\begin{tabular}{lrr}
+\toprule
+& Before the ladder & After \\
+\midrule
+Checks passing      & $16/16$ & $16/16$ \\
+Exit code           & $0$     & $0$ \\
+Network access      & none    & none \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The suite is invoked as a subprocess and its own summary file is read, so the
+number is the host's report and not our restatement of it. The
+\emph{network access} row is included because it is a field the host writes
+about itself: adding the ladder did not introduce a network dependency, and the
+host records that it did not.
+
+\subsection{The construct through the host's machinery}
+
+The plan of \cref{ex:plan} parses, checks and executes. Its ladder composes to
+$0.826\,75$, which is $1-(0.55)(0.70)(0.45)$ to the last digit, computed by the
+host's executor from the host's parse of the declared powers. The plan issues
+one request, all of it for the source step.
+
+The capability check performs \emph{one} membership test for the whole plan.
+That is the source step's single requirement; the ladder contributes none, so
+the bound the host proves on the cost of its own static check is untouched.
+
+\subsection{Cost}
+
+\begin{table}[!htbp]
+\centering
+\caption{Budget spent and effort allocated, per step, in a plan with two source
+accesses, one set operation and one ladder.}
+\label{tab:cost}
+\begin{tabular}{lrr}
+\toprule
+Step & Spent & Allocated \\
+\midrule
+\hfq{a}\ \ (source)     & $1.0$ & $1.0$ \\
+\hfq{b}\ \ (source)     & $1.0$ & $1.0$ \\
+\hfq{u}\ \ (union)      & $0.0$ & $1.0$ \\
+\hfq{L}\ \ (ladder)     & $0.0$ & $1.0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The ladder's row is identical to the union's. This is the substance of the
+claim that the ladder occupies a tier the host already had: it is not that the
+ladder is cheap, but that its cost profile is indistinguishable from that of a
+construct the host shipped. The gap between an allocation of $1.0$ and a spend
+of $0.0$ is the host's existing conservatism and not something the extension
+introduces.
+
+\subsection{The refusal}
+
+Raising the declared target from $0.70$ to $0.95$ on the same plan changes the
+ladder's verdict from \vans{} to \vstarve{}, with the shortfall
+$0.95-0.826\,75=0.123\,25$ named in the diagnosis. Three properties are
+checked, and all three hold:
+
+\begin{itemize}[leftmargin=1.6em,itemsep=0.25em]
+\item The input step reports \vans{} in \emph{both} cases. The refusal is a
+property of the declaration, not of the data.
+\item The diagnosis names no predecessor.
+\item The blame walk from the ladder returns the ladder alone, and does not
+reach the input.
+\end{itemize}
+
+Had the ladder named its input as the culprit, the walk would have returned two
+steps and would have accused a step that answered correctly. This is the
+failure mode the empty predecessor field exists to prevent, and it is checked
+rather than assumed.
+
+\subsection{The bound the host already had}
+
+\begin{table}[!htbp]
+\centering
+\caption{The host's additive lower bound against the multiplicative law, on
+identical retentions drawn uniformly from $[0.5,0.99]$, $4000$ trials per row.
+The additive form is \emph{vacuous} when it falls below zero, since it then
+bounds a quantity in $[0,1]$ from below by a negative number.}
+\label{tab:bound}
+\begin{tabular}{rrrrr}
+\toprule
+Stages $k$ & Mean additive & Mean multiplicative & Mean gap & Fraction vacuous \\
+\midrule
+$2$ & $+0.4912$ & $0.9343$ & $0.4431$ & $0.000$ \\
+$3$ & $+0.2366$ & $0.9836$ & $0.7470$ & $0.173$ \\
+$4$ & $-0.0114$ & $0.9959$ & $1.0073$ & $0.515$ \\
+$5$ & $-0.2817$ & $0.9989$ & $1.2806$ & $0.810$ \\
+$6$ & $-0.5344$ & $0.9997$ & $1.5342$ & $0.942$ \\
+$8$ & $-1.0505$ & $1.0000$ & $2.0505$ & $0.996$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both the gap and the fraction vacuous increase monotonically with chain length.
+By four stages the additive bound is negative on more than half the trials, and
+by eight stages on almost all of them. The multiplicative form remains in
+$[0,1]$ and informative throughout, by \cref{prop:relax}.
+
+We restate \cref{rem:notcriticism}: the additive form is stated as a bound and
+carries an injectivity hypothesis, and a loose bound is not a wrong one. What
+the measurement shows is how much is given up, and that the tight form is an
+object the host's theory and this construct share.
+
+\subsection{The negative controls}
+
+\paragraph{Plans without a ladder still run.} All eleven shipped plans that
+contain no ladder parse and execute, across all three of the host's fixture
+worlds. This control failed on first run, and the failure was in the control:
+it had loaded a single fixture world and three plans belong to others, so it
+reported three unknown-source errors that were properties of our test rather
+than of the extension. Using the host's own world selector fixed it. We record
+this because a control that fails for its own reasons is worse than no control,
+and the only reason we did not report three spurious regressions is that we
+read the failures instead of the count.
+
+\paragraph{Malformed ladders are refused.} Four malformed declarations---no
+rungs, a power above one, a negative power, and no operand---are all parse
+errors. A fifth check verifies that in
+\hfq{power 0.5, power 0.6 expect power 0.7} the declared rungs are
+$(0.5,0.6)$ and the target is $0.7$.
+
+\begin{remark}[The defect that check exists for]
+\label{rem:defect}
+That last check is present because the first parser failed it. The pattern
+matching a rung looks for the token \hfq{power}, which also occurs inside
+\hfq{expect power}, so the declared target was appended as a third rung: the
+plan composed a ladder nobody had written, and reported a composite for it. No
+verdict would have fired, because nothing failed---the plan simply meant
+something other than what it said. This is the class of silent failure the
+host's verdict rules exist to prevent, arriving inside an extension added to
+the system that prevents it. The fix is to excise the expectation clause before
+reading the rungs, and the check that would have caught it is now in the suite.
+\end{remark}
+
+%==============================================================================
+\section{What Integration Cost}
+\label{sec:cost-of-integration}
+
+A pass count says the extension did not break anything. It does not say what it
+took. We record the size and shape of the change so that a reader can judge
+whether ``it fits'' means anything.
+
+\begin{table}[!htbp]
+\centering
+\caption{The change, by component.}
+\label{tab:diff}
+\begin{tabular}{lll}
+\toprule
+Component & Kind of change & Nature \\
+\midrule
+Parser            & additive & one dispatcher branch, one function, two
+                               defaulted record fields \\
+Executor          & additive & one dispatch branch, one handler, one
+                               defaulted result field \\
+Capability check  & none     & existing guard already exempts local steps \\
+Allocator         & none     & existing guard already charges local steps
+                               nominally \\
+Verdict set       & none     & reuses \vstarve{} and \vempty \\
+Rule order        & none     & \cref{prop:noorder} \\
+Existing tests    & none     & $16/16$ before and after \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[The diff]
+\label{rem:diff}
+Measured against the host's repository the change is $116$ inserted lines
+and one deleted line across two files. The deletion is a comment
+enumerating the step kinds, replaced by the same comment with one kind
+added, so no existing line of executable code was removed or altered. We
+give the number because \emph{additive} is a claim a reader should be able
+to check rather than take on trust.
+\end{remark}
+
+\begin{remark}[What would have counted as not fitting]
+\label{rem:notfitting}
+Any of the following would have been a negative result and we state them so the
+positive one is falsifiable: a new verdict label, since the host argues its six
+are exhaustive; a change to the order of (R1)--(R6), since that order is what
+makes verdicts attributive; a third cost tier; a modification to the capability
+checker, since a bound on its cost is a theorem; or a network dependency, since
+the host forbids one by construction. None was needed. Had one been, the
+honest report would have been that the construct requires its host to change,
+which is a real cost and not a detail.
+\end{remark}
+
+\begin{remark}[The host deserves the credit for two of these]
+\label{rem:credit}
+The capability checker and the allocator required no change because both guard
+on \emph{is this a source access} rather than enumerating the local kinds they
+knew about. That is a choice their author made before this construct existed,
+and it is why adding a new local kind cost nothing. An enumeration would have
+been equally correct at the time and would have made this integration a
+four-file change with two opportunities to get it wrong.
+\end{remark}
+
+%==============================================================================
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.4em]
+
+\item \textbf{The powers are declared, not derived.} In this integration a
+plan writes its rung powers as literals. Deriving them from the data a plan
+retrieves would be a larger change and would raise the question of what the
+derived quantity means for a result set, which we have not answered here.
+
+\item \textbf{The corpus is not evidence about biology.} It is real data, used
+so that the plans have something real to run on. No measurement here supports
+any claim about metabolism, and the ladder powers in our example plans are
+illustrative numbers rather than measured ones.
+
+\item \textbf{The union-bound comparison is over synthetic retentions.}
+\Cref{tab:bound} draws retentions uniformly from $[0.5,0.99]$. The
+qualitative conclusion---the additive form goes vacuous as chains
+lengthen---follows from \cref{prop:relax} and does not depend on the
+distribution, but the specific fractions do.
+
+\item \textbf{We did not test the ladder against a live federation.} By
+construction: the host forbids it. What this paper establishes is a property
+of the compiler, which is the only thing the host's design permits it to
+establish, and we inherit that boundary rather than argue with it.
+
+\item \textbf{One construct is not a general claim about extensibility.} The
+ladder is local, pure and cheap. A construct that needed to issue requests, or
+to fail in a way the six verdicts do not describe, would test the host far
+harder, and nothing here predicts how that would go.
+
+\item \textbf{The edits live on the host's main branch.} They are additive and
+the host's suite passes, but we have not run them past the host's author.
+
+\end{enumerate}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We set out to find whether a composition law proved in isolation survives
+contact with a system built by other hands. The answer, for this construct and
+this host, is that it does, and the interesting part is why.
+
+The ladder needed no new cost model because the host had already been forced to
+distinguish steps that consume requests from steps that do not. It needed no
+new failure mode because the host had already met the situation of a step whose
+input was intact and whose own declaration was at fault, and had already
+decided that such a step should name no predecessor. It needed no change to the
+static checker because that checker asks whether a step reaches a source rather
+than which local kinds exist. In each case the accommodation was already there,
+made for the host's own reasons, and the extension found it rather than
+building it.
+
+Two things went wrong and both are in the record. A regular expression read a
+declared target as an extra rung, so a plan would have composed a ladder nobody
+wrote---a silent failure inside a system designed to make failures loud. And a
+negative control reported three regressions that were artefacts of the control
+loading the wrong fixtures; reading the failures rather than the count is what
+distinguished them from real ones.
+
+The measurement we did not anticipate is the one about the host's own theory.
+HFQ bounds retention below by a union bound, which is the additive relaxation
+of the ladder's law. On chains of four stages the relaxation is negative more
+than half the time, and by eight stages almost always---a lower bound in
+$[0,1]$ that has fallen below zero has stopped saying anything. The tight form
+was available all along, and it is the same formula the ladder composes with.
+Neither line of work was written with the other in view, and they meet at
+$1-\prod_i(1-x_i)$.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

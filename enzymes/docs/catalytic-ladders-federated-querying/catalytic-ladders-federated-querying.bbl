@@ -1,0 +1,48 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004convex}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex Optimization}.
+\newblock Cambridge University Press, 2004.
+
+\bibitem[Halevy et~al.(2006)Halevy, Rajaraman, and Ordille]{halevy2006pdms}
+Alon~Y. Halevy, Anand Rajaraman, and Joann~J. Ordille.
+\newblock Data integration: The teenage years.
+\newblock \emph{Proceedings of the VLDB Endowment}, pages 9--16, 2006.
+
+\bibitem[Kanehisa and Goto(2000)]{kanehisa2000kegg}
+Minoru Kanehisa and Susumu Goto.
+\newblock {KEGG}: Kyoto encyclopedia of genes and genomes.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 27--30,
+  2000.
+
+\bibitem[Milacic et~al.(2024)Milacic, Beavers, Conley,
+  et~al.]{milacic2024reactome}
+Marija Milacic, Deidre Beavers, Patrick Conley, et~al.
+\newblock The reactome pathway knowledgebase 2024.
+\newblock \emph{Nucleic Acids Research}, 52\penalty0 (D1):\penalty0 D672--D678,
+  2024.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2026hfq}
+Kundai~Farai Sachikonye.
+\newblock Hegel federated querying: A plan language with attributive verdicts,
+  capability containment and allocated effort.
+\newblock Manuscript, 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2026ladder}
+Kundai~Farai Sachikonye.
+\newblock A process is a ladder: Catalysis without identities.
+\newblock Manuscript, 2026{\natexlab{b}}.
+
+\bibitem[Sachikonye(2026{\natexlab{c}})]{sachikonye2026shkladder}
+Kundai~Farai Sachikonye.
+\newblock Shakespeare with ladders: Composition, derived power, and the second
+  refusal of a receiver language.
+\newblock Manuscript, 2026{\natexlab{c}}.
+
+\end{thebibliography}

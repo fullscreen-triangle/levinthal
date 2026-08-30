@@ -1,0 +1,12 @@
+{
+  "experiment": "E1 host suite after the ladder is added",
+  "claim": "The host's sixteen checks still hold. This was fixed as the falsification condition before any edit was made.",
+  "exit_code": 0,
+  "total": 16,
+  "passing": 16,
+  "failing": 0,
+  "network_access": "none; every adapter resolves against a local fixture",
+  "snapshot": "fixture-v3",
+  "elapsed_seconds": 0.63,
+  "holds": true
+}

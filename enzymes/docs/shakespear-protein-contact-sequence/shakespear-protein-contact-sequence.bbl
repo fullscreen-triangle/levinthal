@@ -1,0 +1,28 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ford and Fulkerson(1956)]{fordfulkerson1956}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock \emph{Canadian Journal of Mathematics}, 8:\penalty0 399--404, 1956.
+\newblock \doi{10.4153/CJM-1956-045-5}.
+
+\bibitem[Sachikonye(2026{\natexlab{a}})]{sachikonye2026medium}
+Kundai~Farai Sachikonye.
+\newblock The medium vertex and the direction of a protein process: Solvent
+  role, physiological irreversibility, and the first refusal of a receiver
+  language.
+\newblock Manuscript, 2026{\natexlab{a}}.
+
+\bibitem[Sachikonye(2026{\natexlab{b}})]{sachikonye2026shakespeare}
+Kundai~Farai Sachikonye.
+\newblock Shakespeare: A receiver language for protein processes.
+\newblock Language specification. Fixes the contact graph, the medium vertex,
+  the cut primitive and the accountability type system extended here.,
+  2026{\natexlab{b}}.
+
+\end{thebibliography}

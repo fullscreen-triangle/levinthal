@@ -1,0 +1,54 @@
+{
+  "paper": "A Process Is a Ladder: Catalysis Without Identities",
+  "run_utc": "2026-08-29T21:03:38Z",
+  "modules": [
+    {
+      "module": "v1_floor_and_asymmetry",
+      "description": "Floor, its failure branch, and the probe/commit asymmetry",
+      "status": "ok",
+      "counts": {
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v3_composition_and_inertness",
+      "description": "Composition (P1-P3), sensitivity (P4), inertness (P5)",
+      "status": "ok",
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v6_semantics_and_static",
+      "description": "Semantics (P6), static analysis (P7), worked demonstration",
+      "status": "ok",
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "non_discriminating": 0,
+        "descriptive": 0
+      }
+    }
+  ],
+  "tally": {
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "non_discriminating": 0,
+    "descriptive": 0
+  },
+  "scored_tests": 23,
+  "pass_rate_of_scored": 1.0,
+  "failures": [],
+  "non_discriminating": [],
+  "elapsed_seconds": 0.58
+}

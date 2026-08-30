@@ -1,0 +1,172 @@
+{
+  "script": "v1_substrate_and_resolution.py",
+  "tests": [
+    {
+      "test": "V1.1 floor is strictly positive on every finite instance",
+      "instances": [
+        {
+          "instance": "uniform",
+          "n_edges": 10,
+          "floor_computed": 1.0,
+          "positive": true,
+          "total": 10.0
+        },
+        {
+          "instance": "mixed",
+          "n_edges": 10,
+          "floor_computed": 0.5,
+          "positive": true,
+          "total": 16.0
+        },
+        {
+          "instance": "chain",
+          "n_edges": 11,
+          "floor_computed": 0.6413784193170218,
+          "positive": true,
+          "total": 15.701959999909446
+        },
+        {
+          "instance": "adversarial_1e-12",
+          "n_edges": 10,
+          "floor_computed": 1e-12,
+          "positive": true,
+          "total": 8.000000000003
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V1.2 unbounded refinement has infimum zero; truncation restores a floor",
+      "epsilons_cleared": [
+        {
+          "epsilon": 0.1,
+          "first_n_below": 11
+        },
+        {
+          "epsilon": 0.01,
+          "first_n_below": 101
+        },
+        {
+          "epsilon": 0.001,
+          "first_n_below": 1001
+        },
+        {
+          "epsilon": 0.0001,
+          "first_n_below": 10001
+        },
+        {
+          "epsilon": 1e-05,
+          "first_n_below": 100001
+        },
+        {
+          "epsilon": 1e-06,
+          "first_n_below": 1000001
+        },
+        {
+          "epsilon": 1e-07,
+          "first_n_below": 10000001
+        },
+        {
+          "epsilon": 1e-08,
+          "first_n_below": 100000001
+        },
+        {
+          "epsilon": 1e-09,
+          "first_n_below": 1000000001
+        }
+      ],
+      "truncated_to_10_stages_floor": 0.1,
+      "truncated_floor_positive": true,
+      "passed": true
+    },
+    {
+      "test": "V1.3 local separation cost at full radius equals brute force",
+      "n_graphs": 40,
+      "max_abs_deviation": 0.0,
+      "sample_rows": [
+        {
+          "n_items": 5,
+          "item": "v1",
+          "local_wide": 4.773850341962314,
+          "bruteforce": 4.773850341962314,
+          "abs_dev": 0.0
+        },
+        {
+          "n_items": 4,
+          "item": "v0",
+          "local_wide": 3.6730773937918793,
+          "bruteforce": 3.6730773937918793,
+          "abs_dev": 0.0
+        },
+        {
+          "n_items": 4,
+          "item": "v0",
+          "local_wide": 2.574934948823979,
+          "bruteforce": 2.574934948823979,
+          "abs_dev": 0.0
+        },
+        {
+          "n_items": 5,
+          "item": "v2",
+          "local_wide": 3.712376841740398,
+          "bruteforce": 3.712376841740398,
+          "abs_dev": 0.0
+        },
+        {
+          "n_items": 6,
+          "item": "v3",
+          "local_wide": 4.626196317984757,
+          "bruteforce": 4.626196317984757,
+          "abs_dev": 0.0
+        },
+        {
+          "n_items": 6,
+          "item": "v4",
+          "local_wide": 4.138130193899572,
+          "bruteforce": 4.138130193899572,
+          "abs_dev": 0.0
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V1.4 radius is a resolution parameter (fine radius identifies more)",
+      "tolerance": 1e-09,
+      "pairs_identified_by_radius": {
+        "0": 0,
+        "1": 5,
+        "2": 21,
+        "3": 26
+      },
+      "distinct_powers_by_radius": {
+        "0": 138,
+        "1": 130,
+        "2": 116,
+        "3": 114
+      },
+      "mean_ball_overlap_by_radius": {
+        "0": 0.0,
+        "1": 0.2761111111111111,
+        "2": 0.53,
+        "3": 0.7625806451612903
+      },
+      "counts_non_decreasing": true,
+      "overlap_strictly_increasing": true,
+      "distinct_non_increasing": true,
+      "sweep_is_flat": false,
+      "passed": true,
+      "interpretation": "Identification rises with the radius because the balls overlap more, not less: at radius 0 the balls are disjoint singletons and every item gets its own value; at large radius the balls coincide and distinct items minimise over the same edges. The measured overlap is reported so that the direction is explained rather than merely recorded. Our stated prediction was the opposite and this sweep corrected it."
+    },
+    {
+      "test": "V1.5 floor <= local floor <= local separation cost",
+      "n_checked": 3198,
+      "violations": 0,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "n": 5,
+    "passed": 5,
+    "all_passed": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "experiment": "E5 the union bound against the multiplicative law",
+  "claim": "The host's additive lower bound is the relaxation of the ladder's law; it goes vacuous (negative) on most chains of four stages or more.",
+  "n_trials_per_stage_count": 4000,
+  "retention_range": [
+    0.5,
+    0.99
+  ],
+  "rows": [
+    {
+      "stages": 2,
+      "mean_additive_bound": 0.49119839102435503,
+      "mean_multiplicative": 0.9342503157430266,
+      "mean_gap": 0.44305192471867155,
+      "fraction_additive_vacuous": 0.0
+    },
+    {
+      "stages": 3,
+      "mean_additive_bound": 0.23660552393653358,
+      "mean_multiplicative": 0.9835865487295878,
+      "mean_gap": 0.7469810247930543,
+      "fraction_additive_vacuous": 0.1735
+    },
+    {
+      "stages": 4,
+      "mean_additive_bound": -0.011425725731025852,
+      "mean_multiplicative": 0.9958915918330022,
+      "mean_gap": 1.0073173175640282,
+      "fraction_additive_vacuous": 0.51525
+    },
+    {
+      "stages": 5,
+      "mean_additive_bound": -0.28169934806560487,
+      "mean_multiplicative": 0.9989145566383616,
+      "mean_gap": 1.2806139047039664,
+      "fraction_additive_vacuous": 0.81025
+    },
+    {
+      "stages": 6,
+      "mean_additive_bound": -0.5344459812241047,
+      "mean_multiplicative": 0.9997259116847652,
+      "mean_gap": 1.53417189290887,
+      "fraction_additive_vacuous": 0.94225
+    },
+    {
+      "stages": 8,
+      "mean_additive_bound": -1.050513283561067,
+      "mean_multiplicative": 0.9999818002606983,
+      "mean_gap": 2.0504950838217657,
+      "fraction_additive_vacuous": 0.9955
+    }
+  ],
+  "gap_grows_with_length": true,
+  "vacuity_grows_with_length": true,
+  "holds": true,
+  "note": "The additive bound carries an injectivity hypothesis and is stated by its authors as a bound rather than an estimate. A loose bound is not a wrong one; what is measured here is how loose, and that the tight form is the ladder's law."
+}

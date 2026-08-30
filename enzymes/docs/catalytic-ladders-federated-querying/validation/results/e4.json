@@ -1,0 +1,21 @@
+{
+  "experiment": "E4 the ladder occupies the existing zero-cost tier",
+  "claim": "A ladder spends zero budget, exactly as the host's set operations already do, and is allocated the same nominal unit.",
+  "spent": {
+    "a": 1.0,
+    "b": 1.0,
+    "u": 0.0,
+    "L": 0.0
+  },
+  "allocated": {
+    "a": 1.0,
+    "b": 1.0,
+    "u": 1.0,
+    "L": 1.0
+  },
+  "ladder_spends_zero": true,
+  "setop_spends_zero": true,
+  "source_spends_more": true,
+  "requests_issued": 2,
+  "holds": true
+}
