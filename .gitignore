@@ -12,6 +12,15 @@ eggs/
 .eggs/
 lib/
 lib64/
+
+# `lib/` above comes from the Python packaging boilerplate and, having no
+# leading slash, git applies it at EVERY level -- so it also swallows
+# application source directories named lib/. Re-include those here.
+# This one is not cosmetic: without it the Vite build fails outright with
+# "Could not resolve ./lib/shk.js", because the files are absent from the
+# clone while `git status` reports a clean tree.
+!enzymes/web/src/lib/
+!enzymes/web/src/lib/**
 parts/
 sdist/
 var/
@@ -140,6 +149,16 @@ output/
 # Missing these does not fail the build -- the charts just 404 in prod.
 !shakespear/public/data/
 !shakespear/public/data/**
+
+# enzymes/web: the frozen KEGG + Reactome corpus, fetched at runtime.
+# Missing this does not fail the build -- the corpus line just reads
+# "unavailable" and the corpus cells report no data.
+!enzymes/web/public/data/
+!enzymes/web/public/data/**
+
+# enzymes/webtool: the same corpus for the pre-Vite static version.
+!enzymes/webtool/data/
+!enzymes/webtool/data/**
 
 # ============================================================================
 # OTHER

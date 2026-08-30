@@ -1,0 +1,2187 @@
+{
+ "snapshot": "live-20260830",
+ "fetched_utc": "2026-08-30T00:55:58Z",
+ "provenance": {
+  "kegg": {
+   "endpoint": "https://rest.kegg.jp",
+   "records_in_full_corpus": 400
+  },
+  "reactome": {
+   "endpoint": "https://reactome.org/ContentService",
+   "records_in_full_corpus": 904
+  }
+ },
+ "totals": {
+  "kegg_records": 400,
+  "kegg_with_reactions": 372,
+  "reactome_reactions": 904,
+  "reactome_with_catalysts": 353,
+  "n_pathways": 19,
+  "longest_pathways": [
+   58,
+   56,
+   55,
+   55,
+   54,
+   52,
+   52,
+   51
+  ]
+ },
+ "pathways": [
+  {
+   "pathway": "Autophagy",
+   "n_total": 58,
+   "reactions": [
+    {
+     "rid": "R-HSA-9626034",
+     "name": "EEF1A1 dissociates from p-GFAP",
+     "n_in": 1,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626067",
+     "name": "EEF1A1:GTP translocates from lysosomal membrane to cytosol",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626256",
+     "name": "HSPA8:LAMP2a multimers depolymerizes to monomers",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626038",
+     "name": "EEF1A1 binds GTP",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626039",
+     "name": "pGFAP binds GFAP in LAMP2a multimer",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626235",
+     "name": "HSPA8 dissociates from LAMP2a",
+     "n_in": 1,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9622840",
+     "name": "HSPA8 dissociates from LAMP2A-bound substrate",
+     "n_in": 1,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9624158",
+     "name": "Substrate:LAMP2a:HSP90 polymerizes",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626046",
+     "name": "p-GFAP binds EEF1A1",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626242",
+     "name": "p-GFAP:GFAP dissociates from LAMP2a multimer",
+     "n_in": 1,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9625188",
+     "name": "HSPA8 transports unfolded substrate to lysosomal lumen for degradation",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9626276",
+     "name": "HSP90 dissociates from LAMP2a",
+     "n_in": 1,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9620197",
+     "name": "HSPA8:Substrate binds LAMP2a",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9615721",
+     "name": "HSPA8 binds substrate",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    }
+   ]
+  },
+  {
+   "pathway": "Hemostasis",
+   "n_total": 56,
+   "reactions": [
+    {
+     "rid": "R-HSA-8858428",
+     "name": "FCAMR binds IgA",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-203130",
+     "name": "OLR1 binds to oxidized LDL",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-8867135",
+     "name": "CEACAM1,3,5,6 bind opa proteins",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-199093",
+     "name": "CXADR binds to AMICA1",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5676133",
+     "name": "CD74 binds MIF",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-210881",
+     "name": "Dimerization of Tie2/Ang1 complex",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-210977",
+     "name": "Sos-mediated nucleotide exchange of Ras (Tie2 receptor:Grb2:Sos)",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-204871",
+     "name": "Interaction of Tie2 and Grb2",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-204773",
+     "name": "Interaction of Tie2 and Grb7",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-204779",
+     "name": "Interaction of Tie2 with Ang1",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-204873",
+     "name": "Interaction of Tie2 and Shp2",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-204813",
+     "name": "Interaction of Tie2 and Grb14",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-204850",
+     "name": "Interaction of Tie2 and Dok-2",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-210872",
+     "name": "Trans-phosphorylation of Tie2",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    }
+   ]
+  },
+  {
+   "pathway": "Cellular responses to stimuli",
+   "n_total": 55,
+   "reactions": [
+    {
+     "rid": "R-HSA-9857703",
+     "name": "p-S-ITGA5:ITGB1 binds p-S373-GJA1",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9906597",
+     "name": "Activation of AKT1 by shear stress in osteocytes",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9857682",
+     "name": "p-S373-GJA1:p-S-ITGA5:ITGB1 (p-S373-Connexin-43:p-S-Integrin alpha5:Inte",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9855089",
+     "name": "PIEZO1 trimer passively transports cations across the plasma membrane ac",
+     "n_in": 3,
+     "n_out": 3,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9905952",
+     "name": "ATP binds P2RX7 in P2RX7 trimer:PANX1 heptamer",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9857649",
+     "name": "p-S373-GJA1:p-S-ITGA5:ITGB1 (p-S373-Connexin-43:p-S-Integrin alpha5:Inte",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9905999",
+     "name": "Pannexin1 (PANX1) channel in a complex with P2RX7 transports ATP from th",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9905934",
+     "name": "CaV3.2 (CACNA1H:CACNA2D1:CACNB1,2,3:CACNG7) transports calcium from the ",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9905964",
+     "name": "P2RX7 in ATP:P2RX7:PANX1 transports cations from the extracellular regio",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9857661",
+     "name": "p-T308,S473-AKT1 (phospho-PKB) phosphorylates GJA1 (Connexin-43)",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9857673",
+     "name": "p-T308,S473-AKT1 phosphorylates ITGA5 (Integrin alpha5) in ITGA5:ITGB1 (",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9861293",
+     "name": "ADM:CALCRL:RAMP2:G-alpha(s):GTP:G-beta:G-gamma dissociates",
+     "n_in": 1,
+     "n_out": 3,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9861485",
+     "name": "Calpain2 (m-Calpain, CAPN2:CAPNS:Ca2+) cleaves VCL (Vinculin)",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9860833",
+     "name": "AKT1 binds phosphoinositol-3,4,5-trisphosphate (PIP3)",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    }
+   ]
+  },
+  {
+   "pathway": "Extracellular matrix organization",
+   "n_total": 55,
+   "reactions": [
+    {
+     "rid": "R-HSA-2466106",
+     "name": "BGN binds Collagen types I, VI, (IX)",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2465883",
+     "name": "VTN binds collagens I, IV and VI",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2318623",
+     "name": "Aggrecan binds Hyaluronan and HAPLN1",
+     "n_in": 3,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2466238",
+     "name": "BGN binds Collagen types II, III",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2681681",
+     "name": "Tenascins C, R, (X, N) bind fibronectin matrix",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2424252",
+     "name": "COMP binds collagen, fibronectin, aggrecan and matrilins",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2396124",
+     "name": "AGRN binds Laminins with gamma-1 subunit",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2424243",
+     "name": "SPARC binds Collagen type I fibril, hydroxylapatite and Ca2+",
+     "n_in": 4,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2396370",
+     "name": "VTN binds collagens II, III and V",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2467665",
+     "name": "AGRN binds Beta amyloid fibril via GAG chains",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2467633",
+     "name": "AGRN binds LRP4:MUSK",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2424246",
+     "name": "Tenascins C, R, (X, N) bind lecticans",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2396395",
+     "name": "HSPG2 (perlecan) binds alpha-dystroglycan",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2467659",
+     "name": "AGRN binds NCAM1, PTPRS",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    }
+   ]
+  },
+  {
+   "pathway": "Immune System",
+   "n_total": 54,
+   "reactions": [
+    {
+     "rid": "R-HSA-2730868",
+     "name": "Phosphorylation of MEK7 by MEKK1",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2396606",
+     "name": "Recruitment of PLC-gamma to SLP-76 and p-5Y-LAT",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2730896",
+     "name": "Phosphorylation of MEK4 by MEKK1",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2424477",
+     "name": "SOS mediated nucleotide exchange of RAS (SHC)",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2396561",
+     "name": "Recruitment of GADS:SLP-76 to p-5Y-LAT",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2730844",
+     "name": "Interaction of GRB2:SOS complex with p-SHC1",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-450325",
+     "name": "c-FOS activation by phospho ERK1/2",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2396599",
+     "name": "Recruitment of GRB2:SOS to p-5Y-LAT",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-450292",
+     "name": "Formation of Activated Protein 1 (AP-1) complex. cFOS/c-JUN heterodimer.",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2730840",
+     "name": "Activation of RAC1 by VAV",
+     "n_in": 3,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2730841",
+     "name": "Phosphorylation and activation of VAV",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-2730886",
+     "name": "Phosphorylation of SHC by SYK kinase",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2730887",
+     "name": "Autophosphorylation and activation of MEKK1",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-168136",
+     "name": "Activated JNKs phosphorylate c-JUN",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    }
+   ]
+  },
+  {
+   "pathway": "DNA Repair",
+   "n_total": 52,
+   "reactions": [
+    {
+     "rid": "R-HSA-5358912",
+     "name": "MSH2:MSH6 exchanges ADP for ATP",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358592",
+     "name": "DNA ligase I ligates single stranded nick in double stranded DNA",
+     "n_in": 2,
+     "n_out": 3,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-5358579",
+     "name": "DNA polymerase delta polymerizes DNA across single stranded gap",
+     "n_in": 5,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-5358597",
+     "name": "EXO1 interacts with MSH2:MSH6 (MutSalpha) and MLH1:PMS2 (MutLalpha)",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358599",
+     "name": "EXO1 interacting with MSH2:MSH6 excises single strand DNA containing a m",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-5444516",
+     "name": "Formation of MSH2:MSH6 Complex",
+     "n_in": 3,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358518",
+     "name": "MLH1:PMS2 makes single strand incision near 1-2 base mismatch",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-5444523",
+     "name": "Formation of MSH1:PMS2 Complex",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358525",
+     "name": "MSH2:MSH6 binds 1 base mismatch or 1-2 base insertion/deletion loop",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358510",
+     "name": "MSH2:MSH6 recruits MLH1:PMS2 to mismatch and interacts with PCNA",
+     "n_in": 3,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358513",
+     "name": "MSH2:MSH3 binds insertion/deletion loop of 2 bases or more",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358545",
+     "name": "EXO1 interacts with MSH2:MSH3 (MutSbeta) and MLH1:PMS2 (MutLalpha)",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-5358512",
+     "name": "MLH1:PMS2 makes single strand incision near  insertion/deletion loop of ",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-5358919",
+     "name": "MSH2:MSH3 exchanges ADP for ATP",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 0
+    }
+   ]
+  },
+  {
+   "pathway": "Drug ADME",
+   "n_total": 52,
+   "reactions": [
+    {
+     "rid": "R-HSA-2162096",
+     "name": "carbovir diphosphate + ATP => carbovir triphosphate + ADP",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2162066",
+     "name": "carbovir + IMP => carbovir monophosphate + inosine",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2162099",
+     "name": "abacavir + UDP-glucuronate => abacavir 5'-glucuronide + UDP",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2161193",
+     "name": "abacavir + AMP => abacavir monophosphate + adenosine",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2161195",
+     "name": "abacavir monophosphate + H2O => carbovir monophosphate + cyclopropylamin",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2162092",
+     "name": "carbovir monophosphate + ATP => carbovir diphosphate + ADP",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2162078",
+     "name": "abacavir + 2 NAD+ => abacavir 5'-carboxylate + 2 NADH + 2 H+",
+     "n_in": 2,
+     "n_out": 3,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2161506",
+     "name": "abacavir [cytosol] + ATP + H2O => abacavir[extracellular] + ADP + phosph",
+     "n_in": 3,
+     "n_out": 3,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2161538",
+     "name": "abacavir [cytosol] + ATP + H2O => abacavir[extracellular] + ADP + phosph",
+     "n_in": 3,
+     "n_out": 3,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-2161500",
+     "name": "abacavir [extracellular] => abacavir [cytosol]",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9757706",
+     "name": "HSD11B1 hydrogenates PREDN to PREDL in hepatic cell",
+     "n_in": 3,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9757578",
+     "name": "ALB binds PREDN",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9762345",
+     "name": "PREDN:ALB dissociates",
+     "n_in": 1,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9757698",
+     "name": "PREDN,PREDL diffuse into hepatic cells",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    }
+   ]
+  },
+  {
+   "pathway": "Circadian clock",
+   "n_total": 51,
+   "reactions": [
+    {
+     "rid": "R-HSA-9920724",
+     "name": "p-T451,T461-CLOCK is phosphorylated on serines-440,441,446",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9920716",
+     "name": "CLOCK acetylates BMAL1 on lysine-538",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9912390",
+     "name": "p-S90-BMAL1 binds p-T451,T461-CLOCK",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9912401",
+     "name": "CK2alpha phosphorylates BMAL1 (ARNTL) on serine-90",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9912396",
+     "name": "CDK5 phosphorylates CLOCK on serine-451 and serine-461",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9920665",
+     "name": "p-S90-BMAL1:p-T451,T461-CLOCK translocates from the cytosol to the nucle",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9932535",
+     "name": "FBXL3:CUL1:SKP1:RBX1 binds phosphorylated CRY1,2",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9934887",
+     "name": "Proteolysis of K48polyUb-K107,p-S-CRY1,K48polyUb-K126,p-S-CRY2",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9932869",
+     "name": "FBXL21:CUL1:SKP1:RBX1 binds phosphorylated CRY1,2",
+     "n_in": 2,
+     "n_out": 1,
+     "n_cat": 0
+    },
+    {
+     "rid": "R-HSA-9934884",
+     "name": "Proteolysis of K48polyUb,p-S-CRY1,2",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9932512",
+     "name": "FBXL3:CUL1:SKP1:RBX1 ubiquitinylates phosphorylated CRY1,2",
+     "n_in": 2,
+     "n_out": 3,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9932510",
+     "name": "BTRC:CUL1:SKP1:RBX1 (SCF-beta-TrCP1) ubiquitinylates phosphorylated PER1",
+     "n_in": 2,
+     "n_out": 2,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9934893",
+     "name": "Proteolysis of K48polyUb-K,p-S-PER1,2,3",
+     "n_in": 1,
+     "n_out": 1,
+     "n_cat": 1
+    },
+    {
+     "rid": "R-HSA-9932859",
+     "name": "FBXL21:CUL1:SKP1:RBX1 ubiquitinylates phosphorylated CRY1,2",
+     "n_in": 2,
+     "n_out": 3,
+     "n_cat": 0
+    }
+   ]
+  }
+ ],
+ "kegg": [
+  {
+   "ec": "1.1.1.1",
+   "n_rxn": 19,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.2",
+   "n_rxn": 7,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.3",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.4",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.6",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.7",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.8",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.9",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.10",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.11",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.12",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.13",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.14",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.15",
+   "n_rxn": 4,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.16",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.17",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.18",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.19",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.20",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.21",
+   "n_rxn": 14,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.22",
+   "n_rxn": 1,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.23",
+   "n_rxn": 3,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.24",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.25",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.26",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.27",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.28",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.29",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.30",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.31",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.34",
+   "n_rxn": 1,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.35",
+   "n_rxn": 15,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.36",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.37",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.38",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.39",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.40",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.41",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.42",
+   "n_rxn": 3,
+   "n_sub": 3,
+   "n_prod": 5
+  },
+  {
+   "ec": "1.1.1.43",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.44",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.45",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.46",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.47",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.48",
+   "n_rxn": 4,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.49",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.50",
+   "n_rxn": 23,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.51",
+   "n_rxn": 12,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.52",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.53",
+   "n_rxn": 5,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.54",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.55",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.56",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.57",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.58",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.59",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.60",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.61",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.62",
+   "n_rxn": 6,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.64",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.65",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.66",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.67",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.69",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.71",
+   "n_rxn": 6,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.72",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.73",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.75",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.76",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.77",
+   "n_rxn": 4,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.78",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.79",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.80",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.81",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.82",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.83",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.84",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.85",
+   "n_rxn": 4,
+   "n_sub": 3,
+   "n_prod": 5
+  },
+  {
+   "ec": "1.1.1.86",
+   "n_rxn": 6,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.87",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.88",
+   "n_rxn": 1,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.90",
+   "n_rxn": 7,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.91",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.92",
+   "n_rxn": 2,
+   "n_sub": 4,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.93",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.94",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.95",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.97",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.98",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.99",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.100",
+   "n_rxn": 11,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.101",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.102",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.103",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.104",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.105",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.106",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.107",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.108",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.110",
+   "n_rxn": 3,
+   "n_sub": 4,
+   "n_prod": 5
+  },
+  {
+   "ec": "1.1.1.111",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.112",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.113",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.114",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.115",
+   "n_rxn": 1,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.116",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.117",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.118",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.119",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.120",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.121",
+   "n_rxn": 4,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.122",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.123",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.124",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.125",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.126",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.127",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.129",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.130",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.131",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.132",
+   "n_rxn": 1,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.133",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.134",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.135",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.136",
+   "n_rxn": 1,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.137",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.138",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.140",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.141",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.142",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.143",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.144",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.145",
+   "n_rxn": 10,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.146",
+   "n_rxn": 6,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.147",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.148",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.149",
+   "n_rxn": 5,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.150",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.151",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.152",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.153",
+   "n_rxn": 5,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.154",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.156",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.157",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.159",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.160",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.162",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.163",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.164",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.165",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.166",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.167",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.168",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.169",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.170",
+   "n_rxn": 7,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.172",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.173",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.174",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.175",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.176",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.177",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.178",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.179",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.181",
+   "n_rxn": 6,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.183",
+   "n_rxn": 4,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.184",
+   "n_rxn": 5,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.185",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.186",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.187",
+   "n_rxn": 4,
+   "n_sub": 4,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.188",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.189",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.190",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.191",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.192",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.193",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.194",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.195",
+   "n_rxn": 6,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.196",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.197",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.198",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.199",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.200",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.201",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.202",
+   "n_rxn": 2,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.203",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.205",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.206",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.207",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.208",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.209",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.210",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.211",
+   "n_rxn": 10,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.212",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.213",
+   "n_rxn": 8,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.214",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.215",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.216",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.217",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.218",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.219",
+   "n_rxn": 6,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.220",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.221",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.223",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.224",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.225",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.226",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.227",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.228",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.229",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.230",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.231",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.232",
+   "n_rxn": 2,
+   "n_sub": 3,
+   "n_prod": 4
+  },
+  {
+   "ec": "1.1.1.233",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.234",
+   "n_rxn": 3,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.235",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.236",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.237",
+   "n_rxn": 6,
+   "n_sub": 4,
+   "n_prod": 5
+  },
+  {
+   "ec": "1.1.1.238",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.239",
+   "n_rxn": 4,
+   "n_sub": 2,
+   "n_prod": 3
+  },
+  {
+   "ec": "1.1.1.240",
+   "n_rxn": 1,
+   "n_sub": 2,
+   "n_prod": 3
+  }
+ ]
+}
