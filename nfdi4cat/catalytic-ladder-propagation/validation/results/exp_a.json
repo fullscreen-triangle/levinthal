@@ -1,0 +1,161 @@
+{
+  "experiment": "A",
+  "checks": [
+    {
+      "name": "floor(hand)",
+      "pass": true,
+      "detail": "beta=5.000e+00 expected 5.000e+00",
+      "control": false
+    },
+    {
+      "name": "floor(adversarial-1e-12)",
+      "pass": true,
+      "detail": "beta=1.000e+00 expected 1.000e+00",
+      "control": false
+    },
+    {
+      "name": "floor(chain) > 0",
+      "pass": true,
+      "detail": "beta=11.000000",
+      "control": false
+    },
+    {
+      "name": "floor positive on every instance",
+      "pass": true,
+      "detail": "3/3",
+      "control": false
+    },
+    {
+      "name": "unbounded refinement has infimum 0",
+      "pass": true,
+      "detail": "min=2.506e-03 > 0, but clears every eps down to 1e-2",
+      "control": false
+    },
+    {
+      "name": "truncation restores a positive floor",
+      "pass": true,
+      "detail": "floor(first 10) = 0.1",
+      "control": false
+    },
+    {
+      "name": "identity is a region, not a point",
+      "pass": true,
+      "detail": "minimiser for a0 has 4 vertices and contains the whole core (cost 1); no singleton attains it",
+      "control": false
+    },
+    {
+      "name": "multiplicative law exact",
+      "pass": true,
+      "detail": "MAE=0.000e+00",
+      "control": false
+    },
+    {
+      "name": "alternatives are worse (comparison is the test)",
+      "pass": true,
+      "detail": "additive=0.0545 max=0.1491 mean=0.4308",
+      "control": false
+    },
+    {
+      "name": "additive argmax is the highest-power rung",
+      "pass": true,
+      "detail": "5000/5000",
+      "control": false
+    },
+    {
+      "name": "proportional sensitivity is flat",
+      "pass": true,
+      "detail": "max spread over rungs = 1.110e-16",
+      "control": false
+    },
+    {
+      "name": "analytic derivative matches numerical",
+      "pass": true,
+      "detail": "max |analytic - numerical| = 1.33e-10",
+      "control": false
+    },
+    {
+      "name": "repetition rises strictly and never attains 1",
+      "pass": true,
+      "detail": "n=39 gives 0.999999",
+      "control": false
+    },
+    {
+      "name": "cost of a target",
+      "pass": true,
+      "detail": "reaching 0.80 with rungs <= 0.55 needs 3 rungs",
+      "control": false
+    },
+    {
+      "name": "divergent series drives the gap to zero",
+      "pass": true,
+      "detail": "residual = 2.501e-04",
+      "control": false
+    },
+    {
+      "name": "convergent series plateaus at positive residual",
+      "pass": true,
+      "detail": "residual = 0.5001",
+      "control": false
+    },
+    {
+      "name": "rho = -log(1 - composite) on linear ladders (so it adds nothing there)",
+      "pass": true,
+      "detail": "max deviation = 1.39e-13",
+      "control": false
+    },
+    {
+      "name": "uniformity separates ladders that share a composite power",
+      "pass": true,
+      "detail": "2518/4000 pairs differ in upsilon at equal composite",
+      "control": false
+    },
+    {
+      "name": "circulation vanishes exactly on inertness",
+      "pass": true,
+      "detail": "rho=0 iff every rung inert",
+      "control": false
+    },
+    {
+      "name": "both invariants are rotation invariant",
+      "pass": true,
+      "detail": "rho and upsilon constant over all rotations",
+      "control": false
+    },
+    {
+      "name": "cycle length is not recoverable from (rho, upsilon)",
+      "pass": true,
+      "detail": "n=3 at pi=0.400 and n=6 at pi=0.2254 share rho and upsilon=1",
+      "control": false
+    },
+    {
+      "name": "a constant statistic does NOT discriminate",
+      "pass": true,
+      "detail": "reported so that A2's separation is known not to be automatic",
+      "control": true
+    },
+    {
+      "name": "permutation test is NON-DISCRIMINATING (excluded from score)",
+      "pass": true,
+      "detail": "1 distinct composite over all permutations -- the law is symmetric, so this check cannot fail and is not counted",
+      "control": true
+    },
+    {
+      "name": "labels move nothing; powers move everything",
+      "pass": true,
+      "detail": "label delta=0.0e+00, power delta=0.0231",
+      "control": false
+    }
+  ],
+  "scored": 23,
+  "passed": 23,
+  "controls": 1,
+  "excluded_nondiscriminating": 1,
+  "composition_mae": {
+    "multiplicative": 0.0,
+    "additive": 0.054549580106298234,
+    "max": 0.1491388399441055,
+    "mean": 0.4308340897936812
+  },
+  "proportional_max_spread": 1.1102230246251565e-16,
+  "additive_argmax_strongest": "5000/5000"
+}
