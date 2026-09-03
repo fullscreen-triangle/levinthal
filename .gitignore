@@ -21,6 +21,12 @@ lib64/
 # clone while `git status` reports a clean tree.
 !enzymes/web/src/lib/
 !enzymes/web/src/lib/**
+# Any web app's src/lib/ is application source, never Python build output.
+# Generic so a new app does not silently lose its modules the way the two
+# above did; a clone missing these fails the Vite build while `git status`
+# reports a clean tree.
+!**/web/src/lib/
+!**/web/src/lib/**
 parts/
 sdist/
 var/
