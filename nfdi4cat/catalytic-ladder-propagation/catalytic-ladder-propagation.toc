@@ -13,41 +13,46 @@
 \contentsline {subsection}{\numberline {5.1}Sensitivity, and a correction}{9}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Closed ladders}{10}{subsection.5.2}%
 \contentsline {part}{III\hspace {1em}What Retrieval Cannot Do}{10}{part.3}%
-\contentsline {section}{\numberline {6}Admissibility is not retrieval}{11}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Two kinds of question}{11}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The separation}{11}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Two representations, one system}{12}{subsection.6.3}%
+\contentsline {section}{\numberline {6}Admissibility is not retrieval}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Two kinds of question}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The separation}{12}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Two representations, one system}{13}{subsection.6.3}%
 \contentsline {section}{\numberline {7}The medium}{13}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Solvent role is computed}{13}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.1}Solvent role is computed}{14}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Direction is a property of the medium}{14}{subsection.7.2}%
 \contentsline {subsection}{\numberline {7.3}A saturation asymmetry we did not anticipate}{15}{subsection.7.3}%
-\contentsline {part}{IV\hspace {1em}The Architecture}{15}{part.4}%
-\contentsline {section}{\numberline {8}The plan language and its verdicts}{16}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Why a plan language and not a query language}{16}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Six verdicts}{16}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}The stencil}{17}{subsection.8.3}%
-\contentsline {part}{V\hspace {1em}Validation}{17}{part.5}%
-\contentsline {section}{\numberline {9}Protocol}{17}{section.9}%
-\contentsline {section}{\numberline {10}Results}{18}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Experiment A: the ladder algebra}{18}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Experiment B: expressibility}{19}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Experiment C: twenty-eight questions}{19}{subsection.10.3}%
-\contentsline {paragraph}{The dataset filters discriminate.}{19}{section*.6}%
-\contentsline {paragraph}{One identifier, three verdicts.}{19}{section*.7}%
-\contentsline {paragraph}{Two waters, opposite roles.}{20}{section*.8}%
-\contentsline {paragraph}{The refusals carry remedies.}{20}{section*.9}%
-\contentsline {subsection}{\numberline {10.4}Experiment D: route divergence}{20}{subsection.10.4}%
-\contentsline {subsection}{\numberline {10.5}Reading divergence as coverage}{20}{subsection.10.5}%
-\contentsline {subsection}{\numberline {10.6}Summary of outcomes}{23}{subsection.10.6}%
-\contentsline {part}{VI\hspace {1em}Scope}{23}{part.6}%
-\contentsline {section}{\numberline {11}What this does not do}{23}{section.11}%
-\contentsline {paragraph}{No experimental validation.}{23}{section*.13}%
-\contentsline {paragraph}{The powers are declared, not derived.}{23}{section*.14}%
-\contentsline {paragraph}{Translation supplies structure.}{23}{section*.15}%
-\contentsline {paragraph}{The medium weight is a modelling choice.}{23}{section*.16}%
-\contentsline {paragraph}{No kinetics and no thermodynamics.}{24}{section*.17}%
-\contentsline {paragraph}{Fixtures are not the public resources.}{24}{section*.18}%
-\contentsline {paragraph}{Capability declarations are asserted.}{24}{section*.19}%
-\contentsline {paragraph}{One construct is not a general claim.}{24}{section*.20}%
-\contentsline {section}{\numberline {12}Conclusion}{24}{section.12}%
-\contentsline {section}{Reproducibility}{25}{section*.21}%
+\contentsline {part}{IV\hspace {1em}The Architecture}{16}{part.4}%
+\contentsline {section}{\numberline {8}The plan language and its verdicts}{17}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Why a plan language and not a query language}{17}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Six verdicts}{17}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}The stencil}{18}{subsection.8.3}%
+\contentsline {part}{V\hspace {1em}Validation}{18}{part.5}%
+\contentsline {section}{\numberline {9}Protocol}{18}{section.9}%
+\contentsline {section}{\numberline {10}Results}{19}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Experiment A: the ladder algebra}{19}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Experiment B: expressibility}{20}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Experiment C: twenty-eight questions}{20}{subsection.10.3}%
+\contentsline {paragraph}{The dataset filters discriminate.}{20}{section*.6}%
+\contentsline {paragraph}{One identifier, three verdicts.}{20}{section*.7}%
+\contentsline {paragraph}{Two waters, opposite roles.}{21}{section*.8}%
+\contentsline {paragraph}{The refusals carry remedies.}{21}{section*.9}%
+\contentsline {subsection}{\numberline {10.4}Experiment D: route divergence}{21}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Reading divergence as coverage}{23}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}What running the suite changed}{23}{subsection.10.6}%
+\contentsline {paragraph}{A hand-computed floor that was wrong, in the way the paper warns about.}{23}{section*.12}%
+\contentsline {paragraph}{An adversarial instance that does not do what its name suggests.}{23}{section*.13}%
+\contentsline {paragraph}{A one-sided sweep that looked like a refutation.}{23}{section*.14}%
+\contentsline {paragraph}{A check that was scored when it should have been excluded.}{24}{section*.15}%
+\contentsline {subsection}{\numberline {10.7}Summary of outcomes}{25}{subsection.10.7}%
+\contentsline {part}{VI\hspace {1em}Scope}{25}{part.6}%
+\contentsline {section}{\numberline {11}What this does not do}{25}{section.11}%
+\contentsline {paragraph}{No experimental validation.}{25}{section*.17}%
+\contentsline {paragraph}{The powers are declared, not derived.}{25}{section*.18}%
+\contentsline {paragraph}{Translation supplies structure.}{25}{section*.19}%
+\contentsline {paragraph}{The medium weight is a modelling choice.}{25}{section*.20}%
+\contentsline {paragraph}{No kinetics and no thermodynamics.}{26}{section*.21}%
+\contentsline {paragraph}{Fixtures are not the public resources.}{26}{section*.22}%
+\contentsline {paragraph}{Capability declarations are asserted.}{26}{section*.23}%
+\contentsline {paragraph}{One construct is not a general claim.}{26}{section*.24}%
+\contentsline {section}{\numberline {12}Conclusion}{26}{section.12}%
+\contentsline {section}{Reproducibility}{27}{section*.25}%
