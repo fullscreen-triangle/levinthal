@@ -1,0 +1,65 @@
+{
+  "experiment": "D",
+  "live": {
+    "reachable": true,
+    "form_a": 2,
+    "form_b": 397,
+    "date": "2026-09-03",
+    "secs_a": 2.7,
+    "secs_b": 37.3
+  },
+  "snapshot": {
+    "endpoint_classes": 217544
+  },
+  "checks": [
+    {
+      "name": "the two spellings diverge against the endpoint",
+      "pass": true,
+      "detail": "Form A returns 2, Form B returns 397, on 2026-09-03",
+      "control": false
+    },
+    {
+      "name": "both spellings agree on both local engines",
+      "pass": true,
+      "detail": "rdflib ['r1'] == ['r1']; pyoxigraph ['r1'] == ['r1']",
+      "control": false
+    },
+    {
+      "name": "both engines agree with the hand computation",
+      "pass": true,
+      "detail": "expected ['r1'] by hand; got ['r1'] and ['r1']",
+      "control": false
+    },
+    {
+      "name": "CONTROL: the miniature separates a query that should return nothing",
+      "pass": true,
+      "detail": "an oxidant root present in no record returns []; without this the agreement above would be consistent with a query matching everything",
+      "control": true
+    },
+    {
+      "name": "count comparisons across artefacts are confounded",
+      "pass": true,
+      "detail": "the endpoint's loaded ontology carries 217544 classes today; a count taken against a downloaded artefact is a different snapshot and is not a control",
+      "control": false
+    }
+  ],
+  "local": {
+    "rdflib_A": [
+      "r1"
+    ],
+    "rdflib_B": [
+      "r1"
+    ],
+    "oxi_A": [
+      "r1"
+    ],
+    "oxi_B": [
+      "r1"
+    ],
+    "expected": [
+      "r1"
+    ]
+  },
+  "scored": 4,
+  "passed": 4
+}

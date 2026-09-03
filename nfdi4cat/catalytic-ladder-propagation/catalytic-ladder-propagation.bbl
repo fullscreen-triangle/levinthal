@@ -1,0 +1,383 @@
+\begin{thebibliography}{50}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alc\'{a}ntara et~al.(2012)Alc\'{a}ntara, Axelsen, Morgat, Belda,
+  Coudert, Bridge, Cao, de~Matos, Ennis, Turner, Owen, Bougueleret, Xenarios,
+  and Steinbeck]{alcantara2012}
+Rafael Alc\'{a}ntara, Kristian~B. Axelsen, Anne Morgat, Eugeni Belda, Elisabeth
+  Coudert, Alan Bridge, Hong Cao, Paula de~Matos, Marcus Ennis, Steve Turner,
+  Gareth Owen, Lydie Bougueleret, Ioannis Xenarios, and Christoph Steinbeck.
+\newblock {Rhea}---a manually curated resource of biochemical reactions.
+\newblock \emph{Nucleic Acids Research}, 40\penalty0 (D1):\penalty0 D754--D760,
+  2012.
+\newblock \doi{10.1093/nar/gkr1126}.
+
+\bibitem[Angles et~al.(2017)Angles, Arenas, Barcel\'{o}, Hogan, Reutter, and
+  Vrgo\v{c}]{angles2017}
+Renzo Angles, Marcelo Arenas, Pablo Barcel\'{o}, Aidan Hogan, Juan Reutter, and
+  Domagoj Vrgo\v{c}.
+\newblock Foundations of modern query languages for graph databases.
+\newblock \emph{ACM Computing Surveys}, 50\penalty0 (5):\penalty0 1--40, 2017.
+\newblock \doi{10.1145/3104031}.
+
+\bibitem[Ashburner et~al.(2000)Ashburner, Ball, Blake, Botstein, Butler,
+  Cherry, Davis, Dolinski, Dwight, Eppig, Harris, Hill, Issel-Tarver,
+  Kasarskis, Lewis, Matese, Richardson, Ringwald, Rubin, and
+  Sherlock]{ashburner2000}
+Michael Ashburner, Catherine~A. Ball, Judith~A. Blake, David Botstein, Heather
+  Butler, J.~Michael Cherry, Allan~P. Davis, Kara Dolinski, Selina~S. Dwight,
+  Janan~T. Eppig, Midori~A. Harris, David~P. Hill, Laurie Issel-Tarver, Andrew
+  Kasarskis, Suzanna Lewis, John~C. Matese, Joel~E. Richardson, Martin
+  Ringwald, Gerald~M. Rubin, and Gavin Sherlock.
+\newblock Gene ontology: Tool for the unification of biology.
+\newblock \emph{Nature Genetics}, 25\penalty0 (1):\penalty0 25--29, 2000.
+\newblock \doi{10.1038/75556}.
+
+\bibitem[Baader et~al.(2003)Baader, Calvanese, McGuinness, Nardi, and
+  Patel-Schneider]{baader2003}
+Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
+  Peter~F. Patel-Schneider, editors.
+\newblock \emph{The Description Logic Handbook: Theory, Implementation and
+  Applications}.
+\newblock Cambridge University Press, 2003.
+
+\bibitem[Ball(2008)]{ball2008}
+Philip Ball.
+\newblock Water as an active constituent in cell biology.
+\newblock \emph{Chemical Reviews}, 108\penalty0 (1):\penalty0 74--108, 2008.
+\newblock \doi{10.1021/cr068037a}.
+
+\bibitem[Bansal et~al.(2022)Bansal, Morgat, Axelsen, Muthukrishnan, Coudert,
+  Aimo, Hyka-Nouspikel, Gasteiger, Kerhornou, Neto, Pozzato, Blatter,
+  Ignatchenko, Redaschi, and Bridge]{bansal2022}
+Parit Bansal, Anne Morgat, Kristian~B. Axelsen, Venkatesh Muthukrishnan,
+  Elisabeth Coudert, Lucila Aimo, Nevila Hyka-Nouspikel, Elisabeth Gasteiger,
+  Arnaud Kerhornou, Teresa~Batista Neto, Monica Pozzato, Marie-Claude Blatter,
+  Alex Ignatchenko, Nicole Redaschi, and Alan Bridge.
+\newblock {Rhea}, the reaction knowledgebase in 2022.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D693--D700,
+  2022.
+\newblock \doi{10.1093/nar/gkab1016}.
+
+\bibitem[Bar-Even et~al.(2011)Bar-Even, Noor, Savir, Liebermeister, Davidi,
+  Tawfik, and Milo]{barevenn2011}
+Arren Bar-Even, Elad Noor, Yonatan Savir, Wolfram Liebermeister, Dan Davidi,
+  Dan~S. Tawfik, and Ron Milo.
+\newblock The moderately efficient enzyme: Evolutionary and physicochemical
+  trends shaping enzyme parameters.
+\newblock \emph{Biochemistry}, 50\penalty0 (21):\penalty0 4402--4410, 2011.
+\newblock \doi{10.1021/bi2002289}.
+
+\bibitem[Barcel\'{o}~Baeza(2013)]{barcelo2013}
+Pablo Barcel\'{o}~Baeza.
+\newblock Querying graph databases.
+\newblock \emph{Proceedings of the 32nd ACM SIGMOD-SIGACT-SIGAI Symposium on
+  Principles of Database Systems (PODS)}, pages 175--188, 2013.
+\newblock \doi{10.1145/2463664.2465216}.
+
+\bibitem[Beard and Qian(2007)]{beard2007}
+Daniel~A. Beard and Hong Qian.
+\newblock Relationship between thermodynamic driving force and one-way fluxes
+  in reversible processes.
+\newblock \emph{PLOS ONE}, 2\penalty0 (1):\penalty0 e144, 2007.
+\newblock \doi{10.1371/journal.pone.0000144}.
+
+\bibitem[Beer et~al.(2001)Beer, Ben-David, Eisner, and Rodeh]{beer2001}
+Ilan Beer, Shoham Ben-David, Cindy Eisner, and Yoav Rodeh.
+\newblock Efficient detection of vacuity in temporal model checking.
+\newblock \emph{Formal Methods in System Design}, 18\penalty0 (2):\penalty0
+  141--163, 2001.
+\newblock \doi{10.1023/A:1008779610539}.
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex Optimization}.
+\newblock Cambridge University Press, 2004.
+
+\bibitem[Buil-Aranda et~al.(2013)Buil-Aranda, Hogan, Umbrich, and
+  Vandenbussche]{buil2013federated}
+Carlos Buil-Aranda, Aidan Hogan, J\"{u}rgen Umbrich, and Pierre-Yves
+  Vandenbussche.
+\newblock {SPARQL} web-querying infrastructure: Ready for action?
+\newblock \emph{The Semantic Web -- ISWC 2013}, pages 277--293, 2013.
+\newblock \doi{10.1007/978-3-642-41338-4_18}.
+
+\bibitem[Cleland(1963)]{cleland1963}
+W.~Wallace Cleland.
+\newblock The kinetics of enzyme-catalyzed reactions with two or more
+  substrates or products.
+\newblock \emph{Biochimica et Biophysica Acta}, 67:\penalty0 104--137, 1963.
+\newblock \doi{10.1016/0926-6569(63)90211-6}.
+
+\bibitem[Cormen et~al.(2009)Cormen, Leiserson, Rivest, and Stein]{cormen2009}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock \emph{Introduction to Algorithms}.
+\newblock MIT Press, 3 edition, 2009.
+
+\bibitem[Cover and Thomas(2006)]{cover2006}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley, 2 edition, 2006.
+
+\bibitem[Creighton(1993)]{creighton1993}
+Thomas~E. Creighton.
+\newblock Proteins: Structures and molecular properties.
+\newblock \emph{W. H. Freeman}, 1993.
+
+\bibitem[Cuenca~Grau et~al.(2008)Cuenca~Grau, Horrocks, Motik, Parsia,
+  Patel-Schneider, and Sattler]{grau2008}
+Bernardo Cuenca~Grau, Ian Horrocks, Boris Motik, Bijan Parsia, Peter
+  Patel-Schneider, and Ulrike Sattler.
+\newblock {OWL} 2: The next step for {OWL}.
+\newblock \emph{Journal of Web Semantics}, 6\penalty0 (4):\penalty0 309--322,
+  2008.
+\newblock \doi{10.1016/j.websem.2008.05.001}.
+
+\bibitem[Demir et~al.(2010)Demir, Cary, Paley, Fukuda, Lemer, Vastrik, Wu,
+  D'Eustachio, Schaefer, Luciano, et~al.]{demir2010}
+Emek Demir, Michael~P. Cary, Suzanne Paley, Ken Fukuda, Christian Lemer, Imre
+  Vastrik, Guanming Wu, Peter D'Eustachio, Carl Schaefer, Joanne Luciano,
+  et~al.
+\newblock The {BioPAX} community standard for pathway data sharing.
+\newblock \emph{Nature Biotechnology}, 28\penalty0 (9):\penalty0 935--942,
+  2010.
+\newblock \doi{10.1038/nbt.1666}.
+
+\bibitem[Ford and Fulkerson(1956)]{fordfulkerson1956}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock \emph{Canadian Journal of Mathematics}, 8:\penalty0 399--404, 1956.
+\newblock \doi{10.4153/CJM-1956-045-5}.
+
+\bibitem[Gaudet and Dessimoz(2017)]{gaudet2017}
+Pascale Gaudet and Christophe Dessimoz.
+\newblock Gene ontology: Pitfalls, biases, and remedies.
+\newblock \emph{Methods in Molecular Biology}, 1446:\penalty0 189--205, 2017.
+\newblock \doi{10.1007/978-1-4939-3743-1_14}.
+
+\bibitem[Glimm et~al.(2014)Glimm, Horrocks, Motik, Stoilos, and
+  Wang]{glimm2014}
+Birte Glimm, Ian Horrocks, Boris Motik, Giorgos Stoilos, and Zhe Wang.
+\newblock {HermiT}: An {OWL} 2 reasoner.
+\newblock \emph{Journal of Automated Reasoning}, 53\penalty0 (3):\penalty0
+  245--269, 2014.
+\newblock \doi{10.1007/s10817-014-9305-1}.
+
+\bibitem[Gomory and Hu(1961)]{gomory1961}
+R.~E. Gomory and T.~C. Hu.
+\newblock Multi-terminal network flows.
+\newblock \emph{Journal of the Society for Industrial and Applied Mathematics},
+  9\penalty0 (4):\penalty0 551--570, 1961.
+\newblock \doi{10.1137/0109047}.
+
+\bibitem[Halevy et~al.(2006)Halevy, Rajaraman, and Ordille]{halevy2006pdms}
+Alon Halevy, Anand Rajaraman, and Joann Ordille.
+\newblock Data integration: The teenage years.
+\newblock \emph{Proceedings of the 32nd International Conference on Very Large
+  Data Bases (VLDB)}, pages 9--16, 2006.
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen,
+  Cournapeau, et~al.]{harris2020numpy}
+Charles~R. Harris, K.~Jarrod Millman, St\'{e}fan~J. van~der Walt, Ralf Gommers,
+  Pauli Virtanen, David Cournapeau, et~al.
+\newblock Array programming with {NumPy}.
+\newblock \emph{Nature}, 585:\penalty0 357--362, 2020.
+\newblock \doi{10.1038/s41586-020-2649-2}.
+
+\bibitem[Harris and Seaborne(2013)]{sparql11}
+Steve Harris and Andy Seaborne.
+\newblock {SPARQL} 1.1 query language.
+\newblock W3C Recommendation, 2013.
+\newblock \url{https://www.w3.org/TR/sparql11-query/}. Object lists are defined
+  in \S4.2.2 and grammar rule 79.
+
+\bibitem[Hastings et~al.(2016)Hastings, Owen, Dekker, Ennis, Kale,
+  Muthukrishnan, Turner, Swainston, Mendes, and Steinbeck]{hastings2016}
+Janna Hastings, Gareth Owen, Adriano Dekker, Marcus Ennis, Namrata Kale,
+  Venkatesh Muthukrishnan, Steve Turner, Neil Swainston, Pedro Mendes, and
+  Christoph Steinbeck.
+\newblock {ChEBI} in 2016: Improved services and an expanding collection of
+  metabolites.
+\newblock \emph{Nucleic Acids Research}, 44\penalty0 (D1):\penalty0
+  D1214--D1219, 2016.
+\newblock \doi{10.1093/nar/gkv1031}.
+
+\bibitem[Horrocks et~al.(2006)Horrocks, Kutz, and Sattler]{horrocks2006}
+Ian Horrocks, Oliver Kutz, and Ulrike Sattler.
+\newblock The even more irresistible {$\mathcal{SROIQ}$}.
+\newblock In \emph{Proceedings of the Tenth International Conference on
+  Principles of Knowledge Representation and Reasoning (KR)}, pages 57--67,
+  2006.
+
+\bibitem[Kac(1947)]{kac1947}
+Mark Kac.
+\newblock On the notion of recurrence in discrete stochastic processes.
+\newblock \emph{Bulletin of the American Mathematical Society}, 53\penalty0
+  (10):\penalty0 1002--1010, 1947.
+\newblock \doi{10.1090/S0002-9904-1947-08927-8}.
+
+\bibitem[Kanehisa and Goto(2000)]{kanehisa2000}
+Minoru Kanehisa and Susumu Goto.
+\newblock {KEGG}: {Kyoto} encyclopedia of genes and genomes.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 27--30,
+  2000.
+\newblock \doi{10.1093/nar/28.1.27}.
+
+\bibitem[Khersonsky and Tawfik(2010)]{khersonsky2010}
+Olga Khersonsky and Dan~S. Tawfik.
+\newblock Enzyme promiscuity: A mechanistic and evolutionary perspective.
+\newblock \emph{Annual Review of Biochemistry}, 79:\penalty0 471--505, 2010.
+\newblock \doi{10.1146/annurev-biochem-030409-143718}.
+
+\bibitem[Koopman(1931)]{koopman1931}
+B.~O. Koopman.
+\newblock Hamiltonian systems and transformations in {H}ilbert space.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 17\penalty0
+  (5):\penalty0 315--318, 1931.
+\newblock \doi{10.1073/pnas.17.5.315}.
+
+\bibitem[Kupferman and Vardi(2003)]{kupferman2003}
+Orna Kupferman and Moshe~Y. Vardi.
+\newblock Vacuity detection in temporal model checking.
+\newblock \emph{International Journal on Software Tools for Technology
+  Transfer}, 4\penalty0 (2):\penalty0 224--233, 2003.
+\newblock \doi{10.1007/s100090100062}.
+
+\bibitem[Levy and Onuchic(2006)]{levy2006}
+Yaakov Levy and Jos\'{e}~N. Onuchic.
+\newblock Water mediation in protein folding and molecular recognition.
+\newblock \emph{Annual Review of Biophysics and Biomolecular Structure},
+  35:\penalty0 389--415, 2006.
+\newblock \doi{10.1146/annurev.biophys.35.040405.102134}.
+
+\bibitem[McMurry et~al.(2017)McMurry, Juty, Blomberg, Burdett, Conlin, Conte,
+  Courtot, Deck, Dumontier, et~al.]{mcmurry2017}
+Julie~A. McMurry, Nick Juty, Niklas Blomberg, Tony Burdett, Tom Conlin,
+  Nathalie Conte, M\'{e}lanie Courtot, John Deck, Michel Dumontier, et~al.
+\newblock Identifiers for the 21st century: How to design, provision, and reuse
+  persistent identifiers to maximize utility and impact of life science data.
+\newblock \emph{PLOS Biology}, 15\penalty0 (6):\penalty0 e2001414, 2017.
+\newblock \doi{10.1371/journal.pbio.2001414}.
+
+\bibitem[Menger(1927)]{menger1927}
+Karl Menger.
+\newblock Zur allgemeinen {K}urventheorie.
+\newblock \emph{Fundamenta Mathematicae}, 10:\penalty0 96--115, 1927.
+\newblock \doi{10.4064/fm-10-1-96-115}.
+
+\bibitem[Milacic et~al.(2024)Milacic, Beavers, Conley, Gong, Gillespie, Griss,
+  Haw, Jassal, Matthews, May, Petryszak, Ragueneau, Rothfels, Sevilla,
+  Shamovsky, Stephan, Tiwari, Varusai, Weiser, Wright, Wu, Stein, Hermjakob,
+  and D'Eustachio]{milacic2024}
+Marija Milacic, Deidre Beavers, Patrick Conley, Chuqiao Gong, Marc Gillespie,
+  Johannes Griss, Robin Haw, Bijay Jassal, Lisa Matthews, Bruce May, Robert
+  Petryszak, Eliot Ragueneau, Karen Rothfels, Cristoffer Sevilla, Veronica
+  Shamovsky, Ryan Stephan, Krishna Tiwari, Thawfeek Varusai, Joel Weiser, Adam
+  Wright, Guanming Wu, Lincoln Stein, Henning Hermjakob, and Peter D'Eustachio.
+\newblock The {Reactome} pathway knowledgebase 2024.
+\newblock \emph{Nucleic Acids Research}, 52\penalty0 (D1):\penalty0 D672--D678,
+  2024.
+\newblock \doi{10.1093/nar/gkad1025}.
+
+\bibitem[Motik et~al.(2009{\natexlab{a}})Motik, Cuenca~Grau, Horrocks, Wu,
+  Fokoue, and Lutz]{motik2009profiles}
+Boris Motik, Bernardo Cuenca~Grau, Ian Horrocks, Zhe Wu, Achille Fokoue, and
+  Carsten Lutz.
+\newblock {OWL} 2 web ontology language profiles.
+\newblock \emph{W3C Recommendation}, 2009{\natexlab{a}}.
+\newblock \url{https://www.w3.org/TR/owl2-profiles/}.
+
+\bibitem[Motik et~al.(2009{\natexlab{b}})Motik, Shearer, and
+  Horrocks]{motik2009hypertableau}
+Boris Motik, Rob Shearer, and Ian Horrocks.
+\newblock Hypertableau reasoning for description logics.
+\newblock \emph{Journal of Artificial Intelligence Research}, 36:\penalty0
+  165--228, 2009{\natexlab{b}}.
+\newblock \doi{10.1613/jair.2811}.
+
+\bibitem[Noor et~al.(2013)Noor, Haraldsd\'{o}ttir, Milo, and Fleming]{noor2013}
+Elad Noor, Hulda~S. Haraldsd\'{o}ttir, Ron Milo, and Ronan M.~T. Fleming.
+\newblock Consistent estimation of {Gibbs} energy using component
+  contributions.
+\newblock \emph{PLOS Computational Biology}, 9\penalty0 (7):\penalty0 e1003098,
+  2013.
+\newblock \doi{10.1371/journal.pcbi.1003098}.
+
+\bibitem[Pellissier~Tanon(2026)]{pyoxigraph}
+Thomas Pellissier~Tanon.
+\newblock {Oxigraph}: A {SPARQL} database and {RDF} toolkit.
+\newblock pyoxigraph version 0.5.9, 2026.
+\newblock \url{https://github.com/oxigraph/oxigraph}.
+
+\bibitem[P\'{e}rez et~al.(2009)P\'{e}rez, Arenas, and Gutierrez]{perez2009}
+Jorge P\'{e}rez, Marcelo Arenas, and Claudio Gutierrez.
+\newblock Semantics and complexity of {SPARQL}.
+\newblock \emph{ACM Transactions on Database Systems}, 34\penalty0
+  (3):\penalty0 1--45, 2009.
+\newblock \doi{10.1145/1567274.1567278}.
+
+\bibitem[Poincar\'{e}(1890)]{poincare1890}
+Henri Poincar\'{e}.
+\newblock Sur le probl\`{e}me des trois corps et les \'{e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+\newblock \doi{10.1007/BF02392506}.
+
+\bibitem[{RDFLib Team}(2026)]{rdflib}
+{RDFLib Team}.
+\newblock {RDFLib}: A {Python} library for working with {RDF}.
+\newblock Version 7.6.0, 2026.
+\newblock \url{https://github.com/RDFLib/rdflib}.
+
+\bibitem[Rudin(1976)]{rudin1976}
+Walter Rudin.
+\newblock \emph{Principles of Mathematical Analysis}.
+\newblock McGraw-Hill, 3 edition, 1976.
+
+\bibitem[Shannon(1948)]{shannon1948}
+Claude~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27\penalty0 (3):\penalty0
+  379--423, 1948.
+\newblock \doi{10.1002/j.1538-7305.1948.tb01338.x}.
+
+\bibitem[Stoer and Wagner(1997)]{stoer1997}
+Mechthild Stoer and Frank Wagner.
+\newblock A simple min-cut algorithm.
+\newblock \emph{Journal of the ACM}, 44\penalty0 (4):\penalty0 585--591, 1997.
+\newblock \doi{10.1145/263867.263872}.
+
+\bibitem[{The UniProt Consortium}(2023)]{uniprot2023}
+{The UniProt Consortium}.
+\newblock {UniProt}: The universal protein knowledgebase in 2023.
+\newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D523--D531,
+  2023.
+\newblock \doi{10.1093/nar/gkac1052}.
+
+\bibitem[Walters(1982)]{walters1982}
+Peter Walters.
+\newblock \emph{An Introduction to Ergodic Theory}, volume~79 of \emph{Graduate
+  Texts in Mathematics}.
+\newblock Springer, 1982.
+\newblock \doi{10.1007/978-1-4612-5775-2}.
+
+\bibitem[Wilkinson et~al.(2016)Wilkinson, Dumontier, Aalbersberg, Appleton,
+  Axton, Baak, Blomberg, Boiten, et~al.]{wilkinson2016}
+Mark~D. Wilkinson, Michel Dumontier, IJsbrand~Jan Aalbersberg, Gabrielle
+  Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten, et~al.
+\newblock The {FAIR} guiding principles for scientific data management and
+  stewardship.
+\newblock \emph{Scientific Data}, 3:\penalty0 160018, 2016.
+\newblock \doi{10.1038/sdata.2016.18}.
+
+\bibitem[Wren(2008)]{wren2008}
+Jonathan~D. Wren.
+\newblock Url decay in {MEDLINE}---a 4-year follow-up study.
+\newblock \emph{Bioinformatics}, 24\penalty0 (11):\penalty0 1381--1385, 2008.
+\newblock \doi{10.1093/bioinformatics/btn127}.
+
+\end{thebibliography}

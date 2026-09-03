@@ -1,0 +1,76 @@
+{
+  "experiment": "B",
+  "checks": [
+    {
+      "name": "the two systems record identical triples",
+      "pass": true,
+      "detail": "6 triples each, set difference empty",
+      "control": false
+    },
+    {
+      "name": "accountability verdicts differ",
+      "pass": true,
+      "detail": "G1=inadmissible, G2=admissible",
+      "control": false
+    },
+    {
+      "name": "no retrieval query separates the two systems",
+      "pass": true,
+      "detail": "13 query forms on 2 engines; separating queries: none",
+      "control": false
+    },
+    {
+      "name": "the two engines agree on every query",
+      "pass": true,
+      "detail": "13/13 agree",
+      "control": false
+    },
+    {
+      "name": "CONTROL: the same battery DOES separate a genuinely different relation",
+      "pass": true,
+      "detail": "8/13 queries separate; without this the B2 result would be consistent with a blind battery",
+      "control": true
+    },
+    {
+      "name": "attributes let a query see minimum EDGE weight",
+      "pass": true,
+      "detail": "min edge weight G1=1.0 G2=1.0",
+      "control": false
+    },
+    {
+      "name": "min edge weight is NOT the floor",
+      "pass": true,
+      "detail": "min edge weight 1.0/1.0 vs floor 1/2; the floor is a minimum over subsets, which no basic graph pattern forms",
+      "control": false
+    },
+    {
+      "name": "no answer without a pre-materialised flag",
+      "pass": true,
+      "detail": "the BGP form returns nothing: the predicate was never curated",
+      "control": false
+    },
+    {
+      "name": "the computation succeeds once the attribute is retrieved",
+      "pass": true,
+      "detail": "computed over the retrieved sequence: ['P1', 'P3']",
+      "control": false
+    }
+  ],
+  "scored": 8,
+  "passed": 8,
+  "engines": {
+    "rdflib": "7.6.0",
+    "pyoxigraph": "0.5.9"
+  },
+  "n_query_forms": 13,
+  "G1": {
+    "sep": 2.0,
+    "floor": 1.0,
+    "accountable": false
+  },
+  "G2": {
+    "sep": 2.0,
+    "floor": 2.0,
+    "accountable": true
+  }
+}
