@@ -1,4 +1,5 @@
 :root {
+  color-scheme: dark;
   --bg: #0e1116;
   --panel: #161b22;
   --panel-2: #1c2230;
@@ -17,23 +18,10 @@
   --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #fbfcfd;
-    --panel: #ffffff;
-    --panel-2: #f4f7fa;
-    --line: #dde3ea;
-    --ink: #10161d;
-    --ink-dim: #4a5763;
-    --ink-faint: #78848f;
-    --accent: #0b62d0;
-    --accent-2: #0d8a68;
-    --ok: #1a7f37;
-    --warn: #9a6700;
-    --bad: #cf222e;
-    --neutral: #6e7781;
-  }
-}
+/* The site is permanently dark: there is no prefers-color-scheme override.
+   color-scheme below tells the browser to render form controls, scrollbars
+   and the canvas behind the page in dark too, so a viewer whose OS is set
+   to light does not get white scrollbars around a dark page. */
 
 * { box-sizing: border-box; }
 
