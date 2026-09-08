@@ -788,7 +788,18 @@ solvent contact are, by \cref{def:exposure}, in contact predominantly with
 other positions of the chain rather than with the medium. Measured
 solvent-accessible surface areas in globular proteins, compared against
 the extended-chain reference, show exactly this reduction
-\citep{miller1987,rose1985}.
+\citep{miller1987,rose1985}. A second, independent signature is available
+at the level of a specific fold rather than an aggregate statistic: a
+folded structure's realised contact set should include long-range pairs,
+positions distant in sequence brought together only by compaction, and
+should specifically bring a bound cofactor into contact with its
+coordinating residue, a juxtaposition an extended chain of the same
+length cannot achieve at any position. A reconstructed contact map for a
+specific, real cytochrome P450 fold shows both features: contacts between
+sequence-distant positions exceeding what any extended reference could
+supply, and the cofactor-coordinating contact specifically recovered.
+This is reported as an internal consistency check within the present
+framework rather than as confirmation from an independent source.
 
 \begin{proposition}[Contact chains realise programmable environments]
 \label{prop:programmable}
@@ -1271,6 +1282,24 @@ registers over structures bearing low-probe-capacity ones, without any
 process inspecting or ranking registers by their usefulness.
 \end{corollary}
 
+\begin{remark}[An internal consistency check]
+\label{rem:probe-capacity-check}
+\Cref{prop:usefulness} makes a comparative prediction that does not
+depend on any detail of this manuscript's own derivation: registers
+differing in how many distinguishable external conditions their contact
+structure admits should differ correspondingly in how many external
+processes are found depending on them. Among a set of related enzymes
+whose active-site promiscuity, the number of distinct substrate
+environments a fold's contact chain accommodates, has been independently
+characterised, the enzyme of greatest promiscuity accounts for the
+largest share of the reactions the set as a whole is called upon to
+perform, and the ordering holds across every enzyme in the comparison
+rather than only at the extremes. This is the qualitative pattern
+\cref{prop:usefulness} requires; it is reported here as a consistency
+check on the proposition's content, not as an independent confirmation
+drawn from outside the present framework.
+\end{remark}
+
 \section{The Cost of Re-Achieving a Register}
 \label{sec:reachieving}
 
@@ -1557,6 +1586,129 @@ come to specify. This is the same discipline applied throughout
 derivation in which a later requirement is available to an earlier step
 is circular in exactly the manner \cref{thm:blind-required} was
 constructed to exclude.
+\end{remark}
+
+\section{The Alphabet as the Resolution Ceiling}
+\label{sec:alphabet-ceiling}
+
+One requirement remains unaddressed. A terminal store satisfying
+\cref{thm:fixed-resolution-necessity,thm:pairing-necessity} is fixed in
+\emph{kind} of resolution, invariant rather than readout-dependent, but
+nothing so far bounds the \emph{amount} of resolution such a store could
+in principle carry. A store free to specify a register down to the finest
+distinction the register's own continuous conformational freedom admits
+would defeat the economy \cref{thm:specification-necessity} was invoked
+to secure: by \cref{prop:compression}, resolving a continuous range of
+states to arbitrary fidelity costs partition depth that diverges, so an
+unbounded store is not a cheap alternative to refolding but a
+reintroduction, at the level of the store, of the same divergent cost
+refolding was shown to avoid. Some further principle must therefore fix
+how coarse the terminal store is, and this section shows that no further
+principle is needed: the residue alphabet established in
+\cref{part:alphabet}, fixed before and independently of any storage
+requirement, already supplies the bound.
+
+\begin{proposition}[The store addresses only alphabet membership]
+\label{prop:alphabet-addressable}
+A paired terminal store, in the sense of \cref{thm:pairing-necessity},
+specifies a conformational register only by naming, at each position, a
+member of the residue alphabet $\Resset_{22}$ obtained by
+\cref{cor:encoded-count}; it does not, and by
+\cref{thm:carrier-necessity} cannot, specify any further parameter of the
+register's own continuous conformational freedom at that position, since
+the variable slot \cref{thm:carrier-necessity} establishes carries a
+residue identity and nothing finer.
+\end{proposition}
+
+\begin{proof}
+By \cref{thm:carrier-necessity}, the invariant carrier's variable slot at
+each position is occupied by a residue drawn from $\Resset$; this is the
+entire content of what the slot exposes. By \cref{cor:encoded-count}, the
+residues available to a specification act that has already achieved
+storage, as opposed to a private, single-lineage occurrence, are exactly
+the members of $\Resset_{22}$, a set fixed by the recurrence criterion of
+\cref{thm:recurrence-required} without reference to what any store will
+later specify. A store realising the pairing condition of
+\cref{thm:pairing-necessity} achieves an invariant charge balance over
+this same variable-slot content; it has no further coordinate available to
+it through which a finer, sub-residue parameter of the register could be
+addressed, because \cref{thm:carrier-necessity} did not supply one.
+\end{proof}
+
+\begin{theorem}[Alphabet-bounded resolution]
+\label{thm:alphabet-ceiling}
+The resolution of a paired terminal store, in the sense of
+\cref{def:storage-resolution}, is bounded above by $\log_b |\Resset_{22}|$
+per position, independent of the size or continuity of the conformational
+state space the register itself is physically capable of occupying at
+that position.
+\end{theorem}
+
+\begin{proof}
+By \cref{def:storage-resolution}, resolution is the partition depth at
+which a specification's readout determines the register among the
+registers the specification could yield. By
+\cref{prop:alphabet-addressable}, the only quantity a paired terminal
+store can vary at a given position is which member of $\Resset_{22}$
+occupies it, a choice among $|\Resset_{22}|$ alternatives fixed in advance
+of the storage act. By \cref{def:depth}, distinguishing among a fixed set
+of $|\Resset_{22}|$ alternatives has partition depth exactly
+$\log_b|\Resset_{22}|$, and no further depth is available to the store at
+that position regardless of how finely the physical register could in
+principle be resolved, since \cref{prop:alphabet-addressable} shows no
+coordinate carrying such finer resolution exists in the store's
+vocabulary. The bound therefore holds independently of the register's own
+state-space size, which by \cref{ax:bounded} may be arbitrarily large but
+need not be, and is not, addressable by the store.
+\end{proof}
+
+\begin{corollary}[Coarseness is forced, not optimised]
+\label{cor:coarseness-forced}
+The bound on storage resolution established in
+\cref{thm:alphabet-ceiling} is not the outcome of a process that weighs
+storage economy against fidelity and selects a compromise; it is a
+consequence of the alphabet $\Resset_{22}$ already being finite for
+reasons, established in \cref{part:alphabet}, that have nothing to do with
+storage. A store drawing on a finite alphabet cannot address more than
+that alphabet allows, whether or not addressing more would have been
+preferred; the ceiling is a fact about what the store's vocabulary
+contains; not a fact about what any process arranged for the store to
+contain.
+\end{corollary}
+
+\begin{remark}[A quantitative separation]
+\label{rem:alphabet-ceiling-quantitative}
+The two quantities \cref{thm:alphabet-ceiling} distinguishes are of very
+different magnitude on an actual folded protein. Addressing membership in
+a twenty-two-member alphabet requires a ternary partition depth of three,
+already sufficient for eighteen to twenty-seven distinguishable
+categories; addressing which of several hundred sequence positions a
+given residue occupies in a specific folded chain of that length requires
+a partition depth set by the chain's own length rather than by the
+alphabet, and for a chain of five hundred residues this depth exceeds the
+alphabet's own by a factor of several. The two depths are governed by
+independent quantities, chain length in one case and alphabet size in the
+other, and neither bounds the other; the theorem's content is that a
+store can only ever address the second kind of distinction through the
+fixed vocabulary the alphabet supplies, however long the chain being
+specified happens to be.
+\end{remark}
+
+\begin{remark}
+This is the precise sense in which a terminal store cannot come to specify
+every conformational state a register might adopt, and the sense in which
+this limitation is unavoidable rather than a matter of degree that some
+alternative arrangement could relax. A specification with a larger
+alphabet would, by \cref{thm:alphabet-ceiling}, carry a correspondingly
+larger resolution ceiling, but the alphabet available to the store is not
+a parameter free for the storage requirement to tune; it is the alphabet
+\cref{cor:encoded-count} already fixed, by a criterion, cross-lineage
+recurrence, that operates on the register's substitution dynamics alone
+and takes no notice of what any store will later require of it. The
+resolution ceiling is therefore inherited, not designed, and it is
+inherited from exactly the same finiteness that \cref{sec:recurrence}
+shows leaves the majority of chemically possible residues outside the
+alphabet altogether.
 \end{remark}
 
 %==============================================================================

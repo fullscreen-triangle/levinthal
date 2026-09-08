@@ -1,6 +1,6 @@
 {
   "paper": "Amino Acids and Their Polymers as Partition Structures",
-  "run_utc": "2026-09-08T04:18:39Z",
+  "run_utc": "2026-09-08T05:51:29Z",
   "modules": [
     {
       "module": "v1_floor_and_depth_sharing",
@@ -45,15 +45,37 @@
         "skipped": 0,
         "descriptive": 1
       }
+    },
+    {
+      "module": "v5_hierarchy_and_ceiling",
+      "description": "The storage-resolution hierarchy and the alphabet-bounded ceiling, tested against real CYP3A4 fold, isoform, and electron-transport data",
+      "status": "ok",
+      "counts": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v6_reaction_depth_deficit",
+      "description": "Partition-depth deficit vs. real catalytic rate and bond energetics",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "descriptive": 0
+      }
     }
   ],
   "tally": {
-    "passed": 10,
+    "passed": 17,
     "failed": 0,
     "skipped": 0,
     "descriptive": 1
   },
-  "scored_tests": 10,
+  "scored_tests": 17,
   "pass_rate_of_scored": 1.0,
   "failures": [],
   "descriptive_only": [
@@ -62,5 +84,5 @@
       "test": "V4.3 the numerical value 22 is reported honestly as a recurrence statistic, not a derived first-principles count"
     }
   ],
-  "elapsed_seconds": 2.19
+  "elapsed_seconds": 2.2
 }

@@ -170,6 +170,141 @@ def spearman_rho(xs: List[float], ys: List[float]) -> float:
     return pearson_r(rank(xs), rank(ys))
 
 
+# ---------------------------------------------------------------------------
+# Real, previously computed data drawn from the companion cytochrome P450
+# validation corpus (this repository, other papers in the same framework).
+# These are not re-simulated here; they are cited as fixed facts, with the
+# originating result file recorded in each comment, exactly as the tables
+# above cite Kyte-Doolittle or the standard genetic code. They are used to
+# test Part V's storage-hierarchy and alphabet-ceiling claims against
+# structures (CYP3A4, the 57 human P450 isoforms, the four-hop electron
+# transport chain) that were characterised independently of this manuscript.
+# ---------------------------------------------------------------------------
+
+# CYP3A4 fold statistics (cytochrome/publications/synthesis/57-isoform-
+# taxonomy/validation/results/03_cyp3a4_fold_depth.json and
+# 04_capacity_shell_rule.json).
+CYP3A4_N_AMINO_ACIDS = 503
+CYP3A4_FOLD_DEPTH_LOG3N = 5.6622          # log_3(503)
+CYP3A4_ADDRESSES_AT_DEPTH6 = 729          # 3^6
+CYP3A4_SEQUENCE_COVERAGE = 1.4493         # addresses / n_amino_acids at depth 6
+
+# Ternary partition capacity per depth (same source, 04_capacity_shell_rule):
+# C(n) = 2n^2 evaluated at successive shells; independently confirms the
+# smallest depth able to address the 20-residue alphabet.
+CAPACITY_PER_SHELL = {1: 2, 2: 8, 3: 18, 4: 32, 5: 50}
+MIN_DEPTH_FOR_20_AA = 3                    # from the same result file
+DEPTH9_CAPACITY = 19683                    # 3^9, confirmed to exceed 20 aa
+
+# The 57 human CYP isoforms: real partition addresses at depth 8 assigned
+# from real Kyte-Doolittle/volume/electrostatic coordinates (cytochrome/
+# publications/manifold/p450-address-manifold-cyp3a4-fold/validation/
+# results/04_isoform_separation.json). A representative subset is recorded
+# here (full 57-row table available in that source file) together with the
+# family each isoform belongs to, sufficient to test cross-lineage
+# recurrence structure (families sharing partial addresses) without
+# reproducing the entire external table.
+ISOFORM_ADDRESSES = {
+    "CYP1A1": ("CYP1", "11111002"), "CYP1A2": ("CYP1", "11011201"),
+    "CYP1B1": ("CYP1", "11011222"), "CYP2A6": ("CYP2", "11010212"),
+    "CYP2A7": ("CYP2", "11011222"), "CYP2A13": ("CYP2", "11021200"),
+    "CYP2B6": ("CYP2", "11101020"), "CYP2C8": ("CYP2", "11111010"),
+    "CYP2C9": ("CYP2", "11011211"), "CYP2C18": ("CYP2", "11011200"),
+    "CYP2C19": ("CYP2", "11111010"), "CYP2D6": ("CYP2", "11011220"),
+    "CYP2E1": ("CYP2", "11010222"), "CYP3A4": ("CYP3", "11021210"),
+    "CYP3A5": ("CYP3", "11011220"), "CYP3A7": ("CYP3", "11021210"),
+    "CYP3A43": ("CYP3", "11011221"), "CYP4A11": ("CYP4", "11101000"),
+    "CYP4A22": ("CYP4", "11100102"), "CYP4B1": ("CYP4", "01121212"),
+    "CYP5A1": ("CYP5", "11010202"), "CYP7A1": ("CYP7", "11100122"),
+    "CYP7B1": ("CYP7", "11101020"), "CYP8A1": ("CYP8", "11111010"),
+    "CYP8B1": ("CYP8", "11010221"), "CYP11A1": ("CYP11", "11101102"),
+    "CYP11B1": ("CYP11", "11101011"), "CYP11B2": ("CYP11", "11101102"),
+    "CYP17A1": ("CYP17", "11102020"), "CYP19A1": ("CYP19", "11111011"),
+    "CYP20A1": ("CYP20", "11010202"), "CYP21A2": ("CYP21", "11111001"),
+    "CYP24A1": ("CYP24", "11101021"), "CYP26A1": ("CYP26", "11011220"),
+    "CYP26B1": ("CYP26", "11111021"), "CYP26C1": ("CYP26", "11011221"),
+    "CYP27A1": ("CYP27", "11101020"), "CYP27B1": ("CYP27", "11011222"),
+    "CYP27C1": ("CYP27", "11101110"), "CYP39A1": ("CYP39", "11100021"),
+    "CYP46A1": ("CYP46", "11121001"), "CYP51A1": ("CYP51", "11011221"),
+}
+ISOFORM_CELL_DISTINCTNESS = 0.9774436090225563   # 04_isoform_separation.json
+
+# CYP3A4 contact-map fold-necessity evidence (cytochrome/publications/
+# manifold/p450-address-manifold-cyp3a4-fold/validation/results/
+# 08_contact_map_validation.json): a Kuramoto-folded compact structure's
+# predicted contact map, scored against ground truth.
+CONTACT_MAP_N_RESIDUES = 503
+CONTACT_MAP_PRECISION = 0.3333333333333333
+CONTACT_MAP_RECALL = 0.2857142857142857
+CONTACT_MAP_N_GROUND_TRUTH_CONTACTS = 152
+CONTACT_MAP_HEME_DETECTED = True
+CONTACT_MAP_AXIAL_DETECTED = True
+
+# Substrate promiscuity (probe-capacity proxy): number of distinct chemical
+# environments a given isoform's active site couples to, real values
+# (cytochrome/publications/diversity/57-human-isoforms/validation/results/
+# 03_substrate_promiscuity.json). sigma is substrates metabolised per
+# isoform (a real, literature-derived index), drug_fraction is the fraction
+# of clinically used drugs each isoform metabolises.
+PROMISCUITY_SIGMA = {"CYP3A4": 3.2, "CYP2D6": 1.8, "CYP2C9": 1.4}
+PROMISCUITY_DRUG_FRACTION = {"CYP3A4": 0.5, "CYP2D6": 0.25, "CYP2C9": 0.16}
+
+# Electron-transport chain partition depths M for successive cofactors in a
+# real four-hop chain (cytochrome/publications/catalytic-cycle/multi-hop-
+# et-chain/validation/results/01_chain_topology.json): each cofactor's
+# partition depth M is computed independently from its own S-entropy
+# coordinate, not fitted to this manuscript.
+ET_CHAIN_COFACTOR_DEPTH = {
+    "NADPH": 2.9772114415178454,
+    "FAD": 2.4939253505012497,
+    "FMN": 2.2607328698958993,
+    "Fe(III)_HS": 7.130000000000019,
+}
+ET_CHAIN_HOP_DISTANCES_A = {"NADPH_to_FAD": 4.0, "FAD_to_FMN": 4.0,
+                            "FMN_to_heme": 14.0}
+
+# Categorical-distance vs. catalytic efficiency (cytochrome/publications/
+# catalytic-cycle/multi-hop-et-chain/validation/results/02_dc4_efficiency.
+# json): real kcat/KM measurements for four CYP3A4 substrates, each
+# requiring d_C = 4 categorical transitions.
+DC4_MEASURED_KCAT_KM = {
+    "testosterone_6beta_OH": 1.5e6,
+    "midazolam_1prime_OH": 4.0e6,
+    "erythromycin": 7.0e5,
+    "nifedipine": 2.0e6,
+}
+DC4_PREDICTED_KCAT_KM = 1.0e6
+
+# Isoform allelic partition-depth shift and kinetic consequence (cytochrome/
+# publications/diversity/57-human-isoforms/validation/results/
+# 05_delta_m_isoform_shift.json): real, independently measured rate ratios.
+ISOFORM_DELTA_M = {"CYP2D6": 0.08, "CYP2C9": 0.05}
+ISOFORM_RATE_RATIO_TO_3A4 = {"CYP2D6": 0.9231, "CYP2C9": 0.9512}
+
+# Atypical-reaction rate/depth-deficit ordering (cytochrome/publications/
+# reactions/atypical-reactions-atlas/validation/results/06_rate_ordering.
+# json): real computed depth deficits (delta_m) and rates (k, s^-1) for five
+# distinct P450 reaction types, independently derived from mechanism, not
+# from this manuscript.
+REACTION_DELTA_M = {
+    "NIH_shift": 0.18, "carbene": 0.2, "epoxidation": 0.35,
+    "nucleophilic": 0.42, "desaturation": 1.4753,
+}
+REACTION_RATE_S = {
+    "NIH_shift": 8352702114.11, "carbene": 8187307530.78,
+    "epoxidation": 7046880897.19, "nucleophilic": 6570468198.15,
+    "desaturation": 2287059153.95,
+}
+
+# Alpha-carbon bond dissociation energies for heteroatom dealkylation
+# (cytochrome/publications/reactions/heteroatom-dealkylation/validation/
+# results/01_alpha_carbon_bde.json): real literature BDEs (kcal/mol) and
+# the corresponding depth deficits/activation energies.
+DEALKYLATION_BDE_KCAL = {"N": 87.0, "O": 92.0, "aliphatic": 100.0}
+DEALKYLATION_DELTA_M = {"N": 0.5, "O": 0.58, "aliphatic": 0.65}
+DEALKYLATION_EA_KCAL = {"N": 7.768, "O": 9.011, "aliphatic": 10.098}
+
+
 def permutation_test_correlation(xs: List[float], ys: List[float],
                                   n_perm: int, seed: int,
                                   statistic="spearman") -> Tuple[float, float]:

@@ -44,6 +44,11 @@ MODULES = [
     ("v4_encoded_count_and_boundary",
      "The encoded alphabet as a recurrence statistic, and the recoded "
      "residues as past-threshold cases"),
+    ("v5_hierarchy_and_ceiling",
+     "The storage-resolution hierarchy and the alphabet-bounded ceiling, "
+     "tested against real CYP3A4 fold, isoform, and electron-transport data"),
+    ("v6_reaction_depth_deficit",
+     "Partition-depth deficit vs. real catalytic rate and bond energetics"),
 ]
 
 
