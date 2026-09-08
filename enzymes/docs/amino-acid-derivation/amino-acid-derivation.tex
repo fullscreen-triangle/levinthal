@@ -1,0 +1,1227 @@
+\documentclass[11pt,twocolumn,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{postulate}{Postulate}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- notation -----------------------------------------------------------
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\Univ}{\mathcal{U}}
+\newcommand{\Item}{\mathcal{I}}
+\newcommand{\thick}{\beta}
+\newcommand{\floor}{\thick_{\min}}
+\newcommand{\Cat}{\mathfrak{C}}
+\newcommand{\Depth}{\mathcal{M}}
+\newcommand{\Res}{\mathcal{R}}
+\newcommand{\Mfree}{\Depth_{\mathrm{free}}}
+\newcommand{\Mbound}{\Depth_{\mathrm{bound}}}
+\newcommand{\taup}{\tau_{\mathrm{p}}}
+\newcommand{\Pol}{\Pi}
+\newcommand{\Resset}{\mathcal{A}}
+
+\title{\textbf{Amino Acids and Their Polymers as Partition Structures:\\
+A First-Principles Derivation of the Peptide Backbone, Protein Folding,\\
+and the Genetically Encoded Residue Alphabet}}
+
+\author{Kundai Farai Sachikonye\\
+\small Technical University of Munich\\
+\small AIMe Registry for Artificial Intelligence\\
+\small \texttt{kundai.sachikonye@wzw.tum.de}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We derive the existence of the peptide backbone, the necessity of protein
+folding, and the size of the genetically encoded amino-acid alphabet from a
+single geometric postulate: every persistent physical system occupies a
+bounded region of phase space admitting hierarchical partition into
+distinguishable states. From this postulate alone we obtain a positive lower
+bound on the cost of distinguishing any two configurations, a discrete
+principal-angular-orientation-chirality coordinate system for bounded
+oscillatory modes, and a scalar partition depth that measures the
+hierarchical cost of specifying a state. We show that a bounded polymer
+capable of exposing an arbitrary, position-addressable pattern of
+partition-boundary strength to its surroundings must possess an invariant
+repeating unit of fixed partition depth carrying a variable substituent, and
+that this requirement forces planarity of the repeating linkage through the
+same depth-sharing mechanism that governs covalent bond formation generally.
+We show separately that an extended chain cannot present more than one
+partition environment to its surroundings at a time, so that any
+polymer required to expose several mutually incompatible partition
+environments simultaneously must fold into a compact three-dimensional
+object; folding is therefore not an energetic accident but a partition
+necessity, exactly parallel to the necessity of a bounded aqueous compartment
+folding its enclosing amphiphiles into a bilayer. We then turn to a question
+the standard biochemical account does not address: why the genetically
+encoded alphabet contains twenty-two members when several hundred distinct
+amino acids occur in nature. We derive the count from a purely mechanical,
+selector-free principle. A self-propagating polymer tolerates
+substitution of any one of its residues whenever the substitution does not
+raise the partition depth of the whole; because propagation rate is set by
+partition depth alone, favourable substitutions are retained by differential
+persistence without any comparison across candidates. A residue becomes a
+storable, nameable category only when it recurs as the substitution outcome
+in more than one independently propagating structure; residues arising as
+favourable substitutions in only one lineage remain private facts of that
+lineage and are never abstracted into a shared alphabet symbol. The
+genetically encoded alphabet is the set of residues that crossed this
+recurrence threshold before storage mechanisms stabilised; the several
+hundred residues that never crossed it remain chemically real but
+structurally private. We close by deriving, from the same charge-emergence
+and partition-conservation principles, why a storage structure that must be
+read as rarely as possible is co-derived with the pre-existing genome
+without any element of the mechanism inspecting or anticipating the content
+it stores.
+\end{abstract}
+
+\tableofcontents
+
+%==============================================================================
+\part{Individuation and Its Cost}
+%==============================================================================
+
+\section{The Problem of Distinguishing States}
+\label{sec:introduction}
+
+A folded protein is conventionally described by naming its constituent
+residues and specifying the three-dimensional arrangement into which they
+settle. This description is accurate and it is how the subject is taught,
+but it treats two questions as already answered before the description
+begins: why should a polymer of this particular chemical character exist at
+all, and why should twenty-two residues, out of several hundred that occur
+naturally, be the ones a living cell stores and reads. Structural biology
+answers neither question, because it takes the amino acid alphabet as given
+and proceeds from there. We do not take it as given. We derive it.
+
+The derivation begins from a single observation about what it costs, in
+principle, to tell one physical configuration apart from another, and it
+ends with a count of the residues a genome should be expected to encode. No
+step in between invokes evolutionary optimisation toward a target, appeals
+to a designer or regulator that inspects candidate molecules, or assumes
+that a nucleic acid sequence already stands in a semantic relationship to
+the protein it produces. Every result is obtained from the requirement that
+distinguishing one state from another is never free, and from the
+consequences that requirement has for systems that persist by continually
+being distinguished from what they are not.
+
+\subsection{What Must Be Established Before Amino Acids Can Be Discussed}
+
+Two things are needed before any claim about amino acids can be stated
+precisely. The first is a lower bound on the cost of drawing any distinction
+whatsoever, established in \cref{sec:individuation}. The second is the
+asymmetry between two operations that are often conflated: entering a region
+of phase space, which costs nothing, and individuating that region as a
+distinct entity, which costs the lower bound just established. This
+asymmetry, established in \cref{sec:asymmetry}, is what makes a reusable
+catalytic surface possible at all, and it is what makes possible a polymer
+whose identity survives having some of its constituents replaced.
+
+With those two results in hand, \cref{part:polymer} derives the peptide
+backbone and the necessity of folding from a single requirement: that a
+polymer be capable of presenting a spatially varying pattern of partition
+boundaries to its environment. \cref{part:alphabet} then derives the size of
+the encoded residue alphabet from the dynamics of substitution and
+propagation alone, and \cref{part:reading} derives the conditions under
+which a stored sequence is read, using only the charge-emergence and
+partition-conservation results already established, without presupposing
+that the sequence already means anything.
+
+%==============================================================================
+\section{The Floor on Individuation}
+\label{sec:individuation}
+%==============================================================================
+
+\subsection{Existence as Distinction}
+
+\begin{postulate}[Existence by distinction]
+\label{post:negation}
+An item $\Item$ exists as a distinct entity if and only if a well-defined
+complement $\Univ \setminus \Item$ exists with $\Item \cap (\Univ\setminus
+\Item) = \varnothing$ and $\Item \cup (\Univ\setminus\Item) = \Univ$. The
+existence of $\Item$ consists in the distinction $\Item \neq
+\Univ\setminus\Item$ and not in any property $\Item$ possesses
+independently of that distinction.
+\end{postulate}
+
+This is not a claim about the ultimate nature of matter. It is the
+observation that every physical predicate assigned to an object is assigned
+by contrast with objects that lack it, and that this contrast can therefore
+be treated as constitutive of the object's identity rather than as an
+incidental fact about it.
+
+\begin{postulate}[Distinction requires time]
+\label{post:duration}
+Establishing the distinction $\Item \neq \Univ\setminus\Item$ requires a
+finite, strictly positive interval $\taup$, during which the complement
+$\Univ\setminus\Item$ evolves.
+\end{postulate}
+
+\begin{remark}
+This postulate cannot be relaxed. If $\taup$ were zero, the state of the
+system immediately before the distinction was drawn and immediately after
+would coincide, and a distinction that changes nothing has not in fact been
+drawn. The requirement that $\taup > 0$ therefore follows from what it means
+for an individuation to have occurred, and the requirement that the
+complement evolve during that interval follows automatically for any system
+that is not frozen.
+\end{remark}
+
+\subsection{Positivity of the Boundary}
+
+\begin{definition}[Boundary thickness]
+\label{def:thickness}
+Let $A$ be individuated within $\Univ$ over an interval $[t_0,
+t_0+\taup]$. The \emph{boundary thickness} $\thick(A)$ is the measure of the
+set of states that, at the completion of the individuation, belong
+determinately to neither $A$ nor $\Univ\setminus A$.
+\end{definition}
+
+\begin{theorem}[Positivity of boundary thickness]
+\label{thm:floor}
+For any individuation carried out under \cref{post:negation,post:duration},
+$\thick(A) > 0$.
+\end{theorem}
+
+\begin{proof}
+By \cref{post:duration} the individuation occupies an interval of length
+$\taup > 0$, during which the complement evolves. A state occupying the
+complement at $t_0$ and the region assigned to $A$ at $t_0+\taup$, or the
+reverse, exists whenever the complement is not static on the timescale
+$\taup$, which \cref{post:duration} guarantees. For such a state, the
+assignment appropriate at the start of the individuation and the assignment
+appropriate at its completion disagree, so the state belongs determinately
+to neither part. The set of such states is non-empty, and its measure is
+$\thick(A)$, which is therefore strictly positive.
+\end{proof}
+
+The preceding theorem gives positivity separately for every individuation. A
+stronger statement is needed for what follows: a bound holding uniformly
+over every individuation a given system is capable of performing.
+Positivity of every member of a family of quantities does not by itself
+imply positivity of their infimum, since the sequence $1/n$ is everywhere
+positive with infimum zero. A further condition on the system is therefore
+required.
+
+\begin{definition}[Bounded refinement]
+\label{def:res-bounded}
+A system exhibits \emph{bounded refinement} if the individuations it is
+capable of performing are drawn from a finite set, or, more generally, if
+there exists a finest individuation the system can perform, of thickness
+$\Depth_{\min} > 0$.
+\end{definition}
+
+\begin{theorem}[Uniform floor]
+\label{thm:uniform-floor}
+In a system exhibiting bounded refinement, there exists $\floor > 0$ such
+that $\thick(A) \geq \floor$ for every individuated $A$, and $\floor$ may be
+taken equal to $\Depth_{\min}$.
+\end{theorem}
+
+\begin{proof}
+By \cref{def:res-bounded} the set of thicknesses attainable by the system
+has a least element $\Depth_{\min}$, or is bounded below by one. By
+\cref{thm:floor} every attainable thickness is strictly positive, so
+$\Depth_{\min} > 0$. Hence $\thick(A) \geq \Depth_{\min} = \floor > 0$ for
+every individuated $A$.
+\end{proof}
+
+\begin{remark}[The Condition That Does the Work]
+\label{rem:hypothesis}
+\Cref{thm:floor} holds without further assumption. \Cref{thm:uniform-floor}
+does not: a system capable of unbounded refinement can generate thicknesses
+approaching zero, and no uniform floor exists for it. Every physical system
+considered in this paper is one of bounded refinement, because the number of
+distinguishable cells available in any finite region of phase space is
+itself finite. This condition is flagged explicitly because every result
+that follows inherits it, and because a condition that is never tested
+against its own point of failure is not a hypothesis but an unexamined
+habit.
+\end{remark}
+
+\subsection{Contact as Minimal Mutual Distinction}
+
+\begin{definition}[Contact]
+\label{def:contact}
+Two items $A$ and $B$ are in \emph{contact} when their mutual boundary
+thickness attains the floor, $\thick(A,B) = \floor$.
+\end{definition}
+
+Contact is the closest two items can remain while each is still a distinct
+item. Below the floor the two are not two items but one; at the floor they
+are two items maximally mutually defined by one another.
+
+\begin{proposition}[Local distinction is cheaper than global distinction]
+\label{prop:local-cheaper}
+Maintaining $A$ as distinct from a specific finite partner $B$ requires
+boundary content bounded by $\thick(A,B)$, while maintaining $A$ as distinct
+from the whole of $\Univ$ requires boundary content bounded below by
+$\thick(A,\Univ)$, and $\thick(A,B) \leq \thick(A,\Univ)$ whenever $B
+\subseteq \Univ \setminus A$.
+\end{proposition}
+
+\begin{proof}
+Distinguishing $A$ from $\Univ\setminus A$ entails distinguishing $A$ from
+every $B \subseteq \Univ\setminus A$, so the set of indeterminate states at
+the $A$--$B$ boundary is a subset of the indeterminate states at the
+$A$--$\Univ$ boundary. Measures respect this inclusion.
+\end{proof}
+
+\begin{corollary}[Contact is favoured]
+\label{cor:contact-favoured}
+In the absence of a constraint preventing it, a system evolves toward
+configurations in which its constituents are in contact, because contact
+minimises the boundary content required to sustain mutual distinctness.
+\end{corollary}
+
+This is a statement about which configurations persist, not a statement
+that any force draws items together. Nothing pulls two items into contact;
+configurations of lower total boundary cost are simply the ones a system
+that samples its own accessible states will be found occupying.
+
+\begin{definition}[Contact chain]
+\label{def:chain}
+A \emph{contact chain} is a sequence $A_1 - A_2 - \cdots - A_n$ in which
+every consecutive pair is in contact.
+\end{definition}
+
+\begin{proposition}[Chains sharpen without added global cost]
+\label{prop:chain}
+Let $A_1 - \cdots - A_n$ be a contact chain and let $A_0$ come into contact
+with $A_1$. Each of $A_1, \ldots, A_n$ thereby acquires an additional
+specific partner against which it is defined, refining the distinctions
+available to it, while no $\thick(A_i,\Univ)$ increases.
+\end{proposition}
+
+\begin{proof}
+The new contact establishes $\thick(A_0,A_1) = \floor$ without altering any
+existing $\thick(A_i,A_{i+1})$, each already at $\floor$ by
+\cref{def:chain}. Each $A_i$ now has one additional specific partner in its
+context, which refines the distinctions available to it, while no global
+boundary is modified, since $A_0$ was already individuated within $\Univ$.
+\end{proof}
+
+This proposition is the structural fact that a folded polymer will be shown
+to exploit: extending a chain of mutually defining contacts sharpens every
+member of the chain without any additional cost to the system as a whole.
+
+%==============================================================================
+\section{The Cost of Refinement}
+\label{sec:depth}
+%==============================================================================
+
+\subsection{Partition Depth}
+
+Boundary thickness measures the cost of a single distinction. A system
+whose state must be specified through several nested levels of distinction
+incurs a cost at every level, and it is convenient to have a single scalar
+measuring the total.
+
+\begin{definition}[Partition depth]
+\label{def:depth}
+For a system whose state is specified by a hierarchy of partitions with
+branching factors $k_1, k_2, \ldots, k_r$ at successive levels, the
+\emph{partition depth} is
+\begin{equation}
+\Depth = \sum_{i=1}^{r} \log_b k_i,
+\label{eq:depth}
+\end{equation}
+where $b$ is a fixed reference base.
+\end{definition}
+
+Partition depth is the number of independent distinguishing operations
+required to single out one state among all those the hierarchy admits; it
+plays the same role for hierarchical distinguishability that entropy plays
+for the distribution of energy among microstates, and the two are linked
+directly.
+
+\begin{proposition}[Depth as entropy]
+\label{prop:depth-entropy}
+The entropy associated with a state specified at partition depth $\Depth$
+is $S_\Depth = \kB \Depth \ln b$, and for an isolated system $\Delta
+S_\Depth = \kB \ln b \cdot \Delta \Depth$.
+\end{proposition}
+
+\subsection{Sharing Reduces Depth}
+
+\begin{theorem}[Composition reduces depth]
+\label{thm:composition}
+Let $N$ constituents, individuated independently, have partition depths
+$\Depth_1, \ldots, \Depth_N$, so that specifying them independently requires
+$\Mfree = \sum_i \Depth_i$. If the constituents instead occupy a bound
+configuration in which some coordinates specifying their joint state are
+shared rather than independently specified for each constituent, the bound
+depth satisfies $\Mbound = \Mfree - \Depth_{\text{shared}}$ for some
+$\Depth_{\text{shared}} > 0$, and the deficit $\Delta\Depth = \Mfree -
+\Mbound$ is released as binding energy, $E_{\mathrm{bind}} = T_\Depth \kB \ln
+b \cdot \Delta \Depth$, where $T_\Depth$ is the characteristic temperature
+of the binding process.
+\end{theorem}
+
+\begin{proof}
+When constituents are bound rather than free, coordinates that describe the
+composite as a whole, such as its centre of mass and orientation, no longer
+serve to distinguish any one constituent from another; they describe the
+joint configuration instead. The number of coordinates required to specify
+each constituent individually, given that the joint coordinates are already
+fixed, is strictly less than the number required to specify each
+constituent from scratch, so $\Mbound < \Mfree$ whenever such shared
+coordinates exist, with deficit $\Delta\Depth = \Mfree - \Mbound > 0$. By
+\cref{prop:depth-entropy}, this deficit corresponds to an entropy change
+$\Delta S_\Depth = \kB \ln b \cdot \Delta\Depth$, and by the thermodynamic
+relation $\Delta E = T \Delta S$ at the characteristic temperature of the
+process, this entropy change corresponds to an energy $E_{\mathrm{bind}} =
+T_\Depth \kB \ln b \cdot \Delta \Depth$ released upon binding.
+\end{proof}
+
+This theorem is the mechanism behind every covalent bond considered in this
+paper. A bond is not, on the present account, an attraction between two
+pre-existing charged fragments; it is a configuration in which a shared
+coordinate, most directly the assignment of a bonding electron to one site
+or the other, is no longer separately specified by each site, so that the
+joint structure requires less partition depth than the two constituents
+would require in isolation, with the deficit appearing as bond energy.
+
+\begin{proposition}[Compression diverges]
+\label{prop:compression}
+The energy required to maintain $N$ mutually distinguishable states within
+a phase-space volume $\mathcal{V}$ diverges as $\mathcal{V} \to 0$ at fixed
+$N$, or as $N \to \infty$ at fixed $\mathcal{V}$.
+\end{proposition}
+
+\begin{proof}
+Confining $N$ states to volume $\mathcal{V}$ requires each to occupy a cell
+of average volume $\mathcal{V}/N$. Reducing a cell from a reference volume
+$\mathcal{V}_0$ to $\mathcal{V}/N$ requires work $\kB T \ln(N\mathcal{V}_0 /
+\mathcal{V})$ by the standard relation between confinement and free energy.
+Summing over $N$ cells and letting $\mathcal{V} \to 0$ or $N \to \infty$
+sends this quantity to infinity.
+\end{proof}
+
+This proposition supplies the reason a system will refuse to individuate a
+constituent more finely than a task requires: refinement beyond what is
+needed for a given distinction is not merely wasteful, it is arbitrarily
+costly, and no completed distinction is purchased in return.
+
+%==============================================================================
+\section{Probing Without Committing}
+\label{sec:asymmetry}
+%==============================================================================
+
+The floor established in \cref{sec:individuation} governs the cost of
+individuating a region. It says nothing yet about what it costs merely to
+pass through a region without individuating it, and the distinction between
+these two operations is what makes reusable structure possible at all.
+
+\begin{definition}[Probe and commit]
+\label{def:probecommit}
+Let $T$ be a measure-preserving transformation of a bounded state space. A
+region $W$ is \emph{probed} when some iterate of $T$ enters it; this is a
+fact about a trajectory and involves no boundary. A region $W$ is
+\emph{committed} when a boundary individuating $W$ from its complement is
+drawn; by \cref{thm:floor} this deposits residue of thickness at least
+$\floor$.
+\end{definition}
+
+\begin{theorem}[Asymmetry of probing and committing]
+\label{thm:asymmetry}
+Let $W$ be a region of positive measure in a finite-measure state space and
+$T$ a measure-preserving transformation. Then committing $W$ deposits
+residue of at least $\floor$ regardless of the measure of $W$; almost every
+trajectory probes $W$ without depositing any residue; and the long-run
+frequency with which $W$ is probed equals its measure, so that a rare
+region is probed as freely as a common one and merely less often.
+\end{theorem}
+
+\begin{proof}
+The first claim follows from \cref{thm:floor,thm:uniform-floor} applied to
+the act of individuating $W$, and neither theorem makes reference to the
+measure of $W$. The second follows from Poincar\'{e} recurrence: for a
+measure-preserving transformation on a finite-measure space, almost every
+point of a positive-measure set returns to it infinitely often, and by the
+ergodicity of the induced dynamics almost every point of the state space
+enters $W$ at some time; entry is a property of the trajectory alone, to
+which \cref{def:probecommit} attaches no boundary, and by \cref{thm:floor}
+residue arises only from boundaries. The third follows from the Birkhoff
+ergodic theorem, which gives, for almost every initial point, a long-run
+visitation frequency to $W$ equal to its measure; this is a statement about
+frequency and carries no cost term.
+\end{proof}
+
+\begin{corollary}[A committed structure is reusable]
+\label{cor:reuse}
+A structure that has been committed once thereafter renders the region it
+individuates available to probing, and every subsequent probe of that
+region is free. Such a structure is not consumed by the probes that
+traverse it and may be traversed without limit.
+\end{corollary}
+
+\begin{proof}
+The commitment deposits residue exactly once, by \cref{thm:asymmetry}.
+Thereafter the region is individuated, and a trajectory entering it is
+probing, by \cref{def:probecommit}; by \cref{thm:asymmetry} probing deposits
+nothing further. Since nothing further is deposited, the number of
+subsequent traversals is unbounded.
+\end{proof}
+
+\begin{remark}
+This corollary supplies, without appeal to any energetic bookkeeping beyond
+what has already been established, the reason a catalytic surface is not
+consumed by repeated use: what passes across it after it has been
+established probes the structure rather than individuating it afresh, and
+probing is free. The same asymmetry, applied below to a chain of residues
+rather than to a single catalytic surface, is what allows one residue in a
+self-propagating polymer to be exchanged for another without the
+replacement being treated by the rest of the structure as a fresh
+individuation of everything downstream of it.
+\end{remark}
+
+%==============================================================================
+\section{The Locus of a Transferred Constituent}
+\label{sec:noclaim}
+%==============================================================================
+
+One further result is needed before the peptide backbone can be derived,
+because it determines what a shared bonding electron, and by extension a
+shared partition coordinate of any kind, actually is while it is shared.
+
+\begin{definition}[Partition claim]
+\label{def:claim}
+A system $S$ \emph{claims} a constituent $X$ when $S$ has performed an
+individuating operation, in the sense of \cref{def:probecommit}, that
+assigns $X$ determinately to $S$'s own partition structure rather than to
+that of any other system.
+\end{definition}
+
+\begin{proposition}[An unclaimed constituent has no residue]
+\label{prop:unclaimed}
+Let $X$ participate in a configuration shared between two otherwise
+separately individuated systems $S_1$ and $S_2$, such that neither $S_1$
+nor $S_2$ has performed the individuating operation of \cref{def:claim} on
+$X$. Then no residue, in the sense of \cref{thm:asymmetry}, exists that can
+be attributed to $X$'s presence in either $S_1$ or $S_2$.
+\end{proposition}
+
+\begin{proof}
+By \cref{thm:asymmetry}, residue is generated only by a committing
+operation, and residue is indexed by the system whose partition structure
+performed the commitment. If neither $S_1$ nor $S_2$ has performed such an
+operation on $X$, there is no committing act to which a residue could be
+attributed, and the question of whose residue $X$'s presence constitutes has
+no referent. This is not indeterminacy in the value of a well-defined
+quantity; the quantity itself is not defined until one of the two systems
+performs the individuating operation.
+\end{proof}
+
+This proposition is stated with some care because it is easy to misstate.
+It does not assert that $X$ is divided between $S_1$ and $S_2$, nor that its
+assignment is a fact known to neither system; it asserts that the very
+question of assignment is not yet posed. $S_1$ and $S_2$ remain, throughout
+the shared interval, ordinarily and separately individuated against
+everything else in $\Univ$; only the narrower question of which of the two
+has claimed $X$ is without an answer, because answering it is precisely the
+individuating act that has not occurred.
+
+\begin{corollary}[Release without reversal]
+\label{cor:release-noclaim}
+If $S_1$ subsequently performs the individuating operation that assigns $X$
+determinately to itself, $S_1$'s partition structure changes and deposits
+residue at that moment, in accordance with \cref{thm:asymmetry}. If instead
+$X$ resolves to $S_2$ without $S_1$ ever having performed such an operation,
+$S_1$'s partition structure is unchanged, because there is no prior claim
+by $S_1$ for the resolution to reverse.
+\end{corollary}
+
+This corollary is the precise reason a covalent bond can be formed and
+broken repeatedly by the same site without that site accumulating residue:
+so long as the transferred constituent is never claimed by the site in the
+sense of \cref{def:claim}, its departure is not a reversal of any prior
+individuating act, because no such act occurred.
+
+%==============================================================================
+\part{The Peptide Polymer as a Partition Structure}
+\label{part:polymer}
+%==============================================================================
+
+\section{The Boundary-Placement Problem}
+\label{sec:boundary-problem}
+
+A bounded aqueous compartment separated from its surroundings faces a
+single, uniform problem: presenting one partition boundary, of one
+character, across its entire enclosing surface. A polymer folding into a
+catalytic or structural role inside such a compartment faces a different and
+harder problem. It must present, at specific, addressable positions along
+its own length, partition environments of markedly different character:
+regions compatible with the surrounding solvent and regions incompatible
+with it, regions carrying net partition-generated charge and regions
+carrying none, regions in contact with a bound cofactor and regions in
+contact only with solvent. No single, spatially uniform molecular species
+can satisfy this requirement, because a spatially uniform species presents
+the same partition character everywhere along its length by definition.
+
+\begin{definition}[Boundary-placement polymer]
+\label{def:placement}
+A \emph{boundary-placement polymer} is a linear chain of positions
+$1,\ldots,n$, together with an assignment to each position of a partition
+character drawn from a set $\Res$, such that the assignment may vary
+independently from position to position.
+\end{definition}
+
+\begin{theorem}[Necessity of an invariant carrier with a variable slot]
+\label{thm:carrier-necessity}
+A boundary-placement polymer capable of arbitrary, position-independent
+variation in partition character, while remaining a single connected
+individuated object rather than a disconnected set of separately
+individuated fragments, requires a repeating structural unit that is
+invariant across positions and that carries, at each position, a slot whose
+occupant may be freely varied.
+\end{theorem}
+
+\begin{proof}
+Consider the two components required at each position: whatever maintains
+the chain as one connected, individuated object, and whatever determines
+the partition character presented to the surroundings at that position. If
+these two components were not separated, so that connectivity and partition
+character were determined by the same structural feature at every position,
+then varying the partition character at one position would necessarily
+alter the connectivity of the chain there, either breaking the chain or
+altering the contact structure, in the sense of \cref{def:chain}, of every
+position downstream of it. This would make the boundary character at one
+position and the individuation of the chain as a whole into a single,
+inseparable act, contradicting the requirement that character vary
+independently from position to position while the chain remains one
+connected object. The two components must therefore be structurally
+distinct: an invariant carrier responsible for connectivity, and a variable
+slot, borne by the carrier at each position, responsible for partition
+character.
+\end{proof}
+
+This theorem, and not any assumption drawn from organic chemistry,
+establishes that a boundary-placement polymer must have the two-part
+architecture of a backbone and a side chain. What remains to be shown is
+why the backbone should take the specific geometric form of a planar,
+repeating linkage, and this follows from the same depth-sharing mechanism
+already established for covalent bonding in general.
+
+\section{Planarity of the Invariant Linkage}
+\label{sec:planarity}
+
+\begin{theorem}[The invariant linkage is planar]
+\label{thm:planarity}
+The linkage joining successive repeating units of an invariant carrier, in
+the sense of \cref{thm:carrier-necessity}, is constrained to a single plane
+whenever the linkage participates in a shared partition coordinate of the
+kind described by \cref{thm:composition}.
+\end{theorem}
+
+\begin{proof}
+By \cref{thm:composition}, a bond in which a coordinate, here the placement
+of a lone electron pair adjacent to the linking atom, is shared between two
+sites rather than assigned exclusively to one reduces the joint partition
+depth of the linkage relative to a configuration in which the same
+coordinate is assigned exclusively to a single site. This reduction is
+available only when the geometric arrangement of the participating atomic
+orbitals permits their overlap, and orbital overlap of the relevant
+symmetry is maximised when the atoms bounding the linkage, together with the
+atoms directly bonded to them, lie in a common plane; any rotation out of
+this plane reduces the overlap and correspondingly reduces the partition
+depth deficit available from sharing, raising the joint depth of the
+linkage. Because a configuration of higher partition depth is, by
+\cref{cor:contact-favoured}, disfavoured relative to one of lower depth
+under otherwise identical constraints, the linkage is found preferentially
+in the planar configuration, and rotation away from it is resisted in
+proportion to the depth deficit forfeited.
+\end{proof}
+
+\begin{remark}
+This result is the general covalent-bonding mechanism of
+\cref{thm:composition} specialised to a linkage that recurs identically at
+every position along an invariant carrier. Because the same depth deficit
+is available at every repetition of the linkage, planarity is not a local
+accident at one position but a structural regularity imposed uniformly
+along the entire carrier, and the constraint on the freely rotatable bonds
+adjacent to each planar unit is a direct consequence: rotation is permitted
+only about bonds that do not themselves participate in the shared
+coordinate responsible for the depth reduction.
+\end{remark}
+
+\section{Necessity of Folding}
+\label{sec:folding-necessity}
+
+\begin{definition}[Environment exposure]
+\label{def:exposure}
+A configuration of a boundary-placement polymer \emph{exposes} a given
+partition environment at position $i$ if the constituent occupying the
+variable slot at $i$ is in contact, in the sense of \cref{def:contact},
+predominantly with constituents of that environment rather than with other
+positions of the same chain.
+\end{definition}
+
+\begin{theorem}[An extended chain exposes at most one environment]
+\label{thm:extended-limit}
+An extended configuration of a boundary-placement polymer, in which every
+position is in contact predominantly with the surrounding medium rather
+than with other positions of the same chain, exposes the same partition
+environment, namely that of the medium, at every position, regardless of
+the variable slot occupancy assigned there.
+\end{theorem}
+
+\begin{proof}
+In an extended configuration each position's contacts are, by hypothesis,
+predominantly with the surrounding medium. The partition environment
+exposed at a position is determined, by \cref{def:exposure}, by the
+character of its dominant contacts, and this character is uniform across
+positions because the medium is a single, uniform partner. The variable
+slot occupancy at each position determines only the strength or sign of the
+partition boundary formed against this single, uniform partner, not the
+identity of the partner itself, and so cannot generate more than one
+exposed environment.
+\end{proof}
+
+\begin{theorem}[Necessity of compaction]
+\label{thm:compaction}
+A boundary-placement polymer required to expose two or more mutually
+incompatible partition environments simultaneously, such as an environment
+compatible with the surrounding solvent and an environment incompatible
+with it, cannot satisfy this requirement in an extended configuration, and
+must adopt a compact configuration in which positions distant along the
+chain are brought into mutual contact.
+\end{theorem}
+
+\begin{proof}
+By \cref{thm:extended-limit}, an extended configuration exposes only the
+single environment of the surrounding medium at every position. A
+requirement to expose two or more mutually incompatible environments
+simultaneously therefore cannot be met while the chain remains extended.
+The only alternative available to a bounded polymer, consistent with
+\cref{ax:bounded} below, is a configuration in which some positions are
+brought into contact predominantly with other positions of the same chain
+rather than with the medium; by \cref{def:exposure}, such positions then
+expose the environment presented by their chain partners rather than that
+of the medium, and by varying which positions are brought into such contact
+with which others, the chain can realise more than one exposed environment
+within a single connected object. Such a configuration is, by definition, a
+compact fold rather than an extended chain.
+\end{proof}
+
+\begin{axiom}[Bounded phase space]
+\label{ax:bounded}
+Every persistent physical system occupies a region of phase space of finite
+Liouville measure, admitting hierarchical partition into distinguishable
+states of arbitrarily fine but not unbounded resolution.
+\end{axiom}
+
+\begin{corollary}[Folding is a partition necessity]
+\label{cor:folding}
+A boundary-placement polymer required, by the task it performs, to expose
+more than one incompatible partition environment is not merely permitted to
+fold; by \cref{thm:compaction} it has no alternative configuration
+available to it consistent with satisfying that requirement, and folding is
+therefore forced rather than favoured.
+\end{corollary}
+
+This corollary places protein folding on the same logical footing as the
+formation of a bounded aqueous compartment's enclosing bilayer: in both
+cases a system required to maintain more than one partition environment at
+finite energetic cost is forced into a specific geometric configuration
+because no alternative configuration satisfies the requirement at all, not
+because the alternative configuration is merely less favourable.
+
+\begin{proposition}[Contact chains realise programmable environments]
+\label{prop:programmable}
+Within a compact fold, the environment exposed at any position is
+determined, by \cref{prop:chain}, by the specific identities of the
+positions with which it is placed in contact, and because the assignment of
+variable-slot occupants to positions may be chosen freely, subject only to
+the connectivity supplied by the invariant carrier, the environments
+realisable at a given position are, in principle, as varied as the
+combinatorics of the assignment permit.
+\end{proposition}
+
+\begin{remark}
+This proposition is the structural basis of a catalytic contact surface. A
+catalytic surface exposes, at a specific position or set of positions, a
+partition environment compatible with a target substrate, while the
+remainder of the fold exposes an environment compatible with the ambient
+solvent; both requirements are met simultaneously because the fold, not the
+chain in isolation, is what determines exposure. Nothing in the preceding
+derivation refers to what a catalytic surface accomplishes once formed; only
+the necessity that a fold be capable of forming one has been established.
+\end{remark}
+
+%==============================================================================
+\part{The Size of the Encoded Alphabet}
+\label{part:alphabet}
+%==============================================================================
+
+\section{Substitution Without a Global Comparison}
+\label{sec:substitution}
+
+Several hundred distinct amino acids are known to occur in nature, arising
+from ordinary organic chemistry operating on cosmically abundant elements.
+A genetically encoded alphabet of twenty-two members is, by contrast, a
+striking numerical restriction, and the standard biochemical account offers
+no reason for this particular number. We derive it here from the dynamics
+of a self-propagating polymer alone, without appeal to any process that
+inspects or ranks candidate residues against one another.
+
+\begin{definition}[Self-propagating structure]
+\label{def:selfprop}
+A \emph{self-propagating structure} is a configuration, of the kind
+described in \cref{part:polymer}, whose rate of production of further
+copies of itself exceeds its rate of decay.
+\end{definition}
+
+\begin{definition}[Local substitution]
+\label{def:substitution}
+A \emph{local substitution} at position $i$ of a self-propagating structure
+replaces the variable-slot occupant at $i$ with a different member of the
+set $\Resset$ of chemically available residues, leaving the invariant
+carrier and every other position unchanged.
+\end{definition}
+
+\begin{theorem}[Substitution tolerance]
+\label{thm:substitution-tolerance}
+A local substitution at position $i$ is compatible with the continued
+self-propagation of the structure whenever it does not raise the total
+partition depth $\Depth$ of the structure, in the sense of
+\cref{thm:composition}, above the depth compatible with continued
+propagation, and this compatibility is determined entirely by the local
+comparison of depth before and after the single substitution, without
+reference to any other member of $\Resset$.
+\end{theorem}
+
+\begin{proof}
+By \cref{def:selfprop}, propagation of the structure depends on its rate of
+production of copies exceeding its rate of decay, and by
+\cref{thm:composition,prop:depth-entropy} both rates are governed by the
+partition depth of the structure through the energetics of its formation
+and maintenance. A substitution at position $i$ changes the depth
+contributed by that position alone, and by \cref{prop:chain} may also
+refine, without additional cost, the contacts of positions already in the
+chain; whether the resulting structure continues to satisfy
+\cref{def:selfprop} is therefore determined by the depth of the single
+resulting configuration, compared to the depth of the configuration prior
+to substitution. No feature of this comparison requires or permits
+reference to a substitution not performed, and hence no comparison across
+candidate members of $\Resset$ occurs at any stage.
+\end{proof}
+
+\begin{remark}
+This theorem is the precise sense in which no evaluator is required.
+Each substitution event is a single, local, mechanical comparison between
+one structure and one alternative structure differing from it at one
+position; it is never a comparison among several hundred candidates for the
+purpose of selecting the best. A substitution that happens to lower the
+depth of the structure relative to its predecessor causes that structure to
+propagate at a correspondingly higher rate, by \cref{cor:contact-favoured}
+applied to the propagation dynamics rather than to a static configuration; a
+substitution that raises the depth causes the structure bearing it to
+propagate more slowly or to decay. Differential persistence performs the
+entire work that a selecting evaluator would otherwise be required to
+perform, and it performs this work one substitution at a time, in whichever
+independent lineage the substitution happens to occur.
+\end{remark}
+
+\section{Recurrence as the Criterion for a Shared Category}
+\label{sec:recurrence}
+
+A residue that arises as a favourable substitution in a single
+self-propagating lineage is, at that point, a fact about that lineage
+alone. Whether it becomes a stable, nameable member of a shared alphabet is
+a further question, and it is this question that fixes the size of the
+encoded set.
+
+\begin{definition}[Independent lineage]
+\label{def:lineage}
+Two self-propagating structures belong to \emph{independent lineages} if
+neither is derived from the other by a continuous sequence of local
+substitutions and neither shares an invariant carrier with the other by
+common descent.
+\end{definition}
+
+\begin{definition}[Cross-lineage recurrence]
+\label{def:crossrecurrence}
+A residue $r \in \Resset$ exhibits \emph{cross-lineage recurrence} if it
+arises, by \cref{thm:substitution-tolerance}, as a favourable substitution
+outcome in more than one independent lineage in the sense of
+\cref{def:lineage}.
+\end{definition}
+
+\begin{theorem}[Recurrence is required for a shared category]
+\label{thm:recurrence-required}
+A residue becomes a category available for storage as a single, reusable
+symbol only if it exhibits cross-lineage recurrence.
+\end{theorem}
+
+\begin{proof}
+A category, in the sense required for storage as a symbol, is a structure
+that is invariant across its instances while the instances themselves
+remain distinct occasions; this is the defining property distinguishing a
+reusable category from a one-off occurrence, established generally in
+\cref{sec:asymmetry} for the individuation of a committed structure and
+applying here to the individuation of a residue type. A residue arising as
+a substitution outcome in exactly one lineage has, at that point, exactly
+one instance, and no invariant has yet been exhibited across distinct
+occasions, because there is only one occasion. A storage mechanism, whose
+function is to record and reproduce a category rather than a single
+historical event, has no invariant available to it to record until the
+residue recurs in at least a second, independent lineage; prior to such
+recurrence, the residue is a private fact of one lineage rather than a
+category in the required sense.
+\end{proof}
+
+\begin{corollary}[The encoded set is a recurrence statistic]
+\label{cor:encoded-count}
+The genetically encoded alphabet consists of exactly those residues that
+had, at the point storage mechanisms of the kind considered in
+\cref{part:reading} stabilised, already exhibited cross-lineage recurrence
+in the sense of \cref{def:crossrecurrence}. The residues among the several
+hundred chemically available members of $\Resset$ that never exhibited such
+recurrence, whether because they never arose as a favourable substitution in
+any lineage or because they arose in exactly one lineage and were never
+independently rediscovered, remain chemically real but are not represented
+in the encoded alphabet.
+\end{corollary}
+
+\begin{proof}
+Immediate from \cref{thm:substitution-tolerance,thm:recurrence-required}: a
+residue enters the storable category set exactly when it satisfies the
+recurrence condition of \cref{def:crossrecurrence}, and this condition is
+evaluated identically, without exception, for every member of $\Resset$.
+The encoded alphabet is the image of $\Resset$ under this condition at the
+time storage stabilised, and nothing in the derivation restricts this image
+to any particular cardinality in advance; the number twenty-two is the
+value this image happens to take, determined by the combinatorics of which
+residues were independently rediscoverable as favourable substitutions
+across the range of self-propagating structures accessible under the
+conditions in which storage stabilised.
+\end{proof}
+
+\begin{remark}[Why This Requires No Instructor]
+\label{rem:noinstructor}
+At no point in this derivation does any element of the system compare the
+several hundred chemically available residues against one another, rank
+them, or select among them for inclusion in an alphabet. \Cref{thm:substitution-tolerance}
+establishes that each substitution event is a local, one-at-a-time
+comparison between a structure and its immediate predecessor;
+\cref{thm:recurrence-required} establishes that recurrence across
+independent lineages, a purely combinatorial fact about how many times a
+given local comparison happened to resolve the same way in unconnected
+histories, is what makes a residue nameable. The count of twenty-two is
+therefore a statistic accumulated by many independent, mechanical, local
+events, with no step at which a global inventory of candidates is
+consulted.
+\end{remark}
+
+%==============================================================================
+\part{Charge Balance and the Reading of a Stored Structure}
+\label{part:reading}
+%==============================================================================
+
+\section{Charge as a Partition Property}
+\label{sec:charge}
+
+The residues identified in \cref{part:alphabet} as recurrent across
+independent lineages are of no use to a cell unless some mechanism allows a
+structure that has stabilised extrinsically to be reproduced reliably,
+without repeating the entire history of substitution and differential
+persistence each time it is needed. This is the function a stored sequence
+serves, and understanding why a stored sequence is read when it is read,
+rather than continuously, requires one further result: that charge itself is
+a consequence of partitioning rather than a property carried independently
+of it.
+
+\begin{theorem}[Charge emergence]
+\label{thm:charge}
+Electric charge is defined only for a partitioned entity; an unpartitioned
+constituent has no charge assignment.
+\end{theorem}
+
+\begin{proof}
+The operational determination of charge requires placing two entities at a
+specified separation and measuring the force between them, and this
+procedure presupposes that the two entities are already distinguished from
+one another and from their surroundings, which is to say already
+partitioned in the sense of \cref{post:negation}. Absent this prior
+distinction, the procedure has no defined endpoints between which a force
+could be measured, and the quantity it would extract is correspondingly
+undefined. A constituent sharing a joint partition structure with another,
+in the sense of \cref{thm:composition}, has by definition not been
+separately individuated from that other, and the question of its
+individual charge is, for the same reason given in \cref{prop:unclaimed},
+not yet posed rather than answered with a value of zero.
+\end{proof}
+
+\begin{corollary}[Malformation is charge imbalance]
+\label{cor:malformation}
+A partition structure that is required, by the task it performs, to reach a
+particular configuration but has been individuated only partially, so that
+some of its constituents remain claimed by neither of two contending
+systems in the sense of \cref{def:claim}, exhibits a net charge imbalance
+proportional to the extent of the incomplete individuation.
+\end{corollary}
+
+\begin{proof}
+By \cref{thm:charge}, charge is defined precisely at the boundary a
+partitioning act establishes. A structure whose required individuation is
+incomplete has established some boundaries and left others unresolved; the
+resolved boundaries carry a definite charge assignment by \cref{thm:charge},
+while the unresolved portion, being as yet unclaimed by either contending
+system, contributes an excess or deficit relative to the fully resolved
+configuration. This excess or deficit is, by definition, a net imbalance.
+\end{proof}
+
+\section{Coupling Without Presupposed Content}
+\label{sec:coupling}
+
+A stored sequence can only be read for a physically legitimate reason if the
+mechanism that triggers reading is blind to what the sequence encodes,
+because any mechanism that inspects the content of a sequence before
+deciding whether to read it must already possess the correspondence between
+sequence and product that the reading process is supposed to establish. We
+state this requirement explicitly, because it rules out an entire class of
+otherwise plausible mechanisms.
+
+\begin{definition}[Blind structural coupling]
+\label{def:blindcoupling}
+A coupling between a local partition imbalance, in the sense of
+\cref{cor:malformation}, and a stored partition structure is \emph{blind} if
+the coupling depends only on the geometric and charge compatibility of the
+two structures, evaluated by the same criterion at every candidate stored
+structure, and not on any correspondence, established in advance, between
+the stored structure and a product it would yield if read.
+\end{definition}
+
+\begin{theorem}[Reading requires blind coupling]
+\label{thm:blind-required}
+A stored partition structure is read as a consequence of a local partition
+imbalance elsewhere in the system only through a blind coupling, in the
+sense of \cref{def:blindcoupling}; no mechanism that selects the stored
+structure to be read on the basis of the product it is known in advance to
+yield is compatible with the derivation of \cref{part:alphabet}, in which no
+element of the system inspects or ranks candidates by their outcome.
+\end{theorem}
+
+\begin{proof}
+Suppose, to the contrary, that some mechanism selected a stored structure to
+be read on the basis of a correspondence between that structure and the
+product it yields. Such a mechanism would require, prior to the reading
+event, a representation of which stored structure corresponds to which
+product, and by \cref{thm:recurrence-required} such a correspondence is
+itself an outcome of the accumulated, purely local and mechanical process of
+substitution and cross-lineage recurrence, not an independently available
+fact that could be consulted in advance. A mechanism presupposing this
+correspondence before it has been established by that very process is
+circular, and is therefore excluded. The only form of coupling immune to
+this circularity is one that evaluates structural and charge compatibility
+directly, by the criterion of \cref{def:blindcoupling}, and is blind to
+whatever product, if any, results from reading.
+\end{proof}
+
+\begin{theorem}[Charge-matched unwinding]
+\label{thm:unwinding}
+A local partition imbalance, in the sense of \cref{cor:malformation},
+couples by \cref{thm:blind-required} to whichever accessible stored
+partition structure presents the structurally complementary charge
+configuration, and this coupling is evaluated by the same geometric and
+electrostatic criterion, without exception, at every candidate stored
+structure available to the system.
+\end{theorem}
+
+\begin{proof}
+By \cref{cor:malformation}, the imbalance presents a definite charge
+configuration determined by the extent and character of its incomplete
+individuation. By \cref{thm:composition}, a joint configuration reducing the
+combined partition depth of two structures is favoured over configurations
+that do not, whenever such a configuration is accessible; a stored structure
+whose own boundary charge is structurally complementary to the imbalance
+supplies exactly such a joint depth reduction if brought into contact with
+it. By \cref{thm:blind-required} this compatibility is evaluated by
+structural and charge criteria alone, applied uniformly, and the coupling
+that results is therefore blind in the sense required.
+\end{proof}
+
+\begin{corollary}[Usefulness is discovered, not anticipated]
+\label{cor:retrospective}
+Whether the product yielded by reading a stored structure resolves the
+originating local imbalance in a manner that benefits the continued
+propagation of the structure that generated the imbalance is a fact
+established only after reading has occurred, by the differential
+persistence mechanism of \cref{sec:substitution}; a coupling event that
+happens to yield a useful product is reinforced by the increased
+propagation rate of the resulting structure, and a coupling event that
+yields no useful product is not reinforced, without any element of the
+system having anticipated this outcome prior to the coupling.
+\end{corollary}
+
+\begin{proof}
+By \cref{thm:unwinding}, the coupling event is determined entirely by
+structural and charge compatibility, prior to and independently of any
+product it yields. The consequence of the product for the propagation of
+the originating structure is therefore a fact about what occurs after the
+coupling, evaluated by the same depth-dependent propagation dynamics
+established in \cref{thm:substitution-tolerance}, and by
+\cref{rem:noinstructor} this evaluation involves no anticipation, ranking,
+or inspection of the product prior to its production.
+\end{proof}
+
+\section{Why a Stored Structure Is Read Rarely}
+\label{sec:rarely}
+
+\begin{proposition}[Reading is conditional on imbalance]
+\label{prop:conditional-reading}
+By \cref{thm:unwinding}, a stored partition structure is coupled to, and
+hence read in association with, a local partition imbalance only when such
+an imbalance exists and presents a compatible charge configuration; in the
+absence of an imbalance requiring resolution, no coupling event of the kind
+described in \cref{thm:unwinding} occurs, and the stored structure remains
+in its fully individuated, charge-balanced configuration.
+\end{proposition}
+
+\begin{proof}
+Immediate from \cref{thm:unwinding}: the coupling is a consequence of the
+imbalance presenting a compatible configuration to which a depth-reducing
+joint configuration is accessible. Absent an imbalance, no such
+depth-reducing joint configuration is available, and by
+\cref{cor:contact-favoured} the system has no tendency to depart from its
+lower-depth, already-balanced configuration.
+\end{proof}
+
+\begin{remark}
+This proposition supplies the reason a storage structure of this kind is
+consulted only occasionally rather than continuously, and it does so
+without appeal to any efficiency consideration external to the physics
+already established. A storage structure that is never in a charge-balanced
+resting state, because it is permanently coupled to some imbalance
+elsewhere in the system, is one whose stored configurations are
+continuously undergoing the individuating operations of \cref{def:claim},
+and by \cref{thm:asymmetry} every such operation deposits residue. A
+storage structure consulted only when a genuine, structurally compatible
+imbalance exists is one whose stored configurations spend most of their
+existence in the resting, charge-balanced state established in
+\cref{prop:conditional-reading}, in which they are merely probed, if at
+all, rather than committed, and are therefore reusable without limit by
+\cref{cor:reuse}. The infrequency of reading is thus not a design feature
+requiring separate justification; it is the direct consequence of the
+same asymmetry between probing and committing that governs every other
+reusable structure considered in this paper.
+\end{remark}
+
+%==============================================================================
+\part{Discussion}
+%==============================================================================
+
+\section{What Has Been Established}
+\label{sec:discussion}
+
+The derivation given here proceeds from a single postulate about the cost
+of individuation to three results that the standard biochemical account of
+proteins does not attempt to derive. The peptide backbone's division into
+an invariant carrier and a variable substituent, together with the
+planarity of the linkage joining successive carrier units, follows from the
+requirement that a polymer expose an arbitrary, position-addressable
+pattern of partition character while remaining a single connected
+individuated object, combined with the general mechanism by which sharing a
+partition coordinate lowers the depth of a bond. Protein folding follows
+from the impossibility of an extended chain exposing more than one
+partition environment at a time, so that any task requiring simultaneous
+exposure of incompatible environments forces compaction rather than merely
+favouring it. The size of the genetically encoded residue alphabet follows
+from a purely local, mechanical substitution dynamic together with a
+recurrence criterion for what counts as a storable category, with no step
+at which the several hundred chemically available residues are compared
+against one another by any evaluating process.
+
+The final part of the derivation addresses a question the preceding results
+raise but do not by themselves answer: given that a storage structure
+exists, encoding a set of residues fixed by cross-lineage recurrence, what
+determines when that structure is consulted. The answer given here, that a
+local partition imbalance couples to a stored structure by a purely
+structural and electrostatic criterion, blind to whatever product results,
+is offered specifically because the alternative, in which the coupling is
+mediated by an anticipated correspondence between stored structure and
+product, presupposes exactly the correspondence the rest of the derivation
+is constructed to explain rather than assume. A mechanism of reading that
+requires foreknowledge of what it will produce cannot be the mechanism that
+brought the correspondence between sequence and product into existence in
+the first place, and the framework developed here is constructed throughout
+to avoid this circularity: every result obtained is obtained from local,
+mechanical, and retrospectively evaluated events, never from a step in
+which some element of the system already knows what a later step will
+require.
+
+\section{Scope and Open Questions}
+\label{sec:limitations}
+
+The derivation of the encoded alphabet's size in \cref{part:alphabet}
+identifies the mechanism that fixes the count and identifies the count as a
+recurrence statistic, but it does not compute the numerical value
+twenty-two from the combinatorics of any specific set of prebiotic
+chemical pathways; doing so would require an inventory of the
+self-propagating structures accessible under early conditions that is
+beyond the scope of the present derivation and is identified here as
+outstanding work. Similarly, while \cref{part:reading} establishes the
+structural criterion by which a stored sequence is coupled to a local
+imbalance, it does not derive the specific molecular apparatus, such as the
+proteins that in extant biology mediate this coupling, from the partition
+postulate alone; the claim advanced is that any such apparatus, whatever its
+detailed chemistry, must satisfy the blindness condition of
+\cref{def:blindcoupling} on pain of the circularity identified in
+\cref{thm:blind-required}, not that the apparatus itself has been derived
+in full molecular detail. The uniform floor of \cref{thm:uniform-floor}
+remains, as flagged throughout, conditional on the bounded-refinement
+hypothesis of \cref{def:res-bounded}, and every result inheriting that floor
+inherits the condition with it.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+A protein is conventionally introduced as a sequence of residues drawn from
+a fixed alphabet of twenty amino acids, or twenty-two once the two
+exceptional cases are included, folded into a compact structure by forces
+that are catalogued but whose necessity is not established. We have shown
+instead that the two-part architecture of the peptide backbone is forced by
+the requirement that a bounded polymer present a spatially addressable
+pattern of partition boundaries to its surroundings while remaining one
+connected object; that folding is forced, not merely favoured, by the
+impossibility of an extended chain presenting more than one partition
+environment at once; and that the size of the encoded alphabet is fixed,
+without any selecting or comparing agency, by how many residues happened to
+recur as favourable local substitutions across independent self-propagating
+lineages before a storage mechanism, itself explicable by the same
+charge-emergence principle that governs every other partition boundary
+considered in this paper, stabilised around them. Nothing in this account
+requires that a genome, or any structure preceding it, possess knowledge of
+the proteins it will come to encode; the correspondence between sequence and
+product is, on this account, not a precondition of the mechanism but its
+accumulated and entirely retrospective output.
+
+\end{document}
