@@ -9,6 +9,7 @@
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{float}
+\usepackage{natbib}
 \usepackage{microtype}
 \usepackage{lmodern}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
@@ -23,10 +24,16 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{postulate}{Postulate}
+\newtheorem{axiom}{Axiom}
 \newtheorem{example}[theorem]{Example}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+
+\crefname{postulate}{Postulate}{Postulates}
+\Crefname{postulate}{Postulate}{Postulates}
+\crefname{axiom}{Axiom}{Axioms}
+\Crefname{axiom}{Axiom}{Axioms}
 
 % --- notation -----------------------------------------------------------
 \newcommand{\kB}{k_{\mathrm{B}}}
@@ -95,11 +102,23 @@ lineage and are never abstracted into a shared alphabet symbol. The
 genetically encoded alphabet is the set of residues that crossed this
 recurrence threshold before storage mechanisms stabilised; the several
 hundred residues that never crossed it remain chemically real but
-structurally private. We close by deriving, from the same charge-emergence
-and partition-conservation principles, why a storage structure that must be
+structurally private. We derive, from the same charge-emergence and
+partition-conservation principles, why a storage structure that must be
 read as rarely as possible is co-derived with the pre-existing genome
 without any element of the mechanism inspecting or anticipating the content
-it stores.
+it stores. Finally, we show that a conformational register, once it has
+attained cross-lineage recurrence, is favoured to acquire a specification
+distinct from itself on partition-depth grounds alone; that a
+specification subject to variable post-storage processing cannot serve as
+a terminal store for a register requiring identical reproduction across
+arbitrarily many readouts; and that a terminal store meeting this
+requirement must consist of an invariant jointly achieved by two
+complementary structures, neither of which carries a well-defined charge
+assignment on its own, so that what such a store preserves is an achieved
+charge balance rather than the sequence of either constituent considered
+alone. These three results are obtained without assuming any particular
+historical order among storage media and without allowing any step of the
+argument access to a requirement that only a later step establishes.
 \end{abstract}
 
 \tableofcontents
@@ -420,9 +439,10 @@ $N$, or as $N \to \infty$ at fixed $\mathcal{V}$.
 Confining $N$ states to volume $\mathcal{V}$ requires each to occupy a cell
 of average volume $\mathcal{V}/N$. Reducing a cell from a reference volume
 $\mathcal{V}_0$ to $\mathcal{V}/N$ requires work $\kB T \ln(N\mathcal{V}_0 /
-\mathcal{V})$ by the standard relation between confinement and free energy.
-Summing over $N$ cells and letting $\mathcal{V} \to 0$ or $N \to \infty$
-sends this quantity to infinity.
+\mathcal{V})$ by the standard relation between confinement and free energy,
+the same relation underlying the thermodynamic cost of erasing one bit of
+information \citep{landauer1961}. Summing over $N$ cells and letting
+$\mathcal{V} \to 0$ or $N \to \infty$ sends this quantity to infinity.
 \end{proof}
 
 This proposition supplies the reason a system will refuse to individuate a
@@ -463,16 +483,17 @@ region is probed as freely as a common one and merely less often.
 \begin{proof}
 The first claim follows from \cref{thm:floor,thm:uniform-floor} applied to
 the act of individuating $W$, and neither theorem makes reference to the
-measure of $W$. The second follows from Poincar\'{e} recurrence: for a
-measure-preserving transformation on a finite-measure space, almost every
-point of a positive-measure set returns to it infinitely often, and by the
-ergodicity of the induced dynamics almost every point of the state space
-enters $W$ at some time; entry is a property of the trajectory alone, to
-which \cref{def:probecommit} attaches no boundary, and by \cref{thm:floor}
-residue arises only from boundaries. The third follows from the Birkhoff
-ergodic theorem, which gives, for almost every initial point, a long-run
-visitation frequency to $W$ equal to its measure; this is a statement about
-frequency and carries no cost term.
+measure of $W$. The second follows from Poincar\'{e} recurrence
+\citep{poincare1890}: for a measure-preserving transformation on a
+finite-measure space, almost every point of a positive-measure set returns
+to it infinitely often, and by the ergodicity of the induced dynamics
+almost every point of the state space enters $W$ at some time; entry is a
+property of the trajectory alone, to which \cref{def:probecommit} attaches
+no boundary, and by \cref{thm:floor} residue arises only from boundaries.
+The third follows from the Birkhoff ergodic theorem
+\citep{birkhoff1931}, which gives, for almost every initial point, a
+long-run visitation frequency to $W$ equal to its measure; this is a
+statement about frequency and carries no cost term.
 \end{proof}
 
 \begin{corollary}[A committed structure is reusable]
@@ -669,7 +690,14 @@ accident at one position but a structural regularity imposed uniformly
 along the entire carrier, and the constraint on the freely rotatable bonds
 adjacent to each planar unit is a direct consequence: rotation is permitted
 only about bonds that do not themselves participate in the shared
-coordinate responsible for the depth reduction.
+coordinate responsible for the depth reduction. The predicted signature is
+independently checkable: a linkage stabilised by coordinate sharing should
+be measurably shorter than an equivalent linkage without it, should present
+a rotational barrier markedly above that of an ordinary single bond, and
+should be found overwhelmingly in the planar configuration rather than
+distributed broadly over rotation angle. Crystallographic and
+spectroscopic measurement of the peptide linkage shows precisely this
+pattern \citep{pauling1951,ramachandran1968,macarthur1996}.
 \end{remark}
 
 \section{Necessity of Folding}
@@ -752,7 +780,15 @@ formation of a bounded aqueous compartment's enclosing bilayer: in both
 cases a system required to maintain more than one partition environment at
 finite energetic cost is forced into a specific geometric configuration
 because no alternative configuration satisfies the requirement at all, not
-because the alternative configuration is merely less favourable.
+because the alternative configuration is merely less favourable. The
+predicted signature is again independently measurable: a folded chain
+should present far less surface to solvent, position by position, than the
+same chain would in an extended conformation, since positions removed from
+solvent contact are, by \cref{def:exposure}, in contact predominantly with
+other positions of the chain rather than with the medium. Measured
+solvent-accessible surface areas in globular proteins, compared against
+the extended-chain reference, show exactly this reduction
+\citep{miller1987,rose1985}.
 
 \begin{proposition}[Contact chains realise programmable environments]
 \label{prop:programmable}
@@ -785,11 +821,13 @@ the necessity that a fold be capable of forming one has been established.
 \label{sec:substitution}
 
 Several hundred distinct amino acids are known to occur in nature, arising
-from ordinary organic chemistry operating on cosmically abundant elements.
-A genetically encoded alphabet of twenty-two members is, by contrast, a
-striking numerical restriction, and the standard biochemical account offers
-no reason for this particular number. We derive it here from the dynamics
-of a self-propagating polymer alone, without appeal to any process that
+from ordinary organic chemistry operating on cosmically abundant elements,
+including chemistry demonstrated to proceed under plausible prebiotic
+conditions from simple precursors \citep{miller1953}. A genetically
+encoded alphabet of twenty-two members is, by contrast, a striking
+numerical restriction, and the standard biochemical account offers no
+reason for this particular number. We derive it here from the dynamics of
+a self-propagating polymer alone, without appeal to any process that
 inspects or ranks candidate residues against one another.
 
 \begin{definition}[Self-propagating structure]
@@ -938,7 +976,16 @@ given local comparison happened to resolve the same way in unconnected
 histories, is what makes a residue nameable. The count of twenty-two is
 therefore a statistic accumulated by many independent, mechanical, local
 events, with no step at which a global inventory of candidates is
-consulted.
+consulted. This account is independently checkable against the internal
+structure of the standard genetic code itself. Codons reachable from one
+another by a single base change encode more similar residues than chance
+pairing would predict \citep{crick1968,freeland1998}, exactly as expected
+if the code's redundancy tracks which substitutions a self-propagating
+structure tolerates; and codon degeneracy is markedly higher for
+structurally simple, early-recruited residues than for later, more complex
+ones, consistent with the consensus chronological order of amino acid
+recruitment reconstructed from more than sixty independent lines of
+evidence \citep{trifonov2000,wong1975}.
 \end{remark}
 
 %==============================================================================
@@ -1136,6 +1183,383 @@ reusable structure considered in this paper.
 \end{remark}
 
 %==============================================================================
+\part{The Storage-Resolution Hierarchy}
+\label{part:hierarchy}
+%==============================================================================
+
+The preceding parts establish that a folded polymer is forced into
+existence by a boundary-placement requirement, that its residue alphabet
+is fixed by cross-lineage recurrence, and that a store of its specification
+is read under a charge-matching condition that presupposes nothing about
+what the store encodes. What remains unexplained is why a specification of
+this kind should exist as a layered hierarchy of distinct storage media at
+all, rather than as a single medium, and why the layering that is
+observed, a folded register, an intermediate transcript, and a permanent
+paired archive, takes the specific form it does. This part derives the
+hierarchy from the same partition-depth and charge-emergence principles
+already established, without asserting any particular historical order in
+which the three media first arose.
+
+\section{The Register and Its Probe Capacity}
+\label{sec:register}
+
+\begin{definition}[Conformational register]
+\label{def:register}
+A \emph{conformational register} is the variable-slot configuration of a
+folded boundary-placement polymer, considered as a spatial arrangement of
+partition-polarity values whose contact structure, in the sense of
+\cref{def:chain}, is capable of more than one mutually accessible
+configuration.
+\end{definition}
+
+\begin{definition}[Probe capacity]
+\label{def:probecapacity}
+The \emph{probe capacity} of a conformational register is the number of
+distinguishable microenvironmental configurations that the register comes
+to occupy, by reversible conformational change alone, as its surroundings
+vary.
+\end{definition}
+
+A conformational change of the kind Definition~\ref{def:probecapacity}
+counts is a probe in the sense of \cref{def:probecommit}: the register
+enters a configuration appropriate to its current surroundings without,
+so long as the change is reversible, individuating anything permanently,
+and it deposits no residue in doing so. The failure mode is equally
+precise. A register that cannot reach the configuration appropriate to a
+given microenvironment, whether because its contact structure is too
+rigid or because a required contact has been broken, fails to probe that
+environment at all; this is the structural content of malfunction, and it
+requires no further primitive beyond \cref{def:chain,def:probecommit}.
+
+\begin{proposition}[Usefulness is bounded by probe capacity]
+\label{prop:usefulness}
+A process $P'$ external to a conformational register can couple to that
+register, in the sense that $P'$'s outcome depends on the register's
+current configuration, only through configurations the register's probe
+capacity distinguishes. The number of distinct external processes able to
+couple to a given register in this way is non-decreasing in its probe
+capacity.
+\end{proposition}
+
+\begin{proof}
+By \cref{def:exposure}, the partition environment a position exposes is
+determined by its current contacts; $P'$'s dependence on the register is,
+by definition, a dependence on which environment is currently exposed. If
+two distinct microenvironmental states are not distinguished by the
+register, in the sense that the register occupies the same configuration
+in both, then $P'$ cannot depend differently on the two states through the
+register, since it has no distinguishing signal available to it. A
+register whose probe capacity admits a strictly larger number of
+distinguishable configurations admits a strictly larger number of
+distinct signals, and hence cannot support fewer dependent processes than
+a register of lower capacity operating over the same range of
+microenvironments.
+\end{proof}
+
+\begin{corollary}[Coupling is self-reinforcing without a selecting agency]
+\label{cor:coupling-reinforcement}
+A register coupled to a greater number of external processes, by
+\cref{prop:usefulness}, participates in a correspondingly greater number
+of occasions on which \cref{cor:reuse} applies: each such coupling probes
+the register without individuating it further, so a highly coupled
+register accumulates no additional residue in proportion to its coupling,
+while a self-propagating structure bearing it, in the sense of
+\cref{def:selfprop}, benefits from every process that depends on it.
+Differential persistence, exactly as in \cref{thm:substitution-tolerance},
+then favours the continuation of structures bearing high-probe-capacity
+registers over structures bearing low-probe-capacity ones, without any
+process inspecting or ranking registers by their usefulness.
+\end{corollary}
+
+\section{The Cost of Re-Achieving a Register}
+\label{sec:reachieving}
+
+A conformational register realised only as a folded polymer, and nothing
+else, must be produced afresh, by folding, on every occasion the
+self-propagating structure bearing it is reproduced. This section shows
+that this repeated re-achievement is itself a partition cost distinct from
+the cost of maintaining the register once achieved, and that the cost is
+avoided by a specification whose content determines the register without
+itself undergoing the individuating operation of folding on each
+occasion.
+
+\begin{definition}[Specification]
+\label{def:specification}
+A \emph{specification} of a conformational register is a structure,
+distinct from the register itself, whose own partition state determines
+the register's variable-slot assignment without the specification
+undergoing the folding operation that produces the register.
+\end{definition}
+
+\begin{theorem}[Necessity of a specification store]
+\label{thm:specification-necessity}
+Let a conformational register exhibit cross-lineage recurrence in the
+sense of \cref{def:crossrecurrence}. Reproducing the register anew by
+folding on every occasion of reproduction incurs the individuating cost of
+\cref{thm:floor} at every such occasion; reproducing a specification of
+the register, by \cref{cor:reuse}, incurs that cost once, at the
+specification's own formation, and every subsequent reproduction of the
+register from the specification is a probe of an already-committed
+structure. For a register reproduced on $n$ occasions, the specification
+route therefore has total individuating cost bounded above by a constant
+independent of $n$, while the direct-refolding route has total
+individuating cost that grows with $n$; for sufficiently large $n$ the
+specification route is the lower-depth configuration and is favoured by
+\cref{cor:contact-favoured}.
+\end{theorem}
+
+\begin{proof}
+By \cref{def:probecommit,thm:asymmetry}, folding a register is an
+individuating operation and deposits residue of at least $\floor$ on each
+occasion it is performed, regardless of whether an earlier occasion
+produced an identical register, since \cref{thm:asymmetry} attaches no
+memory of prior commitments to a fresh committing act performed by a
+distinct instance of the structure. Reproduction from a specification, by
+\cref{def:specification,cor:reuse}, individuates the specification once,
+at its formation, and every subsequent reproduction reads the
+specification without re-individuating it, depositing no further residue
+by \cref{thm:asymmetry}. Summing individuating cost over $n$ reproductions
+gives $n\floor$ for direct refolding and a constant, $n$-independent term
+for the specification route; the two are equal at some finite $n^{\ast}$
+and the specification route has lower total depth for all $n > n^{\ast}$.
+By \cref{cor:contact-favoured}, the lower-depth configuration is the one a
+system evolves toward, so a register recurring across sufficiently many
+occasions of reproduction is favoured to acquire a specification rather
+than to be refolded independently on each occasion.
+\end{proof}
+
+\begin{remark}
+This theorem supplies the reason a specification arises specifically for
+registers that have already satisfied \cref{def:crossrecurrence}: cross-
+lineage recurrence is what establishes that $n$ will be large, since a
+register recurring across many independent lineages is, by construction,
+reproduced on many independent occasions. A register private to a single
+lineage has no such pressure toward acquiring a specification, because its
+$n$ is not thereby large. The order of events is accordingly fixed by the
+argument itself, not asserted: recurrence, established in
+\cref{part:alphabet} without reference to storage, is the precondition for
+the depth comparison of this theorem to favour a specification at all.
+\end{remark}
+
+\section{Resolution and Its Stability Under Processing}
+\label{sec:resolution-stability}
+
+A specification, once shown to be favoured, is not yet unique: nothing so
+far distinguishes a specification whose own structure is fixed from one
+whose effective content varies according to how it is processed when
+read. This section shows that a specification of the second kind cannot
+serve as the endpoint of the hierarchy, because its resolution is itself a
+partition-dependent quantity rather than an invariant of the specification
+alone.
+
+\begin{definition}[Storage resolution]
+\label{def:storage-resolution}
+The \emph{resolution} of a specification, relative to a given readout
+operation, is the partition depth at which the readout operation
+determines the register the specification yields, among the registers the
+specification could in principle yield under different readouts.
+\end{definition}
+
+\begin{proposition}[A processed specification has readout-dependent
+resolution]
+\label{prop:processed-resolution}
+If a specification's readout operation itself performs a further,
+variably realised partition, in the sense that the readout selects among
+several admissible sub-partitions of the specification's own structure,
+then the register obtained depends on which sub-partition the readout
+realises on that occasion, and the specification's resolution, in the
+sense of \cref{def:storage-resolution}, is not an invariant of the
+specification alone but varies with the readout.
+\end{proposition}
+
+\begin{proof}
+By \cref{def:storage-resolution}, resolution is defined relative to a
+readout operation. If the readout is itself a partitioning act with more
+than one admissible outcome, distinct occasions of readout may realise
+distinct sub-partitions, in which case, by \cref{def:probecommit}, distinct
+committing acts occur on distinct occasions, and by \cref{thm:floor} each
+such act individuates the specification's content differently. The
+register obtained is therefore a function of which committing act
+occurred, not of the specification's structure alone.
+\end{proof}
+
+\begin{theorem}[Necessity of a fixed-resolution store]
+\label{thm:fixed-resolution-necessity}
+A specification whose register must be reproduced identically across
+arbitrarily many occasions of readout cannot be one whose resolution
+varies with the readout, in the sense of \cref{prop:processed-resolution};
+it must instead be a specification whose resolution is invariant under
+every admissible readout of it.
+\end{theorem}
+
+\begin{proof}
+Suppose the specification's resolution varied with readout. By
+\cref{prop:processed-resolution}, distinct occasions of readout may then
+realise distinct sub-partitions and yield distinct registers from the
+identical specification. This contradicts the requirement that the
+register be reproduced identically across occasions of readout. The
+specification satisfying the identical-reproduction requirement must
+therefore have a resolution invariant under readout.
+\end{proof}
+
+\begin{remark}
+This theorem is stated at the level of the storage requirement alone and
+does not name a particular molecular medium. A specification subject to
+variable post-storage processing, so that the same underlying structure
+can yield more than one distinct readout outcome depending on which
+sub-partition of it is realised at read time, is disqualified by
+\cref{thm:fixed-resolution-necessity} from serving as the endpoint of the
+hierarchy for any register whose identical reproduction is required, and
+some further, resolution-invariant specification is required for that
+purpose, whatever medium the variably processed specification itself
+happens to be. The theorem identifies the requirement a terminal
+specification must meet; it does not by itself identify how many
+intermediate, variably processed specifications may exist between a
+register and its terminal store, nor is any particular number of such
+intermediates asserted.
+\end{remark}
+
+\section{Pairing as the Condition for Invariant Resolution}
+\label{sec:pairing-invariance}
+
+The final step identifies what a resolution-invariant specification must
+be built from, and it uses no principle beyond charge emergence and
+partition conservation, already established in
+\cref{sec:charge,sec:coupling}.
+
+\begin{proposition}[An unpaired specification is a partition
+malformation]
+\label{prop:unpaired-malformation}
+A specification consisting of a single, unpaired structure has, by
+\cref{thm:charge}, a charge assignment that is not fully determined by
+the specification alone, since \cref{thm:charge} defines charge only at
+the boundary a completed individuating act establishes, and an unpaired
+structure's boundary against its complement, in the sense of
+\cref{def:claim}, remains open on the side that a pairing partner would
+otherwise close.
+\end{proposition}
+
+\begin{proof}
+By \cref{post:negation}, the existence of the specification as a distinct
+entity requires a well-defined complement. For an unpaired structure the
+relevant complement, the partner that would complete its local charge
+boundary, is not fixed as part of the structure itself; by
+\cref{cor:malformation}, a structure whose required individuation is
+incomplete in this way exhibits a net charge imbalance proportional to the
+extent of the incompleteness. An unpaired specification is therefore, by
+this same criterion, in the malformed condition of \cref{cor:malformation}
+applied to itself rather than to some external structure it fails to
+resolve.
+\end{proof}
+
+\begin{theorem}[Pairing is required for invariant resolution]
+\label{thm:pairing-necessity}
+A specification satisfying \cref{thm:fixed-resolution-necessity} must be
+realised as an invariant achieved jointly by two complementary structures,
+neither of which alone determines a well-defined charge state in the
+sense of \cref{thm:charge}.
+\end{theorem}
+
+\begin{proof}
+By \cref{prop:unpaired-malformation}, a single unpaired structure carries
+an open charge boundary and is therefore a partition malformation. A
+malformation is, by \cref{cor:malformation}, a structure whose required
+individuation remains incomplete, and an incomplete individuation is, by
+\cref{thm:floor}, one whose boundary thickness has not reached a stable
+value; its state is accordingly subject to further, uncontrolled
+individuating acts of the kind excluded by
+\cref{thm:fixed-resolution-necessity}. A pairing partner that closes the
+open boundary, so that the joint structure's charge is fully determined by
+\cref{thm:charge} while neither partner's charge is separately defined,
+removes the uncontrolled degree of freedom: the joint, paired
+configuration has a resolution fixed by the pairing relation itself, not
+by any further readout-dependent act, and therefore satisfies
+\cref{thm:fixed-resolution-necessity} where the unpaired structure alone
+does not.
+\end{proof}
+
+\begin{corollary}[The stored invariant is the achieved balance, not
+either sequence]
+\label{cor:invariant-is-balance}
+The content a paired specification stores, in the sense required by
+\cref{thm:pairing-necessity}, is the charge-balanced configuration jointly
+achieved by the pair, and not the sequence of either constituent
+structure considered alone. Any two pairs achieving the same joint
+charge-balanced configuration store the same content, whatever the
+sequences of their individual constituents.
+\end{corollary}
+
+\begin{proof}
+By \cref{thm:pairing-necessity}, the resolution-invariant quantity is the
+joint, fully determined charge state of the pair, since neither
+constituent alone carries a well-defined charge assignment by
+\cref{prop:unpaired-malformation}. A resolution-invariant specification is
+identified, by \cref{def:storage-resolution}, with the quantity its
+resolution measures; that quantity is here the joint charge state, so two
+pairs agreeing in joint charge state are, for the purpose of what is
+stored, the same specification regardless of the individual sequences
+that produced the agreement.
+\end{proof}
+
+\begin{remark}[Recovery of substitution tolerance at the level of the
+store]
+\label{rem:store-degeneracy}
+\Cref{cor:invariant-is-balance} places, at the level of the storage
+medium itself, exactly the structure already established at the level of
+the polymer in \cref{thm:substitution-tolerance}: a local change is
+tolerated whenever it does not alter the depth-relevant invariant, here
+the joint charge balance of a paired region rather than the partition
+depth of a folded chain. The two results are independent applications of
+the same principle, one to the register and one to its store, and neither
+is derived from the other; their agreement is a consequence of both being
+instances of \cref{cor:contact-favoured} applied to a quantity that
+admits more than one microscopic realisation.
+\end{remark}
+
+\section{The Hierarchy Restated}
+\label{sec:hierarchy-restated}
+
+\begin{corollary}[Three necessary properties, not three named media]
+\label{cor:hierarchy-summary}
+A register whose usefulness, in the sense of \cref{prop:usefulness}, has
+produced cross-lineage recurrence requires, by
+\cref{thm:specification-necessity}, some specification distinct from
+itself; a specification intended to reproduce the register identically
+across arbitrarily many readouts requires, by
+\cref{thm:fixed-resolution-necessity}, that its resolution be invariant
+under readout; and an invariant-resolution specification requires, by
+\cref{thm:pairing-necessity}, that its content be realised as a jointly
+achieved, paired charge balance rather than as a property of any single
+unpaired structure. These are three independently derived necessary
+properties of a completed storage hierarchy for a recurring register, not
+an assertion that exactly three media must exist or that they must arise
+in any particular historical sequence; a single medium satisfying all
+three properties at once, or additional intermediate media satisfying
+only some of them, are equally consistent with the derivation, which
+constrains the properties a terminal store must have and not the number
+of steps by which those properties come to be jointly satisfied.
+\end{corollary}
+
+\begin{remark}[What has not been assumed]
+\label{rem:hierarchy-not-assumed}
+Nothing in this part has assumed that a specification exists before a
+register does, that a paired store exists before an unpaired one is
+tried, or that any structure anticipates the properties
+\cref{thm:specification-necessity,thm:fixed-resolution-necessity,thm:pairing-necessity}
+will eventually require of it. Each theorem is a statement about which
+configurations are favoured, by \cref{cor:contact-favoured}, once a
+register has already exhibited the recurrence established without
+reference to storage in \cref{part:alphabet}; the direction of the
+argument is from an already-recurring register to the properties its
+store must have, not from an anticipated store to the register it will
+come to specify. This is the same discipline applied throughout
+\cref{part:reading}, and it is maintained here for the same reason: a
+derivation in which a later requirement is available to an earlier step
+is circular in exactly the manner \cref{thm:blind-required} was
+constructed to exclude.
+\end{remark}
+
+%==============================================================================
 \part{Discussion}
 %==============================================================================
 
@@ -1178,6 +1602,30 @@ mechanical, and retrospectively evaluated events, never from a step in
 which some element of the system already knows what a later step will
 require.
 
+\Cref{part:hierarchy} extends this discipline to the layering of storage
+media itself. A conformational register's usefulness to other processes is
+identified with its probe capacity, and a register that has already
+achieved cross-lineage recurrence, in the sense established without
+reference to storage in \cref{part:alphabet}, is shown to be favoured, on
+partition-depth grounds alone, to acquire a specification distinct from
+itself rather than to be refolded independently on every occasion of
+reproduction. A specification subject to variable post-storage processing
+is then shown to be structurally disqualified from serving as a terminal
+store for a register whose identical reproduction is required, because
+its resolution is not an invariant of the specification alone. The
+terminal store satisfying this requirement is shown to require pairing:
+an unpaired structure carries an open charge boundary and is therefore
+itself a partition malformation, and only a jointly achieved, paired
+configuration fixes a charge state independent of any further readout.
+What such a store preserves is accordingly the achieved charge balance of
+the pair, not the sequence of either constituent alone, recovering, at the
+level of the storage medium, the same substitution tolerance already
+derived at the level of the polymer. No step in this argument assumes that
+a specification exists before the register it specifies, or that a paired
+store exists before an unpaired alternative is exhausted; each theorem
+constrains only the properties a terminal store must have, given that an
+already-recurring register requires one at all.
+
 \section{Scope and Open Questions}
 \label{sec:limitations}
 
@@ -1201,13 +1649,27 @@ remains, as flagged throughout, conditional on the bounded-refinement
 hypothesis of \cref{def:res-bounded}, and every result inheriting that floor
 inherits the condition with it.
 
+\Cref{part:hierarchy} establishes three necessary properties a terminal
+storage medium for a recurring conformational register must possess; it
+does not establish, and does not claim to establish, the historical order
+in which media possessing these properties first arose, nor does it
+assert that exactly three distinct media, and no more, are required to
+satisfy them. \Cref{cor:hierarchy-summary} states this restriction
+explicitly. A derivation of chronological order would require, in
+addition to the partition-depth argument given here, an account of the
+specific chemical and environmental conditions under which registers of
+the kind considered first achieved cross-lineage recurrence, which is
+outside the scope of the present derivation and is identified here as a
+separate undertaking.
+
 \section{Conclusion}
 \label{sec:conclusion}
 
 A protein is conventionally introduced as a sequence of residues drawn from
 a fixed alphabet of twenty amino acids, or twenty-two once the two
-exceptional cases are included, folded into a compact structure by forces
-that are catalogued but whose necessity is not established. We have shown
+co-translationally recoded exceptions, selenocysteine and pyrrolysine, are
+included \citep{bock1991,srinivasan2002}, folded into a compact structure
+by forces that are catalogued but whose necessity is not established. We have shown
 instead that the two-part architecture of the peptide backbone is forced by
 the requirement that a bounded polymer present a spatially addressable
 pattern of partition boundaries to its surroundings while remaining one
@@ -1223,5 +1685,8 @@ requires that a genome, or any structure preceding it, possess knowledge of
 the proteins it will come to encode; the correspondence between sequence and
 product is, on this account, not a precondition of the mechanism but its
 accumulated and entirely retrospective output.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}

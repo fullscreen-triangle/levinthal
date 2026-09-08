@@ -1,0 +1,66 @@
+{
+  "paper": "Amino Acids and Their Polymers as Partition Structures",
+  "run_utc": "2026-09-08T04:18:39Z",
+  "modules": [
+    {
+      "module": "v1_floor_and_depth_sharing",
+      "description": "Boundary-thickness floor, its bounded-refinement failure branch, and depth reduction under coordinate sharing",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v2_backbone_planarity_and_folding",
+      "description": "Peptide bond planarity/depth-sharing signature and folding-forced compaction, tested against measured structural data",
+      "status": "ok",
+      "counts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v3_substitution_and_recurrence",
+      "description": "Substitution tolerance and cross-lineage recurrence, tested against the standard genetic code and the Trifonov consensus order",
+      "status": "ok",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "descriptive": 0
+      }
+    },
+    {
+      "module": "v4_encoded_count_and_boundary",
+      "description": "The encoded alphabet as a recurrence statistic, and the recoded residues as past-threshold cases",
+      "status": "ok",
+      "counts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "descriptive": 1
+      }
+    }
+  ],
+  "tally": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "descriptive": 1
+  },
+  "scored_tests": 10,
+  "pass_rate_of_scored": 1.0,
+  "failures": [],
+  "descriptive_only": [
+    {
+      "module": "v4_encoded_count_and_boundary",
+      "test": "V4.3 the numerical value 22 is reported honestly as a recurrence statistic, not a derived first-principles count"
+    }
+  ],
+  "elapsed_seconds": 2.19
+}

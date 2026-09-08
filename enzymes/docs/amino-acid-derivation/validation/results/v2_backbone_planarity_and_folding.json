@@ -1,0 +1,52 @@
+{
+  "script": "v2_backbone_planarity_and_folding.py",
+  "covers": [
+    "peptide bond planarity",
+    "depth-sharing signature",
+    "necessity of compaction"
+  ],
+  "data_sources": [
+    "Pauling, Corey & Branson, PNAS 37:205-211 (1951)",
+    "Ramachandran & Sasisekharan, Adv. Protein Chem. 23:283-438 (1968)",
+    "MacArthur & Thornton, J. Mol. Biol. 264:1180-1195 (1996)",
+    "Miller, Janin, Lesk & Chothia, J. Mol. Biol. 196:641-656 (1987)",
+    "Rose, Geselowitz, Lesser, Lee & Zehfus, Science 229:834-838 (1985)"
+  ],
+  "tests": [
+    {
+      "test": "V2.1 peptide linkage shows the depth-sharing signature and is planar",
+      "peptide_bond_length_A": 1.33,
+      "typical_single_CN_bond_length_A": 1.47,
+      "shortening_A": 0.14,
+      "shortening_fraction": 0.0952,
+      "peptide_rotation_barrier_kJ_per_mol": 79.0,
+      "typical_single_bond_rotation_barrier_kJ_per_mol": 12.0,
+      "barrier_ratio": 6.58,
+      "omega_trans_fraction_observed": 0.9976,
+      "checks": {
+        "bond_shortened_relative_to_single_CN": true,
+        "rotation_barrier_elevated_over_ordinary_single_bond": true,
+        "planar_trans_conformation_dominant": true
+      },
+      "passed": true,
+      "interpretation": "The measured peptide C-N bond is shorter than an ordinary single C-N bond by roughly 10%, its rotational barrier is close to an order of magnitude larger than a typical single bond, and essentially all measured peptide bonds sit within a few degrees of the planar trans configuration. All three are the structural signature Theorem 'Composition reduces depth' predicts for a linkage whose stability derives from a shared coordinate (delocalised electron density across the C-N bond) rather than from a purely single-bond configuration, and Theorem 'The invariant linkage is planar' predicts exactly this reduction in rotational freedom as the direct consequence."
+    },
+    {
+      "test": "V2.2 compaction reduces per-residue solvent exposure far below the extended-chain reference",
+      "extended_reference_SASA_A2_per_residue": 175.0,
+      "folded_mean_SASA_A2_per_residue": 45.0,
+      "exposure_fraction_of_extended": 0.257,
+      "reduction_fraction": 0.743,
+      "checks": {
+        "substantial_reduction_over_50_percent": true
+      },
+      "passed": true,
+      "interpretation": "An extended chain exposes on average roughly 175 square angstroms of surface per residue to solvent; a folded globular domain reduces this to roughly a quarter of that value on average, burying the remainder against other residues of the same chain. This is the measured structural signature of Theorem 'Necessity of compaction': positions removed from solvent contact are, by Definition 'Environment exposure', in contact predominantly with other positions of the same chain rather than with the medium, which is exactly the condition the theorem shows an extended configuration cannot supply."
+    }
+  ],
+  "summary": {
+    "n": 2,
+    "passed": 2,
+    "all_passed": true
+  }
+}

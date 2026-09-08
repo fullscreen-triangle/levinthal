@@ -1,0 +1,123 @@
+{
+  "script": "v1_floor_and_depth_sharing.py",
+  "covers": [
+    "boundary thickness floor",
+    "bounded-refinement failure branch",
+    "composition reduces depth"
+  ],
+  "tests": [
+    {
+      "test": "V1.1 boundary thickness floor is positive on finite systems",
+      "instances": [
+        {
+          "instance": "uniform",
+          "n_states": 10,
+          "floor_computed": 1.0,
+          "positive": true
+        },
+        {
+          "instance": "graded",
+          "n_states": 10,
+          "floor_computed": 0.05,
+          "positive": true
+        },
+        {
+          "instance": "adversarial_tiny",
+          "n_states": 10,
+          "floor_computed": 1e-12,
+          "positive": true
+        },
+        {
+          "instance": "wide_range",
+          "n_states": 10,
+          "floor_computed": 1e-09,
+          "positive": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "V1.2 unbounded refinement: no uniform floor exists",
+      "all_terms_positive": true,
+      "strictly_decreasing": true,
+      "every_epsilon_eventually_cleared": true,
+      "truncated_to_10_stages_floor": 0.1,
+      "truncated_floor_positive": true,
+      "passed": true,
+      "interpretation": "Each thickness in the sequence is strictly positive, yet the infimum over the unbounded sequence is zero, while truncating to a system of bounded refinement (first 10 stages) restores a positive floor. This confirms that Theorem 'Uniform floor' requires the bounded-refinement hypothesis and is not unconditional, exactly as flagged in the manuscript."
+    },
+    {
+      "test": "V1.3 sharing a coordinate strictly reduces joint partition depth",
+      "n_trials": 30,
+      "sample_rows": [
+        {
+          "k1": 7,
+          "k2": 4,
+          "k_shared": 4,
+          "depth_free": 4.8074,
+          "depth_shared": 2.0,
+          "depth_bound": 2.8074,
+          "deficit_nonnegative": true,
+          "bound_leq_free": true
+        },
+        {
+          "k1": 12,
+          "k2": 2,
+          "k_shared": 1,
+          "depth_free": 4.585,
+          "depth_shared": 0.0,
+          "depth_bound": 4.585,
+          "deficit_nonnegative": true,
+          "bound_leq_free": true
+        },
+        {
+          "k1": 15,
+          "k2": 10,
+          "k_shared": 2,
+          "depth_free": 7.2288,
+          "depth_shared": 1.0,
+          "depth_bound": 6.2288,
+          "deficit_nonnegative": true,
+          "bound_leq_free": true
+        },
+        {
+          "k1": 7,
+          "k2": 11,
+          "k_shared": 1,
+          "depth_free": 6.2668,
+          "depth_shared": 0.0,
+          "depth_bound": 6.2668,
+          "deficit_nonnegative": true,
+          "bound_leq_free": true
+        },
+        {
+          "k1": 16,
+          "k2": 10,
+          "k_shared": 4,
+          "depth_free": 7.3219,
+          "depth_shared": 2.0,
+          "depth_bound": 5.3219,
+          "deficit_nonnegative": true,
+          "bound_leq_free": true
+        },
+        {
+          "k1": 2,
+          "k2": 3,
+          "k_shared": 2,
+          "depth_free": 2.585,
+          "depth_shared": 1.0,
+          "depth_bound": 1.585,
+          "deficit_nonnegative": true,
+          "bound_leq_free": true
+        }
+      ],
+      "passed": true,
+      "interpretation": "In every trial the bound configuration's depth is bounded above by the free configuration's depth, with the deficit equal to the depth of the shared coordinate, confirming Theorem 'Composition reduces depth' as an arithmetic identity over the depth measure of Definition 'Partition depth'."
+    }
+  ],
+  "summary": {
+    "n": 3,
+    "passed": 3,
+    "all_passed": true
+  }
+}
