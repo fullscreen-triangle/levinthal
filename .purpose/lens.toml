@@ -1,0 +1,56 @@
+# purpose ckg lens for levinthal — tuned 2026-10-08 against index of 9509 symbols.
+#
+# Read this before changing it. Measured alternatives, all with the same paths:
+#
+#   variant                         modules  giant comp  density  notes
+#   default (all paths, all kinds)     —         —         —     >5 min, killed; never run it
+#   types only, file granularity       37     6 of 37    0.029   ignores all LaTeX; useless here
+#   prose+types, file granularity      —         —         —     >4 min, killed
+#   prose+types, dir, default stops   121   117 of 121   0.700   paper-structure headings hub everything
+#   THIS LENS                         121   117 of 121   0.445   goals seed 7-20% of modules
+#   headings+types only                45    35 of 45    0.178   loses LaTeX; README boilerplate dominates
+#   this lens, min_len = 6            121   117 of 121   0.408   silently kills "amino acid" (both < 6)
+#
+# The giant component does not split and should not be chased. This corpus is one
+# research program written in one vocabulary; every paper shares terms with most
+# others, and edges are contact-only, so no stopword list makes it sparse — each pass
+# of 20 stopwords bought ~0.02 density. What the graph CAN do is discriminate per goal:
+# `ckg ask "contact floor"` returns 19 necessary of 117 reachable. Judge it by goal
+# saturation (keep < 50%), not by components or β* (β* is 1.00 throughout).
+#
+# `ckg why` on a paper directory degenerates (its resting cut is "every edge to the
+# medium"); it is informative only for the sparser code modules (crates/, experiments/).
+# `ckg ask` takes ~2 min on this graph; build takes ~10 s.
+
+[lens]
+# One module per directory: in this repo a paper is a directory (tex + validation/
+# + figures/), and file granularity on prose does not finish.
+granularity = "dir"
+floor = 1
+
+[include]
+# Research content only. Excluded: the web apps (cytochrome/src, shakespear/src,
+# dismutase, enzymes/web*, cytochrome/shaders-*), tools/*.md, and root files.
+paths = ["cytochrome/publications/**", "cytochrome/sources/**", "enzymes/docs/**", "models/**", "docs/**", "publication/**", "nfdi4cat/**", "experiments/**", "crates/**"]
+# No fn/def/func: 1700 function names would chain everything through helpers like
+# `main`, `run`, `load`. Sections are the content (6000+ entries); types are kept
+# because they are rare and specific (PartitionState, ContactGraph, Ladder).
+kinds = ["class", "enum", "heading", "section", "struct", "trait", "type"]
+
+[terms]
+min_len = 3
+split_camel_case = false
+prose_kinds = ["heading", "section"]
+# Built-in 45 + paper-structure headings (introduction, validation, conclusion…)
+# + every prose term that spread over >20% of modules in two passes. Note that
+# "transfer", "trajectory", "state", "partition", "entropy" are stopped: they are in
+# a third of all papers. A goal like "electron transfer" therefore seeds on
+# "electron" alone — phrase goals with the rarer word.
+stopwords = ["about", "abstract", "algorithm", "all", "also", "analysis", "and", "any", "appendix", "application", "applications", "approach", "are", "background", "but", "can", "case", "cases", "categorical", "coherence", "comparison", "completion", "complexity", "computational", "conclusion", "conclusions", "consequences", "contributions", "coordinate", "coordinates", "data", "definition", "definitions", "depth", "did", "discussion", "distance", "does", "dynamics", "energy", "entropy", "equivalence", "example", "examples", "experimental", "figure", "figures", "first", "for", "framework", "from", "future", "general", "had", "has", "have", "how", "implementation", "implications", "independence", "information", "into", "introduction", "its", "lemma", "limitations", "main", "measurement", "method", "methods", "multi", "networks", "new", "not", "notation", "one", "open", "our", "out", "outline", "over", "overview", "panel", "panels", "paper", "part", "partition", "per", "phase", "physical", "prediction", "predictions", "preliminaries", "principle", "problem", "proof", "proofs", "properties", "property", "proposition", "protocol", "questions", "rate", "related", "remark", "remarks", "resolution", "results", "scope", "second", "section", "selection", "setup", "space", "state", "statement", "states", "step", "steps", "structure", "summary", "system", "systems", "table", "ternary", "than", "that", "the", "then", "theorem", "theorems", "theory", "there", "this", "three", "time", "trajectory", "transfer", "two", "use", "used", "using", "validation", "verification", "via", "was", "were", "what", "when", "where", "which", "who", "why", "will", "with", "work", "you", "your", "zero"]
+
+[terms.alias]
+
+[terms.weight]
+
+[edges]
+weight = "sum"

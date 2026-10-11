@@ -133,6 +133,8 @@ record("g6_ligation", {
                 "cys_from_c_terminus_median": float(np.median(from_c_end)),
                 "cys_from_c_terminus_iqr": np.percentile(from_c_end, [25, 75]).tolist(),
                 "cys_relative_position_median": float(np.median(rel_pos))},
+    "raw": {"cys_from_c_terminus_counts": np.histogram(from_c_end, bins=np.arange(0, 161, 4))[0].tolist(),
+            "cys_from_c_terminus_bins": np.arange(0, 161, 4).tolist()},
     "distal": {s_["pdb"]: {"water_distance": s_["distal_water_distance"],
                            "fe_out_of_plane": s_["fe_out_of_plane"],
                            "fe_pyrrole_n_mean": s_["fe_pyrrole_n_mean"]}

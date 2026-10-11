@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const NavLink = ({ href, title, headline = false, className = "" }) => {
   const router = useRouter();
-  const isActive = router.asPath === href;
+  const isActive = router.pathname === href; // pathname ignores ?query and #hash, so server and client agree
 
   return (
     <Link href={href}
@@ -30,7 +30,7 @@ const NavLink = ({ href, title, headline = false, className = "" }) => {
 
 const MobileNavLink = ({ href, title, toggle }) => {
   const router = useRouter();
-  const isActive = router.asPath === href;
+  const isActive = router.pathname === href; // pathname ignores ?query and #hash, so server and client agree
 
   return (
     <button
@@ -88,6 +88,7 @@ const Navbar = () => {
           <NavLink href="/apparatus" title="Apparatus" />
           <NavLink href="/gallery" title="Gallery" />
           <NavLink href="/ide" title="Sandbox" headline />
+          <NavLink href="/talk" title="Talk" headline />
         </nav>
 
         {/* Right: GitHub */}
@@ -123,6 +124,7 @@ const Navbar = () => {
             <MobileNavLink toggle={() => setIsOpen(false)} href="/apparatus" title="Apparatus" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/gallery" title="Gallery" />
             <MobileNavLink toggle={() => setIsOpen(false)} href="/ide" title="Sandbox ▸ Shakespeare IDE" />
+            <MobileNavLink toggle={() => setIsOpen(false)} href="/talk" title="Talk ▸ derivation and applications" />
           </nav>
           <div className="flex items-center gap-3 mt-4">
             <motion.a target="_blank" className="w-5 bg-light rounded-full dark:bg-dark"

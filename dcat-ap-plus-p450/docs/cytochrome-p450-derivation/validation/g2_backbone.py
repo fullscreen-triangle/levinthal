@@ -99,7 +99,17 @@ save_figure(fig, FIG_P450, "g2_backbone")
 
 helix = (phi > -100) & (phi < -30) & (psi > -80) & (psi < -10)
 sheet = (phi > -180) & (phi < -45) & ((psi > 90) | (psi < -150))
+lb = np.round(np.arange(1.20, 1.6201, 0.006), 3)
+rama, _, _ = np.histogram2d(phi, psi, bins=36, range=[[-180, 180], [-180, 180]])
 record("g2_backbone", {
+    "raw": {
+        "omega_bins_deg": np.arange(0, 361, 4).tolist(),
+        "omega_counts": np.histogram(w, bins=np.arange(0, 361, 4))[0].tolist(),
+        "length_bins": lb.tolist(),
+        "length_counts": {name: np.histogram(v, bins=lb)[0].tolist()
+                          for name, v in (("CN", cn), ("NCA", nca), ("CAC", cac))},
+        "rama_bin_deg": 10, "rama_counts_phi_by_psi": rama.astype(int).tolist(),
+    },
     "entries": per_entry,
     "peptide_bonds": int(omega.size),
     "peptide_CN_mean_sd": [float(np.mean(cn)), float(np.std(cn))],

@@ -1,0 +1,98 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Birkhoff(1931)]{birkhoff1931}
+George~D. Birkhoff.
+\newblock Proof of the ergodic theorem.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 17\penalty0
+  (12):\penalty0 656--660, 1931.
+
+\bibitem[Bock et~al.(1991)Bock, Forchhammer, Heider, and Baron]{bock1991}
+August Bock, Karl Forchhammer, Johann Heider, and Corinne Baron.
+\newblock Selenoprotein synthesis: an expansion of the genetic code.
+\newblock \emph{Trends in Biochemical Sciences}, 16:\penalty0 463--467, 1991.
+
+\bibitem[Crick(1968)]{crick1968}
+Francis H.~C. Crick.
+\newblock The origin of the genetic code.
+\newblock \emph{Journal of Molecular Biology}, 38\penalty0 (3):\penalty0
+  367--379, 1968.
+
+\bibitem[Freeland and Hurst(1998)]{freeland1998}
+Stephen~J. Freeland and Laurence~D. Hurst.
+\newblock The genetic code is one in a million.
+\newblock \emph{Journal of Molecular Evolution}, 47\penalty0 (3):\penalty0
+  238--248, 1998.
+
+\bibitem[Landauer(1961)]{landauer1961}
+Rolf Landauer.
+\newblock Irreversibility and heat generation in the computing process.
+\newblock \emph{IBM Journal of Research and Development}, 5\penalty0
+  (3):\penalty0 183--191, 1961.
+
+\bibitem[MacArthur and Thornton(1996)]{macarthur1996}
+Malcolm~W. MacArthur and Janet~M. Thornton.
+\newblock Deviations from planarity of the peptide bond in peptides and
+  proteins.
+\newblock \emph{Journal of Molecular Biology}, 264\penalty0 (5):\penalty0
+  1180--1195, 1996.
+
+\bibitem[Miller(1953)]{miller1953}
+Stanley~L. Miller.
+\newblock A production of amino acids under possible primitive earth
+  conditions.
+\newblock \emph{Science}, 117\penalty0 (3046):\penalty0 528--529, 1953.
+
+\bibitem[Miller et~al.(1987)Miller, Janin, Lesk, and Chothia]{miller1987}
+Stephen Miller, Joel Janin, Arthur~M. Lesk, and Cyrus Chothia.
+\newblock Interior and surface of monomeric proteins.
+\newblock \emph{Journal of Molecular Biology}, 196\penalty0 (3):\penalty0
+  641--656, 1987.
+
+\bibitem[Pauling et~al.(1951)Pauling, Corey, and Branson]{pauling1951}
+Linus Pauling, Robert~B. Corey, and H.~R. Branson.
+\newblock The structure of proteins: Two hydrogen-bonded helical configurations
+  of the polypeptide chain.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 37\penalty0
+  (4):\penalty0 205--211, 1951.
+
+\bibitem[Poincar{\'e}(1890)]{poincare1890}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+
+\bibitem[Ramachandran and Sasisekharan(1968)]{ramachandran1968}
+G.~N. Ramachandran and V.~Sasisekharan.
+\newblock Conformation of polypeptides and proteins.
+\newblock \emph{Advances in Protein Chemistry}, 23:\penalty0 283--438, 1968.
+
+\bibitem[Rose et~al.(1985)Rose, Geselowitz, Lesser, Lee, and Zehfus]{rose1985}
+George~D. Rose, Aaron~R. Geselowitz, Glenn~J. Lesser, Richard~H. Lee, and
+  Michael~H. Zehfus.
+\newblock Hydrophobicity of amino acid residues in globular proteins.
+\newblock \emph{Science}, 229\penalty0 (4716):\penalty0 834--838, 1985.
+
+\bibitem[Srinivasan et~al.(2002)Srinivasan, James, and Krzycki]{srinivasan2002}
+Gayathri Srinivasan, Carey~M. James, and Joseph~A. Krzycki.
+\newblock Pyrrolysine encoded by uag in archaea: charging of a novel
+  trna{\textsuperscript{cua}} with pyrrolysine.
+\newblock \emph{Science}, 296\penalty0 (5572):\penalty0 1459--1462, 2002.
+
+\bibitem[Trifonov(2000)]{trifonov2000}
+Edward~N. Trifonov.
+\newblock Consensus temporal order of amino acids and evolution of the triplet
+  code.
+\newblock \emph{Gene}, 261\penalty0 (1):\penalty0 139--151, 2000.
+
+\bibitem[Wong(1975)]{wong1975}
+J.~Tze-Fei Wong.
+\newblock A co-evolution theory of the genetic code.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 72\penalty0
+  (5):\penalty0 1909--1912, 1975.
+
+\end{thebibliography}

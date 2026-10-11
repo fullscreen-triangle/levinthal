@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: amino-acid-derivation.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 15 entries,
+            2773 wiz_defined-function locations,
+            693 strings with 6940 characters,
+and the built_in function-call counts, 6889 in all, are:
+= -- 644
+> -- 319
+< -- 10
++ -- 111
+- -- 96
+* -- 575
+:= -- 1052
+add.period$ -- 45
+call.type$ -- 15
+change.case$ -- 77
+chr.to.int$ -- 15
+cite$ -- 30
+duplicate$ -- 305
+empty$ -- 607
+format.name$ -- 117
+if$ -- 1424
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 15
+newline$ -- 83
+num.names$ -- 60
+pop$ -- 131
+preamble$ -- 1
+purify$ -- 62
+quote$ -- 0
+skip$ -- 219
+stack$ -- 0
+substring$ -- 417
+swap$ -- 15
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 165
+warning$ -- 0
+while$ -- 75
+width$ -- 0
+write$ -- 202

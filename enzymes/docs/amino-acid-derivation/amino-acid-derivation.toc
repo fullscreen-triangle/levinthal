@@ -1,0 +1,34 @@
+\contentsline {part}{I\hspace {1em}Individuation and Its Cost}{3}{part.1}%
+\contentsline {section}{\numberline {1}The Problem of Distinguishing States}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Prerequisites for Amino Acid Discussion}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}The Floor on Individuation}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Existence as Distinction}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Positivity of the Boundary}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Contact as Minimal Mutual Distinction}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}The Cost of Refinement}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Partition Depth}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Sharing Reduces Depth}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Probing Without Committing}{7}{section.4}%
+\contentsline {section}{\numberline {5}The Locus of a Transferred Constituent}{7}{section.5}%
+\contentsline {part}{II\hspace {1em}The Peptide Polymer as a Partition Structure}{8}{part.2}%
+\contentsline {section}{\numberline {6}The Boundary-Placement Problem}{8}{section.6}%
+\contentsline {section}{\numberline {7}Planarity of the Invariant Linkage}{9}{section.7}%
+\contentsline {section}{\numberline {8}Necessity of Folding}{10}{section.8}%
+\contentsline {part}{III\hspace {1em}The Size of the Encoded Alphabet}{12}{part.3}%
+\contentsline {section}{\numberline {9}Substitution Without a Global Comparison}{12}{section.9}%
+\contentsline {section}{\numberline {10}Recurrence as the Criterion for a Shared Category}{13}{section.10}%
+\contentsline {part}{IV\hspace {1em}Charge Balance and the Reading of a Stored Structure}{15}{part.4}%
+\contentsline {section}{\numberline {11}Charge as a Partition Property}{15}{section.11}%
+\contentsline {section}{\numberline {12}Coupling Without Presupposed Content}{15}{section.12}%
+\contentsline {section}{\numberline {13}Why a Stored Structure Is Read Rarely}{17}{section.13}%
+\contentsline {part}{V\hspace {1em}The Storage-Resolution Hierarchy}{17}{part.5}%
+\contentsline {section}{\numberline {14}The Register and Its Probe Capacity}{17}{section.14}%
+\contentsline {section}{\numberline {15}The Cost of Re-Achieving a Register}{19}{section.15}%
+\contentsline {section}{\numberline {16}Resolution and Its Stability Under Processing}{20}{section.16}%
+\contentsline {section}{\numberline {17}Pairing as the Condition for Invariant Resolution}{21}{section.17}%
+\contentsline {section}{\numberline {18}The Hierarchy Restated}{22}{section.18}%
+\contentsline {section}{\numberline {19}The Alphabet as the Resolution Ceiling}{23}{section.19}%
+\contentsline {part}{VI\hspace {1em}Discussion}{24}{part.6}%
+\contentsline {section}{\numberline {20}What Has Been Established}{24}{section.20}%
+\contentsline {section}{\numberline {21}Scope and Open Questions}{26}{section.21}%
+\contentsline {section}{\numberline {22}Conclusion}{27}{section.22}%

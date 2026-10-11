@@ -308,5 +308,17 @@ storybook-static
 !dismutase/public/
 !dismutase/public/**
 
-# purpose local symbol index (regenerate with `purpose index`)
-.purpose/
+# purpose local symbol index (regenerate with `purpose index`).
+# The ckg lens is a reviewed decision about how this repo is read, so it is
+# committed; the index and ckg.json are derived caches.
+.purpose/*
+!.purpose/lens.toml
+
+# Analysis-tool caches (see CLAUDE.md, "Analysis tools"). spraypaint's index
+# is ~110 MB and holds passage text of every indexed file.
+.spraypaint/*
+!.spraypaint/scenes.toml
+.okgg/
+.wt/
+.srn/
+.claude/settings.local.json 

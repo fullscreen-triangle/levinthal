@@ -1,6 +1,6 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,twocolumn,a4paper]{article}
 
-\usepackage[margin=2.4cm]{geometry}
+\usepackage[margin=1.9cm,columnsep=0.75cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -11,7 +11,6 @@
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{array}
-\usepackage{longtable}
 \usepackage{enumitem}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
@@ -43,12 +42,18 @@
 
 \title{Cytochrome P450 from Counted Commitment:\\[4pt]
 \large A Derivation from Individuation to the Thiolate-Ligated Heme Monooxygenase}
-\author{}
+\author{%
+Kundai Farai Sachikonye\\[0.3em]
+\small AIMe Registry for Artificial Intelligence\\
+\small Experimental Bioinformatics, Maximus-von-Imhof-Forum 3\\
+\small 85354 Freising, Germany\\
+\small \texttt{kundai.sachikonye@bitspark.com}}
 \date{}
 
 \begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
 \maketitle
-
 \begin{abstract}
 \noindent
 Cytochrome P450 enzymes are heme proteins in which the iron is bound on one
@@ -93,9 +98,10 @@ matches outside the family being enzymes with a P450 domain. We set out
 which steps of the chain are derived and which are inputs, and we do not
 claim that the chain singles out P450 as the only possible outcome.
 \end{abstract}
+\vspace{1.2em}
+\end{@twocolumnfalse}
+]
 
-\tableofcontents
-\bigskip\hrule\bigskip
 
 %==============================================================================
 \section{Introduction}
@@ -154,7 +160,7 @@ collects what is derived and what is supplied, \cref{sec:validation} the
 checks, and \cref{sec:limits} the limitations. \Cref{fig:chain} gives the
 whole chain at a glance.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \begin{tikzpicture}[
   node distance=7mm and 5mm,
@@ -187,7 +193,7 @@ is a section; the dashed arrow marks the second use of the iron d shell, in
 the spin-state switch of the heme. The labels \D, \Sup{} and \C{} attached to
 each link are collected in \cref{tab:ledger}.}
 \label{fig:chain}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{Foundation: counted commitment}
@@ -439,7 +445,8 @@ with the cost of pairing two electrons in one orbital, they spread over all
 five orbitals before pairing (high spin); if it is large, they fill the lower
 three first (low spin). The number of unpaired electrons along each ladder is
 (\cref{fig:atoms}D)
-\begin{center}
+\begin{table*}[t]
+\centering
 \small
 \begin{tabular}{lccccccccccc}
 \toprule
@@ -450,7 +457,7 @@ low spin  & 0&1&2&3&2&1&0&1&2&1&0\\
 difference& 0&0&0&0&2&4&4&2&0&0&0\\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 \D\Sup{} The two ladders differ most, by four unpaired electrons, at $k=5$
 and $k=6$---the d counts of Fe(III) and Fe(II). The same holds for other
 d$^5$ and d$^6$ ions (Mn(II), Co(III)); we note it because the switch between
@@ -458,7 +465,7 @@ the two arrangements, driven by a change in the ligands, is the first step of
 the P450 cycle (\cref{sec:heme,sec:cycle}). We do not claim that this
 property selects iron.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/g1_atoms.pdf}
 \caption{\textbf{Shell counting and the d shell of iron.}
@@ -472,7 +479,7 @@ shell holding $k$ electrons; Fe(III) and Fe(II) highlighted.
 (\textbf{D})~Unpaired electrons in high-spin and octahedral low-spin
 arrangements; the dotted lines mark $k=5,6$.}
 \label{fig:atoms}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{Bonds and the geometry of the peptide carrier}
@@ -483,9 +490,10 @@ arrangements; the dotted lines mark $k=5,6$.}
 
 Consider two atoms in a medium. By \cref{prop:pair}, the cost of separating
 the pair from the medium as one item is the sum of their separate costs less
-twice the weight of their mutual contact. A contact heavy enough that
+twice the weight of their mutual contact. Since
+$x+y-\min(x,y)=\max(x,y)$, a contact heavy enough that
 \begin{equation}
-w(a,b)>\tfrac12\bigl(w(\cut\{a\})+w(\cut\{b\})\bigr)-\min\bigl(w(\cut\{a\}),w(\cut\{b\})\bigr)
+w(a,b)>\tfrac12\max\bigl(w(\cut\{a\}),\,w(\cut\{b\})\bigr)
 \end{equation}
 makes the pair cheaper to individuate together than the cheaper of the two
 alone, and the pair then behaves, against the medium, as one item. We use
@@ -548,7 +556,7 @@ contact~\citep{ramachandran1963}: $51\%$ of residues fall in a helical region
 ($-100^\circ<\phi<-30^\circ$, $-80^\circ<\psi<-10^\circ$) and $25\%$ in an
 extended region. \C
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/g2_backbone.pdf}
 \caption{\textbf{Geometry of the peptide carrier in twelve P450 structures.}
@@ -557,7 +565,7 @@ extended region. \C
 of trans, $7$ cis, $35$ intermediate, of $5{,}406$.
 (\textbf{C})~Joint distribution of backbone dihedrals $\phi,\psi$.}
 \label{fig:backbone}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{The order of boundary, record and catalyst}
@@ -657,7 +665,7 @@ their N-terminal presequences. The separation between the
 endoplasmic-reticulum and bacterial groups is the observation that bears on
 the boundary step of the chain.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/g3_boundary.pdf}
 \caption{\textbf{The N-terminal segment and the bilayer.}
@@ -668,7 +676,7 @@ first $60$ residues of two microsomal (CYP3A4, CYP2C9), one mitochondrial
 UniProtKB P450s, grouped by annotated location and lineage; bars mark
 medians.}
 \label{fig:boundary}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{The record: pairing, word length and substitution tolerance}
@@ -719,7 +727,7 @@ place of hydropathy, the original analyses found a stronger
 result~\citep{haig1991,freeland1998}; we report hydropathy because it is the
 property used elsewhere in this article.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/g4_record.pdf}
 \caption{\textbf{The record.}
@@ -730,7 +738,7 @@ shortest that name twenty residues and a stop.
 for $200{,}000$ codes with permuted residue assignments (grey) and for the
 standard code (orange).}
 \label{fig:record}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{The catalyst: carrier, slot and compact fold}
@@ -795,7 +803,7 @@ heme alone: its separation cost equals the weight of its own contacts, so the
 fold individuates the heme by surrounding it rather than by enclosing it
 together with neighbours.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/g5_fold.pdf}
 \caption{\textbf{Compaction and burial.}
@@ -807,7 +815,7 @@ percentage of the isolated heme's.
 (\textbf{C})~Separation costs from the medium in the integer-weighted contact
 graph of camphor-bound CYP101A1 (2CPP); the heme is marked.}
 \label{fig:fold}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{The heme and its thiolate ligand}
@@ -872,7 +880,7 @@ The cysteine ligand of P450s lies in a conserved loop described by the
 PROSITE signature PS00086~\citep{sigrist2013}, which we read from the PROSITE
 entry as
 \begin{center}
-\texttt{[FW]-[SGNH]-x-[GD]-\{F\}-[RKHPT]-\{P\}-C-[LIVMFAP]-[GAD]}.
+{\footnotesize\texttt{[FW]-[SGNH]-x-[GD]-\{F\}-[RKHPT]-\{P\}-C-[LIVMFAP]-[GAD]}}.
 \end{center}
 
 \begin{prediction}[Signature]
@@ -914,7 +922,7 @@ ladders of \cref{sec:atoms} at $k=5$. The other P450 entries carry inhibitors
 or ligands on the distal face or were determined at lower resolution, and we
 do not use them for this comparison.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/g6_ligation.pdf}
 \caption{\textbf{The proximal ligand and the cysteine-loop signature.}
@@ -926,7 +934,7 @@ residues.
 (\textbf{C})~Distance from the matched cysteine to the C-terminus in P450
 sequences.}
 \label{fig:heme}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{The catalytic cycle as a ladder}
@@ -985,17 +993,15 @@ the passage to atoms rests on supplied inputs, of which the filling order is
 empirical; the polymer sections combine supplied chemistry with derived
 counting; and the P450-specific steps are mostly supplied and checked.
 
-\begin{longtable}{@{}p{4.3cm}p{6.3cm}p{2.8cm}@{}}
+\begin{table*}[t]
+\centering
+\small
 \caption{Ledger of the chain. \D{} derived from \cref{sec:foundation};
-\Sup{} supplied as input; \C{} checked here.}\label{tab:ledger}\\
+\Sup{} supplied as input; \C{} checked here.}\label{tab:ledger}
+\begin{tabular}{@{}p{4.3cm}p{6.3cm}p{2.8cm}@{}}
 \toprule
 Link & Content & Status\\
 \midrule
-\endfirsthead
-\toprule
-Link & Content & Status\\
-\midrule
-\endhead
 Counted commitment & every record costs at least $\theta>0$ & assumed\\
 Direction, time, entropy & $M=ft=S_{\mathrm{reg}}/\kB\ln b$ & \D\\
 Individuation & $\sep(v)\ge1$, non-decreasing under expansion & \D\\
@@ -1022,7 +1028,8 @@ Spin switch & distal water and Fe displacement, 1PHC vs 2CPP & \Sup\C\\
 Cycle as ladder & gating, uncoupling, identifiability & \D\Sup\\
 Specific P450 sequence & any particular P450 gene & \Sup\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table*}
 
 %==============================================================================
 \section{Validation}
@@ -1033,7 +1040,7 @@ Specific P450 sequence & any particular P450 gene & \Sup\\
 against each entry's own compound record before use, and every computation
 is provided with its numerical record (\cref{sec:data}).
 
-\begin{table}[ht]
+\begin{table*}[t]
 \centering
 \small
 \caption{Structures. Resolution as recorded in the entry; ligand distance is
@@ -1065,9 +1072,9 @@ PDB & Protein & Group & Proximal ligand & Res. (\AA)\\
 7CAT & catalase & tyrosine & Tyr O$\eta$, 1.84~\AA & 2.50\\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
-\begin{table}[ht]
+\begin{table*}[t]
 \centering
 \small
 \caption{Predictions and outcomes.}
@@ -1093,7 +1100,7 @@ irons; His and Tyr elsewhere\\
 $12/12$; $82.6\%$ vs $0.07\%$; median $59$ residues from end\\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 %==============================================================================
 \section{Limitations}

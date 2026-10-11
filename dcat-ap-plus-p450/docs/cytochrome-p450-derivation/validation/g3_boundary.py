@@ -109,9 +109,16 @@ for g in order:
     d = np.array(groups[g])
     summary[g] = {"n": int(d.size), "median": float(np.median(d)),
                   "fraction_above_1.6": float((d > THRESH).mean())}
+profiles = {}
+for lab in ("CYP3A4", "CYP2C9", "CYP11A1", "CYP101A1", "CYP102A1"):
+    acc = next(a for a, l in named.items() if l == lab)
+    _, seq = uniprot_fasta(acc)
+    profiles[lab] = [round(float(v), 3) for v in profile(seq[:SPAN])]
 record("g3_boundary", {"window": WIN, "span": SPAN, "threshold": THRESH,
                        "reviewed_p450_entries": len(rows), "groups": summary,
-                       "named": named_out})
+                       "named": named_out,
+                       "raw": {"values": {g: [round(v, 3) for v in groups[g]] for g in order},
+                               "profiles": profiles, "profile_x0": int(x[0])}})
 print(summary)
 for k, v in named_out.items():
     print(k, round(v["nterm_max_hydropathy"], 2), v["window_start"])

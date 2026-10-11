@@ -1,0 +1,68 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(purpose index)",
+      "Bash(purpose index:*)",
+      "Bash(purpose ask:*)",
+      "Bash(purpose ckg lens:*)",
+      "Bash(purpose ckg build:*)",
+      "Bash(purpose ckg ask:*)",
+      "Bash(purpose ckg why:*)",
+      "Bash(purpose ckg floor:*)",
+      "Bash(purpose ledger:*)",
+      "Bash(purpose --version)",
+      "Bash(spraypaint index:*)",
+      "Bash(spraypaint ask:*)",
+      "Bash(spraypaint scenes:*)",
+      "Bash(spraypaint identity:*)",
+      "Bash(spraypaint count:*)",
+      "Bash(spraypaint verify:*)",
+      "Bash(spraypaint --version)",
+      "Bash(okgg scan:*)",
+      "Bash(okgg run:*)",
+      "Bash(okgg report:*)",
+      "Bash(okgg entity:*)",
+      "Bash(okgg pair:*)",
+      "Bash(okgg concepts:*)",
+      "Bash(okgg read:*)",
+      "Bash(wt static:*)",
+      "Bash(wt init:*)",
+      "Bash(wt run:*)",
+      "Bash(wt report:*)",
+      "Bash(wt check:*)",
+      "Bash(wt dynamic:*)",
+      "Bash(wt purpose:*)",
+      "Bash(smith check:*)",
+      "Bash(smith run:*)",
+      "Bash(smith show:*)",
+      "Bash(srn-fleet sources:*)",
+      "Bash(srn-fleet attend:*)",
+      "Bash(srn-fleet kuramoto:*)",
+      "Bash(srn-fleet agent:*)"
+    ],
+    "ask": [
+      "Bash(spraypaint serve:*)",
+      "Bash(wt serve:*)",
+      "Bash(srn-fleet index:*)",
+      "Bash(srn-fleet clear:*)",
+      "Bash(srn-fleet run:*)",
+      "Bash(srn-fleet burst:*)",
+      "Bash(srn-fleet serve:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard_tools.py\"",
+            "timeout": 10,
+            "statusMessage": "Checking tool guard"
+          }
+        ]
+      }
+    ]
+  }
+}

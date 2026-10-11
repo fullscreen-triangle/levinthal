@@ -1,6 +1,6 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,twocolumn,a4paper]{article}
 
-\usepackage[margin=2.4cm]{geometry}
+\usepackage[margin=1.9cm,columnsep=0.75cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -37,12 +37,18 @@
 
 \title{Positive Occupation Propagation:\\[4pt]
 \large Direction, Time, Entropy and Individuation from Counted Commitment}
-\author{}
+\author{%
+Kundai Farai Sachikonye\\[0.3em]
+\small AIMe Registry for Artificial Intelligence\\
+\small Experimental Bioinformatics, Maximus-von-Imhof-Forum 3\\
+\small 85354 Freising, Germany\\
+\small \texttt{kundai.sachikonye@bitspark.com}}
 \date{}
 
 \begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
 \maketitle
-
 \begin{abstract}
 \noindent
 We examine what follows from one elementary arithmetic fact: a sum of
@@ -79,9 +85,10 @@ Kac ring and in the cat map on lattices up to $400\times400$, and exact
 rational ladders. The scope is deliberately narrow: the results concern
 records, orderings and cuts, and do not determine any dynamical law.
 \end{abstract}
+\vspace{1.2em}
+\end{@twocolumnfalse}
+]
 
-\tableofcontents
-\bigskip\hrule\bigskip
 
 %==============================================================================
 \section{Introduction}
@@ -268,7 +275,7 @@ terms; the geometric series stalling at one; the harmonic series diverging
 slowly; and the running minimum of positive real terms $c_i=U_i/i$ falling
 below $10^{-7}$, while the running minimum of the counted terms stays at one.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/f1_partial_sums.pdf}
 \caption{\textbf{Counted and measured sums.}
@@ -285,7 +292,7 @@ $k(\varepsilon)=\lceil\log_2(D/\varepsilon)\rceil$, is finite for every
 $\varepsilon>0$ and unbounded as $\varepsilon\to0$, while the distance covered
 (inset) converges to $D$.}
 \label{fig:sums}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{Occupation, commitment and propagation}
@@ -666,7 +673,7 @@ under counted weights and $0.86$ under real weights; identity regions larger
 than a single vertex occurred for $0.7\%$ of vertices under counted weights
 and $17\%$ under real weights.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/f2_individuation.pdf}
 \caption{\textbf{Separation cost under expansion.}
@@ -679,7 +686,7 @@ occurred in $40\times160$ steps under either weighting.
 (\textbf{C})~Separation costs of all vertices of the final graphs of ten
 sequences per weighting; the dashed line marks one.}
 \label{fig:individuation}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{Only up: direction and individuation together}
@@ -696,10 +703,10 @@ Let $(G_k,R_k)_{k\ge0}$ be the contact graph and register after the $k$-th
 step of a sequence of POP steps, each either constructive or not, with
 counted weights. Then for every vertex $v$ present from step $k_0$ on and
 every $k\ge k_0$,
-\begin{equation}
-M_{k+1}=M_k+1,\qquad S_{\mathrm{reg},k+1}=S_{\mathrm{reg},k}+\kB\ln b,\qquad
+\begin{gather}
+M_{k+1}=M_k+1,\qquad S_{\mathrm{reg},k+1}=S_{\mathrm{reg},k}+\kB\ln b,\\
 \sep_{G_{k+1}}(v)\;\ge\;\sep_{G_k}(v)\;\ge\;1.
-\end{equation}
+\end{gather}
 \end{theorem}
 
 \begin{proof}
@@ -817,7 +824,7 @@ $(x,y)\mapsto(x+y,\,x+2y)\bmod N$~\citep{arnold1968} on $N\times N$ lattices
 for $N=2,\dots,400$: every period is finite and none exceeds $3N$, the bound
 of Dyson and Falk~\citep{dyson1992} (\cref{fig:recurrence}C).
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/f3_recurrence.pdf}
 \caption{\textbf{Configurations recur; the register does not.}
@@ -831,7 +838,7 @@ register length, one commitment per step, rises throughout.
 (\textbf{C})~Period of every orbit of the cat map on an $N\times N$ lattice,
 $N=2,\dots,400$, with the bound $3N$.}
 \label{fig:recurrence}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{Ladders}
@@ -898,7 +905,7 @@ therefore cannot recover its steps; one who records the gap after each rung
 can. In the terms of \cref{sec:model}, the second observer commits once per
 rung, the first once per ladder.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/f4_ladders.pdf}
 \caption{\textbf{Ladders.}
@@ -913,7 +920,7 @@ at a residual gap of $0.359$.
 trajectories. In exact rational arithmetic, none of $200$ random ladders of
 $200$ rungs with $p_i\in\{0.01,\dots,0.98\}$ closed the gap.}
 \label{fig:ladders}
-\end{figure}
+\end{figure*}
 
 %==============================================================================
 \section{Instruments as committers}
@@ -925,7 +932,8 @@ each case the reading is itself a commitment. We list the correspondences to
 make clear what an experimental test of each statement would involve; none
 of the correspondences is new.
 
-\begin{center}
+\begin{table*}[t]
+\centering
 \small
 \begin{tabular}{@{}p{3.2cm}p{4.0cm}p{6.4cm}@{}}
 \toprule
@@ -944,7 +952,7 @@ fraction after each step; the composite alone is a screen
 (\cref{prop:screen})\\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
 Two consequences are worth stating. First, by \cref{thm:monotone}, adding an
 instrument to a measurement setting---adding contacts between the item and
@@ -966,7 +974,7 @@ assumption about physical records. All code, the random seeds and the
 recorded outputs are provided with the manuscript, and each figure is
 regenerated by one command.
 
-\begin{table}[ht]
+\begin{table*}[t]
 \centering
 \small
 \caption{Computational checks. ``Prediction'' is what the cited result
@@ -996,7 +1004,7 @@ Summable ladder residual & $\sin(\pi/\sqrt2)/(\pi/\sqrt2)=0.3582$ &
 $0.3585$ at $500$ rungs\\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 %==============================================================================
 \section{Limitations and scope}

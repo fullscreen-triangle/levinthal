@@ -89,7 +89,9 @@ panel_label(ax, "C")
 fig.tight_layout()
 save_figure(fig, FIG_P450, "g4_record")
 
+hist_counts, hist_edges = np.histogram(random_costs, bins=80)
 record("g4_record", {
+    "raw": {"cost_hist_edges": np.round(hist_edges, 4).tolist(), "cost_hist_counts": hist_counts.tolist()},
     "min_word_length": int(min(l for l in range(1, 6) if 4 ** l >= 21)),
     "sense_codons": len(sense), "stop_codons": 64 - len(sense),
     "codons_per_residue": per_res,

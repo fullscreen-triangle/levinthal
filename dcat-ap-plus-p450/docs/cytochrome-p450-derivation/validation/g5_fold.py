@@ -160,4 +160,5 @@ for pid in ("2CPP", "1TQN"):
     payload[pid]["heme_singleton_cut"] = r["singleton"][("HEME",)]
     payload[pid]["nodes_with_region_identity"] = len(region)
     payload[pid]["min_sigma"] = float(sig.min())
+    payload[pid]["sigma_values"] = sorted(float(v) for v in sig)
 record("g5_fold", {"probe": PROBE, "points_per_atom": len(SPH), "entries": payload})
