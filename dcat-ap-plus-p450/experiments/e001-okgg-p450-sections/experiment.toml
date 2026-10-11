@@ -1,0 +1,53 @@
+[experiment]
+id = "e001-okgg-p450-sections"
+title = "What tells the sections of each P450 paper apart (okgg, lexical generator)"
+question = """
+For each paper in cytochrome/publications, which sections can okgg tell apart from
+their own words, and which stay in cells (indistinguishable)? Sections that stay in
+cells are where a paper repeats itself or where the 'Records and queries' section
+(pap.records) will have nothing distinct to emit. The lexical generator makes this
+deterministic and needs no model endpoint.
+"""
+components = ["sem.ontology", "up.okgg", "pap.records", "src.monograph"]
+
+[target]
+repo = "levinthal"
+# okgg is built from conspirator, cloned beside levinthal at a pinned commit.
+# Each shard resolves its paper's .tex from the directory name in $LATTICE_PAPER.
+command = """
+cargo install --quiet --locked --path ../conspirator/conspirator/okgg --root "$HOME/.local"
+tex=$(ls cytochrome/publications/*/"$LATTICE_PAPER"/*.tex | grep -v -- '-captions' | head -n 1)
+test -n "$tex"
+"$HOME/.local/bin/okgg" run "$tex" --unit section --generator lexical --budget 40 --out "$LATTICE_OUT/okgg"
+"""
+
+[run]
+# One shard per paper, by its directory name under cytochrome/publications/<group>/.
+# Short names, not paths: shard ids are built from matrix values.
+matrix = { paper = [
+  "expression-algebra-for-biomolecules", "multi-hop-et-chain", "compound-i-formation",
+  "ch-activation-rebound", "p450-address-manifold-cyp3a4-fold", "cyp3a4-resting-substrate-bound",
+  "seven-state-closed-orbit", "spectroscopic-atlas",
+] }
+gpu = "none"
+timeout_secs = 1800
+
+[[requires]]
+repo = "conspirator"
+ref = "HEAD"
+dir = "../conspirator"
+
+[[expect]]
+kind = "shards"
+
+[[expect]]
+kind = "file"
+path = "shards/*/okgg/report.json"
+
+[[expect]]
+kind = "json"
+path = "shards/*/okgg/report.json"
+key = "value"
+op = "ge"
+value = 0.0
+note = "V, the fraction of section pairs certified distinct (report.json keys checked against a local okgg 0.1.0 run)"

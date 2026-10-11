@@ -1,0 +1,1715 @@
+% dcat-ap-plus-p450 -- Components and Construction (slides)
+% Presents ../components-graph.md. Every count taken from ../components.json comes
+% from numbers.tex, which gen_numbers.py generates. Build:
+%   python gen_numbers.py && pdflatex presentation && pdflatex presentation
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{silence}
+% metropolis asks for XeLaTeX to load Fira through fontspec; under pdfLaTeX the
+% FiraSans/FiraMono packages below provide the same faces.
+\WarningFilter{beamerthememetropolis}{You need to compile with XeLaTeX or LuaLaTeX}
+\usetheme[progressbar=frametitle,sectionpage=none,numbering=fraction,block=fill]{metropolis}
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,lining]{FiraSans}
+\usepackage[scale=0.92]{FiraMono}
+\usepackage{booktabs,tabularx,array,colortbl}
+\usepackage{fancyvrb}
+\usepackage{microtype}
+\DisableLigatures[-]{encoding = T1, family = tt*}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,shapes.multipart,fit,backgrounds,calc}
+\usepackage{pgfplots,pgfplotstable}
+\pgfplotsset{compat=1.18}
+\input{numbers.tex}
+
+\setbeamersize{text margin left=6mm,text margin right=6mm}
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.7ex}
+\makeatother
+% metropolis' footline with a smaller separation (3ex -> 1.2ex): more room for content
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=1.2ex]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \hfill\usebeamertemplate*{frame numbering}%
+  \end{beamercolorbox}}
+\setbeamercolor{alerted text}{fg=layerQueryInk}
+% A plain title page: metropolis' own template overflows the 16:9 text area by 15.6pt
+% under pdfLaTeX even for a one-word title.
+\setbeamertemplate{title page}{%
+  \vfill
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+  \smallskip
+  {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+  \medskip
+  {\usebeamercolor[fg]{title separator}\rule{\textwidth}{0.4pt}\par}
+  \medskip
+  {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+  \smallskip
+  {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+  \vfill}
+
+% Code listings: 8.7pt x 0.92 (FiraMono scale) = 8pt.
+\newcommand{\codesize}{\fontsize{8.7}{10.1}\selectfont}
+\newcommand{\cid}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\vl}[1]{\texttt{\detokenize{#1}}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.08}
+\newcommand{\src}[1]{\par\vfill{\scriptsize\color{black!60}#1\par}}
+
+\tikzset{
+  >={Stealth[length=4pt,width=3.6pt]},
+  box/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, inner sep=2.2pt, line width=0.6pt,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  lay/.style={box, draw=layer#1Ink, fill=layer#1Fill},
+  layL/.style={lay=#1, text width=19mm, minimum height=8mm},
+  flow/.style={->, line width=0.6pt, draw=black!70},
+  reuse/.style={->, line width=0.6pt, densely dotted, draw=black!70},
+  back/.style={->, line width=0.6pt, dashed, draw=black!55},
+  lbl/.style={font=\scriptsize, fill=white, inner sep=1pt, text=black!80},
+  nlbl/.style={font=\scriptsize, inner sep=1pt, text=black!80},
+  dec/.style={box, draw=black!65, fill=white, rounded corners=7pt},
+  good/.style={box, draw=layerDomainInk, fill=layerDomainFill},
+  bad/.style={box, draw=layerRuntimeInk, fill=layerRuntimeFill},
+  plain/.style={box, draw=black!50, fill=black!4},
+  cls/.style={rectangle split, rectangle split parts=2, draw=layerSchemaInk, fill=white, line width=0.6pt,
+    font=\scriptsize, align=left, inner sep=2pt, rectangle split part fill={layerSchemaFill,white}},
+  base/.style={rectangle split, rectangle split parts=2, draw=black!50, fill=white, line width=0.6pt,
+    font=\scriptsize, align=center, inner sep=2pt, rectangle split part fill={black!8,white}},
+  isa/.style={-{Triangle[open,length=5pt,width=5pt]}, line width=0.6pt, draw=black!70},
+  assoc/.style={->, line width=0.6pt, draw=black!70},
+  wp/.style={box, text width=23mm, minimum height=8mm, inner sep=1.5pt},
+  ph/.style={draw=black!30, rounded corners=3pt, inner sep=2mm, fill=black!3},
+  phl/.style={font=\scriptsize\bfseries, text=black!75},
+  stub/.style={box, dashed, draw=black!45, text width=16mm, minimum height=7mm, text=black!70},
+}
+\pgfplotsset{
+  statusbars/.style={
+    xbar stacked, bar width=3.0mm, ytick=data, scale only axis,
+    y tick label style={font=\scriptsize}, x tick label style={font=\scriptsize},
+    xlabel style={font=\scriptsize}, xmin=0, axis x line*=bottom, axis y line*=left,
+    xmajorgrids, grid style={black!10}, enlarge y limits={abs=3mm},
+    legend image code/.code={\draw[#1] (0cm,-0.09cm) rectangle (0.28cm,0.11cm);},
+  }}
+
+% one row of the layer stack: y, colour key, Ln, name, content
+\newcommand{\layerrow}[5]{%
+  \node[lay=#2, anchor=west, text width=47mm, minimum height=8.4mm, font=\footnotesize\bfseries, align=left] at (0,#1) {#3\quad #4};
+  \node[anchor=west, font=\footnotesize, text width=91mm, align=flush left, inner sep=1pt] at (52mm,#1) {#5};}
+% sequence diagrams: actor [colour key]{name}{x}{label}{lifeline end}; message [style]{x1}{x2}{y}{label}
+\newcommand{\seqactor}[5][Runtime]{%
+  \node[lay=#1, text width=18mm, minimum height=8mm, font=\scriptsize\bfseries, fill=white] (#2) at (#3,0) {#4};
+  \draw[black!35, dashed] (#2.south) -- (#3,#5);}
+\newcommand{\seqmsg}[5][flow]{\draw[#1] (#2,#4) -- node[lbl,above,align=center]{#5} (#3,#4);}
+\newcommand{\seqmsgb}[5][flow]{\draw[#1] (#2,#4) -- node[lbl,below,align=center]{#5} (#3,#4);}
+\newcommand{\aft}[1]{\\{\itshape\color{black!60}#1}}
+
+\title{dcat-ap-plus-p450 --- Components and Construction}
+\subtitle{Draft for review}
+\author{Kundai Farai Sachikonye}
+\date{8 October 2026}
+
+
+\begin{document}
+
+\maketitle
+
+% =============================================================== 1 What this is
+\begin{frame}{1\quad What this is: four layers, each built from the ones beneath it}
+\centering
+\begin{tikzpicture}[node distance=5mm]
+  \tikzset{four/.style={text width=31mm, minimum height=12mm}}
+  \node[lay=Papers, four] (P) {\textbf{Papers}\\argue and validate claims};
+  \node[lay=Records, four, right=of P] (R) {\textbf{Records}\\claims as triples, one named graph per basis};
+  \node[lay=Query, four, right=of R] (Q) {\textbf{Queries}\\HFQ plans that return a verdict, never a bare empty};
+  \node[lay=Model, four, right=of Q] (M) {\textbf{Model}\\writes plans, explains verdicts, states no value a record lacks};
+  \draw[flow] (P) -- (R); \draw[flow] (R) -- (Q); \draw[flow] (Q) -- (M);
+  \draw[back] (P.south) to[out=-8,in=-172] node[nlbl,pos=0.3,below]{sections $\rightarrow$ Q\&A} ([xshift=-4mm]M.south);
+  \draw[back] (R.south) to[out=-10,in=-165] node[nlbl,pos=0.62,above]{graph descriptions} ([xshift=3mm]M.south);
+\end{tikzpicture}
+\par
+\raggedright\footnotesize
+\textbf{What it is not}
+\begin{itemize}\setlength\itemsep{1pt}
+  \item \textbf{Not a simulator.} Dynamics are ladders: a sequence of rungs with powers, composed as $1-\prod_i(1-p_i)$.
+        The oscillator framing of the old monograph is retired.
+  \item \textbf{Not a model that stores facts.} The model is a compiled probe: it translates questions into
+        plans, and the plans read records.
+  \item \textbf{Not a claim about substrate scope.} Recorded substrates are an extension; scope is an
+        intension. The library records the first and refuses to infer the second (rule R9).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{1\quad Why a fourth extension, and what it reuses}
+\begin{columns}[T]
+\begin{column}{0.62\textwidth}
+\footnotesize
+\begin{itemize}\setlength\itemsep{2pt}
+  \item The fourth DCAT-AP-PLUS extension, after \textbf{chromatography} (borgia),
+        \textbf{proteomics} (lavoisier) and \textbf{genomics} (gospel). It reuses their machinery
+        through a \textbf{shared core} instead of copying it a fourth time.
+  \item The core is extracted once from chromatography (CI, typing, fifteen test modules); it starts inside
+        this package and becomes its own package when a second extension switches to it (D2).
+        The package layout follows proteomics, the most complete sibling.
+  \item Schema: LinkML, importing DCAT-AP-PLUS and Chem-DCAT-AP, in its own IRI space (registration pending).
+  \item Hosted in \textbf{Buhera OS}, which already has the CKG runtime, the vendored HFQ and ladder engines and the
+        natural-language-to-DSL module. The library adds no runtime.
+\end{itemize}
+\end{column}
+\begin{column}{0.36\textwidth}
+\centering
+\begin{tikzpicture}[node distance=4mm]
+  \node[lay=Upstream, text width=24mm] (c) {chromatography ext.\\(borgia)};
+  \node[lay=Upstream, text width=24mm, below=of c] (p) {proteomics ext.\\(lavoisier)};
+  \node[lay=Upstream, text width=24mm, below=of p] (g) {genomics ext.\\(gospel)};
+  \node[lay=Core, text width=15mm, minimum height=10mm, right=6mm of p] (core) {shared core};
+  \node[lay=Schema, text width=15mm, below=7mm of core] (p450) {\textbf{p450}\\extension};
+  \draw[reuse] (c.east) -- (core.west);
+  \draw[reuse] (p.east) -- (core.west);
+  \draw[reuse] (g.east) -- (core.west);
+  \draw[flow] (core) -- (p450);
+\end{tikzpicture}
+\par\smallskip
+{\scriptsize dotted: reuse of code\\ solid: data or control flow}
+\end{column}
+\end{columns}
+\end{frame}
+
+% =============================================================== Constructs
+\begin{frame}{Constructs used in this deck (1/2): records and their semantics}
+\scriptsize
+\begin{tabularx}{\textwidth}{@{}L{27mm}Y@{}}
+\toprule
+\textbf{Basis} & Each value is \emph{stated} (a source or file says it), \emph{supplied} (a convention filled it in) or \emph{derived} (computed here). Tags combine as the maximum under stated $<$ supplied $<$ derived: a basis is never laundered (R2). \\
+\textbf{Named graph per basis} & A result file keeps one named graph each for stated, supplied and derived triples, plus a \emph{refined} graph (RDF-star refined values) and an \emph{admitted} graph (slots admitted by schema admission). \\
+\textbf{Stage} & A derived value carries the digest of the content and conventions it was computed on, and is valid only for that stage (R5). \\
+\textbf{Refined triples, gate letters} & Refinement annotates asserted triples without rewriting them. The gate labels an empty answer $+$ (witnessed absent), $-$ (not recorded), \texttt{a} (both), \texttt{open} (a name the graph never uses) or \texttt{?} (undecided). \\
+\textbf{Schema admission A1--A6} & A candidate slot enters the schema only if it is demanded, witnessed from the measured object, a fresh optional predicate, from a closed vocabulary, an identity by partition, and promoted only at a federated stage. \\
+\textbf{Ground verdicts} & From its PROV graph, each returned record is a \emph{symbol} (no generation recorded), \emph{collapsed} (generated, but no contact or derivation reachable), \emph{index} (traced to a contact with the measured object), \emph{icon} (traced to a derivation) or \emph{composite} (both). \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{Constructs used in this deck (2/2): queries, runtime, compute}
+\scriptsize
+\begin{tabularx}{\textwidth}{@{}L{27mm}Y@{}}
+\toprule
+\textbf{HFQ} & A federated plan language (hegel). A plan is parsed and its capabilities are checked before any source is contacted; it runs within a request budget, and every step ends in a verdict. \\
+\textbf{Verdict, blocker} & The label a step ends in (e.g.\ \vl{starved}) and the reason for it (e.g.\ \emph{upstream}), with a blame chain. Only \vl{answered} and \vl{empty} carry no blocker (R3). \\
+\textbf{Ladder} & A sequence of rungs with powers $p_i$, composed as $1-\prod_i(1-p_i)$. Below the declared target the ladder is refused as \vl{subfloor}, with the shortfall named. \\
+\textbf{okgg} & An ontological knowledge graph generator (conspirator): a model proposes distinctions and a lexical witness decides values. Here its proposals go to schema admission only, never into records (R1). \\
+\textbf{Buhera OS} & The host runtime. One registry dispatches about 40 modules, among them the CKG runtime (catalytic states as nodes; modules fold facts onto them), vendored HFQ and ladder engines, and \emph{dsl-writer} (natural language to a DSL script, checked by the real compiler and repaired on failure). \\
+\textbf{lattice, AppHub} & AppHub: the university's Code-Server sessions, CPU or GPU, accepting no inbound connection. \emph{lattice} wraps a task into a unit carried by the university Gitea; results come back on a branch. AppHubAI is an OpenAI-compatible model endpoint there. \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+% =============================================================== 3 Design rules
+\newcommand{\ruleshead}{\toprule & \textbf{Rule} & \textbf{Origin} & \textbf{Enforced by} \\ \midrule}
+\begin{frame}{3\quad Design rules (1/3): they hold for every component}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l Y L{30mm} L{33mm}@{}}
+\ruleshead
+R1 & \textbf{The model proposes; the records decide.} No value enters a record because a model said so. & okgg, Part III & \cid{llm.eval} (zero unbacked values); \cid{sem.ontology} witness \\
+R2 & \textbf{Basis is never laundered.} Tags compose as max under stated $<$ supplied $<$ derived. A value computed from a supplied value is not stated. & honjo-masamune, chromatography \cid{provenance} & \cid{core.provenance} \\
+R3 & \textbf{No bare empty.} Every step ends in a labelled verdict; every label except \vl{answered} and \vl{empty} names a blocker. & HFQ, chromatography \cid{verdicts} & \cid{core.verdicts} \\
+R4 & \textbf{The network is touched in one place.} Only \cid{dom.fetch} contacts external services; everything else reads dated, content-addressed snapshots. & HFQ adapters (\cid{adapters.py:15}) & code review; \cid{dom.fetch} is the only module importing an HTTP client \\
+\bottomrule
+\end{tabularx}
+\src{A change that breaks a rule is a design change and must be argued in a paper, not made in code.}
+\end{frame}
+
+\begin{frame}{3\quad Design rules (2/3)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l Y L{30mm} L{33mm}@{}}
+\ruleshead
+R5 & \textbf{A stored value is valid only for its stage.} Every derived value carries the digest of the content and conventions it was computed on. & chromatography \cid{identifiers.Stage} & \cid{core.identifiers} \\
+R6 & \textbf{Every class has its own IRI.} A distinction drawn in the schema reaches the emitted RDF. Measured and computed observations are never one \cid{rdf:type}. & chromatography schema; SGV receiver collapse & \cid{schema.audit} (zero lost pairs) \\
+R7 & \textbf{Change upstream, then re-vendor.} Code vendored into Buhera is byte-exact and pinned; a fix is made in the upstream repository first. & Buhera spec rule M1 & Buhera specs; \cid{q.conformance} \\
+R8 & \textbf{Refined values ride alongside.} Asserted triples are never rewritten; refined values are stage-annotated annotations (RDF-star), never slots. & ART conservativity; admission tex:379 & \cid{sem.refinement} \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{3\quad Design rules (3/3)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l Y L{30mm} L{33mm}@{}}
+\ruleshead
+R9 & \textbf{Scope is not inferred.} A substrate list is never closed under similarity to claim what an isoform \emph{can} metabolise. & borgia \cid{chem-dcat-ap-}\newline\cid{querying.tex:738}; ART tex:1816 & \cid{dom.chemistry}; N3 states the position \\
+R10 & \textbf{Every claim has a plan.} Each claim a paper makes ships as an HFQ plan with its expected verdict, and that pair is a test. & this specification & \cid{q.plans} \\
+R11 & \textbf{Heavy work runs on the university servers.} Validation, catalogue builds, admission, ontology runs, training and evaluation are lattice units on AppHub. & user decision & \S\,9 \\
+R12 & \textbf{Every number on a front page is read from a record.} No constant is copied into a page or a module. & \cid{/protein-modelling} thesis, made strict & \cid{rt.p450module}, \cid{rt.web} \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+% =============================================================== 4 At a glance
+\begin{frame}{4\quad The system at a glance (1/2): L0--L5, where things run and come from}
+\centering
+\begin{tikzpicture}[y=9.4mm]
+  \layerrow{5}{Domain}{L5}{Domain modules (\NLayerDomain)}{fetch $\cdot$ isoforms $\cdot$ structures $\cdot$ cycle $\cdot$ kinetics $\cdot$ chemistry $\cdot$ metabolites $\cdot$ LC $\cdot$ abundance $\cdot$ PGx $\cdot$ spectroscopy $\cdot$ DDI}
+  \layerrow{4}{Schema}{L4}{Schema (\NLayerSchema)}{p450.yaml $\cdot$ refined.yaml $\cdot$ witness classes $\cdot$ OWL/SHACL/context $\cdot$ audit}
+  \layerrow{3}{Core}{L3}{Shared core (\NLayerCore)}{identifiers $\cdot$ census $\cdot$ refinement $\cdot$ verdicts $\cdot$ linkage $\cdot$ provenance $\cdot$ emission $\cdot$ artefacts}
+  \layerrow{2}{Upstream}{L2}{Upstream code (\NLayerUpstream)}{chromatography ext.\ $\cdot$ proteomics ext.\ $\cdot$ genomics ext.\ $\cdot$ HFQ $\cdot$ SBS $\cdot$ okgg $\cdot$ ART $\cdot$ honjo $\cdot$ CASMI $\cdot$ labdatareader $\cdot$ ladder engine}
+  \layerrow{1}{Source}{L1}{Sources, snapshots only (\NLayerSource)}{UniProt $\cdot$ PDB $\cdot$ ChEMBL $\cdot$ PharmVar $\cdot$ CPIC $\cdot$ ClinVar $\cdot$ Rhea $\cdot$ KEGG $\cdot$ FDA DDI $\cdot$ instrument files}
+  \layerrow{0}{Compute}{L0}{University compute (\NLayerCompute)}{Uni Gitea $\cdot$ lattice $\cdot$ AppHub $\cdot$ AppHubAI}
+\end{tikzpicture}
+\src{Twelve layers, stacked from where computation runs to the papers that argue for it. In brackets: components per layer in \texttt{components.json} (\NNodes\ in total).}
+\end{frame}
+
+\begin{frame}{4\quad The system at a glance (2/2): L6--L11, what is built on them}
+\centering
+\begin{tikzpicture}[y=9.4mm]
+  \layerrow{11}{Papers}{L11}{Papers (\NLayerPapers)}{ladder rewrites $\cdot$ records sections $\cdot$ N1--N8}
+  \layerrow{10}{Model}{L10}{Domain LLM (\NLayerModel)}{corpus $\cdot$ LoRA training $\cdot$ TIES merge $\cdot$ evaluation $\cdot$ serving}
+  \layerrow{9}{Runtime}{L9}{Runtime: Buhera OS (\NLayerRuntime)}{registry $\cdot$ CKG runtime $\cdot$ cytochrome module $\cdot$ hfq $\cdot$ ladder $\cdot$ dsl-writer $\cdot$ front pages}
+  \layerrow{8}{Query}{L8}{Query (\NLayerQuery)}{HFQ p450 world $\cdot$ predicates $\cdot$ maps $\cdot$ data-derived ladders $\cdot$ plan library $\cdot$ SPARQL}
+  \layerrow{7}{Semantics}{L7}{Semantics (\NLayerSemantics)}{refined triples + gate $\cdot$ admission $\cdot$ grounding $\cdot$ ontology}
+  \layerrow{6}{Records}{L6}{Records (\NLayerRecords)}{stated $\cdot$ supplied $\cdot$ derived $\cdot$ refined $\cdot$ admitted $\rightarrow$ result files}
+\end{tikzpicture}
+\src{The next frame shows how the twelve layers depend on each other.}
+\end{frame}
+
+\begin{frame}{4\quad How the twelve layers depend on each other}
+\centering
+\begin{tikzpicture}[x=0.9cm,y=0.8cm]
+  \node[layL=Upstream] (L2) at (0,1.5) {L2 Upstream code};
+  \node[layL=Source]   (L1) at (0,-0.6) {L1 Sources};
+  \node[layL=Core]     (L3) at (2.85,1.5) {L3 Shared core};
+  \node[layL=Schema]   (L4) at (5.7,1.5) {L4 Schema};
+  \node[layL=Domain]   (L5) at (5.7,-0.6) {L5 Domain modules};
+  \node[layL=Records]  (L6) at (8.5,0.45) {L6 Records};
+  \node[layL=Semantics](L7) at (8.5,-1.75) {L7 Semantics};
+  \node[layL=Query]    (L8) at (11.0,0.45) {L8 Query};
+  \node[layL=Model]    (L10) at (13.6,1.6) {L10 Domain LLM};
+  \node[layL=Runtime]  (L9) at (13.6,-1.1) {L9 Runtime (Buhera OS)};
+  \node[layL=Papers]   (L11) at (8.5,3.0) {L11 Papers};
+  \node[lay=Compute, text width=56mm, minimum height=6.5mm] (L0) at (8.5,-3.45) {L0 University compute};
+  \draw[flow] (L1) -- (L5);
+  \draw[reuse] (L2) -- (L3);
+  \draw[reuse] (L2) -- (L5);
+  \draw[flow] (L3) -- (L4);
+  \draw[flow] (L3) -- (L5);
+  \draw[flow] (L4) -- (L6);
+  \draw[flow] (L5) -- (L6);
+  \draw[flow] ([xshift=-3mm]L6.south) -- ([xshift=-3mm]L7.north);
+  \draw[flow] ([xshift=3mm]L7.north) -- ([xshift=3mm]L6.south);
+  \draw[flow] (L6) -- (L8);
+  \draw[flow] (L7) -- (L8);
+  \draw[flow] (L8) -- (L9);
+  \draw[flow] (L8) -- (L10);
+  \draw[flow] (L6.north east) to[out=40,in=200] (L10.west);
+  \draw[flow] (L11.east) -- (L10.north west);
+  \draw[flow] (L10) -- (L9);
+  \draw[back] (L11.west) to[out=180,in=70] node[nlbl,pos=0.3,above left]{documents} (L5.north);
+  \draw[back] (L11.south east) -- node[nlbl,pos=0.45,right]{documents} (L8.north);
+  \draw[flow] (L5.south) |- node[nlbl,pos=0.3,left]{runs on} (L0.west);
+  \draw[flow] (L10.east) -- ++(0.35,0) |- node[nlbl,pos=0.8,above]{runs on} (L0.east);
+\end{tikzpicture}
+\src{Solid: data or control flow. Dotted: reuse of code. Dashed: a paper documents the claims a component implements.}
+\end{frame}
+
+\begin{frame}{4\quad The single data path every value follows}
+\centering
+\begin{tikzpicture}[x=0.95cm,y=1cm]
+  \node[lay=Source, text width=11mm] (S) at (0,0) {source};
+  \node[lay=Source, text width=17mm] (SN) at (3.0,0) {snapshot\\digest + date};
+  \node[lay=Source, text width=17mm] (I) at (6.0,1.5) {instrument file};
+  \node[lay=Domain, text width=15mm] (DM) at (6.0,0) {domain module};
+  \node[lay=Records, text width=13mm] (NG) at (8.75,0) {named graphs};
+  \node[lay=Core, text width=19mm] (EM) at (11.3,0) {emission\\SHACL + round-trip};
+  \node[lay=Records, text width=12mm] (RF) at (13.75,0) {result files};
+  \node[lay=Semantics, text width=23mm] (SEM) at (13.3,-2.4) {refinement $\cdot$ admission $\cdot$ grounding};
+  \node[lay=Query, text width=13mm] (HFQ) at (9.3,-2.4) {HFQ plan};
+  \node[lay=Query, text width=26mm, fill=white, very thick] (V) at (5.8,-2.4) {\textbf{verdict + blocker}\\+ grounding profile};
+  \node[lay=Runtime, text width=24mm] (CKG) at (1.6,-1.8) {Buhera CKG fact with basis};
+  \node[lay=Model, text width=24mm] (LLM) at (1.6,-3.0) {model explains};
+  \draw[flow] (S) -- node[nlbl,above]{fetch} (SN);
+  \draw[flow] (SN) -- (DM);
+  \draw[flow] (I) -- (DM);
+  \draw[flow] (DM) -- node[nlbl,below,align=center]{emits\\with basis} (NG);
+  \draw[flow] (NG) -- (EM);
+  \draw[flow] (EM) -- (RF);
+  \draw[flow] ([xshift=3mm]RF.south) -- ([xshift=3mm]RF.south |- SEM.north);
+  \draw[flow] ([xshift=-8mm]SEM.north) -- ++(0,0.75) -| node[nlbl,pos=0.25,above]{refined, admitted} ([xshift=3mm]NG.south);
+  \draw[flow] ([xshift=-3mm]RF.south) -- ++(0,-0.35) -| ([xshift=3mm]HFQ.north);
+  \draw[flow] (SEM) -- node[nlbl,above,align=center]{gate letters,\\profile} (HFQ);
+  \draw[flow] (HFQ) -- (V);
+  \draw[flow] (V.west) -- (CKG.east);
+  \draw[flow] (V.west) -- (LLM.east);
+\end{tikzpicture}
+\src{Only \cid{dom.fetch} touches the network (R4); every later step reads dated, content-addressed snapshots.}
+\end{frame}
+
+% =============================================================== 2 Status and phase
+\begin{frame}{2\quad Status and phase of the \NNodes\ components}
+\begin{columns}[T]
+\begin{column}{0.56\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[statusbars, width=4.3cm, height=3.7cm, bar width=2.3mm, xlabel={components per layer},
+  yticklabels from table={\LayerStatusTable}{label},
+  legend style={font=\scriptsize, at={(0.5,1.02)}, anchor=south, legend columns=2, draw=none}]
+  \addplot[fill=statusExists, draw=none] table[x=exists, y=idx]{\LayerStatusTable};
+  \addplot[fill=statusAdapt, draw=none] table[x=adapt, y=idx]{\LayerStatusTable};
+  \addplot[fill=statusNew, draw=none] table[x=new, y=idx]{\LayerStatusTable};
+  \addplot[fill=statusExternal, draw=black!40, line width=0.3pt] table[x=external, y=idx]{\LayerStatusTable};
+  \legend{\StatusLabelExists\ (\NStatusExists), \StatusLabelAdapt\ (\NStatusAdapt), \StatusLabelNew\ (\NStatusNew), \StatusLabelExternal\ (\NStatusExternal)}
+\end{axis}
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.42\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[statusbars, width=2.9cm, height=2.4cm, xlabel={components per phase}, y dir=reverse,
+  yticklabels from table={\PhaseStatusTable}{label}]
+  \addplot[fill=statusExists, draw=none] table[x=exists, y=idx]{\PhaseStatusTable};
+  \addplot[fill=statusAdapt, draw=none] table[x=adapt, y=idx]{\PhaseStatusTable};
+  \addplot[fill=statusNew, draw=none] table[x=new, y=idx]{\PhaseStatusTable};
+  \addplot[fill=statusExternal, draw=black!40, line width=0.3pt] table[x=external, y=idx]{\PhaseStatusTable};
+\end{axis}
+\end{tikzpicture}
+\par\medskip
+\raggedright\scriptsize
+\textbf{Exists}: implemented and tested upstream, reused as is. \textbf{Adapt}: implemented upstream for another domain, needs P450 adaptation. \textbf{New}: exists nowhere, built here. \textbf{External}: a service or data source outside the user's repositories.
+\end{column}
+\end{columns}
+\src{\NEdges\ connections of \NEdgeKinds\ kinds: feeds \NEdgeFeeds, reuses \NEdgeReuses, emits \NEdgeEmits, documents \NEdgeDocuments, snapshots \NEdgeSnapshots, dispatches \NEdgeDispatches, runs on \NEdgeRunsOn, analyses \NEdgeAnalyses, queries \NEdgeQueries, trains \NEdgeTrains, conforms to \NEdgeConforms, deploys \NEdgeDeploys.}
+\end{frame}
+
+% =============================================================== 6 Layers
+\begin{frame}{6.1\quad University compute: how a task reaches AppHub}
+\centering
+\begin{tikzpicture}[x=0.88cm,y=1cm]
+  \node[lay=Compute, text width=30mm] (W) at (0,0.75) {\texttt{lattice wrap <task>}\\\texttt{--matrix \dots}};
+  \node[lay=Compute, text width=30mm] (U) at (0,-0.75) {\texttt{.lattice/<unit>/}\\\texttt{unit.toml} $\cdot$ \texttt{run.sh} $\cdot$ \texttt{shards.tsv}};
+  \node[draw=black!40, dashed, rounded corners, fit=(W)(U), inner sep=2mm, label={[font=\scriptsize\bfseries]above:Laptop}] (lap) {};
+  \node[lay=Compute, text width=34mm, minimum height=11mm] (G) at (6.35,0) {\texttt{git.uni-greifswald.de}\\(Uni Gitea)};
+  \node[lay=Compute, text width=30mm, minimum height=11mm] (A) at (12.75,0) {AppHub session, CPU or GPU profile\\\texttt{run.sh --detach}, shards in parallel};
+  \node[lay=Compute, text width=30mm] (AI) at (12.75,-1.8) {AppHubAI\\OpenAI-compatible};
+  \draw[flow] (W) -- (U);
+  \draw[flow] ([yshift=3mm]lap.east) -- node[nlbl,above,align=center]{commit + push\\(tracker sync)} ([yshift=3mm]G.west);
+  \draw[flow] ([yshift=-3mm]G.west) -- node[nlbl,below,align=center]{\texttt{lattice results}\\\texttt{--get}} ([yshift=-3mm]lap.east);
+  \draw[flow] ([yshift=3mm]G.east) -- node[nlbl,above]{\texttt{git pull}} ([yshift=3mm]A.west);
+  \draw[flow] ([yshift=-3mm]A.west) -- node[nlbl,below,align=center]{\texttt{lattice-results/}\\\texttt{<unit>}} ([yshift=-3mm]G.east);
+  \draw[reuse] (AI) -- (A);
+\end{tikzpicture}
+\par\medskip
+\raggedright\footnotesize
+AppHub accepts no inbound connection, so every task travels as a \textbf{lattice unit}: written on the laptop,
+pushed to the university Gitea, pulled and run on AppHub, results pushed back to \cid{lattice-results/<unit>}.
+\src{Components: \cid{compute.lattice}, \cid{compute.gitea}, \cid{compute.apphub}, \cid{compute.apphubai}, \cid{compute.tracker} (\NLayerCompute: \NComputeExists\ exist, \NComputeExternal\ external). \S\,9 lists every unit.}
+\end{frame}
+
+\begin{frame}{6.2\quad Sources: \NLayerSource, each read only through a snapshot}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\renewcommand{\arraystretch}{0.9}
+\begin{tabularx}{\textwidth}{@{}L{24mm} Y L{26mm} L{25mm}@{}}
+\toprule
+\textbf{Source} & \textbf{What is taken} & \textbf{First needed by} & \textbf{Licence note} \\
+\midrule
+UniProt & 57 human CYPs, POR, CYB5A: sequence, features, cross-references & \cid{dom.isoforms} & CC BY 4.0 \\
+PDB & CYP structures (e.g.\ 1TQN), heme site, ligands & \cid{dom.structures} & free \\
+Rhea & reactions for EC 1.14.14.1 and relatives & \cid{q.world} & CC BY 4.0 \\
+KEGG & hsa00982, hsa00983, hsa00140, hsa00590 & \cid{dom.ddi} & \textbf{restricted}: do not redistribute \\
+ChEMBL & Ki, IC50, TDI against CYP targets & \cid{dom.kinetics} & CC BY-SA 3.0 \\
+PharmVar & star-allele definitions & \cid{dom.pgx} & check terms \\
+CPIC & allele function, activity scores, phenotype tables & \cid{dom.pgx} & CC0 \\
+ClinVar & submissions incl.\ drug-response significance & \cid{dom.pgx} & public domain \\
+FDA DDI tables & index substrates, inhibitors, inducers by strength & \cid{dom.ddi} & public domain \\
+Spectral libraries & reference MS/MS of drugs and metabolites & \cid{dom.metabolites} & per library \\
+Instrument files & UV-vis, LC-MS, HPLC raw data & \cid{dom.spectroscopy},\newline\cid{dom.metabolites} & lab-owned \\
+Monograph corpus & the 21 existing papers and their validation & papers & own work \\
+\bottomrule
+\end{tabularx}
+\src{Snapshots are dated, digest-named, never edited. DrugBank, PharmGKB left out: licences restrict redistribution.}
+\end{frame}
+
+\begin{frame}{6.3\quad Upstream code: \NLayerUpstream\ modules reused (\NUpstreamExists\ as is, \NUpstreamAdapt\ adapted)}
+\scriptsize
+\setlength\tabcolsep{3pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{columns}[T]
+\begin{column}{0.495\textwidth}
+\begin{tabularx}{\linewidth}{@{}L{14mm} Y@{}}
+\toprule
+\textbf{Repository} & \textbf{Module $\rightarrow$ reused by} \\
+\midrule
+borgia & chromatography ext.\ $\rightarrow$ core identifiers, census, refinement, linkage, provenance, verdicts; \cid{dom.chromatography} \\
+       & honjo-masamune$^{a}$ $\rightarrow$ \cid{dom.chemistry} \\
+lavoisier & proteomics ext.\ $\rightarrow$ core emission, artefacts; \cid{schema.refined}; \cid{dom.abundance}; \cid{sem.admission} \\
+          & CASMI + matchms$^{a}$ $\rightarrow$ \cid{dom.metabolites} \\
+gospel & genomics ext.\ $\rightarrow$ core verdicts, artefacts; \cid{dom.pgx}; \cid{sem.grounding} \\
+others & raw2dcat$^{a}$ (raw2dcat-converter) $\rightarrow$ \cid{dom.chromatography}; LoRA + TIES recipe (doerr-lab-model) $\rightarrow$ \cid{llm.train}; corpus builder$^{a}$ (nfdi4cat-model) $\rightarrow$ \cid{llm.corpus} \\
+\bottomrule
+\end{tabularx}
+\end{column}
+\begin{column}{0.495\textwidth}
+\begin{tabularx}{\linewidth}{@{}L{17mm} Y@{}}
+\toprule
+\textbf{Repository} & \textbf{Module $\rightarrow$ reused by} \\
+\midrule
+hegel & HFQ $\rightarrow$ core verdicts; \cid{q.world}; \cid{q.conformance}; \cid{rt.hfqmodule} \\
+      & HFQ biocat$^{a}$ $\rightarrow$ \cid{q.world}, \cid{q.predicates} \\
+      & SBS$^{a}$ $\rightarrow$ \cid{dom.ddi} \\
+      & probe panel $\rightarrow$ \cid{dom.spectroscopy}, \cid{dom.cycle} \\
+conspirator & DCAT-AP-PLUS $\rightarrow$ \cid{schema.p450}; ART store + gate $\rightarrow$ \cid{sem.refinement}; okgg $\rightarrow$ \cid{sem.ontology} \\
+ultraviolet & Chem-DCAT-AP $\rightarrow$ \cid{schema.p450}; labdatareader $\rightarrow$ \cid{dom.spectroscopy} \\
+levinthal & ladder engine $\rightarrow$ \cid{dom.cycle}, \cid{q.ladders}, \cid{rt.laddermodule}; levinthal-core$^{a}$ $\rightarrow$ \cid{dom.abundance} \\
+\bottomrule
+\end{tabularx}
+\end{column}
+\end{columns}
+\src{$^{a}$ adapt: rewritten for P450 in this package, upstream file named in \cid{PROVENANCE.md}. Targets: the \emph{reuses} edges of \texttt{components.json} (\NUpstreamRepos\ repositories).}
+\end{frame}
+
+\newcommand{\defecthead}{\toprule \textbf{Upstream} & \textbf{Defect} & \textbf{Effect on P450} & \textbf{Where fixed} \\ \midrule}
+\begin{frame}{6.3\quad Known upstream defects this package must not inherit (1/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}L{27mm} Y L{36mm} L{28mm}@{}}
+\defecthead
+levinthal-core & U-lev-2: residue masses are average masses labelled monoisotopic, $\sim$18.01\,Da heavy each & peptide masses for CYP abundance would be wrong & upstream, phase 0 \\
+levinthal-core & U-lev-3: folding unseeded, fails on wasm32; U-lev-4: \cid{to_sentropy} constant & not used by P450 until fixed & upstream, phase 0 \\
+ladder engine / HFQ & paper says \vl{subfloor} and \vl{empty}; code says \vl{starved} and raises \texttt{ParseError} & every ladder verdict would contradict its paper & upstream, phase 0 (\S\,7) \\
+genomics \cid{corpora/}\newline\cid{clinvar.py:121} & ``drug response'' collapses to ``O'' & loses the pharmacogenomic signal & upstream, phase 0 \\
+gospel \cid{pharmacogenetics/}\newline\cid{analysis.py:161} & \texttt{KeyError}; averages alleles instead of summing & unusable & not reused; \cid{dom.pgx} is new \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.3\quad Known upstream defects this package must not inherit (2/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}L{27mm} Y L{36mm} L{28mm}@{}}
+\defecthead
+lavoisier \texttt{MSAnnotator} & isotope model returns empty silently; test imports a missing module & no isotope evidence for Fe or halogens & in \cid{dom.metabolites} \\
+lavoisier CASMI & element set lacks F, Br, I, Fe & most drugs and heme unassignable & in \cid{dom.metabolites} \\
+honjo-masamune & d-block out of scope & no iron chemistry & out of scope for \cid{dom.chemistry}; heme handled by \cid{dom.cycle} and \cid{dom.spectroscopy} \\
+raw2dcat-converter & \cid{kg/}, \cid{federation/}, \cid{individuate/}, \cid{analysis/} hold only \cid{__pycache__} on \texttt{main} & that code is not reusable until its source is found & ask the user (D9) \\
+HFQ & three copies (hegel Python, hegel JS, borgia JS) & answers could differ by runtime & \cid{q.conformance}, phase 0 \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.4\quad Shared core: eight modules, extracted once}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \tikzset{C/.style={lay=Core, text width=24mm, minimum height=9mm}}
+  \node[C] (id)   at (0,1.4)  {\textbf{identifiers}\\digest $\cdot$ Stage};
+  \node[C] (prov) at (0,0)     {\textbf{provenance}\\stated $<$ supplied $<$ derived};
+  \node[C] (ref)  at (0,-1.4) {\textbf{refinement}\\nests $\cdot$ letters $\cdot$ cells};
+  \node[C] (ver)  at (2.95,1.4) {\textbf{verdicts}\\9 labels $\cdot$ 6 blockers};
+  \node[C] (link) at (2.95,0)  {\textbf{linkage}\\eliminate, then rank};
+  \node[C] (cen)  at (5.9,1.4) {\textbf{census}\\distinctions RDF cannot carry};
+  \node[C] (art)  at (5.9,0)   {\textbf{artefacts}\\OWL $\cdot$ SHACL $\cdot$ context};
+  \node[C] (emi)  at (5.9,-1.4) {\textbf{emission}\\named graphs $\cdot$ SHACL $\cdot$ round-trip};
+  \draw[flow] (id) -- (prov);
+  \draw[flow] (prov) -- (ref);
+  \draw[flow] (prov) -- (link);
+  \draw[flow] (ver) -- (link);
+  \draw[flow] (cen) -- (art);
+  \draw[flow] (art) -- (emi);
+  \draw[flow] (ref) -- (emi);
+  \draw[flow] (id.west) -- ++(-0.25,0) |- ([yshift=-2mm]emi.south) -- (emi.south);
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.38\textwidth}
+\footnotesize
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Extracted from \cid{dcat-ap-plus-chromatography}, which has CI, typing and fifteen test modules.
+  \item Starts as \cid{src/dcat_ap_plus_core/} inside this package, with a \cid{PROVENANCE.md} naming the upstream commit and every change since.
+  \item Promoted to its own package when a second extension switches to it (D2).
+  \item \NLayerCore\ modules: \NCoreAdapt\ adapted, \NCoreNew\ new (the verdict algebra of \S\,7).
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\newcommand{\corehead}{\toprule \textbf{Module} & \textbf{Public surface (sketch)} & \textbf{Acceptance} \\ \midrule}
+\begin{frame}{6.4\quad Shared core: public surface and acceptance (1/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l L{68mm} Y@{}}
+\corehead
+\cid{identifiers} & \cid{digest(obj) -> str}; \cid{content_digest(bytes) -> str}; \cid{Stage(content, conventions)} & identical inputs give identical digests across runs and machines; a changed convention changes the stage \\
+\cid{provenance} & \cid{Basis} enum; \cid{combine(*bases) -> Basis} (max) & no function returns a lower basis than its inputs \\
+\cid{refinement} & \cid{refine(graph, order) -> dict[triple, Refined]}; \cid{Nest}, \cid{PairStatus} & conservativity: projecting refined values away returns the graph exactly \\
+\cid{verdicts} & \cid{Label}, \cid{Blocker}, \cid{Evidence}, \cid{assign(evidence) -> Verdict}; \cid{from_hfq(step) -> Verdict} & every HFQ verdict maps to exactly one label (\S\,7); a label without a blocker is only \vl{answered} or \vl{empty} \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.4\quad Shared core: public surface and acceptance (2/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l L{68mm} Y@{}}
+\corehead
+\cid{linkage} & \cid{link(records, bases) -> list[Link]} & no returned link is contradicted by a stated field \\
+\cid{census} & \cid{census(schema_view) -> Census} & reports class/slot fibres sharing an IRI and the pairs they lose \\
+\cid{artefacts} & \cid{generate(schema) -> {owl, shacl, context}} & generated SHACL validates the synthetic fixtures; includes the genomics SHACL repairs \\
+\cid{emission} & \cid{emit(records, schema) -> Dataset} (rdflib); \cid{round_trip(file) -> bool} & every result file conforms and parses back to the same quads \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.5\quad Schema: class sketch (1/2), incubations}
+\centering
+\begin{tikzpicture}[x=0.95cm,y=0.85cm]
+  \node[base] (DS) at (0.7,2.7) {\textbf{Dataset}\nodepart{two}DCAT-AP-PLUS};
+  \node[base] (DGA) at (4.6,2.7) {\textbf{DataGeneratingActivity}\nodepart{two}DCAT-AP-PLUS};
+  \node[base] (CR) at (8.6,2.7) {\textbf{ChemicalReaction}\nodepart{two}Chem-DCAT-AP};
+  \node[base] (CE) at (12.6,2.7) {\textbf{ChemicalEntity}\nodepart{two}Chem-DCAT-AP};
+  \node[cls] (INC) at (6.5,0.0) {\textbf{Incubation}\nodepart{two}enzyme\_source (rCYP $|$ HLM)\\microsome\_lot\\nadph\_system\\protein\_mg\_per\_ml\\temperature, time};
+  \node[cls] (MET) at (12.6,0.0) {\textbf{Metabolite}\nodepart{two}parent\\transformation\\mass\_shift};
+  \node[cls] (CAT) at (1.0,0.0) {\textbf{CatalystRole}\nodepart{two}own IRI, not shared\\with StartingMaterial};
+  \node[cls] (ISO) at (1.0,-2.6) {\textbf{Isoform}\nodepart{two}gene\_symbol\\uniprot\_id\\family / subfamily\\srs\_regions};
+  \node[cls] (KIN) at (5.9,-2.8) {\textbf{KineticMeasurement}\nodepart{two}km, vmax, kcat, model};
+  \node[cls] (INH) at (10.4,-2.8) {\textbf{InhibitionMeasurement}\nodepart{two}ki, ic50, mechanism\\kinact, KI, ic50\_shift};
+  \draw[isa] ([xshift=-4mm]INC.north) -- (DGA.south);
+  \draw[isa] ([xshift=4mm]INC.north) -- (CR.south);
+  \draw[isa] (MET) -- (CE);
+  \draw[assoc] (DS.south) -- ++(0,-0.75) -| node[nlbl,pos=0.25,above]{was\_generated\_by} ([xshift=-11mm]INC.north);
+  \draw[assoc] ([yshift=-3mm]INC.west) -- node[lbl,below]{used\_catalyst} ([yshift=-3mm]CAT.east);
+  \draw[assoc] (ISO) -- node[nlbl,right]{plays} (CAT);
+  \draw[assoc] (INC.east) -- node[lbl,above]{produced} (MET.west);
+  \draw[assoc] (INC.south) -- (KIN.north);
+  \draw[assoc] (INC.south east) -- (INH.north);
+\end{tikzpicture}
+\src{A proposal for N1. The final classes are decided by the census and the receiver audit, not by this diagram.}
+\end{frame}
+
+\begin{frame}{6.5\quad Schema: class sketch (2/2), genotypes, states, interactions}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[cls] (ISO) at (0.9,0.3) {\textbf{Isoform}\nodepart{two}gene\_symbol\\uniprot\_id\\family / subfamily\\srs\_regions};
+  \node[cls] (ALL) at (4.3,1.6) {\textbf{Allele}\nodepart{two}star\_name\\defining\_variants\\function\\activity\_value};
+  \node[cls] (DIP) at (7.5,1.6) {\textbf{Diplotype}\nodepart{two}alleles[2]\\copy\_number\\activity\_score\\phenotype};
+  \node[cls] (DDI) at (4.3,-1.6) {\textbf{DDIAssertion}\nodepart{two}perpetrator, victim\\isoform, strength, mechanism};
+  \node[cls] (CS) at (10.2,0.3) {\textbf{CatalyticState}\nodepart{two}one of seven states};
+  \node[cls] (MS) at (12.9,1.8) {\textbf{MeasuredSpectrum}\nodepart{two}technique, readout};
+  \node[cls] (CSP) at (12.9,-1.2) {\textbf{ComputedSpectrum}\nodepart{two}technique, readout};
+  \draw[assoc] (ALL.west) -- node[nlbl,below,pos=0.45]{allele\_of} (ISO.north east);
+  \draw[assoc] (DIP) -- (ALL);
+  \draw[assoc] (DDI.west) -- (ISO.south east);
+  \draw[assoc] (CS.north) |- node[nlbl,pos=0.3,left]{observed\_as} (MS.west);
+  \draw[assoc] (CS.south) |- node[nlbl,pos=0.3,left]{predicted\_as} (CSP.west);
+\end{tikzpicture}
+\src{Measured and computed spectra are separate classes on purpose (next frame).}
+\end{frame}
+
+\begin{frame}{6.5\quad Schema: two decisions fixed by the design rules}
+\small
+\begin{itemize}\setlength\itemsep{6pt}
+  \item \textbf{\cid{CatalystRole} has its own IRI} (R6).\\
+        In Chem-DCAT-AP, \cid{Catalyst} and \cid{StartingMaterial} share the exact mapping
+        \cid{VOC4CAT:0000194}. Under that mapping a query cannot tell an enzyme from a substrate.
+  \item \textbf{\cid{MeasuredSpectrum} and \cid{ComputedSpectrum} are distinct classes} (R6).\\
+        The semiotic-verdicts paper shows that six activity classes emit as \cid{prov:Activity} and become
+        indistinguishable. The remedy is a fibre-unique \cid{rdf:type}.
+\end{itemize}
+\par\medskip
+\footnotesize
+Both are instances of R6: a distinction drawn in the schema must reach the emitted RDF. \cid{schema.audit}
+checks it (zero lost pairs), and WP2.1 is done only when measured and computed spectra keep distinct IRIs.
+\end{frame}
+
+\begin{frame}{6.5\quad Schema: witness classes, so that grounding can be computed}
+\footnotesize
+\cid{schema.witness} declares which activities count as contact with the measured object and which as
+derivation. The grounding queries of \S\,7.3 read these sets.
+\par\medskip
+\begin{tabularx}{\textwidth}{@{}l Y@{}}
+\toprule
+\textbf{Witness set} & \textbf{Proposed members} \\
+\midrule
+$A_c$ contact activities & \cid{Incubation}, \cid{SpectralAcquisition}, \cid{LCMSAcquisition}, \cid{Genotyping} \\
+$U_c$ contact inputs & \cid{Instrument}, \cid{MicrosomeLot}, \cid{RecombinantEnzyme} \\
+$A_d$ derivation activities & \cid{MetaboliteIdentification}, \cid{PhenotypeAssignment}, \cid{LadderEvaluation}, \cid{SpectrumComputation} \\
+$U_d$ derivation inputs & \cid{Snapshot}, \cid{ReferenceSpectrum} \\
+$G_d$ derivation agents & \cid{prov:SoftwareAgent} \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.6\quad Domain modules: how data moves between them}
+\centering
+\begin{tikzpicture}[x=0.95cm,y=0.8cm]
+  \tikzset{D/.style={lay=Domain, text width=25mm, minimum height=6.5mm}}
+  \node[D] (F) at (0,0.9) {\textbf{fetch}};
+  \node[lay=Source, text width=22mm, minimum height=6.5mm] (INS) at (0,-2.4) {instrument files};
+  \node[D] (ISO) at (3.9,2.6) {isoforms};
+  \node[D] (STR) at (3.9,1.5) {structures};
+  \node[D] (KIN) at (3.9,0.4) {kinetics};
+  \node[D] (CHE) at (3.9,-0.7) {chemistry};
+  \node[D] (LC) at (3.9,-2.4) {LC corroboration};
+  \node[D] (ABU) at (8.0,2.75) {CYP abundance};
+  \node[D] (CYC) at (8.0,1.9) {catalytic cycle};
+  \node[D] (PGX) at (8.0,1.05) {pharmacogenomics};
+  \node[D] (MET) at (8.0,-1.2) {metabolite ID};
+  \node[D] (SPC) at (8.0,-2.9) {spectroscopy};
+  \node[D] (DDI) at (12.2,0.4) {DDI \& clearance};
+  \draw[flow] (F.east) -- (ISO.west);
+  \draw[flow] (F.east) -- (STR.west);
+  \draw[flow] (F.east) -- (KIN.west);
+  \draw[flow] (F.east) -- (CHE.west);
+  \draw[flow] (F.north) |- ++(5.9,2.85) -| (DDI.north);
+  \draw[flow] (F.south east) to[out=-30,in=180] (MET.west);
+  \draw[flow] (F.east) to[out=10,in=200] ([yshift=-1.5mm]PGX.west);
+  \draw[flow] (INS) -- (LC);
+  \draw[flow] (INS.south) |- (SPC.west);
+  \draw[flow] (INS.south east) to[out=-10,in=200] (MET.south west);
+  \draw[flow] (STR) -- (CYC);
+  \draw[flow] (CYC.east) -- ++(0.9,0) |- node[nlbl,pos=0.25,right,align=left]{states to\\identify} (SPC.east);
+  \draw[flow] (ISO) -- (ABU);
+  \draw[flow] (ISO.south east) -- (PGX.north west);
+  \draw[flow] (CHE.east) -- (MET.north west);
+  \draw[flow] (LC.east) -- (MET.south west);
+  \draw[flow] (KIN.east) -- (DDI.west);
+  \draw[flow] (PGX) -- (DDI);
+\end{tikzpicture}
+\src{Each module reads snapshots and instrument files and emits records with a basis; none of them answers questions.}
+\end{frame}
+
+\newcommand{\domhead}{\toprule \textbf{Module} & \textbf{Input $\rightarrow$ output} & \textbf{Basis} & \textbf{Acceptance} \\ \midrule}
+\begin{frame}{6.6\quad Domain modules (1/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l L{50mm} L{17mm} Y@{}}
+\domhead
+\cid{dom.fetch} & source query $\rightarrow$ snapshot dir + manifest & --- & re-fetch with no upstream change gives the same digest; no other module imports an HTTP client \\
+\cid{dom.isoforms} & UniProt snapshot $\rightarrow$ 57 isoforms, families, SRS, CYP2D6/2D7 pair & supplied & count = 57; SRS positions per Gotoh 1992 on CYP2 family \\
+\cid{dom.structures} & PDB/GLB $\rightarrow$ heme site, access channels & supplied & Fe position of 1TQN reproduces the GLB pipeline value \\
+\cid{dom.cycle} & seven states, rung powers $\rightarrow$ ladder, composite, \vl{subfloor} & derived & ladder tests incl.\ both refusals of \cid{def:refuse-climb} \\
+\cid{dom.kinetics} & ChEMBL + incubations $\rightarrow$ Km, Vmax, Ki, IC50, kinact/KI with units and conditions & supplied / stated & two values compared only under declared tolerances; undecided where either side is supplied \\
+\cid{dom.chemistry} & SMILES $\rightarrow$ structure with stated/supplied tags, candidate sites & supplied / derived & never asserts scope (R9) \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.6\quad Domain modules (2/2); \NLayerDomain\ in all, \NDomainNew\ new, \NDomainAdapt\ adapted}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l L{50mm} L{17mm} Y@{}}
+\domhead
+\cid{dom.metabolites} & spectra + parent $\rightarrow$ metabolite ID or decline & stated + derived & licensed only when mass rule and spectral match agree; every decline has a reason \\
+\cid{dom.chromatography} & LC runs $\rightarrow$ parent/metabolite peak fields & stated & retention corroborates, never identifies \\
+\cid{dom.abundance} & surrogate peptides $\rightarrow$ isoform abundance & derived & peptides mapped by sequence, not by label \\
+\cid{dom.pgx} & genotypes + PharmVar/CPIC $\rightarrow$ diplotype, activity score, phenotype & supplied / derived & activity score summed, never averaged; CPIC tables reproduced exactly \\
+\cid{dom.spectroscopy} & UV-vis now, EPR/rR/M\"ossbauer new $\rightarrow$ state assignment & stated + derived & minimal probe set of \cid{exp_04_panel} reproduced \\
+\cid{dom.ddi} & kinetics + PGx + pathways $\rightarrow$ DDI assertions & derived & FDA index pairs recovered with stated strength \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{6.6\quad Biotransformation rules used by metabolite identification}
+\small
+\begin{tabularx}{\textwidth}{@{}L{60mm} r Y@{}}
+\toprule
+\textbf{Transformation} & \textbf{Mass shift (Da)} & \textbf{Notes} \\
+\midrule
+hydroxylation / N-, S-oxidation & $+15.9949$ & the most common P450 product \\
+demethylation (N-, O-) & $-14.0157$ & dealkylation family \\
+dehydrogenation / desaturation & $-2.0157$ & atypical reactions atlas \\
+epoxidation & $+15.9949$ & isobaric with hydroxylation; needs MS/MS \\
+hydroxylation + dehydrogenation & $+13.9793$ & ketone formation \\
+glucuronidation (downstream) & $+176.0321$ & phase II, flagged as not P450 \\
+GSH adduct (reactive metabolite) & $+305.0682$ & with neutral loss $-129.0426$ \\
+\bottomrule
+\end{tabularx}
+\src{How the rules are applied, and when the module declines: flow F3 (\S\,8).}
+\end{frame}
+
+\begin{frame}{6.7\quad Records: named graphs, one per basis, in one result file per dataset}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \tikzset{G/.style={lay=Records, text width=23mm, minimum height=11mm}}
+  \node[G] (G1) at (0,0) {graph \texttt{<\dots/stated>}\\what a source or file says};
+  \node[G] (G2) at (2.75,0) {graph \texttt{<\dots/supplied>}\\what a convention filled in};
+  \node[G] (G3) at (5.5,0) {graph \texttt{<\dots/derived>}\\what this package computed};
+  \node[G] (G4) at (8.25,0) {graph \texttt{<\dots/refined>}\\refined values, RDF-star};
+  \node[G] (G5) at (11.0,0) {graph \texttt{<\dots/admitted>}\\slots admitted A1--A6};
+  \node[plain, text width=128mm, minimum height=5.5mm] (MAN) at (5.5,-1.05) {manifest: stages $\cdot$ digests $\cdot$ licences};
+  \node[draw=layerRecordsInk, rounded corners, line width=0.8pt, fit=(G1)(G5)(MAN), inner sep=2mm,
+        label={[font=\scriptsize\bfseries, text=layerRecordsInk]above:result file (JSON-LD)}] (RF) {};
+  \node[dec, text width=26mm] (OK) at (2.5,-2.65) {SHACL: conforms?};
+  \node[dec, text width=26mm] (RT) at (8.5,-2.65) {parse back: same quads?};
+  \draw[flow] (RF.south -| OK) -- (OK);
+  \draw[flow] (RF.south -| RT) -- (RT);
+\end{tikzpicture}
+\par\medskip
+\raggedright\footnotesize
+The layout follows proteomics, which already emits 34 files and 4.9 million quads this way.
+Asserted triples are never rewritten: refinement and admission add their own graphs (R8).
+\src{\NLayerRecords\ record components (stated, supplied, derived, refined and admitted graphs; result files), all new.}
+\end{frame}
+
+\begin{frame}[fragile]{6.7\quad A record in the derived graph (TriG sketch)}
+\begin{Verbatim}[fontsize=\codesize]
+GRAPH <https://w3id.org/nfdi-de/dcat-ap-plus/p450/run/2026-10/derived> {
+  p450:met/7f3a  a p450:Metabolite ;
+      p450:parent        chebi:CHEBI_41879 ;          # midazolam
+      p450:transformation p450:Hydroxylation ;
+      p450:massShift     "15.9949"^^xsd:decimal ;
+      prov:wasGeneratedBy p450:act/MetaboliteIdentification/91c2 .
+  p450:act/MetaboliteIdentification/91c2
+      a p450:MetaboliteIdentification ;
+      prov:used p450:snap/massbank/2026-10-08/3be1... ;
+      prov:wasAssociatedWith p450:agent/dcat-ap-plus-p450/0.1.0 .
+}
+\end{Verbatim}
+\footnotesize
+The PROV chain names a \cid{MetaboliteIdentification} activity, a snapshot and a software agent: members of
+$A_d$, $U_d$ and $G_d$ in the witness classes, which is what the grounding queries read (\S\,7.3).
+\end{frame}
+
+\begin{frame}{6.8\quad Semantics: four analyses that add to records without changing them}
+\begin{columns}[T]
+\begin{column}{0.47\textwidth}
+\centering
+\begin{tikzpicture}[x=0.86cm,y=1cm]
+  \tikzset{S/.style={lay=Semantics, text width=22mm, minimum height=7mm}}
+  \node[lay=Records, text width=11mm, minimum height=30mm] (RF) at (0,0) {result files};
+  \node[S] (REF) at (3.3,1.65) {refined triples + gate};
+  \node[S] (ADM) at (3.3,0.55) {schema admission};
+  \node[S] (GRD) at (3.3,-0.55) {grounding profile};
+  \node[S] (ONT) at (3.3,-1.65) {ontology / okgg};
+  \node[lay=Query, text width=13mm, minimum height=14mm] (Q) at (6.5,0.55) {query layer: letters, ground verdicts};
+  \foreach \t in {GRD,ONT} \draw[flow] (RF.east |- \t) -- (\t.west);
+  \draw[flow] ([yshift=1.5mm]RF.east |- ADM) -- ([yshift=1.5mm]ADM.west);
+  \draw[flow] ([yshift=-1.5mm]ADM.west) -- ([yshift=-1.5mm]RF.east |- ADM);
+  \draw[flow] ([yshift=1.5mm]RF.east |- REF) -- ([yshift=1.5mm]REF.west);
+  \draw[flow] ([yshift=-1.5mm]REF.west) -- ([yshift=-1.5mm]RF.east |- REF);
+  \draw[flow] (ONT.east) -- ++(0.3,0) |- ([yshift=-1mm]ADM.east);
+  \draw[flow] (REF.east) -- (Q.north west);
+  \draw[flow] (GRD.east) -- (Q.south west);
+\end{tikzpicture}
+\par\smallskip
+{\scriptsize Paired arrows: the refined and admitted graphs are written back. The arrow on the right carries okgg's proposed slots to admission.}
+\end{column}
+\begin{column}{0.51\textwidth}
+\footnotesize
+\begin{itemize}\setlength\itemsep{3pt}
+  \item \textbf{Refined triples and the gate} (\cid{sem.refinement}). An empty answer is labelled $+$ (witnessed no), $-$ (not recorded), \texttt{a} (both) or \texttt{open} (a name the graph never uses).
+  \item \textbf{Schema admission} (\cid{sem.admission}). Fields are scored by the pairs they tell apart; cells the schema cannot split are where it learns. Slots are admitted only under A1--A6.
+  \item \textbf{Grounding profile} (\cid{sem.grounding}). The five ground verdicts per record, reported beside every answer.
+  \item \textbf{Ontology} (\cid{sem.ontology}). okgg facets over papers, sections and records; its proposals go to admission, never into the records directly (R1).
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{6.9\quad Query: HFQ with a \texttt{p450} world}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \tikzset{H/.style={lay=Query, minimum height=7mm}}
+  \node[H, text width=12mm] (P) at (0,0) {\texttt{.hfq} plan};
+  \node[H] (PA) at (1.8,0) {parse};
+  \node[H] (RE) at (3.35,0) {resolve};
+  \node[dec, text width=17mm] (CH) at (5.4,0) {check capabilities};
+  \node[bad, text width=21mm] (RS) at (5.4,1.4) {refused statically\\0 requests};
+  \node[H, text width=17mm] (AL) at (7.9,0) {allocate\\shadow price};
+  \node[H] (EX) at (9.9,0) {execute};
+  \node[lay=Source, text width=30mm, minimum height=9mm] (A1) at (1.6,-1.6) {snapshot adapters\\UniProt $\cdot$ ChEMBL $\cdot$ Rhea $\cdot$ \dots};
+  \node[lay=Records, text width=22mm, minimum height=9mm] (A2) at (5.0,-1.6) {record adapter\\result files};
+  \node[lay=Query, text width=20mm, minimum height=9mm] (LD) at (8.0,-1.6) {ladder step\\rung powers};
+  \node[lay=Query, text width=26mm, fill=white, very thick] (V) at (12.4,-1.6) {\textbf{per-step verdict}\\+ blocker + blame chain};
+  \node[plain, text width=26mm] (EM) at (12.4,0.7) {emit: payload $\cdot$ coverage $\cdot$ admissibility $\cdot$ divergence};
+  \draw[flow] (P) -- (PA); \draw[flow] (PA) -- (RE); \draw[flow] (RE) -- (CH);
+  \draw[flow] (CH) -- node[nlbl,left]{missing feature} (RS);
+  \draw[flow] (CH) -- (AL); \draw[flow] (AL) -- (EX);
+  \coordinate (top) at (0,-0.72);
+  \coordinate (bus) at (0,-2.4);
+  \draw[line width=0.6pt, draw=black!70] (EX.south) -- (EX.south |- top) -- (A1.north |- top);
+  \foreach \n in {A1,A2,LD} \draw[flow] (\n.north |- top) -- (\n.north);
+  \draw[line width=0.6pt, draw=black!70] (A1.south) -- (A1.south |- bus) -- (V.south |- bus);
+  \foreach \n in {A2,LD} \draw[line width=0.6pt, draw=black!70] (\n.south) -- (\n.south |- bus);
+  \draw[flow] (V.south |- bus) -- (V.south);
+  \draw[flow] (V) -- (EM);
+\end{tikzpicture}
+\par\medskip
+\raggedright\scriptsize
+\textbf{New predicates} (\cid{q.predicates}, added to \cid{PREDICATE_FEATURES} following the \cid{biocat.py:95} pattern):
+\cid{inhibits(?c, ?isoform)}, \cid{induces(?c, ?isoform)}, \cid{substrate_of(?c, ?isoform)},
+\cid{metabolite_of(?m, ?parent)}, \cid{allele_of(?a, ?isoform)}, \cid{activity_score(?diplotype)}.
+HFQ \texttt{filter} today allows one comparison and no units; numeric range filtering with units is a language extension.
+The world is added upstream in hegel (R7), validated there, and re-vendored into Buhera.
+\end{frame}
+
+\begin{frame}[fragile]{6.9\quad An illustrative plan and the verdicts it is expected to return}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{Verbatim}[fontsize=\codesize]
+plan cyp3a4_potent_inhibitors_on_fda_list {
+  budget 300 requests
+  let inh   = from CHEMBL
+      ask inhibits(?c, "CYP3A4")
+      within 120
+  let potent = filter inh where ki_uM < 1.0
+  let ids   = map potent via chembl_to_chebi
+      expect partial 0.8
+  let fda   = from FDA
+      ask strong_inhibitor_of(?c, "CYP3A4")
+      with ?c in ids
+      within 60
+      when starved emit partial
+  emit fda with provenance
+}
+\end{Verbatim}
+\end{column}
+\begin{column}{0.46\textwidth}
+\footnotesize
+In the current grammar. The \texttt{filter} on a unit-bearing attribute and the \texttt{FDA} source need
+\cid{q.predicates} and \cid{q.world}.
+\par\medskip
+\textbf{Expected verdicts} (the test \cid{q.plans} keeps beside it):
+\begin{itemize}\setlength\itemsep{2pt}
+  \item \texttt{inh}: answer
+  \item \texttt{potent}: answer
+  \item \texttt{ids}: answer with retention $\geq 0.8$, or \vl{starved} naming the map if retention falls below 0.8
+  \item \texttt{fda}: answer or partial
+\end{itemize}
+An empty \texttt{fda} is reported with a gate letter, not as ``none''.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{6.9\quad A ladder over the seven-state cycle, and why it is refused}
+\begin{Verbatim}[fontsize=\codesize]
+plan cyp3a4_cycle_coupling {
+  budget 20 requests
+  let states = from P450REC
+      ask catalytic_states("CYP3A4")
+      within 10
+  let cycle  = ladder over states power 0.62, power 0.55, power 0.48, power 0.41
+               expect power 0.95                   (one line in the plan; wrapped here)
+  emit cycle with provenance
+}
+\end{Verbatim}
+\vspace{-3mm}
+\[
+  1-\prod_i (1-p_i) \;=\; 1-(0.38\cdot 0.45\cdot 0.52\cdot 0.59) \;=\; 0.9475 \;<\; 0.95
+\]
+\vspace{-4mm}
+\footnotesize
+\begin{itemize}\setlength\itemsep{1pt}
+  \item By \cid{def:refuse-climb} the ladder is refused with \vl{subfloor}, shortfall 0.0025. Today's code returns \vl{starved} here; \S\,7.1 fixes that.
+  \item The data-derived extension (\cid{q.ladders}) replaces the literals with powers read from records, or from the ladder engine's computed intensive power.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{6.10\quad Runtime: Buhera OS. The library adds no runtime}
+\centering
+\begin{tikzpicture}[x=1cm,y=0.95cm]
+  \tikzset{B/.style={lay=Runtime, text width=22mm, minimum height=8mm}}
+  \node[plain, text width=22mm] (U) at (0,1.5) {user, natural language};
+  \node[B] (DW) at (3.4,1.5) {dsl-writer};
+  \node[dec, text width=20mm] (C) at (8.0,1.5) {real HFQ compiler};
+  \node[B] (HM) at (8.0,0) {hfq module\\vendored, p450 world};
+  \node[B] (LM) at (3.4,0) {ladder module};
+  \node[B] (CKG) at (8.0,-1.5) {CKG runtime};
+  \node[B] (PM) at (12.0,-1.5) {cytochrome module\\queries records};
+  \node[lay=Records, text width=22mm, minimum height=8mm] (RF) at (12.0,0) {result files};
+  \node[B, text width=29mm] (PRO) at (3.4,-1.5) {\cid{/protein-modelling} report};
+  \node[B] (WEB) at (0,-2.9) {p450 front page (\cid{web/})};
+  \node[plain, text width=25mm] (REG) at (12.0,1.5) {the registry dispatches every module};
+  \draw[flow] (U) -- (DW);
+  \draw[flow] ([yshift=1.5mm]DW.east) -- node[nlbl,above]{generate (model)} ([yshift=1.5mm]C.west);
+  \draw[flow] ([yshift=-1.5mm]C.west) -- node[nlbl,below]{invalid: repair} ([yshift=-1.5mm]DW.east);
+  \draw[flow] (C) -- node[nlbl,right]{valid plan} (HM);
+  \draw[flow] (LM) -- node[nlbl,above]{rung powers} (HM);
+  \draw[flow] (HM) -- node[nlbl,right]{verdicts} (CKG);
+  \draw[flow] (CKG) -- node[nlbl,above]{fold facts} (PM);
+  \draw[flow] (PM) -- (RF);
+  \draw[flow] (CKG) -- (PRO);
+  \draw[flow] (WEB.east) -| (PRO.south);
+\end{tikzpicture}
+\par\medskip
+\raggedright\footnotesize
+Buhera already has the registry (about 40 modules), the CKG runtime, the vendored HFQ and ladder engines and dsl-writer.
+The library supplies records, a world, plans and a model to it.
+\src{\NLayerRuntime\ runtime components: \NRuntimeExists\ exist, \NRuntimeAdapt\ adapted, \NRuntimeNew\ new (the front page).}
+\end{frame}
+
+\begin{frame}{6.10\quad Runtime: what changes in Buhera, in order}
+\small
+\begin{enumerate}\setlength\itemsep{4pt}
+  \item Re-vendor HFQ with the \texttt{p450} world and the ladder fixes (R7).
+  \item Rewrite \cid{cytochrome-module.js} so that each op queries the records instead of holding constants (R12).
+        Decision D7: rewrite in place, or keep the current module as the transaminase-comparison demo and add a new \texttt{p450} module.
+  \item Give every CKG fact its basis and ground verdict. The current report mixes measured literature values
+        (Soret 417$\rightarrow$392\,nm, the EPR g-tensor, Raman 795$\rightarrow$758\,cm$^{-1}$), framework-derived values
+        ($\Delta M$, $\Sigma\Delta M = 4.963$, the conditioned floor $\beta$), and framework values that read as clinical
+        (CYP2D6 phenotype $\Delta M$ is not a CPIC activity score). After this change the report can say which is which.
+  \item Point dsl-writer at the domain model for \cid{dslId: "hfq"}.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{6.11\quad Domain LLM: a compiled probe, trained only on what the library produced}
+\centering
+\begin{tikzpicture}[x=0.9cm,y=1cm]
+  \tikzset{M/.style={lay=Model, text width=16mm, minimum height=8mm}}
+  \node[lay=Query, text width=19mm] (PL) at (0,1.65) {(a) plan library};
+  \node[lay=Query, text width=19mm] (WV) at (0,0.55) {(b) HFQ runs};
+  \node[lay=Records, text width=19mm] (RF) at (0,-0.55) {(c) result files};
+  \node[lay=Papers, text width=19mm] (PA) at (0,-1.65) {(d) papers};
+  \node[M, minimum height=14mm, text width=12mm] (CO) at (3.5,0) {corpus};
+  \node[M] (TR) at (6.5,0) {LoRA training\\lattice unit, GPU};
+  \node[M] (MG) at (8.95,0) {TIES merge};
+  \node[dec, text width=15mm] (EV) at (11.3,0) {evaluation gate};
+  \node[M, text width=15mm] (SV) at (14.2,0) {serving\\AppHubAI};
+  \node[lay=Runtime, text width=15mm] (DW) at (14.2,-1.8) {dsl-writer};
+  \draw[flow] (PL.east) -- (CO.north west);
+  \draw[flow] (WV.east) -- ([yshift=1.5mm]CO.west);
+  \draw[flow] (RF.east) -- ([yshift=-1.5mm]CO.west);
+  \draw[flow] (PA.east) -- (CO.south west);
+  \draw[flow] (CO) -- node[nlbl,above]{licence} node[nlbl,below]{filter} (TR);
+  \draw[flow] (TR) -- (MG);
+  \draw[flow] (MG) -- (EV);
+  \draw[flow] (EV) -- node[nlbl,above]{passes} (SV);
+  \draw[flow] (EV.north) -- ++(0,0.65) -| node[nlbl,pos=0.25,above]{fails} (TR.north);
+  \draw[flow] (SV) -- (DW);
+  \draw[flow] (DW.west) -| node[nlbl,pos=0.3,below]{repair rate} (EV.south);
+\end{tikzpicture}
+\par\smallskip
+\raggedright\footnotesize
+Corpus tasks: (a) question $\rightarrow$ plan; (b) plan $\rightarrow$ verdict $\rightarrow$ explanation, refusals included;
+(c) graph $\rightarrow$ description; (d) section $\rightarrow$ Q\&A.
+\par\smallskip
+The model translates questions into HFQ plans and explains verdicts; it is never a source of values (R1).
+It deploys behind a compiler that rejects any plan it gets wrong: dsl-writer's check-and-repair loop already exists.
+\end{frame}
+
+\begin{frame}{6.11\quad Domain LLM: what the corpus contains}
+\footnotesize
+\setlength\tabcolsep{3.5pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\textwidth}{@{}l L{44mm} Y@{}}
+\toprule
+\textbf{Corpus task} & \textbf{One JSONL line} & \textbf{Example output, abridged from the specification} \\
+\midrule
+\texttt{plan} & question $\rightarrow$ plan, with its source \cid{.hfq} file & \cid{plan cyp3a4_potent_inhibitors_on_fda_list { ... }} \\
+\texttt{explain} & plan + per-step verdicts $\rightarrow$ explanation & ``The ChEMBL-to-ChEBI map kept 71\% of the inhibitors, below the declared 80\%, so the FDA step was not issued. The empty result says nothing about the FDA list.'' \\
+\texttt{refuse} & question $\rightarrow$ refusal & ``The library records substrates observed in incubations; it does not infer scope (rule R9).'' \\
+\bottomrule
+\end{tabularx}
+\src{Corpus records are JSONL, one task per line; refusals are included. The corpus is licence-filtered before training (WP4.1).}
+\end{frame}
+
+\begin{frame}{6.11\quad Domain LLM: evaluation measures five things, none of them text similarity}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{34mm} Y l@{}}
+\toprule
+\textbf{Metric} & \textbf{Definition} & \textbf{Gate} \\
+\midrule
+parse-and-check rate & generated plans that parse and pass the capability check & $\geq 0.95$ \\
+verdict agreement & generated plan gives the same per-step verdicts as the reference plan & $\geq 0.90$ \\
+refusal accuracy & refuses exactly when the reference refuses & $\geq 0.95$ \\
+unbacked values & values stated that no record holds & \textbf{0} \\
+repair rate & fraction of dsl-writer calls needing a repair & tracked in deployment \\
+\bottomrule
+\end{tabularx}
+\src{Baseline Qwen2.5 0.5B with LoRA (lattice unit \texttt{train}, seed $\times$ size matrix); size decided after evaluation (D6). \NLayerModel\ model components: \NModelNew\ new, \NModelAdapt\ adapted, \NModelExists\ existing.}
+\end{frame}
+
+\begin{frame}{6.12\quad Papers: when a paper is finished}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \tikzset{St/.style={lay=Papers, minimum width=14mm, minimum height=7mm, rounded corners=6pt}}
+  \node[St] (D) at (0,0) {Draft};
+  \node[St] (V) at (3.3,0) {Validated};
+  \node[St] (E) at (6.6,0) {Emitting};
+  \node[St] (P) at (9.9,0) {Planned};
+  \node[St, very thick] (F) at (13.2,0) {Done};
+  \draw[flow] (D) -- node[nlbl,above,text width=17mm,align=center]{validation runs (lattice unit)} (V);
+  \draw[flow] (V) -- node[nlbl,above,text width=17mm,align=center]{claims emitted, SHACL passes} (E);
+  \draw[flow] (E) -- node[nlbl,above,text width=17mm,align=center]{one plan per claim, verdicts written} (P);
+  \draw[flow] (P) -- node[nlbl,above,text width=17mm,align=center]{plans return the stated verdicts} (F);
+  \draw[flow] (P.south) -- ++(0,-0.4) -| node[nlbl,pos=0.25,below]{a plan disagrees with the paper} (D.south);
+\end{tikzpicture}
+\par\bigskip
+\raggedright\small
+A paper is finished when four things hold:
+\begin{enumerate}\setlength\itemsep{2pt}
+  \item its validation runs;
+  \item its records emit and conform;
+  \item its plans return the verdicts it states;
+  \item its ``Records and queries'' section lists what the schema cannot yet separate.
+\end{enumerate}
+\src{Every transition except the first is checked by a lattice unit (F10).}
+\end{frame}
+
+\begin{frame}{6.12\quad Papers: the work, by group}
+\footnotesize
+\setlength\tabcolsep{3.5pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\textwidth}{@{}l Y L{50mm}@{}}
+\toprule
+\textbf{Group} & \textbf{Papers} & \textbf{Work} \\
+\midrule
+Ladder rewrites & expression algebra (40 oscillator refs), multi-hop ET (22), address manifold (22), resting/bound states (18), Compound I (6), introduction (5) & replace oscillator dynamics by ladders; expression algebra first, because the others cite it \\
+Records sections & the other 15 & add ``Records and queries'' \\
+Merges & the two 57-isoform papers; database recovery + empty dictionary & one paper each \\
+New & N1 schema $\cdot$ N2 cycle as ladder $\cdot$ N3 federated querying $\cdot$ N4 metabolite ID $\cdot$ N5 PGx admission $\cdot$ N6 DDI propagation $\cdot$ N7 spectroscopic discrimination $\cdot$ N8 domain model & \\
+Last & the introduction & written when everything it introduces exists \\
+\bottomrule
+\end{tabularx}
+\src{\NLayerPapers\ paper components: \NPapersNew\ new (N1--N8), \NPapersAdapt\ adapted (ladder rewrites, records sections).}
+\end{frame}
+
+% =============================================================== 7 Verdicts
+\begin{frame}{7.1\quad Step verdicts: one canonical algebra (proposal)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\renewcommand{\arraystretch}{0.95}
+\begin{tabularx}{\textwidth}{@{}l L{24mm} Y L{30mm}@{}}
+\toprule
+\textbf{Canonical label} & \textbf{Blocker} & \textbf{Rule (first that applies)} & \textbf{HFQ today} \\
+\midrule
+\vl{unsupported} & capability & a required feature is not declared & \vl{surface} (model) \\
+\vl{starved} & upstream & an input step did not answer & \vl{starved} (corpus) \\
+\vl{refused} & budget & the budget does not cover the request & \vl{refused} (budget) \\
+\vl{exhausted} & budget or engine & halted during the request & \vl{timeout} (engine) \\
+\vl{malformed} & record & the record does not parse & --- \\
+\rowcolor{layerQueryFill}\vl{subfloor} & floor & composite power below the declared target & \vl{starved} (wrong) \\
+\vl{empty} & --- & completed; nothing matches & \vl{empty} \\
+\vl{underdetermined} & convention & an element has several readings & --- \\
+\vl{incomplete} & record & a requested feature is absent & --- \\
+\vl{answered} & --- & none of the above & \vl{answer} \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{itemize}\setlength\itemsep{1pt}
+  \item Proposal: the nine ordered labels and six blockers of chromatography's \cid{verdicts.py} become canonical (a strict superset of HFQ's six), plus \vl{subfloor} for ladders, as the ladder paper says.
+  \item HFQ's \vl{starved} also fires when a lossy map's retention falls below its declared expectation; canonically that is \vl{incomplete} on the map and \vl{starved} on the \emph{next} step.
+  \item The ladder paper refuses a rungless ladder with \vl{empty}, but that ladder never ran. D8 keeps \vl{empty} by default; the alternative is \vl{malformed}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{7.2--7.3\quad Two axes orthogonal to the step verdict}
+\begin{columns}[T]
+\begin{column}{0.36\textwidth}
+\textbf{\small Empty-answer letters}\\
+{\scriptsize\S\,7.2, from the gate of \cid{sem.refinement}}
+\par\smallskip
+\footnotesize
+An \vl{empty} step is further labelled:
+\par\smallskip
+\begin{tabular}{@{}c l@{}}
+\toprule
+$+$ & witnessed absent \\
+$-$ & not recorded \\
+\texttt{a} & both \\
+\texttt{open} & a name the graph never uses \\
+\texttt{?} & undecided \\
+\bottomrule
+\end{tabular}
+\end{column}
+\begin{column}{0.62\textwidth}
+\textbf{\small Ground verdicts}\\
+{\scriptsize\S\,7.3, per returned record, from its PROV graph}
+\par\smallskip
+\footnotesize
+\begin{tabular}{@{}l c L{47mm}@{}}
+\toprule
+\textbf{Verdict} & $(g,c,d)$ & \textbf{Meaning} \\
+\midrule
+symbol & 000 & no generation recorded \\
+collapsed & 100 & generated, but neither contact nor derivation reachable \\
+index & 110 & traced to a contact with the measured object \\
+icon & 101 & traced to a derivation \\
+composite & 111 & both \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\scriptsize
+$g$: a generation recorded; $c$, $d$: a contact or a derivation reachable along
+\cid{CHAIN = prov:wasGeneratedBy/(prov:used/prov:wasGeneratedBy)*}.
+\end{column}
+\end{columns}
+\src{Four kinds of verdict exist upstream. They answer different questions and are kept as separate axes.}
+\end{frame}
+
+\begin{frame}[fragile]{7.3\quad The three grounding queries}
+\begin{Verbatim}[fontsize=\codesize]
+SELECT DISTINCT ?r WHERE { ?r prov:wasGeneratedBy ?a }                   # Q_g
+SELECT DISTINCT ?r WHERE { ?r CHAIN ?a .
+  { ?a a ?t FILTER(?t IN (A_c)) } UNION
+  { ?a prov:used ?u . ?u a ?t FILTER(?t IN (U_c)) } }                      # Q_c
+SELECT DISTINCT ?r WHERE { ?r CHAIN ?a .
+  { ?a a ?t FILTER(?t IN (A_d)) } UNION
+  { ?a prov:used ?u . ?u a ?t FILTER(?t IN (U_d)) } UNION
+  { ?a prov:wasAssociatedWith ?g . ?g a ?t FILTER(?t IN (G_d)) } }        # Q_d
+\end{Verbatim}
+\footnotesize
+$A_c, U_c, A_d, U_d, G_d$ are the witness classes of \S\,6.5. Membership in $Q_g$, $Q_c$, $Q_d$ gives the
+bits $(g,c,d)$ of the previous frame. WP3.11 runs these queries through the SPARQL endpoint.
+\end{frame}
+
+\begin{frame}{7.4\quad One answer, all axes}
+\centering
+\begin{tikzpicture}[x=0.93cm,y=1cm]
+  \node[plain, text width=13mm] (Q) at (0,0) {question};
+  \node[lay=Query, text width=10mm] (PL) at (2.1,0) {plan};
+  \node[lay=Query, text width=19mm] (S1) at (4.6,0.9) {step 1\\\vl{answered}};
+  \node[lay=Query, text width=19mm] (S2) at (7.6,0.9) {step 2\\\vl{starved} $\cdot$ upstream};
+  \node[plain, text width=15mm] (E) at (10.4,0.9) {empty result};
+  \node[lay=Semantics, text width=19mm] (G) at (13.3,0.9) {gate letter: $-$\\(not recorded)};
+  \node[lay=Records, text width=19mm] (R) at (7.6,-0.9) {returned records};
+  \node[lay=Semantics, text width=27mm] (GR) at (11.4,-0.2) {grounding: 12 index, 3 icon, 1 symbol};
+  \node[lay=Semantics, text width=27mm] (RS) at (11.4,-1.65) {refined status: boundary / interior};
+  \draw[flow] (Q) -- (PL); \draw[flow] (PL) -- (S1); \draw[flow] (S1) -- (S2); \draw[flow] (S2) -- (E); \draw[flow] (E) -- (G);
+  \draw[flow] (S1.south) |- (R.west);
+  \draw[flow] (R.east) -- (GR.west); \draw[flow] (R.east) -- (RS.west);
+\end{tikzpicture}
+\par\bigskip
+\raggedright\footnotesize
+An answer the library returns therefore carries: the step verdicts with blockers and the blame chain; for empty
+steps, a gate letter; for each record, a ground verdict and a refined status; and the coverage and
+admissibility HFQ already emits.
+\end{frame}
+
+% =============================================================== 8 Flows
+\begin{frame}{F3\quad Metabolite identification: licence only when the evidence agrees}
+\centering
+\begin{tikzpicture}[x=0.95cm,y=1cm]
+  \tikzset{W/.style={lay=Domain, text width=31mm, minimum height=7mm},
+           Dc/.style={dec, text width=31mm, minimum height=7mm},
+           No/.style={bad, text width=27mm, minimum height=7mm}}
+  \node[lay=Source, text width=31mm, minimum height=7mm] (A) at (0,2.8) {MS/MS spectrum + parent drug};
+  \node[W] (B) at (0,1.75) {apply mass rules $+15.995$, $-14.016$, \dots};
+  \node[Dc] (C) at (0,0.7) {precursor within tolerance of a rule?};
+  \node[W] (E) at (0,-0.6) {ModifiedCosine vs parent and vs library};
+  \node[Dc] (F) at (0,-1.65) {spectral match agrees with the rule?};
+  \node[No] (D1) at (3.75,0.7) {decline: no rule explains the mass};
+  \node[No] (D2) at (3.75,-1.65) {decline: determinations disagree};
+  \node[Dc] (G) at (8.6,2.8) {element set covers the formula? (F, Br, I, Fe)};
+  \node[No, text width=25mm] (D3) at (12.3,2.8) {decline: formula outside element set};
+  \node[Dc] (H) at (8.6,1.6) {retention corroborates?};
+  \node[good, text width=27mm] (I) at (7.0,0.3) {licence, flagged: no retention support};
+  \node[good, text width=14mm] (J) at (10.3,0.3) {licence};
+  \node[lay=Records, text width=22mm] (K) at (8.6,-1.0) {derived graph};
+  \draw[flow] (A) -- (B); \draw[flow] (B) -- (C);
+  \draw[flow] (C) -- node[nlbl,right]{yes} (E);
+  \draw[flow] (C) -- node[nlbl,above,pos=0.4]{no} (D1);
+  \draw[flow] (E) -- (F);
+  \draw[flow] (F) -- node[nlbl,above,pos=0.4]{no} (D2);
+  \draw[flow] (F.south) -- ++(0,-0.35) -| node[nlbl,pos=0.15,below]{yes} (5.75,2.8) -- (G.west);
+  \draw[flow] (G) -- node[nlbl,right]{yes} (H);
+  \draw[flow] (G) -- node[nlbl,above,pos=0.4]{no} (D3);
+  \draw[flow] (H) -- node[nlbl,left,pos=0.4]{no} (I);
+  \draw[flow] (H) -- node[nlbl,right,pos=0.4]{yes} (J);
+  \draw[flow] (I) -- (K); \draw[flow] (J) -- (K);
+\end{tikzpicture}
+\par\smallskip
+\raggedright\scriptsize
+Every decline is written as a \textbf{decline record with its reason}; licensed identifications go to the derived graph.
+Retention corroborates, never identifies. The element set and the isotope model repair the lavoisier defects (\S\,6.3).
+\end{frame}
+
+\begin{frame}{F4\quad Genotype to phenotype}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \tikzset{P/.style={lay=Domain, text width=24mm, minimum height=11mm}}
+  \node[lay=Source, text width=19mm, minimum height=11mm] (VCF) at (0,0.8) {genotype calls};
+  \node[P] (SA) at (3.3,0.8) {star-allele calling\\PharmVar definitions};
+  \node[dec, text width=26mm, minimum height=11mm] (CN) at (7.0,0.8) {CYP2D6 copy number or hybrid *13/*36?};
+  \node[P] (DIP) at (10.7,0.8) {diplotype};
+  \node[P, text width=34mm] (AS) at (10.7,-1.2) {activity score = $\Sigma$ allele values\\(CPIC; summed, never averaged)};
+  \node[P, text width=28mm] (PH) at (6.3,-1.2) {phenotype\\PM $\cdot$ IM $\cdot$ NM $\cdot$ RM $\cdot$ UM};
+  \node[lay=Semantics, text width=30mm, minimum height=11mm] (AD) at (2.1,-1.2) {schema admission: which genotype fields to keep};
+  \node[lay=Source, text width=30mm] (CV) at (2.1,-2.85) {ClinVar drug response};
+  \draw[flow] (VCF) -- (SA); \draw[flow] (SA) -- (CN); \draw[flow] (CN) -- (DIP);
+  \draw[flow] (DIP) -- (AS); \draw[flow] (AS) -- (PH); \draw[flow] (PH) -- (AD);
+  \draw[flow] (CV) -- (AD);
+\end{tikzpicture}
+\par\bigskip
+\raggedright\footnotesize
+The activity score is the sum of allele values; gospel's existing analysis averages them and is not reused
+(\S\,6.3). ClinVar's drug-response significance is kept, which needs the upstream fix to
+\cid{clinvar.py:121} (WP0.7). Done when the CPIC tables are reproduced exactly (WP3.7, N5).
+\end{frame}
+
+\begin{frame}{F5\quad A question answered through Buhera}
+\centering
+\begin{tikzpicture}[x=0.93cm,y=0.93cm]
+  \seqactor{u}{0}{user}{-5.65}
+  \seqactor{d}{2.3}{dsl-writer}{-5.65}
+  \seqactor{m}{4.6}{domain model}{-5.65}
+  \seqactor{c}{6.9}{HFQ compiler}{-5.65}
+  \seqactor{h}{9.2}{hfq (p450 world)}{-5.65}
+  \seqactor{r}{11.5}{records + snapshots}{-5.65}
+  \seqactor{k}{13.8}{CKG runtime}{-5.65}
+  \begin{scope}[on background layer]
+    \fill[layerQueryFill] (2.1,-2.3) rectangle (7.1,-3.25);
+  \end{scope}
+  \node[font=\scriptsize\bfseries, anchor=north west, text=layerQueryInk] at (2.1,-2.3) {alt: invalid};
+  \seqmsg{0}{2.3}{-0.8}{1 question}
+  \seqmsg{2.3}{4.6}{-1.22}{2 generate plan}
+  \seqmsg[back]{4.6}{2.3}{-1.64}{3 \texttt{.hfq} text}
+  \seqmsg{2.3}{6.9}{-2.06}{4 parse + check}
+  \seqmsg[back]{6.9}{2.3}{-2.65}{5 error}
+  \seqmsg{2.3}{4.6}{-3.07}{6 repair with error}
+  \seqmsg[back]{6.9}{2.3}{-3.55}{7 valid}
+  \seqmsg{2.3}{9.2}{-3.97}{8 run plan}
+  \seqmsg{9.2}{11.5}{-4.5}{9 adapter requests\\within budget}
+  \seqmsg[back]{11.5}{9.2}{-4.87}{10 rows}
+  \seqmsgb[back]{9.2}{13.8}{-5.15}{11 per-step verdicts, blame,\\payload, grounding profile}
+\end{tikzpicture}
+\par\smallskip
+\raggedright\scriptsize
+(1) ``Which potent CYP3A4 inhibitors are on the FDA list?''\quad (12) facts returned to the user, folded with their basis, explained by the model.
+\end{frame}
+
+\begin{frame}{F6\quad The catalytic cycle as a ladder}
+\begin{columns}[c]
+\begin{column}{0.56\textwidth}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \def\R{2.45}
+  \foreach \i/\name [count=\k from 0] in {1/resting LS, 2/substrate HS, 3/ferrous, 4/oxy, 5/peroxo, 6/Compound 0, 7/Compound I} {
+    \node[lay=Domain, text width=15mm, minimum height=6.5mm] (s\i) at ({90-\k*360/7}:\R) {\name};
+  }
+  \foreach \a/\b/\p in {1/2/1,2/3/2,3/4/3,4/5/4,5/6/5,6/7/6} {
+    \draw[flow] (s\a) -- node[nlbl,fill=white]{$p_{\p}$} (s\b);
+  }
+  \draw[flow] (s7) -- node[nlbl,fill=white]{$p_7$} (s1);
+  \node[font=\scriptsize, align=center, text=black!70] at (0,0) {$p_7$: product\\release};
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.42\textwidth}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[lay=Query, text width=36mm] (C) at (0,1.6) {composite $= 1-\prod_i(1-p_i)$};
+  \node[dec, text width=30mm] (T) at (0,0.2) {$\geq$ declared target?};
+  \node[good, text width=17mm] (OK) at (-1.3,-1.3) {\vl{answered}};
+  \node[bad, text width=20mm] (SF) at (1.4,-1.3) {\vl{subfloor}, shortfall named};
+  \draw[flow] (C) -- (T);
+  \draw[flow] (T) -- node[nlbl,left]{yes} (OK);
+  \draw[flow] (T) -- node[nlbl,right]{no} (SF);
+\end{tikzpicture}
+\par\medskip
+\raggedright\footnotesize
+Dynamics are ladders, not oscillators. N2 argues it (WP1.1); \cid{dom.cycle} computes it; the HFQ ladder
+step, later with data-derived powers (\cid{q.ladders}), queries it.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{F7\quad Refinement and admission}
+\centering
+\begin{tikzpicture}[x=0.93cm,y=1cm]
+  \node[lay=Records, text width=18mm, minimum height=9mm] (RF) at (0,0) {result files};
+  \node[lay=Semantics, text width=24mm, minimum height=9mm] (R1) at (3.3,0) {refine every asserted triple};
+  \node[dec, text width=26mm, minimum height=9mm] (CELL) at (6.9,0) {records the schema cannot tell apart?};
+  \node[plain, text width=22mm] (DONE) at (6.9,1.7) {no admission needed};
+  \node[lay=Semantics, text width=32mm, minimum height=9mm] (CAND) at (6.9,-2.0) {candidate slots from the measured object and okgg proposals};
+  \node[dec, text width=18mm, minimum height=9mm] (A) at (10.7,-2.0) {A1--A6 all hold?};
+  \node[bad, text width=22mm] (REJ) at (13.6,-2.0) {rejected, reason recorded};
+  \node[lay=Records, text width=20mm, minimum height=9mm] (ADM) at (10.7,0) {admitted graph};
+  \draw[flow] (RF) -- (R1); \draw[flow] (R1) -- (CELL);
+  \draw[flow] (CELL) -- node[nlbl,right]{none} (DONE);
+  \draw[flow] (CELL) -- node[nlbl,right]{cells} (CAND);
+  \draw[flow] (CAND) -- (A);
+  \draw[flow] (A) -- node[nlbl,above]{no} (REJ);
+  \draw[flow] (A) -- node[nlbl,right]{yes} (ADM);
+  \draw[flow] (ADM.north) -- ++(0,1.35) -| (RF.north);
+\end{tikzpicture}
+\par\medskip
+\raggedright\footnotesize
+A1 demanded $\cdot$ A2 witnessed from the measured object $\cdot$ A3 a fresh optional predicate $\cdot$ A4 a closed vocabulary
+$\cdot$ A5 identity by partition $\cdot$ A6 promotion only at a federated stage. Admitted slots are reported beside random
+controls (WP3.2).
+\end{frame}
+
+\begin{frame}{F9\quad Training and deploying the model}
+\centering
+\begin{tikzpicture}[x=0.93cm,y=1cm]
+  \seqactor[Compute]{p}{0.4}{laptop}{-6.1}
+  \seqactor[Compute]{g}{5.0}{Uni Gitea}{-6.1}
+  \seqactor[Compute]{a}{8.2}{AppHub (GPU)}{-6.1}
+  \seqactor[Compute]{ai}{11.0}{AppHubAI}{-6.1}
+  \seqactor[Runtime]{b}{13.8}{Buhera dsl-writer}{-6.1}
+  \begin{scope}[on background layer]
+    \fill[layerDomainFill] (-0.75,-4.85) rectangle (14.9,-5.5);
+    \fill[layerRuntimeFill] (-0.75,-5.55) rectangle (14.9,-6.1);
+  \end{scope}
+  \node[font=\scriptsize\bfseries, anchor=north west, text=layerDomainInk] at (-0.75,-4.85) {alt: gate passes};
+  \node[font=\scriptsize\bfseries, anchor=north east, text=layerRuntimeInk] at (14.9,-5.55) {else: gate fails};
+  \node[lbl, anchor=west] at (0.55,-0.72) {1 build corpus (licence-filtered)};
+  \seqmsg{0.4}{5.0}{-2.0}{2 \texttt{lattice wrap train}\\\texttt{--matrix seed=1..3}\\\texttt{--matrix size=0.5b,1.5b}}
+  \seqmsg{5.0}{8.2}{-2.45}{3 git pull, \texttt{run.sh --detach}}
+  \node[lbl, anchor=west] at (8.35,-2.85) {4 LoRA shards in parallel};
+  \seqmsg[back]{8.2}{5.0}{-3.3}{5 \texttt{lattice-results/train}}
+  \seqmsg{0.4}{5.0}{-3.75}{6 \texttt{lattice results train --get}}
+  \seqmsg{0.4}{5.0}{-4.2}{7 \texttt{lattice wrap eval}}
+  \seqmsg[back]{8.2}{5.0}{-4.65}{8 \texttt{lattice-results/eval}}
+  \seqmsg{0.4}{11.0}{-5.3}{9 serve merged model}
+  \seqmsg{13.8}{11.0}{-5.3}{10 generate plans}
+  \node[lbl, anchor=west] at (0.55,-5.85) {11 fix corpus, retrain};
+\end{tikzpicture}
+\end{frame}
+
+% =============================================================== 9 Compute
+\begin{frame}{9.1\quad Computing on the university servers: every heavy task is a lattice unit}
+\scriptsize
+\setlength\tabcolsep{2.8pt}
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\textwidth}{@{}L{17mm} L{38mm} Y L{14mm} L{26mm}@{}}
+\toprule
+\textbf{Unit} & \textbf{Command} & \textbf{Matrix} & \textbf{Profile} & \textbf{Outputs} \\
+\midrule
+\texttt{fetch} & \cid{dcat-ap-plus-p450 fetch {source}} & \cid{source=uniprot,pdb,rhea,}\newline\cid{chembl,cpic,clinvar,fda} & CPU & \cid{snapshots/**} \\
+\texttt{validate} & each paper's \cid{validation/run_all.py} & \cid{paper=...} (21) & CPU & \cid{validation/}\newline\cid{results/**} \\
+\texttt{catalogue} & \cid{dcat-ap-plus-p450 catalogue --validate} & \cid{--each 'results/inputs/*.json'} & CPU & \cid{results/}\newline\cid{catalogue/**} \\
+\texttt{admit} & \cid{dcat-ap-plus-p450 admit} & --- & CPU & \cid{results/}\newline\cid{admission/**} \\
+\texttt{ontology} & \cid{okgg run ... --unit section} & \cid{paper=...} & CPU + AppHubAI & \cid{results/}\newline\cid{ontology/**} \\
+\texttt{conformance} & Python $\leftrightarrow$ JS HFQ on every plan & --- & CPU & \cid{results/}\newline\cid{conformance.json} \\
+\texttt{train} & \cid{python model/train/train.py} & \cid{seed=1..3}, \cid{size=0.5b,1.5b} & GPU & adapters \\
+\texttt{eval} & \cid{python model/eval/eval.py} & \cid{model=...} & GPU & \cid{results/}\newline\cid{model-eval/**} \\
+\bottomrule
+\end{tabularx}
+\src{\cid{lattice plan <task>} prints what a unit needs before anything is written. The route: \S\,6.1.}
+\end{frame}
+
+\begin{frame}{9.3\quad What may be pushed where}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}L{56mm} L{24mm} L{36mm} Y@{}}
+\toprule
+\textbf{Path} & \textbf{Public GitHub} & \textbf{University Gitea} & \textbf{Reason} \\
+\midrule
+\cid{src/}, \cid{tests/}, \cid{docs/}, \cid{web/}, \cid{plans/}, \cid{artefacts/} & yes & yes & own work \\
+\cid{snapshots/}: uniprot, pdb, rhea, chembl, cpic, clinvar, fda & yes & yes & open licences (ChEMBL is share-alike) \\
+\cid{snapshots/kegg} & \textbf{no} & yes, if the KEGG licence allows internal use & KEGG forbids redistribution \\
+\cid{snapshots/instruments} & ask the lab & yes & lab-owned \\
+\cid{model/corpus} & only the open-licence slices & yes & the corpus inherits its sources' licences \\
+\cid{.claude/}, \cid{.env*} & \textbf{no} & \textbf{no} & secrets \\
+\bottomrule
+\end{tabularx}
+\src{The projections are kept by a tracker sync manifest (\cid{.sync.toml}); tracker pushes each origin only what it may see.}
+\end{frame}
+
+\begin{frame}{9.2, 9.4\quad What the route needs first, and one known gap}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\footnotesize
+\textbf{Prerequisites for the route (\S\,9.2)}
+\begin{enumerate}\setlength\itemsep{3pt}
+  \item \textbf{A university remote.} \cid{levinthal}'s only remote is the public GitHub origin; lattice needs a repository on \texttt{git.uni-greifswald.de}.
+  \item \textbf{A tracker sync manifest} (\cid{.sync.toml}) so the university origin and the public origin each get the projection they may see. At minimum, hide \cid{.claude/} and every \cid{.env*} from both.
+  \item \textbf{A credential in pushed public history} must be rotated and its file untracked before any of this (WP0.1).
+\end{enumerate}
+\end{column}
+\begin{column}{0.43\textwidth}
+\footnotesize
+\textbf{One known gap (\S\,9.4)}
+\par\smallskip
+okgg's model generator speaks to Ollama. AppHubAI is OpenAI-compatible and does not offer Ollama, and lattice flags
+Ollama use.
+\par\smallskip
+Either okgg gains an OpenAI-compatible generator (upstream in conspirator, R7), or ontology runs stay local
+with the lexical generator or a local Ollama.
+\end{column}
+\end{columns}
+\end{frame}
+
+% =============================================================== 10 Construction
+\begin{frame}{10.1\quad Work packages and dependencies (1/2): phases 0--2}
+\centering
+\begin{tikzpicture}[x=0.9cm,y=1.0cm]
+  \node[wp, lay=Core] (w01) at (0,2.1) {\textbf{WP0.1} security};
+  \node[wp, lay=Core] (w02) at (2.55,2.1) {\textbf{WP0.2} university route};
+  \node[wp, lay=Core] (w08) at (0,1.05) {\textbf{WP0.8} package scaffold};
+  \node[wp, lay=Core] (w03) at (0,0) {\textbf{WP0.3} shared core};
+  \node[wp, lay=Core] (w07) at (2.55,0) {\textbf{WP0.7} upstream defects};
+  \node[wp, lay=Core] (w04) at (0,-1.05) {\textbf{WP0.4} verdict algebra};
+  \node[wp, lay=Core] (w05) at (0,-2.1) {\textbf{WP0.5} ladder semantics};
+  \node[wp, lay=Core] (w06) at (2.55,-2.1) {\textbf{WP0.6} HFQ conformance};
+  \begin{scope}[on background layer]
+    \node[ph, fit=(w01)(w02)(w05)(w06), label={[phl]above:Phase 0 $\cdot$ Prerequisites}] {};
+  \end{scope}
+  \node[wp, lay=Papers] (w11) at (5.6,2.1) {\textbf{WP1.1} N2 cycle as ladder};
+  \node[wp, lay=Papers] (w12) at (5.6,1.05) {\textbf{WP1.2} expression algebra};
+  \node[wp, lay=Papers] (w13) at (5.6,0) {\textbf{WP1.3} other ladder rewrites};
+  \node[wp, lay=Papers] (w14) at (5.6,-2.1) {\textbf{WP1.4} merges};
+  \begin{scope}[on background layer]
+    \node[ph, fit=(w11)(w14), label={[phl]above:Phase 1 $\cdot$ Papers}] {};
+  \end{scope}
+  \node[wp, lay=Query] (w21) at (8.65,2.1) {\textbf{WP2.1} schema + N1};
+  \node[wp, lay=Query] (w22) at (11.2,2.1) {\textbf{WP2.2} fetchers};
+  \node[wp, lay=Query] (w23) at (8.65,1.05) {\textbf{WP2.3} domain modules};
+  \node[wp, lay=Query] (w28) at (11.2,1.05) {\textbf{WP2.8} records sections};
+  \node[wp, lay=Query] (w24) at (8.65,0) {\textbf{WP2.4} emission + catalogue};
+  \node[wp, lay=Query] (w25) at (8.65,-1.05) {\textbf{WP2.5} HFQ p450 world};
+  \node[wp, lay=Query] (w27) at (11.2,-1.05) {\textbf{WP2.7} Buhera integration};
+  \node[wp, lay=Query] (w26) at (8.65,-2.1) {\textbf{WP2.6} plan library};
+  \begin{scope}[on background layer]
+    \node[ph, fit=(w21)(w22)(w26)(w27), label={[phl]above:Phase 2 $\cdot$ Querying}] {};
+  \end{scope}
+  \node[stub] (toP3) at (13.65,0) {all of phase 3};
+  \node[stub] (toW41) at (13.65,-2.1) {WP4.1};
+  \draw[flow] (w01) -- (w02); \draw[flow] (w01) -- (w08); \draw[flow] (w08) -- (w03);
+  \draw[flow] (w03) -- (w04); \draw[flow] (w04) -- (w05); \draw[flow] (w05) -- (w06);
+  \draw[flow] (w11) -- (w12); \draw[flow] (w12) -- (w13);
+  \draw[flow] (w21) -- (w23); \draw[flow] (w22) -- (w23); \draw[flow] (w23) -- (w24);
+  \draw[flow] (w24) -- (w25); \draw[flow] (w25) -- (w26); \draw[flow] (w26) -- (w27);
+  \draw[flow] (w24) -- (w28);
+  \draw[flow] (w24.east) -- (toP3.west);
+  \draw[flow] (w26.east) -- (toW41.west);
+\end{tikzpicture}
+\src{Across phases: WP1.1 after WP0.5; WP2.1 after WP0.3; WP2.2 after WP0.2; WP2.5 after WP0.6; WP3.8 after WP0.7 (U-lev-2).}
+\end{frame}
+
+\begin{frame}{10.1\quad Work packages and dependencies (2/2): phases 2--4}
+\centering
+\begin{tikzpicture}[x=1cm,y=0.95cm]
+  \node[stub] (s24) at (0,0.55) {\textbf{WP2.4}};
+  \node[wp, lay=Semantics] (w31) at (2.7,2.1) {\textbf{WP3.1} refinement + gate};
+  \node[wp, lay=Semantics] (w32) at (2.7,1.05) {\textbf{WP3.2} admission};
+  \node[wp, lay=Semantics] (w33) at (2.7,0) {\textbf{WP3.3} grounding};
+  \node[wp, lay=Semantics] (w34) at (2.7,-1.05) {\textbf{WP3.4} ontology};
+  \node[wp, lay=Domain] (w35) at (5.25,2.1) {\textbf{WP3.5} metabolite ID};
+  \node[wp, lay=Domain] (w36) at (5.25,1.05) {\textbf{WP3.6} LC};
+  \node[wp, lay=Domain] (w37) at (5.25,0) {\textbf{WP3.7} PGx};
+  \node[wp, lay=Domain] (w38) at (5.25,-1.05) {\textbf{WP3.8} abundance};
+  \node[wp, lay=Domain] (w39) at (7.8,2.1) {\textbf{WP3.9} spectroscopy};
+  \node[wp, lay=Domain] (w310) at (7.8,1.05) {\textbf{WP3.10} DDI};
+  \node[wp, lay=Query] (w311) at (7.8,0) {\textbf{WP3.11} SPARQL};
+  \node[wp, lay=Papers] (w312) at (7.8,-1.05) {\textbf{WP3.12} consolidation};
+  \begin{scope}[on background layer]
+    \node[ph, fit=(w31)(w34)(w39)(w312), label={[phl]above:Phase 3 $\cdot$ Downstream (in parallel)}] (P3) {};
+  \end{scope}
+  \node[wp, lay=Model] (w41) at (11.6,2.1) {\textbf{WP4.1} corpus};
+  \node[wp, lay=Model] (w42) at (11.6,1.05) {\textbf{WP4.2} baseline 0.5B};
+  \node[wp, lay=Model] (w43) at (11.6,0) {\textbf{WP4.3} evaluation};
+  \node[wp, lay=Model] (w44) at (11.6,-1.05) {\textbf{WP4.4} merge + size};
+  \node[wp, lay=Model] (w45) at (11.6,-2.1) {\textbf{WP4.5} serve + dsl-writer};
+  \begin{scope}[on background layer]
+    \node[ph, fit=(w41)(w45), label={[phl]above:Phase 4 $\cdot$ Model}] (P4) {};
+  \end{scope}
+  \foreach \a/\b in {41/42,42/43,43/44,44/45} \draw[flow] (w\a) -- (w\b);
+  \draw[flow] (s24) -- (s24 -| P3.west);
+  \draw[flow] (P3.east |- w41) -- (w41.west);
+\end{tikzpicture}
+\src{WP2.4 gates all of phase 3; WP3.8 also waits for WP0.7 (U-lev-2). The corpus (WP4.1) waits for the plan library (WP2.6) and for phase 3.}
+\end{frame}
+
+\newcommand{\wphead}{\toprule \textbf{WP} & \textbf{Work} & \textbf{Done when} & \textbf{Components} \\ \midrule}
+\begin{frame}{10.2\quad Phase 0 --- Prerequisites (1/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l Y L{45mm} L{28mm}@{}}
+\wphead
+WP0.1 & Untrack \cid{.claude/settings.local.json}, add it to \cid{.gitignore}, rotate the gateway credential & the file is absent from \cid{git ls-files}; the old credential is revoked & --- \\
+WP0.2 & University remote on \texttt{git.uni-greifswald.de}; \cid{.sync.toml} hiding \cid{.claude/}, \cid{.env*}, \cid{snapshots/kegg} from the public origin; \cid{lattice plan validate} dry-run & \cid{tracker sync status} shows the intended projections & \cid{compute.*} \\
+WP0.3 & Extract the shared core from chromatography at a pinned commit; \cid{PROVENANCE.md}; port its tests & all ported tests pass; mypy and ruff clean & \cid{core.*} \\
+WP0.4 & Canonical step algebra (\S\,7.1) in \cid{core.verdicts}, with \cid{from_hfq()} & every HFQ verdict in hegel's V1--V16 maps to exactly one label & \cid{core.verdicts} \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{10.2\quad Phase 0 --- Prerequisites (2/2)}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l Y L{45mm} L{28mm}@{}}
+\wphead
+WP0.5 & Ladder semantics: \vl{subfloor} and the rungless case, in levinthal's ladder engine and hegel's HFQ (Python and JS), with tests; re-vendor to Buhera & both refusals of \cid{def:refuse-climb} and \cid{thm:nonvacuous} are tests that pass & \cid{up.ladderengine}, \cid{up.hfq}, \cid{rt.laddermodule}, \cid{rt.hfqmodule} \\
+WP0.6 & Conformance harness: every plan in hegel's \cid{plans/} runs in Python and JS with identical verdicts; decide borgia's copy & harness green; borgia copy re-vendored or retired & \cid{q.conformance} \\
+WP0.7 & Upstream defects: U-lev-2, U-lev-3, U-lev-4; genomics \cid{clinvar.py:121} & each has a regression test upstream & \cid{up.levcore}, \cid{up.genomics} \\
+WP0.8 & Package scaffold: \cid{pyproject.toml}, \cid{Makefile}, CLI skeleton, CI, \cid{docs/specification/} numbering, synthetic fixtures & \cid{uv run pytest} passes on an empty package & --- \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{10.2\quad Phase 1 --- Papers}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l Y L{58mm}@{}}
+\toprule
+\textbf{WP} & \textbf{Work} & \textbf{Done when} \\
+\midrule
+WP1.1 & N2, the cycle as a ladder; absorbs the closed-orbit paper & validation runs; ladder tests from WP0.5 cited \\
+WP1.2 & Expression algebra: oscillator dynamics $\rightarrow$ ladders & no oscillator dynamics remain; R\textsubscript{bio} unchanged; validation runs \\
+WP1.3 & Multi-hop ET, address manifold, resting/bound states, Compound I & same criteria \\
+WP1.4 & Merge the two isoform papers; merge database recovery with the empty dictionary & one paper each; the empty-dictionary paper becomes the bridge to N3 \\
+\bottomrule
+\end{tabularx}
+\src{WP1.1 follows WP0.5, so that N2 cites ladder tests that pass. Expression algebra precedes the other rewrites because they cite it.}
+\end{frame}
+
+\begin{frame}{10.2\quad Phase 2 --- Querying}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}l Y L{60mm}@{}}
+\toprule
+\textbf{WP} & \textbf{Work} & \textbf{Done when} \\
+\midrule
+WP2.1 & \cid{p450.yaml}, \cid{refined.yaml}, \cid{witness.yaml}; artefacts; census and receiver audit; N1 alongside & zero lost pairs; measured and computed spectra keep distinct IRIs \\
+WP2.2 & Fetchers for UniProt, PDB, Rhea, KEGG, ChEMBL as lattice unit \texttt{fetch} & snapshots with manifests; re-fetch without upstream change is a no-op \\
+WP2.3 & \cid{isoforms}, \cid{structures}, \cid{cycle}, \cid{kinetics}, \cid{chemistry} & each module's acceptance in \S\,6.6 \\
+WP2.4 & Emission and catalogue (lattice unit \texttt{catalogue}) & every file conforms and round-trips \\
+WP2.5 & HFQ \texttt{p450} world, predicates, maps, data-derived ladders, upstream in hegel & hegel validation extended with P450 checks, all hold \\
+WP2.6 & Plan library: one plan per claim, expected verdicts as tests & every plan returns its expected verdict \\
+WP2.7 & Buhera: re-vendor, \cid{cytochrome-module} reads records, CKG facts carry basis & \cid{/protein-modelling} renders with no constant copied from a paper \\
+WP2.8 & ``Records and queries'' sections in the 15 papers & each section lists its triples, plans and cells \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\newcommand{\wpheadthree}{\toprule \textbf{WP} & \textbf{Work} & \textbf{Done when} \\ \midrule}
+\begin{frame}{10.2\quad Phase 3 --- Downstream (1/2): semantics}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l Y L{66mm}@{}}
+\wpheadthree
+WP3.1 & Refinement and gate over the catalogue & conservativity holds; empty answers carry letters \\
+WP3.2 & Admission for P450 (lattice unit \texttt{admit}) & admitted slots satisfy A1--A6, beside random controls \\
+WP3.3 & Grounding profile beside every answer & $Q_g$, $Q_c$, $Q_d$ run on the catalogue \\
+WP3.4 & Ontology over papers and records; okgg generator decision (\S\,9.4) & facets reported; proposals routed to admission only \\
+WP3.11 & SPARQL endpoint & the three grounding queries run through it \\
+WP3.12 & Consolidation: purpose pack, bloodhound catalogue, kwisatz papers read from the library & no second copy of a P450 value remains \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{10.2\quad Phase 3 --- Downstream (2/2): domain processes}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l Y L{66mm}@{}}
+\wpheadthree
+WP3.5 & Metabolite ID: rules, element set with F/Br/I/Fe, isotope model; N4 & precision on a held-out set reported beside chance \\
+WP3.6 & LC corroboration & parent/metabolite visibility reported \\
+WP3.7 & PGx: PharmVar/CPIC fetch, caller, CYP2D6 CNV/hybrids; N5 & CPIC tables reproduced; ClinVar drug response kept \\
+WP3.8 & CYP abundance (after U-lev-2) & surrogate peptides mapped by sequence \\
+WP3.9 & Spectroscopy readers (EPR, rR, M\"ossbauer new); N7 & minimal probe set of \cid{exp_04_panel} reproduced on records \\
+WP3.10 & DDI and clearance; N6 & FDA index pairs recovered \\
+\bottomrule
+\end{tabularx}
+\src{Phase 3 has no internal order: every WP waits only for WP2.4 (and WP3.8 also for U-lev-2).}
+\end{frame}
+
+\begin{frame}{10.2\quad Phase 4 --- Model}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l Y L{60mm}@{}}
+\toprule
+\textbf{WP} & \textbf{Work} & \textbf{Done when} \\
+\midrule
+WP4.1 & Corpus builder; licence filter & every line traceable to a plan, run, record or paper section \\
+WP4.2 & Baseline Qwen2.5 0.5B LoRA (lattice unit \texttt{train}) & trained adapters on \cid{lattice-results/train} \\
+WP4.3 & Evaluation harness (\S\,6.11) & metrics reported per seed \\
+WP4.4 & TIES merge; decide size & the gates in \S\,6.11 pass \\
+WP4.5 & Serve on AppHubAI; dsl-writer integration; N8; the introduction & dsl-writer uses the model for \texttt{hfq}; repair rate tracked \\
+\bottomrule
+\end{tabularx}
+\src{Phases gate on acceptance criteria, not on calendar.}
+\end{frame}
+
+% =============================================================== 11-12
+\begin{frame}{11\quad Verification, from fixtures to model gates}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \foreach \t/\w/\y [count=\k] in {
+      {unit tests: synthetic fixtures, no network}/68/0,
+      {integration: module $\rightarrow$ records $\rightarrow$ SHACL $\rightarrow$ round-trip}/64/0.92,
+      {conformance: HFQ Python = HFQ JS}/56/1.84,
+      {claim tests: every plan returns its stated verdict}/48/2.76,
+      {paper validation: lattice unit \texttt{validate}}/40/3.68,
+      {model gates (\S\,6.11)}/32/4.6} {
+    \node[lay=Query, text width=\w mm, minimum height=7.5mm] (v\k) at (0,\y) {\t};
+  }
+  \foreach \a/\b in {1/2,2/3,3/4,4/5,5/6} \draw[flow] (v\a) -- (v\b);
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.48\textwidth}
+\footnotesize
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Tests never touch the network. Each module is tested on synthetic fixtures, following proteomics' \cid{tests/synthetic.py}.
+  \item Every number on the front page is checked against the records it reads from (R12).
+  \item \cid{render_reference.py --check} fails if the specification's reference has drifted from \texttt{components.json}; \cid{web}'s \cid{npm run check} fails if any edge does not resolve.
+  \item Negative controls are kept beside every positive result, as in proteomics (chance precision) and admission (random controls).
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{12.1\quad Risks}
+\scriptsize
+\setlength\tabcolsep{3.5pt}
+\begin{tabularx}{\textwidth}{@{}L{46mm} L{40mm} Y@{}}
+\toprule
+\textbf{Risk} & \textbf{Consequence} & \textbf{Mitigation} \\
+\midrule
+Credential in public history & account misuse & WP0.1 before anything else \\
+Licences of KEGG, PharmVar, instrument data & redistribution violation; tainted model & \S\,9.3 projections; licence filter in WP4.1 \\
+AppHub may not reach external APIs & \texttt{fetch} cannot run there & run \texttt{fetch} on the laptop, push snapshots through Gitea \\
+Three HFQ copies drift & different answers by runtime & WP0.6 conformance in CI \\
+Framework quantities read as clinical values & misleading report & R6, R12, basis on every CKG fact (\S\,6.10) \\
+Substrate-scope questions & the model invents scope & R9; refusal examples in the corpus \\
+raw2dcat source missing on \texttt{main} & that code cannot be reused & ask the user (D9) \\
+Scope creep across \NNodes\ components & nothing finishes & phases gate on acceptance criteria, not on calendar \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{12.2\quad Decisions}
+\footnotesize
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\textwidth}{@{}l Y L{68mm}@{}}
+\toprule
+\textbf{\#} & \textbf{Decision} & \textbf{Default if not decided} \\
+\midrule
+D1 & \cid{dcat-ap-plus-p450} location & \textbf{decided:} \cid{levinthal/dcat-ap-plus-p450} \\
+D2 & Where the shared core lives & inside this package until a second extension adopts it \\
+D3 & Stop citing \cid{cytochrome/sources/} as the foundation & yes; ground on \cid{models/sources/} and the ladder papers \\
+D4 & The library's position on substrate scope & record, never infer (R9) \\
+D5 & First-release sources & the open-licence set in \S\,6.2 \\
+D6 & Model size and AppHub budget & 0.5B baseline, then decide \\
+D7 & Rewrite \cid{cytochrome-module} in place or add a \texttt{p450} module & add a \texttt{p450} module; keep the current one as the transaminase demo \\
+D8 & Verdict for a rungless ladder & \vl{empty}, as the paper says \\
+D9 & Where raw2dcat's \cid{kg}/\cid{federation} source is & --- \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{What happens next: Phase 0}
+\begin{columns}[T]
+\begin{column}{0.44\textwidth}
+\centering
+\begin{tikzpicture}[x=1cm,y=0.85cm]
+  \tikzset{N/.style={wp, lay=Core, text width=23mm, minimum height=7mm}}
+  \node[N] (a) at (0,2.4) {\textbf{WP0.1} security};
+  \node[N] (b) at (2.9,2.4) {\textbf{WP0.2} university route};
+  \node[N] (c) at (0,1.2) {\textbf{WP0.8} package scaffold};
+  \node[N] (d) at (0,0) {\textbf{WP0.3} shared core};
+  \node[N] (e) at (0,-1.2) {\textbf{WP0.4} verdict algebra};
+  \node[N] (f) at (0,-2.4) {\textbf{WP0.5} ladder semantics};
+  \node[N] (g) at (2.9,-2.4) {\textbf{WP0.6} HFQ conformance};
+  \node[N] (h) at (2.9,0) {\textbf{WP0.7} upstream defects};
+  \draw[flow] (a) -- (b); \draw[flow] (a) -- (c); \draw[flow] (c) -- (d);
+  \draw[flow] (d) -- (e); \draw[flow] (e) -- (f); \draw[flow] (f) -- (g);
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.54\textwidth}
+\footnotesize
+\begin{enumerate}\setlength\itemsep{1pt}
+  \item \textbf{WP0.1} first: untrack the file, rotate the credential.
+  \item \textbf{WP0.2} university route; \textbf{WP0.8} scaffold.
+  \item \textbf{WP0.3} shared core, then \textbf{WP0.4} verdict algebra.
+  \item \textbf{WP0.5} \vl{subfloor}, rungless ladder; unblocks N2.
+  \item \textbf{WP0.6} HFQ conformance; unblocks WP2.5.
+  \item \textbf{WP0.7} upstream defects; U-lev-2 gates WP3.8.
+\end{enumerate}
+\par\medskip
+\scriptsize
+Open for review: decisions D2--D9 (\S\,12.2), and what the specification marks as proposals:
+the verdict algebra (\S\,7.1), the class sketch and the witness sets (\S\,6.5).
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}

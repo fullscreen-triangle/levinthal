@@ -1,0 +1,20 @@
+{
+  "experiment": "f1_partial_sums",
+  "generated": "2026-10-11T14:54:49",
+  "trials": 1000,
+  "terms": 10000,
+  "integer_partial_sum_violations_of_S_n_ge_n": 0,
+  "integer_partial_sums_strictly_increasing": true,
+  "integer_running_min_final": 1,
+  "real_running_min_final_median": 1.3959671027003551e-08,
+  "real_running_min_final_max": 1.5392592557586553e-07,
+  "geometric_sum_at_N": 1.0,
+  "harmonic_sum_at_N": 9.787606036044348,
+  "dichotomy_commitments_for_eps": {
+    "1e-03": 10,
+    "1e-06": 20,
+    "1e-09": 30,
+    "1e-12": 40,
+    "1e-15": 50
+  }
+}

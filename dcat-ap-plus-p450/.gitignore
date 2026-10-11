@@ -1,0 +1,27 @@
+# levinthal's root .gitignore ignores *.pdf at every depth. The presentation is a
+# deliverable, not a build product, so it is re-included here.
+!docs/specifications/presentation.pdf
+
+# LaTeX build products (presentation and the N1 paper)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.synctex.gz
+
+# Python
+__pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets
+.env.local

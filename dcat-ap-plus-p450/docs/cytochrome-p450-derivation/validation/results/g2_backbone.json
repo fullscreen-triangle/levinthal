@@ -1,0 +1,77 @@
+{
+  "experiment": "g2_backbone",
+  "generated": "2026-10-11T14:56:01",
+  "entries": {
+    "2CPP": {
+      "chain": "A",
+      "peptide_bonds": 404
+    },
+    "1PHC": {
+      "chain": "A",
+      "peptide_bonds": 404
+    },
+    "1TQN": {
+      "chain": "A",
+      "peptide_bonds": 466
+    },
+    "1OG2": {
+      "chain": "A",
+      "peptide_bonds": 460
+    },
+    "2F9Q": {
+      "chain": "A",
+      "peptide_bonds": 452
+    },
+    "2HI4": {
+      "chain": "A",
+      "peptide_bonds": 479
+    },
+    "3E6I": {
+      "chain": "A",
+      "peptide_bonds": 460
+    },
+    "1BU7": {
+      "chain": "A",
+      "peptide_bonds": 454
+    },
+    "3LD6": {
+      "chain": "A",
+      "peptide_bonds": 444
+    },
+    "3EQM": {
+      "chain": "A",
+      "peptide_bonds": 451
+    },
+    "3RUK": {
+      "chain": "A",
+      "peptide_bonds": 462
+    },
+    "3N9Y": {
+      "chain": "A",
+      "peptide_bonds": 470
+    }
+  },
+  "peptide_bonds": 5406,
+  "peptide_CN_mean_sd": [
+    1.329091450333994,
+    0.011097951244022825
+  ],
+  "N_CA_mean_sd": [
+    1.4614415636044435,
+    0.013093213123358973
+  ],
+  "CA_C_mean_sd": [
+    1.5267557620462306,
+    0.01405522164921526
+  ],
+  "N_CA_CB_angle_mean_sd": [
+    110.39543386343915,
+    2.55540469924707
+  ],
+  "tetrahedral_angle": 109.47,
+  "omega_trans_within_20deg_fraction": 0.9922308546059934,
+  "omega_cis_count": 7,
+  "omega_intermediate_count": 35,
+  "phi_psi_helical_fraction": 0.5129485756566777,
+  "phi_psi_extended_fraction": 0.2541620421753607
+}

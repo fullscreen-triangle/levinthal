@@ -1,0 +1,26 @@
+{
+  "name": "dcat-ap-plus-p450-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Front page of dcat-ap-plus-p450: the component graph, the phases, a page per component.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node scripts/check-data.mjs"
+  },
+  "dependencies": {
+    "d3-force-3d": "^3.0.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-force-graph-3d": "^1.29.2",
+    "react-router-dom": "^7.18.4",
+    "three": "^0.186.1",
+    "three-spritetext": "^1.10.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4"
+  }
+}

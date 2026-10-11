@@ -1,0 +1,32 @@
+{
+  "experiment": "f3_recurrence",
+  "generated": "2026-10-11T14:55:47",
+  "kac_ring": {
+    "N": 400,
+    "marked_edges": 41,
+    "recurrence_step": 800,
+    "max_coarse_entropy_over_ln2": 1.0
+  },
+  "reversal": {
+    "T": 150,
+    "configuration_returned": true,
+    "register_length_at_return": 300,
+    "register_strictly_increasing": true
+  },
+  "cat_map": {
+    "N_range": [
+      2,
+      400
+    ],
+    "all_periods_finite": true,
+    "max_period_over_N": 3.0,
+    "periods_sample": {
+      "5": 10,
+      "10": 30,
+      "50": 150,
+      "100": 150,
+      "250": 750,
+      "400": 300
+    }
+  }
+}

@@ -1,0 +1,44 @@
+# The repositories an experiment can run in or require, on this machine.
+#
+# `path` is relative to `root` unless absolute. lattice's route to each one (a push
+# remote on the forge, or a tracker origin in .sync.toml) is detected, not declared:
+# `dcat-ap-plus-p450 experiment doctor` shows it. `clone_url` overrides the URL AppHub
+# clones a *required* repository from, when it is not a detectable forge remote.
+
+root = "~/Documents"
+
+[repos.levinthal]
+path = "bioinformatics/levinthal"
+
+[repos.lavoisier]
+path = "bioinformatics/lavoisier"
+
+[repos.gospel]
+path = "bioinformatics/gospel"
+
+[repos.borgia]
+path = "bioinformatics/borgia"
+
+[repos.hegel]
+path = "systems/hegel"
+
+[repos.conspirator]
+path = "greifswald/conspirator"
+
+[repos.ultraviolet]
+path = "greifswald/ultraviolet"
+
+[repos.raw2dcat-converter]
+path = "greifswald/raw2dcat-converter"
+
+[repos.nfdi4cat-model]
+path = "greifswald/nfdi4cat-model"
+
+[repos.doerr-lab-model]
+path = "greifswald/doerr-lab-model"
+
+[repos.pylon]
+path = "distributed/pylon"
+
+[repos.buhera]
+path = "architecture/buhera"

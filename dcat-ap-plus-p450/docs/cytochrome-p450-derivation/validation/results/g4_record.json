@@ -1,0 +1,39 @@
+{
+  "experiment": "g4_record",
+  "generated": "2026-10-11T14:56:11",
+  "min_word_length": 3,
+  "sense_codons": 61,
+  "stop_codons": 3,
+  "codons_per_residue": {
+    "A": 4,
+    "C": 2,
+    "D": 2,
+    "E": 2,
+    "F": 2,
+    "G": 4,
+    "H": 2,
+    "I": 3,
+    "K": 2,
+    "L": 6,
+    "M": 1,
+    "N": 2,
+    "P": 4,
+    "Q": 2,
+    "R": 6,
+    "S": 6,
+    "T": 4,
+    "V": 4,
+    "W": 1,
+    "Y": 2
+  },
+  "single_letter_substitutions_between_sense_codons": 526,
+  "synonymous_fraction": 0.25475285171102663,
+  "standard_code_cost": 9.393954372623577,
+  "permuted_codes": 200000,
+  "permuted_codes_at_or_below_standard": 1565,
+  "fraction_at_or_below": 0.007825,
+  "permuted_cost_mean_sd": [
+    13.294002942585552,
+    1.6963037017055793
+  ]
+}

@@ -1,0 +1,48 @@
+$ lattice -C 'C:\Users\kunda\Documents\greifswald\nfdi4cat-model' plan --name p450-e000-route-smoke --gpu none --timeout 300 -- bash -c 'python3 - > "$LATTICE_OUT/probe.json" <<'"'"'PY'"'"'
+import json, os, platform, shutil, subprocess
+def run(*a):
+    try:
+        return subprocess.run(a, capture_output=True, text=True, timeout=20).stdout.strip()
+    except Exception as e:
+        return "unavailable: " + str(e)   # no f-string: lattice reads braced names as placeholders
+mem = ""
+try:
+    mem = next(l for l in open("/proc/meminfo") if l.startswith("MemTotal")).split(":")[1].strip()
+except Exception:
+    pass
+print(json.dumps({
+    "python": platform.python_version(),
+    "platform": platform.platform(),
+    "cpus": len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else os.cpu_count(),
+    "memory": mem,
+    "gpus": run("nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader") if shutil.which("nvidia-smi") else "none",
+    "tools": {t: bool(shutil.which(t)) for t in ["git", "uv", "pixi", "cargo", "node", "pdflatex", "flock"]},
+    "shard": os.environ.get("LATTICE_SHARD"),
+}, indent=2))
+PY
+'
+# spec sha256 af33bd5b1e0fda017c522e09279f01e302a039edfb52c3397f07c5d360257b28
+# exit 0
+
+unit         p450-e000-route-smoke — 1 shard(s)
+from         a command
+runs         bash -c python3 - > "$LATTICE_OUT/probe.json" <<'PY'…
+environment  none to build (the session's own tools)
+compute      CPU is enough: no GPU library found
+profile      any CPU profile
+parallel     8 at once: the shards mostly wait on the model service
+models       huggingface; on offer: deepseek-ai/DeepSeek-V4-Flash-Vision-Exp, dengcao/Qwen3-Reranker-4B:Q8_0, knowledge-cdfi, knowledge-student, knowledge-urz, kokoro:82m and 9 more (unit.toml has them all)
+results      each shard's $LATTICE_OUT folder
+notes        - no Python environment file (pixi.toml, pyproject.toml, requirements.txt): the session's own Python runs it, and only the home folder survives a restart
+             - loads Hugging Face weights (bundle/train.py:65): they download into ~/.cache on first run
+
+On AppHub (Code-Server → Terminal):
+  1. get it: git clone https://git.uni-greifswald.de/sachikonyk/nfdi4cat-model.git
+             (already cloned: cd nfdi4cat-model && git pull)
+  2. run:    cd nfdi4cat-model && bash .lattice/p450-e000-route-smoke/run.sh --detach
+
+Back here: lattice results p450-e000-route-smoke   (--get copies the outputs into this working tree)
+
+[stderr]
+lattice: read 10 tracked file(s), 2.7 MB: what AppHub will get
+lattice: nothing written; `lattice wrap` with the same arguments makes the unit

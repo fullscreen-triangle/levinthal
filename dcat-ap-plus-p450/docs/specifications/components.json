@@ -1,0 +1,2141 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-10-09",
+  "description": "The component graph of dcat-ap-plus-p450. Single source of truth: components-graph.md documents it, web/ renders it, the presentation draws from it. Every node id is also an anchor in components-graph.md.",
+  "statuses": [
+    {
+      "id": "exists",
+      "label": "Exists",
+      "description": "Implemented and tested in an upstream repository; reused as is."
+    },
+    {
+      "id": "adapt",
+      "label": "Adapt",
+      "description": "Implemented upstream for another domain; needs P450-specific adaptation."
+    },
+    {
+      "id": "new",
+      "label": "New",
+      "description": "Does not exist anywhere; built in this package."
+    },
+    {
+      "id": "external",
+      "label": "External",
+      "description": "A service or data source outside the user's repositories."
+    }
+  ],
+  "phases": [
+    {
+      "id": 0,
+      "name": "Prerequisites",
+      "description": "Shared core, verdict reconciliation, ladder semantics, HFQ conformance, upstream defects, university compute route."
+    },
+    {
+      "id": 1,
+      "name": "Papers",
+      "description": "Ladder rewrites of the oscillator papers; the cycle-as-ladder paper."
+    },
+    {
+      "id": 2,
+      "name": "Querying",
+      "description": "Schema, snapshots, domain modules, named graphs, the HFQ p450 world, Buhera integration."
+    },
+    {
+      "id": 3,
+      "name": "Downstream",
+      "description": "Refinement, admission, grounding, ontology, metabolite ID, pharmacogenomics, spectroscopy, DDI."
+    },
+    {
+      "id": 4,
+      "name": "Model",
+      "description": "Training corpus, training on AppHub, merge, evaluation, deployment behind dsl-writer."
+    }
+  ],
+  "layers": [
+    {
+      "id": "compute",
+      "name": "University compute",
+      "order": 0,
+      "color": "#64748b",
+      "description": "Where every heavy task runs: AppHub sessions reached through lattice units carried by the university Gitea."
+    },
+    {
+      "id": "source",
+      "name": "Sources",
+      "order": 1,
+      "color": "#b45309",
+      "description": "External databases and instrument files, read only through dated, content-addressed snapshots."
+    },
+    {
+      "id": "upstream",
+      "name": "Upstream code",
+      "order": 2,
+      "color": "#7c3aed",
+      "description": "Implemented and tested modules in the user's other repositories that this package reuses."
+    },
+    {
+      "id": "core",
+      "name": "Shared core",
+      "order": 3,
+      "color": "#2563eb",
+      "description": "dcat-ap-plus-core: the generic machinery extracted from the chromatography extension, shared by all four extensions."
+    },
+    {
+      "id": "schema",
+      "name": "Schema",
+      "order": 4,
+      "color": "#06b6d4",
+      "description": "The LinkML P450 extension, its generated OWL/SHACL/JSON-LD, and its audits."
+    },
+    {
+      "id": "domain",
+      "name": "Domain modules",
+      "order": 5,
+      "color": "#10b981",
+      "description": "One module per experimental aspect of P450; each turns snapshots and instrument data into records."
+    },
+    {
+      "id": "records",
+      "name": "Records",
+      "order": 6,
+      "color": "#84cc16",
+      "description": "Named graphs, one per basis, emitted as JSON-LD result files that conform to the shapes and round-trip."
+    },
+    {
+      "id": "semantics",
+      "name": "Semantics",
+      "order": 7,
+      "color": "#eab308",
+      "description": "What the records support: refined triples, admission, grounding verdicts, the ontology."
+    },
+    {
+      "id": "query",
+      "name": "Query",
+      "order": 8,
+      "color": "#f97316",
+      "description": "The HFQ p450 world, ladders, the plan library and the SPARQL endpoint."
+    },
+    {
+      "id": "runtime",
+      "name": "Runtime (Buhera OS)",
+      "order": 9,
+      "color": "#ef4444",
+      "description": "The OS-wide federation that hosts the library: registry, CKG runtime, modules, front pages."
+    },
+    {
+      "id": "model",
+      "name": "Domain LLM",
+      "order": 10,
+      "color": "#ec4899",
+      "description": "A compiled probe: writes plans, explains verdicts, never states a value no record holds."
+    },
+    {
+      "id": "papers",
+      "name": "Papers",
+      "order": 11,
+      "color": "#e2e8f0",
+      "description": "The argued and validated claims; every paper emits records and ships plans with expected verdicts."
+    }
+  ],
+  "edgeKinds": [
+    {
+      "id": "reuses",
+      "label": "reuses",
+      "description": "Code is imported or vendored from the source into the target."
+    },
+    {
+      "id": "snapshots",
+      "label": "snapshots",
+      "description": "A source is fetched into a dated, content-addressed snapshot."
+    },
+    {
+      "id": "feeds",
+      "label": "feeds",
+      "description": "Data flows from source to target."
+    },
+    {
+      "id": "emits",
+      "label": "emits",
+      "description": "A module writes triples into a named graph."
+    },
+    {
+      "id": "conforms",
+      "label": "conforms to",
+      "description": "Output is validated against a schema or shapes."
+    },
+    {
+      "id": "analyses",
+      "label": "analyses",
+      "description": "A semantic stage reads records and adds annotations without changing an asserted triple."
+    },
+    {
+      "id": "queries",
+      "label": "queries",
+      "description": "A query component reads records or snapshots."
+    },
+    {
+      "id": "dispatches",
+      "label": "dispatches",
+      "description": "The runtime calls a module."
+    },
+    {
+      "id": "trains",
+      "label": "trains",
+      "description": "Material enters the model's training corpus."
+    },
+    {
+      "id": "deploys",
+      "label": "deploys",
+      "description": "A trained artefact is served by a runtime component."
+    },
+    {
+      "id": "runs-on",
+      "label": "runs on",
+      "description": "A computing task is executed on university infrastructure."
+    },
+    {
+      "id": "documents",
+      "label": "documents",
+      "description": "A paper argues and validates the claims a component implements."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "compute.gitea",
+      "label": "Uni Gitea",
+      "layer": "compute",
+      "phase": 0,
+      "status": "external",
+      "repo": "git.uni-greifswald.de",
+      "path": "",
+      "summary": "Carries lattice units to AppHub and results back. levinthal needs a university remote or a tracker sync manifest that hides .claude/."
+    },
+    {
+      "id": "compute.lattice",
+      "label": "lattice",
+      "layer": "compute",
+      "phase": 0,
+      "status": "exists",
+      "repo": "distributed/pylon",
+      "path": "lattice/",
+      "summary": "Wraps a task into a runnable unit: works out environment, GPU need, secrets and shards on the laptop; run.sh on AppHub needs only bash and git."
+    },
+    {
+      "id": "compute.apphub",
+      "label": "AppHub",
+      "layer": "compute",
+      "phase": 0,
+      "status": "external",
+      "repo": "Uni Greifswald",
+      "path": "",
+      "summary": "Code-Server sessions with CPU and GPU profiles. Accepts no inbound connection; clones from Gitea, pushes results to lattice-results branches."
+    },
+    {
+      "id": "compute.apphubai",
+      "label": "AppHubAI",
+      "layer": "compute",
+      "phase": 0,
+      "status": "external",
+      "repo": "Uni Greifswald",
+      "path": "",
+      "summary": "OpenAI-compatible model endpoint on AppHub. lattice points clients at it; the trained model can be served here."
+    },
+    {
+      "id": "compute.tracker",
+      "label": "tracker sync",
+      "layer": "compute",
+      "phase": 0,
+      "status": "exists",
+      "repo": "tracker",
+      "path": ".sync.toml",
+      "summary": "Pushes each origin the projection it may see. Used to keep .claude/ and other private paths off the university origin."
+    },
+    {
+      "id": "compute.experiments",
+      "label": "experiment ledger",
+      "layer": "compute",
+      "phase": 0,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/experiments/ ; src/dcat_ap_plus_p450/experiments/",
+      "summary": "Experiments planned here and run on AppHub through lattice: a spec per experiment (question, components, target repository, command, pinned requires, checks), an append-only record of every plan, wrap and collection, and verdicts judged here."
+    },
+    {
+      "id": "src.uniprot",
+      "label": "UniProt",
+      "layer": "source",
+      "phase": 2,
+      "status": "external",
+      "repo": "uniprot.org",
+      "path": "",
+      "summary": "Sequences and features of the 57 human CYPs, CPR (POR) and cytochrome b5."
+    },
+    {
+      "id": "src.pdb",
+      "label": "PDB",
+      "layer": "source",
+      "phase": 2,
+      "status": "external",
+      "repo": "rcsb.org",
+      "path": "",
+      "summary": "CYP structures (1TQN for CYP3A4 and others): heme site, access channels, ligand complexes."
+    },
+    {
+      "id": "src.rhea",
+      "label": "Rhea",
+      "layer": "source",
+      "phase": 2,
+      "status": "external",
+      "repo": "rhea-db.org",
+      "path": "",
+      "summary": "Reactions catalysed by EC 1.14.14.1 and relatives, with ChEBI participants."
+    },
+    {
+      "id": "src.kegg",
+      "label": "KEGG",
+      "layer": "source",
+      "phase": 2,
+      "status": "external",
+      "repo": "kegg.jp",
+      "path": "",
+      "summary": "Pathways hsa00982, hsa00983 (drug metabolism), hsa00140 (steroids), hsa00590 (arachidonic acid). Licence to check before redistribution."
+    },
+    {
+      "id": "src.chembl",
+      "label": "ChEMBL",
+      "layer": "source",
+      "phase": 2,
+      "status": "external",
+      "repo": "ebi.ac.uk/chembl",
+      "path": "",
+      "summary": "Activities against CYP targets: Ki, IC50, time-dependent inhibition. CC BY-SA."
+    },
+    {
+      "id": "src.pharmvar",
+      "label": "PharmVar",
+      "layer": "source",
+      "phase": 3,
+      "status": "external",
+      "repo": "pharmvar.org",
+      "path": "",
+      "summary": "Star-allele definitions for CYP2D6, 2C19, 2C9, 3A5, 2B6 and others."
+    },
+    {
+      "id": "src.cpic",
+      "label": "CPIC",
+      "layer": "source",
+      "phase": 3,
+      "status": "external",
+      "repo": "cpicpgx.org",
+      "path": "",
+      "summary": "Allele function, activity scores, diplotype-to-phenotype tables, guidelines."
+    },
+    {
+      "id": "src.clinvar",
+      "label": "ClinVar",
+      "layer": "source",
+      "phase": 3,
+      "status": "external",
+      "repo": "ncbi.nlm.nih.gov/clinvar",
+      "path": "",
+      "summary": "Variant submissions including drug-response significance; already parsed by the genomics extension."
+    },
+    {
+      "id": "src.fda",
+      "label": "FDA DDI tables",
+      "layer": "source",
+      "phase": 3,
+      "status": "external",
+      "repo": "fda.gov",
+      "path": "",
+      "summary": "Index substrates, inhibitors and inducers by isoform and strength: the reference set for DDI validation."
+    },
+    {
+      "id": "src.spectral",
+      "label": "Spectral libraries",
+      "layer": "source",
+      "phase": 3,
+      "status": "external",
+      "repo": "MassBank / GNPS / MoNA",
+      "path": "",
+      "summary": "Reference MS/MS spectra for drugs and metabolites."
+    },
+    {
+      "id": "src.instruments",
+      "label": "Instrument files",
+      "layer": "source",
+      "phase": 3,
+      "status": "external",
+      "repo": "lab",
+      "path": "",
+      "summary": "UV-vis (Soret, CO-difference), LC-MS, HPLC raw files from assays."
+    },
+    {
+      "id": "src.monograph",
+      "label": "Monograph corpus",
+      "layer": "source",
+      "phase": 1,
+      "status": "exists",
+      "repo": "levinthal",
+      "path": "cytochrome/publications/",
+      "summary": "21 existing P450 papers with validation scripts; the stated claims the library starts from."
+    },
+    {
+      "id": "up.dcatbase",
+      "label": "DCAT-AP-PLUS",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "greifswald/conspirator",
+      "path": "dcat-ap-plus/src/dcat_ap_plus/schema/dcat_ap_plus.yaml",
+      "summary": "The base LinkML schema: Dataset, DataGeneratingActivity, EvaluatedEntity, AgenticEntity, Device, attributes with QUDT."
+    },
+    {
+      "id": "up.chemdcat",
+      "label": "Chem-DCAT-AP",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "greifswald/ultraviolet",
+      "path": "chem-dcat-ap/src/chem_dcat_ap/schema/",
+      "summary": "Chemistry extension: ChemicalEntity, ChemicalReaction, Catalyst (SIO:010344, slot RXNO:0000425)."
+    },
+    {
+      "id": "up.chromatography",
+      "label": "chromatography ext.",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "bioinformatics/borgia",
+      "path": "dcat-ap-plus-chromatography/",
+      "summary": "Most mature extension (CI, 15 test modules): identifiers, census, refinement, verdicts, linkage, comparability, corroboration. Source of the shared core."
+    },
+    {
+      "id": "up.proteomics",
+      "label": "proteomics ext.",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "bioinformatics/lavoisier",
+      "path": "dcat-ap-plus-proteomics/",
+      "summary": "Template layout: sequence mapping, licence-or-decline search, admission, named-graph emission, catalogue."
+    },
+    {
+      "id": "up.genomics",
+      "label": "genomics ext.",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "bioinformatics/gospel",
+      "path": "dcat-ap-plus-genomics/",
+      "summary": "ground.py computes the five semiotic verdicts and Q_g/Q_c/Q_d; ClinVar corpus already holds the CYP genes. clinvar.py:121 collapses drug response."
+    },
+    {
+      "id": "up.conspirator",
+      "label": "conspirator ART",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "greifswald/conspirator",
+      "path": "conspirator/src/conspirator/",
+      "summary": "Refined triples at load time, the gate letters (+, -, a, open), determine() closure; papers on SGV and schema admission."
+    },
+    {
+      "id": "up.okgg",
+      "label": "okgg",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "greifswald/conspirator",
+      "path": "conspirator/okgg/",
+      "summary": "Ontological knowledge graph generator: the model proposes distinctions, a lexical witness decides values."
+    },
+    {
+      "id": "up.hfq",
+      "label": "HFQ",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "systems/hegel",
+      "path": "ckg/validation-federated/hfq/ ; consequences/src/lib/hfq/",
+      "summary": "Federated plan language: check before contact, water-filled budget, six verdicts with blockers, blame chains, ladder step. Python holds V1-V16; JS is vendored by Buhera."
+    },
+    {
+      "id": "up.biocat",
+      "label": "HFQ biocat",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "systems/hegel",
+      "path": "ckg/validation-federated/hfq/biocat.py",
+      "summary": "Enzyme predicates and adapters (sequence_of, catalysed_reactions, producers_of) with the Doerr Q1-Q5 fixture."
+    },
+    {
+      "id": "up.sbs",
+      "label": "SBS",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "systems/hegel",
+      "path": "sbs/ ; consequences/src/lib/sbs/dsl/",
+      "summary": "Systems-biology circuits: conductance, flux, perturbation, cascade 1-prod(1-k). CYP3A4 kinetic stub only."
+    },
+    {
+      "id": "up.probepanel",
+      "label": "seven-state probe panel",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "systems/hegel",
+      "path": "ckg/validation/exp_04_panel.py",
+      "summary": "The seven P450 states with UV-vis, EPR, Raman and Mossbauer readouts and an exhaustive minimal-probe search."
+    },
+    {
+      "id": "up.ladderengine",
+      "label": "ladder engine",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "levinthal",
+      "path": "enzymes/web/src/lib/engine.js",
+      "summary": "Contact graphs, intensive power, compositions, Machine.runVerdict. Paper/code mismatch: subfloor vs starved, empty vs ParseError."
+    },
+    {
+      "id": "up.honjo",
+      "label": "honjo-masamune",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "bioinformatics/borgia",
+      "path": "honjo-masamune/honjo-py/",
+      "summary": "SMILES reader that tags every atom and bond stated or supplied; the .ms plan language. No d-block: iron is out of scope."
+    },
+    {
+      "id": "up.casmi",
+      "label": "CASMI + matchms",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "bioinformatics/lavoisier",
+      "path": "catalogue/casmi/identify.py ; lavoisier/core/ml/MSAnnotator.py",
+      "summary": "Formula and adduct by two agreeing determinations; ModifiedCosine for parent-metabolite matching. Element set lacks F, Br, I, Fe; isotope model silently empty."
+    },
+    {
+      "id": "up.labdatareader",
+      "label": "labdatareader",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "greifswald/ultraviolet",
+      "path": "labdatareader/labdatareader/methods/absorbance/jasco/",
+      "summary": "JASCO UV-vis spectrum and kinetics readers, plus plate readers."
+    },
+    {
+      "id": "up.raw2dcat",
+      "label": "raw2dcat",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "greifswald/raw2dcat-converter",
+      "path": "src/raw2dcat/",
+      "summary": "HPLC/GC raw files to Chem-DCAT-AP with stated / indicated / supplied statements. kg/, federation/ hold only __pycache__ on main."
+    },
+    {
+      "id": "up.levcore",
+      "label": "levinthal-core",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "crates/levinthal-core/",
+      "summary": "Partition states and trajectories. Defects recorded by Buhera: U-lev-2 residue masses ~18.01 Da heavy, U-lev-3 unseeded folding, U-lev-4 constant to_sentropy."
+    },
+    {
+      "id": "up.loraRecipe",
+      "label": "LoRA + TIES recipe",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "exists",
+      "repo": "greifswald/doerr-lab-model",
+      "path": "ties_merge.py ; eval.py ; merge.json",
+      "summary": "Qwen2.5 base, LoRA rank 16, TIES merge, held-out evaluation."
+    },
+    {
+      "id": "up.corpusBuilder",
+      "label": "corpus builder",
+      "layer": "upstream",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "greifswald/nfdi4cat-model",
+      "path": "build_corpus.py ; bundle/",
+      "summary": "Glossary and document to Q&A with masking; an AppHub training bundle."
+    },
+    {
+      "id": "core.identifiers",
+      "label": "identifiers",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/identifiers.py",
+      "summary": "SHA-256 canonical digests and Stage(content, conventions): a stored value is valid only for the state it was computed on."
+    },
+    {
+      "id": "core.census",
+      "label": "census",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/census.py",
+      "summary": "Which distinctions a LinkML schema draws that its emitted RDF cannot carry."
+    },
+    {
+      "id": "core.refinement",
+      "label": "refinement",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/refinement.py",
+      "summary": "Canonical nests over asserted triples: level words, exclusion letters, repetitions, cells, pair status."
+    },
+    {
+      "id": "core.verdicts",
+      "label": "verdict lattice",
+      "layer": "core",
+      "phase": 0,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/verdicts.py",
+      "summary": "One documented algebra: the 9 ordered step labels with 6 blockers from chromatography as canonical, HFQ's 6 step verdicts mapped into it, subfloor added for ladders; the 5 semiotic ground verdicts and the gate letters as orthogonal axes."
+    },
+    {
+      "id": "core.linkage",
+      "label": "linkage",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/linkage.py",
+      "summary": "Elimination before ranking: never return a link the data contradicts. Comparability undecided where either side is supplied."
+    },
+    {
+      "id": "core.provenance",
+      "label": "provenance",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/provenance.py",
+      "summary": "Basis tags (stated, supplied, derived) that compose as max; no laundering."
+    },
+    {
+      "id": "core.emission",
+      "label": "emission",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/emission.py",
+      "summary": "Named graph per basis, JSON-LD output, SHACL conformance, parse-back round-trip."
+    },
+    {
+      "id": "core.artefacts",
+      "label": "artefact generator",
+      "layer": "core",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_core/artefacts.py",
+      "summary": "LinkML to OWL, SHACL and JSON-LD context, with the repaired SHACL fixes from genomics."
+    },
+    {
+      "id": "schema.p450",
+      "label": "p450.yaml",
+      "layer": "schema",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/schema/p450.yaml",
+      "summary": "Isoform, Allele, Diplotype, Incubation, KineticMeasurement, Inhibition, Metabolite, CatalyticState, SpectralObservation, CatalystRole with its own IRI."
+    },
+    {
+      "id": "schema.refined",
+      "label": "refined.yaml",
+      "layer": "schema",
+      "phase": 2,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/schema/refined.yaml",
+      "summary": "Vocabulary for refined values carried as stage-annotated annotations, never as slots."
+    },
+    {
+      "id": "schema.artefacts",
+      "label": "OWL / SHACL / context",
+      "layer": "schema",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/artefacts/",
+      "summary": "Generated from the LinkML; committed so consumers need no toolchain."
+    },
+    {
+      "id": "schema.audit",
+      "label": "receiver audit",
+      "layer": "schema",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/docs/specification/",
+      "summary": "Census plus semiotic receiver audit: zero lost pairs; measured and computed observations keep distinct IRIs."
+    },
+    {
+      "id": "schema.witness",
+      "label": "witness classes",
+      "layer": "schema",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/schema/witness.yaml",
+      "summary": "The declared A_c, U_c, A_d, U_d, G_d classes the grounding queries need."
+    },
+    {
+      "id": "dom.fetch",
+      "label": "snapshot fetchers",
+      "layer": "domain",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/fetch/",
+      "summary": "One fetcher per source; writes a dated, digest-named snapshot. The only code that touches the network."
+    },
+    {
+      "id": "dom.isoforms",
+      "label": "isoforms & sequences",
+      "layer": "domain",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/isoforms.py",
+      "summary": "The 57 human CYPs, families and subfamilies, substrate recognition sites, the CYP2D6/CYP2D7 pair."
+    },
+    {
+      "id": "dom.structures",
+      "label": "structures",
+      "layer": "domain",
+      "phase": 2,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/structures.py",
+      "summary": "PDB and GLB structures, heme site, the glb-structural-input paper's pipeline."
+    },
+    {
+      "id": "dom.cycle",
+      "label": "catalytic cycle (ladder)",
+      "layer": "domain",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/cycle.py",
+      "summary": "Seven states as rungs; composite power; subfloor when a state is missing or uncoupled."
+    },
+    {
+      "id": "dom.kinetics",
+      "label": "kinetics & inhibition",
+      "layer": "domain",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/kinetics.py",
+      "summary": "Km, Vmax, Ki, IC50, kinact/KI with units and assay conditions; comparability under declared tolerances."
+    },
+    {
+      "id": "dom.chemistry",
+      "label": "substrate chemistry",
+      "layer": "domain",
+      "phase": 2,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/chemistry.py",
+      "summary": "Substrates and inhibitors with stated/supplied structure; candidate sites of metabolism. Never asserts substrate scope from recorded substrates."
+    },
+    {
+      "id": "dom.metabolites",
+      "label": "metabolite ID",
+      "layer": "domain",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/metabolites.py",
+      "summary": "Biotransformation mass rules (+15.995, -14.016, +176.032, GSH +305.068), licence only when two determinations agree, else decline with reason."
+    },
+    {
+      "id": "dom.chromatography",
+      "label": "LC corroboration",
+      "layer": "domain",
+      "phase": 3,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/separation.py",
+      "summary": "Retention corroborates an identity and never establishes it: parent and metabolite peaks as fields."
+    },
+    {
+      "id": "dom.abundance",
+      "label": "CYP abundance",
+      "layer": "domain",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/abundance.py",
+      "summary": "Surrogate peptides per isoform mapped by sequence, Skyline transitions, microsome normalisation."
+    },
+    {
+      "id": "dom.pgx",
+      "label": "pharmacogenomics",
+      "layer": "domain",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/pgx.py",
+      "summary": "Star alleles, diplotype activity score (summed, not averaged), phenotype; CYP2D6 copy number and hybrids."
+    },
+    {
+      "id": "dom.spectroscopy",
+      "label": "spectroscopy",
+      "layer": "domain",
+      "phase": 3,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/spectroscopy.py",
+      "summary": "UV-vis readers now; EPR, resonance Raman, Mossbauer readers new. States identified by the minimal probe set."
+    },
+    {
+      "id": "dom.ddi",
+      "label": "DDI & clearance",
+      "layer": "domain",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/ddi.py",
+      "summary": "Inhibition and induction as ladder and cascade steps over drug-metabolism pathways; validated against the FDA index tables."
+    },
+    {
+      "id": "rec.stated",
+      "label": "stated graph",
+      "layer": "records",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/results/",
+      "summary": "What a source or instrument file says, verbatim."
+    },
+    {
+      "id": "rec.supplied",
+      "label": "supplied graph",
+      "layer": "records",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/results/",
+      "summary": "What a convention, a lab or a reference database filled in."
+    },
+    {
+      "id": "rec.derived",
+      "label": "derived graph",
+      "layer": "records",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/results/",
+      "summary": "What a computation in this package concluded, including framework quantities such as aperture depth."
+    },
+    {
+      "id": "rec.refined",
+      "label": "refined graph",
+      "layer": "records",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/results/",
+      "summary": "Refined values of every asserted triple, stage-annotated (RDF-star)."
+    },
+    {
+      "id": "rec.admitted",
+      "label": "admitted graph",
+      "layer": "records",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/results/",
+      "summary": "Slots admitted under A1-A6 to split cells the schema could not."
+    },
+    {
+      "id": "rec.catalogue",
+      "label": "result files",
+      "layer": "records",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/results/catalogue/",
+      "summary": "One JSON-LD file per dataset with its manifest; conforms to the shapes and parses back to the same quads."
+    },
+    {
+      "id": "sem.refinement",
+      "label": "refined triples + gate",
+      "layer": "semantics",
+      "phase": 3,
+      "status": "exists",
+      "repo": "greifswald/conspirator",
+      "path": "conspirator/src/conspirator/gate.py",
+      "summary": "Empty answers labelled + (witnessed no), - (not recorded), a, open (a name the graph never uses)."
+    },
+    {
+      "id": "sem.admission",
+      "label": "schema admission",
+      "layer": "semantics",
+      "phase": 3,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/admission.py",
+      "summary": "Field scores, joins, linking, admitted slots and goals for P450 records."
+    },
+    {
+      "id": "sem.grounding",
+      "label": "grounding profile",
+      "layer": "semantics",
+      "phase": 3,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/ground.py",
+      "summary": "The five semiotic verdicts per record; a grounding profile reported beside every answer."
+    },
+    {
+      "id": "sem.ontology",
+      "label": "ontology (okgg)",
+      "layer": "semantics",
+      "phase": 3,
+      "status": "exists",
+      "repo": "greifswald/conspirator",
+      "path": "conspirator/okgg/",
+      "summary": "Facets that tell papers, sections and records apart; proposals for admission."
+    },
+    {
+      "id": "q.world",
+      "label": "HFQ p450 world",
+      "layer": "query",
+      "phase": 2,
+      "status": "new",
+      "repo": "systems/hegel",
+      "path": "ckg/validation-federated/hfq/p450.py",
+      "summary": "Adapters over the snapshots and the records; added upstream in hegel, then vendored into Buhera."
+    },
+    {
+      "id": "q.predicates",
+      "label": "pharmacology predicates",
+      "layer": "query",
+      "phase": 2,
+      "status": "new",
+      "repo": "systems/hegel",
+      "path": "ckg/validation-federated/hfq/p450.py",
+      "summary": "inhibits, induces, substrate_of, metabolite_of, allele_of, activity_score; numeric range filters with units."
+    },
+    {
+      "id": "q.maps",
+      "label": "isoform maps",
+      "layer": "query",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/src/dcat_ap_plus_p450/maps.py",
+      "summary": "UniProt, EC, KEGG, PDB, ChEMBL target translation maps; retention and amplification measured, not assumed."
+    },
+    {
+      "id": "q.ladders",
+      "label": "data-derived ladders",
+      "layer": "query",
+      "phase": 2,
+      "status": "new",
+      "repo": "systems/hegel",
+      "path": "ckg/validation-federated/hfq/execute.py",
+      "summary": "A rung's power taken from a retrieved value or from the ladder engine, instead of a literal."
+    },
+    {
+      "id": "q.plans",
+      "label": "plan library",
+      "layer": "query",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/plans/",
+      "summary": "One .hfq plan per claim in the papers, with expected verdicts as tests."
+    },
+    {
+      "id": "q.sparql",
+      "label": "SPARQL endpoint",
+      "layer": "query",
+      "phase": 3,
+      "status": "adapt",
+      "repo": "architecture/buhera",
+      "path": "nfdi4cat/src/transaminase_kg/api.py",
+      "summary": "SPARQL over the result files; the transaminase KG service with the enzyme swapped."
+    },
+    {
+      "id": "q.conformance",
+      "label": "HFQ conformance",
+      "layer": "query",
+      "phase": 0,
+      "status": "new",
+      "repo": "systems/hegel",
+      "path": "ckg/validation-federated/",
+      "summary": "Python and JS interpreters give identical verdicts on every plan; borgia's copy re-vendored or retired."
+    },
+    {
+      "id": "rt.registry",
+      "label": "Buhera registry",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "exists",
+      "repo": "architecture/buhera",
+      "path": "long-grass/src/lib/modules/registry.js",
+      "summary": "One registry dispatches about 40 modules; science modules vendored byte-exact with pinned commits and specs."
+    },
+    {
+      "id": "rt.ckg",
+      "label": "CKG runtime",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "architecture/buhera",
+      "path": "long-grass/src/lib/modules/ckg-module.js",
+      "summary": "Catalytic states as nodes, modules fold value-deltas onto them. Facts must carry their basis and verdict."
+    },
+    {
+      "id": "rt.p450module",
+      "label": "cytochrome module",
+      "layer": "runtime",
+      "phase": 2,
+      "status": "adapt",
+      "repo": "architecture/buhera",
+      "path": "long-grass/src/lib/modules/cytochrome-module.js",
+      "summary": "Today holds monograph constants; becomes queries over the records."
+    },
+    {
+      "id": "rt.hfqmodule",
+      "label": "hfq module",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "exists",
+      "repo": "architecture/buhera",
+      "path": "long-grass/vendor/hfq/",
+      "summary": "Vendored hegel JS interpreter; gains the p450 world when re-vendored."
+    },
+    {
+      "id": "rt.laddermodule",
+      "label": "ladder module",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "exists",
+      "repo": "architecture/buhera",
+      "path": "long-grass/vendor/ladder/",
+      "summary": "Vendored ladder engine; computes powers a plan's ladder step can use."
+    },
+    {
+      "id": "rt.dslwriter",
+      "label": "dsl-writer",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "exists",
+      "repo": "architecture/buhera",
+      "path": "long-grass/src/lib/modules/dsl-writer-module.js",
+      "summary": "Natural language to a DSL script, validated by the real compiler, repaired on failure, dispatched."
+    },
+    {
+      "id": "rt.protein",
+      "label": "/protein-modelling",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "adapt",
+      "repo": "architecture/buhera",
+      "path": "long-grass/src/pages/protein-modelling.js",
+      "summary": "The live report and IDE; its numbers will come from the records."
+    },
+    {
+      "id": "rt.web",
+      "label": "p450 front page",
+      "layer": "runtime",
+      "phase": 0,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/web/",
+      "summary": "This site: the component graph, the phases, a page per component."
+    },
+    {
+      "id": "llm.corpus",
+      "label": "training corpus",
+      "layer": "model",
+      "phase": 4,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/model/corpus/",
+      "summary": "Question to plan; plan to verdict to explanation, refusals included; paper sections to Q&A; record graphs to descriptions. Licences filtered."
+    },
+    {
+      "id": "llm.train",
+      "label": "LoRA training",
+      "layer": "model",
+      "phase": 4,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/model/train/",
+      "summary": "Qwen2.5 base, LoRA; wrapped as a lattice unit with a seed and size matrix."
+    },
+    {
+      "id": "llm.merge",
+      "label": "TIES merge",
+      "layer": "model",
+      "phase": 4,
+      "status": "exists",
+      "repo": "greifswald/doerr-lab-model",
+      "path": "ties_merge.py",
+      "summary": "Merges adapters trained on separate corpus slices."
+    },
+    {
+      "id": "llm.eval",
+      "label": "evaluation",
+      "layer": "model",
+      "phase": 4,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/model/eval/",
+      "summary": "Plans parse and pass check; verdicts match reference plans; refuses when it should; zero values not backed by a record; dsl-writer repair rate."
+    },
+    {
+      "id": "llm.serve",
+      "label": "serving",
+      "layer": "model",
+      "phase": 4,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/model/serve/",
+      "summary": "Served on AppHubAI or locally; called by dsl-writer for dslId hfq, later ladder and shapeshifter."
+    },
+    {
+      "id": "pap.ladder",
+      "label": "ladder rewrites (6)",
+      "layer": "papers",
+      "phase": 1,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "cytochrome/publications/",
+      "summary": "Expression algebra, multi-hop ET, address manifold, resting/bound states, Compound I, introduction: oscillator dynamics replaced by ladders."
+    },
+    {
+      "id": "pap.records",
+      "label": "records sections (15)",
+      "layer": "papers",
+      "phase": 2,
+      "status": "adapt",
+      "repo": "levinthal",
+      "path": "cytochrome/publications/",
+      "summary": "Every paper gains 'Records and queries': the triples it emits, the plans that answer it, the cells it cannot separate."
+    },
+    {
+      "id": "pap.n1",
+      "label": "N1 schema",
+      "layer": "papers",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "dcat-ap-plus-p450/docs/dcat-ap-plus-p450/dcat-ap-plus-450.tex",
+      "summary": "The P450 extension of DCAT-AP-PLUS, its census and receiver audit."
+    },
+    {
+      "id": "pap.n2",
+      "label": "N2 cycle as ladder",
+      "layer": "papers",
+      "phase": 1,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "Seven states as rungs; absorbs the closed-orbit paper."
+    },
+    {
+      "id": "pap.n3",
+      "label": "N3 federated querying",
+      "layer": "papers",
+      "phase": 2,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "Snapshots, predicates, isoform maps, and the position on substrate scope."
+    },
+    {
+      "id": "pap.n4",
+      "label": "N4 metabolite ID",
+      "layer": "papers",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "Biotransformation rules with licence or decline, corroborated by retention."
+    },
+    {
+      "id": "pap.n5",
+      "label": "N5 PGx admission",
+      "layer": "papers",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "Star alleles, activity scores, which genotype fields to admit."
+    },
+    {
+      "id": "pap.n6",
+      "label": "N6 DDI propagation",
+      "layer": "papers",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "Inhibition and induction as ladder and cascade propagation."
+    },
+    {
+      "id": "pap.n7",
+      "label": "N7 spectroscopic discrimination",
+      "layer": "papers",
+      "phase": 3,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "The minimal probe set that separates the seven states."
+    },
+    {
+      "id": "pap.n8",
+      "label": "N8 domain model",
+      "layer": "papers",
+      "phase": 4,
+      "status": "new",
+      "repo": "levinthal",
+      "path": "",
+      "summary": "The model as a compiled probe, and its evaluation."
+    }
+  ],
+  "edges": [
+    {
+      "source": "compute.lattice",
+      "target": "compute.gitea",
+      "kind": "feeds",
+      "label": "pushes units"
+    },
+    {
+      "source": "compute.gitea",
+      "target": "compute.apphub",
+      "kind": "feeds",
+      "label": "git pull"
+    },
+    {
+      "source": "compute.apphub",
+      "target": "compute.gitea",
+      "kind": "feeds",
+      "label": "lattice-results branch"
+    },
+    {
+      "source": "compute.tracker",
+      "target": "compute.gitea",
+      "kind": "feeds",
+      "label": "filtered projection"
+    },
+    {
+      "source": "compute.apphubai",
+      "target": "compute.apphub",
+      "kind": "feeds",
+      "label": "model endpoint"
+    },
+    {
+      "source": "compute.experiments",
+      "target": "compute.lattice",
+      "kind": "runs-on",
+      "label": "plan · wrap · results"
+    },
+    {
+      "source": "compute.gitea",
+      "target": "compute.experiments",
+      "kind": "feeds",
+      "label": "lattice-results branch"
+    },
+    {
+      "source": "compute.experiments",
+      "target": "compute.apphub",
+      "kind": "runs-on",
+      "label": "units"
+    },
+    {
+      "source": "src.uniprot",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.pdb",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.rhea",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.kegg",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.chembl",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.pharmvar",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.cpic",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.clinvar",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.fda",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.spectral",
+      "target": "dom.fetch",
+      "kind": "snapshots"
+    },
+    {
+      "source": "src.instruments",
+      "target": "dom.spectroscopy",
+      "kind": "feeds"
+    },
+    {
+      "source": "src.instruments",
+      "target": "dom.metabolites",
+      "kind": "feeds"
+    },
+    {
+      "source": "src.instruments",
+      "target": "dom.chromatography",
+      "kind": "feeds"
+    },
+    {
+      "source": "src.monograph",
+      "target": "pap.ladder",
+      "kind": "feeds"
+    },
+    {
+      "source": "src.monograph",
+      "target": "pap.records",
+      "kind": "feeds"
+    },
+    {
+      "source": "src.monograph",
+      "target": "rec.stated",
+      "kind": "emits",
+      "label": "claims as statements"
+    },
+    {
+      "source": "core.identifiers",
+      "target": "dom.fetch",
+      "kind": "reuses",
+      "label": "snapshot digests"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "core.identifiers",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "core.census",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "core.refinement",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "core.linkage",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "core.provenance",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "core.verdicts",
+      "kind": "reuses",
+      "label": "9 step labels, 6 blockers"
+    },
+    {
+      "source": "up.genomics",
+      "target": "core.verdicts",
+      "kind": "reuses",
+      "label": "5 semiotic verdicts"
+    },
+    {
+      "source": "up.hfq",
+      "target": "core.verdicts",
+      "kind": "reuses",
+      "label": "6 step verdicts"
+    },
+    {
+      "source": "up.proteomics",
+      "target": "core.emission",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.proteomics",
+      "target": "core.artefacts",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.genomics",
+      "target": "core.artefacts",
+      "kind": "reuses",
+      "label": "repaired SHACL"
+    },
+    {
+      "source": "up.dcatbase",
+      "target": "schema.p450",
+      "kind": "reuses",
+      "label": "imports"
+    },
+    {
+      "source": "up.chemdcat",
+      "target": "schema.p450",
+      "kind": "reuses",
+      "label": "imports"
+    },
+    {
+      "source": "up.proteomics",
+      "target": "schema.refined",
+      "kind": "reuses"
+    },
+    {
+      "source": "core.artefacts",
+      "target": "schema.artefacts",
+      "kind": "feeds",
+      "label": "generates"
+    },
+    {
+      "source": "schema.p450",
+      "target": "schema.artefacts",
+      "kind": "feeds"
+    },
+    {
+      "source": "schema.refined",
+      "target": "schema.artefacts",
+      "kind": "feeds"
+    },
+    {
+      "source": "core.census",
+      "target": "schema.audit",
+      "kind": "feeds"
+    },
+    {
+      "source": "schema.p450",
+      "target": "schema.audit",
+      "kind": "feeds"
+    },
+    {
+      "source": "schema.witness",
+      "target": "sem.grounding",
+      "kind": "feeds"
+    },
+    {
+      "source": "schema.p450",
+      "target": "schema.witness",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.isoforms",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.structures",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.kinetics",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.chemistry",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.pgx",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.ddi",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "dom.metabolites",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "q.world",
+      "kind": "feeds",
+      "label": "snapshots only"
+    },
+    {
+      "source": "up.ladderengine",
+      "target": "dom.cycle",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.probepanel",
+      "target": "dom.spectroscopy",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.probepanel",
+      "target": "dom.cycle",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.labdatareader",
+      "target": "dom.spectroscopy",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.honjo",
+      "target": "dom.chemistry",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.casmi",
+      "target": "dom.metabolites",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.chromatography",
+      "target": "dom.chromatography",
+      "kind": "reuses",
+      "label": "corroboration"
+    },
+    {
+      "source": "up.raw2dcat",
+      "target": "dom.chromatography",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.proteomics",
+      "target": "dom.abundance",
+      "kind": "reuses",
+      "label": "sequence mapping"
+    },
+    {
+      "source": "up.levcore",
+      "target": "dom.abundance",
+      "kind": "reuses",
+      "label": "after U-lev-2 fix"
+    },
+    {
+      "source": "up.genomics",
+      "target": "dom.pgx",
+      "kind": "reuses",
+      "label": "ClinVar corpus"
+    },
+    {
+      "source": "up.sbs",
+      "target": "dom.ddi",
+      "kind": "reuses"
+    },
+    {
+      "source": "dom.isoforms",
+      "target": "dom.abundance",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.isoforms",
+      "target": "dom.pgx",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.structures",
+      "target": "dom.cycle",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.chemistry",
+      "target": "dom.metabolites",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.chromatography",
+      "target": "dom.metabolites",
+      "kind": "feeds",
+      "label": "corroborates"
+    },
+    {
+      "source": "dom.kinetics",
+      "target": "dom.ddi",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.pgx",
+      "target": "dom.ddi",
+      "kind": "feeds"
+    },
+    {
+      "source": "dom.cycle",
+      "target": "dom.spectroscopy",
+      "kind": "feeds",
+      "label": "states to identify"
+    },
+    {
+      "source": "core.linkage",
+      "target": "dom.kinetics",
+      "kind": "reuses"
+    },
+    {
+      "source": "core.provenance",
+      "target": "dom.chemistry",
+      "kind": "reuses"
+    },
+    {
+      "source": "dom.isoforms",
+      "target": "rec.supplied",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.structures",
+      "target": "rec.supplied",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.kinetics",
+      "target": "rec.supplied",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.chemistry",
+      "target": "rec.supplied",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.pgx",
+      "target": "rec.supplied",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.spectroscopy",
+      "target": "rec.stated",
+      "kind": "emits",
+      "label": "instrument files"
+    },
+    {
+      "source": "dom.metabolites",
+      "target": "rec.stated",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.metabolites",
+      "target": "rec.derived",
+      "kind": "emits",
+      "label": "licensed IDs"
+    },
+    {
+      "source": "dom.chromatography",
+      "target": "rec.stated",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.abundance",
+      "target": "rec.derived",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.cycle",
+      "target": "rec.derived",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.ddi",
+      "target": "rec.derived",
+      "kind": "emits"
+    },
+    {
+      "source": "dom.pgx",
+      "target": "rec.derived",
+      "kind": "emits",
+      "label": "phenotypes"
+    },
+    {
+      "source": "core.emission",
+      "target": "rec.catalogue",
+      "kind": "feeds"
+    },
+    {
+      "source": "rec.stated",
+      "target": "rec.catalogue",
+      "kind": "feeds"
+    },
+    {
+      "source": "rec.supplied",
+      "target": "rec.catalogue",
+      "kind": "feeds"
+    },
+    {
+      "source": "rec.derived",
+      "target": "rec.catalogue",
+      "kind": "feeds"
+    },
+    {
+      "source": "rec.refined",
+      "target": "rec.catalogue",
+      "kind": "feeds"
+    },
+    {
+      "source": "rec.admitted",
+      "target": "rec.catalogue",
+      "kind": "feeds"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "schema.artefacts",
+      "kind": "conforms",
+      "label": "SHACL"
+    },
+    {
+      "source": "up.conspirator",
+      "target": "sem.refinement",
+      "kind": "reuses"
+    },
+    {
+      "source": "core.refinement",
+      "target": "sem.refinement",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.proteomics",
+      "target": "sem.admission",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.genomics",
+      "target": "sem.grounding",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.okgg",
+      "target": "sem.ontology",
+      "kind": "reuses"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "sem.refinement",
+      "kind": "analyses"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "sem.admission",
+      "kind": "analyses"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "sem.grounding",
+      "kind": "analyses"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "sem.ontology",
+      "kind": "analyses"
+    },
+    {
+      "source": "sem.refinement",
+      "target": "rec.refined",
+      "kind": "emits"
+    },
+    {
+      "source": "sem.admission",
+      "target": "rec.admitted",
+      "kind": "emits"
+    },
+    {
+      "source": "sem.ontology",
+      "target": "sem.admission",
+      "kind": "feeds",
+      "label": "proposed slots"
+    },
+    {
+      "source": "up.hfq",
+      "target": "q.world",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.biocat",
+      "target": "q.world",
+      "kind": "reuses"
+    },
+    {
+      "source": "up.biocat",
+      "target": "q.predicates",
+      "kind": "reuses"
+    },
+    {
+      "source": "q.predicates",
+      "target": "q.world",
+      "kind": "feeds"
+    },
+    {
+      "source": "q.maps",
+      "target": "q.world",
+      "kind": "feeds"
+    },
+    {
+      "source": "q.ladders",
+      "target": "q.world",
+      "kind": "feeds"
+    },
+    {
+      "source": "up.ladderengine",
+      "target": "q.ladders",
+      "kind": "reuses",
+      "label": "computed powers"
+    },
+    {
+      "source": "q.world",
+      "target": "rec.catalogue",
+      "kind": "queries"
+    },
+    {
+      "source": "q.plans",
+      "target": "q.world",
+      "kind": "queries"
+    },
+    {
+      "source": "q.sparql",
+      "target": "rec.catalogue",
+      "kind": "queries"
+    },
+    {
+      "source": "sem.refinement",
+      "target": "q.world",
+      "kind": "feeds",
+      "label": "gate letters"
+    },
+    {
+      "source": "sem.grounding",
+      "target": "q.world",
+      "kind": "feeds",
+      "label": "grounding profile"
+    },
+    {
+      "source": "core.verdicts",
+      "target": "q.world",
+      "kind": "feeds"
+    },
+    {
+      "source": "up.hfq",
+      "target": "q.conformance",
+      "kind": "feeds"
+    },
+    {
+      "source": "q.conformance",
+      "target": "rt.hfqmodule",
+      "kind": "feeds",
+      "label": "re-vendor"
+    },
+    {
+      "source": "up.hfq",
+      "target": "rt.hfqmodule",
+      "kind": "reuses",
+      "label": "byte-exact"
+    },
+    {
+      "source": "up.ladderengine",
+      "target": "rt.laddermodule",
+      "kind": "reuses",
+      "label": "byte-exact"
+    },
+    {
+      "source": "q.world",
+      "target": "rt.hfqmodule",
+      "kind": "feeds",
+      "label": "p450 world"
+    },
+    {
+      "source": "rt.registry",
+      "target": "rt.hfqmodule",
+      "kind": "dispatches"
+    },
+    {
+      "source": "rt.registry",
+      "target": "rt.laddermodule",
+      "kind": "dispatches"
+    },
+    {
+      "source": "rt.registry",
+      "target": "rt.ckg",
+      "kind": "dispatches"
+    },
+    {
+      "source": "rt.registry",
+      "target": "rt.dslwriter",
+      "kind": "dispatches"
+    },
+    {
+      "source": "rt.registry",
+      "target": "rt.p450module",
+      "kind": "dispatches"
+    },
+    {
+      "source": "rt.ckg",
+      "target": "rt.p450module",
+      "kind": "dispatches",
+      "label": "fold facts"
+    },
+    {
+      "source": "rt.p450module",
+      "target": "rec.catalogue",
+      "kind": "queries"
+    },
+    {
+      "source": "rt.laddermodule",
+      "target": "rt.hfqmodule",
+      "kind": "feeds",
+      "label": "rung powers"
+    },
+    {
+      "source": "rt.dslwriter",
+      "target": "rt.hfqmodule",
+      "kind": "dispatches",
+      "label": "validated plan"
+    },
+    {
+      "source": "rt.protein",
+      "target": "rt.ckg",
+      "kind": "dispatches"
+    },
+    {
+      "source": "rt.web",
+      "target": "rt.protein",
+      "kind": "feeds",
+      "label": "links"
+    },
+    {
+      "source": "q.plans",
+      "target": "llm.corpus",
+      "kind": "trains",
+      "label": "question to plan"
+    },
+    {
+      "source": "q.world",
+      "target": "llm.corpus",
+      "kind": "trains",
+      "label": "verdicts and blame"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "llm.corpus",
+      "kind": "trains",
+      "label": "graph descriptions"
+    },
+    {
+      "source": "pap.records",
+      "target": "llm.corpus",
+      "kind": "trains",
+      "label": "sections to Q&A"
+    },
+    {
+      "source": "up.corpusBuilder",
+      "target": "llm.corpus",
+      "kind": "reuses"
+    },
+    {
+      "source": "llm.corpus",
+      "target": "llm.train",
+      "kind": "feeds"
+    },
+    {
+      "source": "up.loraRecipe",
+      "target": "llm.train",
+      "kind": "reuses"
+    },
+    {
+      "source": "llm.train",
+      "target": "llm.merge",
+      "kind": "feeds"
+    },
+    {
+      "source": "llm.merge",
+      "target": "llm.eval",
+      "kind": "feeds"
+    },
+    {
+      "source": "rt.hfqmodule",
+      "target": "llm.eval",
+      "kind": "feeds",
+      "label": "runs generated plans"
+    },
+    {
+      "source": "llm.eval",
+      "target": "llm.serve",
+      "kind": "feeds",
+      "label": "gate"
+    },
+    {
+      "source": "llm.serve",
+      "target": "rt.dslwriter",
+      "kind": "deploys"
+    },
+    {
+      "source": "llm.train",
+      "target": "compute.lattice",
+      "kind": "runs-on"
+    },
+    {
+      "source": "llm.eval",
+      "target": "compute.lattice",
+      "kind": "runs-on"
+    },
+    {
+      "source": "llm.serve",
+      "target": "compute.apphubai",
+      "kind": "runs-on"
+    },
+    {
+      "source": "dom.fetch",
+      "target": "compute.lattice",
+      "kind": "runs-on"
+    },
+    {
+      "source": "rec.catalogue",
+      "target": "compute.lattice",
+      "kind": "runs-on",
+      "label": "catalogue build"
+    },
+    {
+      "source": "sem.admission",
+      "target": "compute.lattice",
+      "kind": "runs-on"
+    },
+    {
+      "source": "sem.ontology",
+      "target": "compute.lattice",
+      "kind": "runs-on",
+      "label": "ollama -> AppHubAI"
+    },
+    {
+      "source": "pap.records",
+      "target": "compute.lattice",
+      "kind": "runs-on",
+      "label": "validation scripts"
+    },
+    {
+      "source": "pap.ladder",
+      "target": "dom.cycle",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n2",
+      "target": "dom.cycle",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n2",
+      "target": "q.ladders",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n1",
+      "target": "schema.p450",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n1",
+      "target": "schema.audit",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n3",
+      "target": "q.world",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n3",
+      "target": "q.maps",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n4",
+      "target": "dom.metabolites",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n5",
+      "target": "dom.pgx",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n5",
+      "target": "sem.admission",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n6",
+      "target": "dom.ddi",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n7",
+      "target": "dom.spectroscopy",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.n8",
+      "target": "llm.eval",
+      "kind": "documents"
+    },
+    {
+      "source": "pap.records",
+      "target": "q.plans",
+      "kind": "documents",
+      "label": "one plan per claim"
+    },
+    {
+      "source": "pap.records",
+      "target": "rec.stated",
+      "kind": "emits"
+    },
+    {
+      "source": "pap.ladder",
+      "target": "pap.records",
+      "kind": "feeds"
+    }
+  ]
+}

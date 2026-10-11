@@ -1,0 +1,44 @@
+# An experiment: planned here, run on AppHub through lattice, judged here.
+# `dcat-ap-plus-p450 experiment new e0NN-name --repo KEY` copies this file.
+
+[experiment]
+id = "e000-template"            # must equal the directory name: e + 3 digits + short name
+title = ""
+# What the run is meant to decide. A run that cannot change your mind is not an experiment.
+question = ""
+# Component ids from docs/specifications/components.json that this experiment exercises.
+components = []
+
+[target]
+# The repository the unit is committed in and AppHub clones (a key in repos.toml).
+# Only committed files reach AppHub; anything else the command must fetch.
+repo = "levinthal"
+# Exactly one of: a lattice task (`lattice tasks` lists them) or a command.
+# The command runs in the target repository's root, under `bash -c`.
+# Use $LATTICE_OUT for files to send back, and $LATTICE_<KEY> for matrix values.
+task = ""
+command = ""
+# unit = "p450-e000-template"   # default: p450-<id>
+
+[run]
+# matrix = { seed = "1..3", model = ["a", "b"] }   # one shard per combination
+# each = "cytochrome/publications/**/*.tex"         # one shard per tracked file ({file})
+# outputs = ["results/**"]                          # repository paths to send back
+# env = { NAME = "value" }
+# secrets = ["APPHUBAI_API_KEY"]                    # read from ~/.lattice/secrets.env on AppHub
+# gpu = "none"                                      # none | recommended | required (overrides lattice's verdict)
+# parallel = 0                                      # 0: decided on AppHub
+# timeout_secs = 0                                  # 0: no limit
+
+# Other repositories the command needs, cloned beside the target at a pinned commit.
+# `ref` resolves on this machine when you plan or wrap; the commit must be pushed.
+# [[requires]]
+# repo = "conspirator"
+# ref = "HEAD"
+# dir = "../conspirator"
+
+# How the run is judged by `collect`. Paths are relative to the collected files:
+# shards/<shard>/<file> for what a shard wrote to $LATTICE_OUT, outputs/<path> for
+# --output files, shards/<shard>/log for logs. `*` matches within the path.
+[[expect]]
+kind = "shards"                  # every shard finished `done`

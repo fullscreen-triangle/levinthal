@@ -1,0 +1,29 @@
+$ lattice -C 'C:\Users\kunda\Documents\greifswald\nfdi4cat-model' plan --name p450-e000-route-smoke --gpu none --timeout 300 -- bash -c 'python3 - > "$LATTICE_OUT/probe.json" <<'"'"'PY'"'"'
+import json, os, platform, shutil, subprocess
+def run(*a):
+    try:
+        return subprocess.run(a, capture_output=True, text=True, timeout=20).stdout.strip()
+    except Exception as e:
+        return f"unavailable: {e}"
+mem = ""
+try:
+    mem = next(l for l in open("/proc/meminfo") if l.startswith("MemTotal")).split(":")[1].strip()
+except Exception:
+    pass
+print(json.dumps({
+    "python": platform.python_version(),
+    "platform": platform.platform(),
+    "cpus": len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else os.cpu_count(),
+    "memory": mem,
+    "gpus": run("nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader") if shutil.which("nvidia-smi") else "none",
+    "tools": {t: bool(shutil.which(t)) for t in ["git", "uv", "pixi", "cargo", "node", "pdflatex", "flock"]},
+    "shard": os.environ.get("LATTICE_SHARD"),
+}, indent=2))
+PY
+'
+# spec sha256 09fc4b61c65ff0a99d3b9e2b2bd430c8cdfa49efbdc51b435dc03b8e7a5998f3
+# exit 1
+
+
+[stderr]
+lattice: error: the command uses {e} but no --matrix gives a value for it

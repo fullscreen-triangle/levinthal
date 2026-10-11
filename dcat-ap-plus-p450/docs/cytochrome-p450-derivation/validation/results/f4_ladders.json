@@ -1,0 +1,16 @@
+{
+  "experiment": "f4_ladders",
+  "generated": "2026-10-11T14:55:50",
+  "rungs": 500,
+  "final_gap": {
+    "constant, $p=0.2$": 3.507466211044694e-49,
+    "random, $p\\in[0.05,0.5]$": 1.2168564638336279e-71,
+    "harmonic, $p_i=0.5/i$": 0.025225018178360835,
+    "summable, $p_i=0.5/i^2$": 0.3585457947650771
+  },
+  "summable_ladder_residual": 0.3585457947650771,
+  "summable_ladder_residual_closed_form": "prod(1-0.5/i^2) -> sin(pi/sqrt2)/(pi/sqrt2)",
+  "summable_closed_form_value": 0.358187786013244,
+  "exact_rational_ladders_closed": 0,
+  "exact_rational_ladders_tested": 200
+}

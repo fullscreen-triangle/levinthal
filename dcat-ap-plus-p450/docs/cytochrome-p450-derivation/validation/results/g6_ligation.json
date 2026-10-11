@@ -1,0 +1,842 @@
+{
+  "experiment": "g6_ligation",
+  "generated": "2026-10-11T14:57:13",
+  "prosite_pattern": "[FW]-[SGNH]-x-[GD]-{F}-[RKHPT]-{P}-C-[LIVMFAP]-[GAD]",
+  "regex": "[FW][SGNH].[GD][^F][RKHPT][^P]C[LIVMFAP][GAD]",
+  "sites": [
+    {
+      "pdb": "2CPP",
+      "label": "CYP101A1, camphor-bound",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 417,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 357,
+      "proximal_distance": 2.197560465607261,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0470561767965583,
+      "fe_out_of_plane": 0.43307640330954966
+    },
+    {
+      "pdb": "1PHC",
+      "label": "CYP101A1, substrate-free",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 417,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 357,
+      "proximal_distance": 2.2544003637331156,
+      "distal_water_distance": 2.3526553083696715,
+      "fe_pyrrole_n_mean": 2.0244063854364787,
+      "fe_out_of_plane": 0.3041239398538917
+    },
+    {
+      "pdb": "1TQN",
+      "label": "CYP3A4",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 508,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 442,
+      "proximal_distance": 2.3547749361669372,
+      "distal_water_distance": 2.0667677663443476,
+      "fe_pyrrole_n_mean": 2.0642472718555744,
+      "fe_out_of_plane": 0.11856745292871139
+    },
+    {
+      "pdb": "1OG2",
+      "label": "CYP2C9",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 501,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 435,
+      "proximal_distance": 2.294016128975565,
+      "distal_water_distance": 2.8987745686755315,
+      "fe_pyrrole_n_mean": 2.0619635852488787,
+      "fe_out_of_plane": 0.020249922339087924
+    },
+    {
+      "pdb": "1OG2",
+      "label": "CYP2C9",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 501,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 435,
+      "proximal_distance": 2.522923304422867,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.059936203327722,
+      "fe_out_of_plane": 0.03685498651717535
+    },
+    {
+      "pdb": "2F9Q",
+      "label": "CYP2D6",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 443,
+      "proximal_distance": 2.431261812310636,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0458767943648186,
+      "fe_out_of_plane": 0.002363272574125984
+    },
+    {
+      "pdb": "2F9Q",
+      "label": "CYP2D6",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 443,
+      "proximal_distance": 2.435012936310606,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0457394571362553,
+      "fe_out_of_plane": 0.12803610350427608
+    },
+    {
+      "pdb": "2F9Q",
+      "label": "CYP2D6",
+      "p450": true,
+      "chain": "C",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 443,
+      "proximal_distance": 2.4455420667001424,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0217843517980922,
+      "fe_out_of_plane": 0.08690682375743937
+    },
+    {
+      "pdb": "2F9Q",
+      "label": "CYP2D6",
+      "p450": true,
+      "chain": "D",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 443,
+      "proximal_distance": 2.255106649362728,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0260036310929865,
+      "fe_out_of_plane": 0.11143954261559452
+    },
+    {
+      "pdb": "2HI4",
+      "label": "CYP1A2",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 900,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 458,
+      "proximal_distance": 2.3475930226510715,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0953902066663583,
+      "fe_out_of_plane": 0.31017686009317275
+    },
+    {
+      "pdb": "3E6I",
+      "label": "CYP2E1",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 500,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 437,
+      "proximal_distance": 2.281312999130106,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.1072867570694207,
+      "fe_out_of_plane": 0.10195148807300111
+    },
+    {
+      "pdb": "3E6I",
+      "label": "CYP2E1",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 500,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 437,
+      "proximal_distance": 2.3866849394086316,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0878003934228895,
+      "fe_out_of_plane": 0.12201570776184553
+    },
+    {
+      "pdb": "1BU7",
+      "label": "CYP102A1 heme domain",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 999,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 400,
+      "proximal_distance": 2.3808716891088384,
+      "distal_water_distance": 2.574391384385835,
+      "fe_pyrrole_n_mean": 1.9781099800411854,
+      "fe_out_of_plane": 0.07018810414688506
+    },
+    {
+      "pdb": "1BU7",
+      "label": "CYP102A1 heme domain",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 1000,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 400,
+      "proximal_distance": 2.2692699266504173,
+      "distal_water_distance": 2.68786978851283,
+      "fe_pyrrole_n_mean": 1.9778919258157361,
+      "fe_out_of_plane": 0.06369197581672094
+    },
+    {
+      "pdb": "3LD6",
+      "label": "CYP51A1",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 601,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 449,
+      "proximal_distance": 2.350561209583786,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.045870075932571,
+      "fe_out_of_plane": 0.026073186861470365
+    },
+    {
+      "pdb": "3LD6",
+      "label": "CYP51A1",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 601,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 449,
+      "proximal_distance": 2.397065289056602,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0606303313720487,
+      "fe_out_of_plane": 0.03276132255533647
+    },
+    {
+      "pdb": "3EQM",
+      "label": "CYP19A1",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 437,
+      "proximal_distance": 2.398758220413221,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0393312942254447,
+      "fe_out_of_plane": 0.19774468956399127
+    },
+    {
+      "pdb": "3RUK",
+      "label": "CYP17A1",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 442,
+      "proximal_distance": 1.8968473844777292,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0642054531668133,
+      "fe_out_of_plane": 0.03418329669647678
+    },
+    {
+      "pdb": "3RUK",
+      "label": "CYP17A1",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 442,
+      "proximal_distance": 2.128344427013635,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.1104248934940637,
+      "fe_out_of_plane": 0.01107510646159145
+    },
+    {
+      "pdb": "3RUK",
+      "label": "CYP17A1",
+      "p450": true,
+      "chain": "C",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 442,
+      "proximal_distance": 2.012799791335443,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0530609542900313,
+      "fe_out_of_plane": 0.058410424595564614
+    },
+    {
+      "pdb": "3RUK",
+      "label": "CYP17A1",
+      "p450": true,
+      "chain": "D",
+      "heme_resseq": 600,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 442,
+      "proximal_distance": 2.401628405894633,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0581728291247634,
+      "fe_out_of_plane": 0.0299348377591734
+    },
+    {
+      "pdb": "3N9Y",
+      "label": "CYP11A1",
+      "p450": true,
+      "chain": "A",
+      "heme_resseq": 601,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 423,
+      "proximal_distance": 2.499561761589418,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0543053028684923,
+      "fe_out_of_plane": 0.08461710836215691
+    },
+    {
+      "pdb": "3N9Y",
+      "label": "CYP11A1",
+      "p450": true,
+      "chain": "B",
+      "heme_resseq": 601,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 423,
+      "proximal_distance": 2.4670172273415525,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0585570550362555,
+      "fe_out_of_plane": 0.08246791002925179
+    },
+    {
+      "pdb": "1A6M",
+      "label": "myoglobin",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 154,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 93,
+      "proximal_distance": 2.063512781642024,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0059810797687865,
+      "fe_out_of_plane": 0.023471247635451362
+    },
+    {
+      "pdb": "2HHB",
+      "label": "hemoglobin",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 142,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 87,
+      "proximal_distance": 2.1456143642323044,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.099010533290214,
+      "fe_out_of_plane": 0.4481639026450455
+    },
+    {
+      "pdb": "2HHB",
+      "label": "hemoglobin",
+      "p450": false,
+      "chain": "B",
+      "heme_resseq": 148,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 92,
+      "proximal_distance": 2.1471751209437957,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.026231522373207,
+      "fe_out_of_plane": 0.32767301521108544
+    },
+    {
+      "pdb": "2HHB",
+      "label": "hemoglobin",
+      "p450": false,
+      "chain": "C",
+      "heme_resseq": 142,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 87,
+      "proximal_distance": 2.170114513107546,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.056904123521327,
+      "fe_out_of_plane": 0.34391380301254926
+    },
+    {
+      "pdb": "2HHB",
+      "label": "hemoglobin",
+      "p450": false,
+      "chain": "D",
+      "heme_resseq": 148,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 92,
+      "proximal_distance": 2.0319657969562384,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.075804115351777,
+      "fe_out_of_plane": 0.38366337831351266
+    },
+    {
+      "pdb": "2CYP",
+      "label": "cytochrome c peroxidase",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 295,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 175,
+      "proximal_distance": 1.9521347289569877,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.999798706771212,
+      "fe_out_of_plane": 0.15780576510471075
+    },
+    {
+      "pdb": "1ATJ",
+      "label": "horseradish peroxidase",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 350,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 170,
+      "proximal_distance": 2.1923952654574004,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.9839587024401792,
+      "fe_out_of_plane": 0.13995283266702374
+    },
+    {
+      "pdb": "1ATJ",
+      "label": "horseradish peroxidase",
+      "p450": false,
+      "chain": "B",
+      "heme_resseq": 350,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 170,
+      "proximal_distance": 2.1920467604501455,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.9840926878078289,
+      "fe_out_of_plane": 0.14045137496191432
+    },
+    {
+      "pdb": "1ATJ",
+      "label": "horseradish peroxidase",
+      "p450": false,
+      "chain": "C",
+      "heme_resseq": 350,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 170,
+      "proximal_distance": 2.191973768091215,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.98393145373139,
+      "fe_out_of_plane": 0.13995786556106066
+    },
+    {
+      "pdb": "1ATJ",
+      "label": "horseradish peroxidase",
+      "p450": false,
+      "chain": "D",
+      "heme_resseq": 350,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 170,
+      "proximal_distance": 2.1926769027834454,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.984069632907643,
+      "fe_out_of_plane": 0.1402086459497441
+    },
+    {
+      "pdb": "1ATJ",
+      "label": "horseradish peroxidase",
+      "p450": false,
+      "chain": "E",
+      "heme_resseq": 350,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 170,
+      "proximal_distance": 2.19187339962873,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.9840100946581818,
+      "fe_out_of_plane": 0.14008366408866416
+    },
+    {
+      "pdb": "1ATJ",
+      "label": "horseradish peroxidase",
+      "p450": false,
+      "chain": "F",
+      "heme_resseq": 350,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 170,
+      "proximal_distance": 2.192642925786142,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.9840803723146658,
+      "fe_out_of_plane": 0.1394743005699574
+    },
+    {
+      "pdb": "7CAT",
+      "label": "catalase",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 507,
+      "proximal_resname": "TYR",
+      "proximal_atom": "OH",
+      "proximal_resseq": 357,
+      "proximal_distance": 1.836413352162303,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0076168905586598,
+      "fe_out_of_plane": 0.09669296943208935
+    },
+    {
+      "pdb": "7CAT",
+      "label": "catalase",
+      "p450": false,
+      "chain": "B",
+      "heme_resseq": 507,
+      "proximal_resname": "TYR",
+      "proximal_atom": "OH",
+      "proximal_resseq": 357,
+      "proximal_distance": 1.8359836600580175,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.007746204313656,
+      "fe_out_of_plane": 0.09691727387579051
+    },
+    {
+      "pdb": "1CPO",
+      "label": "chloroperoxidase",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 396,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 29,
+      "proximal_distance": 2.351612212929676,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.046635764488427,
+      "fe_out_of_plane": 0.1426677293081362
+    },
+    {
+      "pdb": "1NOD",
+      "label": "nitric oxide synthase oxygenase",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 901,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 194,
+      "proximal_distance": 2.3020456120589783,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.026790127889311,
+      "fe_out_of_plane": 0.54875278723499
+    },
+    {
+      "pdb": "1NOD",
+      "label": "nitric oxide synthase oxygenase",
+      "p450": false,
+      "chain": "B",
+      "heme_resseq": 901,
+      "proximal_resname": "CYS",
+      "proximal_atom": "SG",
+      "proximal_resseq": 194,
+      "proximal_distance": 2.340352751189442,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 2.0022076615471645,
+      "fe_out_of_plane": 0.3983646387065346
+    },
+    {
+      "pdb": "1HRC",
+      "label": "cytochrome c",
+      "p450": false,
+      "chain": "A",
+      "heme_resseq": 105,
+      "proximal_resname": "HIS",
+      "proximal_atom": "NE2",
+      "proximal_resseq": 18,
+      "proximal_distance": 2.0372297366767427,
+      "distal_water_distance": null,
+      "fe_pyrrole_n_mean": 1.9939113899550804,
+      "fe_out_of_plane": 0.012782887957733436
+    }
+  ],
+  "ligand_summary": {
+    "CYS SG": {
+      "n": 26,
+      "mean": 2.323189443593194,
+      "min": 1.8968473844777292,
+      "max": 2.522923304422867,
+      "entries": [
+        "1BU7",
+        "1CPO",
+        "1NOD",
+        "1OG2",
+        "1PHC",
+        "1TQN",
+        "2CPP",
+        "2F9Q",
+        "2HI4",
+        "3E6I",
+        "3EQM",
+        "3LD6",
+        "3N9Y",
+        "3RUK"
+      ]
+    },
+    "HIS NE2": {
+      "n": 13,
+      "mean": 2.13087354343944,
+      "min": 1.9521347289569877,
+      "max": 2.1926769027834454,
+      "entries": [
+        "1A6M",
+        "1ATJ",
+        "1HRC",
+        "2CYP",
+        "2HHB"
+      ]
+    },
+    "TYR OH": {
+      "n": 2,
+      "mean": 1.8361985061101602,
+      "min": 1.8359836600580175,
+      "max": 1.836413352162303,
+      "entries": [
+        "7CAT"
+      ]
+    }
+  },
+  "p450_all_cys_sg": true,
+  "structure_motif_check": {
+    "2CPP": {
+      "ligand_resseq": 357,
+      "motif_cys_resseq": [
+        357
+      ],
+      "ligand_in_motif": true
+    },
+    "1PHC": {
+      "ligand_resseq": 357,
+      "motif_cys_resseq": [
+        357
+      ],
+      "ligand_in_motif": true
+    },
+    "1TQN": {
+      "ligand_resseq": 442,
+      "motif_cys_resseq": [
+        442
+      ],
+      "ligand_in_motif": true
+    },
+    "1OG2": {
+      "ligand_resseq": 435,
+      "motif_cys_resseq": [
+        435
+      ],
+      "ligand_in_motif": true
+    },
+    "2F9Q": {
+      "ligand_resseq": 443,
+      "motif_cys_resseq": [
+        443
+      ],
+      "ligand_in_motif": true
+    },
+    "2HI4": {
+      "ligand_resseq": 458,
+      "motif_cys_resseq": [
+        458
+      ],
+      "ligand_in_motif": true
+    },
+    "3E6I": {
+      "ligand_resseq": 437,
+      "motif_cys_resseq": [
+        437
+      ],
+      "ligand_in_motif": true
+    },
+    "1BU7": {
+      "ligand_resseq": 400,
+      "motif_cys_resseq": [
+        400
+      ],
+      "ligand_in_motif": true
+    },
+    "3LD6": {
+      "ligand_resseq": 449,
+      "motif_cys_resseq": [
+        449
+      ],
+      "ligand_in_motif": true
+    },
+    "3EQM": {
+      "ligand_resseq": 437,
+      "motif_cys_resseq": [
+        437
+      ],
+      "ligand_in_motif": true
+    },
+    "3RUK": {
+      "ligand_resseq": 442,
+      "motif_cys_resseq": [
+        442
+      ],
+      "ligand_in_motif": true
+    },
+    "3N9Y": {
+      "ligand_resseq": 423,
+      "motif_cys_resseq": [
+        423
+      ],
+      "ligand_in_motif": true
+    }
+  },
+  "uniprot": {
+    "p450_reviewed": 1919,
+    "p450_match_fraction": 0.825951016154247,
+    "p450_without_match": [
+      "A0A075TMP8 Cytochrome P450 monooxygenase patI (EC 1.-.-.-) (Patulin bio",
+      "A0A075TRL5 Cytochrome P450 monooxygenase patH (EC 1.-.-.-) (Patulin bio",
+      "A0A517FNB9 Cholesterol 22-monohydroxylase CYP90B52 (EC 1.14.14.-) (Cyto",
+      "A0R4Y3 Steroid C26-monooxygenase (EC 1.14.15.29) (Cholest-4-en-3-on",
+      "D8LQS7 Hydroperoxide bicyclase CYP5164A3, mitochondrial (EsHPB) (EC",
+      "F1RE08 Prostacyclin synthase (EC 5.3.99.4) (Hydroperoxy icosatetrae",
+      "G4N2X9 Bifunctional dioxygenase (DOX)-epoxy alcohol synthase (EAS) ",
+      "O02766 7-alpha-hydroxycholest-4-en-3-one 12-alpha-hydroxylase (EC 1",
+      "O35074 Prostacyclin synthase (EC 5.3.99.4) (Hydroperoxy icosatetrae",
+      "O75881 Cytochrome P450 7B1 (24-hydroxycholesterol 7-alpha-hydroxyla",
+      "O88962 7-alpha-hydroxycholest-4-en-3-one 12-alpha-hydroxylase (EC 1",
+      "P12791 Cytochrome P450 2B10 (EC 1.14.14.1) (CYPIIB10) (CYPIIB20) (C",
+      "P9WPP1 Steroid C26-monooxygenase (EC 1.14.15.29) (Cholest-4-en-3-on",
+      "P9WPP3 Methyl-branched lipid omega-hydroxylase (EC 1.14.15.14) (Cho",
+      "Q00714 Cytochrome P450 monooxygenase stcS (EC 1.14.-.-) (Cytochrome",
+      "Q0C8M4 Dihydromonacolin L monooxygenase LovA (EC 1.14.14.124) (EC 1",
+      "Q0SCI3 4-methoxybenzoate O-demethylase PbdA (EC 1.14.99.15) (4-meth",
+      "Q16647 Prostacyclin synthase (EC 5.3.99.4) (Hydroperoxy icosatetrae",
+      "Q29626 Prostacyclin synthase (EC 5.3.99.4) (Hydroperoxy icosatetrae",
+      "Q2WE96 Divinyl ether synthase CYP74 (AsDES) (Colneleate synthase) (",
+      "Q5CCK3 Steroid (22S)-hydroxylase (EC 1.14.14.178) ((22S)-22-hydroxy",
+      "Q60991 Cytochrome P450 7B1 (24-hydroxycholesterol 7-alpha-hydroxyla",
+      "Q62969 Prostacyclin synthase (EC 5.3.99.4) (Hydroperoxy icosatetrae",
+      "Q63688 25-hydroxycholesterol 7-alpha-hydroxylase (EC 1.14.14.29) (C",
+      "Q6J540 Isoleucine N-monooxygenase 2 (EC 1.14.14.39) (Cytochrome P45",
+      "Q6J541 Isoleucine N-monooxygenase 1 (EC 1.14.14.39) (Cytochrome P45",
+      "Q8GZP5 Allene oxide synthase 3 (LeAOS3) (EC 4.2.1.92) (Allene oxide",
+      "Q8VQF6 1,8-cineole 2-endo-monooxygenase (EC 1.14.14.133) (cytochrom",
+      "Q96242 Allene oxide synthase, chloroplastic (EC 4.2.1.92) (Cytochro",
+      "Q9AUD8 Fatty acid 13-hydroperoxide lyase, chloroplastic (13-HPL) (P",
+      "Q9DBX6 Cytochrome P450 2S1 (EC 1.14.14.-) (CYPIIS1) (Hydroperoxy ic",
+      "Q9JKJ9 24-hydroxycholesterol 7-alpha-hydroxylase (EC 1.14.14.26) (C",
+      "Q9K498 Bifunctional albaflavenone monooxygenase/terpene synthase (C",
+      "Q9KZF5 Biflaviolin synthase CYP158A1 (EC 1.14.19.69) (Cytochrome P4",
+      "Q9NYL5 24-hydroxycholesterol 7-alpha-hydroxylase (EC 1.14.14.26) (C",
+      "Q9SMP5 Cytochrome P450 94B3 (EC 1.14.14.48) (Jasmonoyl-L-amino acid",
+      "Q9UNU6 7-alpha-hydroxycholest-4-en-3-one 12-alpha-hydroxylase (EC 1",
+      "Q9VGH1 Cytochrome P450 315a1, mitochondrial (EC 1.14.15.-) (CYPCCCX",
+      "Q9Y7C8 Dihydromonacolin L monooxygenase LovA (EC 1.14.14.124) (EC 1",
+      "A0A0C1E1L9 Cytochrome P450 monooxygenase opaB (EC 1.-.-.-) (Oxepinamide"
+    ],
+    "p450_without_match_count": 334,
+    "relaxed_core": "G.[RHKPT].C.[GA] in last 160 residues",
+    "p450_strict_or_relaxed_fraction": 0.9103699843668578,
+    "heme_non_p450_strict_or_relaxed_fraction": 0.0031130607046837414,
+    "heme_non_p450_reviewed": 7067,
+    "heme_non_p450_match_fraction": 0.0007075137965190322,
+    "heme_non_p450_match_examples": [
+      "Psi-producing oxygenase A (Fatty acid oxygenase ppoA) [Includes: Linol",
+      "Psi-producing oxygenase A (Fatty acid oxygenase ppoA) [Includes: Linol",
+      "Linoleate diol synthase (LDS) (Linoleate (8R)-dioxygenase) (Linoleate ",
+      "Psi-producing oxygenase A (Fatty acid oxygenase ppoA) [Includes: Linol",
+      "Psi-producing oxygenase A (Fatty acid oxygenase ppoA) [Includes: Linol"
+    ],
+    "cys_from_c_terminus_median": 59.0,
+    "cys_from_c_terminus_iqr": [
+      55.0,
+      63.0
+    ],
+    "cys_relative_position_median": 0.8825910931174089
+  },
+  "distal": {
+    "2CPP": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.43307640330954966,
+      "fe_pyrrole_n_mean": 2.0470561767965583
+    },
+    "1PHC": {
+      "water_distance": 2.3526553083696715,
+      "fe_out_of_plane": 0.3041239398538917,
+      "fe_pyrrole_n_mean": 2.0244063854364787
+    },
+    "1TQN": {
+      "water_distance": 2.0667677663443476,
+      "fe_out_of_plane": 0.11856745292871139,
+      "fe_pyrrole_n_mean": 2.0642472718555744
+    },
+    "1OG2": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.03685498651717535,
+      "fe_pyrrole_n_mean": 2.059936203327722
+    },
+    "2F9Q": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.11143954261559452,
+      "fe_pyrrole_n_mean": 2.0260036310929865
+    },
+    "2HI4": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.31017686009317275,
+      "fe_pyrrole_n_mean": 2.0953902066663583
+    },
+    "3E6I": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.12201570776184553,
+      "fe_pyrrole_n_mean": 2.0878003934228895
+    },
+    "1BU7": {
+      "water_distance": 2.68786978851283,
+      "fe_out_of_plane": 0.06369197581672094,
+      "fe_pyrrole_n_mean": 1.9778919258157361
+    },
+    "3LD6": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.03276132255533647,
+      "fe_pyrrole_n_mean": 2.0606303313720487
+    },
+    "3EQM": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.19774468956399127,
+      "fe_pyrrole_n_mean": 2.0393312942254447
+    },
+    "3RUK": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.0299348377591734,
+      "fe_pyrrole_n_mean": 2.0581728291247634
+    },
+    "3N9Y": {
+      "water_distance": null,
+      "fe_out_of_plane": 0.08246791002925179,
+      "fe_pyrrole_n_mean": 2.0585570550362555
+    }
+  }
+}

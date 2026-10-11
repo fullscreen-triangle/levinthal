@@ -1,0 +1,67 @@
+[experiment]
+id = "e000-route-smoke"
+title = "Route smoke test: laptop to AppHub and back"
+question = """
+Does the whole route work: a unit wrapped here reaches AppHub through the university
+Gitea, runs there, and its results come back on lattice-results/<unit> to be judged
+here? And what does an AppHub CPU session offer (Python, CPUs, memory, GPU, tools)?
+The second answer sizes every later unit.
+"""
+components = ["compute.lattice", "compute.gitea", "compute.apphub"]
+
+[target]
+# nfdi4cat-model is one of the two repositories lattice reaches today (a push remote
+# on git.uni-greifswald.de, clean tree). Wrapping adds .lattice/p450-e000-route-smoke/
+# to it; the probe writes only to $LATTICE_OUT, never into the repository.
+repo = "nfdi4cat-model"
+command = """
+python3 - > "$LATTICE_OUT/probe.json" <<'PY'
+import json, os, platform, shutil, subprocess
+def run(*a):
+    try:
+        return subprocess.run(a, capture_output=True, text=True, timeout=20).stdout.strip()
+    except Exception as e:
+        return "unavailable: " + str(e)   # no f-string: lattice reads braced names as placeholders
+mem = ""
+try:
+    mem = next(l for l in open("/proc/meminfo") if l.startswith("MemTotal")).split(":")[1].strip()
+except Exception:
+    pass
+print(json.dumps({
+    "python": platform.python_version(),
+    "platform": platform.platform(),
+    "cpus": len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else os.cpu_count(),
+    "memory": mem,
+    "gpus": run("nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader") if shutil.which("nvidia-smi") else "none",
+    "tools": {t: bool(shutil.which(t)) for t in ["git", "uv", "pixi", "cargo", "node", "pdflatex", "flock"]},
+    "shard": os.environ.get("LATTICE_SHARD"),
+}, indent=2))
+PY
+"""
+
+[run]
+gpu = "none"
+timeout_secs = 300
+
+[[expect]]
+kind = "shards"
+note = "the route works end to end"
+
+[[expect]]
+kind = "file"
+path = "shards/*/probe.json"
+
+[[expect]]
+kind = "json"
+path = "shards/*/probe.json"
+key = "cpus"
+op = "gt"
+value = 0
+
+[[expect]]
+kind = "json"
+path = "shards/*/probe.json"
+key = "tools.flock"
+op = "eq"
+value = true
+note = "[[requires]] clones serialise on flock; without it, multi-repo experiments need another lock"

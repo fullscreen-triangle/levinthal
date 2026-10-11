@@ -1,0 +1,36 @@
+[experiment]
+id = "e002-hfq-baseline"
+title = "HFQ validation V1-V16 on AppHub, as the baseline for conformance (WP0.6)"
+question = """
+Do hegel's sixteen HFQ checks hold on AppHub as they do on the laptop (16/16 at
+fixture-v3)? WP0.5 changes the ladder verdicts and WP0.6 adds a Python/JS conformance
+harness; both need a baseline taken on the machine that will run them in future.
+"""
+components = ["up.hfq", "q.conformance"]
+
+[target]
+repo = "hegel"
+command = "cd ckg/validation-federated && python3 run_validation.py"
+
+[run]
+outputs = ["ckg/validation-federated/results/**"]
+gpu = "none"
+timeout_secs = 900
+
+[[expect]]
+kind = "shards"
+
+[[expect]]
+kind = "json"
+path = "outputs/ckg/validation-federated/results/00_summary.json"
+key = "failing"
+op = "eq"
+value = 0
+
+[[expect]]
+kind = "json"
+path = "outputs/ckg/validation-federated/results/00_summary.json"
+key = "total"
+op = "ge"
+value = 16
+note = "the laptop baseline is 16/16 at snapshot fixture-v3"

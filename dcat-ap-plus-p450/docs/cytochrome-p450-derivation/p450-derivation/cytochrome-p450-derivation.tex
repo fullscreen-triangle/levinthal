@@ -1,0 +1,1223 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.4cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+\declaretheorem[numberwithin=section]{theorem}
+\declaretheorem[sibling=theorem]{proposition}
+\declaretheorem[sibling=theorem]{lemma}
+\declaretheorem[sibling=theorem]{corollary}
+\declaretheorem[sibling=theorem,style=definition]{definition}
+\declaretheorem[style=definition]{postulate}
+\declaretheorem[style=definition,name=Input]{inputstmt}
+\declaretheorem[style=definition]{prediction}
+\declaretheorem[sibling=theorem,style=remark]{remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\med}{m}
+\newcommand{\sep}{\sigma}
+\newcommand{\cut}{\partial}
+\newcommand{\D}{\textsf{[D]}}
+\newcommand{\Sup}{\textsf{[S]}}
+\newcommand{\C}{\textsf{[C]}}
+
+\title{Cytochrome P450 from Counted Commitment:\\[4pt]
+\large A Derivation from Individuation to the Thiolate-Ligated Heme Monooxygenase}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Cytochrome P450 enzymes are heme proteins in which the iron is bound on one
+face by the sulphur of a cysteine and left open on the other for oxygen and
+substrate. We trace a chain of conditions that leads from a minimal account
+of distinction and record-keeping to this structure, and at every link we
+state whether the link is derived under stated assumptions, supplied from
+established physics, chemistry or biology, or checked here against data.
+The account starts from a single assumption: making a record costs at least a
+fixed positive amount. From it follow a direction on records, a recorded time
+and a register entropy that are proportional to one another, and a measure of
+individuation---the minimum cut separating an item from its medium in a
+contact graph---which is at least one and cannot decrease as contacts are
+added. Finite parts have finitely many distinguishable configurations, and
+these recur under reversible dynamics while records do not. We then follow
+the chain through the shell structure of atoms (counted subshell capacities,
+with the empirical filling order supplied, reproduce all seven period lengths
+and place the six largest drops in measured first ionization energy after
+$Z=2,10,18,36,54,86$); the d shell of iron, where the high- and low-spin
+arrangements of Fe(II) and Fe(III) differ by the largest possible number of
+unpaired electrons; the bond as a contact that lowers the joint separation
+cost of a pair; and the peptide bond, whose length ($1.329\pm0.011$~\AA{}
+against $1.461$~\AA{} for N--C$\alpha$) and planarity ($99.2\%$ of $5{,}406$
+peptide bonds within $20^\circ$ of trans) we measure in twelve P450 crystal
+structures. We argue that the three classes of biological polymer depend on
+one another in the order boundary, record, catalyst, and test one consequence
+of each. For the boundary: $93\%$ of $532$ reviewed P450s annotated to the
+endoplasmic reticulum membrane carry an N-terminal segment hydrophobic enough
+to span a bilayer, against $0.7\%$ of $145$ bacterial P450s. For the record:
+the shortest codon able to name twenty residues and a stop is three letters,
+and the standard code changes residue hydropathy less per point substitution
+than $99.2\%$ of $200{,}000$ codes with permuted assignments. For the
+catalyst: P450 chains are as compact as folded proteins of their length, the
+heme is buried to $1$--$6\%$ of its isolated accessible surface, and in an
+integer-weighted residue contact graph its separation cost from the solvent
+exceeds that of every residue. Finally, across twenty heme protein structures
+every P450 iron is bound by cysteine sulphur at $2.32$~\AA{} on average,
+the cysteine lies at the conserved position of the cysteine-loop signature in
+all twelve P450 structures, and the signature matches $82.6\%$ of $1{,}919$
+reviewed P450 sequences and $0.07\%$ of $7{,}067$ other heme proteins, the
+matches outside the family being enzymes with a P450 domain. We set out
+which steps of the chain are derived and which are inputs, and we do not
+claim that the chain singles out P450 as the only possible outcome.
+\end{abstract}
+
+\tableofcontents
+\bigskip\hrule\bigskip
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================================
+
+The cytochrome P450 superfamily comprises heme-thiolate monooxygenases found
+in all domains of life, with many thousands of named
+sequences~\citep{nelson2009}. The enzymes take their name from a spectral
+property: when the reduced enzyme binds carbon monoxide, its Soret absorption
+band moves to $450$~nm~\citep{omura1964}. The common catalytic chemistry---the
+reductive activation of dioxygen at a heme iron, the formation of a
+high-valent iron--oxo porphyrin radical cation (Compound~I), and the insertion
+of one oxygen atom into a substrate---has been characterised in
+detail~\citep{denisov2005,poulos2014,rittle2010}.
+
+This article asks a different kind of question. Rather than describing P450
+chemistry, it traces a chain of conditions that leads to a P450: what must
+hold for there to be distinguishable things at all, what must hold for them
+to form atoms and bonds, what must hold for polymers that bound, record and
+catalyse, and what must hold for a heme to be bound by a thiolate and used to
+activate oxygen. The chain is long, and its links differ in strength. Some are
+derivations from a stated assumption. Many are established results of physics
+and chemistry that we use as inputs. Some can be checked against data, and we
+check them. We label every link accordingly:
+\begin{itemize}[nosep]
+\item \D{}: \emph{derived} here from the assumptions and definitions of
+      \cref{sec:foundation};
+\item \Sup{}: \emph{supplied} as an input from established theory or
+      observation, with a reference;
+\item \C{}: \emph{checked} here against public data, with the computation
+      provided.
+\end{itemize}
+A link may carry more than one label: a consequence derived from supplied
+inputs and then checked is labelled \D\Sup\C.
+
+\paragraph{What ``derivation'' means here.}
+We use the word in the sense of a chain of necessary conditions and their
+consequences. We do not claim that the conditions are sufficient to produce a
+P450, nor that P450 is the unique outcome of the chain. Many heme proteins
+satisfy most of the same conditions; we use some of them as comparisons. Where
+the chain passes through a fact that we can describe but cannot derive---the
+order in which atomic subshells fill, the exclusion principle, the
+particular sequence of a P450 gene---we say so.
+
+\paragraph{Organisation.}
+\Cref{sec:foundation} states the foundation: counted commitment and its
+consequences for direction, time, entropy, individuation, recurrence and
+stepwise refinement. \Cref{sec:atoms} follows the counting into atomic shell
+structure and the d shell of iron. \Cref{sec:bonds} treats bonds and the
+geometry of the peptide carrier. \Cref{sec:order} discusses the dependency
+order of the three polymer classes, and \cref{sec:boundary,sec:record,sec:catalyst}
+take each in turn. \Cref{sec:heme} treats the heme and its thiolate ligand and
+\cref{sec:cycle} writes the catalytic cycle as a ladder. \Cref{sec:ledger}
+collects what is derived and what is supplied, \cref{sec:validation} the
+checks, and \cref{sec:limits} the limitations. \Cref{fig:chain} gives the
+whole chain at a glance.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=7mm and 5mm,
+  box/.style={draw=black!55, rounded corners=2pt, fill=white, align=center,
+              font=\footnotesize, inner sep=3pt, minimum height=11mm, text width=33mm,
+              execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  arr/.style={-{Stealth[length=2mm]}, draw=black!55, line width=0.6pt}]
+\newcommand{\sref}[1]{{\scriptsize\sffamily\color{black!55}\S\ref{#1}}\\}
+\node[box] (c)  {\sref{sec:foundation}counted commitment, $c_i\ge\theta>0$};
+\node[box, right=of c] (d) {\sref{sec:foundation}direction, time, register entropy};
+\node[box, right=of d] (i) {\sref{sec:foundation}individuation, $\sep(v)\ge1$};
+\node[box, right=of i] (b) {\sref{sec:foundation}finite parts, recurrence};
+\node[box, below=of b] (a) {\sref{sec:atoms}shells, closures, $2(2\ell+1)$};
+\node[box, left=of a] (fe) {\sref{sec:atoms}iron d shell, two spin ladders};
+\node[box, left=of fe] (bo) {\sref{sec:bonds}bonds, geometry, peptide plane};
+\node[box, left=of bo] (or) {\sref{sec:order}order: boundary, record, catalyst};
+\node[box, below=of or] (bd) {\sref{sec:boundary}boundary: bilayer, anchor};
+\node[box, right=of bd] (rc) {\sref{sec:record}record: triplet code};
+\node[box, right=of rc] (ct) {\sref{sec:catalyst}catalyst: compact fold};
+\node[box, right=of ct] (hm) {\sref{sec:heme}heme--thiolate, open distal face};
+\node[box, below=of hm] (cy) {\sref{sec:cycle}catalytic cycle as a ladder};
+\draw[arr] (c)--(d); \draw[arr] (d)--(i); \draw[arr] (i)--(b);
+\draw[arr] (b)--(a); \draw[arr] (a)--(fe); \draw[arr] (fe)--(bo); \draw[arr] (bo)--(or);
+\draw[arr] (or)--(bd); \draw[arr] (bd)--(rc); \draw[arr] (rc)--(ct); \draw[arr] (ct)--(hm);
+\draw[arr] (hm)--(cy);
+\draw[arr, dashed] (fe.south east) to[out=-45,in=135] (hm.north west);
+\end{tikzpicture}
+\caption{\textbf{The chain of conditions followed in this article.} Each box
+is a section; the dashed arrow marks the second use of the iron d shell, in
+the spin-state switch of the heme. The labels \D, \Sup{} and \C{} attached to
+each link are collected in \cref{tab:ledger}.}
+\label{fig:chain}
+\end{figure}
+
+%==============================================================================
+\section{Foundation: counted commitment}
+\label{sec:foundation}
+%==============================================================================
+
+This section is self-contained. It states one assumption and derives the
+consequences used later.
+
+\subsection{Counted and measured sums}
+
+\begin{definition}[Cost sequences]
+A sequence $(c_i)_{i\ge1}$ of positive reals is \emph{counted} if each
+$c_i\in\Z_{\ge1}$, \emph{floored} if $c_i\ge\theta$ for some $\theta>0$, and
+\emph{measured} if only $c_i>0$ is assumed. $S_n=\sum_{i\le n}c_i$.
+\end{definition}
+
+\begin{theorem}[Divergence along every selection]
+\label{thm:selection}
+For a measured sequence, $\inf_i c_i>0$ if and only if
+$\sum_{i\in I}c_i=\infty$ for every infinite $I\subseteq\N$. A counted
+sequence has $S_{n+1}-S_n\ge1$ and $S_n\ge n$.
+\end{theorem}
+
+\begin{proof}
+If $\theta=\inf c_i>0$, any $n$ terms sum to at least $n\theta$. If
+$\inf c_i=0$, choose $i_1<i_2<\cdots$ with $c_{i_k}<2^{-k}$; this selection
+sums to less than one. The counted case is $\theta=1$.
+\end{proof}
+
+A positive sequence without a floor can therefore contain infinitely many
+terms of finite total; $\sum2^{-i}=1$ is the standard example. Integrality
+supplies the floor.
+
+\subsection{Commitment, occupation and direction}
+
+\begin{definition}[Occupation, register, commitment]
+A system \emph{occupies} a state at each moment; occupation carries no cost
+in this accounting. A \emph{register} is a word over an alphabet of size
+$b\ge2$; a \emph{commitment} is an event that appends a letter to it. The
+\emph{count} $M$ is the number of commitments made, overwrites included.
+\end{definition}
+
+\begin{postulate}[Counted commitment]
+\label{post:counted}
+Every commitment costs at least a fixed $\theta>0$, and nothing but a
+commitment changes a register.
+\end{postulate}
+
+\Cref{post:counted} is the only physical assumption of the foundation. Its
+established physical counterpart is the minimum dissipation
+$\kB T\ln2$ for resetting one bit of memory at temperature
+$T$~\citep{landauer1961,bennett1982,berut2012}.
+
+\begin{proposition}[Direction, time and register entropy]
+\label{prop:direction}
+\D{} Commitments are strictly ordered by $M$, and their cumulative cost
+satisfies $C_M\ge M\theta$. A clock that commits $f$ times per cycle defines a
+recorded time $t=M/f$. A register of $M$ commitments distinguishes $b^M$
+histories and has register entropy $S_{\mathrm{reg}}=\kB M\ln b$. Hence
+\begin{equation}
+M=f\,t=S_{\mathrm{reg}}/(\kB\ln b),
+\label{eq:three}
+\end{equation}
+and none of the three can decrease while another increases.
+\end{proposition}
+
+\begin{proof}
+Strict order is the definition of the count; the cost bound is
+\cref{thm:selection} with \cref{post:counted}; the rest are definitions.
+\end{proof}
+
+The SI second is a recorded time in this sense: it is the duration of
+$9\,192\,631\,770$ counted periods of the caesium-133 hyperfine
+transition~\citep{bipm2019}.
+
+\subsection{Individuation in contact graphs}
+
+\begin{definition}[Contact graph and separation cost]
+\label{def:sep}
+A \emph{contact graph} is a finite connected graph $G=(V,E,w)$ with positive
+weights and a distinguished vertex $\med$, the \emph{medium}. Weights are
+\emph{counted} if integral. The \emph{separation cost} of $v\ne\med$ is
+\begin{equation}
+\sep_G(v)=\min\{w(\cut S):v\in S\subseteq V\setminus\{\med\}\},
+\end{equation}
+where $\cut S$ is the set of edges leaving $S$. A minimiser is an
+\emph{identity region} of $v$. By the max-flow min-cut
+theorem~\citep{ford1956}, $\sep_G(v)$ is the maximum flow from $v$ to $\med$.
+\end{definition}
+
+\begin{theorem}[Floor and monotonicity]
+\label{thm:indiv}
+\D{} (a) With counted weights, $\sep_G(v)\ge\lambda_G(v,\med)\ge1$, where
+$\lambda$ is the number of edge-disjoint $v$--$\med$ paths. (b) If $G'$ is
+obtained from $G$ by adding vertices and edges, then
+$\sep_{G'}(v)\ge\sep_G(v)$. (c) Under real weights no lower bound
+independent of the graph survives expansion.
+\end{theorem}
+
+\begin{proof}
+(a) Each of $\lambda$ edge-disjoint paths crosses every separating cut
+(Menger~\citep{menger1927}), and each crossing edge weighs at least one. (b)
+Restrict an optimal $S'$ in $G'$ to $V$; every edge of $G$ leaving $S'\cap V$
+also leaves $S'$. (c) Add, at step $k$, a vertex joined to $v$ and to $\med$
+by edges of weight $1/k$: its separation cost is at most $2/k$.
+\end{proof}
+
+\begin{proposition}[Joint separation of a pair]
+\label{prop:pair}
+\D{} For distinct $a,b\ne\med$,
+\begin{equation}
+w(\cut\{a,b\})=w(\cut\{a\})+w(\cut\{b\})-2\,w(a,b).
+\label{eq:pair}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The edge $\{a,b\}$ is counted in both singleton cuts and in neither the pair's
+cut; every other edge incident to $a$ or $b$ is counted once on each side.
+\end{proof}
+
+\Cref{eq:pair} is the graph form of a bond, used in \cref{sec:bonds}: a heavy
+contact between two items makes the pair cheaper to cut from the medium than
+the two items separately.
+
+\subsection{Finite parts and recurrence}
+
+\begin{proposition}[Finite parts, recurring configurations]
+\label{prop:finite}
+\D{} If each binary distinction costs at least $\theta$ and a part has a
+finite budget $B$ for distinctions, it has at most $2^{\lfloor B/\theta\rfloor}$
+distinguishable configurations. An invertible deterministic dynamics on a
+finite set is a permutation, so every configuration recurs; a register that
+receives one commitment per step does not.
+\end{proposition}
+
+\begin{proof}
+$N$ alternatives need $\lceil\log_2N\rceil$ binary distinctions. Orbits of a
+permutation of a finite set are cycles; $M$ rises by one per step.
+\end{proof}
+
+For measure-preserving flows on a space of finite measure the recurrence of
+configurations is Poincaré's theorem~\citep{poincare1890}. The reversibility
+objection of Loschmidt~\citep{loschmidt1876} concerns configurations, which
+can return; it does not concern the count of records, which cannot.
+
+\subsection{Ladders}
+
+\begin{definition}[Ladder]
+\label{def:ladder}
+A \emph{ladder} is a sequence of rung powers $p_i\in[0,1)$; climbing it from a
+gap $g_0$ leaves $g_n=g_0\prod_{i\le n}(1-p_i)$. A rung with $p\le0$ is
+\emph{refused}.
+\end{definition}
+
+\begin{proposition}[Ladders are counted sums in logarithmic coordinates]
+\label{prop:ladder}
+\D{} $-\ln(g_n/g_0)=\sum_{i\le n}-\ln(1-p_i)$ is a sum of positive terms. No
+finite ladder closes the gap. If $p_i\ge p_{\min}>0$ the gap tends to zero; if
+$\sum p_i<\infty$ it tends to a positive residual~\citep{knopp1990}. Equal
+composite powers do not imply equal power sequences.
+\end{proposition}
+
+The catalytic cycle of \cref{sec:cycle} is written in this form.
+
+%==============================================================================
+\section{From finite cells to the iron atom}
+\label{sec:atoms}
+%==============================================================================
+
+\subsection{Discrete labels}
+
+\Cref{prop:finite} gives a finite set of distinguishable configurations for
+any part with a finite budget. For a particle confined to a bounded region,
+the corresponding continuum statement is that the stationary states form a
+discrete set: the Laplacian with boundary conditions on a bounded domain has
+a discrete spectrum~\citep{courant1953}. \Sup
+
+If the confinement is rotationally symmetric, stationary states can be
+labelled by the irreducible representations of the rotation group: an angular
+label $\ell\in\{0,1,2,\dots\}$ and a projection $m\in\{-\ell,\dots,\ell\}$,
+so that each $\ell$ carries $2\ell+1$ states~\citep{courant1953}. \Sup{} We
+add three inputs from atomic physics, each of which we use but do not derive.
+
+\begin{inputstmt}[Internal label]
+\label{in:spin}
+Electrons carry a two-valued internal label (spin), doubling each count.
+\end{inputstmt}
+
+\begin{inputstmt}[Exclusion]
+\label{in:pauli}
+No two electrons in an atom share all labels~\citep{pauli1925}. In the
+language of \cref{sec:foundation}, each label is a cell that can be occupied
+at most once.
+\end{inputstmt}
+
+\begin{inputstmt}[Filling order]
+\label{in:madelung}
+Subshells $(n,\ell)$, $\ell<n$, fill in increasing order of $n+\ell$, and for
+equal $n+\ell$ in increasing $n$~\citep{madelung1936}. This is an empirical
+rule with known exceptions in individual ground configurations.
+\end{inputstmt}
+
+Under Inputs~\ref{in:spin}--\ref{in:pauli}, subshell $(n,\ell)$ holds
+$2(2\ell+1)$ electrons and shell $n$ holds $\sum_{\ell<n}2(2\ell+1)=2n^2$.
+\D\Sup
+
+\subsection{Closures and periods}
+
+Each new period begins when an $s$ subshell ($\ell=0$) is opened. With
+\cref{in:madelung}, the cumulative capacities at which a period ends are
+therefore
+\begin{equation}
+2,\;10,\;18,\;36,\;54,\;86,\;118,
+\end{equation}
+and the period lengths are $2,8,8,18,18,32,32$. \D\Sup
+
+\begin{prediction}[Closures in measured ionization energies]
+\label{pred:closures}
+If a closed configuration is the most costly to distinguish an electron from,
+and the configuration one electron beyond closure the least, then the largest
+drops in first ionization energy between successive elements occur
+immediately after the closures.
+\end{prediction}
+
+We tested this against the first ionization energies of the NIST Atomic
+Spectra Database~\citep{kramida2023} as distributed with the
+\texttt{mendeleev} package~\citep{mentel2014}. The six largest drops
+$I_1(Z)-I_1(Z+1)$ occur after $Z=2,10,18,36,54,86$, exactly the predicted
+closures within the range of the data, with drops of $19.2$, $16.4$, $11.4$,
+$9.8$, $8.2$ and $6.7$~eV (\cref{fig:atoms}A). The counted period lengths
+agree with the observed ones in all seven periods (\cref{fig:atoms}B). \C
+
+\subsection{The d shell of iron}
+
+Iron has $Z=26$. Its ground configuration in the same data is
+$[\mathrm{Ar}]\,3d^6\,4s^2$, and the ground configurations of Fe$^{2+}$ and
+Fe$^{3+}$ are $3d^6$ and $3d^5$. \C{} The d subshell ($\ell=2$) has ten cells,
+and a d$^k$ ion can occupy them in $\binom{10}{k}$ distinguishable ways, a
+number that is largest at $k=5$ (252) and equal at $k=4$ and $k=6$ (210)
+(\cref{fig:atoms}C). \D
+
+In a coordination complex the five d orbitals split in energy; for six
+ligands at the vertices of an octahedron they separate into a lower set of
+three ($t_{2g}$) and an upper set of two ($e_g$)~\citep{griffith1957}. \Sup{}
+Electrons then follow one of two ladders. If the splitting is small compared
+with the cost of pairing two electrons in one orbital, they spread over all
+five orbitals before pairing (high spin); if it is large, they fill the lower
+three first (low spin). The number of unpaired electrons along each ladder is
+(\cref{fig:atoms}D)
+\begin{center}
+\small
+\begin{tabular}{lccccccccccc}
+\toprule
+$k$ & 0&1&2&3&4&5&6&7&8&9&10\\
+\midrule
+high spin & 0&1&2&3&4&5&4&3&2&1&0\\
+low spin  & 0&1&2&3&2&1&0&1&2&1&0\\
+difference& 0&0&0&0&2&4&4&2&0&0&0\\
+\bottomrule
+\end{tabular}
+\end{center}
+\D\Sup{} The two ladders differ most, by four unpaired electrons, at $k=5$
+and $k=6$---the d counts of Fe(III) and Fe(II). The same holds for other
+d$^5$ and d$^6$ ions (Mn(II), Co(III)); we note it because the switch between
+the two arrangements, driven by a change in the ligands, is the first step of
+the P450 cycle (\cref{sec:heme,sec:cycle}). We do not claim that this
+property selects iron.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/g1_atoms.pdf}
+\caption{\textbf{Shell counting and the d shell of iron.}
+(\textbf{A})~Measured first ionization energies (NIST ASD, via
+\texttt{mendeleev}); dashed lines mark the closures counted from
+$2(2\ell+1)$ with the $(n+\ell,n)$ filling order. The six largest drops occur
+immediately after them. Iron is marked.
+(\textbf{B})~Counted and observed period lengths.
+(\textbf{C})~Number of distinguishable occupations $\binom{10}{k}$ of a d
+shell holding $k$ electrons; Fe(III) and Fe(II) highlighted.
+(\textbf{D})~Unpaired electrons in high-spin and octahedral low-spin
+arrangements; the dotted lines mark $k=5,6$.}
+\label{fig:atoms}
+\end{figure}
+
+%==============================================================================
+\section{Bonds and the geometry of the peptide carrier}
+\label{sec:bonds}
+%==============================================================================
+
+\subsection{A bond as a contact that lowers joint separation cost}
+
+Consider two atoms in a medium. By \cref{prop:pair}, the cost of separating
+the pair from the medium as one item is the sum of their separate costs less
+twice the weight of their mutual contact. A contact heavy enough that
+\begin{equation}
+w(a,b)>\tfrac12\bigl(w(\cut\{a\})+w(\cut\{b\})\bigr)-\min\bigl(w(\cut\{a\}),w(\cut\{b\})\bigr)
+\end{equation}
+makes the pair cheaper to individuate together than the cheaper of the two
+alone, and the pair then behaves, against the medium, as one item. We use
+this as the graph-theoretic definition of a bond. \D{} The chemical
+counterpart is that a bond forms when the bound pair is lower in energy than
+the separated atoms, by the bond energy. \Sup
+
+Which bonds an atom forms is set by its open cells. An atom with a closed
+configuration has, by \cref{pred:closures}, the highest cost for any
+redistribution of its electrons, and in the sense above forms no bond under
+ordinary conditions; an atom with $v$ vacancies in its outer $s$ and $p$
+subshells forms up to $v$ electron-pair bonds (valence as vacancy, the octet
+rule for the second period). \Sup
+
+\subsection{Geometry by maximal separation}
+
+If the electron pairs around a central atom are distinguished from one
+another at a cost that falls with their separation, the configuration that
+keeps every pair individuated at least cost places them as far apart as
+possible on a sphere around the atom~\citep{gillespie1957}. \Sup{} For four
+pairs the arrangement is the regular tetrahedron, whose inter-pair angle
+satisfies $\cos\phi=-\tfrac13$, $\phi=109.47^\circ$. \D{} In the twelve P450
+structures analysed here the N--C$\alpha$--C$\beta$ angle at the tetrahedral
+alpha carbon is $110.4\pm2.6^\circ$ over all non-glycine residues. \C{} This
+angle is restrained during crystallographic refinement~\citep{engh1991}, so
+the agreement is not independent evidence; we report it to fix the geometry
+the later sections use.
+
+\subsection{The peptide plane}
+
+When a pair of electrons is shared over three atoms rather than two, the
+bonds it joins are intermediate between single and double, and rotation
+about them costs the loss of the sharing. The peptide group
+C$\alpha$--C(=O)--N(H)--C$\alpha$ is of this kind~\citep{pauling1951}: the
+C--N bond is shortened and the six atoms lie in a plane, either with the two
+C$\alpha$ atoms on opposite sides (trans, $\omega\approx180^\circ$) or on the
+same side (cis, $\omega\approx0^\circ$). \Sup
+
+\begin{prediction}[Peptide bond length and planarity]
+\label{pred:plane}
+In P450 crystal structures the peptide C--N bond is shorter than the
+N--C$\alpha$ single bond, and $\omega$ is close to $180^\circ$ or $0^\circ$
+with few intermediate values.
+\end{prediction}
+
+Over the heme-bearing chains of twelve P450 entries
+(\cref{tab:structures}), the peptide C--N bond is
+$1.329\pm0.011$~\AA, N--C$\alpha$ $1.461\pm0.013$~\AA{} and C$\alpha$--C
+$1.527\pm0.014$~\AA{} (\cref{fig:backbone}A). Of $5{,}406$ peptide bonds,
+$99.2\%$ have $\omega$ within $20^\circ$ of trans, $7$ are cis and $35$ lie
+between (\cref{fig:backbone}B). \C{} The bond lengths are again
+refinement-restrained; $\omega$ is restrained only weakly, and its bimodal
+distribution, with no mass between the two planar arrangements, is the
+observation of interest.
+
+The backbone then has two free rotations per residue, $\phi$ and $\psi$,
+which are not restrained in refinement. Their joint distribution
+(\cref{fig:backbone}C) is concentrated in the regions permitted by steric
+contact~\citep{ramachandran1963}: $51\%$ of residues fall in a helical region
+($-100^\circ<\phi<-30^\circ$, $-80^\circ<\psi<-10^\circ$) and $25\%$ in an
+extended region. \C
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/g2_backbone.pdf}
+\caption{\textbf{Geometry of the peptide carrier in twelve P450 structures.}
+(\textbf{A})~Lengths of the peptide C--N, N--C$\alpha$ and C$\alpha$--C bonds.
+(\textbf{B})~Peptide dihedral $\omega$ (log scale): $99.2\%$ within $20^\circ$
+of trans, $7$ cis, $35$ intermediate, of $5{,}406$.
+(\textbf{C})~Joint distribution of backbone dihedrals $\phi,\psi$.}
+\label{fig:backbone}
+\end{figure}
+
+%==============================================================================
+\section{The order of boundary, record and catalyst}
+\label{sec:order}
+%==============================================================================
+
+A P450 in a cell requires three kinds of structure: a membrane, which bounds
+the cell and, for most eukaryotic P450s, holds the enzyme; a gene, which
+records the enzyme's sequence; and the enzyme itself, a catalyst. Textbook
+presentations often take them in the order gene, membrane, protein, because
+that is the order in which information flows in an extant cell. Here we ask
+a different question: what does each require of the others? The answer gives
+a \emph{dependency order}. We are explicit that a dependency order is not a
+historical sequence: it says what each structure presupposes, not when it
+arose.
+
+\paragraph{Boundary.}
+A boundary individuates a region from the medium: in the terms of
+\cref{def:sep} it realises a cut. In water, the minimum requirement is a
+molecular species with two contact affinities, one for water and one for
+itself---an amphiphile. Such molecules assemble spontaneously into bilayers
+and vesicles~\citep{tanford1980}, without a template and without a catalyst;
+vesicles of simple single-chain amphiphiles grow and divide under laboratory
+conditions~\citep{hanczyc2003}. \Sup{} A boundary requires neither a record
+nor a catalyst.
+
+\paragraph{Record.}
+A record that can be copied without being consumed needs units that pair:
+two complementary classes, so that a strand can be read by assembling its
+complement. Pairing is a contact operation; copying a short template by
+pairing has been demonstrated without enzymes~\citep{orgel2004}. \Sup{} A
+record does not strictly require a boundary, but its persistence against the
+medium does, and its copies remain associated with one another only if they
+are kept together~\citep{szostak2001}. A record requires a boundary for
+persistence and association, and no catalyst in principle.
+
+\paragraph{Catalyst.}
+A protein catalyst is a polymer over twenty units in a specified order. Its
+order cannot be copied by pairing, because the twenty units do not form
+complementary pairs; the order must be written in a record over a pairing
+alphabet and translated (\cref{sec:record}). \D\Sup{} A catalyst of this kind
+therefore requires a record. P450 in addition requires a redox-active metal
+centre and, in eukaryotes, a membrane.
+
+\paragraph{The resulting order.}
+The requirements form a chain without a cycle: boundary $\to$ record $\to$
+catalyst. The well-known circularity of extant cells---proteins are needed to
+copy nucleic acids, nucleic acids to specify proteins---appears when
+present-day mechanisms are taken as the only ones; it does not appear among
+the minimal requirements, because pairing-based copying requires no protein
+in principle. We follow the dependency order in
+\cref{sec:boundary,sec:record,sec:catalyst}, and for each class test one
+consequence that bears on P450.
+
+%==============================================================================
+\section{The boundary: bilayer and membrane anchor}
+\label{sec:boundary}
+%==============================================================================
+
+A lipid bilayer has a hydrocarbon core about $3$~nm thick~\citep{white1999}.
+\Sup{} A polypeptide that crosses it as an $\alpha$-helix advances
+$1.5$~\AA{} per residue~\citep{pauling1951}, so a span of about $20$
+consecutive residues with little affinity for water is needed to cross the
+core. \D\Sup
+
+Most eukaryotic P450s reside in the membrane of the endoplasmic reticulum;
+bacterial P450s are, with few exceptions, soluble; mitochondrial P450s are
+imported into the matrix and associate with the inner membrane through other
+parts of the protein~\citep{black1992,williams2000,omura2006}. \Sup
+
+\begin{prediction}[N-terminal anchor]
+\label{pred:anchor}
+P450s annotated to the endoplasmic reticulum membrane carry, within their
+first $60$ residues, a $19$-residue window with mean Kyte--Doolittle
+hydropathy above $1.6$, the conventional indicator of a membrane-spanning
+segment~\citep{kyte1982}; bacterial P450s do not. No prediction is made for
+mitochondrial P450s.
+\end{prediction}
+
+We retrieved all $1{,}919$ reviewed entries of the cytochrome P450 family from
+UniProtKB~\citep{uniprot2023} with their taxonomic lineage and annotated
+subcellular location, and computed the largest $19$-residue window mean in
+residues $1$--$60$. Of $532$ eukaryotic entries annotated to the endoplasmic
+reticulum (or microsome) membrane, $93\%$ exceed $1.6$ (median $2.21$); of
+$145$ bacterial entries, $0.7\%$ do (median $0.44$); of $84$ mitochondrial
+entries, $38\%$ do (median $0.83$) (\cref{fig:boundary}B). \C{} Among eleven
+named P450s (\cref{fig:boundary}A), the microsomal enzymes CYP3A4, 2C9,
+2D6, 1A2, 2E1, 51A1 and 19A1 exceed the threshold (1.88 to 2.82); CYP17A1,
+also microsomal, falls below it (1.38) with this window and threshold; the
+mitochondrial CYP11A1 (0.49) and the bacterial CYP101A1 (0.27) and CYP102A1
+(0.42) fall below it.
+
+The prediction holds for most entries and fails for some: a fixed window and
+threshold misclassify a minority of microsomal sequences, and the
+intermediate position of the mitochondrial group reflects the variety of
+their N-terminal presequences. The separation between the
+endoplasmic-reticulum and bacterial groups is the observation that bears on
+the boundary step of the chain.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/g3_boundary.pdf}
+\caption{\textbf{The N-terminal segment and the bilayer.}
+(\textbf{A})~Kyte--Doolittle hydropathy, $19$-residue window mean, over the
+first $60$ residues of two microsomal (CYP3A4, CYP2C9), one mitochondrial
+(CYP11A1) and two bacterial (CYP101A1, CYP102A1) P450s; dashed line at $1.6$.
+(\textbf{B})~Largest window mean in residues $1$--$60$ for reviewed
+UniProtKB P450s, grouped by annotated location and lineage; bars mark
+medians.}
+\label{fig:boundary}
+\end{figure}
+
+%==============================================================================
+\section{The record: pairing, word length and substitution tolerance}
+\label{sec:record}
+%==============================================================================
+
+\subsection{An alphabet of two binary distinctions}
+
+Copying by pairing needs at least two complementary classes. Nucleic acids
+use four bases that differ in two binary respects: size (purine or
+pyrimidine), and which partner they pair with, with A--T(U) pairs joined by
+two hydrogen bonds and G--C pairs by three~\citep{watson1953}. \Sup{} Four
+letters are the smallest alphabet in which each letter has a unique partner
+and the alphabet can still be read in two independent binary respects.
+
+\subsection{Word length}
+
+To name twenty residues and a stop signal with words of fixed length $L$ over
+four letters requires $4^L\ge21$. Since $4^2=16<21\le64=4^3$, the shortest
+sufficient word has three letters. \D{} The genetic code uses triplet codons
+read without overlap~\citep{crick1961}; of the $64$ codons, $61$ name residues
+and $3$ signal stop. \Sup\C{} The surplus of $61$ sense words over $20$
+residues is distributed unevenly: from one codon (Met, Trp) to six (Leu, Ser,
+Arg) (\cref{fig:record}B).
+
+\subsection{Substitution tolerance}
+
+A record that will be copied with errors is more useful if a single-letter
+error tends to name a similar residue. We measured this for the standard
+code~\citep{elzanowski2019} using residue hydropathy~\citep{kyte1982}, the
+property tested in \cref{sec:boundary}.
+
+\begin{prediction}[Substitution tolerance]
+\label{pred:code}
+Among codes with the same block structure, the standard code is among those
+in which single-letter substitutions change residue hydropathy least.
+\end{prediction}
+
+For each of the $526$ single-letter substitutions between sense codons we
+took the squared change in hydropathy of the encoded residue (zero when
+synonymous; $25.5\%$ are synonymous), and averaged. The standard code scores
+$9.39$. Following the construction of Haig and Hurst~\citep{haig1991}, we
+generated $200{,}000$ codes by permuting the twenty residue labels among the
+twenty synonymous codon blocks, keeping the stops fixed; their scores have
+mean $13.3$ and standard deviation $1.7$, and $1{,}565$ ($0.78\%$) score at or
+below the standard code (\cref{fig:record}C). \C{} With polar requirement in
+place of hydropathy, the original analyses found a stronger
+result~\citep{haig1991,freeland1998}; we report hydropathy because it is the
+property used elsewhere in this article.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/g4_record.pdf}
+\caption{\textbf{The record.}
+(\textbf{A})~Words of length $L$ over four letters; three letters are the
+shortest that name twenty residues and a stop.
+(\textbf{B})~Codons per residue in the standard code.
+(\textbf{C})~Mean squared hydropathy change per single-letter substitution
+for $200{,}000$ codes with permuted residue assignments (grey) and for the
+standard code (orange).}
+\label{fig:record}
+\end{figure}
+
+%==============================================================================
+\section{The catalyst: carrier, slot and compact fold}
+\label{sec:catalyst}
+%==============================================================================
+
+\subsection{Carrier and slot}
+
+A polypeptide is a chain of identical backbone units, each carrying a
+variable side chain. Each peptide bond is formed by a condensation that
+releases one water molecule; in the terms of \cref{sec:foundation}, chain
+synthesis is a ladder of identical rungs, each a commitment. \D\Sup{} The
+backbone carries order; the side-chain slot carries the specification
+written in the record.
+
+\subsection{Why an extended chain does not persist as a catalyst}
+
+In an extended chain every residue is in contact with the medium. By
+\cref{thm:indiv}(b), adding contacts between residues cannot lower the
+separation cost of any residue from the medium, and it raises the cost of
+those that become enclosed. A compact fold is therefore the arrangement in
+which the parts of a chain are individuated from the medium by more than
+their own few contacts. \D{} In particular, a cofactor bound inside a fold
+is separated from the medium by every contact the fold makes with it.
+
+\begin{prediction}[Compaction and burial]
+\label{pred:fold}
+P450 chains have the radius of gyration of folded, not denatured, proteins of
+their length; their heme is mostly inaccessible to solvent; and in a residue
+contact graph the heme's separation cost from the medium exceeds that of the
+residues.
+\end{prediction}
+
+\paragraph{Compaction.}
+For the heme-bearing chains of twelve P450 entries ($405$--$480$ resolved
+residues), the C$\alpha$ radius of gyration is $21.1$--$22.8$~\AA. The
+empirical scaling for folded proteins, $R_g=2.2N^{0.38}$~\citep{skolnick1997},
+gives $21.5$--$23.0$~\AA{} over the same range; the scaling for chemically
+denatured proteins, $R_g=1.927N^{0.598}$~\citep{kohn2004}, gives
+$70$--$77$~\AA{} (\cref{fig:fold}A). About half of all protein heavy atoms in
+each P450 chain ($47$--$54\%$) have no solvent-accessible surface. \C
+
+\paragraph{Burial of the heme.}
+We computed accessible surface areas by the Shrake--Rupley
+method~\citep{shrake1973} (probe $1.4$~\AA, $192$ points per atom) with waters
+and non-heme ligands removed. The heme retains $1.5$--$6.4\%$ of its
+isolated accessible surface in the twelve P450 structures; in myoglobin,
+hemoglobin and the nitric oxide synthase oxygenase domain it retains
+$17$--$20\%$, and in the peroxidases, catalase and cytochrome~c
+$1$--$5\%$ (\cref{fig:fold}B). \C
+
+\paragraph{Separation cost of the heme.}
+We built a contact graph for camphor-bound CYP101A1 (2CPP) and for CYP3A4
+(1TQN) with integer weights: the weight between two residues, or a residue
+and the heme, is the number of heavy-atom pairs closer than $4.5$~\AA, and
+each node is joined to the medium by the number of its atoms with more than
+$1$~\AA$^2$ of accessible surface. The separation costs of the residues
+range from $34$ to $164$ (median $88$) in 2CPP and from $26$ to $181$ (median
+$91$) in 1TQN; the heme's are $306$ and $313$, above every residue
+(\cref{fig:fold}C). \C{} In both graphs the heme's identity region is the
+heme alone: its separation cost equals the weight of its own contacts, so the
+fold individuates the heme by surrounding it rather than by enclosing it
+together with neighbours.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/g5_fold.pdf}
+\caption{\textbf{Compaction and burial.}
+(\textbf{A})~C$\alpha$ radius of gyration against resolved chain length for
+twelve P450s and eight other heme proteins, with the empirical scalings for
+folded~\citep{skolnick1997} and denatured~\citep{kohn2004} chains.
+(\textbf{B})~Accessible surface of the heme in each structure, as a
+percentage of the isolated heme's.
+(\textbf{C})~Separation costs from the medium in the integer-weighted contact
+graph of camphor-bound CYP101A1 (2CPP); the heme is marked.}
+\label{fig:fold}
+\end{figure}
+
+%==============================================================================
+\section{The heme and its thiolate ligand}
+\label{sec:heme}
+%==============================================================================
+
+\subsection{Four equatorial contacts and two axial slots}
+
+In a heme the iron is held by the four pyrrole nitrogens of protoporphyrin~IX
+in a plane, leaving two axial positions, one on each face. \Sup{} In the
+P450 structures analysed here the mean Fe--N(pyrrole) distance is
+$1.98$--$2.10$~\AA. \C{} In a protein, the face turned towards the chain
+(proximal) is occupied by a protein ligand; the other (distal) is where
+small molecules bind. The heme in a protein is thus a node with one proximal
+and one distal slot, and the identity of the proximal ligand is the first
+thing that distinguishes one class of heme protein from another.
+
+\subsection{The proximal ligand across heme proteins}
+
+\begin{prediction}[Proximal ligand]
+\label{pred:proximal}
+In every P450 structure the protein atom nearest the heme iron is the
+sulphur of a cysteine; in globins, peroxidases and cytochrome~c it is a
+histidine nitrogen; in catalase, a tyrosine oxygen.
+\end{prediction}
+
+We located every heme iron in twenty PDB entries~\citep{berman2000}---twelve
+P450s and eight other heme proteins (\cref{tab:structures})---and found the
+nearest protein heavy atom. All $26$ heme irons in the P450,
+chloroperoxidase and nitric oxide synthase entries are bound by cysteine
+S$\gamma$, at $2.32$~\AA{} on average ($1.90$--$2.52$~\AA); the $13$ irons in
+myoglobin, hemoglobin, cytochrome~c peroxidase, horseradish peroxidase and
+cytochrome~c by histidine N$\epsilon2$ at $2.13$~\AA{} ($1.95$--$2.19$~\AA);
+and the two in catalase by tyrosine O$\eta$ at $1.84$~\AA{}
+(\cref{fig:heme}A). \C
+
+The proximal ligand correlates with function. Heme proteins with a histidine
+ligand bind dioxygen reversibly (globins) or reduce peroxides with the help of
+distal-side residues (peroxidases); those with a cysteine thiolate---P450,
+chloroperoxidase and nitric oxide synthase---generate high-valent iron--oxo
+species from dioxygen or peroxide and transfer oxygen or halogen to a
+substrate~\citep{dawson1988,poulos2014}. \Sup{} The strongly electron-donating
+thiolate is held to promote the heterolytic cleavage of the O--O bond that
+produces Compound~I, which has been characterised directly in a
+P450~\citep{rittle2010}. \Sup
+
+\subsection{The 450-nm band and the refused state}
+
+The thiolate ligand gives the reduced, carbon-monoxide-bound enzyme its
+characteristic absorption at $450$~nm~\citep{omura1964}. Preparations in
+which the thiolate ligation is lost on reduction---by protonation to a
+neutral thiol or by displacement---absorb near $420$~nm (P420) and are
+catalytically inactive~\citep{perera2003}. \Sup{} In the terms of
+\cref{def:ladder}, P420 is a refused rung: a state the enzyme can occupy that
+closes none of the gap to product. We do not test this spectroscopically
+here; we test instead whether the sequence that places the cysteine is
+specific to the family.
+
+\subsection{The sequence that places the cysteine}
+
+The cysteine ligand of P450s lies in a conserved loop described by the
+PROSITE signature PS00086~\citep{sigrist2013}, which we read from the PROSITE
+entry as
+\begin{center}
+\texttt{[FW]-[SGNH]-x-[GD]-\{F\}-[RKHPT]-\{P\}-C-[LIVMFAP]-[GAD]}.
+\end{center}
+
+\begin{prediction}[Signature]
+\label{pred:signature}
+The iron-bound cysteine of every P450 structure lies at the cysteine position
+of a signature match in that structure's own sequence; the signature matches
+most P450 sequences and few other heme proteins; and it lies near the
+C-terminus.
+\end{prediction}
+
+In all twelve P450 structures the cysteine bound to the iron is the
+cysteine of a signature match in the chain's own sequence (residue $357$ in
+CYP101A1, $442$ in CYP3A4, $400$ in CYP102A1; \cref{tab:structures}). \C{} Of
+$1{,}919$ reviewed P450-family sequences, $82.6\%$ match the signature
+exactly; allowing in addition a relaxed core \texttt{G-x-[RHKPT]-x-C-x-[GA]}
+in the last $160$ residues raises this to $91.0\%$. Of $7{,}067$ reviewed
+heme-binding proteins outside the family, $0.07\%$ match exactly and $0.31\%$
+with the relaxed core (\cref{fig:heme}B); the exact matches outside the
+family are fungal fatty-acid oxygenases that carry a P450 domain (Psi-producing
+oxygenase~A, linoleate diol synthase). In matching P450 sequences the
+cysteine lies a median of $59$ residues from the C-terminus, at a median
+relative position of $0.88$ (\cref{fig:heme}C). \C{} The $334$ P450 sequences that
+fail the exact signature include enzymes with non-canonical chemistry, such
+as prostacyclin synthase and the CYP74 divinyl-ether synthases, whose loop
+differs at one or more positions.
+
+\subsection{The distal slot and the spin state}
+
+In the substrate-free CYP101A1 structure (1PHC~\citep{poulos1986}) a water
+molecule sits on the distal face at $2.35$~\AA{} from the iron, which lies
+$0.30$~\AA{} from the plane of the pyrrole nitrogens. In the camphor-bound
+structure (2CPP~\citep{poulos1987}) no water is within $2.9$~\AA{} and the
+iron lies $0.43$~\AA{} from the plane. \C{} The direction of both changes is
+that expected when substrate binding displaces the distal water and the
+six-coordinate low-spin Fe(III) becomes five-coordinate and high-spin, and
+the spin-state change is accompanied by a rise in the iron's reduction
+potential~\citep{sligar1976}. \Sup{} This is the switch between the two
+ladders of \cref{sec:atoms} at $k=5$. The other P450 entries carry inhibitors
+or ligands on the distal face or were determined at lower resolution, and we
+do not use them for this comparison.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/g6_ligation.pdf}
+\caption{\textbf{The proximal ligand and the cysteine-loop signature.}
+(\textbf{A})~Distance from every heme iron in twenty PDB entries to the
+nearest protein heavy atom, grouped by that atom.
+(\textbf{B})~Fraction of reviewed UniProtKB sequences matching PROSITE
+PS00086, and matching either PS00086 or the relaxed core in the last $160$
+residues.
+(\textbf{C})~Distance from the matched cysteine to the C-terminus in P450
+sequences.}
+\label{fig:heme}
+\end{figure}
+
+%==============================================================================
+\section{The catalytic cycle as a ladder}
+\label{sec:cycle}
+%==============================================================================
+
+The consensus P450 cycle~\citep{denisov2005,poulos2014} passes through the
+following states, each reached from the previous by one event:
+\begin{enumerate}[label=\arabic*.,nosep]
+\item resting Fe(III), six-coordinate with distal water, low spin;
+\item substrate bound, water displaced, Fe(III) five-coordinate, high spin;
+\item one-electron reduction to Fe(II);
+\item O$_2$ bound, Fe(II)--O$_2$;
+\item second electron, Fe(III)--peroxo;
+\item protonation, Fe(III)--hydroperoxo (Compound~0);
+\item second protonation and O--O heterolysis, Fe(IV)=O porphyrin radical
+      cation (Compound~I), with release of water;
+\item hydrogen abstraction from substrate and oxygen rebound~\citep{groves1976},
+      product formed;
+\item product release, return to 1.
+\end{enumerate}
+\Sup{} Written as a ladder (\cref{def:ladder}), each transition is a rung
+whose power is the fraction of enzyme that advances rather than leaves the
+cycle, and each advance is a commitment: an electron delivered, a proton
+transferred, a bond made or broken. \D
+
+Three features of the cycle take a simple form in this description.
+\begin{itemize}[nosep]
+\item \emph{Gating.} The shift of reduction potential on substrate binding
+      (\cref{sec:heme}) makes the first electron transfer favourable only
+      after step~2~\citep{sligar1976}. Without substrate the rung from 1 to 3
+      is refused in the sense of \cref{def:ladder}. \Sup\D
+\item \emph{Uncoupling.} Release of superoxide from step~4 or of hydrogen
+      peroxide from step~6, and the oxidase pathway from Compound~I, are
+      exits from the ladder; the fraction of reducing equivalents that ends
+      in product---the coupling efficiency---is the composite power of the
+      ladder. \Sup\D
+\item \emph{Identifiability.} By \cref{prop:ladder}, the coupling efficiency
+      alone does not identify the powers of the individual rungs; two enzymes
+      with equal coupling can differ step by step. Recording the
+      intermediates, as cryo-crystallography~\citep{schlichting2000} and
+      rapid-mixing spectroscopy~\citep{rittle2010} do, commits once per rung
+      rather than once per cycle. \D
+\end{itemize}
+We do not test the cycle quantitatively here. The two structures of
+\cref{sec:heme} bear on its first rung only.
+
+%==============================================================================
+\section{What is derived and what is supplied}
+\label{sec:ledger}
+%==============================================================================
+
+\Cref{tab:ledger} collects the labels attached to each link. The pattern is
+uneven, and we think it should be stated plainly: the foundation is derived;
+the passage to atoms rests on supplied inputs, of which the filling order is
+empirical; the polymer sections combine supplied chemistry with derived
+counting; and the P450-specific steps are mostly supplied and checked.
+
+\begin{longtable}{@{}p{4.3cm}p{6.3cm}p{2.8cm}@{}}
+\caption{Ledger of the chain. \D{} derived from \cref{sec:foundation};
+\Sup{} supplied as input; \C{} checked here.}\label{tab:ledger}\\
+\toprule
+Link & Content & Status\\
+\midrule
+\endfirsthead
+\toprule
+Link & Content & Status\\
+\midrule
+\endhead
+Counted commitment & every record costs at least $\theta>0$ & assumed\\
+Direction, time, entropy & $M=ft=S_{\mathrm{reg}}/\kB\ln b$ & \D\\
+Individuation & $\sep(v)\ge1$, non-decreasing under expansion & \D\\
+Finite parts & finitely many configurations; recurrence & \D\\
+Ladders & log gap is a sum of positive terms & \D\\
+Discrete labels & bounded domain, rotation group, spin & \Sup\\
+Exclusion & one occupant per label & \Sup\\
+Shell capacities & $2(2\ell+1)$, $2n^2$ & \D\Sup\\
+Filling order & $(n+\ell,n)$ & \Sup{} (empirical)\\
+Closures, periods & $2,\dots,86$; $2,8,8,18,18,32,32$ & \D\Sup\C\\
+Iron d shell & d$^5$/d$^6$ with largest spin difference & \D\Sup\C\\
+Bond & contact lowering joint separation cost & \D\Sup\\
+Tetrahedral geometry & $\cos\phi=-1/3$ & \D\Sup{} (\C{} restrained)\\
+Peptide plane & short C--N, bimodal $\omega$ & \Sup\C\\
+Dependency order & boundary $\to$ record $\to$ catalyst & \D\Sup\\
+Membrane anchor & ER P450s carry an N-terminal span & \D\Sup\C\\
+Triplet code & $4^L\ge21\Rightarrow L=3$ & \D\C\\
+Substitution tolerance & standard code in lowest $0.8\%$ & \C\\
+Compact fold & folded $R_g$, buried heme & \D\C\\
+Heme separation cost & exceeds every residue & \D\C\\
+Thiolate ligand & Cys S$\gamma$ in all P450 irons & \Sup\C\\
+Signature & PS00086 in $82.6\%$ of P450s, $0.07\%$ of others & \Sup\C\\
+Spin switch & distal water and Fe displacement, 1PHC vs 2CPP & \Sup\C\\
+Cycle as ladder & gating, uncoupling, identifiability & \D\Sup\\
+Specific P450 sequence & any particular P450 gene & \Sup\\
+\bottomrule
+\end{longtable}
+
+%==============================================================================
+\section{Validation}
+\label{sec:validation}
+%==============================================================================
+
+\Cref{tab:structures} lists the structures used. All identities were checked
+against each entry's own compound record before use, and every computation
+is provided with its numerical record (\cref{sec:data}).
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Structures. Resolution as recorded in the entry; ligand distance is
+from the first heme iron to the nearest protein heavy atom.}
+\label{tab:structures}
+\begin{tabular}{@{}llllr@{}}
+\toprule
+PDB & Protein & Group & Proximal ligand & Res. (\AA)\\
+\midrule
+2CPP & CYP101A1, camphor-bound & P450 & Cys357 S$\gamma$, 2.20~\AA & 1.63\\
+1PHC & CYP101A1, substrate-free & P450 & Cys357 S$\gamma$, 2.25~\AA & 1.60\\
+1TQN & CYP3A4 & P450 & Cys442 S$\gamma$, 2.35~\AA & 2.05\\
+1OG2 & CYP2C9 & P450 & Cys435 S$\gamma$, 2.29~\AA & 2.60\\
+2F9Q & CYP2D6 & P450 & Cys443 S$\gamma$, 2.43~\AA & 3.00\\
+2HI4 & CYP1A2 & P450 & Cys458 S$\gamma$, 2.35~\AA & 1.95\\
+3E6I & CYP2E1 & P450 & Cys437 S$\gamma$, 2.28~\AA & 2.20\\
+1BU7 & CYP102A1 heme domain & P450 & Cys400 S$\gamma$, 2.38~\AA & 1.65\\
+3LD6 & CYP51A1 & P450 & Cys449 S$\gamma$, 2.35~\AA & 2.80\\
+3EQM & CYP19A1 & P450 & Cys437 S$\gamma$, 2.40~\AA & 2.90\\
+3RUK & CYP17A1 & P450 & Cys442 S$\gamma$, 1.90~\AA & 2.60\\
+3N9Y & CYP11A1 & P450 & Cys423 S$\gamma$, 2.50~\AA & 2.10\\
+1CPO & chloroperoxidase & thiolate & Cys S$\gamma$, 2.35~\AA & 1.90\\
+1NOD & NOS oxygenase & thiolate & Cys S$\gamma$, 2.30~\AA & 2.60\\
+1A6M & myoglobin & histidine & His N$\epsilon2$, 2.06~\AA & 1.00\\
+2HHB & hemoglobin & histidine & His N$\epsilon2$, 2.15~\AA & 1.74\\
+2CYP & cytochrome c peroxidase & histidine & His N$\epsilon2$, 1.95~\AA & 1.70\\
+1ATJ & horseradish peroxidase & histidine & His N$\epsilon2$, 2.19~\AA & 2.15\\
+1HRC & cytochrome c & histidine & His N$\epsilon2$, 2.04~\AA & 1.90\\
+7CAT & catalase & tyrosine & Tyr O$\eta$, 1.84~\AA & 2.50\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Predictions and outcomes.}
+\label{tab:outcomes}
+\begin{tabular}{@{}p{3.6cm}p{4.6cm}p{5.4cm}@{}}
+\toprule
+Prediction & Expected & Observed\\
+\midrule
+\ref{pred:closures} closures & largest $I_1$ drops after $2,10,18,36,54,86$ &
+all six; periods agree in all seven\\
+\ref{pred:plane} peptide plane & C--N shorter; $\omega$ bimodal &
+$1.329$ vs $1.461$~\AA; $99.2\%$ trans, $7$ cis, $35$ between\\
+\ref{pred:anchor} anchor & ER $>1.6$, bacterial $<1.6$ & $93\%$ of $532$;
+$0.7\%$ of $145$; CYP17A1 an exception\\
+\ref{pred:code} code & standard code in low tail & $0.78\%$ of permuted codes
+as good or better\\
+\ref{pred:fold} fold & folded $R_g$; heme buried; heme $\sep$ highest &
+$R_g$ within $1$~\AA{} of folded scaling; $1.5$--$6.4\%$ exposed; $306$, $313$
+vs maxima $164$, $181$\\
+\ref{pred:proximal} proximal ligand & Cys S in P450s & $26/26$ thiolate
+irons; His and Tyr elsewhere\\
+\ref{pred:signature} signature & ligand at motif Cys; specific; C-terminal &
+$12/12$; $82.6\%$ vs $0.07\%$; median $59$ residues from end\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Limitations}
+\label{sec:limits}
+%==============================================================================
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{The chain is not a uniqueness argument.} Every step states a
+condition a P450 meets; none shows that only a P450 meets it. Chloroperoxidase
+and nitric oxide synthase share the thiolate ligand; other heme proteins share
+the compact fold and the buried cofactor.
+\item \textbf{Supplied inputs carry much of the weight.} The exclusion
+principle, the spin label and the filling order are inputs, and the last is
+empirical. The ligand-field splitting that produces the two spin ladders is
+supplied, as is the chemistry of Compound~I.
+\item \textbf{Refined coordinates.} Bond lengths and angles in crystal
+structures are restrained toward ideal values during
+refinement~\citep{engh1991} and are not independent evidence; $\omega$ is
+weakly restrained, and $\phi,\psi$ are not.
+\item \textbf{Annotations.} The location and lineage used in
+\cref{sec:boundary} and the family membership used in \cref{sec:heme} are
+UniProtKB annotations, taken as given. Family membership is assigned partly
+by sequence similarity, so the signature test is not independent of it; its
+value lies in the low match rate outside the family.
+\item \textbf{Thresholds.} The hydropathy window and threshold, the
+$4.5$~\AA{} contact cutoff, the $1$~\AA$^2$ exposure cutoff and the relaxed
+signature core are conventions or our choices; the conclusions stated
+are those that held at the values used, and other values would shift the
+fractions reported.
+\item \textbf{The dependency order is not history.} \Cref{sec:order} states
+what each structure presupposes. Whether boundaries, records and catalysts
+arose in that order is a separate, empirical question.
+\item \textbf{The cycle is not tested.} \Cref{sec:cycle} gives a form for the
+cycle, not a quantitative test of it.
+\end{enumerate}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================================
+
+Starting from the assumption that every record costs at least a fixed
+positive amount, we derived a direction, a recorded time and a register
+entropy that are three readings of one count, and an individuation measure
+on contact graphs that is at least one and does not decrease as contacts are
+added. Following these through atomic shells, bonds, the peptide carrier,
+the dependency order of boundary, record and catalyst, and the heme, we
+reached a description of a P450 in which each step is marked as derived,
+supplied or checked. Where we could check, the data agreed with what the
+chain requires: the closures in ionization energies, the planarity of the
+peptide, the N-terminal anchor of membrane P450s, the triplet code and its
+substitution tolerance, the compactness of P450 folds and the burial of the
+heme, the thiolate ligand and the conserved sequence that places it, and the
+displacement of the distal water by substrate. Where we could not---the
+filling order, the specific sequence of any particular P450, the kinetics of
+its cycle---the chain uses inputs, and says so.
+
+%==============================================================================
+\section*{Data and code availability}
+\label{sec:data}
+%==============================================================================
+
+All computations are in \texttt{validation/} alongside this manuscript
+(\texttt{g1\_atoms.py} to \texttt{g6\_ligation.py}, run by
+\texttt{run\_all.py}). Each writes a numerical record to
+\texttt{validation/results/} and its figure to \texttt{figures/}. Downloaded
+inputs---PDB entries~\citep{berman2000}, UniProtKB
+sequences~\citep{uniprot2023} and the PROSITE entry
+PS00086~\citep{sigrist2013}---are cached with their source address, SHA-256
+digest and retrieval date. Ionization energies are those of the NIST Atomic
+Spectra Database~\citep{kramida2023} distributed with
+\texttt{mendeleev}~\citep{mentel2014}. The computations use
+NumPy~\citep{harris2020}, SciPy~\citep{virtanen2020},
+NetworkX~\citep{hagberg2008} and Matplotlib~\citep{hunter2007}.
+
+\appendix
+%==============================================================================
+\section{Protocols}
+\label{app:protocols}
+%==============================================================================
+
+\paragraph{G1.} Subshells $(n,\ell)$, $\ell<n\le7$, ordered by $(n+\ell,n)$;
+a period ends before each $\ell=0$ subshell. First ionization energies are
+the \texttt{ion\_charge = 0} entries of the \texttt{mendeleev} database;
+drops are computed between consecutive atomic numbers for which both values
+exist. Low-spin counts fill three lower orbitals before two upper ones, with
+Hund's rule within each set.
+
+\paragraph{G2.} For each P450 entry, the chain of the first heme iron. PDB
+format, first model, highest-occupancy alternate location. A peptide bond is
+recognised when C$_i$--N$_{i+1}<1.6$~\AA. Dihedrals by the standard
+four-point formula.
+
+\paragraph{G3.} UniProtKB query
+\texttt{family:"cytochrome P450 family" AND reviewed:true}, fields accession,
+protein name, organism, lineage, subcellular location, sequence. Groups:
+lineage containing Bacteria; eukaryotic with location containing
+Mitochondrion; eukaryotic with location containing Endoplasmic reticulum
+membrane or Microsome membrane. Kyte--Doolittle values~\citep{kyte1982};
+window $19$; residues $1$--$60$.
+
+\paragraph{G4.} NCBI translation table~1. Substitutions between sense codons
+only. Cost: mean of $(h(a)-h(a'))^2$ over all ordered single-letter
+substitutions, with $h$ the Kyte--Doolittle value. Permuted codes: a uniform
+random permutation of the twenty residue labels over the twenty synonymous
+blocks, stops fixed; $200{,}000$ draws, seed 1991.
+
+\paragraph{G5.} Heme-bearing chain and its heme only; waters and other
+hetero groups removed. Radii C~1.70, N~1.55, O~1.52, S~1.80, Fe~1.40~\AA;
+probe $1.4$~\AA; $192$ golden-spiral points per atom. Contact graph: residue
+and heme nodes; edge weight the number of heavy-atom pairs within
+$4.5$~\AA; medium edge weight the number of the node's atoms with accessible
+surface above $1$~\AA$^2$; separation cost by maximum flow.
+
+\paragraph{G6.} PROSITE pattern read from the PA lines of PS00086 and
+translated to a regular expression. Negative set: UniProtKB
+\texttt{keyword:KW-0349 AND reviewed:true AND NOT family:"cytochrome P450
+family"}. Relaxed core searched in the last $160$ residues. Distal water: an
+oxygen of a water molecule within $2.9$~\AA{} of the iron. Iron displacement:
+distance from the iron to the least-squares plane of the four pyrrole
+nitrogens.
+
+\sloppy
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

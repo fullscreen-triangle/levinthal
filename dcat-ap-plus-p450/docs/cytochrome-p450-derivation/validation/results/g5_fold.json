@@ -1,0 +1,172 @@
+{
+  "experiment": "g5_fold",
+  "generated": "2026-10-11T14:57:04",
+  "probe": 1.4,
+  "points_per_atom": 192,
+  "entries": {
+    "2CPP": {
+      "N": 405,
+      "rg": 21.14202888651032,
+      "heme_exposure": 0.04016319834178113,
+      "buried_atom_fraction": 0.5352684144818977,
+      "resolution": 1.63,
+      "sigma_heme": 306,
+      "sigma_residue_quantiles": [
+        34.0,
+        75.0,
+        88.0,
+        101.0,
+        164.0
+      ],
+      "heme_sigma_percentile_among_residues": 1.0,
+      "heme_singleton_cut": 306,
+      "nodes_with_region_identity": 1,
+      "min_sigma": 34.0
+    },
+    "1PHC": {
+      "N": 405,
+      "rg": 21.188681266962508,
+      "heme_exposure": 0.03611567815113902,
+      "buried_atom_fraction": 0.5287141073657927,
+      "resolution": 1.6
+    },
+    "1TQN": {
+      "N": 468,
+      "rg": 22.446349647909834,
+      "heme_exposure": 0.060470571322274055,
+      "buried_atom_fraction": 0.48566117896972916,
+      "resolution": 2.05,
+      "sigma_heme": 313,
+      "sigma_residue_quantiles": [
+        26.0,
+        77.0,
+        91.0,
+        104.0,
+        181.0
+      ],
+      "heme_sigma_percentile_among_residues": 1.0,
+      "heme_singleton_cut": 313,
+      "nodes_with_region_identity": 4,
+      "min_sigma": 26.0
+    },
+    "1OG2": {
+      "N": 461,
+      "rg": 22.265174875171827,
+      "heme_exposure": 0.01858877065233256,
+      "buried_atom_fraction": 0.48605469807744384,
+      "resolution": 2.6
+    },
+    "2F9Q": {
+      "N": 454,
+      "rg": 22.229741240750474,
+      "heme_exposure": 0.014765399396848932,
+      "buried_atom_fraction": 0.47015970860184925,
+      "resolution": 3.0
+    },
+    "2HI4": {
+      "N": 480,
+      "rg": 22.605260435070633,
+      "heme_exposure": 0.014972892961265355,
+      "buried_atom_fraction": 0.49258777633289985,
+      "resolution": 1.95
+    },
+    "3E6I": {
+      "N": 462,
+      "rg": 22.14731598385168,
+      "heme_exposure": 0.021249317596606417,
+      "buried_atom_fraction": 0.5001326611833378,
+      "resolution": 2.2
+    },
+    "1BU7": {
+      "N": 455,
+      "rg": 22.097031434028857,
+      "heme_exposure": 0.027028953292822032,
+      "buried_atom_fraction": 0.5083083628439118,
+      "resolution": 1.65
+    },
+    "3LD6": {
+      "N": 445,
+      "rg": 22.112022947931795,
+      "heme_exposure": 0.06351562244791069,
+      "buried_atom_fraction": 0.492059069378657,
+      "resolution": 2.8
+    },
+    "3EQM": {
+      "N": 452,
+      "rg": 21.979088135808862,
+      "heme_exposure": 0.04799389297850663,
+      "buried_atom_fraction": 0.49425915800984144,
+      "resolution": 2.9
+    },
+    "3RUK": {
+      "N": 464,
+      "rg": 22.817494913064234,
+      "heme_exposure": 0.022458578981548388,
+      "buried_atom_fraction": 0.46621621621621623,
+      "resolution": 2.6
+    },
+    "3N9Y": {
+      "N": 471,
+      "rg": 22.49478916739656,
+      "heme_exposure": 0.05836490919065115,
+      "buried_atom_fraction": 0.5067044868488911,
+      "resolution": 2.1
+    },
+    "1A6M": {
+      "N": 151,
+      "rg": 14.997447975373843,
+      "heme_exposure": 0.19643595954963156,
+      "buried_atom_fraction": 0.45182724252491696,
+      "resolution": 1.0
+    },
+    "2HHB": {
+      "N": 141,
+      "rg": 14.42938487369115,
+      "heme_exposure": 0.18536751144624622,
+      "buried_atom_fraction": 0.42188961646398504,
+      "resolution": 1.74
+    },
+    "2CYP": {
+      "N": 293,
+      "rg": 18.282197498819773,
+      "heme_exposure": 0.03717847678099028,
+      "buried_atom_fraction": 0.5232709873858199,
+      "resolution": 1.7
+    },
+    "1ATJ": {
+      "N": 306,
+      "rg": 19.152184195194145,
+      "heme_exposure": 0.025376471767441518,
+      "buried_atom_fraction": 0.5196285352469396,
+      "resolution": 2.15
+    },
+    "7CAT": {
+      "N": 498,
+      "rg": 25.757891323841697,
+      "heme_exposure": 0.03855733377629814,
+      "buried_atom_fraction": 0.4236526946107784,
+      "resolution": 2.5
+    },
+    "1CPO": {
+      "N": 298,
+      "rg": 18.436247670129994,
+      "heme_exposure": 0.009983808903210701,
+      "buried_atom_fraction": 0.5082322357019065,
+      "resolution": 1.9
+    },
+    "1NOD": {
+      "N": 414,
+      "rg": 22.591031699361274,
+      "heme_exposure": 0.17282200928390817,
+      "buried_atom_fraction": 0.4705010376519419,
+      "resolution": 2.6
+    },
+    "1HRC": {
+      "N": 104,
+      "rg": 12.507977780302928,
+      "heme_exposure": 0.047582303438529976,
+      "buried_atom_fraction": 0.46780072904009723,
+      "resolution": 1.9
+    }
+  }
+}

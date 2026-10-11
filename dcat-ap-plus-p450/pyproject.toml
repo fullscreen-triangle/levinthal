@@ -1,0 +1,29 @@
+[project]
+name = "dcat-ap-plus-p450"
+version = "0.0.1"
+description = "The cytochrome P450 extension of DCAT-AP-PLUS: records, queries, and the experiments that produce them."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Kundai Farai Sachikonye" }]
+dependencies = []
+
+[project.scripts]
+dcat-ap-plus-p450 = "dcat_ap_plus_p450.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dcat_ap_plus_p450"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

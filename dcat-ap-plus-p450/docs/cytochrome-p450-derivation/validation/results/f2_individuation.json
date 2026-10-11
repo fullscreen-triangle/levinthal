@@ -1,0 +1,25 @@
+{
+  "experiment": "f2_individuation",
+  "generated": "2026-10-11T14:55:44",
+  "sequences": 40,
+  "steps": 160,
+  "edges_per_new_node": 4,
+  "integer": {
+    "sigma_v_decreases": 0,
+    "sigma_v_final_median": 107.0,
+    "global_min_edge_final_median": 1.0,
+    "global_min_edge_final_min": 1.0,
+    "incident_min_of_v_final_median": 1.0,
+    "min_sigma_over_all_nodes": 5.0,
+    "fraction_nodes_identity_is_region_mean": 0.007317073170731709
+  },
+  "real": {
+    "sigma_v_decreases": 0,
+    "sigma_v_final_median": 53.80694443801842,
+    "global_min_edge_final_median": 0.0014215522124878515,
+    "global_min_edge_final_min": 1.1036462944622647e-05,
+    "incident_min_of_v_final_median": 0.026662593628340045,
+    "min_sigma_over_all_nodes": 0.8610461520936653,
+    "fraction_nodes_identity_is_region_mean": 0.174390243902439
+  }
+}

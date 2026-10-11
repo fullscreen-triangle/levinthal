@@ -1,0 +1,1104 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.4cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+\declaretheorem[numberwithin=section]{theorem}
+\declaretheorem[sibling=theorem]{proposition}
+\declaretheorem[sibling=theorem]{lemma}
+\declaretheorem[sibling=theorem]{corollary}
+\declaretheorem[sibling=theorem,style=definition]{definition}
+\declaretheorem[style=definition]{postulate}
+\declaretheorem[sibling=theorem,style=definition]{example}
+\declaretheorem[sibling=theorem,style=remark]{remark}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\med}{m}
+\newcommand{\sep}{\sigma}
+\newcommand{\cut}{\partial}
+
+\title{Positive Occupation Propagation:\\[4pt]
+\large Direction, Time, Entropy and Individuation from Counted Commitment}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We examine what follows from one elementary arithmetic fact: a sum of
+infinitely many positive integers has partial sums that increase by at least
+one at every term and are therefore unbounded. We first state the fact
+precisely and show that integrality, rather than positivity, carries its
+content: a sequence of positive terms has a divergent sum along every infinite
+selection of its terms if and only if the terms are bounded below by a
+positive number, and positive real terms without such a bound can sum to a
+finite total. We then model the physical act of recording---a
+\emph{commitment}---as a term of such a sum, distinguish it from
+\emph{occupation}, the cost-free presence of a system in a state, and define
+\emph{positive occupation propagation} as the passage of occupation along a
+contact that is accompanied by a commitment. From these definitions we derive,
+under stated assumptions: a total order on recorded events (direction); a
+time defined as a ratio of commitment counts; a register entropy that cannot
+decrease; and an individuation measure, the minimum cut separating an item
+from a medium in a contact graph, which is bounded below by one when contact
+weights are counted and which cannot decrease as the graph grows. We show that
+the corresponding statement for real-valued contact weights is false, and give
+the counterexample. Two classical problems are re-examined in this setting.
+In the dichotomy of Zeno the distances form a convergent measured series while
+the commitments needed to distinguish the midpoints form a divergent counted
+series; the paradox's premises refer to the second. In the reversibility
+objection of Loschmidt, configurations of a finite reversible system recur and
+can be reversed, whereas the count of commitments made while doing so
+increases throughout. Finally we write a sequence of successive refinements,
+each removing a fraction of what remains, as a \emph{ladder}, and show that its
+logarithmic gap is a sum of positive terms that diverges exactly when the
+fractions are bounded below. Each statement is accompanied by a computational
+check: partial sums over $10^4$ terms and $10^3$ trials, separation costs in
+$6{,}400$ growth steps of random contact graphs, recurrence and reversal in a
+Kac ring and in the cat map on lattices up to $400\times400$, and exact
+rational ladders. The scope is deliberately narrow: the results concern
+records, orderings and cuts, and do not determine any dynamical law.
+\end{abstract}
+
+\tableofcontents
+\bigskip\hrule\bigskip
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================================
+
+The equations of classical and quantum mechanics are invariant under reversal
+of the time parameter, yet records of what has happened only accumulate. A
+laboratory notebook gains pages; a detector's count register is incremented;
+a photographic plate darkens. The tension between the two observations is old
+and has been discussed under several names---the reversibility objection of
+Loschmidt to Boltzmann's $H$-theorem~\citep{loschmidt1876,boltzmann1877},
+the problem of the arrow of time~\citep{lebowitz1993,price1996,albert2000},
+and, in a different register, Zeno's arguments against the composition of
+motion from points~\citep{grunbaum1967,salmon2001}. These discussions share a
+feature: each turns on what it means to \emph{distinguish} one state, one
+instant or one point from another, and on what such distinctions cost.
+
+This article isolates one elementary fact and traces, as carefully as we can,
+what it does and does not imply for those questions. The fact is arithmetic:
+\begin{quote}
+\emph{a sum of infinitely many positive integers has partial sums that
+increase by at least one at every term, and therefore exceed every bound.}
+\end{quote}
+Stated this way the fact is trivial. Its interest lies in which of its words
+carry the weight. ``Positive'' alone does not: $\tfrac12+\tfrac14+\tfrac18+\cdots$
+has positive terms and a finite sum. ``Integer'' does, because it supplies a
+uniform lower bound of one. ``Infinitely many'' supplies unboundedness, and
+``each term an integer'' supplies finiteness of each term. We make these
+roles precise in \cref{sec:sums}, where the central statement
+(\cref{thm:selection}) is that a sequence of positive terms has a divergent
+sum along every infinite selection of its terms if and only if its terms are
+bounded below by a positive number.
+
+The physical content enters through one modelling decision, set out in
+\cref{sec:model}: the act of making a record---which we call a
+\emph{commitment}---is counted, in the sense that each commitment costs at
+least a fixed positive amount $\theta$. We keep this separate from
+\emph{occupation}: a system is in some state at every moment, and being there
+is not a record and has no cost in this accounting. The term \emph{positive
+occupation propagation} denotes the passage of occupation from one item to
+another along a contact, accompanied by a commitment; it is the operation
+whose consequences the rest of the article follows.
+
+\paragraph{What is derived.}
+Under the definitions of \cref{sec:model} we obtain:
+\begin{enumerate}[label=(\roman*),nosep]
+\item a strict total order on commitments, which we call direction
+      (\cref{sec:direction});
+\item a precise account of which series the dichotomy and the arrow refer to
+      (\cref{sec:zeno});
+\item a time defined as a ratio of commitment counts, of the kind used in
+      the definition of the SI second (\cref{sec:time});
+\item a register entropy that increases by at least $\kB\ln b$ per commitment
+      (\cref{sec:entropy});
+\item an individuation measure on contact graphs that is at least one under
+      counted weights and does not decrease when the graph grows, together
+      with a counterexample showing that the second property fails to
+      protect a lower bound under real weights (\cref{sec:individuation});
+\item the joint monotonicity of these quantities under positive occupation
+      propagation (\cref{sec:up});
+\item the recurrence of configurations and non-recurrence of counts in
+      finite reversible systems, and the reading of Loschmidt's objection
+      this suggests (\cref{sec:bounded});
+\item a ladder calculus for successive refinement and the condition under
+      which a ladder's remaining gap tends to zero (\cref{sec:ladders}).
+\end{enumerate}
+\Cref{sec:devices} relates each derived quantity to the instrument that
+reads it, \cref{sec:validation} reports the computational checks, and
+\cref{sec:limits} states the limitations.
+
+\paragraph{What is not claimed.}
+Nothing here derives a dynamical law, a physical constant, or the numerical
+value of the floor $\theta$; where a physical value is used (the Landauer
+bound in \cref{sec:entropy}) it is imported from established physics and
+marked as such. The treatment of Zeno's paradoxes does not replace the
+analytic resolution through convergent series and limits; it identifies, for
+each premise, which kind of series the premise concerns. The treatment of
+Loschmidt's objection does not dispute the statistical explanation of the
+second law; it separates two quantities that the objection is sometimes taken
+to treat as one.
+
+\paragraph{Notation.}
+$\N=\{1,2,3,\dots\}$; $\Z_{\ge 1}$ is the same set when emphasising
+integrality. For a sequence $(c_i)_{i\ge1}$ we write $S_n=\sum_{i=1}^n c_i$.
+Graphs are finite, undirected and simple unless stated; $\cut S$ denotes the
+set of edges with exactly one endpoint in $S$, and $w(\cut S)$ its total
+weight.
+
+%==============================================================================
+\section{Counted and measured sums}
+\label{sec:sums}
+%==============================================================================
+
+\begin{definition}[Cost sequences]
+\label{def:costs}
+A \emph{cost sequence} is a sequence $(c_i)_{i\ge1}$ of positive real numbers.
+It is \emph{counted} if every $c_i\in\Z_{\ge1}$; \emph{floored} if there is
+$\theta>0$ with $c_i\ge\theta$ for all $i$; and \emph{measured} if only
+$c_i>0$ is assumed.
+\end{definition}
+
+\begin{lemma}[Partial sums of a counted sequence]
+\label{lem:counted}
+If $(c_i)$ is counted then $S_{n+1}-S_n\ge1$ and $S_n\ge n$ for all $n$. In
+particular $(S_n)$ is strictly increasing and unbounded.
+\end{lemma}
+
+\begin{proof}
+$S_{n+1}-S_n=c_{n+1}\ge1$. Summing the first $n$ increments from $S_0=0$
+gives $S_n\ge n$, which exceeds any bound for large $n$.
+\end{proof}
+
+\begin{proposition}[Floored reduces to counted]
+\label{prop:floored}
+If $(c_i)$ is floored with floor $\theta$, then $k_i:=\lfloor c_i/\theta\rfloor$
+is counted and $S_n\ge\theta\sum_{i\le n}k_i\ge\theta n$.
+\end{proposition}
+
+\begin{proof}
+$c_i/\theta\ge1$ gives $k_i\ge1$, and $c_i\ge\theta k_i$.
+\end{proof}
+
+The choice of integers is therefore a choice of unit: any uniform positive
+lower bound can be rescaled to one. What cannot be rescaled away is the
+\emph{absence} of such a bound.
+
+\begin{proposition}[Positivity is not a floor]
+\label{prop:positivity}
+There are measured sequences with
+\begin{enumerate}[label=(\alph*),nosep]
+\item a finite sum, for example $c_i=2^{-i}$ with $\sum c_i=1$;
+\item a divergent sum but $\inf c_i=0$, for example $c_i=1/i$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Both are standard: the geometric series converges and the harmonic series
+diverges~\citep{knopp1990}.
+\end{proof}
+
+The harmonic example shows that divergence of the whole sum does not imply a
+floor. The following statement identifies exactly what a floor buys.
+
+\begin{theorem}[Divergence along every selection]
+\label{thm:selection}
+For a measured sequence $(c_i)$ the following are equivalent:
+\begin{enumerate}[label=(\roman*),nosep]
+\item $\inf_i c_i>0$;
+\item for every infinite set $I\subseteq\N$, $\sum_{i\in I}c_i=\infty$;
+\item for every infinite set $I\subseteq\N$, the partial sums of
+      $(c_i)_{i\in I}$ in increasing order of $i$ grow at least linearly in
+      the number of terms.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i)$\Rightarrow$(iii): with $\theta=\inf c_i>0$, any $n$ terms sum to at least
+$n\theta$. (iii)$\Rightarrow$(ii) is immediate. (ii)$\Rightarrow$(i): suppose
+$\inf c_i=0$. Then for every $k$ there are infinitely many $i$ with
+$c_i<2^{-k}$, so we may choose $i_1<i_2<\cdots$ with $c_{i_k}<2^{-k}$. The
+selection $I=\{i_k\}$ has $\sum_{i\in I}c_i<1$, contradicting (ii).
+\end{proof}
+
+\Cref{thm:selection} is the precise form of the statement in the
+introduction. A process whose individual steps carry a uniform positive cost
+accumulates cost without bound along \emph{any} infinite subsequence of its
+steps; a process whose steps are merely positive does not, because one can
+always select infinitely many of its steps whose total cost is finite. The
+second possibility is exactly what Zeno's dichotomy exploits
+(\cref{sec:zeno}).
+
+\begin{remark}[Finiteness of each term]
+\label{rem:finite-terms}
+Each term of a counted sequence is a finite integer. In what follows this
+will correspond to the requirement that every single commitment, and every
+contact weight, is finite. Infinitely many terms supply an unbounded total;
+each term separately is bounded.
+\end{remark}
+
+\Cref{fig:sums} shows the three regimes numerically: counted partial sums
+lying on or above the line $S_n=n$ in every one of $10^3$ trials of $10^4$
+terms; the geometric series stalling at one; the harmonic series diverging
+slowly; and the running minimum of positive real terms $c_i=U_i/i$ falling
+below $10^{-7}$, while the running minimum of the counted terms stays at one.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/f1_partial_sums.pdf}
+\caption{\textbf{Counted and measured sums.}
+(\textbf{A})~Partial sums of counted costs $c_i\in\{1,\dots,5\}$ (median and
+95\% band over $10^3$ sequences of $10^4$ terms) lie above $S_n=n$; no
+violation occurred. The harmonic and geometric real sequences are shown for
+comparison.
+(\textbf{B})~Running minimum of the terms. For positive reals $c_i=U_i/i$,
+$U_i$ uniform on $(0,1)$, the median running minimum after $10^4$ terms is
+$1.4\times10^{-8}$; for counted terms it is one.
+(\textbf{C})~The dichotomy (\cref{sec:zeno}): the number of committed
+midpoints needed to come within $\varepsilon$ of the goal,
+$k(\varepsilon)=\lceil\log_2(D/\varepsilon)\rceil$, is finite for every
+$\varepsilon>0$ and unbounded as $\varepsilon\to0$, while the distance covered
+(inset) converges to $D$.}
+\label{fig:sums}
+\end{figure}
+
+%==============================================================================
+\section{Occupation, commitment and propagation}
+\label{sec:model}
+%==============================================================================
+
+We now state the model. Its ingredients are a set of states a system can
+occupy, a register in which records are made, and a contact relation along
+which occupation can pass.
+
+\begin{definition}[Occupation]
+\label{def:occupation}
+Let $X$ be a set of states. An \emph{occupation history} is a map
+$x:\mathcal{T}\to X$ from an ordered index set $\mathcal{T}$; $x(\tau)$ is the
+state occupied at $\tau$. Occupation is not itself a record: no cost is
+attached to a system's being in a state.
+\end{definition}
+
+\begin{definition}[Register and commitment]
+\label{def:register}
+A \emph{register} over a finite alphabet $A$, $|A|=b\ge2$, is a finite word
+$R\in A^{*}$. A \emph{commitment} is an event that appends one letter to a
+register. The \emph{commitment count} $M$ of a register is the number of
+commitments made to it.
+\end{definition}
+
+The count $M$ counts events, not the current length of the word: if a
+register can be overwritten, each overwrite is itself an event and is
+counted. With this reading $M$ is non-decreasing by construction, and the
+content of the model lies entirely in the following assumption about cost.
+
+\begin{postulate}[Counted commitment]
+\label{post:counted}
+There is a constant $\theta>0$ such that every commitment costs at least
+$\theta$, and no operation that is not a commitment changes any register.
+\end{postulate}
+
+Two remarks fix the status of \cref{post:counted}. First, it is an
+assumption, and it is the only physical assumption of the article; everything
+else is definition and proof. Second, it has a well-established physical
+counterpart: resetting one bit of a physical memory in contact with a heat
+bath at temperature $T$ dissipates at least $\kB T\ln2$ of
+heat~\citep{landauer1961,bennett1982}, a bound that has been approached in
+experiment~\citep{berut2012}. A register of bounded physical size that keeps
+recording must reuse its cells, and each reuse is subject to that bound. We
+use $\theta$ abstractly and do not need its value.
+
+\begin{definition}[Contact graph with medium]
+\label{def:contact}
+A \emph{contact graph} is a finite connected weighted graph $G=(V,E,w)$ with
+$w:E\to(0,\infty)$ and a distinguished vertex $\med\in V$, the \emph{medium}.
+Its weights are \emph{counted} if $w(E)\subseteq\Z_{\ge1}$.
+\end{definition}
+
+The medium stands for whatever an item is distinguished against: the solvent
+around a molecule, the background of an image, the rest of a sample. We do
+not require it to be adjacent to every vertex, only that the graph be
+connected.
+
+\begin{definition}[Propagation and positive occupation propagation]
+\label{def:pop}
+A \emph{propagation step} moves occupation from a vertex $u$ to a neighbour
+$v$ along an edge $\{u,v\}\in E$. It is a \emph{positive occupation
+propagation} (POP) step if it is accompanied by a commitment that records it.
+A POP step that creates a new contact---adds an edge, or adds a vertex and
+its edges---is \emph{constructive}.
+\end{definition}
+
+\begin{remark}[Probe and commit]
+\label{rem:probe}
+A propagation step without a commitment is a \emph{probe}: occupation moves
+but nothing is recorded. Probes are unrestricted in this accounting. All the
+monotone quantities derived below are functions of commitments only;
+configurations reached by probes can repeat (\cref{sec:bounded}).
+\end{remark}
+
+%==============================================================================
+\section{Direction}
+\label{sec:direction}
+%==============================================================================
+
+\begin{theorem}[Commitments are totally ordered]
+\label{thm:order}
+Let $e_1,e_2,\dots$ be the commitments made to a register, indexed in the
+order in which they are made, and let $M(e_k)=k$ be the count after $e_k$.
+Then $M$ is strictly increasing along the sequence, and the cumulative cost
+$C_k$ satisfies $C_k\ge k\theta$ and $C_{k+1}-C_k\ge\theta$.
+\end{theorem}
+
+\begin{proof}
+Strict increase of $M$ is the definition of the index. The cost statements
+follow from \cref{post:counted} and \cref{lem:counted} applied to the
+floored sequence of individual costs, via \cref{prop:floored}.
+\end{proof}
+
+We call the order given by $M$ the \emph{direction} of the register. Three
+points deserve emphasis. (a) Direction is a property of commitments, not of
+occupation: \cref{thm:order} says nothing about the order of states
+occupied. (b) No commitment lowers $M$ or $C$, because no term of a counted
+sum is zero or negative. An event that ``undoes'' a record---erasing a cell,
+say---is itself a commitment and raises both. (c) By \cref{thm:selection},
+every infinite set of commitments, however it is selected, carries unbounded
+cost; there is no infinite collection of records that costs a finite amount.
+
+\begin{corollary}[No finite infinity of records]
+\label{cor:no-zeno-records}
+A system with finite total budget $B$ makes at most $\lfloor B/\theta\rfloor$
+commitments.
+\end{corollary}
+
+%==============================================================================
+\section{The dichotomy and the arrow}
+\label{sec:zeno}
+%==============================================================================
+
+Zeno's dichotomy, in one common form, argues that a runner cannot reach the
+end of a course of length $D$: before reaching the end the runner must reach
+the midpoint, before that the quarter point, and so on, so that infinitely
+many tasks must be completed~\citep{grunbaum1967,salmon2001}. The standard
+reply observes that the distances $D/2,D/4,\dots$ and the corresponding times
+form convergent series, so that infinitely many sub-intervals occupy a finite
+distance and a finite time. We do not dispute the reply. We ask instead which
+kind of sum each premise of the argument refers to.
+
+\begin{definition}[The dichotomy, as occupation and as commitment]
+\label{def:dichotomy}
+Let the course be $[0,D]$ and the dichotomy points $p_k=D(1-2^{-k})$,
+$k\ge1$. The runner \emph{occupies} $p_k$ if its occupation history passes
+through $p_k$; the runner (or any observer) \emph{commits} $p_k$ if a
+commitment records that $p_k$ was reached.
+\end{definition}
+
+\begin{proposition}[Two series in one argument]
+\label{prop:two-series}
+\begin{enumerate}[label=(\alph*),nosep]
+\item The distances between successive dichotomy points form a measured
+      sequence with sum $D$.
+\item Committing the first $k$ dichotomy points costs at least $k\theta$;
+      committing all of them is impossible with any finite budget.
+\item To commit a point within $\varepsilon>0$ of the goal along the
+      dichotomy requires exactly
+      $k(\varepsilon)=\lceil\log_2(D/\varepsilon)\rceil$ commitments, which is
+      finite for every $\varepsilon>0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) is the geometric series. (b) is \cref{thm:order} and
+\cref{cor:no-zeno-records}. (c): $D-p_k=D2^{-k}\le\varepsilon$ iff
+$k\ge\log_2(D/\varepsilon)$.
+\end{proof}
+
+The argument's conclusion---that the runner must \emph{complete} infinitely
+many \emph{tasks}---treats reaching each point as an act that must be done
+and finished before the next, that is, as a commitment. The analytic reply
+treats reaching each point as occupation, measured by a convergent series of
+lengths. \Cref{prop:two-series} shows that both readings are internally
+consistent and that they disagree only because they concern different sums:
+occupation of all dichotomy points is completed in finite distance and time,
+and commitment of all of them is never completed. A runner that only
+occupies arrives; an observer that commits each point never finishes
+committing, but for any resolution $\varepsilon$ finishes the commitments
+needed to resolve the arrival to that resolution, after finitely many
+(\cref{fig:sums}C; $k=50$ commitments for $\varepsilon/D=10^{-15}$).
+
+The arrow paradox---that a flying arrow occupies at each instant a space equal
+to itself and is therefore at rest at each instant---can be placed in the
+same scheme. A committed instant records a position. A record of position is
+not a record of motion, and no finite set of position records contains a
+velocity; a velocity is a relation between records, or a property of the
+occupation history between them. The paradox's inference ``at rest at every
+instant, hence at rest'' composes properties of records into a property of
+the occupation history, and the composition is not valid in either
+direction. We do not regard this as more than a restatement of the
+well-known point that motion is a relation between positions at different
+times~\citep{salmon2001}; it is included because it uses only the
+occupation--commitment distinction already introduced.
+
+%==============================================================================
+\section{Time as a count}
+\label{sec:time}
+%==============================================================================
+
+\begin{definition}[Clock and recorded time]
+\label{def:clock}
+A \emph{clock} is a reference process that makes commitments to its own
+register at a fixed number $f$ per unit cycle. The \emph{recorded time}
+between two commitments $e,e'$ of the clock is $t(e,e')=(M(e')-M(e))/f$.
+\end{definition}
+
+This is not an exotic definition. The SI second is defined by fixing the
+numerical value of the caesium-133 ground-state hyperfine transition
+frequency at $9\,192\,631\,770$~Hz~\citep{bipm2019}; an interval is measured
+as one second when that many cycles have been counted. Recorded time in the
+sense of \cref{def:clock} is a count divided by a fixed count.
+
+\begin{proposition}[Properties of recorded time]
+\label{prop:time}
+Recorded time is additive, $t(e,e'')=t(e,e')+t(e',e'')$ for $e\preceq
+e'\preceq e''$; non-negative; zero only between a commitment and itself; and
+unbounded along any infinite sequence of clock commitments.
+\end{proposition}
+
+\begin{proof}
+Additivity is additivity of differences. Non-negativity and the zero case
+follow from \cref{thm:order}. Unboundedness is \cref{lem:counted}.
+\end{proof}
+
+\begin{remark}
+\label{rem:parameter}
+Recorded time is not assumed to be the parameter appearing in a dynamical
+law. The two are related by calibration: a dynamical model is accepted if its
+parameter, mapped through the dynamics of a reference process, reproduces
+the counts. The asymmetry of recorded time is a property of counts and does
+not require any asymmetry in the parameter.
+\end{remark}
+
+%==============================================================================
+\section{Register entropy}
+\label{sec:entropy}
+%==============================================================================
+
+\begin{definition}[Register entropy]
+\label{def:regent}
+A register that has received $M$ commitments over an alphabet of size $b$
+distinguishes $b^M$ possible histories of commitments. Its \emph{register
+entropy} is $S_{\mathrm{reg}}=\kB\ln b^M=\kB M\ln b$.
+\end{definition}
+
+The definition is Boltzmann's $S=\kB\ln W$ applied to the set of
+distinguishable commitment histories, and the quantity $M\log_2 b$ is the
+Shannon information capacity of the record in bits~\citep{shannon1948}.
+
+\begin{proposition}[Register entropy does not decrease]
+\label{prop:regent}
+$S_{\mathrm{reg}}$ is non-decreasing in the commitment order and increases by
+exactly $\kB\ln b$ at each commitment.
+\end{proposition}
+
+\begin{proof}
+Immediate from \cref{def:regent} and \cref{thm:order}.
+\end{proof}
+
+\begin{corollary}[Three readings of one count]
+\label{cor:three}
+For a register written at the rate of a clock with frequency $f$,
+\begin{equation}
+M \;=\; f\,t \;=\; \frac{S_{\mathrm{reg}}}{\kB\ln b}.
+\label{eq:three}
+\end{equation}
+Count, recorded time and register entropy are proportional; none can
+increase while another decreases.
+\end{corollary}
+
+\begin{remark}[Register entropy and configurational entropy]
+\label{rem:two-entropies}
+Register entropy must not be confused with the Boltzmann entropy of a
+system's macrostate, $S_{\mathrm{conf}}=\kB\ln|\Gamma_{\mathrm{macro}}|$. The
+latter is a function of the configuration occupied and can decrease, rarely
+when unprepared and at a cost when prepared. The former is a function of the
+record and cannot decrease. \Cref{sec:bounded} exhibits the two side by
+side in a reversible system.
+\end{remark}
+
+%==============================================================================
+\section{Individuation in contact graphs}
+\label{sec:individuation}
+%==============================================================================
+
+We now ask how an item is distinguished from its medium. The measure we use
+is the cheapest way of cutting the item off.
+
+\begin{definition}[Separation cost]
+\label{def:sep}
+For a contact graph $(G,\med)$ and $v\in V\setminus\{\med\}$, the
+\emph{separation cost} of $v$ is
+\begin{equation}
+\sep_G(v)\;=\;\min\bigl\{\,w(\cut S)\;:\;v\in S\subseteq V\setminus\{\med\}\,\bigr\}.
+\label{eq:sep}
+\end{equation}
+A minimiser $S^{*}(v)$ is an \emph{identity region} of $v$.
+\end{definition}
+
+By the max-flow min-cut theorem~\citep{ford1956}, $\sep_G(v)$ equals the
+value of a maximum flow from $v$ to $\med$ with edge capacities $w$, and is
+computable in polynomial time.
+
+\begin{theorem}[Floor of individuation]
+\label{thm:floor}
+If $G$ is connected and its weights are counted, then for every
+$v\ne\med$,
+\begin{equation}
+\sep_G(v)\;\ge\;\lambda_G(v,\med)\;\ge\;1,
+\end{equation}
+where $\lambda_G(v,\med)$ is the maximum number of edge-disjoint paths from
+$v$ to $\med$.
+\end{theorem}
+
+\begin{proof}
+Every set $S$ with $v\in S$, $\med\notin S$ is crossed by each of
+$\lambda_G(v,\med)$ edge-disjoint $v$--$\med$ paths at least once, so
+$|\cut S|\ge\lambda_G(v,\med)$ (Menger~\citep{menger1927}). Counted weights
+give $w(\cut S)\ge|\cut S|$. Connectivity gives $\lambda_G(v,\med)\ge1$.
+\end{proof}
+
+\begin{theorem}[Monotonicity under expansion]
+\label{thm:monotone}
+Let $G\subseteq G'$ be contact graphs with the same medium, $G'$ obtained
+from $G$ by adding vertices and edges and leaving existing weights
+unchanged. Then $\sep_{G'}(v)\ge\sep_G(v)$ for every $v\in V\setminus\{\med\}$.
+\end{theorem}
+
+\begin{proof}
+Let $S'$ attain $\sep_{G'}(v)$ and put $S=S'\cap V$. Then $v\in S$ and
+$\med\notin S$, and every edge of $G$ crossing $S$ is an edge of $G'$
+crossing $S'$, since both endpoints lie in $V$ and their sides are
+unchanged. Hence $\sep_G(v)\le w(\cut_G S)\le w(\cut_{G'}S')=\sep_{G'}(v)$.
+\end{proof}
+
+\Cref{thm:monotone} holds for any positive weights. What does \emph{not}
+survive under real weights is any lower bound that is independent of the
+graph:
+
+\begin{proposition}[No invariant floor under measured weights]
+\label{prop:no-floor}
+There is an expanding sequence $G_0\subseteq G_1\subseteq\cdots$ of contact
+graphs with positive real weights in which (a) the smallest weight incident to
+a fixed vertex $v$ tends to zero, and (b) the separation costs of the added
+vertices tend to zero.
+\end{proposition}
+
+\begin{proof}
+Let $G_0$ have vertices $\{v,\med\}$ and one edge of weight one. Form
+$G_k$ by adding a vertex $u_k$ with edges $\{u_k,v\}$ and $\{u_k,\med\}$ of
+weight $1/k$ each. The smallest weight incident to $v$ in $G_k$ is $1/k$, and
+$\sep_{G_k}(u_k)\le w(\cut\{u_k\})=2/k$.
+\end{proof}
+
+\begin{remark}[Why counted weights]
+\label{rem:why-counted}
+\Cref{prop:no-floor} is the graph form of \cref{prop:positivity}: positive
+weights without a floor admit a sequence of contacts whose costs sum to a
+finite amount. With counted weights the global minimum weight is one in every
+graph of every size, so the floor of \cref{thm:floor} is the same however
+large the graph becomes. A claim that a positive lower bound on individuation
+persists as a graph grows therefore needs counted (or uniformly floored)
+weights; positivity of each weight is not enough.
+\end{remark}
+
+\begin{proposition}[Identity is a region]
+\label{prop:region}
+There are contact graphs in which every identity region of some $v$ contains
+a vertex other than $v$.
+\end{proposition}
+
+\begin{proof}
+Take vertices $v,u,\med$ with $w(v,u)=10$, $w(v,\med)=3$, $w(u,\med)=1$. Then
+$w(\cut\{v\})=13$ and $w(\cut\{v,u\})=4$. These are the only sets containing
+$v$ and not $\med$, so $S^{*}(v)=\{v,u\}$ uniquely.
+\end{proof}
+
+\Cref{prop:region} says that what an item is, as measured by how it is cut
+from its surroundings, is in general settled together with some of its
+neighbours. Measurement can be modelled in the same terms: attaching a probe
+to an item adds a vertex and edges, and by \cref{thm:monotone} a measurement
+of this kind can never lower the separation cost of anything already in the
+graph.
+
+\Cref{fig:individuation} reports $40$ random growth sequences of $160$ steps
+each, under counted weights (uniform on $\{1,\dots,5\}$) and real weights
+(exponential, mean $1.5$). The separation cost of a fixed vertex never
+decreased in any of the $12{,}800$ steps, under either weighting, as
+\cref{thm:monotone} requires. The smallest weight in the graph stayed at one
+under counted weights and fell to a median of $1.4\times10^{-3}$ (minimum
+$1.1\times10^{-5}$) under real weights, as \cref{rem:why-counted} anticipates.
+The smallest separation cost over all vertices of the final graphs was $5$
+under counted weights and $0.86$ under real weights; identity regions larger
+than a single vertex occurred for $0.7\%$ of vertices under counted weights
+and $17\%$ under real weights.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/f2_individuation.pdf}
+\caption{\textbf{Separation cost under expansion.}
+Contact graphs grown by adding one vertex per step, joined to the medium and
+to three existing vertices; with probability $0.15$ the fixed vertex $v$ also
+gains the new vertex as neighbour.
+(\textbf{A})~$\sep(v)$ for eight counted-weight sequences; no decrease
+occurred in $40\times160$ steps under either weighting.
+(\textbf{B})~Smallest edge weight in the graph (median, 10--90\% band).
+(\textbf{C})~Separation costs of all vertices of the final graphs of ten
+sequences per weighting; the dashed line marks one.}
+\label{fig:individuation}
+\end{figure}
+
+%==============================================================================
+\section{Only up: direction and individuation together}
+\label{sec:up}
+%==============================================================================
+
+Positive occupation propagation joins the two strands. Each POP step is a
+commitment, so it advances the count; each constructive POP step adds
+contact, so it cannot lower any separation cost.
+
+\begin{theorem}[Joint monotonicity under positive occupation propagation]
+\label{thm:up}
+Let $(G_k,R_k)_{k\ge0}$ be the contact graph and register after the $k$-th
+step of a sequence of POP steps, each either constructive or not, with
+counted weights. Then for every vertex $v$ present from step $k_0$ on and
+every $k\ge k_0$,
+\begin{equation}
+M_{k+1}=M_k+1,\qquad S_{\mathrm{reg},k+1}=S_{\mathrm{reg},k}+\kB\ln b,\qquad
+\sep_{G_{k+1}}(v)\;\ge\;\sep_{G_k}(v)\;\ge\;1.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The first two equalities are \cref{thm:order} and \cref{prop:regent}. A
+non-constructive step leaves the graph unchanged; a constructive step
+produces $G_{k+1}\supseteq G_k$, and \cref{thm:monotone} applies. The bound
+by one is \cref{thm:floor}.
+\end{proof}
+
+The informal summary ``the only direction is up'' is, in this precise sense,
+the statement that three quantities---the count, the register entropy, and
+the separation cost of every item already present---are non-decreasing under
+positive occupation propagation, the first two strictly. It is not a
+statement about configurations, which are free to return (\cref{sec:bounded}),
+nor about the separation cost of items added later, which start wherever
+their contacts place them (but, under counted weights, not below one).
+
+%==============================================================================
+\section{Bounded parts, recurrence, and the reversibility objection}
+\label{sec:bounded}
+%==============================================================================
+
+\Cref{rem:finite-terms} noted that each term of a counted sum is finite.
+Here we use this to bound the number of distinguishable configurations of a
+part, and then look at what reversible dynamics does on finitely many
+configurations.
+
+\begin{proposition}[Finite parts have finitely many distinguishable configurations]
+\label{prop:finite}
+If distinguishing between two alternatives costs at least $\theta$ and a part
+has a finite budget $B$ for distinctions, then at most
+$2^{\lfloor B/\theta\rfloor}$ of its configurations are mutually
+distinguishable.
+\end{proposition}
+
+\begin{proof}
+Distinguishing among $N$ alternatives by binary distinctions requires at least
+$\lceil\log_2N\rceil$ of them, at cost at least $\theta$ each
+(\cref{post:counted}); so $\theta\log_2N\le B$.
+\end{proof}
+
+We treat the resulting finite set of distinguishable configurations as the
+state space of the part. On a finite set, an invertible deterministic
+dynamics is a permutation, and the following is elementary.
+
+\begin{proposition}[Recurrence on a finite set]
+\label{prop:recurrence}
+Let $F$ be a bijection of a finite set $X$. Every orbit of $F$ is periodic:
+for each $x\in X$ there is $P\ge1$, $P\le|X|$, with $F^P(x)=x$.
+\end{proposition}
+
+For measure-preserving dynamics on a space of finite measure, the
+corresponding statement is Poincaré's recurrence theorem~\citep{poincare1890},
+with Kac's lemma giving the mean return time~\citep{kac1947}.
+
+\begin{theorem}[Configurations recur; counts do not]
+\label{thm:loschmidt}
+Let $F$ be a bijection of a finite set $X$ and let a register receive one
+commitment per application of $F$ or $F^{-1}$. Starting from $x_0$ with
+$M=0$:
+\begin{enumerate}[label=(\alph*),nosep]
+\item after $P$ forward steps, where $P$ is the period of $x_0$, the
+      configuration is $x_0$ and $M=P$;
+\item after $T$ forward steps followed by $T$ steps of $F^{-1}$, the
+      configuration is $x_0$ and $M=2T$.
+\end{enumerate}
+In both cases the configuration returns and the count does not.
+\end{theorem}
+
+\begin{proof}
+(a) is \cref{prop:recurrence} with one commitment per step. (b):
+$F^{-T}F^{T}=\mathrm{id}$, and $2T$ commitments have been made.
+\end{proof}
+
+\paragraph{Reading of the reversibility objection.}
+Loschmidt objected that for every trajectory along which a macroscopic
+entropy increases, the time-reversed trajectory, obtained by reversing all
+velocities, is also a solution, and along it the entropy
+decreases~\citep{loschmidt1876}. \Cref{thm:loschmidt} separates two things
+the word ``reversal'' can denote.
+\begin{itemize}[nosep]
+\item \emph{Reversal of configuration} is permitted by reversible dynamics:
+      the configuration returns to $x_0$ and the configurational entropy
+      returns with it. Spontaneous return in a large system is atypical
+      (its measure is small and Kac's mean return time is long); prepared
+      return is possible but requires operations on the system, of which the
+      spin echo is a laboratory example~\citep{hahn1950}.
+\item \emph{Reversal of the count} is not an operation of the model. Every
+      step, forward or backward, is a commitment, and $M$ increases by one
+      at each.
+\end{itemize}
+On this reading, the statement ``reversal is possible but improbable'' and
+the statement ``reversal of the record is not a well-defined operation'' are
+both true, because they concern different quantities. We do not claim that
+this resolves every question raised under the heading of the arrow of
+time~\citep{lebowitz1993,albert2000}; only that the objection, as applied to
+records, does not apply.
+
+\paragraph{Numerical illustration.}
+The Kac ring~\citep{kac1959,gottwald2009} is a minimal reversible system:
+$N$ sites on a circle each carry a ball coloured black or white, a fixed set
+of edges is marked, and at each step every ball moves one site clockwise,
+changing colour when it crosses a marked edge. The dynamics is invertible
+and every configuration has period dividing $2N$. With $N=400$ and $41$
+marked edges, starting from all white, the coarse-grained entropy of the
+colour fraction rises to its maximum within a few dozen steps, the
+configuration returns exactly at step $800$, and at step $400$ every ball has
+the opposite colour (\cref{fig:recurrence}A; an odd number of marks flips
+each ball an odd number of times per circuit). Reversing the dynamics after
+$T=150$ steps returns the initial configuration exactly at step $300$, with
+the coarse-grained entropy falling back to zero, while the register received
+$300$ commitments, one per step (\cref{fig:recurrence}B). As a second check of
+\cref{prop:recurrence}, we computed the period of the cat map
+$(x,y)\mapsto(x+y,\,x+2y)\bmod N$~\citep{arnold1968} on $N\times N$ lattices
+for $N=2,\dots,400$: every period is finite and none exceeds $3N$, the bound
+of Dyson and Falk~\citep{dyson1992} (\cref{fig:recurrence}C).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/f3_recurrence.pdf}
+\caption{\textbf{Configurations recur; the register does not.}
+(\textbf{A})~Kac ring, $N=400$, $41$ marked edges, initially all white:
+coarse-grained entropy of the colour fraction (in units of $\ln2$) and
+Hamming distance to the initial configuration. The configuration recurs at
+step $800$ (dashed).
+(\textbf{B})~Forward dynamics for $150$ steps, then the inverse dynamics
+(dotted line): the configuration returns exactly at step $300$ while the
+register length, one commitment per step, rises throughout.
+(\textbf{C})~Period of every orbit of the cat map on an $N\times N$ lattice,
+$N=2,\dots,400$, with the bound $3N$.}
+\label{fig:recurrence}
+\end{figure}
+
+%==============================================================================
+\section{Ladders}
+\label{sec:ladders}
+%==============================================================================
+
+Many processes refine in steps, each step removing a fraction of what
+remains unresolved: successive purification, successive filtering, successive
+rounds of an assay. We call the sequence of fractions a ladder.
+
+\begin{definition}[Rung, ladder, gap]
+\label{def:ladder}
+A \emph{rung} has a power $p\in[0,1)$. A \emph{ladder} is a finite or
+infinite sequence of rungs with powers $(p_i)$. Starting from a gap
+$g_0>0$, climbing rung $i$ leaves $g_i=(1-p_i)g_{i-1}$, so
+\begin{equation}
+g_n=g_0\prod_{i=1}^{n}(1-p_i),\qquad
+P_n:=1-\frac{g_n}{g_0}=1-\prod_{i=1}^{n}(1-p_i).
+\label{eq:ladder}
+\end{equation}
+$P_n$ is the \emph{composite power}. A rung with $p\le0$ is refused: it
+closes nothing.
+\end{definition}
+
+\begin{theorem}[A ladder is a counted sum in logarithmic coordinates]
+\label{thm:ladder}
+Let $L_n=-\ln(g_n/g_0)=\sum_{i=1}^n-\ln(1-p_i)$. Then:
+\begin{enumerate}[label=(\alph*),nosep]
+\item each term $-\ln(1-p_i)$ is positive when $p_i>0$, and $L_n$ is
+      non-decreasing;
+\item no finite ladder closes the gap: $g_n>0$ for every $n$;
+\item if $p_i\ge p_{\min}>0$ for all $i$, then $L_n\ge n\ln\frac{1}{1-p_{\min}}$
+      and $g_n\to0$;
+\item if $\sum_i p_i<\infty$, then $g_n$ converges to a positive limit.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) $0<p_i<1$ gives $0<1-p_i<1$. (b) is a finite product of positive
+numbers. (c) applies \cref{prop:floored} to the floored sequence
+$-\ln(1-p_i)\ge-\ln(1-p_{\min})$. (d) is the standard criterion for
+convergence of infinite products: $\prod(1-p_i)$ with $0\le p_i<1$ converges
+to a non-zero limit if and only if $\sum p_i<\infty$~\citep{knopp1990}.
+\end{proof}
+
+\Cref{thm:ladder} is \cref{thm:selection} in another guise. A floor on rung
+power makes the logarithmic gap a floored sum, which diverges along every
+infinite selection of rungs; without a floor, a ladder can climb forever and
+stall at a residual. For $p_i=\tfrac12 i^{-2}$ the residual is
+$\prod_i(1-\tfrac{1}{2i^2})=\sin(\pi/\sqrt2)/(\pi/\sqrt2)\approx0.3582$; the
+numerical product over $500$ rungs gives $0.3585$ (\cref{fig:ladders}B).
+
+\begin{proposition}[A composite does not identify its ladder]
+\label{prop:screen}
+Ladders with different power sequences can have equal composite powers.
+\end{proposition}
+
+\begin{proof}
+$(\tfrac12,\tfrac12)$ and $(\tfrac34)$ both give $P=\tfrac34$.
+\end{proof}
+
+An observer who records only the end-to-end result of a stepwise process
+therefore cannot recover its steps; one who records the gap after each rung
+can. In the terms of \cref{sec:model}, the second observer commits once per
+rung, the first once per ladder.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/f4_ladders.pdf}
+\caption{\textbf{Ladders.}
+(\textbf{A})~Remaining gap after $n$ rungs for a constant ladder, a random
+ladder with powers in $[0.05,0.5]$, a harmonic ladder $p_i=0.5/i$ (no floor,
+$\sum p_i=\infty$), and a summable ladder $p_i=0.5/i^2$ (no floor,
+$\sum p_i<\infty$).
+(\textbf{B})~The same ladders as logarithmic gaps $L_n$: floored ladders grow
+linearly, the harmonic ladder logarithmically, and the summable ladder stalls
+at a residual gap of $0.359$.
+(\textbf{C})~Two ladders with equal composite power and different
+trajectories. In exact rational arithmetic, none of $200$ random ladders of
+$200$ rungs with $p_i\in\{0.01,\dots,0.98\}$ closed the gap.}
+\label{fig:ladders}
+\end{figure}
+
+%==============================================================================
+\section{Instruments as committers}
+\label{sec:devices}
+%==============================================================================
+
+Each quantity derived above is read by a familiar kind of instrument, and in
+each case the reading is itself a commitment. We list the correspondences to
+make clear what an experimental test of each statement would involve; none
+of the correspondences is new.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{3.2cm}p{4.0cm}p{6.4cm}@{}}
+\toprule
+Quantity & Instrument & What a reading commits\\
+\midrule
+count $M$ & counter, scaler & one increment per detected event\\
+recorded time $t$ & clock & one increment per reference cycle (\cref{sec:time})\\
+register entropy & memory, recorder & one symbol per write; resetting a cell
+costs at least $\kB T\ln2$ (\cref{sec:entropy})\\
+separation cost $\sep$ & separation instruments (chromatography,
+mass analysis, electrophoresis) & each resolved fraction is a cut between the
+item and its medium; adding an instrument adds contacts
+(\cref{thm:monotone})\\
+ladder gap $g_n$ & stepwise purification or filtering & the remaining
+fraction after each step; the composite alone is a screen
+(\cref{prop:screen})\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two consequences are worth stating. First, by \cref{thm:monotone}, adding an
+instrument to a measurement setting---adding contacts between the item and
+new probes---cannot reduce how well items already in the setting are
+separated from their medium; it can only leave the separation unchanged or
+raise it. Second, by \cref{cor:no-zeno-records}, a finite instrument resolves
+a continuous quantity only to a finite depth; the dichotomy of \cref{sec:zeno}
+is one example, and the $\log_2(D/\varepsilon)$ commitments it requires are
+the bits of a binary readout of position.
+
+%==============================================================================
+\section{Validation}
+\label{sec:validation}
+%==============================================================================
+
+\Cref{tab:validation} summarises the computational checks. They test the
+propositions as stated; they cannot test \cref{post:counted}, which is an
+assumption about physical records. All code, the random seeds and the
+recorded outputs are provided with the manuscript, and each figure is
+regenerated by one command.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Computational checks. ``Prediction'' is what the cited result
+requires; ``observed'' is what the computation returned.}
+\label{tab:validation}
+\begin{tabular}{@{}p{3.4cm}p{4.6cm}p{5.6cm}@{}}
+\toprule
+Check & Prediction & Observed\\
+\midrule
+Counted partial sums ($10^3\times10^4$) & $S_n\ge n$ at every $n$
+(\cref{lem:counted}) & $0$ violations; all sequences strictly increasing\\
+Running minimum of $U_i/i$ & tends to $0$ (\cref{prop:positivity}) & median
+$1.4\times10^{-8}$ after $10^4$ terms\\
+Dichotomy & $k(\varepsilon)=\lceil\log_2 D/\varepsilon\rceil$ finite
+(\cref{prop:two-series}) & $10,20,\dots,50$ commitments for
+$\varepsilon/D=10^{-3},\dots,10^{-15}$\\
+$\sep(v)$ under growth & never decreases (\cref{thm:monotone}) & $0$
+decreases in $2\times6{,}400$ steps\\
+Smallest weight under growth & $1$ (counted); no floor (real)
+(\cref{rem:why-counted}) & $1$; median $1.4\times10^{-3}$\\
+Kac ring reversal & configuration returns, count does not
+(\cref{thm:loschmidt}) & returned at step $300$; register $300$\\
+Cat map periods & finite (\cref{prop:recurrence}); $\le3N$~\citep{dyson1992} &
+all finite; $\max P/N=3.0$\\
+Exact ladders & gap never $0$ (\cref{thm:ladder}b) & $0$ of $200$ closed\\
+Summable ladder residual & $\sin(\pi/\sqrt2)/(\pi/\sqrt2)=0.3582$ &
+$0.3585$ at $500$ rungs\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Limitations and scope}
+\label{sec:limits}
+%==============================================================================
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{One physical assumption.} \Cref{post:counted} is assumed, not
+derived. Its physical plausibility rests on the thermodynamics of
+information~\citep{landauer1961,bennett1982,berut2012}. If records could be
+made at arbitrarily small cost, \cref{thm:selection} shows that the
+divergence results would fail along suitable selections.
+\item \textbf{Records, not dynamics.} The results concern commitment counts,
+register entropy and separation costs. They place no constraint on which
+dynamical laws hold; in particular they are consistent with time-reversal
+invariant dynamics, as \cref{sec:bounded} illustrates.
+\item \textbf{The model of individuation is a choice.} Separation cost by
+minimum cut is one measure among several (vertex connectivity, spectral
+measures, conductance). We chose it because it is computable, monotone under
+expansion (\cref{thm:monotone}), and has the max-flow interpretation; other
+measures need not share these properties.
+\item \textbf{Counted weights are idealisations.} Many physical contact
+strengths are real-valued. \Cref{prop:floored} shows that a uniform positive
+lower bound suffices; we have not shown that physical contacts have one,
+beyond the bound on records in \cref{post:counted}.
+\item \textbf{Finite budgets.} \Cref{prop:finite} assumes a finite budget for
+distinctions in a part. For a physical system this is a further assumption
+about its energy and extent.
+\item \textbf{The classical problems.} Our treatment of Zeno and Loschmidt is
+a classification of premises by the kind of sum they concern. It is
+compatible with, and does not replace, the analytic resolution of the former
+and the statistical account of the latter.
+\end{enumerate}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================================
+
+The content of ``a sum of infinitely many positive integers grows without
+bound'' lies in integrality, which supplies a uniform floor, and
+\cref{thm:selection} states exactly what the floor guarantees: divergence
+along every infinite selection of terms. Modelling records as counted
+commitments and keeping them distinct from occupation, we obtained a direction
+on records, a recorded time and a register entropy that are three readings of
+one count, and an individuation measure on contact graphs that is at least
+one and does not decrease as contacts are added. The two classical problems
+we examined separate along the same line: Zeno's dichotomy concerns a
+convergent measured series and a divergent counted series at once, and
+Loschmidt's objection concerns configurations, which recur, rather than
+counts, which do not. Ladders of successive refinement inherit the same
+structure in logarithmic coordinates.
+
+A companion analysis applies this accounting to a specific molecular system;
+the present article is intended to stand on its own and makes no use of
+that application.
+
+\paragraph{Data and code availability.}
+All computations are in \texttt{validation/} alongside this manuscript
+(\texttt{f1\_partial\_sums.py} to \texttt{f4\_ladders.py}); each writes its
+numerical record to \texttt{validation/results/} and its figure to
+\texttt{figures/}. The computations use NumPy~\citep{harris2020},
+SciPy~\citep{virtanen2020}, NetworkX~\citep{hagberg2008} and
+Matplotlib~\citep{hunter2007}.
+
+%==============================================================================
+\appendix
+\section{Protocols of the computations}
+\label{app:protocols}
+%==============================================================================
+
+\paragraph{F1 (partial sums).} $10^3$ sequences of $10^4$ counted terms
+drawn uniformly from $\{1,\dots,5\}$ (seed 20261011). The check counts indices
+with $S_n<n$. Real sequences: $c_i=2^{-i}$, $c_i=1/i$ and $c_i=U_i/i$ with
+$U_i$ uniform on $(0,1)$; running minima are reported as median and 95\%
+interval. The dichotomy uses $D=1$ and $200$ values of $\varepsilon$ from
+$10^{-1}$ to $10^{-15}$.
+
+\paragraph{F2 (separation cost).} Each graph starts from four vertices
+joined to the medium and to each other with probability $0.6$; at each of
+$160$ steps a new vertex is joined to the medium and to three distinct
+existing vertices chosen uniformly, and with probability $0.15$ also to the
+fixed vertex $v=0$. Counted weights are uniform on $\{1,\dots,5\}$; real
+weights are exponential with mean $1.5$. $\sep(v)$ is computed as a maximum
+flow (preflow--push) after every step. For the final graphs of ten sequences
+per weighting, $\sep$ is computed for every vertex and compared with the
+weight of its singleton cut to detect identity regions larger than one
+vertex.
+
+\paragraph{F3 (recurrence).} Kac ring with $N=400$ sites, $41$ marked edges
+chosen uniformly (seed 3), initial configuration all white. Coarse-grained
+entropy $-p\ln p-(1-p)\ln(1-p)$ of the black fraction $p$. Reversal applies
+the exact inverse map. The cat map period is the order of
+$\left(\begin{smallmatrix}1&1\\1&2\end{smallmatrix}\right)$ modulo $N$, which
+is the common period of all orbits.
+
+\paragraph{F4 (ladders).} Four ladders of $500$ rungs as described in
+\cref{fig:ladders}. Exact checks use \texttt{fractions.Fraction} with $200$
+ladders of $200$ rungs, powers $j/100$, $j$ uniform on $\{1,\dots,98\}$.
+
+\sloppy
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,104 @@
+{
+  "experiment": "g3_boundary",
+  "generated": "2026-10-11T14:56:04",
+  "window": 19,
+  "span": 60,
+  "threshold": 1.6,
+  "reviewed_p450_entries": 1919,
+  "groups": {
+    "ER membrane": {
+      "n": 532,
+      "median": 2.210526315789474,
+      "fraction_above_1.6": 0.9266917293233082
+    },
+    "mitochondrial": {
+      "n": 84,
+      "median": 0.8289473684210525,
+      "fraction_above_1.6": 0.38095238095238093
+    },
+    "bacterial": {
+      "n": 145,
+      "median": 0.43684210526315786,
+      "fraction_above_1.6": 0.006896551724137931
+    }
+  },
+  "named": {
+    "CYP3A4": {
+      "accession": "P08684",
+      "header": ">sp|P08684|CP3A4_HUMAN Cytochrome P450 3A4 OS=Homo sapiens OX=9606 GN=CYP3A4 PE=1 SV=4",
+      "length": 503,
+      "nterm_max_hydropathy": 1.8842105263157893,
+      "window_start": 7
+    },
+    "CYP2C9": {
+      "accession": "P11712",
+      "header": ">sp|P11712|CP2C9_HUMAN Cytochrome P450 2C9 OS=Homo sapiens OX=9606 GN=CYP2C9 PE=1 SV=3",
+      "length": 490,
+      "nterm_max_hydropathy": 2.515789473684211,
+      "window_start": 1
+    },
+    "CYP2D6": {
+      "accession": "P10635",
+      "header": ">sp|P10635|CP2D6_HUMAN Cytochrome P450 2D6 OS=Homo sapiens OX=9606 GN=CYP2D6 PE=1 SV=2",
+      "length": 497,
+      "nterm_max_hydropathy": 2.8210526315789477,
+      "window_start": 5
+    },
+    "CYP1A2": {
+      "accession": "P05177",
+      "header": ">sp|P05177|CP1A2_HUMAN Cytochrome P450 1A2 OS=Homo sapiens OX=9606 GN=CYP1A2 PE=1 SV=4",
+      "length": 516,
+      "nterm_max_hydropathy": 2.036842105263158,
+      "window_start": 10
+    },
+    "CYP2E1": {
+      "accession": "P05181",
+      "header": ">sp|P05181|CP2E1_HUMAN Cytochrome P450 2E1 OS=Homo sapiens OX=9606 GN=CYP2E1 PE=1 SV=1",
+      "length": 493,
+      "nterm_max_hydropathy": 2.4684210526315784,
+      "window_start": 4
+    },
+    "CYP51A1": {
+      "accession": "Q16850",
+      "header": ">sp|Q16850|CP51A_HUMAN Lanosterol 14-alpha demethylase OS=Homo sapiens OX=9606 GN=CYP51A1 PE=1 SV=4",
+      "length": 509,
+      "nterm_max_hydropathy": 2.473684210526316,
+      "window_start": 32
+    },
+    "CYP19A1": {
+      "accession": "P11511",
+      "header": ">sp|P11511|CP19A_HUMAN Aromatase OS=Homo sapiens OX=9606 GN=CYP19A1 PE=1 SV=3",
+      "length": 503,
+      "nterm_max_hydropathy": 2.0105263157894733,
+      "window_start": 20
+    },
+    "CYP17A1": {
+      "accession": "P05093",
+      "header": ">sp|P05093|CP17A_HUMAN Steroid 17-alpha-hydroxylase/17,20 lyase OS=Homo sapiens OX=9606 GN=CYP17A1 PE=1 SV=1",
+      "length": 508,
+      "nterm_max_hydropathy": 1.3842105263157893,
+      "window_start": 1
+    },
+    "CYP11A1": {
+      "accession": "P05108",
+      "header": ">sp|P05108|CP11A_HUMAN Cholesterol side-chain cleavage enzyme, mitochondrial OS=Homo sapiens OX=9606 GN=CYP11A1 PE=1 SV=",
+      "length": 521,
+      "nterm_max_hydropathy": 0.49473684210526314,
+      "window_start": 2
+    },
+    "CYP101A1": {
+      "accession": "P00183",
+      "header": ">sp|P00183|CPXA_PSEPU Camphor 5-monooxygenase OS=Pseudomonas putida OX=303 GN=camC PE=1 SV=2",
+      "length": 415,
+      "nterm_max_hydropathy": 0.2684210526315789,
+      "window_start": 37
+    },
+    "CYP102A1": {
+      "accession": "P14779",
+      "header": ">sp|P14779|CPXB_PRIM2 Bifunctional cytochrome P450/NADPH--P450 reductase OS=Priestia megaterium (strain ATCC 14581 / DSM",
+      "length": 1049,
+      "nterm_max_hydropathy": 0.4210526315789474,
+      "window_start": 27
+    }
+  }
+}
