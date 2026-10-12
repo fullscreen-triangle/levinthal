@@ -5,8 +5,11 @@
 /* Default text colour for the whole monograph site:
    anything not explicitly coloured inherits these. Fixes the
    "black-on-dark" invisibility on body text inside paper-page bodies. */
-html {
+html,
+body {
   color: #f5f5f5;
+  background-color: #1b1b1b;
+  color-scheme: dark;
 }
 
 /* Paper page body styles. The site does NOT use the @tailwindcss/typography

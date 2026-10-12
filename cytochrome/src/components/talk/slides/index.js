@@ -8,7 +8,7 @@ import { S16CH, S17Atypical, S18Cycle, S19Pharmacology, S20Informatics } from ".
 const SLIDES = [
   {
     id: "title", part: "I", short: "Title and the chain of conditions", Component: S01Title, steps: 1,
-    notes: "Thank the group. The talk has two halves: ten slides derive a P450 from one assumption, ten summarise the application papers built on it. The chain on screen is the order of the derivation; each link is labelled derived, supplied or checked in the manuscript. Second build: what exists — two manuscripts, ten validation experiments on public data, seventeen application papers.",
+    notes: "Thank the group. The talk has two halves: ten slides derive a P450 from one assumption, ten summarise the application papers built on it. Top right: the site's heme-highlighted P450 model playing its own animation; drag to rotate. The chain on screen is the order of the derivation; each link is labelled derived, supplied or checked in the manuscript. Second build: what exists — two manuscripts, ten validation experiments on public data, seventeen application papers.",
   },
   {
     id: "counted", part: "I", short: "Counted vs measured sums", Component: S02Counted, steps: 2,
@@ -48,7 +48,7 @@ const SLIDES = [
   },
   {
     id: "structure", part: "II", short: "GLB input and ternary addressing", Component: S11Structure, steps: 2,
-    notes: "Part II: application papers. Each slide marks values as checked here, literature, or model values. The GLB-derived iron geometry falls inside the crystal-structure ranges measured in part I. Ternary addresses: capacity 3^k against 18 families and 57 isoforms.",
+    notes: "Part II: application papers. Each slide marks values as checked here, literature, or model values. Left: the GLB model itself, close on the heme with the iron marked — drag to rotate. Its iron geometry falls inside the crystal-structure ranges measured in part I. Ternary addresses: capacity 3^k against 18 families and 57 isoforms.",
   },
   {
     id: "isoforms", part: "II", short: "57 human isoforms, 18 families", Component: S12Isoforms, steps: 2,
@@ -60,7 +60,7 @@ const SLIDES = [
   },
   {
     id: "delivery", part: "II", short: "Membrane anchors and electron delivery", Component: S14Delivery, steps: 2,
-    notes: "Anchor from part I; CPR and P450 on one membrane; electron NADPH → FAD → FMN → heme. Moser–Dutton gives a standard distance check. Be open that the two papers use different FMN–heme distances (14 vs 18 Å), which matter by over two orders of magnitude in rate.",
+    notes: "Anchor from part I; CPR and P450 on one membrane; electron NADPH → FAD → FMN → heme, animated on the GLB structure (the same viewer as the site's home page; its own button pauses it and the slider scrubs time). Moser–Dutton gives a standard distance check. Be open that the two papers use different FMN–heme distances (14 vs 18 Å), which matter by over two orders of magnitude in rate.",
   },
   {
     id: "compound-i", part: "II", short: "Compound I formation", Component: S15CompoundI, steps: 2,

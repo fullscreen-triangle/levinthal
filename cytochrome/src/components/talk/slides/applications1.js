@@ -1,14 +1,20 @@
 import * as d3 from "d3";
+import dynamic from "next/dynamic";
 import { C, fmt } from "../theme";
 import useD3, { styleAxis, axisLabel } from "../useD3";
 import { SlideFrame, Reveal, Statement, Compare, Legend } from "../ui";
 import { moserDutton } from "../util";
 import { PAPERS, HUMAN_CYPS, GLB_FE, DEPTHS } from "@/data/talk/applications";
 import DATA from "@/data/talk/derivation.json";
+import { HEME_MARKER } from "@/data/glbMarkers";
+
+// the site's own 3-D viewers, client-only
+const GLBViewer = dynamic(() => import("@/components/GLBViewer"), { ssr: false });
+const ElectronTransferViewer = dynamic(() => import("@/components/ElectronTransferViewer"), { ssr: false });
 
 // ------------------------------------------------------ 11 · structure input, address manifold
 function FeDistances() {
-  const W = 700, H = 280, m = { l: 200, r: 20, t: 20, b: 46 };
+  const W = 520, H = 290, m = { l: 190, r: 16, t: 20, b: 46 };
   const ref = useD3((svg) => {
     const x = d3.scaleLinear().domain([1.7, 2.6]).range([m.l, W - m.r]);
     const y = d3.scaleBand().domain(GLB_FE.map((d) => d.bond)).range([m.t, H - m.b]).padding(0.35);
@@ -31,7 +37,7 @@ function FeDistances() {
 }
 
 function Depths() {
-  const W = 700, H = 280, m = { l: 60, r: 20, t: 20, b: 46 };
+  const W = 470, H = 290, m = { l: 60, r: 10, t: 20, b: 46 };
   const ref = useD3((svg) => {
     const x = d3.scaleBand().domain(d3.range(1, 10)).range([m.l, W - m.r]).padding(0.2);
     const y = d3.scaleLog().domain([1, 30000]).range([H - m.b, m.t]);
@@ -58,10 +64,11 @@ export function S11Structure({ step }) {
       title="From a 3-D model to an address: iron geometry and ternary depth"
       lead="A GLB model of CYP3A4 yields per-atom positions; its iron coordination is compared with the twelve crystal structures measured in the derivation. Residue coordinates are then addressed in base three."
     >
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-[400px_520px_1fr] gap-6 items-start">
+        <GLBViewer height={290} preset="heme" markers={HEME_MARKER} badge="GLB · Fe coordination" />
         <div>
           <FeDistances />
-          <Legend items={[["PDB range, 12 P450s (this work)", C.blue], ["GLB model value", C.orange], ["literature, oxy state", C.violet]]} />
+          <Legend items={[["PDB, 12 P450s", C.blue], ["GLB model", C.orange], ["literature", C.violet]]} />
         </div>
         <Reveal step={step} at={1}><Depths /></Reveal>
       </div>
@@ -213,51 +220,6 @@ export function S13Equilibrium({ step }) {
 }
 
 // ------------------------------------------------------ 14 · electron delivery
-function ElectronChain() {
-  const W = 800, H = 470;
-  const ref = useD3((svg) => {
-    // membrane
-    svg.append("rect").attr("x", 0).attr("y", 380).attr("width", W).attr("height", 60).attr("fill", "#2c2a22");
-    svg.append("rect").attr("x", 0).attr("y", 380).attr("width", W).attr("height", 6).attr("fill", C.yellow).attr("opacity", 0.6);
-    svg.append("rect").attr("x", 0).attr("y", 434).attr("width", W).attr("height", 6).attr("fill", C.yellow).attr("opacity", 0.6);
-    svg.append("text").attr("x", 8).attr("y", 416).attr("fill", C.muted).style("font-size", "14px").text("ER membrane, ~3 nm core");
-    // anchors
-    [[180, "CPR"], [600, "P450"]].forEach(([x, t]) => {
-      svg.append("rect").attr("x", x - 8).attr("y", 330).attr("width", 16).attr("height", 100).attr("rx", 8).attr("fill", t === "P450" ? C.blue : C.violet).attr("opacity", 0.8);
-      svg.append("text").attr("x", x + 14).attr("y", 362).attr("fill", C.ink2).style("font-size", "13px").text("N-terminal helix");
-    });
-    svg.append("ellipse").attr("cx", 210).attr("cy", 220).attr("rx", 190).attr("ry", 110).attr("fill", C.panel).attr("stroke", C.violet);
-    svg.append("ellipse").attr("cx", 590).attr("cy", 230).attr("rx", 170).attr("ry", 105).attr("fill", C.panel).attr("stroke", C.blue);
-    svg.append("text").attr("x", 120).attr("y", 128).attr("fill", C.ink).style("font-size", "17px").text("P450 reductase (CPR)");
-    svg.append("text").attr("x", 540).attr("y", 140).attr("fill", C.ink).style("font-size", "17px").text("CYP3A4");
-    const sites = [
-      { x: 80, y: 220, t: "NADPH" }, { x: 190, y: 200, t: "FAD" }, { x: 320, y: 240, t: "FMN" }, { x: 560, y: 240, t: "heme" },
-    ];
-    const hops = [["≈ 4 Å", 0], ["≈ 4 Å", 1], ["14–18 Å", 2]];
-    sites.forEach((s) => {
-      svg.append("circle").attr("cx", s.x).attr("cy", s.y).attr("r", 20).attr("fill", s.t === "heme" ? C.orange : C.yellow).attr("opacity", 0.9);
-      svg.append("text").attr("x", s.x).attr("y", s.y + 42).attr("text-anchor", "middle").attr("fill", C.ink2).style("font-size", "15px").text(s.t);
-    });
-    hops.forEach(([t, i]) => {
-      const a = sites[i], b = sites[i + 1];
-      svg.append("line").attr("x1", a.x + 20).attr("y1", a.y).attr("x2", b.x - 20).attr("y2", b.y).attr("stroke", C.line).attr("stroke-dasharray", "4,5");
-      svg.append("text").attr("x", (a.x + b.x) / 2).attr("y", (a.y + b.y) / 2 - 12).attr("text-anchor", "middle").attr("fill", C.ink2).style("font-size", "14px").text(t);
-    });
-    const e = svg.append("circle").attr("r", 8).attr("fill", C.ink);
-    let alive = true;
-    const run = () => {
-      if (!alive) return;
-      e.attr("cx", sites[0].x).attr("cy", sites[0].y).attr("opacity", 1);
-      let tr = e.transition().duration(500);
-      sites.slice(1).forEach((s, i) => { tr = tr.transition().duration(i === 2 ? 1600 : 600).ease(d3.easeCubicInOut).attr("cx", s.x).attr("cy", s.y); });
-      tr.transition().duration(400).attr("opacity", 0).on("end", run);
-    };
-    run();
-    return () => { alive = false; };
-  }, []);
-  return <svg ref={ref} width={680} height={400} viewBox={`0 0 ${W} ${H}`} />;
-}
-
 function MoserDutton() {
   const W = 700, H = 330, m = { l: 70, r: 16, t: 14, b: 48 };
   const ref = useD3((svg) => {
@@ -289,11 +251,11 @@ export function S14Delivery({ step }) {
       kicker="Applications · delivering electrons"
       papers={[PAPERS.membrane, PAPERS.et]}
       title="Two membrane anchors, four cofactors, one long hop"
-      lead="The derivation found the N-terminal anchor in 93% of ER-membrane P450s. These papers place CPR and the P450 on the same membrane and follow an electron NADPH → FAD → FMN → heme."
+      lead="The derivation found the N-terminal anchor in 93% of ER-membrane P450s. These papers place CPR and the P450 on the same membrane and follow an electron NADPH → FAD → FMN → heme — shown left on the GLB structure, with occupancy per cofactor."
     >
       <div className="absolute inset-0 grid grid-cols-[680px_1fr] gap-10">
         <div className="flex flex-col gap-2">
-          <ElectronChain />
+          <ElectronTransferViewer height={370} autoplay />
           <Reveal step={step} at={2}>
             <Compare rows={[
               ["N-terminal anchor", "≈ 20 residues", "93% of 532 ER P450s", "C"],

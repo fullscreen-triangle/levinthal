@@ -31,6 +31,12 @@ export default function Deck() {
   const slide = SLIDES[index];
   const lastStep = slide.steps ?? 0;
 
+  // warm the GLB cache shortly after opening, so 3-D slides appear without a pause
+  useEffect(() => {
+    const t = setTimeout(() => { import("./Models").then((m) => m.preloadModels()).catch(() => {}); }, 1200);
+    return () => clearTimeout(t);
+  }, []);
+
   useEffect(() => {
     const onHash = () => { setIndex(parseHash()); setStep(0); };
     window.addEventListener("hashchange", onHash);

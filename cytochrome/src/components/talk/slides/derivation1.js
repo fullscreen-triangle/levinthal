@@ -1,9 +1,12 @@
 import * as d3 from "d3";
+import dynamic from "next/dynamic";
 import { C, fmt } from "../theme";
 import useD3, { styleAxis, axisLabel } from "../useD3";
 import { SlideFrame, Reveal, Statement, Stat, Box, Legend, Badge } from "../ui";
 import { rng } from "../util";
 import DATA from "@/data/talk/derivation.json";
+
+const AnimatedHeme = dynamic(() => import("../Models").then((m) => m.AnimatedHeme), { ssr: false });
 
 // ---------------------------------------------------------------- 1 · title
 const CHAIN = [
@@ -13,9 +16,9 @@ const CHAIN = [
 ];
 
 function ChainFigure() {
-  const W = 1456, H = 330;
+  const W = 1456, H = 290;
   const ref = useD3((svg) => {
-    const cols = 5, bw = 248, bh = 62, gx = (W - cols * bw) / (cols - 1), gy = 46;
+    const cols = 5, bw = 248, bh = 56, gx = (W - cols * bw) / (cols - 1), gy = 40;
     const pos = CHAIN.map((_, i) => {
       const row = Math.floor(i / cols);
       let col = i % cols;
@@ -69,20 +72,24 @@ function ChainFigure() {
 export function S01Title({ step }) {
   return (
     <div className="absolute inset-0 flex flex-col px-[72px] pt-[70px] pb-[88px]" style={{ color: C.ink }}>
+      <div className="absolute right-[48px] top-[36px] w-[360px]">
+        <AnimatedHeme height={360} />
+        <div className="text-center text-[13px] -mt-2" style={{ color: C.muted }}>P450 with its heme highlighted · GLB, animated</div>
+      </div>
       <div className="uppercase tracking-[0.2em] text-[16px]" style={{ color: C.muted }}>
         Biotechnology &amp; Enzyme Catalysis · Institute of Biochemistry · Universität Greifswald
       </div>
-      <h1 className="mt-6 text-[68px] leading-[1.02] font-semibold tracking-tight">
+      <h1 className="mt-6 text-[68px] leading-[1.02] font-semibold tracking-tight max-w-[1080px]">
         Cytochrome P450 from counted commitment
       </h1>
-      <p className="mt-4 text-[28px]" style={{ color: C.ink2 }}>
+      <p className="mt-4 text-[28px] max-w-[1060px]" style={{ color: C.ink2 }}>
         A derivation from individuation to the thiolate-ligated heme — and what it is used for
       </p>
       <div className="mt-6 text-[20px]" style={{ color: C.ink2 }}>
         Kundai Farai Sachikonye
         <span style={{ color: C.muted }}> · AIMe Registry for Artificial Intelligence · Experimental Bioinformatics, Freising</span>
       </div>
-      <div className="mt-8 flex-1 relative">
+      <div className="mt-6 flex-1 relative">
         <ChainFigure />
       </div>
       <Reveal step={step} at={1} className="flex gap-4">

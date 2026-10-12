@@ -46,7 +46,7 @@ export default function ClosedOrbit() {
       <h2>Orbit Sum and Transition Depths</h2>
       <table className="text-xs w-full border-collapse my-4">
         <thead>
-          <tr className="border-b border-gray-300">
+          <tr className="border-b border-light/30">
             <th className="text-left p-1">Transition</th>
             <th className="text-right p-1">&Delta;M</th>
             <th className="text-right p-1">k (s⁻¹)</th>
@@ -63,13 +63,13 @@ export default function ClosedOrbit() {
             ["CpdI C-H activation", "0.65", "5.2×10⁹"],
             ["Product release", "0.30", "7.4×10⁹"],
           ].map(([step, dm, k]) => (
-            <tr key={step} className="border-b border-gray-100">
+            <tr key={step} className="border-b border-light/10">
               <td className="p-1">{step}</td>
               <td className="text-right p-1">{dm}</td>
               <td className="text-right p-1">{k}</td>
             </tr>
           ))}
-          <tr className="font-bold border-t border-gray-400">
+          <tr className="font-bold border-t border-light/40">
             <td className="p-1">Sum</td>
             <td className="text-right p-1">4.963</td>
             <td className="text-right p-1">—</td>
