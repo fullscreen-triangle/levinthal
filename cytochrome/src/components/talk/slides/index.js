@@ -48,39 +48,39 @@ const SLIDES = [
   },
   {
     id: "structure", part: "II", short: "GLB input and ternary addressing", Component: S11Structure, steps: 2,
-    notes: "Part II: application papers. Each slide marks values as checked here, literature, or model values. Left: the GLB model itself, close on the heme with the iron marked — drag to rotate. Its iron geometry falls inside the crystal-structure ranges measured in part I. Ternary addresses: capacity 3^k against 18 families and 57 isoforms.",
+    notes: "Part II: application papers. Each slide marks values as checked here, literature, or model values. Left: the GLB model itself, close on the heme with the iron marked — drag to rotate. It is a public visual model, not a crystal structure; its iron distances fall inside the crystal-structure ranges measured in part I. Ternary addresses: capacity 3^k against 18 families and 57 isoforms is a counting bound. log₃ 503 = 5.66.",
   },
   {
     id: "isoforms", part: "II", short: "57 human isoforms, 18 families", Component: S12Isoforms, steps: 2,
-    notes: "The human complement as a packed hierarchy. Filled: the main drug-metabolising isoforms. The papers report family recall 0.94 at depth 3 and isoform distinctness 0.97 at depth 6 — model results, to be read as such.",
+    notes: "The human complement as a packed hierarchy (Nelson 2004). Filled: the main drug-metabolising isoforms. The separation tests so far use synthetic sequences: 17 of 18 families form a modal cell at depth 5 but share 6 cells; 57 isoforms fill 34 cells at depth 8. Present this as an open test on real sequences, not a result.",
   },
   {
     id: "equilibrium", part: "II", short: "Spin switch and the electron gate", Component: S13Equilibrium, steps: 2,
-    notes: "Connects directly to the derivation: the crystal structures show water displaced and iron moving out of plane. The paper models the CYP3A4 step and its reduction-potential shift, reported near +120 mV.",
+    notes: "Connects directly to the derivation: the crystal structures show water displaced and iron moving out of plane (measured). The paper's ΔM = 0.92 comes from spin-state endpoints set in its model. Its +123 mV needs a hand-chosen n_eff = 5 (25 mV without), and the +120 mV it compares with is cited from Daff 1997, a P450 BM3 paper, not CYP3A4. Present the shift as a model value.",
   },
   {
     id: "delivery", part: "II", short: "Membrane anchors and electron delivery", Component: S14Delivery, steps: 2,
-    notes: "Anchor from part I; CPR and P450 on one membrane; electron NADPH → FAD → FMN → heme, animated on the GLB structure (the same viewer as the site's home page; its own button pauses it and the slider scrubs time). Moser–Dutton gives a standard distance check. Be open that the two papers use different FMN–heme distances (14 vs 18 Å), which matter by over two orders of magnitude in rate.",
+    notes: "Anchor from part I (checked). CPR and P450 on one membrane; electron NADPH → FAD → FMN → heme, animated on the GLB structure (its own button pauses it and the slider scrubs time; the animation's rates are chosen for display, ~10¹² s⁻¹). Kd 0.1 µM and k = 5×10⁶ s⁻¹ are literature inputs to the membrane paper, not results; Moser–Dutton at 14 Å is our own consistency check. The ET-chain paper uses 14 Å and 18 Å in different places, and its own Marcus formula gives ~600 s⁻¹ at 14 Å.",
   },
   {
     id: "compound-i", part: "II", short: "Compound I formation", Component: S15CompoundI, steps: 2,
-    notes: "Second protonation and heterolysis. The thiolate from part I is why this is heterolytic. Observables compared with Rittle and Green 2010. The Raman value is as cited in the spectroscopic atlas — check the primary source before quoting it.",
+    notes: "Second protonation and heterolysis. The thiolate measured in part I is the usual explanation for heterolytic cleavage (Green 2009); the paper does not model that. Compound I's measured properties are Rittle and Green's. Where the paper's scripts compute something, it misses: lifetime 113 ms against 210 ms at 193 K, potential 0.54 V against 0.9 V. Its other 'predicted' observables are literature values entered as predictions, so do not present them as model results. The 10× concerted/sequential ratio is the rate rule itself.",
   },
   {
     id: "ch", part: "II", short: "C–H activation, rebound, heteroatoms", Component: S16CH, steps: 2,
-    notes: "HAT then rebound (Groves). KIE 7.2 within the reported 4–11. Heteroatom oxidation ordered by the same parameter: direct O-transfer below H-abstraction-based dealkylation.",
+    notes: "HAT then rebound (Groves). The paper's code gives a KIE of 9.6 at 310 K (its text says 7.2), inside the reported 4–11. The 6β share of 49 % depends on a hand-chosen accessibility factor; with equal factors it is 28 %. Rebound/HAT = 1.42 follows from the two depths chosen. Heteroatom depths are assigned per class, so 'direct O-transfer is faster' follows from those assignments; the N-dealkylation KIE of 6.7 is a zero-point-energy estimate not compared with experiment.",
   },
   {
     id: "atypical", part: "II", short: "Atypical reactions", Component: S17Atypical, steps: 1,
-    notes: "Five atypical classes on one scale; only desaturation carries a primary KIE in the model. The rate order is compared class by class with the literature.",
+    notes: "Five atypical classes on one scale. The depths are assigned per class, so the rate order follows from them and is not an independent test. Only desaturation carries a primary KIE in the model (≈5 from its code; 2.3×10⁹ s⁻¹ effective rate, not the 1.3×10⁸ in the paper's text). The literature ranges in the paper's checks are uncited, so present these as model values.",
   },
   {
     id: "cycle", part: "II", short: "The cycle and its spectra", Component: S18Cycle, steps: 1,
-    notes: "Seven states, each distinguishable; Soret positions from the atlas, with literature values for the resting, substrate-bound and Compound I states. Read as a ladder: coupling efficiency is the composite. I leave out absolute time scales here.",
+    notes: "Seven states with distinct labels (the closest pairs differ in one coordinate). Soret positions: resting, substrate-bound and Compound I are literature values; ferrous, oxy, peroxo and Compound 0 are the atlas's estimates. The arc depths are assigned, so their sum 4.96 is bookkeeping, not a measurement. Read as a ladder: coupling efficiency is the composite. No absolute time scales here.",
   },
   {
     id: "pharmacology", part: "II", short: "Alleles, inhibitors, inactivators", Component: S19Pharmacology, steps: 3,
-    notes: "Standard pharmacology expressed in one parameter: phenotypes, α = 1 + [I]/Ki for ketoconazole, quinidine and fluoxetine, Kitz–Wilson for clarithromycin. Compared with reported clinical magnitudes.",
+    notes: "Standard pharmacology expressed in one parameter: phenotypes, α = 1 + [I]/Ki, Kitz–Wilson for clarithromycin. The phenotype depths are assigned; the model's poor metaboliser keeps 14 % activity where real null carriers have essentially none, so say so. Ki and k_inact are literature-range values the paper enters without sources. Only the rifampicin induction is cited (Backman 1996). There is no numeric FDA threshold for codeine; the boxed warning is categorical.",
   },
   {
     id: "informatics", part: "II", short: "Addressing, recovery, and what this offers", Component: S20Informatics, steps: 1,

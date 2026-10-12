@@ -1,246 +1,87 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import dynamic from "next/dynamic";
-import Layout from "@/components/Layout";
-import AnimatedText from "@/components/AnimatedText";
-import TransitionEffect from "@/components/TransitionEffect";
+import StoryPage, { Scene, Interlude } from "@/components/scrolly/Story";
+import { StackChart, HydrogenChart, CrosstalkChart, CycleRankChart, ChiChart, LambdaChart } from "@/components/scrolly/charts/apparatus";
 import { CHAIN_MARKERS } from "@/data/glbMarkers";
 
-const GLBViewer = dynamic(
-  () => import("@/components/GLBViewer"),
-  {
-    ssr: false,
-    loading: () => (
-      <div
-        className="w-full rounded-xl bg-dark/40 border border-dark/10
-          dark:border-light/10 flex items-center justify-center
-          text-[11px] uppercase tracking-widest text-light/25"
-        style={{ height: 320 }}
-      >
-        Loading structure…
-      </div>
-    ),
-  }
-);
+const GLBViewer = dynamic(() => import("@/components/GLBViewer"), { ssr: false });
 
-const LAYERS = [
-  {
-    n: 5,
-    name: "Hologram pipeline",
-    role: "Electron-movement visualisations + Marcus λ readout",
-    source: "superimposed-multi-modal-holograms.tex",
-    output: "Six observables: K, Franck-Condon, Stokes, Huang-Rhys, λ, point group",
-    detail: "Five-pass GPU shader: temporal separation → coherent superposition H(ω,t) → 2D FFT → categorical synthesis (n,ℓ,m,s) → (S_k,S_t,S_e) → trajectory completion. 1024×1024 texture, < 1 ms / draw cycle. The shader source lives at cytochrome/glb/levinthal_glb/shaders/electron_trajectory.frag; the numpy CPU prototype at shader_pipeline.py.",
-    color: "#FFA500",
-  },
-  {
-    n: 4,
-    name: "Harmonic molecular resonator",
-    role: "Cycle-rank cross-validation loops",
-    source: "harmonic-molecular-resonator.tex",
-    output: "Cycle rank C = |E| − |V| + 1 independent loops",
-    detail: "Promotes the per-atom spectrometer of L1+2+3 into a per-molecule spectrometer. The cofactor cluster is treated as a graph G = (V, E) where edges are pairs of atomic modes whose frequencies stand in a low-order rational ratio ω_i/ω_j ≈ p/q with η = max(p,q) ≤ 10. Closed loops are virtual resonant cavities; each is an independent cross-validation channel for the same partition coordinate.",
-    color: "#C44E52",
-  },
-  {
-    n: 3,
-    name: "Ensemble strobes",
-    role: "Three temporal gates clocked by analyte emission",
-    source: "ensemble-strobes.tex",
-    output: "W_Sk (fs) | W_St (ns) | W_Se (μs+); cross-talk η < 3.7 × 10⁻³",
-    detail: "Three temporal gates defined by the analyte's own absorption (τ_abs) and emission (τ_em) events. For the CPR cofactor cluster: τ_em ~ 1 ns, gate Δt ~ 10 ps. Recursive ternary depth d gives 3^d orthogonal sub-projections. Three internal self-validation channels (V_me, Ritz, triple-convertibility round-trip).",
-    color: "#55A868",
-  },
-  {
-    n: 2,
-    name: "Triple-equivalence theorem",
-    role: "Calibration certificate",
-    source: "spectroscopic-derivation-of-elements.tex",
-    output: "Admissibility gate at floor 𝔖_floor(R_bio) ≈ 3.7 × 10⁻⁴",
-    detail: "The theorem 𝔒 ≡ 𝔆 ≡ 𝔓 (oscillatory ≡ categorical ≡ partition) licenses Layer 1: a bounded oscillator at partition depth n is the same mathematical object as an atomic mode at the same depth. Without this layer, the hardware oscillators of Layer 1 would just be hardware; with it, they are legitimate atomic-coordinate resolvers.",
-    color: "#888888",
-  },
-  {
-    n: 1,
-    name: "Categorical spectrometer",
-    role: "Hardware-oscillator readout of (n, ℓ, m, s)",
-    source: "hyperfine-transitions.tex",
-    output: "Four oscillator subsystems spanning 10 orders of magnitude in frequency",
-    detail: "CPU clock 10⁹ Hz → n; memory bus 10⁸ Hz → ℓ; LED emission 10¹⁴ Hz → m; memory refresh 10⁴ Hz → s. Calibrated against NIST Atomic Spectra Database (mean fractional error 1.6 × 10⁻⁴ across 24 hydrogen lines; 21 cm hyperfine reproduced to 9 decimal places at 1420.40575 MHz).",
-    color: "#4C72B0",
-  },
+const LEDGER = [
+  ["Layer 1 oscillator frequencies", "10⁴, 10⁸, 10⁹, 10¹⁴ Hz", "set; the source paper gives other values", "M"],
+  ["admissibility floor (Layer 2)", "3.7×10⁻⁴", "set; 3.43×10⁻⁴ elsewhere in the paper", "M"],
+  ["hydrogen lines against NIST", "26 lines, mean 8.7×10⁻⁵", "text: 24 lines, 1.6×10⁻⁴", "C"],
+  ["21 cm hyperfine line", "1420.40575 MHz, 1.3×10⁻⁹", "NIST", "S"],
+  ["strobe cross-talk η", "3.7×10⁻³", "set, from η = 0.37·Δt/τ_em", "M"],
+  ["cycle rank for the reductase chain", "≥ 6", "set; the graph is not built", "M"],
+  ["χ² of the four cofactors", "19–59", "synthetic counts", "M"],
+  ["reorganisation energy λ", "0.85 eV", "set in the code", "M"],
+  ["Fe position and atom count", "(17.26, 11.53, 24.76) Å, 146 atoms", "read from the GLB file", "C"],
 ];
 
 export default function Apparatus() {
   return (
-    <>
-      <Head>
-        <title>Apparatus · cytochrome</title>
-        <meta
-          name="description"
-          content="The five-layer instrument stack used to observe electron transfer through CPR–CYP3A4. Hardware oscillators at the bottom; GPU hologram pipeline at the top. Apparatus, not simulation."
-        />
-      </Head>
-      <TransitionEffect />
-      <Layout className="!pt-12 md:!pt-12 sm:!pt-8">
+    <StoryPage
+      meta={{ title: "Apparatus", description: "The five-layer stack of the transfer paper, layer by layer: which numbers are measured, computed from data, computed from assumed inputs, or set in the code." }}
+      kicker="Part III · The instrument stack of Paper 4"
+      title="The five-layer stack, number by number"
+      lead={<>
+        <p>
+          The transfer paper presents its numbers as readings from a five-layer instrument, with hardware oscillators at
+          the bottom and a GPU shader pipeline at the top. It calls this an apparatus rather than a simulation.
+        </p>
+        <p>
+          This page goes through the layers. For each number it asks whether it is measured, computed from data,
+          computed from assumed inputs, or set in the code. Two numbers come from data: the iron position and the atom
+          count, read from the GLB structure. The rest are computed or set, so the stack is better read as the
+          paper&apos;s computational pipeline.
+        </p>
+      </>}
+      ledger={LEDGER}
+      sources={<>Code: <code>publications/catalytic-cycle/multi-hop-et-chain/validation/scripts/09–12</code>, <code>glb/levinthal_glb/shader_pipeline.py</code>. Source papers: <code>sources/hyperfine-transitions.tex</code>, <code>ensemble-strobes.tex</code>, <code>harmonic-molecular-resonator.tex</code>, <code>superimposed-multi-modal-holograms.tex</code>. The hydrogen differences were recomputed here from the tables in the first.</>}
+      prev={{ href: "/transfer", label: "Electron transfer through the reductase" }}
+      next={{ href: "/glb-input", label: "GLB structural input" }}
+    >
+      <Scene n={1} title="Five layers and their time scales" chart={StackChart} steps={[
+        { tags: ["M"], body: <p>The stack as the paper defines it. Layer 1 reads hardware oscillators; Layer 2 is the argument for reading them as atomic coordinates; Layer 3 gates counts in time; Layer 4 counts loops of commensurate modes; Layer 5 is a GPU shader pipeline that draws densities and reports six observables.</p> },
+        { tags: ["M"], title: "Layer 1", body: <p>Four hardware oscillators are read as the quantum numbers n, ℓ, m and s. The validation script uses round frequencies; the source paper gives 3 GHz, 800 MHz, 4.6×10¹⁴ Hz and 64 kHz. No reading of these oscillators is recorded.</p> },
+        { tags: ["M"], title: "Layer 3", body: <p>Three gates, from femtoseconds to microseconds, are defined by the analyte&apos;s own absorption and emission times. In the validation they are constants.</p> },
+      ]} />
 
-        <div className="mb-12">
-          <span className="text-[11px] uppercase tracking-widest
-            text-dark/40 dark:text-light/40">
-            The instrument
-          </span>
-          <AnimatedText
-            text="Five layers of apparatus."
-            className="!text-4xl xl:!text-3xl md:!text-2xl !text-left mt-2 mb-4"
-          />
-          <p className="text-base text-dark/75 dark:text-light/65 max-w-3xl">
-            Every numerical result reported in this monograph is a physical
-            observable from the stack below — not a computation against a
-            chosen model Hamiltonian. The protein under observation
-            (Papers 1–3) enters the apparatus at Layer 3; its absorption
-            and emission times define the strobe windows.
-          </p>
-        </div>
+      <Scene n={2} title="Calibration on hydrogen" chart={HydrogenChart} steps={[
+        { tags: ["S", "C"], body: <p>Layer 1 is calibrated on hydrogen. From the tables in the source paper we recomputed each line&apos;s fractional difference from NIST: 26 lines, from exact agreement up to 5×10⁻⁴.</p> },
+        { tags: ["C"], title: "Summary against table", body: <p>The paper reports 1.6×10⁻⁴ over 24 lines. Its own table has 26 lines with a mean of 8.7×10⁻⁵; the largest difference, 5.3×10⁻⁴, is the ionisation energy.</p> },
+        { tags: ["S"], title: "What the agreement shows", body: <p>The paper&apos;s computed column coincides with the Rydberg formula. The agreement shows that standard atomic physics is reproduced; it does not show that the hardware oscillators measure anything.</p> },
+      ]} />
 
-        <div className="space-y-3 mb-12">
-          {LAYERS.map((L) => (
-            <div
-              key={L.n}
-              className="rounded-2xl border border-dark/10 dark:border-light/10
-                bg-light/30 dark:bg-light/5 p-6"
-            >
-              <div className="flex items-baseline gap-4 flex-wrap">
-                <div
-                  className="text-3xl font-bold w-14 text-center"
-                  style={{ color: L.color }}
-                >
-                  L{L.n}
-                </div>
-                <div className="flex-1 min-w-[200px]">
-                  <h3 className="text-lg font-bold text-dark dark:text-light">
-                    {L.name}
-                  </h3>
-                  <p className="text-sm text-dark/65 dark:text-light/55">
-                    {L.role}
-                  </p>
-                </div>
-                <code className="text-[11px] text-dark/45 dark:text-light/40
-                  font-mono">
-                  {L.source}
-                </code>
-              </div>
+      <Scene n={3} title="Strobe cross-talk" chart={CrosstalkChart} steps={[
+        { tags: ["M"], body: <p>The fraction of one gate&apos;s signal that leaks into the next: η = 0.37·Δt/τ_em, up to 0.37.</p> },
+        { tags: ["M"], title: "The operating point", body: <p>For the reductase the paper takes an emission time of about 1 ns and gates of about 10 ps, which gives η = 3.7×10⁻³.</p> },
+        { tags: ["M"], title: "What is checked", body: <p>The validation compares that number, entered as a constant, with a threshold of 10⁻². No counts are gated.</p> },
+      ]} />
 
-              <div className="mt-4 grid grid-cols-3 gap-4 lg:grid-cols-1">
-                <div className="lg:col-span-1">
-                  <div className="text-[10px] uppercase tracking-widest
-                    text-dark/40 dark:text-light/40 mb-1">
-                    Output
-                  </div>
-                  <div className="text-xs font-mono text-primaryDark">
-                    {L.output}
-                  </div>
-                </div>
-                <div className="col-span-2 lg:col-span-1">
-                  <div className="text-[10px] uppercase tracking-widest
-                    text-dark/40 dark:text-light/40 mb-1">
-                    Detail
-                  </div>
-                  <p className="text-xs text-dark/70 dark:text-light/60
-                    leading-relaxed">
-                    {L.detail}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+      <Scene n={4} title="Loops of commensurate modes" chart={CycleRankChart} steps={[
+        { tags: ["M"], body: <p>Layer 4 builds a graph whose edges join vibrational modes with commensurate frequencies. Its cycle rank counts the independent loops, which the paper treats as independent checks.</p> },
+        { tags: ["C"], title: "Recounting", body: <p>The paper&apos;s formula C = |E| − |V| + 1, applied to its own table, gives 3 for H₂O and CO₂, where the table lists 1.</p> },
+        { tags: ["M"], title: "For the reductase", body: <p>For the reductase chain the graph is never built. The required rank, C ≥ 6, is a constant in the script.</p> },
+      ]} />
 
-        {/* GLB analyte structure */}
-        <div className="mb-12">
-          <h2 className="text-xs uppercase tracking-widest
-            text-dark/40 dark:text-light/40 mb-4">
-            The analyte
-          </h2>
-          <GLBViewer
-            height={320}
-            badge="instrument analyte · CYP3A4"
-            preset="chain"
-            markers={CHAIN_MARKERS}
-          />
-          <p className="mt-3 text-[11px] text-dark/55 dark:text-light/50">
-            The productive cytochrome P450 GLB. The four coloured markers
-            are the cofactor centres (NADPH, FAD, FMN, heme) that the five-layer
-            stack observes. The GLB is parsed by Paper&nbsp;2.5; the instrument
-            reads its own analyte.
-          </p>
-        </div>
+      <Interlude
+        title="What is read from data"
+        note="The site's P450 model with the four cofactor centres marked. The iron position, (17.26, 11.53, 24.76) Å, and the atom count, 146, are read from this file. They are the only numbers in the stack taken from data. Drag to rotate."
+      >
+        <GLBViewer height={420} badge="GLB · cofactor centres" preset="chain" markers={CHAIN_MARKERS} />
+      </Interlude>
 
-        {/* Apparatus stack visualisation */}
-        <div className="mb-12">
-          <h2 className="text-xs uppercase tracking-widest
-            text-dark/40 dark:text-light/40 mb-4">
-            The stack rendered
-          </h2>
-          <div className="rounded-xl overflow-hidden border border-dark/10
-            dark:border-light/10 bg-white">
-            <div className="relative aspect-[4/1]">
-              <Image
-                src="/panels/paper-4/panel_09_apparatus_stack.png"
-                alt="Five-layer instrument stack"
-                fill
-                sizes="100vw"
-                className="object-contain"
-              />
-            </div>
-          </div>
-          <p className="mt-3 text-[11px] text-dark/55 dark:text-light/50">
-            Panel 9 of Paper 4: layer frequencies on log axis, strobe-window
-            timescales, six-observable list, and 3D pyramidal stack view.
-          </p>
-        </div>
+      <Scene n={5} title="Which atoms stand out" chart={ChiChart} steps={[
+        { tags: ["M"], body: <p>In the selection step each atom gets a three-state count histogram. A χ² test against the equilibrium distribution flags atoms whose counts deviate. Of 196 bystander atoms, 11 cross the threshold by chance.</p> },
+        { tags: ["M"], title: "The four cofactors", body: <p>NADPH C4, FAD N5, FMN N5 and the heme iron are flagged, with χ² between 19 and 59.</p> },
+        { tags: ["M"], title: "Where the counts come from", body: <p>The counts are synthetic. The script draws the four cofactors from a shifted distribution it is given and the bystanders from the equilibrium one. This shows that the χ² test works on such data. It does not show that the cofactors select themselves; that would need measured counts from the protein.</p> },
+      ]} />
 
-        {/* Why apparatus, not simulation */}
-        <div className="mb-12 rounded-2xl bg-primaryDark/10 dark:bg-primaryDark/5
-          border border-primaryDark/30 p-6">
-          <h2 className="text-sm font-bold mb-3 text-primaryDark uppercase tracking-wider">
-            The triple identity
-          </h2>
-          <p className="text-base text-dark/75 dark:text-light/70 mb-3">
-            <strong>Measurement = Computation = Observation.</strong>
-          </p>
-          <p className="text-sm text-dark/70 dark:text-light/60 max-w-3xl">
-            The fragment shader writing a pixel <em>is</em> performing a
-            physical observation of a partition cell. The texture <em>is</em>
-            the categorical state, not a picture of it. The protein is not
-            a passive sample but an active participant: sample, instrument,
-            computer, and result unified in completion-driven navigation
-            through categorical state space. The apparatus stack realises
-            this identity with O(1) GPU memory regardless of analyte size
-            (the empty-dictionary principle).
-          </p>
-        </div>
-
-        <div className="flex items-center justify-between
-          pt-6 border-t border-dark/10 dark:border-light/10
-          text-sm sm:flex-col sm:items-start sm:gap-3">
-          <Link
-            href="/transfer"
-            className="text-primary dark:text-primaryDark font-bold uppercase
-              tracking-wider hover:underline"
-          >
-            ← see the apparatus in action: Paper 4 (HEADLINE)
-          </Link>
-          <Link
-            href="/glb-input"
-            className="text-dark/60 dark:text-light/55 uppercase
-              tracking-wider hover:underline"
-          >
-            analyte input via GLB · Paper 2.5 →
-          </Link>
-        </div>
-
-      </Layout>
-    </>
+      <Scene n={6} title="The reorganisation energy" chart={LambdaChart} steps={[
+        { tags: ["M"], body: <p>Script 11 builds a width from a chosen λ, adds 5 % noise and inverts it: 0.85 eV in, 0.79 eV out.</p> },
+        { tags: ["M"], title: "The shader's readout", body: <p>In the shader pipeline the readout is λ = (0.85/σ)·σ, which is 0.85 eV for any width.</p> },
+        { tags: ["M", "L"], title: "Where 0.85 eV comes from", body: <p>The value lies in the quoted 0.7–1.0 eV range because it was chosen from that range. A reorganisation energy for the FMN → heme step has to come from measurement, for example from how the rate depends on temperature or driving force.</p> },
+      ]} />
+    </StoryPage>
   );
 }

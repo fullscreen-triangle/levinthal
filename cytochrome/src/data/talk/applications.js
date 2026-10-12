@@ -53,20 +53,21 @@ export const GLB_FE = [
 ];
 
 export const DEPTHS = [
-  { k: 3, cap: 27, need: 18, what: "families", score: "recall 0.94" },
-  { k: 6, cap: 729, need: 57, what: "human isoforms", score: "distinctness 0.97" },
-  { k: 9, cap: 19683, need: null, what: "allelic variants", score: "PharmVar alleles" },
+  // smallest depths whose capacity 3^k covers each set (a counting bound)
+  { k: 3, cap: 27, need: 18, what: "families" },
+  { k: 4, cap: 81, need: 57, what: "human isoforms" },
+  { k: 9, cap: 19683, need: null, what: "allelic variants" },
 ];
 
 export const STATES = [
   // name, short, iron, spin, Soret (nm) as assigned in the spectroscopic atlas
   { id: 1, name: "Resting", label: "Fe(III)–OH₂", spin: "low spin", soret: 417, lit: "417–420" },
-  { id: 2, name: "Substrate-bound", label: "Fe(III)", spin: "high spin", soret: 392, lit: "≈390" },
+  { id: 2, name: "Substrate-bound", label: "Fe(III)", spin: "high spin", soret: 390, lit: "≈390" },
   { id: 3, name: "Ferrous", label: "Fe(II)", spin: "high spin", soret: 408 },
   { id: 4, name: "Oxy", label: "Fe(II)–O₂", spin: "", soret: 418 },
   { id: 5, name: "Peroxo", label: "Fe(III)–OO⁻", spin: "", soret: 440 },
   { id: 6, name: "Compound 0", label: "Fe(III)–OOH", spin: "", soret: 367 },
-  { id: 7, name: "Compound I", label: "Fe(IV)=O π•⁺", spin: "S = ½", soret: 370, lit: "367 (Rittle & Green)" },
+  { id: 7, name: "Compound I", label: "Fe(IV)=O π•⁺", spin: "S = ½", soret: 367, lit: "367 (Rittle & Green)" },
 ];
 
 export const ORBIT_DM = [
@@ -92,7 +93,7 @@ export const ATYPICAL = [
   { name: "Carbene insertion", dm: 0.20, kie: "≈1", primary: false },
   { name: "Epoxidation", dm: 0.35, kie: "≈1", primary: false },
   { name: "Nucleophilic O-transfer", dm: 0.42, kie: "≈1", primary: false },
-  { name: "Desaturation (two HATs)", dm: null, keff: 1.3e8, kie: "4–6", primary: true },
+  { name: "Desaturation (two HATs)", dm: null, keff: 2.3e9, kie: "≈ 5", primary: true },
 ];
 
 export const CYP2D6 = [

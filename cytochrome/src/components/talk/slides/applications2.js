@@ -46,7 +46,7 @@ function HeteroBars() {
     const y = d3.scaleBand().domain(HETERO_DM.map((d) => d[0])).range([m.t, H - m.b]).padding(0.3);
     const x = d3.scaleLinear().domain([0, 0.7]).range([m.l, W - m.r]);
     styleAxis(svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(7)));
-    axisLabel(svg, "activation parameter ΔM (model)", { x: (W + m.l) / 2, y: H - 4 });
+    axisLabel(svg, "assigned depth ΔM (model)", { x: (W + m.l) / 2, y: H - 4 });
     svg.selectAll("text.l").data(HETERO_DM).join("text").attr("class", "l").attr("x", m.l - 10).attr("y", (d) => y(d[0]) + y.bandwidth() / 2 + 5)
       .attr("text-anchor", "end").attr("fill", C.ink).style("font-size", "15px").text((d) => d[0]);
     svg.selectAll("rect").data(HETERO_DM).join("rect").attr("x", m.l).attr("y", (d) => y(d[0])).attr("height", y.bandwidth()).attr("rx", 3)
@@ -62,7 +62,7 @@ export function S16CH({ step }) {
       kicker="Applications · C–H activation and heteroatoms"
       papers={[PAPERS.ch, PAPERS.hetero]}
       title="Abstraction, then rebound; direct transfer is faster at heteroatoms"
-      lead="One three-body step (C, H, ferryl O) with a selection rule, followed by rebound. Heteroatom reactions are ordered by the same activation parameter."
+      lead="One three-body step (C, H, ferryl O), followed by rebound. Heteroatom reactions are placed on the same activation scale, with depths assigned per reaction class."
     >
       <div className="absolute inset-0 grid grid-cols-2 gap-8">
         <div className="flex flex-col gap-2">
@@ -73,14 +73,14 @@ export function S16CH({ step }) {
           </Reveal>
         </div>
         <div className="flex flex-col gap-3">
-          <Statement>Only the HAT-based reactions carry a primary kinetic isotope effect; the softer α-C–H of N-dealkylation lowers it (6.7 vs 7.2 in the model).</Statement>
+          <Statement>A primary isotope effect appears only where hydrogen moves in the rate-limiting step: the established mechanistic picture, which the papers adopt. Direct O-transfer comes out faster than dealkylation because its depths are set lower.</Statement>
           <Reveal step={step} at={2}>
             <Compare rows={[
-              ["KIE, aliphatic C–H", "7.2", "4–11 reported", "L"],
-              ["testosterone 6β share (CYP3A4)", "49%", "50–70% reported", "L"],
-              ["k rebound / k HAT", "1.4×", "rebound faster", "M"],
-              ["KIE, N-dealkylation", "6.7", "below aliphatic", "M"],
-              ["S-ox / N-dealk rate", "1.25×", "direct transfer faster", "M"],
+              ["KIE, aliphatic C–H, 310 K", "9.6", "4–11 reported", "M"],
+              ["testosterone 6β share (CYP3A4)", "49% (28% without g)", "50–70% reported", "M"],
+              ["k rebound / k HAT", "1.42", "set by the two depths", "M"],
+              ["KIE, N-dealkylation", "6.7", "not compared with experiment", "M"],
+              ["S-ox / N-dealk rate", "1.25×", "set by the assigned depths", "M"],
             ]} />
           </Reveal>
         </div>
@@ -96,7 +96,7 @@ function Atypical() {
     const y = d3.scaleBand().domain(ATYPICAL.map((d) => d.name)).range([m.t, H - m.b]).padding(0.3);
     const x = d3.scaleLinear().domain([0, 0.5]).range([m.l, W - m.r]);
     styleAxis(svg.append("g").attr("transform", `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(5)), { grid: true, height: H - m.t - m.b });
-    axisLabel(svg, "activation parameter ΔM (model)", { x: (W + m.l) / 2, y: H - 8 });
+    axisLabel(svg, "assigned depth ΔM (model)", { x: (W + m.l) / 2, y: H - 8 });
     ATYPICAL.forEach((d, i) => {
       const yy = y(d.name);
       svg.append("text").attr("x", m.l - 12).attr("y", yy + y.bandwidth() / 2 + 5).attr("text-anchor", "end").attr("fill", C.ink).style("font-size", "16px").text(d.name);
@@ -107,7 +107,7 @@ function Atypical() {
           .attr("opacity", 0).transition().delay(800 + i * 140).attr("opacity", 1);
       } else {
         svg.append("text").attr("x", m.l + 8).attr("y", yy + y.bandwidth() / 2 + 5).attr("fill", C.orange).style("font-size", "15px")
-          .text(`two sequential HATs · effective k ≈ 1.3×10⁸ s⁻¹ · primary KIE ${d.kie}`);
+          .text(`two sequential HATs · effective k ≈ 2.3×10⁹ s⁻¹ · primary KIE ${d.kie}`);
       }
     });
   }, []);
@@ -120,18 +120,18 @@ export function S17Atypical({ step }) {
       kicker="Applications · beyond hydroxylation"
       papers={[PAPERS.atypical]}
       title="Five atypical reactions on one scale"
-      lead="NIH shift, carbene insertion, epoxidation, nucleophilic O-atom transfer and desaturation, each given one activation parameter. The predicted order and the presence or absence of a primary isotope effect are compared with the literature."
+      lead="NIH shift, carbene insertion, epoxidation, nucleophilic O-atom transfer and desaturation, each given an assigned activation depth. The rate order follows from those assignments; the isotope-effect pattern is the mechanistic expectation."
     >
       <div className="absolute inset-0 grid grid-cols-[820px_1fr] gap-8">
         <Atypical />
         <div className="flex flex-col gap-3">
-          <Statement accent={C.orange}>Desaturation is the only class with a primary KIE in the model (two hydrogen abstractions); the others are predicted to show KIE ≈ 1.</Statement>
+          <Statement accent={C.orange}>Desaturation is the only class with a primary KIE in the model (two hydrogen abstractions); the others are assigned KIE ≈ 1 because no hydrogen moves in their rate step.</Statement>
           <Reveal step={step} at={1}>
             <Compare rows={[
-              ["NIH shift rate", "8.4×10⁹ s⁻¹", "5×10⁹–10¹⁰ s⁻¹", "L"],
-              ["desaturation, effective k", "1.3×10⁸ s⁻¹", "10⁸–5×10⁹ s⁻¹", "L"],
-              ["KIE, desaturation", "4–6", "> 3 reported", "L"],
-              ["rate order", "NIH > carbene > epox > nucl > desat", "per class, literature", "M"],
+              ["NIH shift rate", "8.4×10⁹ s⁻¹", "no cited measurement", "M"],
+              ["desaturation, effective k", "2.3×10⁹ s⁻¹", "two HATs against rebound", "M"],
+              ["KIE, desaturation", "≈ 5", "not yet compared with experiment", "M"],
+              ["rate order", "NIH > carbene > epox > nucl > desat", "follows from the assigned depths", "M"],
             ]} />
           </Reveal>
         </div>
@@ -194,7 +194,7 @@ export function S18Cycle({ step }) {
       kicker="Applications · the cycle and its spectra"
       papers={[PAPERS.orbit, PAPERS.spectra]}
       title="Seven distinguishable states, each with its own spectrum"
-      lead="The closed-cycle paper requires every state to differ from every other in at least one label; the spectroscopic atlas assigns each state its UV-vis, EPR and Raman signatures. Arc width: the paper's activation parameter for each transition."
+      lead="The closed-cycle paper gives each state a distinct label; the spectroscopic atlas tabulates each state's Soret band. Resting, substrate-bound and Compound I are measured values; the others are estimates. Arc width: the activation depth assigned to each transition."
     >
       <div className="absolute inset-0 grid grid-cols-[760px_1fr] gap-8">
         <CycleWheel />
@@ -202,12 +202,12 @@ export function S18Cycle({ step }) {
           <Statement>Read as a ladder (derivation, slide 6): eight rungs, one commitment each, and the coupling efficiency as the composite. Recording each intermediate commits once per rung.</Statement>
           <Reveal step={step} at={1}>
             <Compare rows={[
-              ["resting LS Soret", "417 nm", "417–420 nm", "L"],
-              ["substrate-bound HS Soret", "392 nm", "≈ 390 nm", "L"],
-              ["EPR g, LS / HS", "2.42, 2.25, 1.92 / 7.70, 3.50, 1.80", "as reported", "L"],
-              ["Compound I Soret", "370 nm", "367 nm", "L"],
-              ["Fe=O stretch", "795 cm⁻¹", "as cited in the atlas", "L"],
-              ["sum of ΔM over the cycle", "4.96", "—", "M"],
+              ["resting LS Soret", "417 nm", "literature", "L"],
+              ["substrate-bound HS Soret", "≈ 390 nm", "literature", "L"],
+              ["EPR g, LS / HS", "2.42, 2.25, 1.92 / ≈ 7.7, 3.5, 1.8", "P450cam, literature", "L"],
+              ["Compound I Soret", "367 nm", "Rittle & Green 2010", "L"],
+              ["ferrous, oxy, peroxo, Cpd 0 Soret", "408, 418, 440, 367 nm", "estimates in the atlas", "M"],
+              ["sum of ΔM over the cycle", "4.96", "sum of assigned depths", "M"],
             ]} />
           </Reveal>
         </div>
@@ -229,7 +229,7 @@ function Phenotypes() {
     svg.selectAll("rect").data(CYP2D6).join("rect").attr("x", m.l).attr("y", (d) => y(d.phenotype)).attr("height", y.bandwidth()).attr("rx", 3)
       .attr("fill", C.blue).attr("width", 0).transition().duration(700).attr("width", (d) => x(d.rel) - m.l);
     svg.selectAll("text.f").data(CYP2D6).join("text").attr("class", "f").attr("x", (d) => x(d.rel) + 6).attr("y", (d) => y(d.phenotype) + y.bandwidth() / 2 + 5)
-      .attr("fill", C.ink2).style("font-size", "13px").text((d) => `${d.alleles} · ${pct(d.freq, 0)}`);
+      .attr("fill", C.ink2).style("font-size", "13px").text((d) => d.alleles);
   }, []);
   return <svg ref={ref} width={W} height={H} />;
 }
@@ -287,7 +287,7 @@ export function S19Pharmacology({ step }) {
     >
       <div className="grid grid-cols-3 gap-6">
         <div>
-          <div className="text-[17px] mb-1" style={{ color: C.ink }}>CYP2D6 phenotypes · alleles · frequency</div>
+          <div className="text-[17px] mb-1" style={{ color: C.ink }}>CYP2D6 phenotypes in the model · assigned depths</div>
           <Phenotypes />
         </div>
         <Reveal step={step} at={1}>
@@ -301,10 +301,10 @@ export function S19Pharmacology({ step }) {
       </div>
       <Reveal step={step} at={3} className="mt-3">
         <Compare rows={[
-          ["CYP2D6 UM / PM rate", "9×", "≥ 5× reported", "L"],
-          ["CYP2C9*3 residual (S-warfarin)", "< 5%", "≈ 5% reported", "L"],
-          ["rifampicin induction 20× → victim AUC", "0.05", "< 0.1 clinical", "L"],
-          ["codeine in UM: excess morphine", "32%", "> 30% (FDA threshold)", "L"],
+          ["CYP2D6 PM (*4/*5) activity", "14% of EM", "≈ 0 in null-allele carriers", "M"],
+          ["CYP2C9*3 residual", "4.4%", "depth set to give ≈ 5%", "M"],
+          ["rifampicin 20× induction → victim AUC", "0.05 = 1/20", "induction from Backman 1996", "L"],
+          ["codeine in UM: morphine formed", "1.32× EM", "FDA boxed warning (no numeric threshold)", "M"],
         ]} />
       </Reveal>
     </SlideFrame>
@@ -339,12 +339,12 @@ export function S20Informatics({ step }) {
       kicker="Applications · informatics, and what this offers"
       papers={[PAPERS.database, PAPERS.dictionary]}
       title="Addresses instead of entries — and checks a lab can run today"
-      lead="The addressing scheme stores 20 residue rows and an encoding rule, and answers queries for sequences it has never seen. Capacity at depth 6 exceeds what 57 isoforms need, which is what makes recovery from partial addresses possible."
+      lead="The addressing scheme stores 20 residue rows and an encoding rule, and answers queries for sequences it has never seen. Capacity at depth 6 exceeds what 57 isoforms need, which is what would make recovery from partial addresses possible."
     >
       <div className="absolute inset-0 grid grid-cols-[620px_1fr] gap-8">
         <div className="flex flex-col gap-3">
           <Capacity />
-          <Statement accent={C.aqua}>Resident state is constant: 20 rows + a rule. Address distance and residue similarity are rank-correlated, ρ = 0.382 (no permutation of 200 reached it).</Statement>
+          <Statement accent={C.aqua}>Resident state is constant: 20 rows + a rule. Address distance and residue similarity, scored on physicochemical scales held outside the table, are rank-correlated: ρ = 0.382; none of 200 shuffled tables reached it.</Statement>
         </div>
         <Reveal step={step} at={1}>
           <Box style={{ borderLeft: `3px solid ${C.orange}` }}>

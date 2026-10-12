@@ -134,7 +134,7 @@ export const PAPERS = [
     title: "Observing Electron Transfer through Cytochrome P450 Reductase",
     short: "Transfer",
     part: "Part III — The Headline Observation",
-    role: "HEADLINE: NADPH → FAD → FMN → heme observed via 5-layer apparatus",
+    role: "Electron delivery NADPH → FAD → FMN → heme, against a tunnelling ruler",
     headline_paper: true,
     abstract: `The headline paper of the monograph. With the protein
       constructed by Papers 1–3 and grounded in real PDB coordinates by
@@ -149,9 +149,9 @@ export const PAPERS = [
       deliverable is per-frame |ψ(r,t)|² snapshots of the electron
       moving through the real GLB-anchored CPR–CYP3A4 geometry.`,
     headline: [
-      { label: "k_cat/K_M (d_C = 4)",       computed: "≈ 10⁶ M⁻¹s⁻¹", target: "measured CPR–P450" },
-      { label: "Marcus λ (Layer 5)",         computed: "0.85 eV",       target: "0.7 – 1.0 eV (lit.)" },
-      { label: "Cofactor recall (χ²)",       computed: "100 %",         target: "azurin precedent" },
+      { label: "k_cat/K_M from four steps",  computed: "10⁶ M⁻¹s⁻¹",   target: "0.7–4 ×10⁶, four CYP3A4 substrates" },
+      { label: "FMN → heme, model rate",     computed: "610 s⁻¹",       target: "5×10⁷ s⁻¹ cited" },
+      { label: "Marcus λ",                   computed: "0.85 eV (set)", target: "0.7–1.0 eV quoted" },
     ],
     panelDir: "/panels/paper-4",
     panels: [
@@ -168,7 +168,7 @@ export const PAPERS = [
       ["panel_11_electron_visualisations.png", "HEADLINE: |ψ(r,t)|² across the chain"],
       ["panel_12_glb_shader_integration.png",  "GLB + shader pipeline integration"],
     ],
-    status: "Validation 12/12 PASS",
+    status: "Several validation checks compare model outputs with their own inputs; see the page",
   },
   {
     id: "5",
@@ -186,9 +186,9 @@ export const PAPERS = [
       (d_C=2) discrimination predicts 10× rate ratio. 11 spectroscopic
       observables match Rittle–Green within 20%.`,
     headline: [
-      { label: "ΔM bond-order cleave",   computed: "ln 2 ≈ 0.693",    target: "binary bond coord" },
-      { label: "PCET concerted/seq.",    computed: "10×",              target: "Marcus ≠ 1" },
-      { label: "Spectroscopic match",    computed: "8/8 within 20 %",  target: "Rittle–Green" },
+      { label: "Lifetime at 193 K",      computed: "113 ms (model)",  target: "210 ms, CYP119" },
+      { label: "Oxidation potential",    computed: "0.54 V (model)",  target: "0.9 V cited" },
+      { label: "O–O bonded / cleaved",   computed: "ln 2",            target: "one binary distinction" },
     ],
     panelDir: "/panels/paper-5",
     panels: [
@@ -201,7 +201,7 @@ export const PAPERS = [
       ["panel_07_potential.png",        "Oxidation potential"],
       ["panel_08_spectroscopy.png",     "Eight spectroscopic observables"],
     ],
-    status: "Validation 8/8 PASS",
+    status: "Five of the eight listed observables are literature values, not model outputs; see the page",
   },
   {
     id: "6",
@@ -221,9 +221,9 @@ export const PAPERS = [
       40–90 % from rebound/escape competition. Testosterone 6β ≈ 49 %
       (literature 50–70 %). Five reaction types unified under one framework.`,
     headline: [
-      { label: "KIE (aliphatic C–H)",   computed: "7.2",             target: "4 – 11 (literature)" },
-      { label: "k_rebound / k_HAT",     computed: "1.4 ×",           target: "> 1 (rebound faster)" },
-      { label: "6β regioselectivity",   computed: "49 %",            target: "50 – 70 % (CYP3A4)" },
+      { label: "KIE (aliphatic C–H)",   computed: "9.6 (code)",      target: "4–11 cited; text says 7.2" },
+      { label: "6β regioselectivity",   computed: "49 % (28 % without g)", target: "50–70 % (CYP3A4)" },
+      { label: "k_rebound / k_HAT",     computed: "1.42",            target: "set by the two ΔM values" },
     ],
     panelDir: "/panels/paper-6",
     panels: [
@@ -236,7 +236,7 @@ export const PAPERS = [
       ["panel_07_reaction_types.png",         "Five reaction types unified"],
       ["panel_08_validation.png",             "Full validation: 8/8 PASS"],
     ],
-    status: "Validation 8/8 PASS",
+    status: "7 of 8 checks pass at the script's 30 % threshold; four compare the model with itself",
   },
   {
     id: "7",

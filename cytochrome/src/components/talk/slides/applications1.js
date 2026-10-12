@@ -62,7 +62,7 @@ export function S11Structure({ step }) {
       kicker="Applications · structure and addressing"
       papers={[PAPERS.glb, PAPERS.manifold]}
       title="From a 3-D model to an address: iron geometry and ternary depth"
-      lead="A GLB model of CYP3A4 yields per-atom positions; its iron coordination is compared with the twelve crystal structures measured in the derivation. Residue coordinates are then addressed in base three."
+      lead="A public GLB model of a P450 (a visual model, not a crystal structure) yields atom positions; its iron distances fall inside the ranges measured in the derivation's twelve crystal structures. Residues are then addressed in base three."
     >
       <div className="grid grid-cols-[400px_520px_1fr] gap-6 items-start">
         <GLBViewer height={290} preset="heme" markers={HEME_MARKER} badge="GLB · Fe coordination" />
@@ -74,11 +74,11 @@ export function S11Structure({ step }) {
       </div>
       <Reveal step={step} at={2} className="mt-3">
         <Compare rows={[
-          ["Fe–S (Cys)", "2.228 Å", "1.90–2.52 Å, mean 2.32 (PDB)", "C"],
-          ["Fe–N (pyrrole)", "2.01–2.04 Å", "1.98–2.10 Å (PDB)", "C"],
-          ["family separation at k = 3", "recall 0.94", "Nelson families", "M"],
-          ["isoform separation at k = 6", "0.97", "57 human CYPs", "M"],
-          ["CYP3A4 fold, log₃ 503", "5.69 steps", "address refinements", "M"],
+          ["Fe–S (Cys)", "2.228 Å (GLB file)", "1.90–2.52 Å, mean 2.32 (PDB, this work)", "C"],
+          ["Fe–N (pyrrole)", "2.01–2.04 Å (GLB file)", "1.98–2.10 Å (PDB, this work)", "C"],
+          ["families, k = 5", "17 of 18 modal, 6 cells", "synthetic sequences", "M"],
+          ["isoforms, k = 8", "57 in 34 cells", "synthetic sequences", "M"],
+          ["log₃ 503", "5.66 trits", "counting bound, 503 residues", "D"],
         ]} />
       </Reveal>
     </SlideFrame>
@@ -122,19 +122,19 @@ export function S12Isoforms({ step }) {
       kicker="Applications · the human P450 complement"
       papers={[PAPERS.isoforms, PAPERS.taxonomy]}
       title="57 human P450s in 18 families, separated by address depth"
-      lead="Filled circles: the isoforms that carry most drug oxidation. The papers ask at which ternary depth the family and isoform partitions of this tree are recovered."
+      lead="Filled circles: the isoforms that carry most drug oxidation. The papers ask at which ternary depth the family and isoform partitions of this tree could be recovered. So far that is tested on synthetic sequences only."
     >
       <div className="absolute inset-0 grid grid-cols-[760px_1fr] gap-10">
         <IsoformPack />
         <div className="flex flex-col gap-4">
-          <Statement>3³ = 27 ≥ 18 families: depth k = 3 suffices in capacity; the paper reports family recall 0.94 against the Nelson nomenclature.</Statement>
-          <Reveal step={step} at={1}><Statement accent={C.orange}>3⁶ = 729 ≥ 57 isoforms: depth k = 6, distinctness 0.97. Depth k = 9 (19,683) leaves room for catalogued alleles.</Statement></Reveal>
-          <Reveal step={step} at={1}><Statement accent={C.violet}>Family-level differences in substrate breadth are expressed as ranges of the model parameter ΔM; CYP3A4's is the widest in the paper.</Statement></Reveal>
+          <Statement>Capacity is a counting bound: 3³ = 27 ≥ 18 families, 3⁴ = 81 ≥ 57 isoforms, 3⁹ = 19,683 for catalogued alleles. Capacity alone does not show that real sequences separate.</Statement>
+          <Reveal step={step} at={1}><Statement accent={C.orange}>On synthetic family-biased sequences, 17 of 18 families form a modal cell at depth 5 but share 6 cells; at depth 8, 57 isoforms fill 34 cells. Separating real sequences is the open test.</Statement></Reveal>
+          <Reveal step={step} at={1}><Statement accent={C.violet}>Substrate breadth enters as ΔM windows assigned per family to reflect known breadth (CYP3A4 broadest); the windows are not derived.</Statement></Reveal>
           <Reveal step={step} at={2}>
             <Compare rows={[
-              ["families / genes", "18 / 57", "Nelson nomenclature", "L"],
-              ["family recall, k = 3", "0.94", "—", "M"],
-              ["isoform distinctness, k = 6", "0.97", "—", "M"],
+              ["families / genes", "18 / 57", "Nelson et al. 2004", "L"],
+              ["family modal cells, k = 5", "17 of 18 (6 cells)", "synthetic sequences", "M"],
+              ["isoform cells, k = 8", "57 in 34 cells", "synthetic sequences", "M"],
             ]} />
           </Reveal>
         </div>
@@ -172,7 +172,7 @@ function SpinGate({ step }) {
     const state = (bound) => {
       spin.text(bound ? "high spin, S = 5/2" : "low spin, S = 1/2");
       coord.text(bound ? "five-coordinate, Fe below the plane" : "six-coordinate, distal water");
-      soret.text(`Soret ≈ ${bound ? 392 : 417} nm`);
+      soret.text(`Soret ≈ ${bound ? 390 : 417} nm`);
       gate.text(bound ? "first electron from CPR accepted" : "first electron not favourable").attr("fill", bound ? C.aqua : C.ink2);
     };
     state(false);
@@ -198,19 +198,19 @@ export function S13Equilibrium({ step }) {
       kicker="Applications · the first rung of the cycle"
       papers={[PAPERS.equilibrium]}
       title="Substrate binding switches the spin ladder and opens the electron gate"
-      lead="The derivation measured the switch in P450cam crystal structures. The equilibrium paper models the same step for CYP3A4 and reproduces the reported shift in reduction potential."
+      lead="The derivation measured the switch in P450cam crystal structures. The equilibrium paper models the same step for CYP3A4; the size of its potential shift rests on a multiplier chosen by hand."
     >
       <div className="absolute inset-0 grid grid-cols-[760px_1fr] gap-10">
         <SpinGate step={step} />
         <div className="flex flex-col gap-4">
           <Statement accent={C.aqua}>Measured (this work): distal water {d["1PHC"].water_distance.toFixed(2)} Å → absent; Fe out of plane {d["1PHC"].fe_out_of_plane.toFixed(2)} → {d["2CPP"].fe_out_of_plane.toFixed(2)} Å (1PHC → 2CPP).</Statement>
-          <Reveal step={step} at={1}><Statement>Rung 1 → 2 in the paper: one aperture, ΔM = 0.92; the potential shift follows as ΔE = (k<sub>B</sub>T/e)·n<sub>eff</sub>·ΔM·ln b.</Statement></Reveal>
+          <Reveal step={step} at={1}><Statement>Rung 1 → 2 in the paper: ΔM = 0.92 between spin-state endpoints set in the model. The shift is ΔE = (k<sub>B</sub>T/e)·n<sub>eff</sub>·ΔM: +123 mV with n<sub>eff</sub> = 5 chosen, 25 mV with n<sub>eff</sub> = 1.</Statement></Reveal>
           <Reveal step={step} at={2}>
             <Compare rows={[
               ["water displaced, Fe moves out", "0.30 → 0.43 Å", "1PHC vs 2CPP", "C"],
-              ["Soret, resting → bound", "417 → 392 nm", "≈ 417–420 / ≈ 390 nm", "L"],
-              ["redox shift on binding", "+122 mV", "+120 mV (reported)", "M"],
-              ["ΔM, LS → HS", "0.918", "—", "M"],
+              ["Soret, resting → bound", "≈ 417 → ≈ 390 nm", "typical values, not model outputs", "L"],
+              ["redox shift on binding", "+123 mV (n_eff = 5)", "BM3 shift, Daff 1997 (not CYP3A4)", "M"],
+              ["ΔM, LS → HS", "0.92", "endpoints set in the model", "M"],
             ]} />
           </Reveal>
         </div>
@@ -233,7 +233,7 @@ function MoserDutton() {
     const p = svg.append("path").attr("d", d3.line().x((d) => x(d[0])).y((d) => y(d[1]))(pts)).attr("stroke", C.ink2).attr("stroke-width", 2.4).attr("fill", "none");
     const len = p.node().getTotalLength();
     p.attr("stroke-dasharray", `${len} ${len}`).attr("stroke-dashoffset", len).transition().duration(1400).attr("stroke-dashoffset", 0);
-    [[4, "flavin hops"], [14, "14 Å (membrane paper)"], [18, "18 Å (ET-chain paper)"]].forEach(([R, t], i) => {
+    [[4, "flavin hops"], [14, "14 Å"], [18, "18 Å"]].forEach(([R, t], i) => {
       svg.append("circle").attr("cx", x(R)).attr("cy", y(moserDutton(R))).attr("r", 0).attr("fill", i === 0 ? C.yellow : C.orange)
         .transition().delay(1400 + i * 300).attr("r", 7);
       svg.append("text").attr("x", i === 0 ? x(R) + 12 : x(R) - 12).attr("y", y(moserDutton(R)) + (i === 0 ? 5 : -12))
@@ -251,25 +251,26 @@ export function S14Delivery({ step }) {
       kicker="Applications · delivering electrons"
       papers={[PAPERS.membrane, PAPERS.et]}
       title="Two membrane anchors, four cofactors, one long hop"
-      lead="The derivation found the N-terminal anchor in 93% of ER-membrane P450s. These papers place CPR and the P450 on the same membrane and follow an electron NADPH → FAD → FMN → heme — shown left on the GLB structure, with occupancy per cofactor."
+      lead="The derivation found the N-terminal anchor in 93% of ER-membrane P450s. These papers place CPR and the P450 on the same membrane and follow an electron NADPH → FAD → FMN → heme, shown left on the GLB structure at display speed."
     >
       <div className="absolute inset-0 grid grid-cols-[680px_1fr] gap-10">
         <div className="flex flex-col gap-2">
-          <ElectronTransferViewer height={370} autoplay />
+          <ElectronTransferViewer height={340} autoplay />
           <Reveal step={step} at={2}>
             <Compare rows={[
               ["N-terminal anchor", "≈ 20 residues", "93% of 532 ER P450s", "C"],
-              ["Kd, CPR–P450", "0.1 µM", "0.05–0.5 µM", "L"],
-              ["k, FMN → heme", "5×10⁶ s⁻¹", "Moser–Dutton at 14 Å: 6×10⁶", "M"],
-              ["lipophilic enrichment, logP 3", "≈ 10×", "—", "M"],
+              ["Kd, CPR–P450", "0.1 µM", "literature input", "L"],
+              ["k, FMN → heme", "5×10⁶ s⁻¹", "input; ruler at 14 Å: 6×10⁶", "L"],
+              ["enrichment at logP 3", "10×", "assumed 10^(logP − 2)", "M"],
             ]} />
           </Reveal>
         </div>
         <Reveal step={step} at={1}>
           <MoserDutton />
           <div className="text-[16px] leading-relaxed" style={{ color: C.ink2 }}>
-            Moser–Dutton ruler, log₁₀ k = 13 − 0.6 (R − 3.6), at optimal driving force. Diamond: the membrane paper's
-            k<sub>ET</sub> = 5×10⁶ s⁻¹. The two papers' FMN–heme distances differ by 4 Å — about 2.4 orders of magnitude in rate.
+            Moser–Dutton ruler, log₁₀ k = 13 − 0.6 (R − 3.6), at optimal driving force. Diamond: the 5×10⁶ s⁻¹ the membrane
+            paper takes as input at 14 Å. The ET-chain paper uses 14 Å in its code and 18 Å in one equation, 2.4 orders of magnitude
+            apart on this ruler; its own Marcus expression gives 6×10² s⁻¹ at 14 Å.
           </div>
         </Reveal>
       </div>
@@ -329,20 +330,19 @@ export function S15CompoundI({ step }) {
       kicker="Applications · Compound I"
       papers={[PAPERS.cpdI]}
       title="Second protonation, O–O heterolysis, Compound I"
-      lead="The paper treats the O–O cleavage as a single step whose bond order runs from 1 to 0 (ΔM = ln 2), and compares the predicted observables of Compound I with the characterisation by Rittle and Green (2010)."
+      lead="The paper treats O–O cleavage as one step in which the bond order runs from 1 to 0, one binary distinction. Where its scripts compute a property of Compound I, the result is compared here with the Rittle and Green (2010) characterisation."
     >
       <div className="absolute inset-0 grid grid-cols-[760px_1fr] gap-8">
         <OOCleavage step={step} />
         <div className="flex flex-col gap-3">
-          <Statement accent={C.yellow}>The thiolate ligand from the derivation is the reason this step is heterolytic in P450 rather than reversible O₂ binding as in the globins.</Statement>
+          <Statement accent={C.yellow}>The derivation measured the thiolate in every P450 structure (Fe–S 2.32 Å). Electron donation from the thiolate is the usual explanation for heterolytic O–O cleavage (Green 2009); the paper cites this but does not model it.</Statement>
           <Reveal step={step} at={2}>
             <Compare rows={[
-              ["Compound I lifetime, 193 K", "200 ms", "200 ms", "L"],
-              ["Mössbauer δ", "0.10 mm/s", "0.11 mm/s", "L"],
-              ["total spin, EPR g", "½, 1.99", "½, 1.99", "L"],
-              ["Soret shift", "397 → 367 nm", "367 nm", "L"],
-              ["Fe=O stretch (¹⁸O)", "795 (758) cm⁻¹", "as cited in the atlas", "L"],
-              ["concerted / sequential PCET", "10×", "—", "M"],
+              ["Compound I: Soret, Mössbauer δ, g", "367 nm, 0.11 mm/s, 1.99", "Rittle & Green 2010", "L"],
+              ["lifetime at 193 K", "113 ms", "210 ms, CYP119", "M"],
+              ["oxidation potential", "0.54 V", "0.9 V, as cited", "M"],
+              ["concerted / sequential PCET", "10×", "follows from the rate rule", "M"],
+              ["O–O bonded or cleaved", "ln 2", "one binary distinction", "D"],
             ]} />
           </Reveal>
         </div>
