@@ -9,9 +9,14 @@ shards of a unit share one checkout and start at once.
 
 Shards see LATTICE_ROOT, LATTICE_OUT and LATTICE_<KEY> for every matrix key; use
 those in commands rather than lattice's `{key}` placeholders.
+
+`P450_LATTICE` overrides how lattice is invoked (default `lattice` on PATH), as a
+shell-quoted command line, e.g. `"/opt/python" "/tmp/stub_lattice.py"`. The
+integration tests use it to run the whole route against a stand-in.
 """
 from __future__ import annotations
 
+import os
 import shlex
 import shutil
 import subprocess
@@ -74,11 +79,16 @@ def options(exp: Experiment) -> list[str]:
     return a
 
 
+def command() -> list[str]:
+    """How lattice is invoked: `P450_LATTICE` split as a command line, else `lattice`."""
+    return shlex.split(os.environ.get("P450_LATTICE", "lattice"))
+
+
 def argv(verb: str, exp: Experiment, repo_path: str, resolved: list[Resolved], extra: list[str] | None = None) -> list[str]:
     """The full command line for `lattice plan` or `lattice wrap`."""
     if verb not in {"plan", "wrap"}:
         raise ValueError(verb)
-    a = ["lattice", "-C", repo_path, verb]
+    a = [*command(), "-C", repo_path, verb]
     if exp.task:
         a.append(exp.task)
     a += options(exp) + (extra or [])
@@ -88,18 +98,19 @@ def argv(verb: str, exp: Experiment, repo_path: str, resolved: list[Resolved], e
 
 
 def available() -> bool:
-    return shutil.which("lattice") is not None
+    cmd = command()
+    return bool(cmd) and shutil.which(cmd[0]) is not None
 
 
 def version() -> str:
     if not available():
         return ""
-    r = subprocess.run(["lattice", "--version"], capture_output=True, text=True)
+    r = subprocess.run([*command(), "--version"], capture_output=True, text=True, check=False)
     return r.stdout.strip()
 
 
 def run(args: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(args, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    return subprocess.run(args, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
 
 
 def display(args: list[str]) -> str:

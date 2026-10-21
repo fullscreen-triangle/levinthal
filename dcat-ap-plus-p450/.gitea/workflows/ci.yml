@@ -1,0 +1,66 @@
+name: ci
+on: [push, pull_request]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: lint, unit and integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv python install 3.13
+      - run: uv sync --locked --group dev
+      - run: uv run ruff check src tests experiments
+      - run: uv run pytest -q
+      - name: tools the shards of the integration tests call
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          command -v python3 >/dev/null || ln -s "$(uv python find 3.13)" "$HOME/.local/bin/python3"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          command -v bash flock git
+      # lattice is not installed here, so the test against the real lattice skips;
+      # every other integration test must run (a missing tool fails, it does not skip)
+      - run: uv run pytest -q -m integration
+        env:
+          P450_INTEGRATION_STRICT: "1"
+
+  validation:
+    name: simulated validation experiments reproduce
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: docs/cytochrome-p450-derivation/validation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv python install 3.13
+      - run: uv sync --locked
+      # f1-f4 are simulated; g1-g6 download from NIST, PDB and UniProt and are run by hand
+      - run: uv run python run_all.py f
+        env:
+          MPLBACKEND: Agg
+      - run: uv run python check_reproduced.py f1_partial_sums f2_individuation f3_recurrence f4_ladders
+
+  specification:
+    name: component graph, reference and front page
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: uv run --no-project --python 3.13 python docs/specifications/render_reference.py --check
+      - run: npm ci
+        working-directory: web
+      - run: npm run check
+        working-directory: web
+      - run: npm run build
+        working-directory: web

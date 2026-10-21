@@ -1,15 +1,18 @@
 """Tests for the experiment layer. No network, no lattice, no AppHub: git repositories
 are built in temporary directories, and lattice's rules are checked as the driver
 mirrors them (lattice/src/unit.rs, render.rs, publish.rs)."""
+import importlib.util
 import json
+import re
 import subprocess
 import textwrap
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
 
 from dcat_ap_plus_p450 import paths
-from dcat_ap_plus_p450.experiments import checks, ledger, lattice, repos, results, spec
+from dcat_ap_plus_p450.experiments import checks, lattice, ledger, repos, results, spec
 
 COMPONENTS = {"compute.lattice", "up.okgg"}
 REPOS = {"levinthal", "conspirator"}
@@ -201,6 +204,160 @@ def test_failed_shard_fails_and_missing_input_is_skipped(tmp_path):
     assert v_missing.verdict == "skipped"
     assert checks.overall([v_missing]) == "incomplete"
     assert checks.overall([v_missing, v_shards]) == "failed"
+
+
+# ---- compare checks ------------------------------------------------------------------------
+
+COMPARE = {"kind": "compare", "path": "shards/arm-real_paper-*/r.json", "key": "v",
+           "against": "shards/arm-shuffled*_paper-$1/r.json"}
+
+
+@pytest.mark.parametrize("change, expected", [
+    ({"against": ""}, "needs a path, a key and an against"),
+    ({"better": "more"}, "expect.better"),
+    ({"margin": -0.1}, "expect.margin"),
+    ({"margin": "0.1"}, "expect.margin"),
+    ({"against": "shards/arm-shuffled*_paper-$2/r.json"}, "uses $2, but path has 1"),
+    ({"against": COMPARE["path"]}, "same pattern as path"),
+])
+def test_invalid_compare_checks_are_reported(tmp_path, change, expected):
+    exp, _ = spec.load(write_exp(tmp_path, VALID))
+    good = spec.Check(**COMPARE)
+    assert spec.validate(replace(exp, checks=(good,)), COMPONENTS, REPOS) == []
+    bad = spec.Check(**{**COMPARE, **change})
+    assert any(expected in p for p in spec.validate(replace(exp, checks=(bad,)), COMPONENTS, REPOS))
+
+
+def test_compare_check_loads_from_toml(tmp_path):
+    exp, problems = spec.load(write_exp(tmp_path, VALID + textwrap.dedent("""
+        [[expect]]
+        kind = "compare"
+        path = "shards/arm-real_paper-*/r.json"
+        key = "v"
+        against = "shards/arm-shuffled*_paper-$1/r.json"
+        better = "lower"
+        margin = 0.25
+    """)))
+    assert problems == [] and spec.validate(exp, COMPONENTS, REPOS) == []
+    c = exp.checks[-1]
+    assert (c.against, c.better, c.margin) == ("shards/arm-shuffled*_paper-$1/r.json", "lower", 0.25)
+
+
+def put(root: Path, files: dict[str, object]) -> list[str]:
+    for rel, doc in files.items():
+        f = root / rel
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(doc if isinstance(doc, str) else json.dumps(doc), encoding="utf-8")
+    return sorted(files)
+
+
+def compare(root: Path, files: dict[str, object], **change) -> checks.Verdict:
+    return checks.judge(spec.Check(**{**COMPARE, **change}), [], root, put(root, files))
+
+
+def test_compare_pairs_each_observed_file_with_its_own_alternatives(tmp_path):
+    v = compare(tmp_path, {
+        "shards/arm-real_paper-a/r.json": {"v": 0.9},
+        "shards/arm-shuffled1_paper-a/r.json": {"v": 0.5},
+        "shards/arm-shuffled2_paper-a/r.json": {"v": 0.7},
+        "shards/arm-real_paper-b/r.json": {"v": 0.4},
+        "shards/arm-shuffled1_paper-b/r.json": {"v": 0.3},
+    })
+    assert v.verdict == "pass", v.detail
+    a = next(p for p in v.pairs if p["observed"].endswith("paper-a/r.json"))
+    assert a["best"] == 0.7 and a["alternatives"] == 2 and a["lead"] == pytest.approx(0.2)
+    assert a["best_file"] == "shards/arm-shuffled2_paper-a/r.json"
+    record = v.as_record()
+    assert record["against"] == COMPARE["against"] and len(record["pairs"]) == 2
+
+
+@pytest.mark.parametrize("real, alts, change, verdict, words", [
+    (0.7, [0.5, 0.7], {}, "fail", "does not beat"),                     # a tie is not a pass
+    (0.6, [0.5, 0.8], {}, "fail", "does not beat"),
+    (0.75, [0.7], {"margin": 0.1}, "fail", "under the margin"),
+    (0.75, [0.7], {"margin": 0.05}, "pass", "beats"),
+    (0.2, [0.5, 0.3], {"better": "lower"}, "pass", "beats"),
+    (0.4, [0.5, 0.3], {"better": "lower"}, "fail", "does not beat"),
+])
+def test_compare_needs_a_strict_lead_over_the_best_alternative(tmp_path, real, alts, change, verdict, words):
+    files = {"shards/arm-real_paper-a/r.json": {"v": real}}
+    files |= {f"shards/arm-shuffled{i}_paper-a/r.json": {"v": x} for i, x in enumerate(alts, 1)}
+    v = compare(tmp_path, files, **change)
+    assert v.verdict == verdict and words in v.detail, v.detail
+
+
+def test_compare_cannot_judge_without_every_alternative(tmp_path):
+    no_alt = compare(tmp_path / "1", {"shards/arm-real_paper-a/r.json": {"v": 0.9}})
+    unreadable = compare(tmp_path / "2", {
+        "shards/arm-real_paper-a/r.json": {"v": 0.9},
+        "shards/arm-shuffled1_paper-a/r.json": {"v": 0.1},
+        "shards/arm-shuffled2_paper-a/r.json": "not json",
+    })
+    absent = compare(tmp_path / "3", {
+        "shards/arm-real_paper-a/r.json": {"v": 0.9},
+        "shards/arm-shuffled1_paper-a/r.json": {"w": 0.1},
+    })
+    nothing = compare(tmp_path / "4", {"elsewhere.json": {"v": 1}})
+    assert [x.verdict for x in (no_alt, unreadable, absent, nothing)] == ["skipped"] * 4
+    assert checks.overall([no_alt]) == "incomplete"
+
+
+def test_compare_fails_when_the_observed_value_is_missing_or_not_a_number(tmp_path):
+    for i, doc in enumerate([{"w": 1}, {"v": True}, {"v": "0.9"}]):
+        v = compare(tmp_path / str(i), {
+            "shards/arm-real_paper-a/r.json": doc,
+            "shards/arm-shuffled1_paper-a/r.json": {"v": 0.1},
+        })
+        assert v.verdict == "fail", doc
+
+
+# ---- e001's control arm ---------------------------------------------------------------------
+
+def load_shuffle():
+    path = paths.experiments_dir() / "e001-okgg-p450-sections" / "shuffle_sections.py"
+    mod_spec = importlib.util.spec_from_file_location("shuffle_sections", path)
+    mod = importlib.util.module_from_spec(mod_spec)
+    mod_spec.loader.exec_module(mod)
+    return mod
+
+
+PAPER = r"""\documentclass{article}
+\begin{document}
+\maketitle
+Abstract words.
+
+\section{One}
+a1
+
+a2
+
+\subsection{One.one}
+b1
+
+\section*{Two}
+c1
+
+c2
+
+c3
+\end{document}
+"""
+HEADING = r"\\(?:section|subsection)\*?\{[^}]*\}"
+
+
+def test_shuffle_keeps_headings_and_section_sizes_and_moves_paragraphs():
+    shuffle = load_shuffle().shuffle_sections
+    outs = {shuffle(PAPER, seed) for seed in range(1, 6)}
+    assert shuffle(PAPER, 1) == shuffle(PAPER, 1)
+    assert len(outs) > 1
+    for out in outs:
+        assert out.startswith(PAPER[:PAPER.index(r"\section{One}")])
+        assert out.rstrip().endswith(r"\end{document}")
+        assert re.findall(HEADING, out) == [r"\section{One}", r"\subsection{One.one}", r"\section*{Two}"]
+        blocks = re.split(HEADING, out.split(r"\end{document}")[0])[1:]
+        paras = [[p.strip() for p in b.split("\n\n") if p.strip()] for b in blocks]
+        assert [len(p) for p in paras] == [2, 1, 3]
+        assert sorted(p for ps in paras for p in ps) == ["a1", "a2", "b1", "c1", "c2", "c3"]
 
 
 # ---- ledger ------------------------------------------------------------------------------

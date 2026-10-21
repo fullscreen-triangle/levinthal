@@ -12,7 +12,10 @@ dependencies = []
 dcat-ap-plus-p450 = "dcat_ap_plus_p450.cli:main"
 
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "pytest>=8",
+    "ruff==0.17.1",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -23,6 +26,10 @@ packages = ["src/dcat_ap_plus_p450"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = [
+    "integration: runs the experiment route end to end (git, bash, a stand-in lattice); `pytest -m integration`",
+]
+addopts = "-m 'not integration'"
 
 [tool.ruff]
 line-length = 100

@@ -33,8 +33,12 @@ PLACEHOLDER_RE = re.compile(r"(^|[^$])\{([a-z_][a-z0-9_]*)\}")
 def unfilled_placeholders(command: str, keys: set[str]) -> list[str]:
     """The `{key}` placeholders lattice would find in `command` that no shard variable fills."""
     return sorted({m.group(2) for m in PLACEHOLDER_RE.finditer(command)} - keys)
-CHECK_KINDS = {"shards", "file", "json"}
+CHECK_KINDS = {"shards", "file", "json", "compare"}
 JSON_OPS = {"exists", "eq", "ne", "lt", "le", "gt", "ge"}
+BETTER = {"higher", "lower"}
+# In a `compare` check, `$1`, `$2`, … in `against` stand for what the 1st, 2nd, … `*` in
+# `path` matched, so each observed file is compared with its own alternatives.
+CAPTURE_REF_RE = re.compile(r"\$(\d+)")
 
 
 @dataclass(frozen=True)
@@ -53,6 +57,8 @@ class Check:
     `shards`: every shard finished with state `done`.
     `file`: a collected file exists (`path` is relative to the run's collected files).
     `json`: a key in a collected JSON file satisfies `op` against `value`.
+    `compare`: a key in each file matching `path` beats the same key in the best of the
+    files matching `against` (`better` says which direction wins) by at least `margin`.
     """
 
     kind: str
@@ -61,6 +67,9 @@ class Check:
     op: str = "exists"
     value: object = None
     note: str = ""
+    against: str = ""
+    better: str = "higher"
+    margin: object = 0
 
 
 @dataclass(frozen=True)
@@ -124,6 +133,9 @@ def load(directory: Path) -> tuple[Experiment, list[str]]:
             op=str(c.get("op", "exists")),
             value=c.get("value"),
             note=str(c.get("note", "")),
+            against=str(c.get("against", "")),
+            better=str(c.get("better", "higher")),
+            margin=c.get("margin", 0),
         )
         for c in data.get("expect", [])
     )
@@ -218,6 +230,25 @@ def validate(exp: Experiment, component_ids: set[str], repo_keys: set[str]) -> l
                 p.append(f"expect.op {c.op!r} must be one of {sorted(JSON_OPS)}")
             if c.op != "exists" and c.value is None:
                 p.append(f"expect.op {c.op!r} needs a value")
+        if c.kind == "compare":
+            p.extend(_compare_problems(c))
+    return p
+
+
+def _compare_problems(c: Check) -> list[str]:
+    p: list[str] = []
+    if not c.path or not c.key or not c.against:
+        p.append("expect.kind 'compare' needs a path, a key and an against")
+    if c.better not in BETTER:
+        p.append(f"expect.better {c.better!r} must be one of {sorted(BETTER)}")
+    if isinstance(c.margin, bool) or not isinstance(c.margin, (int, float)) or c.margin < 0:
+        p.append(f"expect.margin {c.margin!r} must be a number >= 0")
+    stars = c.path.count("*")
+    for ref in CAPTURE_REF_RE.findall(c.against):
+        if not 1 <= int(ref) <= stars:
+            p.append(f"expect.against uses ${ref}, but path has {stars} '*'")
+    if c.against and c.against == c.path:
+        p.append("expect.against is the same pattern as path: nothing to compare with")
     return p
 
 

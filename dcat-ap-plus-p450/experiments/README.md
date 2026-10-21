@@ -55,7 +55,7 @@ could not be judged; never counted as a pass).
 | `[target]` | the `repo` (a key in [`repos.toml`](repos.toml)) the unit is committed in and AppHub clones; exactly one of a lattice `task` or a `command`; the `unit` name (default `p450-<id>`) |
 | `[run]` | lattice's options: `matrix` or `each`, `outputs`, `env`, `secrets`, `gpu`, `parallel`, `timeout_secs` |
 | `[[requires]]` | other repositories the command needs, cloned beside the target at a commit pinned when you wrap |
-| `[[expect]]` | how the run is judged: `shards` (all `done`), `file` (exists), `json` (a key satisfies `exists/eq/ne/lt/le/gt/ge`) |
+| `[[expect]]` | how the run is judged: `shards` (all `done`), `file` (exists), `json` (a key satisfies `exists/eq/ne/lt/le/gt/ge`), `compare` (a key beats the best alternative, see below) |
 
 Rules the driver enforces before lattice is called:
 
@@ -72,6 +72,35 @@ Rules the driver enforces before lattice is called:
   Clones are serialised with `flock` because all shards share one checkout.
 - **Only committed files reach AppHub.** The driver warns about uncommitted changes in
   the target; anything else the command needs, it must fetch.
+
+### Comparing against the best alternative
+
+A `json` check compares a value with a constant. A `compare` check compares it with the
+same key in other collected files, usually control shards of the same run, and passes
+only if the value beats the best of them:
+
+```toml
+[[expect]]
+kind = "compare"
+path = "shards/arm-real_paper-*/okgg/report.json"     # the observed files
+key = "value"
+against = "shards/arm-shuffled*_paper-$1/okgg/report.json"
+better = "higher"                                     # or "lower"
+margin = 0.0                                          # the lead it must have, >= 0
+```
+
+- **Pairing.** `$1`, `$2`, … in `against` are replaced by what the 1st, 2nd, … `*` in `path`
+  matched, so each observed file is compared with its own alternatives. A plain `*` in
+  `against` stays a wildcard, and the best of everything it matches is taken.
+- **Shard ids.** lattice builds them from the sorted matrix keys as `key-value_key-value`,
+  so `matrix = { arm = [...], paper = [...] }` gives `arm-real_paper-<paper>`.
+- **A tie is not a pass.** The lead over the best alternative must be greater than zero
+  and at least `margin`.
+- **Missing alternatives.** If an observed file has no alternative, or any alternative is
+  missing the key or is not JSON, that pair is `skipped`: the best option may be the one
+  that is missing. A missing or non-numeric observed value is a `fail`.
+- **What is recorded.** Every pair, with the observed value, the best alternative and its
+  file, the number of alternatives and the lead, goes into `collect-<t>.json`.
 
 ## What `wrap` pushes
 
@@ -113,5 +142,5 @@ hegel and conspirator had none, so `e001` and `e002` are **blocked** until they 
 | Id | Target | Decides | Status on 2026-10-09 |
 |---|---|---|---|
 | [`e000-route-smoke`](e000-route-smoke/experiment.toml) | nfdi4cat-model | whether the route works end to end, and what an AppHub CPU session offers | ready to plan and wrap |
-| [`e001-okgg-p450-sections`](e001-okgg-p450-sections/experiment.toml) | levinthal + conspirator | which sections of each P450 paper okgg can tell apart | blocked: no forge route for either repository |
+| [`e001-okgg-p450-sections`](e001-okgg-p450-sections/experiment.toml) | levinthal + conspirator | which sections of each P450 paper okgg can tell apart, against shuffled-section controls | blocked: no forge route for either repository |
 | [`e002-hfq-baseline`](e002-hfq-baseline/experiment.toml) | hegel | whether HFQ V1–V16 hold on AppHub, as the WP0.6 baseline | blocked: no forge route |

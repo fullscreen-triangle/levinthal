@@ -1,8 +1,16 @@
 # Thin wrappers over the uv CLI and the web build. `make help` lists them.
-.PHONY: help test doctor experiments check spec web
+# `make ci` runs what .gitea/workflows/ci.yml runs, in the same order.
+.PHONY: help test lint integration validate ci doctor experiments check spec web
+
+VALIDATION = docs/cytochrome-p450-derivation/validation
+SIMULATED = f1_partial_sums f2_individuation f3_recurrence f4_ladders
 
 help:
-	@echo "test         run the test suite"
+	@echo "test         unit tests"
+	@echo "lint         ruff over src, tests and experiments"
+	@echo "integration  the experiment route end to end (needs bash, flock, python3)"
+	@echo "validate     rerun the simulated validation experiments and compare with the committed results"
+	@echo "ci           lint, test, integration, validate, spec, web"
 	@echo "doctor       lattice, the forge, and which repositories lattice can reach"
 	@echo "experiments  every experiment and where it stands"
 	@echo "check E=id   validate one experiment and everything a wrap needs"
@@ -11,6 +19,19 @@ help:
 
 test:
 	uv run --group dev pytest -q
+
+lint:
+	uv run --group dev ruff check src tests experiments
+
+integration:
+	uv run --group dev pytest -q -m integration
+
+validate:
+	cd $(VALIDATION) && uv run python run_all.py f && uv run python check_reproduced.py $(SIMULATED)
+
+ci: lint test integration validate
+	python docs/specifications/render_reference.py --check
+	$(MAKE) web
 
 doctor:
 	uv run dcat-ap-plus-p450 experiment doctor

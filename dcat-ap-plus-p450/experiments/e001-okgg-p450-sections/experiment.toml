@@ -7,6 +7,11 @@ their own words, and which stay in cells (indistinguishable)? Sections that stay
 cells are where a paper repeats itself or where the 'Records and queries' section
 (pap.records) will have nothing distinct to emit. The lexical generator makes this
 deterministic and needs no model endpoint.
+
+V alone cannot answer this: it says how many section pairs okgg separates, not whether
+the paper's own section boundaries are what separates them. So each paper is also run
+three times with its paragraphs dealt across the same headings (shuffle_sections.py),
+and the real sections must separate more pairs than the best of those three controls.
 """
 components = ["sem.ontology", "up.okgg", "pap.records", "src.monograph"]
 
@@ -14,17 +19,28 @@ components = ["sem.ontology", "up.okgg", "pap.records", "src.monograph"]
 repo = "levinthal"
 # okgg is built from conspirator, cloned beside levinthal at a pinned commit.
 # Each shard resolves its paper's .tex from the directory name in $LATTICE_PAPER.
+# shuffle_sections.py is read from levinthal's copy of dcat-ap-plus-p450, so levinthal
+# must have committed this directory before the unit is wrapped.
 command = """
 cargo install --quiet --locked --path ../conspirator/conspirator/okgg --root "$HOME/.local"
 tex=$(ls cytochrome/publications/*/"$LATTICE_PAPER"/*.tex | grep -v -- '-captions' | head -n 1)
 test -n "$tex"
-"$HOME/.local/bin/okgg" run "$tex" --unit section --generator lexical --budget 40 --out "$LATTICE_OUT/okgg"
+case "$LATTICE_ARM" in
+  real) src="$tex" ;;
+  shuffled*)
+    src="$LATTICE_OUT/control.tex"
+    python3 dcat-ap-plus-p450/experiments/e001-okgg-p450-sections/shuffle_sections.py "$tex" --seed "${LATTICE_ARM#shuffled}" > "$src"
+    ;;
+  *) echo "unknown arm $LATTICE_ARM" >&2; exit 2 ;;
+esac
+"$HOME/.local/bin/okgg" run "$src" --unit section --generator lexical --budget 40 --out "$LATTICE_OUT/okgg"
 """
 
 [run]
-# One shard per paper, by its directory name under cytochrome/publications/<group>/.
-# Short names, not paths: shard ids are built from matrix values.
-matrix = { paper = [
+# One shard per paper and arm. Papers by their directory name under
+# cytochrome/publications/<group>/; short names, not paths, since shard ids are built
+# from matrix values. lattice sorts the keys, so a shard id reads arm-<arm>_paper-<paper>.
+matrix = { arm = ["real", "shuffled1", "shuffled2", "shuffled3"], paper = [
   "expression-algebra-for-biomolecules", "multi-hop-et-chain", "compound-i-formation",
   "ch-activation-rebound", "p450-address-manifold-cyp3a4-fold", "cyp3a4-resting-substrate-bound",
   "seven-state-closed-orbit", "spectroscopic-atlas",
@@ -45,9 +61,15 @@ kind = "file"
 path = "shards/*/okgg/report.json"
 
 [[expect]]
-kind = "json"
-path = "shards/*/okgg/report.json"
+kind = "compare"
+path = "shards/arm-real_paper-*/okgg/report.json"
 key = "value"
-op = "ge"
-value = 0.0
-note = "V, the fraction of section pairs certified distinct (report.json keys checked against a local okgg 0.1.0 run)"
+against = "shards/arm-shuffled*_paper-$1/okgg/report.json"
+better = "higher"
+margin = 0.0
+note = """
+V, the fraction of section pairs certified distinct, on the real sections against the best
+of three shuffled controls of the same paper. On the laptop (okgg 0.1.0, 2026-10-20) the
+real sections did not beat the best control on compound-i-formation (0.578 vs 0.676) or
+multi-hop-et-chain (0.633 vs 0.679).
+"""

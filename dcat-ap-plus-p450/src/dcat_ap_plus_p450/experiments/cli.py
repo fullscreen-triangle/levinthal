@@ -22,7 +22,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .. import paths
-from . import checks, ledger, lattice, repos, results, spec
+from . import checks, lattice, ledger, repos, results, spec
 
 OK, PROBLEMS, BLOCKED, INCOMPLETE = 0, 1, 2, 3
 
@@ -319,7 +319,7 @@ def _ignored_by_git(dest: Path, rel_paths: list[str]) -> list[str]:
     # git then sees "table.csv\r", and no pattern matches. Exit status 1 = nothing ignored.
     r = subprocess.run(
         ["git", "-C", str(dest), "check-ignore", "-z", "--stdin"],
-        input="\0".join(rel_paths).encode("utf-8") + b"\0", capture_output=True,
+        input="\0".join(rel_paths).encode("utf-8") + b"\0", capture_output=True, check=False,
     )
     return sorted(p for p in r.stdout.decode("utf-8").split("\0") if p)
 

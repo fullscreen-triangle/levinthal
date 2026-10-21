@@ -42,3 +42,13 @@ command = ""
 # --output files, shards/<shard>/log for logs. `*` matches within the path.
 [[expect]]
 kind = "shards"                  # every shard finished `done`
+
+# A value beats the best of its alternatives (control shards), not a constant.
+# `$1` in `against` is what the first `*` in `path` matched. See experiments/README.md.
+# [[expect]]
+# kind = "compare"
+# path = "shards/arm-real_seed-*/result.json"
+# key = "score"
+# against = "shards/arm-control*_seed-$1/result.json"
+# better = "higher"              # higher | lower
+# margin = 0.0                   # the lead it must have; a tie never passes
